@@ -1,0 +1,97 @@
+import { describe, expect, it } from 'vitest'
+import { useSiteConfig } from './useSiteConfig'
+
+describe('useSiteConfig', () => {
+  it('should return site configuration', () => {
+    const config = useSiteConfig()
+
+    expect(config).toBeDefined()
+    expect(config.lguName).toBeDefined()
+    expect(config.municipality).toBeDefined()
+    expect(config.province).toBeDefined()
+  })
+
+  it('should have site information', () => {
+    const config = useSiteConfig()
+
+    expect(config.site).toBeDefined()
+    expect(config.site.lguType).toBeDefined()
+    expect(config.site.name).toBeDefined()
+    expect(config.site.tagline).toBeDefined()
+  })
+
+  it('should have contact information', () => {
+    const config = useSiteConfig()
+
+    expect(config.site.contact).toBeDefined()
+    expect(config.site.contact.address).toBeDefined()
+    expect(config.site.contact.phone).toBeDefined()
+    expect(config.site.contact.email).toBeDefined()
+  })
+
+  it('should have social media links', () => {
+    const config = useSiteConfig()
+
+    expect(config.site.social).toBeDefined()
+    expect(config.site.social.facebook).toBeDefined()
+    expect(config.site.social.twitter).toBeDefined()
+  })
+
+  it('should have officials configuration', () => {
+    const config = useSiteConfig()
+
+    expect(config.officials).toBeDefined()
+    expect(Array.isArray(config.officials.executive)).toBe(true)
+    expect(Array.isArray(config.officials.legislative)).toBe(true)
+  })
+
+  it('should have services configuration', () => {
+    const config = useSiteConfig()
+
+    expect(config.services).toBeDefined()
+    expect(Array.isArray(config.services.categories)).toBe(true)
+    expect(Array.isArray(config.services.items)).toBe(true)
+  })
+
+  it('should have hotlines configuration', () => {
+    const config = useSiteConfig()
+
+    expect(config.hotlines).toBeDefined()
+    expect(config.hotlines.emergency).toBeDefined()
+    expect(config.hotlines.medical).toBeDefined()
+  })
+
+  it('should have statistics configuration', () => {
+    const config = useSiteConfig()
+
+    expect(config.statistics).toBeDefined()
+    expect(config.statistics.population).toBeDefined()
+  })
+
+  it('should have history configuration', () => {
+    const config = useSiteConfig()
+
+    expect(config.history).toBeDefined()
+    expect(Array.isArray(config.history.milestones)).toBe(true)
+  })
+
+  it('should have tourism configuration', () => {
+    const config = useSiteConfig()
+
+    expect(config.tourism).toBeDefined()
+    expect(Array.isArray(config.tourism.attractions)).toBe(true)
+    expect(Array.isArray(config.tourism.categories)).toBe(true)
+  })
+
+  it('should have translations', () => {
+    const config = useSiteConfig()
+
+    expect(config.translations).toBeDefined()
+  })
+
+  it('should have labels for UI text', () => {
+    const config = useSiteConfig()
+
+    expect(config.labels).toBeDefined()
+  })
+})

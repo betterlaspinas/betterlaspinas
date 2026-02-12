@@ -1,0 +1,117 @@
+import { mount } from '@vue/test-utils'
+import { describe, expect, it } from 'vitest'
+import Footer from './Footer.vue'
+
+describe('footer', () => {
+  it('should render footer component', () => {
+    const wrapper = mount(Footer, {
+      global: {
+        stubs: {
+          NuxtLink: {
+            template: '<a><slot /></a>',
+          },
+        },
+      },
+    })
+
+    expect(wrapper.exists()).toBe(true)
+  })
+
+  it('should display LGU information', () => {
+    const wrapper = mount(Footer, {
+      global: {
+        stubs: {
+          NuxtLink: {
+            template: '<a><slot /></a>',
+          },
+        },
+      },
+    })
+
+    const text = wrapper.text()
+    // Should contain LGU-related content
+    expect(text.length).toBeGreaterThan(0)
+  })
+
+  it('should have social media links section', () => {
+    const wrapper = mount(Footer, {
+      global: {
+        stubs: {
+          NuxtLink: {
+            template: '<a><slot /></a>',
+          },
+        },
+      },
+    })
+
+    const html = wrapper.html()
+    // Should contain social media icons/links
+    expect(html).toMatch(/facebook|twitter|instagram|social/i)
+  })
+
+  it('should have footer navigation links', () => {
+    const wrapper = mount(Footer, {
+      global: {
+        stubs: {
+          NuxtLink: {
+            template: '<a><slot /></a>',
+          },
+        },
+      },
+    })
+
+    const links = wrapper.findAll('a')
+    expect(links.length).toBeGreaterThan(0)
+  })
+
+  it('should display contact information', () => {
+    const wrapper = mount(Footer, {
+      global: {
+        stubs: {
+          NuxtLink: {
+            template: '<a><slot /></a>',
+          },
+        },
+      },
+    })
+
+    const html = wrapper.html()
+    // Should contain contact-related content
+    expect(html).toBeTruthy()
+  })
+
+  it('should have copyright notice', () => {
+    const wrapper = mount(Footer, {
+      global: {
+        stubs: {
+          NuxtLink: {
+            template: '<a><slot /></a>',
+          },
+        },
+      },
+    })
+
+    const text = wrapper.text()
+    const currentYear = new Date().getFullYear()
+    // Should contain year or copyright symbol
+    expect(text).toMatch(new RegExp(`${currentYear}|©|copyright`, 'i'))
+  })
+
+  it('should render external links with proper attributes', () => {
+    const wrapper = mount(Footer, {
+      global: {
+        stubs: {
+          NuxtLink: {
+            template: '<a><slot /></a>',
+          },
+        },
+      },
+    })
+
+    const html = wrapper.html()
+    // External links should have target="_blank" and rel attributes
+    if (html.includes('facebook') || html.includes('twitter')) {
+      expect(html).toMatch(/target|rel/)
+    }
+  })
+})

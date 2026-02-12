@@ -1,0 +1,23 @@
+{
+  "population": {
+    "count": 0,
+    "year": 2024,
+    "source": "Census"
+  },
+  "landArea": {
+    "value": 0,
+    "unit": "km²",
+    "source": "Total City Area"
+  },
+  "subdivisions": {
+    "count": 0,
+    "type": "Barangays",
+    "source": "Administrative Units"
+  },
+  "incomeClass": {
+    "class": "",
+    "description": "City",
+    "source": "Income Classification"
+  },
+  "additionalStats": []
+}

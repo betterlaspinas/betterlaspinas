@@ -1,0 +1,91 @@
+{
+  "fiscalYear": 2025,
+  "quarters": {
+    "q1": {
+      "totalIncome": "₱0.00 M",
+      "totalExpense": "₱0.00 M",
+      "netIncome": "₱0.00 M",
+      "fundBalance": "₱0.00 M",
+      "totalIncomeValue": 0,
+      "totalExpenseValue": 0,
+      "income": {
+        "local": { "amount": "₱0.00 M", "percentage": "0%", "value": 0 },
+        "external": { "amount": "₱0.00 M", "percentage": "0%", "value": 0 }
+      },
+      "expenditure": {
+        "gps": { "amount": "₱0.00 M", "percentage": "0%", "value": 0 },
+        "social": { "amount": "₱0.00 M", "percentage": "0%", "value": 0 },
+        "economic": { "amount": "₱0.00 M", "percentage": "0%", "value": 0 },
+        "debt": { "amount": "₱0.00 M", "percentage": "0%", "value": 0 }
+      }
+    },
+    "q2": {
+      "totalIncome": "₱0.00 M",
+      "totalExpense": "₱0.00 M",
+      "netIncome": "₱0.00 M",
+      "fundBalance": "₱0.00 M",
+      "totalIncomeValue": 0,
+      "totalExpenseValue": 0,
+      "income": {
+        "local": { "amount": "₱0.00 M", "percentage": "0%", "value": 0 },
+        "external": { "amount": "₱0.00 M", "percentage": "0%", "value": 0 }
+      },
+      "expenditure": {
+        "gps": { "amount": "₱0.00 M", "percentage": "0%", "value": 0 },
+        "social": { "amount": "₱0.00 M", "percentage": "0%", "value": 0 },
+        "economic": { "amount": "₱0.00 M", "percentage": "0%", "value": 0 },
+        "debt": { "amount": "₱0.00 M", "percentage": "0%", "value": 0 }
+      }
+    },
+    "q3": {
+      "totalIncome": "₱0.00 M",
+      "totalExpense": "₱0.00 M",
+      "netIncome": "₱0.00 M",
+      "fundBalance": "₱0.00 M",
+      "totalIncomeValue": 0,
+      "totalExpenseValue": 0,
+      "income": {
+        "local": { "amount": "₱0.00 M", "percentage": "0%", "value": 0 },
+        "external": { "amount": "₱0.00 M", "percentage": "0%", "value": 0 }
+      },
+      "expenditure": {
+        "gps": { "amount": "₱0.00 M", "percentage": "0%", "value": 0 },
+        "social": { "amount": "₱0.00 M", "percentage": "0%", "value": 0 },
+        "economic": { "amount": "₱0.00 M", "percentage": "0%", "value": 0 },
+        "debt": { "amount": "₱0.00 M", "percentage": "0%", "value": 0 }
+      }
+    },
+    "q4": {
+      "totalIncome": "₱0.00 M",
+      "totalExpense": "₱0.00 M",
+      "netIncome": "₱0.00 M",
+      "fundBalance": "₱0.00 M",
+      "totalIncomeValue": 0,
+      "totalExpenseValue": 0,
+      "income": {
+        "local": { "amount": "₱0.00 M", "percentage": "0%", "value": 0 },
+        "external": { "amount": "₱0.00 M", "percentage": "0%", "value": 0 }
+      },
+      "expenditure": {
+        "gps": { "amount": "₱0.00 M", "percentage": "0%", "value": 0 },
+        "social": { "amount": "₱0.00 M", "percentage": "0%", "value": 0 },
+        "economic": { "amount": "₱0.00 M", "percentage": "0%", "value": 0 },
+        "debt": { "amount": "₱0.00 M", "percentage": "0%", "value": 0 }
+      }
+    }
+  },
+  "infrastructureProjects": [
+    {
+      "id": "sample-flood-control",
+      "year": 2024,
+      "title": "Sample Flood Control Project",
+      "type": "Flood Control",
+      "typeIcon": "bi-water",
+      "typeColor": "blue",
+      "location": "{{fullLocation}}",
+      "typeOfWork": "Construction of Flood Mitigation Structure",
+      "contractor": "Sample Contractor Inc.",
+      "contractCost": "₱0.00"
+    }
+  ]
+}

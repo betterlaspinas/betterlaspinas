@@ -1,0 +1,138 @@
+import { describe, expect, it, vi, beforeEach } from 'vitest'
+import { nextTick } from 'vue'
+import { useSearch } from './useSearch'
+
+// Mock dependencies
+vi.mock('@/utils/configHelper', () => ({
+  getServicesConfig: () => ({
+    services: [
+      {
+        id: 'cert-birth',
+        title: 'Birth Certificate',
+        description: 'Get your birth certificate',
+        category: 'Civil Registry',
+        categoryId: 'civil-registry',
+        keywords: ['birth', 'certificate', 'civil'],
+        url: '/services/birth-certificate',
+      },
+      {
+        id: 'permit-business',
+        title: 'Business Permit',
+        description: 'Apply for business permit',
+        category: 'Business',
+        categoryId: 'business',
+        keywords: ['business', 'permit', 'trade'],
+        url: '/services/business-permit',
+      },
+    ],
+  }),
+}))
+
+// Mock Vue
+vi.mock('vue', async (importOriginal) => {
+  const actual: any = await importOriginal()
+  return {
+    ...actual,
+    onMounted: (fn: () => void) => fn(),
+  }
+})
+
+describe('useSearch', () => {
+  beforeEach(() => {
+    vi.clearAllMocks()
+    localStorage.clear()
+
+    // Ensure localStorage is working or mocked if needed
+    const store: Record<string, string> = {}
+    try {
+      localStorage.setItem('test', 'value')
+      if (localStorage.getItem('test') !== 'value') {
+        throw new Error('localStorage not working')
+      }
+      localStorage.removeItem('test')
+    } catch {
+      Object.defineProperty(window, 'localStorage', {
+        value: {
+          getItem: (key: string) => store[key] || null,
+          setItem: (key: string, value: string) => { store[key] = value },
+          removeItem: (key: string) => { delete store[key] },
+          clear: () => { for (const key in store) delete store[key] }
+        },
+        writable: true
+      })
+    }
+  })
+
+  it('should initialize with empty query', () => {
+    const { query } = useSearch()
+    expect(query.value).toBe('')
+  })
+
+  it('should return empty results for empty query', () => {
+    const { query, results } = useSearch()
+    query.value = ''
+    expect(results.value.length).toBe(0)
+  })
+
+  it('should return results for valid query', () => {
+    const { search, results } = useSearch()
+    search('certificate')
+    expect(results.value.length).toBeGreaterThan(0)
+    expect(results.value[0].title).toBe('Birth Certificate')
+  })
+
+  it('should perform fuzzy search', () => {
+    const { search, results } = useSearch()
+    search('certifcate')
+    expect(results.value.length).toBeGreaterThan(0)
+  })
+
+  it('should search across multiple fields', () => {
+    const { search, results } = useSearch()
+    search('birth')
+    expect(results.value.length).toBeGreaterThan(0)
+    search('apply')
+    expect(results.value.length).toBeGreaterThan(0)
+  })
+
+  it('should filter by category', () => {
+    const { search, results, category } = useSearch()
+    category.value = 'civil-registry'
+    search('certificate', 'civil-registry')
+    expect(results.value.length).toBeGreaterThan(0)
+    results.value.forEach((result) => {
+      expect(result.categoryId).toBe('civil-registry')
+    })
+  })
+
+  it('should provide popular searches in suggestions', () => {
+    const { suggestions, setQuery } = useSearch()
+    setQuery('')
+    expect(suggestions.value.popular).toBeDefined()
+    expect(suggestions.value.popular.length).toBeGreaterThan(0)
+  })
+
+  it('should track recent searches', async () => {
+    const { search, suggestions, addRecentSearch, setQuery } = useSearch()
+    const testQuery = 'birth certificate'
+    setQuery(testQuery)
+    addRecentSearch(testQuery)
+    setQuery('')
+    await nextTick()
+    setQuery('')
+    await nextTick()
+    console.log('Recent searches from suggestions:', JSON.stringify(suggestions.value.recent))
+    const item = localStorage.getItem('betterlgu_recent_searches')
+    console.log('Recent searches from storage (raw):', String(item))
+    expect(suggestions.value.recent).toContain(testQuery)
+  })
+
+  it('should clear recent searches', async () => {
+    const { addRecentSearch, clearRecentSearches, suggestions, setQuery } = useSearch()
+    addRecentSearch('test query')
+    clearRecentSearches()
+    setQuery('')
+    await nextTick()
+    expect(suggestions.value.recent.length).toBe(0)
+  })
+})

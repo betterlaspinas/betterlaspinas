@@ -1,0 +1,80 @@
+{
+  "emergency": [
+    {
+      "id": "police",
+      "name": "Police Station",
+      "number": "",
+      "icon": "bi-shield-fill",
+      "category": "emergency"
+    },
+    {
+      "id": "fire",
+      "name": "Fire Station",
+      "number": "",
+      "icon": "bi-fire",
+      "category": "emergency"
+    },
+    {
+      "id": "mdrrmo",
+      "name": "MDRRMO",
+      "number": "",
+      "icon": "bi-exclamation-triangle-fill",
+      "category": "emergency"
+    }
+  ],
+  "medical": [
+    {
+      "id": "rhu",
+      "name": "Rural Health Unit",
+      "number": "",
+      "icon": "bi-hospital",
+      "category": "medical"
+    },
+    {
+      "id": "red-cross",
+      "name": "Red Cross",
+      "number": "",
+      "icon": "bi-plus-circle-fill",
+      "category": "medical"
+    }
+  ],
+  "government": [
+    {
+      "id": "mayors-office",
+      "name": "Mayor's Office",
+      "number": "",
+      "icon": "bi-building-fill",
+      "category": "government"
+    },
+    {
+      "id": "mswdo",
+      "name": "MSWDO",
+      "number": "",
+      "icon": "bi-heart-fill",
+      "category": "government"
+    },
+    {
+      "id": "dilg",
+      "name": "DILG",
+      "number": "",
+      "icon": "bi-building",
+      "category": "government"
+    }
+  ],
+  "utilities": [
+    {
+      "id": "electric",
+      "name": "Electric Cooperative",
+      "number": "",
+      "icon": "bi-lightning-fill",
+      "category": "utilities"
+    },
+    {
+      "id": "water",
+      "name": "Water District",
+      "number": "",
+      "icon": "bi-droplet-fill",
+      "category": "utilities"
+    }
+  ]
+}

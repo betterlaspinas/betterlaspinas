@@ -1,0 +1,49 @@
+{
+  "articles": [
+    {
+      "id": 1,
+      "title": "Business Permit Renewal 2025",
+      "date": "Nov 28, 2025",
+      "badge": "Announcement",
+      "badgeColor": "blue",
+      "description": "Deadline for business permit renewal is set for January 20, 2025. Early renewal is encouraged to avoid long queues and delays. The {{deptPrefix}} Business Permits and Licensing Office (BPLO) will be open from 8:00 AM to 5:00 PM on weekdays.",
+      "slug": "business-permit-renewal-2025"
+    },
+    {
+      "id": 2,
+      "title": "New Public Market Wing Opens",
+      "date": "Nov 15, 2025",
+      "badge": "Project",
+      "badgeColor": "green",
+      "description": "The renovated wing of the Public Market is now open to vendors and the public. The new wing features improved ventilation, modern stalls, and better sanitation facilities.",
+      "slug": "new-public-market-wing-opens"
+    },
+    {
+      "id": 3,
+      "title": "Scheduled Power Interruption",
+      "date": "Nov 10, 2025",
+      "badge": "Advisory",
+      "badgeColor": "yellow",
+      "description": "Maintenance scheduled for Dec 1, 8:00 AM - 5:00 PM. Affected areas include the main road and surrounding residential areas. Please prepare accordingly.",
+      "slug": "scheduled-power-interruption"
+    },
+    {
+      "id": 4,
+      "title": "Free Medical Mission",
+      "date": "Nov 5, 2025",
+      "badge": "Event",
+      "badgeColor": "blue",
+      "description": "The {{deptPrefix}} Health Office in partnership with the Department of Health will conduct a free medical mission at the {{deptPrefix}} Gymnasium on November 15, 2025.",
+      "slug": "free-medical-mission"
+    },
+    {
+      "id": 5,
+      "title": "Road Improvement Project Completed",
+      "date": "Oct 28, 2025",
+      "badge": "Project",
+      "badgeColor": "green",
+      "description": "The road improvement project along the national highway has been completed. The project includes road widening, drainage improvement, and installation of street lights.",
+      "slug": "road-improvement-project-completed"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "lguType": "City",
+  "municipality": "LasPiñas",
+  "province": "Metro Manila",
+  "region": "NCR",
+  "siteId": "betterlaspinas",
+  "domain": "betterlaspinas.org",
+  "tagline": "Your digital gateway to Las Piñas City services",
+  "themeColor": "#0066eb",
+  "contact": {
+    "phone": "(02) 8871-4343",
+    "mobile": "",
+    "email": "info@laspinascity.gov.ph",
+    "address": "Las Piñas City Hall, Alabang–Zapote Road, Las Piñas, Metro Manila",
+    "postalCode": "1740"
+  },
+  "social": {
+    "facebook": "https://www.facebook.com/cityoflaspinasofficial",
+    "twitter": "",
+    "linkedin": "",
+    "discord": "",
+    "github": "https://github.com/Martin-Enghoy/betterlaspinas"
+  },
+  "coordinates": {
+    "lat": 14.4497,
+    "lng": 120.9826
+  },
+  "logo": {
+    "main": "/assets/images/logo/better-laspinas-logo.svg",
+    "white": "/assets/images/logo/better-laspinas-logo-white.svg",
+    "favicon": "/assets/images/logo/favicon.svg"
+  }
+}

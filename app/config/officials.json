@@ -1,0 +1,262 @@
+{
+  "executive": [
+    {
+      "id": "mayor",
+      "name": "",
+      "position": "mayor",
+      "title": "City Mayor",
+      "email": "",
+      "phone": ""
+    },
+    {
+      "id": "vice-mayor",
+      "name": "",
+      "position": "vice_mayor",
+      "title": "City Vice Mayor",
+      "email": "",
+      "phone": ""
+    }
+  ],
+  "legislative": [
+    {
+      "id": "sb-member-1",
+      "name": "",
+      "position": "sb_member",
+      "title": "SB Member",
+      "committees": ""
+    },
+    {
+      "id": "sb-member-2",
+      "name": "",
+      "position": "sb_member",
+      "title": "SB Member",
+      "committees": ""
+    },
+    {
+      "id": "sb-member-3",
+      "name": "",
+      "position": "sb_member",
+      "title": "SB Member",
+      "committees": ""
+    },
+    {
+      "id": "sb-member-4",
+      "name": "",
+      "position": "sb_member",
+      "title": "SB Member",
+      "committees": ""
+    },
+    {
+      "id": "sb-member-5",
+      "name": "",
+      "position": "sb_member",
+      "title": "SB Member",
+      "committees": ""
+    },
+    {
+      "id": "sb-member-6",
+      "name": "",
+      "position": "sb_member",
+      "title": "SB Member",
+      "committees": ""
+    },
+    {
+      "id": "sb-member-7",
+      "name": "",
+      "position": "sb_member",
+      "title": "SB Member",
+      "committees": ""
+    },
+    {
+      "id": "sb-member-8",
+      "name": "",
+      "position": "sb_member",
+      "title": "SB Member",
+      "committees": ""
+    },
+    {
+      "id": "liga-president",
+      "name": "",
+      "position": "liga_president",
+      "title": "Liga ng mga Barangay President",
+      "committees": ""
+    },
+    {
+      "id": "sk-president",
+      "name": "",
+      "position": "sk_president",
+      "title": "SK Federation President",
+      "committees": ""
+    }
+  ],
+  "departments": [
+    {
+      "id": "civil-registrar",
+      "slug": "city-civil-registrar",
+      "name": "",
+      "department": "City Civil Registrar",
+      "abbreviation": "MCR",
+      "description": "Birth, death, marriage certificates, CENOMAR",
+      "icon": "bi-file-earmark-text-fill",
+      "email": "",
+      "phone": "",
+      "services": "certificates"
+    },
+    {
+      "id": "treasurer",
+      "slug": "city-treasurer",
+      "name": "",
+      "department": "City Treasurer's Office",
+      "abbreviation": "MTO",
+      "description": "Tax payments, real property tax, revenue collection",
+      "icon": "bi-cash-coin",
+      "email": "",
+      "phone": "",
+      "services": "tax-payments"
+    },
+    {
+      "id": "engineering",
+      "slug": "city-engineering",
+      "name": "",
+      "department": "City Engineering Office",
+      "abbreviation": "MEO",
+      "description": "Building permits, construction permits, infrastructure",
+      "icon": "bi-building-fill-gear",
+      "email": "",
+      "phone": "",
+      "services": "infrastructure"
+    },
+    {
+      "id": "mswdo",
+      "slug": "cswdo-services",
+      "name": "",
+      "department": "City Social Welfare and Development Office",
+      "abbreviation": "CSWDO",
+      "description": "Social services, PWD & senior citizen IDs, financial assistance",
+      "icon": "bi-people-fill",
+      "email": "",
+      "phone": "",
+      "services": "social-services"
+    },
+    {
+      "id": "agriculture",
+      "slug": "city-agriculture",
+      "name": "",
+      "department": "City Agriculture Office",
+      "abbreviation": "CAO",
+      "description": "Agricultural loans, crop insurance, fertilizer assistance",
+      "icon": "bi-tree-fill",
+      "email": "",
+      "phone": "",
+      "services": "agriculture"
+    },
+    {
+      "id": "planning",
+      "slug": "city-planning",
+      "name": "",
+      "department": "City Planning & Development Office",
+      "abbreviation": "CPDO",
+      "description": "Development planning, project monitoring, zoning",
+      "icon": "bi-clipboard-data-fill",
+      "email": "",
+      "phone": "",
+      "services": "infrastructure"
+    },
+    {
+      "id": "assessor",
+      "slug": "city-assessor",
+      "name": "",
+      "department": "City Assessor's Office",
+      "abbreviation": "CAO",
+      "description": "Property assessment, tax declarations, land records",
+      "icon": "bi-house-door-fill",
+      "email": "",
+      "phone": "",
+      "services": "tax-payments"
+    },
+    {
+      "id": "accounting",
+      "slug": "city-accounting",
+      "name": "",
+      "department": "City Accounting Office",
+      "abbreviation": "CACCO",
+      "description": "Financial records, disbursements, accounting services",
+      "icon": "bi-calculator-fill",
+      "email": "",
+      "phone": "",
+      "services": "tax-payments"
+    },
+    {
+      "id": "budget",
+      "slug": "city-budget",
+      "name": "",
+      "department": "City Budget Office",
+      "abbreviation": "CBO",
+      "description": "Budget preparation, appropriations, fiscal management",
+      "icon": "bi-piggy-bank-fill",
+      "email": "",
+      "phone": "",
+      "services": "tax-payments"
+    },
+    {
+      "id": "gso",
+      "slug": "city-general-services",
+      "name": "",
+      "department": "City General Services Office",
+      "abbreviation": "CGSO",
+      "description": "Property management, procurement, administration",
+      "icon": "bi-gear-fill",
+      "email": "",
+      "phone": "",
+      "services": "government"
+    },
+    {
+      "id": "health",
+      "slug": "city-health",
+      "name": "",
+      "department": "City Health Office",
+      "abbreviation": "CHO",
+      "description": "Vaccination, health certificates, medical assistance",
+      "icon": "bi-heart-pulse-fill",
+      "email": "",
+      "phone": "",
+      "services": "health"
+    },
+    {
+      "id": "bpls",
+      "slug": "business-permits-licensing",
+      "name": "",
+      "department": "Business Permits & Licensing Office",
+      "abbreviation": "BPLO",
+      "description": "Business permits, Mayor's clearance, licensing",
+      "icon": "bi-shop",
+      "email": "",
+      "phone": "",
+      "services": "business"
+    },
+    {
+      "id": "hrmo",
+      "slug": "human-resource-management",
+      "name": "",
+      "department": "Human Resource Management Office",
+      "abbreviation": "HRMO",
+      "description": "Personnel services, recruitment, employee records",
+      "icon": "bi-person-badge-fill",
+      "email": "",
+      "phone": "",
+      "services": "government"
+    },
+    {
+      "id": "mdrrmo",
+      "slug": "cdrrmo",
+      "name": "",
+      "department": "City Disaster Risk Reduction and Management Office",
+      "abbreviation": "CDRRMO",
+      "description": "Disaster preparedness, emergency response, risk reduction",
+      "icon": "bi-exclamation-triangle-fill",
+      "email": "",
+      "phone": "",
+      "services": "public-safety"
+    }
+  ]
+}

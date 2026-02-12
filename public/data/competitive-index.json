@@ -1,0 +1,79 @@
+{
+  "title": "LGU Competitive Index",
+  "description": "Annual competitiveness indicators measuring local economic performance",
+  "source": "Cities and Municipalities Competitiveness Index (CMCI)",
+  "sourceUrl": "https://cmci.dti.gov.ph/",
+  "years": [],
+  "pillars": [
+    {
+      "id": "economic-dynamism",
+      "name": "Economic Dynamism",
+      "icon": "bi-graph-up-arrow",
+      "indicators": [
+        { "name": "Local Economy Size", "values": [] },
+        { "name": "Local Economy Growth", "values": [] },
+        { "name": "Active Establishments", "values": [] },
+        { "name": "Safety Compliant Business", "values": [] },
+        { "name": "Employment Generation", "values": [] }
+      ]
+    },
+    {
+      "id": "government-efficiency",
+      "name": "Government Efficiency",
+      "icon": "bi-building-check",
+      "indicators": [
+        { "name": "Cost of Living", "values": [] },
+        { "name": "Cost of Doing Business", "values": [] },
+        { "name": "Financial Deepening", "values": [] },
+        { "name": "Productivity", "values": [] },
+        { "name": "Compliance to National Directives", "values": [] }
+      ]
+    },
+    {
+      "id": "infrastructure",
+      "name": "Infrastructure",
+      "icon": "bi-building-gear",
+      "indicators": [
+        { "name": "Road Network", "values": [] },
+        { "name": "Distance to Ports", "values": [] },
+        { "name": "Availability of Basic Utilities", "values": [] },
+        { "name": "Transportation Vehicles", "values": [] },
+        { "name": "Information Technology Capacity", "values": [] }
+      ]
+    },
+    {
+      "id": "resiliency",
+      "name": "Resiliency",
+      "icon": "bi-shield-check",
+      "indicators": [
+        { "name": "Disaster Risk Reduction Plan", "values": [] },
+        { "name": "Annual Disaster Drill", "values": [] },
+        { "name": "Early Warning System", "values": [] },
+        { "name": "Budget for DRRMP", "values": [] },
+        { "name": "Local Risk Assessments", "values": [] },
+        { "name": "Emergency Infrastructure", "values": [] }
+      ]
+    },
+    {
+      "id": "innovation",
+      "name": "Innovation",
+      "icon": "bi-lightbulb",
+      "indicators": [
+        { "name": "ICT Plan", "values": [] },
+        { "name": "R&D Expenditures Allotment", "values": [] },
+        { "name": "ICT Use: E-BPLS Software", "values": [] },
+        { "name": "Online Payment Facilities", "values": [] },
+        { "name": "STEM Graduates", "values": [] },
+        { "name": "Start Up and Innovation Facilities", "values": [] }
+      ]
+    }
+  ],
+  "keyIndicators": [
+    { "name": "Health", "values": [] },
+    { "name": "Education", "values": [] },
+    { "name": "Social Protection", "values": [] },
+    { "name": "Peace and Order", "values": [] },
+    { "name": "LGU Investment", "values": [] }
+  ],
+  "_comment": "Populate with your LGU's CMCI data from https://cmci.dti.gov.ph/"
+}

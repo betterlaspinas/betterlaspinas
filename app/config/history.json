@@ -1,0 +1,17 @@
+{
+  "timeline": [
+    {
+      "year": "",
+      "title": "Foundation",
+      "description": "The city was founded."
+    }
+  ],
+  "facts": [
+    {
+      "id": "fact-1",
+      "title": "Historical Fact",
+      "description": "Add historical facts about the city here.",
+      "icon": "bi-geo-alt-fill"
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "categories": [
+    {
+      "id": "general",
+      "icon": "bi-info-circle-fill",
+      "titleKey": "faq-general",
+      "titleFallback": "General Questions",
+      "items": [
+        {
+          "id": "office-hours",
+          "question": "What are the office hours of the {{hallName}}?",
+          "answer": "The {{hallName}} is open Monday to Friday, 8:00 AM to 5:00 PM, with a lunch break from 12:00 PM to 1:00 PM. We are closed on weekends and national/local holidays."
+        },
+        {
+          "id": "contact-office",
+          "question": "How can I contact a specific city office?",
+          "answer": "Visit our <a href=\"/government\">Government Directory</a> page to find contact information for all city offices and department heads."
+        },
+        {
+          "id": "online-services",
+          "question": "Can I request services online?",
+          "answer": "Currently, most services require in-person applications. However, we are working on implementing online services for select transactions. Check individual service pages for updates."
+        }
+      ]
+    },
+    {
+      "id": "certificates",
+      "icon": "bi-file-earmark-text-fill",
+      "titleKey": "faq-certificates",
+      "titleFallback": "Certificates & Documents",
+      "items": [
+        {
+          "id": "birth-certificate-time",
+          "question": "How long does it take to get a birth certificate?",
+          "answer": "For birth certificates registered in {{lguName}}, it typically takes 15-30 minutes while you wait, provided the record is readily available."
+        },
+        {
+          "id": "certificate-representative",
+          "question": "Can someone else request my certificate for me?",
+          "answer": "Yes, but they must bring: an authorization letter signed by you, valid ID of both you and the representative, and a photocopy of your valid ID."
+        },
+        {
+          "id": "psa-vs-local",
+          "question": "What is the difference between PSA and local civil registrar certificates?",
+          "answer": "Both are certified true copies. PSA certificates are the nationally-recognized version required for passport and visa applications. Local civil registrar certificates are accepted for most local transactions and are often processed faster."
+        }
+      ]
+    },
+    {
+      "id": "business",
+      "icon": "bi-shop",
+      "titleKey": "faq-business",
+      "titleFallback": "Business & Permits",
+      "items": [
+        {
+          "id": "permit-renewal",
+          "question": "When should I renew my business permit?",
+          "answer": "Business permits must be renewed annually, preferably in January. The deadline for penalty-free renewal is typically January 20th of each year."
+        },
+        {
+          "id": "new-business",
+          "question": "What do I need to start a new business in {{lguName}}?",
+          "answer": "To start a new business, you'll need: DTI Registration (for sole proprietorship) or SEC Registration (for corporation), Barangay Clearance, Community Tax Certificate (Cedula), Location Sketch/Map, and Contract of Lease (if renting). Visit our <a href=\"/services/business\">Business Permit page</a> for complete details."
+        }
+      ]
+    },
+    {
+      "id": "payments",
+      "icon": "bi-cash-coin",
+      "titleKey": "faq-payments",
+      "titleFallback": "Payments & Fees",
+      "items": [
+        {
+          "id": "payment-methods",
+          "question": "What payment methods are accepted?",
+          "answer": "Currently, we accept cash payments at the City Treasurer's Office. We are working on implementing online payment options for taxes and fees."
+        },
+        {
+          "id": "property-tax",
+          "question": "How can I pay my real property tax?",
+          "answer": "Visit the City Treasurer's Office at the {{hallName}} with your Tax Declaration or latest Official Receipt. Payment is in cash. Property taxes are due quarterly, but you may pay annually to avail of discounts."
+        }
+      ]
+    },
+    {
+      "id": "social",
+      "icon": "bi-people-fill",
+      "titleKey": "faq-social",
+      "titleFallback": "Social Services",
+      "items": [
+        {
+          "id": "senior-citizen-id",
+          "question": "How do I apply for a Senior Citizen ID?",
+          "answer": "Go to the City Social Welfare and Development Office (MSWDO) with: Birth Certificate or any valid ID showing your age (60 and above), 1x1 ID photo, and Barangay Residence Certificate. The ID is issued for free."
+        },
+        {
+          "id": "senior-benefits",
+          "question": "What benefits do senior citizens receive?",
+          "answer": "Senior citizens enjoy 20% discount and VAT exemption on purchases (with a minimum purchase amount per establishment), priority lanes, and access to special programs and medical assistance from the cityity."
+        }
+      ]
+    },
+    {
+      "id": "technical",
+      "icon": "bi-gear-fill",
+      "titleKey": "faq-technical",
+      "titleFallback": "Technical Questions",
+      "items": [
+        {
+          "id": "report-issue",
+          "question": "I found a broken link or error on this website. How do I report it?",
+          "answer": "Thank you for helping us improve! Please send us message at <a href=\"mailto:{{volunteerEmail}}\">{{volunteerEmail}}</a> and write \"Website Issue\" as the subject. Describe the problem and include the page URL if possible."
+        },
+        {
+          "id": "mobile-friendly",
+          "question": "Is this website mobile-friendly?",
+          "answer": "Yes! Better {{lguName}} is fully responsive and optimized for mobile phones, tablets, and desktop computers."
+        }
+      ]
+    },
+    {
+      "id": "about",
+      "icon": "bi-person-badge-fill",
+      "titleKey": "faq-about",
+      "titleFallback": "About This Project",
+      "items": [
+        {
+          "id": "who-developed",
+          "question": "Who developed {{siteTitle}}?",
+          "answer": "This website is based on the <a href=\"https://github.com/Martin-Enghoy/betterlaspinas\" target=\"_blank\" rel=\"noopener noreferrer\">Better Las Piñas</a> project, originally developed by <a href=\"https://ramonloganjr.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Ramon Logan Jr.</a> as part of the <a href=\"https://bettergov.ph\" target=\"_blank\" rel=\"noopener noreferrer\">BetterGov.ph</a> civic-tech initiative. The project is open source under MIT | CC BY 1.0 to empower community-driven development."
+        }
+      ]
+    }
+  ]
+}

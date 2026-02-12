@@ -1,0 +1,8 @@
+export { default as BarangayPopulationChart } from './BarangayPopulationChart.vue'
+export { default as CMCIRankingsChart } from './CMCIRankingsChart.vue'
+export { default as EconomicSectorsChart } from './EconomicSectorsChart.vue'
+export { default as ExpenditureChart } from './ExpenditureChart.vue'
+export { default as IncomeSourcesChart } from './IncomeSourcesChart.vue'
+export { default as KeyIndicatorsTrendChart } from './KeyIndicatorsTrendChart.vue'
+export { default as PopulationDistributionChart } from './PopulationDistributionChart.vue'
+export { default as PopulationTrendsChart } from './PopulationTrendsChart.vue'

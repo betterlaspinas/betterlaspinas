@@ -1,0 +1,45 @@
+{
+  "summary": {
+    "totalProjects": 0,
+    "totalCost": 0,
+    "completedProjects": 0,
+    "ongoingProjects": 0,
+    "implementingAgency": "District Engineering Office"
+  },
+  "projects": [
+    {
+      "id": "SAMPLE-001",
+      "name": "Sample Road Improvement Project",
+      "location": "Brgy. Sample, Municipality, Province",
+      "category": "Roads",
+      "contractor": "Sample Contractor Inc.",
+      "contractorId": "00000",
+      "cost": 0,
+      "status": 0,
+      "completionDate": ""
+    },
+    {
+      "id": "SAMPLE-002",
+      "name": "Sample Flood Control Project",
+      "location": "Brgy. Sample, Municipality, Province",
+      "category": "Flood Control and Drainage",
+      "contractor": "Sample Construction Co.",
+      "contractorId": "00001",
+      "cost": 0,
+      "status": 0,
+      "completionDate": ""
+    },
+    {
+      "id": "SAMPLE-003",
+      "name": "Sample Bridge Construction",
+      "location": "Brgy. Sample, Municipality, Province",
+      "category": "Bridges",
+      "contractor": "Sample Builders Corp.",
+      "contractorId": "00002",
+      "cost": 0,
+      "status": 0,
+      "completionDate": ""
+    }
+  ],
+  "_comment": "Replace this sample data with actual DPWH projects from your LGU. Data can be sourced from DPWH Transparency Seal (dpwh.gov.ph)"
+}

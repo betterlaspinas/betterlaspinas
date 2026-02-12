@@ -1,0 +1,181 @@
+{
+  "barangayPopulation": [
+    {
+      "rank": 1,
+      "name": "B. F. International Village",
+      "population": 81739,
+      "percentage": 13.5
+    },
+    {
+      "rank": 2,
+      "name": "Manuyo Dos",
+      "population": 44351,
+      "percentage": 7.3
+    },
+    {
+      "rank": 3,
+      "name": "Talon Dos",
+      "population": 43978,
+      "percentage": 7.3
+    },
+    {
+      "rank": 4,
+      "name": "Talon Uno",
+      "population": 42505,
+      "percentage": 7.0
+    },
+    {
+      "rank": 5,
+      "name": "Talon Singko",
+      "population": 38684,
+      "percentage": 6.4
+    },
+    {
+      "rank": 6,
+      "name": "Pulang Lupa Uno",
+      "population": 38405,
+      "percentage": 6.3
+    },
+    {
+      "rank": 7,
+      "name": "Almanza Dos",
+      "population": 37432,
+      "percentage": 6.2
+    },
+    {
+      "rank": 8,
+      "name": "Almanza Uno",
+      "population": 36232,
+      "percentage": 6.0
+    },
+    {
+      "rank": 9,
+      "name": "Pamplona Tres",
+      "population": 35098,
+      "percentage": 5.8
+    },
+    {
+      "rank": 10,
+      "name": "Talon Tres",
+      "population": 32963,
+      "percentage": 5.4
+    },
+    {
+      "rank": 11,
+      "name": "Pulang Lupa Dos",
+      "population": 32485,
+      "percentage": 5.4
+    },
+    {
+      "rank": 12,
+      "name": "Pilar",
+      "population": 29780,
+      "percentage": 4.9
+    },
+    {
+      "rank": 13,
+      "name": "Zapote",
+      "population": 20851,
+      "percentage": 3.4
+    },
+    {
+      "rank": 14,
+      "name": "Talon Kuatro",
+      "population": 20763,
+      "percentage": 3.4
+    },
+    {
+      "rank": 15,
+      "name": "Pamplona Uno",
+      "population": 19085,
+      "percentage": 3.1
+    },
+    {
+      "rank": 16,
+      "name": "Manuyo Uno",
+      "population": 14794,
+      "percentage": 2.4
+    },
+    {
+      "rank": 17,
+      "name": "Daniel Fajardo",
+      "population": 10629,
+      "percentage": 1.8
+    },
+    {
+      "rank": 18,
+      "name": "Elias Aldana",
+      "population": 10275,
+      "percentage": 1.7
+    },
+    {
+      "rank": 19,
+      "name": "Pamplona Dos",
+      "population": 9141,
+      "percentage": 1.5
+    },
+    {
+      "rank": 20,
+      "name": "Ilaya",
+      "population": 7103,
+      "percentage": 1.2
+    }
+  ],
+  "cmciPillars": [
+    {
+      "id": "economic-dynamism",
+      "icon": "bi-graph-up-arrow",
+      "title": "Economic Dynamism",
+      "score": "0.23",
+      "trend": "+12%",
+      "trendType": "up"
+    },
+    {
+      "id": "government-efficiency",
+      "icon": "bi-building-check",
+      "title": "Government Efficiency",
+      "score": "1.17",
+      "trend": "-8%",
+      "trendType": "down"
+    },
+    {
+      "id": "infrastructure",
+      "icon": "bi-building-gear",
+      "title": "Infrastructure",
+      "score": "0.40",
+      "trend": "+5%",
+      "trendType": "up"
+    },
+    {
+      "id": "resiliency",
+      "icon": "bi-shield-check",
+      "title": "Resiliency",
+      "score": "1.08",
+      "trend": "Stable",
+      "trendType": "stable"
+    },
+    {
+      "id": "innovation",
+      "icon": "bi-lightbulb",
+      "title": "Innovation",
+      "score": "0.68",
+      "trend": "+25%",
+      "trendType": "up"
+    }
+  ],
+  "financialData": {
+    "annualIncome": "₱371.33M",
+    "annualIncomeDetailed": "₱371,329,918.71",
+    "iraShare": "₱220.77M",
+    "iraDependency": "59.45%",
+    "localSourcesPercentage": "40.55%",
+    "source": "Bureau of Local Government Finance (BLGF)",
+    "sourceUrl": "https://blgf.gov.ph/",
+    "year": 2023
+  },
+  "populationGrowth": {
+    "year1990": 296851,
+    "year2020": 606293,
+    "growthRate": "+104.2%"
+  }
+}

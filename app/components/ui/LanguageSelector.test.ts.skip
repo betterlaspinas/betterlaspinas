@@ -1,0 +1,66 @@
+import { mount } from '@vue/test-utils'
+import { describe, expect, it } from 'vitest'
+import LanguageSelector from './LanguageSelector.vue'
+
+describe('languageSelector', () => {
+  it('should render language selector', () => {
+    const wrapper = mount(LanguageSelector, {
+      global: {
+        stubs: {
+          NuxtLink: {
+            template: '<a><slot /></a>',
+          },
+        },
+      },
+    })
+
+    expect(wrapper.exists()).toBe(true)
+  })
+
+  it('should display current language', () => {
+    const wrapper = mount(LanguageSelector, {
+      global: {
+        stubs: {
+          NuxtLink: {
+            template: '<a><slot /></a>',
+          },
+        },
+      },
+    })
+
+    // Should show EN or TL
+    const text = wrapper.text()
+    expect(text).toMatch(/EN|TL/)
+  })
+
+  it('should show language options', () => {
+    const wrapper = mount(LanguageSelector, {
+      global: {
+        stubs: {
+          NuxtLink: {
+            template: '<a><slot /></a>',
+          },
+        },
+      },
+    })
+
+    const html = wrapper.html()
+    // Should contain language selector UI
+    expect(html).toBeTruthy()
+  })
+
+  it('should render with globe icon', () => {
+    const wrapper = mount(LanguageSelector, {
+      global: {
+        stubs: {
+          NuxtLink: {
+            template: '<a><slot /></a>',
+          },
+        },
+      },
+    })
+
+    const html = wrapper.html()
+    expect(html).toContain('bi-globe')
+  })
+})

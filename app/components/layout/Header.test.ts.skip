@@ -1,0 +1,111 @@
+import { mount } from '@vue/test-utils'
+import { describe, expect, it } from 'vitest'
+import Header from './Header.vue'
+
+describe('header', () => {
+  it('should render header component', () => {
+    const wrapper = mount(Header, {
+      global: {
+        stubs: {
+          NuxtLink: {
+            template: '<a><slot /></a>',
+          },
+          LanguageSelector: {
+            template: '<div>Language Selector</div>',
+          },
+          SearchAutocomplete: {
+            template: '<div>Search</div>',
+          },
+        },
+      },
+    })
+
+    expect(wrapper.exists()).toBe(true)
+  })
+
+  it('should display LGU name', () => {
+    const wrapper = mount(Header, {
+      global: {
+        stubs: {
+          NuxtLink: {
+            template: '<a><slot /></a>',
+          },
+          LanguageSelector: {
+            template: '<div>Language Selector</div>',
+          },
+          SearchAutocomplete: {
+            template: '<div>Search</div>',
+          },
+        },
+      },
+    })
+
+    const text = wrapper.text()
+    // Should contain some LGU identification
+    expect(text.length).toBeGreaterThan(0)
+  })
+
+  it('should have navigation menu', () => {
+    const wrapper = mount(Header, {
+      global: {
+        stubs: {
+          NuxtLink: {
+            template: '<a><slot /></a>',
+          },
+          LanguageSelector: {
+            template: '<div>Language Selector</div>',
+          },
+          SearchAutocomplete: {
+            template: '<div>Search</div>',
+          },
+        },
+      },
+    })
+
+    const html = wrapper.html()
+    // Should have navigation structure
+    expect(html).toContain('nav')
+  })
+
+  it('should include language selector', () => {
+    const wrapper = mount(Header, {
+      global: {
+        stubs: {
+          NuxtLink: {
+            template: '<a><slot /></a>',
+          },
+          LanguageSelector: {
+            template: '<div class="lang-selector">Language Selector</div>',
+          },
+          SearchAutocomplete: {
+            template: '<div>Search</div>',
+          },
+        },
+      },
+    })
+
+    const html = wrapper.html()
+    expect(html).toContain('Language Selector')
+  })
+
+  it('should include search functionality', () => {
+    const wrapper = mount(Header, {
+      global: {
+        stubs: {
+          NuxtLink: {
+            template: '<a><slot /></a>',
+          },
+          LanguageSelector: {
+            template: '<div>Language Selector</div>',
+          },
+          SearchAutocomplete: {
+            template: '<div class="search">Search</div>',
+          },
+        },
+      },
+    })
+
+    const text = wrapper.text()
+    expect(text).toContain('Search')
+  })
+})

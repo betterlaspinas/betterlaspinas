@@ -1,0 +1,126 @@
+{
+  "type": "barangay",
+  "count": 20,
+  "items": [
+    {
+      "id": "almanza-dos",
+      "name": "Almanza Dos",
+      "leader": "Barangay Captain",
+      "phone": ""
+    },
+    {
+      "id": "almanza-uno",
+      "name": "Almanza Uno",
+      "leader": "Barangay Captain",
+      "phone": ""
+    },
+    {
+      "id": "bf-international",
+      "name": "B. F. International Village",
+      "leader": "Barangay Captain",
+      "phone": ""
+    },
+    {
+      "id": "daniel-fajardo",
+      "name": "Daniel Fajardo",
+      "leader": "Barangay Captain",
+      "phone": ""
+    },
+    {
+      "id": "elias-aldana",
+      "name": "Elias Aldana",
+      "leader": "Barangay Captain",
+      "phone": ""
+    },
+    {
+      "id": "ilaya",
+      "name": "Ilaya",
+      "leader": "Barangay Captain",
+      "phone": ""
+    },
+    {
+      "id": "manuyo-dos",
+      "name": "Manuyo Dos",
+      "leader": "Barangay Captain",
+      "phone": ""
+    },
+    {
+      "id": "manuyo-uno",
+      "name": "Manuyo Uno",
+      "leader": "Barangay Captain",
+      "phone": ""
+    },
+    {
+      "id": "pamplona-dos",
+      "name": "Pamplona Dos",
+      "leader": "Barangay Captain",
+      "phone": ""
+    },
+    {
+      "id": "pamplona-tres",
+      "name": "Pamplona Tres",
+      "leader": "Barangay Captain",
+      "phone": ""
+    },
+    {
+      "id": "pamplona-uno",
+      "name": "Pamplona Uno",
+      "leader": "Barangay Captain",
+      "phone": ""
+    },
+    {
+      "id": "pilar",
+      "name": "Pilar",
+      "leader": "Barangay Captain",
+      "phone": ""
+    },
+    {
+      "id": "pulang-lupa-dos",
+      "name": "Pulang Lupa Dos",
+      "leader": "Barangay Captain",
+      "phone": ""
+    },
+    {
+      "id": "pulang-lupa-uno",
+      "name": "Pulang Lupa Uno",
+      "leader": "Barangay Captain",
+      "phone": ""
+    },
+    {
+      "id": "talon-dos",
+      "name": "Talon Dos",
+      "leader": "Barangay Captain",
+      "phone": ""
+    },
+    {
+      "id": "talon-kuatro",
+      "name": "Talon Kuatro",
+      "leader": "Barangay Captain",
+      "phone": ""
+    },
+    {
+      "id": "talon-singko",
+      "name": "Talon Singko",
+      "leader": "Barangay Captain",
+      "phone": ""
+    },
+    {
+      "id": "talon-tres",
+      "name": "Talon Tres",
+      "leader": "Barangay Captain",
+      "phone": ""
+    },
+    {
+      "id": "talon-uno",
+      "name": "Talon Uno",
+      "leader": "Barangay Captain",
+      "phone": ""
+    },
+    {
+      "id": "zapote",
+      "name": "Zapote",
+      "leader": "Barangay Captain",
+      "phone": ""
+    }
+  ]
+}

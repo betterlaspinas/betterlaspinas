@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 152 152">
+  <defs>
+    <style>
+      .map { fill: #f2c91d; }
+    </style>
+  </defs>
+  <!-- Stylized Las Piñas Map Silhouette (Icon Only) -->
+  <path class="map" d="M50 30 L90 30 L100 50 L125 90 L130 110 L100 125 L60 100 L40 50 Z" transform="translate(-20, 0)" />
+</svg>

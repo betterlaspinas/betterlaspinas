@@ -1,0 +1,93 @@
+{
+  "attractions": [
+    {
+      "id": "bamboo-organ",
+      "name": "St. Joseph Parish Church (Bamboo Organ)",
+      "category": "culture",
+      "description": "Home to the world-famous Bamboo Organ, a 19th-century church organ with unique bamboo pipes. A National Cultural Treasure.",
+      "location": "P. Diego Cera Avenue, Poblacion"
+    },
+    {
+      "id": "heritage-church",
+      "name": "Heritage Church",
+      "category": "culture",
+      "description": "A centuries-old Spanish colonial church featuring beautiful baroque architecture and religious artifacts.",
+      "location": "Poblacion"
+    },
+    {
+      "id": "mountain-trail",
+      "name": "Mountain Trail",
+      "category": "adventure",
+      "description": "A scenic hiking trail offering panoramic views of the surrounding countryside. Suitable for beginners and experienced hikers.",
+      "location": "Barangay Heights"
+    },
+    {
+      "id": "local-market",
+      "name": "Public Market",
+      "category": "food",
+      "description": "Experience local flavors at the public market. Fresh produce, local delicacies, and authentic Filipino street food.",
+      "location": "Town Center"
+    }
+  ],
+  "categories": [
+    {
+      "id": "all",
+      "icon": "bi-grid",
+      "label": "All"
+    },
+    {
+      "id": "nature",
+      "icon": "bi-tree",
+      "label": "Nature & Parks"
+    },
+    {
+      "id": "culture",
+      "icon": "bi-bank",
+      "label": "Culture & Heritage"
+    },
+    {
+      "id": "adventure",
+      "icon": "bi-compass",
+      "label": "Adventure"
+    },
+    {
+      "id": "food",
+      "icon": "bi-cup-hot",
+      "label": "Food & Dining"
+    }
+  ],
+  "events": [
+    {
+      "id": "town-fiesta",
+      "name": "Town Fiesta",
+      "date": "January 15-20",
+      "description": "Annual celebration featuring parades, cultural shows, food festivals, and community activities honoring the patron saint.",
+      "location": "Town Plaza"
+    },
+    {
+      "id": "harvest-festival",
+      "name": "Harvest Festival",
+      "date": "May (after harvest)",
+      "description": "A thanksgiving celebration for bountiful harvest with agricultural exhibits, contests, and traditional games.",
+      "location": "City Grounds"
+    },
+    {
+      "id": "founding-anniversary",
+      "name": "Founding Anniversary",
+      "date": "Varies",
+      "description": "Commemorating the establishment of the city with civic activities, sports events, and cultural presentations.",
+      "location": "Various Venues"
+    }
+  ],
+  "travelInfo": {
+    "howToGetThere": "From Manila, take a bus heading to the province. Travel time is approximately 4-6 hours depending on traffic. Jeepneys and tricycles are available for local transportation.",
+    "bestTimeToVisit": "October to May (dry season). The cooler months of December to February are ideal for outdoor activities.",
+    "tips": [
+      "Bring sunscreen and insect repellent",
+      "Wear comfortable walking shoes",
+      "Carry cash as ATMs may be limited",
+      "Learn basic Filipino phrases",
+      "Respect local customs and traditions"
+    ]
+  }
+}

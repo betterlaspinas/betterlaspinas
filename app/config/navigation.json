@@ -1,0 +1,163 @@
+{
+  "$schema": "./schema/navigation.schema.json",
+  "mainNav": [
+    { "id": "home", "label": "Home", "href": "/", "i18nKey": "nav-home" },
+    {
+      "id": "services",
+      "label": "Services",
+      "href": "/services",
+      "i18nKey": "nav-services",
+      "children": [
+        {
+          "id": "certificates",
+          "label": "Certificates",
+          "href": "/services/certificates",
+          "i18nKey": "service-certificates"
+        },
+        {
+          "id": "business",
+          "label": "Business",
+          "href": "/services/business",
+          "i18nKey": "service-business"
+        },
+        {
+          "id": "tax-payments",
+          "label": "Tax Payments",
+          "href": "/services/tax-payments",
+          "i18nKey": "service-tax"
+        },
+        {
+          "id": "social-services",
+          "label": "Social Services",
+          "href": "/services/social-services",
+          "i18nKey": "service-social"
+        },
+        {
+          "id": "health",
+          "label": "Health",
+          "href": "/services/health",
+          "i18nKey": "service-health"
+        },
+        {
+          "id": "agriculture",
+          "label": "Agriculture",
+          "href": "/services/agriculture",
+          "i18nKey": "cat-agriculture"
+        },
+        {
+          "id": "infrastructure",
+          "label": "Infrastructure",
+          "href": "/services/infrastructure",
+          "i18nKey": "cat-infrastructure"
+        },
+        {
+          "id": "education",
+          "label": "Education",
+          "href": "/services/education",
+          "i18nKey": "cat-education"
+        },
+        {
+          "id": "public-safety",
+          "label": "Public Safety",
+          "href": "/services/public-safety",
+          "i18nKey": "cat-safety"
+        },
+        {
+          "id": "environment",
+          "label": "Environment",
+          "href": "/services/environment",
+          "i18nKey": "cat-environment"
+        }
+      ]
+    },
+    {
+      "id": "government",
+      "label": "Government",
+      "href": "/government",
+      "i18nKey": "nav-government"
+    },
+    {
+      "id": "statistics",
+      "label": "Statistics",
+      "href": "/statistics",
+      "i18nKey": "nav-statistics"
+    },
+    {
+      "id": "tourism",
+      "label": "Tourism",
+      "href": "/tourism",
+      "i18nKey": "nav-tourism"
+    },
+    {
+      "id": "legislative",
+      "label": "Legislative",
+      "href": "/legislative",
+      "i18nKey": "nav-legislative",
+      "children": [
+        {
+          "id": "ordinances",
+          "label": "Ordinance Framework",
+          "href": "/legislative/ordinance-framework",
+          "i18nKey": "legislative-ordinances"
+        },
+        {
+          "id": "resolutions",
+          "label": "Resolution Framework",
+          "href": "/legislative/resolution-framework",
+          "i18nKey": "legislative-resolutions"
+        }
+      ]
+    },
+    {
+      "id": "transparency",
+      "label": "Transparency",
+      "href": "/budget",
+      "i18nKey": "nav-transparency"
+    },
+    {
+      "id": "contact",
+      "label": "Contact",
+      "href": "/contact",
+      "i18nKey": "nav-contact"
+    }
+  ],
+  "footerNav": {
+    "quickLinks": [
+      { "label": "Sitemap", "href": "/sitemap" },
+      { "label": "Terms of Use", "href": "/terms" },
+      { "label": "Privacy Policy", "href": "/privacy" },
+      { "label": "Accessibility", "href": "/accessibility" },
+      { "label": "FAQ", "href": "/faq" }
+    ],
+    "resources": [
+      {
+        "label": "Open Data Philippines",
+        "href": "https://data.gov.ph",
+        "external": true
+      },
+      {
+        "label": "Freedom of Information",
+        "href": "https://www.foi.gov.ph/",
+        "external": true
+      },
+      {
+        "label": "BLGF Portal",
+        "href": "https://blgf.gov.ph/",
+        "external": true
+      },
+      {
+        "label": "CMCI DTI Portal",
+        "href": "https://cmci.dti.gov.ph/",
+        "external": true
+      }
+    ],
+    "getInvolved": [
+      { "label": "Volunteer with us", "href": "mailto:volunteer@lgu.gov.ph" },
+      {
+        "label": "Contribute code",
+        "href": "https://github.com/bettergovph/bettergov",
+        "external": true
+      }
+    ]
+  }
+}

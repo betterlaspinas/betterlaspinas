@@ -1,0 +1,173 @@
+{
+  "ordinances": {
+    "categories": [
+      {
+        "id": "revenue",
+        "icon": "bi-cash-coin",
+        "label": "Revenue & Taxation"
+      },
+      {
+        "id": "business",
+        "icon": "bi-shop",
+        "label": "Business & Trade"
+      },
+      {
+        "id": "safety",
+        "icon": "bi-shield-check",
+        "label": "Public Safety"
+      },
+      {
+        "id": "environment",
+        "icon": "bi-tree",
+        "label": "Environment"
+      },
+      {
+        "id": "traffic",
+        "icon": "bi-signpost-2",
+        "label": "Traffic & Transportation"
+      },
+      {
+        "id": "zoning",
+        "icon": "bi-building",
+        "label": "Zoning & Land Use"
+      }
+    ],
+    "items": [
+      {
+        "id": "ord-2025-05",
+        "number": "2025-05",
+        "title": "An Ordinance Creating the Film Development Council, Providing for Its Powers and Functions",
+        "date": "April 21, 2025",
+        "category": "governance",
+        "status": "enacted"
+      },
+      {
+        "id": "ord-2025-04",
+        "number": "2025-04",
+        "title": "An Ordinance Prohibiting the Entry of Contraband Items in Public Facilities",
+        "date": "April 21, 2025",
+        "category": "safety",
+        "status": "enacted"
+      },
+      {
+        "id": "ord-2025-03",
+        "number": "2025-03",
+        "title": "An Ordinance Creating the City Housing Board, Defining its Powers and Functions",
+        "date": "March 3, 2025",
+        "category": "governance",
+        "status": "enacted"
+      },
+      {
+        "id": "ord-2025-02",
+        "number": "2025-02",
+        "title": "An Ordinance Requiring All Households to Comply with Zero Open Defecation (ZOD)",
+        "date": "February 25, 2025",
+        "category": "environment",
+        "status": "enacted"
+      },
+      {
+        "id": "ord-2025-01",
+        "number": "2025-01",
+        "title": "An Ordinance Revising the Gender and Development Code",
+        "date": "February 25, 2025",
+        "category": "governance",
+        "status": "enacted"
+      }
+    ]
+  },
+  "resolutions": {
+    "types": [
+      {
+        "id": "commendation",
+        "icon": "bi-award",
+        "label": "Commendation"
+      },
+      {
+        "id": "request",
+        "icon": "bi-envelope-paper",
+        "label": "Request/Appeal"
+      },
+      {
+        "id": "support",
+        "icon": "bi-hand-thumbs-up",
+        "label": "Support/Endorsement"
+      },
+      {
+        "id": "condolence",
+        "icon": "bi-exclamation-circle",
+        "label": "Condolence"
+      },
+      {
+        "id": "authorization",
+        "icon": "bi-clipboard-check",
+        "label": "Authorization"
+      }
+    ],
+    "items": [
+      {
+        "id": "res-2025-205",
+        "number": "2025-205",
+        "title": "A Resolution Authorizing the Local Chief Executive to Enter into a Memorandum of Agreement with DOLE for Youth Employment Program",
+        "date": "April 21, 2025",
+        "type": "authorization",
+        "status": "approved"
+      },
+      {
+        "id": "res-2025-204",
+        "number": "2025-204",
+        "title": "A Resolution Approving the City and Barangay Council for the Protection of Children Work and Financial Plan",
+        "date": "April 21, 2025",
+        "type": "authorization",
+        "status": "approved"
+      },
+      {
+        "id": "res-2025-203",
+        "number": "2025-203",
+        "title": "A Resolution Authorizing the Local Chief Executive to Enter Into Contract for Road Network Improvement",
+        "date": "April 7, 2025",
+        "type": "authorization",
+        "status": "approved"
+      },
+      {
+        "id": "res-2025-202",
+        "number": "2025-202",
+        "title": "A Resolution Authorizing Procurement of Agricultural Equipment for Distribution to Local Farmers",
+        "date": "April 7, 2025",
+        "type": "authorization",
+        "status": "approved"
+      },
+      {
+        "id": "res-2025-201",
+        "number": "2025-201",
+        "title": "A Resolution Expressing Full Support to the Implementation of Enhanced Community Learning Centers",
+        "date": "March 24, 2025",
+        "type": "support",
+        "status": "approved"
+      },
+      {
+        "id": "res-2025-200",
+        "number": "2025-200",
+        "title": "A Resolution Commending the Philippine National Police for Exemplary Performance",
+        "date": "March 24, 2025",
+        "type": "commendation",
+        "status": "approved"
+      },
+      {
+        "id": "res-2025-199",
+        "number": "2025-199",
+        "title": "A Resolution Requesting DPWH to Expedite Road Rehabilitation Projects",
+        "date": "March 10, 2025",
+        "type": "request",
+        "status": "approved"
+      },
+      {
+        "id": "res-2025-198",
+        "number": "2025-198",
+        "title": "A Resolution Approving the Annual Budget for the SK Federation for Fiscal Year 2025",
+        "date": "March 10, 2025",
+        "type": "authorization",
+        "status": "approved"
+      }
+    ]
+  }
+}

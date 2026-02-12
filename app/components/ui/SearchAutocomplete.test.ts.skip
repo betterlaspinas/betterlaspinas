@@ -1,0 +1,68 @@
+import { mount } from '@vue/test-utils'
+import { describe, expect, it } from 'vitest'
+import SearchAutocomplete from './SearchAutocomplete.vue'
+
+describe('searchAutocomplete', () => {
+  it('should render search input', () => {
+    const wrapper = mount(SearchAutocomplete, {
+      global: {
+        stubs: {
+          NuxtLink: {
+            template: '<a><slot /></a>',
+          },
+        },
+      },
+    })
+
+    const input = wrapper.find('input[type="text"]')
+    expect(input.exists()).toBe(true)
+  })
+
+  it('should have search placeholder', () => {
+    const wrapper = mount(SearchAutocomplete, {
+      global: {
+        stubs: {
+          NuxtLink: {
+            template: '<a><slot /></a>',
+          },
+        },
+      },
+    })
+
+    const input = wrapper.find('input')
+    expect(input.attributes('placeholder')).toBeTruthy()
+  })
+
+  it('should render search icon', () => {
+    const wrapper = mount(SearchAutocomplete, {
+      global: {
+        stubs: {
+          NuxtLink: {
+            template: '<a><slot /></a>',
+          },
+        },
+      },
+    })
+
+    const html = wrapper.html()
+    expect(html).toContain('bi-search')
+  })
+
+  it('should update query on input', async () => {
+    const wrapper = mount(SearchAutocomplete, {
+      global: {
+        stubs: {
+          NuxtLink: {
+            template: '<a><slot /></a>',
+          },
+        },
+      },
+    })
+
+    const input = wrapper.find('input')
+    await input.setValue('certificate')
+
+    // Query should be updated (verified via internal state)
+    expect(input.element.value).toBe('certificate')
+  })
+})
