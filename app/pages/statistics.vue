@@ -323,10 +323,10 @@ const cmciPillars = computed(() => statisticsDetailed.value.cmciPillars)
           <div
             class="text-center p-4 bg-primary-50 border border-primary-200 rounded-xl"
           >
-            <span class="text-sm text-primary-600">2024</span>
+            <span class="text-sm text-primary-600">2020</span>
             <span class="block text-2xl font-bold text-primary-700">
               {{
-                statisticsDetailed.populationGrowth.year2024.toLocaleString()
+                statisticsDetailed.populationGrowth.year2020.toLocaleString()
               }}
             </span>
           </div>
@@ -343,7 +343,9 @@ const cmciPillars = computed(() => statisticsDetailed.value.cmciPillars)
         <div
           class="bg-white border border-gray-200 rounded-xl p-6 mb-6"
         >
-          <PopulationTrendsChart />
+          <ClientOnly>
+            <PopulationTrendsChart />
+          </ClientOnly>
         </div>
 
         <p class="text-sm text-gray-500 flex items-center gap-2">
@@ -380,7 +382,9 @@ const cmciPillars = computed(() => statisticsDetailed.value.cmciPillars)
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-6">
           <div class="bg-white border border-gray-200 rounded-xl p-6">
-            <PopulationDistributionChart />
+            <ClientOnly>
+              <PopulationDistributionChart />
+            </ClientOnly>
           </div>
           <div class="space-y-3">
             <div
@@ -529,7 +533,9 @@ const cmciPillars = computed(() => statisticsDetailed.value.cmciPillars)
             <i class="bi bi-bar-chart-line" /> Key Indicators Trend
             (2016-2024)
           </h4>
-          <KeyIndicatorsTrendChart />
+          <ClientOnly>
+            <KeyIndicatorsTrendChart />
+          </ClientOnly>
         </div>
 
         <p class="text-sm text-gray-500 flex items-center gap-2">
@@ -567,7 +573,9 @@ const cmciPillars = computed(() => statisticsDetailed.value.cmciPillars)
         <div
           class="bg-white border border-gray-200 rounded-xl p-6 mb-6"
         >
-          <BarangayPopulationChart />
+          <ClientOnly>
+            <BarangayPopulationChart />
+          </ClientOnly>
         </div>
 
         <p class="text-sm text-gray-500 flex items-center gap-2">
