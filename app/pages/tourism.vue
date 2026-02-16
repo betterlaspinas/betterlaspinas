@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import Breadcrumbs from '~/components/ui/Breadcrumbs.vue'
-
 const config = useSiteConfig()
 const lguName = computed(() => config.lguName)
 const tourism = computed(() => config.tourism)
@@ -24,7 +22,7 @@ const filteredAttractions = computed(() => {
 
 <template>
   <div>
-    <Breadcrumbs :items="[{ label: 'Tourism' }]" />
+    <UiBreadcrumbs :items="[{ label: 'Tourism' }]" />
 
     <!-- Hero Section -->
     <section class="bg-gradient-to-br from-primary-600 to-primary-700 py-16">

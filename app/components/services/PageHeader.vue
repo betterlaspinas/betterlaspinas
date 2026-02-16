@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import SearchAutocomplete from '@/components/ui/SearchAutocomplete.vue'
-
 interface Props {
   badgeIcon: string
   badgeText: string
@@ -31,7 +29,7 @@ withDefaults(defineProps<Props>(), {
         <div class="max-w-xl mx-auto">
           <div class="relative flex items-center">
             <i class="bi bi-search absolute left-4 text-gray-400 z-10 pointer-events-none" />
-            <SearchAutocomplete
+            <ServicesSearch
               :placeholder="searchPlaceholder"
               class="w-full [&_input]:pl-12 [&_input]:pr-4 [&_input]:py-4 [&_input]:rounded-xl [&_input]:text-base [&_input]:border-0 [&_input]:shadow-lg"
             />

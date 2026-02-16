@@ -5,7 +5,6 @@ import {
   PopulationDistributionChart,
   PopulationTrendsChart,
 } from '~/components/charts'
-import Breadcrumbs from '~/components/ui/Breadcrumbs.vue'
 
 const config = useSiteConfig()
 const statistics = computed(() => config.statistics)
@@ -54,7 +53,7 @@ const cmciPillars = computed(() => statisticsDetailed.value.cmciPillars)
 
 <template>
   <div>
-    <Breadcrumbs :items="[{ label: 'Statistics' }]" />
+    <UiBreadcrumbs :items="[{ label: 'Statistics' }]" />
 
     <!-- Hero Section -->
     <section class="bg-gradient-to-br from-primary-600 to-primary-700 py-16">

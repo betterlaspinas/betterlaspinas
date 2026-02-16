@@ -24,14 +24,14 @@ useHead({
 
 <template>
   <div>
-    <Breadcrumbs
+    <UiBreadcrumbs
       :items="[
         { label: 'Services', href: '/services' },
         { label: categoryContent.name },
       ]"
     />
 
-    <ServicePageHeader
+    <ServicesPageHeader
       :badge-icon="categoryContent.icon"
       :badge-text="categoryContent.badgeText"
       :title="categoryContent.name"

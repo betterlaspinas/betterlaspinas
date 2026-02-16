@@ -30,7 +30,7 @@ function toggleFaq(index: number) {
 
 <template>
   <div>
-    <Breadcrumbs
+    <UiBreadcrumbs
       :items="[
         { label: 'Services', href: '/services' },
         { label: service.category, href: service.categoryLink },
@@ -38,7 +38,7 @@ function toggleFaq(index: number) {
       ]"
     />
 
-    <ServicePageHeader
+    <ServicesPageHeader
       :badge-icon="service.badgeIcon"
       :badge-text="service.badgeText"
       :title="service.fullTitle"

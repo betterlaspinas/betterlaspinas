@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import SearchAutocomplete from '@/components/ui/SearchAutocomplete.vue'
 import { useLanguage } from '@/composables/useLanguage'
 
 const { translate } = useLanguage()
@@ -39,7 +38,7 @@ const { translate } = useLanguage()
             <i class="bi bi-search text-primary-600" /> Find a Service
           </h2>
           <div class="relative">
-            <SearchAutocomplete
+            <ServicesSearch
               placeholder="e.g., birth certificate, business permit"
               class="[&_input]:pl-11 [&_input]:pr-4 [&_input]:py-3.5 [&_input]:border-2 [&_input]:border-gray-200 [&_input]:rounded-lg [&_input]:shadow-none [&_input]:bg-gray-50 hover:[&_input]:border-gray-300 hover:[&_input]:bg-white focus:[&_input]:border-primary-500 focus:[&_input]:ring-4 focus:[&_input]:ring-primary-500/10"
             />

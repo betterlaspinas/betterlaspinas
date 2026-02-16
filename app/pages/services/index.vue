@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import Breadcrumbs from '@/components/ui/Breadcrumbs.vue'
-import SearchAutocomplete from '@/components/ui/SearchAutocomplete.vue'
 import { useLanguage } from '@/composables/useLanguage'
 
 const { translate } = useLanguage()
@@ -121,7 +119,7 @@ const lifeEvents = [
 <template>
   <div>
     <!-- Breadcrumbs -->
-    <Breadcrumbs :items="[{ label: translate('nav-services') }]" />
+    <UiBreadcrumbs :items="[{ label: translate('nav-services') }]" />
 
     <!-- Page Header -->
     <section class="bg-gradient-to-br from-primary-600 to-primary-700 py-16">
@@ -140,7 +138,7 @@ const lifeEvents = [
           <div class="max-w-xl mx-auto">
             <div class="relative flex items-center">
               <i class="bi bi-search absolute left-4 text-gray-400 z-10 pointer-events-none" />
-              <SearchAutocomplete
+              <ServicesSearch
                 placeholder="Search other services..."
                 class="w-full [&_input]:pl-12 [&_input]:pr-4 [&_input]:py-4 [&_input]:rounded-xl [&_input]:text-base [&_input]:border-0 [&_input]:shadow-lg"
                 :initial-query="initialQuery"

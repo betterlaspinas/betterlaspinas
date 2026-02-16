@@ -1,8 +1,14 @@
 import { mount, RouterLinkStub } from '@vue/test-utils'
 import { describe, expect, it } from 'vitest'
+import { createRouter, createWebHistory } from 'vue-router'
 import Breadcrumbs from './Breadcrumbs.vue'
 
 describe('breadcrumbs', () => {
+  const router = createRouter({
+    history: createWebHistory(),
+    routes: [{ path: '/', component: { template: '<div>Home</div>' } }],
+  })
+
   it('should render breadcrumb items', () => {
     const items = [
       { label: 'Home', href: '/' },
@@ -13,6 +19,7 @@ describe('breadcrumbs', () => {
     const wrapper = mount(Breadcrumbs, {
       props: { items },
       global: {
+        plugins: [router],
         stubs: {
           NuxtLink: RouterLinkStub,
         },
@@ -34,6 +41,7 @@ describe('breadcrumbs', () => {
     const wrapper = mount(Breadcrumbs, {
       props: { items },
       global: {
+        plugins: [router],
         stubs: {
           NuxtLink: RouterLinkStub,
         },
@@ -59,6 +67,7 @@ describe('breadcrumbs', () => {
     const wrapper = mount(Breadcrumbs, {
       props: { items },
       global: {
+        plugins: [router],
         stubs: {
           NuxtLink: RouterLinkStub,
         },
@@ -82,6 +91,7 @@ describe('breadcrumbs', () => {
     const wrapper = mount(Breadcrumbs, {
       props: { items },
       global: {
+        plugins: [router],
         stubs: {
           NuxtLink: RouterLinkStub,
         },
