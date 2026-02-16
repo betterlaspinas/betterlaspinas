@@ -18,7 +18,7 @@ const hoveredDropdown = ref<string | null>(null)
 
 const route = useRoute()
 const { translate } = useLanguage()
-const { site, lguName } = useSiteConfig()
+const { site, lguName, lguNameConcatenated } = useSiteConfig()
 
 const mainNavigation = getNavigationConfig().mainNav
 
@@ -103,10 +103,10 @@ const logoPath = computed(() => site.logo?.main || '/logos/svg/BetterGov_Icon-Pr
             >
             <div>
               <div class="text-black font-bold">
-                Better{{ lguName }}
+                Better{{ lguNameConcatenated }}
               </div>
               <div class="text-xs text-gray-800">
-                A community-run portal for the Philippines
+                A community-run portal for {{ lguName }}
               </div>
             </div>
           </NuxtLink>

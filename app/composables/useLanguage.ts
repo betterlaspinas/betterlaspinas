@@ -19,7 +19,7 @@ const baseTranslations: Record<string, Record<string, string>> = {
     'nav-sitemap': 'Sitemap',
 
     // Hero Section
-    'hero-welcome': 'Welcome to Better{{lguName}}.org',
+    'hero-welcome': 'Welcome to Better{{lguNameDomain}}.org',
     'hero-subtitle':
       'Access government services, information, and resources for the people of {{municipality}}, {{province}}.',
     'hero-find-service': 'Find a Service',
@@ -123,7 +123,7 @@ const baseTranslations: Record<string, Record<string, string>> = {
     'legislative-resolutions': 'Resolutions',
 
     // Footer
-    'footer-title': 'Better {{lguName}}',
+    'footer-title': 'Better {{lguNameConcatenated}}',
     'footer-desc':
       'A service-first information portal for the {{lguType}} of {{municipality}}, {{province}}.',
     'footer-quick-links': 'Quick Links',
@@ -131,7 +131,7 @@ const baseTranslations: Record<string, Record<string, string>> = {
     'footer-officials': 'Officials',
     'footer-contact-us': 'Contact Us',
     'footer-faq': 'FAQ',
-    'footer-copyright': 'Better {{lguName}}. All rights reserved.',
+    'footer-copyright': 'Better {{lguNameConcatenated}}. All rights reserved.',
     'footer-resources': 'Resources',
     'footer-privacy': 'Privacy Policy',
     'footer-terms': 'Terms of Use',
@@ -151,7 +151,7 @@ const baseTranslations: Record<string, Record<string, string>> = {
     'nav-sitemap': 'Mapa ng Site',
 
     // Hero Section
-    'hero-welcome': 'Maligayang Pagdating sa Better{{lguName}}.org',
+    'hero-welcome': 'Maligayang Pagdating sa Better{{lguNameDomain}}.org',
     'hero-subtitle':
       'I-access ang mga serbisyo ng pamahalaan, impormasyon, at mga mapagkukunan para sa mga mamamayan ng {{municipality}}, {{province}}.',
     'hero-find-service': 'Maghanap ng Serbisyo',
@@ -257,7 +257,7 @@ const baseTranslations: Record<string, Record<string, string>> = {
     'legislative-resolutions': 'Mga Resolusyon',
 
     // Footer
-    'footer-title': 'Better {{lguName}}',
+    'footer-title': 'Better {{lguNameConcatenated}}',
     'footer-desc':
       'Isang portal ng impormasyon na inuuna ang serbisyo para sa {{lguType}} ng {{municipality}}, {{province}}.',
     'footer-quick-links': 'Mabilis na Links',
@@ -265,7 +265,7 @@ const baseTranslations: Record<string, Record<string, string>> = {
     'footer-officials': 'Mga Opisyal',
     'footer-contact-us': 'Makipag-ugnayan sa Amin',
     'footer-faq': 'Mga Madalas Itanong',
-    'footer-copyright': 'Better {{lguName}}. Nakalaan ang lahat ng karapatan.',
+    'footer-copyright': 'Better {{lguNameConcatenated}}. Nakalaan ang lahat ng karapatan.',
     'footer-resources': 'Mga Mapagkukunan',
     'footer-privacy': 'Patakaran sa Privacy',
     'footer-terms': 'Mga Tuntunin ng Paggamit',
@@ -285,7 +285,7 @@ const baseTranslations: Record<string, Record<string, string>> = {
     'nav-sitemap': 'Mapa ti Site',
 
     // Hero Section
-    'hero-welcome': 'Naragsak nga Isasangbay iti Better{{lguName}}.org',
+    'hero-welcome': 'Naragsak nga Isasangbay iti Better{{lguNameDomain}}.org',
     'hero-subtitle':
       'Aksesen dagiti serbisyo ti gobierno, impormasyon, ken dagiti resources para kadagiti umili ti {{municipality}}, {{province}}.',
     'hero-find-service': 'Agsapul ti Serbisyo',
@@ -390,7 +390,7 @@ const baseTranslations: Record<string, Record<string, string>> = {
     'legislative-resolutions': 'Dagiti Resolusion',
 
     // Footer
-    'footer-title': 'Better {{lguName}}',
+    'footer-title': 'Better {{lguNameConcatenated}}',
     'footer-desc':
       'Maysa a portal ti impormasion a mangipangpangulo ti serbisio para iti {{lguType}} ti {{municipality}}, {{province}}.',
     'footer-quick-links': 'Dagiti Napartak a Links',
@@ -399,7 +399,7 @@ const baseTranslations: Record<string, Record<string, string>> = {
     'footer-contact-us': 'Kontaken Kami',
     'footer-faq': 'Masansan a Maisaludsod',
     'footer-copyright':
-      'Better {{lguName}}. Amin a karbengan ket naireserbaan.',
+      'Better {{lguNameConcatenated}}. Amin a karbengan ket naireserbaan.',
     'footer-resources': 'Dagiti Resources',
     'footer-privacy': 'Patakaran ti Privacy',
     'footer-terms': 'Dagiti Kondision ti Panagusar',
@@ -424,6 +424,8 @@ export function useLanguage() {
   const {
     site,
     lguName,
+    lguNameConcatenated,
+    lguNameDomain,
     labels,
     fullLocation,
   } = useSiteConfig()
@@ -432,6 +434,8 @@ export function useLanguage() {
 
   const defaultVariables = computed(() => ({
     lguName,
+    lguNameConcatenated,
+    lguNameDomain,
     municipality: site.municipality,
     province: site.province,
     region: site.region,
@@ -464,7 +468,7 @@ export function useLanguage() {
     language.value = lang
     // Persist
     if (import.meta.client) {
-      const storageKey = `better${lguName.toLowerCase()}_lang`
+      const storageKey = `better${lguNameDomain.toLowerCase()}_lang`
       localStorage.setItem(storageKey, lang)
     }
   }
@@ -472,7 +476,7 @@ export function useLanguage() {
   // Initialize from storage
   onMounted(() => {
     if (import.meta.client) {
-      const storageKey = `better${lguName.toLowerCase()}_lang`
+      const storageKey = `better${lguNameDomain.toLowerCase()}_lang`
       const savedLang = localStorage.getItem(storageKey) as Language
       if (savedLang && ['en', 'fil', 'ilo'].includes(savedLang)) {
         language.value = savedLang

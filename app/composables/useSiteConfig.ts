@@ -8,6 +8,8 @@ import {
   labels,
   legislative,
   lguName,
+  lguNameConcatenated,
+  lguNameDomain,
   news,
   officials,
   site,
@@ -39,6 +41,8 @@ export function useSiteConfig() {
     // Derived values
     lguType: site.lguType,
     lguName,
+    lguNameConcatenated,
+    lguNameDomain,
     fullLocation,
     labels,
 

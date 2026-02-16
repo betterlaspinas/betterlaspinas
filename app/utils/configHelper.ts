@@ -104,6 +104,24 @@ export function getLGUName(site: SiteConfig): string {
 }
 
 /**
+ * Get the concatenated LGU name (no spaces) for branding (e.g. BetterLasPiñas)
+ */
+export function getLGUNameConcatenated(site: SiteConfig): string {
+  return getLGUName(site).replace(/\s+/g, '')
+}
+
+/**
+ * Get the domain-safe LGU name (no spaces, no diacritics/special chars)
+ * e.g. "Las Piñas" -> "LasPinas"
+ */
+export function getLGUNameDomain(site: SiteConfig): string {
+  return getLGUName(site)
+    .normalize('NFD')
+    .replace(/[\u0300-\u036F]/g, '')
+    .replace(/\s+/g, '')
+}
+
+/**
  * Get the full location string
  * - For municipality: "Municipality, Province"
  * - For city: "City, Province"
@@ -317,6 +335,8 @@ export const statistics = getStatisticsConfig()
 export const translations = getTranslationOverrides()
 export const labels = getLGUTypeLabels(site.lguType)
 export const lguName = getLGUName(site)
+export const lguNameConcatenated = getLGUNameConcatenated(site)
+export const lguNameDomain = getLGUNameDomain(site)
 export const statisticsDetailed = getStatisticsDetailedConfig()
 export const news = getNewsConfig()
 export const faq = getFAQConfig()

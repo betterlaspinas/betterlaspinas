@@ -4,7 +4,7 @@ import { useSiteConfig } from '@/composables/useSiteConfig'
 import { getNavigationConfig } from '@/utils/configHelper'
 
 const { translate } = useLanguage()
-const { site, lguName } = useSiteConfig()
+const { site, lguName, lguNameConcatenated } = useSiteConfig()
 const currentYear = new Date().getFullYear()
 
 const navigationConfig = getNavigationConfig()
@@ -37,13 +37,13 @@ const socialLinks = computed(() => [
           <div class="flex items-center mb-4">
             <img
               :src="logoPath"
-              :alt="`Better ${lguName} Logo`"
+              :alt="`Better ${lguNameConcatenated} Logo`"
               class="h-12 w-12 mr-3"
             >
 
             <div>
               <div class="font-bold">
-                Better {{ lguName }}
+                Better{{ lguNameConcatenated }}
               </div>
               <div class="text-xs text-gray-400">
                 BetterGov.ph Portal
