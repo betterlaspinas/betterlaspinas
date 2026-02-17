@@ -2,116 +2,144 @@
   "executive": [
     {
       "id": "mayor",
-      "name": "",
+      "name": "April Aguilar-Nery",
       "position": "mayor",
       "title": "City Mayor",
-      "email": "",
-      "phone": ""
+      "email": "laspinascitygov@yahoo.com",
+      "phone": "(02) 8871-4343"
     },
     {
       "id": "vice-mayor",
-      "name": "",
+      "name": "Imelda Aguilar",
       "position": "vice_mayor",
       "title": "City Vice Mayor",
-      "email": "",
-      "phone": ""
+      "email": "laspinascitygov@yahoo.com",
+      "phone": "(02) 8511-0779"
     }
   ],
   "legislative": [
     {
-      "id": "sb-member-1",
-      "name": "",
+      "id": "d1-c1",
+      "name": "Alelee Aguilar",
       "position": "sb_member",
-      "title": "SB Member",
-      "committees": ""
+      "title": "District 1 Councilor",
+      "committees": "Committee on Education, Health & Family"
     },
     {
-      "id": "sb-member-2",
-      "name": "",
+      "id": "d1-c2",
+      "name": "Albie Aguilar",
       "position": "sb_member",
-      "title": "SB Member",
-      "committees": ""
+      "title": "District 1 Councilor",
+      "committees": "Committee on Youth & Sports Development"
     },
     {
-      "id": "sb-member-3",
-      "name": "",
+      "id": "d1-c3",
+      "name": "Jess Bustamante",
       "position": "sb_member",
-      "title": "SB Member",
-      "committees": ""
+      "title": "District 1 Councilor",
+      "committees": "Committee on Environment & Natural Resources"
     },
     {
-      "id": "sb-member-4",
-      "name": "",
+      "id": "d1-c4",
+      "name": "Doc Eric De Leon",
       "position": "sb_member",
-      "title": "SB Member",
-      "committees": ""
+      "title": "District 1 Councilor",
+      "committees": "Committee on Health & Sanitation"
     },
     {
-      "id": "sb-member-5",
-      "name": "",
+      "id": "d1-c5",
+      "name": "Mac-Mac Santos",
       "position": "sb_member",
-      "title": "SB Member",
-      "committees": ""
+      "title": "District 1 Councilor",
+      "committees": "Committee on Laws, Rules & Privileges"
     },
     {
-      "id": "sb-member-6",
-      "name": "",
+      "id": "d1-c6",
+      "name": "Roberto Cristobal",
       "position": "sb_member",
-      "title": "SB Member",
-      "committees": ""
+      "title": "District 1 Councilor",
+      "committees": "Committee on Ways & Means"
     },
     {
-      "id": "sb-member-7",
-      "name": "",
+      "id": "d2-c1",
+      "name": "Lord Aguilar",
       "position": "sb_member",
-      "title": "SB Member",
-      "committees": ""
+      "title": "District 2 Councilor",
+      "committees": "Committee on Appropriations"
     },
     {
-      "id": "sb-member-8",
-      "name": "",
+      "id": "d2-c2",
+      "name": "Henry Medina",
       "position": "sb_member",
-      "title": "SB Member",
-      "committees": ""
+      "title": "District 2 Councilor",
+      "committees": "Committee on Engineering & Public Works"
+    },
+    {
+      "id": "d2-c3",
+      "name": "Ruben Ramos",
+      "position": "sb_member",
+      "title": "District 2 Councilor",
+      "committees": "Committee on Transportation & Public Order"
+    },
+    {
+      "id": "d2-c4",
+      "name": "Emmanuel Luis Casimiro",
+      "position": "sb_member",
+      "title": "District 2 Councilor",
+      "committees": "Committee on Tourism & Cultural Affairs"
+    },
+    {
+      "id": "d2-c5",
+      "name": "Danok Hernandez",
+      "position": "sb_member",
+      "title": "District 2 Councilor",
+      "committees": "Committee on Trade, Commerce & Industry"
+    },
+    {
+      "id": "d2-c6",
+      "name": "Macky Saito",
+      "position": "sb_member",
+      "title": "District 2 Councilor",
+      "committees": "Committee on Social Services"
     },
     {
       "id": "liga-president",
-      "name": "",
+      "name": "Jose Mauricio Riguera",
       "position": "liga_president",
       "title": "Liga ng mga Barangay President",
-      "committees": ""
+      "committees": "Committee on Barangay Affairs (Ex-Officio)"
     },
     {
       "id": "sk-president",
-      "name": "",
+      "name": "Rey Angelo Reyes",
       "position": "sk_president",
       "title": "SK Federation President",
-      "committees": ""
+      "committees": "Committee on Youth & Sports (Ex-Officio)"
     }
   ],
   "departments": [
     {
       "id": "civil-registrar",
       "slug": "city-civil-registrar",
-      "name": "",
+      "name": "Atty. Billy James G. Ramos",
       "department": "City Civil Registrar",
       "abbreviation": "MCR",
       "description": "Birth, death, marriage certificates, CENOMAR",
       "icon": "bi-file-earmark-text-fill",
       "email": "",
-      "phone": "",
+      "phone": "(02) 8253-4370",
       "services": "certificates"
     },
     {
       "id": "treasurer",
       "slug": "city-treasurer",
-      "name": "",
+      "name": "Ms. Susan M. Bombita",
       "department": "City Treasurer's Office",
       "abbreviation": "MTO",
       "description": "Tax payments, real property tax, revenue collection",
       "icon": "bi-cash-coin",
       "email": "",
-      "phone": "",
+      "phone": "(02) 8871-4339",
       "services": "tax-payments"
     },
     {
@@ -123,19 +151,19 @@
       "description": "Building permits, construction permits, infrastructure",
       "icon": "bi-building-fill-gear",
       "email": "",
-      "phone": "",
+      "phone": "(02) 8256-9680",
       "services": "infrastructure"
     },
     {
       "id": "mswdo",
       "slug": "cswdo-services",
-      "name": "",
+      "name": "Ms. Junet M. Barilla",
       "department": "City Social Welfare and Development Office",
       "abbreviation": "CSWDO",
       "description": "Social services, PWD & senior citizen IDs, financial assistance",
       "icon": "bi-people-fill",
       "email": "",
-      "phone": "",
+      "phone": "(02) 8727-3425",
       "services": "social-services"
     },
     {
@@ -147,107 +175,107 @@
       "description": "Agricultural loans, crop insurance, fertilizer assistance",
       "icon": "bi-tree-fill",
       "email": "",
-      "phone": "",
+      "phone": "(02) 8519-5687",
       "services": "agriculture"
     },
     {
       "id": "planning",
       "slug": "city-planning",
-      "name": "",
+      "name": "Engr. Leonida Lagrisola",
       "department": "City Planning & Development Office",
       "abbreviation": "CPDO",
       "description": "Development planning, project monitoring, zoning",
       "icon": "bi-clipboard-data-fill",
       "email": "",
-      "phone": "",
+      "phone": "(02) 8872-0921",
       "services": "infrastructure"
     },
     {
       "id": "assessor",
       "slug": "city-assessor",
-      "name": "",
+      "name": "Engr. Ramon San Pedro",
       "department": "City Assessor's Office",
       "abbreviation": "CAO",
       "description": "Property assessment, tax declarations, land records",
       "icon": "bi-house-door-fill",
       "email": "",
-      "phone": "",
+      "phone": "(02) 8874-6781",
       "services": "tax-payments"
     },
     {
       "id": "accounting",
       "slug": "city-accounting",
-      "name": "",
+      "name": "Ms. April C. Lim-Torres",
       "department": "City Accounting Office",
       "abbreviation": "CACCO",
       "description": "Financial records, disbursements, accounting services",
       "icon": "bi-calculator-fill",
       "email": "",
-      "phone": "",
+      "phone": "(02) 8478-1099",
       "services": "tax-payments"
     },
     {
       "id": "budget",
       "slug": "city-budget",
-      "name": "",
+      "name": "Ms. Jessie I. Dela Cruz",
       "department": "City Budget Office",
       "abbreviation": "CBO",
       "description": "Budget preparation, appropriations, fiscal management",
       "icon": "bi-piggy-bank-fill",
       "email": "",
-      "phone": "",
+      "phone": "(02) 8511-0779",
       "services": "tax-payments"
     },
     {
       "id": "gso",
       "slug": "city-general-services",
-      "name": "",
+      "name": "Atty. Gerald Beloso",
       "department": "City General Services Office",
       "abbreviation": "CGSO",
       "description": "Property management, procurement, administration",
       "icon": "bi-gear-fill",
       "email": "",
-      "phone": "",
+      "phone": "(02) 8871-6195",
       "services": "government"
     },
     {
       "id": "health",
       "slug": "city-health",
-      "name": "",
+      "name": "Dr. Ferdinand C. Eusebio",
       "department": "City Health Office",
       "abbreviation": "CHO",
       "description": "Vaccination, health certificates, medical assistance",
       "icon": "bi-heart-pulse-fill",
       "email": "",
-      "phone": "",
+      "phone": "(02) 8776-7268",
       "services": "health"
     },
     {
       "id": "bpls",
       "slug": "business-permits-licensing",
-      "name": "",
+      "name": "Mr. Jesus Wilfredo D. Gaerlan",
       "department": "Business Permits & Licensing Office",
       "abbreviation": "BPLO",
       "description": "Business permits, Mayor's clearance, licensing",
       "icon": "bi-shop",
       "email": "",
-      "phone": "",
+      "phone": "(02) 8551-5930",
       "services": "business"
     },
     {
       "id": "hrmo",
       "slug": "human-resource-management",
-      "name": "",
+      "name": "Ms. Lea M. Rodriguez",
       "department": "Human Resource Management Office",
       "abbreviation": "HRMO",
       "description": "Personnel services, recruitment, employee records",
       "icon": "bi-person-badge-fill",
       "email": "",
-      "phone": "",
+      "phone": "(02) 8256-5198",
       "services": "government"
     },
     {
-      "id": "mdrrmo",
+      "id": "cdrrmo",
       "slug": "cdrrmo",
       "name": "",
       "department": "City Disaster Risk Reduction and Management Office",
@@ -255,7 +283,7 @@
       "description": "Disaster preparedness, emergency response, risk reduction",
       "icon": "bi-exclamation-triangle-fill",
       "email": "",
-      "phone": "",
+      "phone": "(02) 8290-6500",
       "services": "public-safety"
     }
   ]

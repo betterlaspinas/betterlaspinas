@@ -60,7 +60,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
     badgeText: 'Certificates',
     badgeIcon: 'bi-file-earmark-text',
     description:
-      'Official certified copy of birth certificate registered in your municipality',
+      'Official certified copy of birth certificate registered in your city',
     quickStats: [
       { icon: 'bi-clock', label: 'Processing', value: '15-30 Minutes' },
       { icon: 'bi-cash', label: 'Fee', value: '₱150/copy' },
@@ -85,7 +85,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       {
         title: 'Visit Civil Registrar',
         description:
-          'Go to the Local Civil Registrar Office at 2nd Floor, Municipal Hall. Office hours: Mon-Fri, 8AM-5PM.',
+          'Go to the Local Civil Registrar Office at 2nd Floor, City Hall. Office hours: Mon-Fri, 8AM-5PM.',
       },
       {
         title: 'Fill Out Request Form',
@@ -95,7 +95,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       {
         title: 'Pay the Fee',
         description:
-          'Pay ₱150 per certified copy at the Municipal Treasurer\'s Office (same building).',
+          'Pay ₱150 per certified copy at the City Treasurer\'s Office (same building).',
       },
       {
         title: 'Claim Certificate',
@@ -127,9 +127,9 @@ export const serviceDetailsContent: ServiceDetail[] = [
     faqs: [
       {
         question:
-          'Can I get a birth certificate registered in another municipality?',
+          'Can I get a birth certificate registered in another city?',
         answer:
-          'No. The Local Civil Registrar only has records for births registered in this municipality. For other municipalities, request from that municipality\'s Civil Registrar or from PSA.',
+          'No. The Local Civil Registrar only has records for births registered in this city. For other cities, request from that city\'s Civil Registrar or from PSA.',
       },
       {
         question: 'What if I don\'t know the exact date of birth?',
@@ -149,7 +149,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
     ],
     office: {
       name: 'Local Civil Registrar',
-      location: 'Municipal Hall, 2nd Floor',
+      location: 'City Hall, 2nd Floor',
       phone: '',
       hours: 'Mon-Fri: 8AM - 5PM',
     },
@@ -194,7 +194,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       {
         title: 'Visit Civil Registrar',
         description:
-          'Go to the Civil Registrar Office, 2nd Floor, Municipal Hall.',
+          'Go to the Civil Registrar Office, 2nd Floor, City Hall.',
       },
       {
         title: 'Submit Documents',
@@ -245,12 +245,12 @@ export const serviceDetailsContent: ServiceDetail[] = [
       {
         question: 'Can I get a copy if I was married elsewhere?',
         answer:
-          'Only marriages registered in this municipality are available. Request from the municipality where you were married or from PSA.',
+          'Only marriages registered in this city are available. Request from the city where you were married or from PSA.',
       },
     ],
     office: {
       name: 'Local Civil Registrar',
-      location: 'Municipal Hall, 2nd Floor',
+      location: 'City Hall, 2nd Floor',
       phone: '',
       hours: 'Mon-Fri: 8AM - 5PM',
     },
@@ -333,7 +333,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
     ],
     office: {
       name: 'Local Civil Registrar',
-      location: 'Municipal Hall, 2nd Floor',
+      location: 'City Hall, 2nd Floor',
       phone: '',
       hours: 'Mon-Fri: 8AM - 5PM',
     },
@@ -342,13 +342,13 @@ export const serviceDetailsContent: ServiceDetail[] = [
         title: 'Birth Certificate',
         link: '/service-details/birth-certificate',
       },
-      { title: 'MSWDO Services', link: '/service-details/mswdo-services' },
+      { title: 'CSWDO Services', link: '/service-details/cswdo-services' },
     ],
   },
   {
-    id: 'municipal-civil-registrar',
-    title: 'Municipal Civil Registrar',
-    fullTitle: 'Municipal Civil Registrar Office',
+    id: 'city-civil-registrar',
+    title: 'City Civil Registrar',
+    fullTitle: 'City Civil Registrar Office',
     category: 'Certificates',
     categoryLink: '/services/certificates',
     badgeText: 'Office',
@@ -361,7 +361,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       {
         icon: 'bi-geo-alt',
         label: 'Location',
-        value: '2nd Floor, Municipal Hall',
+        value: '2nd Floor, City Hall',
       },
       { icon: 'bi-calendar-check', label: 'Appointment', value: 'Walk-in' },
     ],
@@ -376,7 +376,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
       {
         title: 'Visit Office',
-        description: 'Go to Civil Registrar, 2nd Floor of Municipal Hall.',
+        description: 'Go to Civil Registrar, 2nd Floor of City Hall.',
       },
       {
         title: 'Submit Application',
@@ -408,7 +408,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
     ],
     office: {
       name: 'Local Civil Registrar',
-      location: 'Municipal Hall, 2nd Floor',
+      location: 'City Hall, 2nd Floor',
       phone: '',
       hours: 'Mon-Fri: 8AM - 5PM',
     },
@@ -509,22 +509,22 @@ export const serviceDetailsContent: ServiceDetail[] = [
     ],
     office: {
       name: 'Business Permits & Licensing Office',
-      location: 'Municipal Hall, Ground Floor',
+      location: 'City Hall, Ground Floor',
       phone: '(078) 326-5001',
       hours: 'Mon-Fri: 8AM - 5PM',
     },
     relatedServices: [
       {
-        title: 'Municipal Treasurer',
+        title: 'City Treasurer',
         link: '/service-details/municipal-treasurer',
       },
       { title: 'Fire Safety Certificate', link: '/services/business' },
     ],
   },
   {
-    id: 'municipal-treasurer',
-    title: 'Municipal Treasurer\'s Office',
-    fullTitle: 'Municipal Treasurer\'s Office',
+    id: 'city-treasurer',
+    title: 'City Treasurer\'s Office',
+    fullTitle: 'City Treasurer\'s Office',
     category: 'Taxation',
     categoryLink: '/services/tax-payments',
     badgeText: 'Taxation',
@@ -579,8 +579,8 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
     ],
     office: {
-      name: 'Municipal Treasurer\'s Office',
-      location: 'Municipal Hall, Ground Floor',
+      name: 'City Treasurer\'s Office',
+      location: 'City Hall, Ground Floor',
       phone: '(078) 326-5001',
       hours: 'Mon-Fri: 8AM - 5PM',
     },
@@ -590,15 +590,15 @@ export const serviceDetailsContent: ServiceDetail[] = [
         link: '/service-details/property-declaration',
       },
       {
-        title: 'Municipal Assessor',
+        title: 'City Assessor',
         link: '/service-details/municipal-assessor',
       },
     ],
   },
   {
-    id: 'municipal-assessor',
-    title: 'Municipal Assessor\'s Office',
-    fullTitle: 'Municipal Assessor\'s Office',
+    id: 'city-assessor',
+    title: 'City Assessor\'s Office',
+    fullTitle: 'City Assessor\'s Office',
     category: 'Taxation',
     categoryLink: '/services/tax-payments',
     badgeText: 'Taxation',
@@ -656,14 +656,14 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
     ],
     office: {
-      name: 'Municipal Assessor\'s Office',
-      location: 'Municipal Hall, Ground Floor',
+      name: 'City Assessor\'s Office',
+      location: 'City Hall, Ground Floor',
       phone: '(078) 326-5001',
       hours: 'Mon-Fri: 8AM - 5PM',
     },
     relatedServices: [
       {
-        title: 'Municipal Treasurer',
+        title: 'City Treasurer',
         link: '/service-details/municipal-treasurer',
       },
       {
@@ -695,7 +695,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
       {
         title: 'Submit to Assessor',
-        description: 'Submit documents at the Municipal Assessor\'s Office.',
+        description: 'Submit documents at the City Assessor\'s Office.',
       },
       { title: 'Pay Transfer Tax', description: 'Pay at Treasurer\'s Office.' },
       {
@@ -724,18 +724,18 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
     ],
     office: {
-      name: 'Municipal Assessor\'s Office',
-      location: 'Municipal Hall, Ground Floor',
+      name: 'City Assessor\'s Office',
+      location: 'City Hall, Ground Floor',
       phone: '(078) 326-5001',
       hours: 'Mon-Fri: 8AM - 5PM',
     },
     relatedServices: [
       {
-        title: 'Municipal Assessor',
+        title: 'City Assessor',
         link: '/service-details/municipal-assessor',
       },
       {
-        title: 'Municipal Treasurer',
+        title: 'City Treasurer',
         link: '/service-details/municipal-treasurer',
       },
     ],
@@ -767,7 +767,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
       {
         title: 'Submit Application',
-        description: 'File application at the Municipal Traffic Office.',
+        description: 'File application at the City Traffic Office.',
       },
       {
         title: 'Vehicle Inspection',
@@ -804,8 +804,8 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
     ],
     office: {
-      name: 'Municipal Traffic Office',
-      location: 'Municipal Hall',
+      name: 'City Traffic Office',
+      location: 'City Hall',
       phone: '(078) 326-5001',
       hours: 'Mon-Fri: 8AM - 5PM',
     },
@@ -817,9 +817,9 @@ export const serviceDetailsContent: ServiceDetail[] = [
     ],
   },
   {
-    id: 'mswdo-services',
-    title: 'MSWDO Services',
-    fullTitle: 'Municipal Social Welfare & Development Office',
+    id: 'cswdo-services',
+    title: 'CSWDO Services',
+    fullTitle: 'City Social Welfare & Development Office',
     category: 'Social Services',
     categoryLink: '/services/social-services',
     badgeText: 'Social Services',
@@ -841,8 +841,8 @@ export const serviceDetailsContent: ServiceDetail[] = [
         description: 'Gather required documents for the specific program.',
       },
       {
-        title: 'Visit MSWDO',
-        description: 'Go to MSWDO office at the Municipal Hall.',
+        title: 'Visit CSWDO',
+        description: 'Go to CSWDO office at the City Hall.',
       },
       {
         title: 'Submit Application',
@@ -880,7 +880,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
         items: [
           'Barangay certification of indigency',
           'Valid ID',
-          'Case study/assessment by MSWDO',
+          'Case study/assessment by CSWDO',
         ],
       },
     ],
@@ -896,8 +896,8 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
     ],
     office: {
-      name: 'MSWDO',
-      location: 'Municipal Hall, Ground Floor',
+      name: 'CSWDO',
+      location: 'City Hall, Ground Floor',
       phone: '0916 284 0885',
       hours: 'Mon-Fri: 8AM - 5PM',
     },
@@ -907,9 +907,9 @@ export const serviceDetailsContent: ServiceDetail[] = [
     ],
   },
   {
-    id: 'mswdo',
-    title: 'MSWDO',
-    fullTitle: 'Municipal Social Welfare & Development Office',
+    id: 'cswdo',
+    title: 'CSWDO',
+    fullTitle: 'City Social Welfare & Development Office',
     category: 'Social Services',
     categoryLink: '/services/social-services',
     badgeText: 'Office',
@@ -924,7 +924,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
     processSteps: [
       {
         title: 'Visit Office',
-        description: 'Go to MSWDO at Municipal Hall ground floor.',
+        description: 'Go to CSWDO at City Hall ground floor.',
       },
       {
         title: 'State Your Concern',
@@ -932,7 +932,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
       {
         title: 'Assessment',
-        description: 'MSWDO staff will assess your situation.',
+        description: 'CSWDO staff will assess your situation.',
       },
       {
         title: 'Receive Assistance',
@@ -958,19 +958,19 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
     ],
     office: {
-      name: 'MSWDO',
-      location: 'Municipal Hall, Ground Floor',
+      name: 'CSWDO',
+      location: 'City Hall, Ground Floor',
       phone: '0916 284 0885',
       hours: 'Mon-Fri: 8AM - 5PM',
     },
     relatedServices: [
-      { title: 'MSWDO Services', link: '/service-details/mswdo-services' },
+      { title: 'CSWDO Services', link: '/service-details/cswdo-services' },
     ],
   },
   {
-    id: 'municipal-agriculture',
-    title: 'Municipal Agriculture Office',
-    fullTitle: 'Municipal Agriculture Office (MAGRO)',
+    id: 'city-agriculture',
+    title: 'City Agriculture Office',
+    fullTitle: 'City Agriculture Office (MAGRO)',
     category: 'Agriculture',
     categoryLink: '/services/agriculture',
     badgeText: 'Agriculture',
@@ -979,13 +979,13 @@ export const serviceDetailsContent: ServiceDetail[] = [
     quickStats: [
       { icon: 'bi-clock', label: 'Office Hours', value: 'Mon-Fri 8AM-5PM' },
       { icon: 'bi-telephone', label: 'Contact', value: '(078) 326-5001' },
-      { icon: 'bi-geo-alt', label: 'Location', value: 'Municipal Hall' },
+      { icon: 'bi-geo-alt', label: 'Location', value: 'City Hall' },
       { icon: 'bi-cash', label: 'Programs', value: 'Free/Subsidized' },
     ],
     processSteps: [
       {
         title: 'Visit MAGRO',
-        description: 'Go to Municipal Agriculture Office at Municipal Hall.',
+        description: 'Go to City Agriculture Office at City Hall.',
       },
       {
         title: 'Farmer Registration',
@@ -1030,8 +1030,8 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
     ],
     office: {
-      name: 'Municipal Agriculture Office',
-      location: 'Municipal Hall',
+      name: 'City Agriculture Office',
+      location: 'City Hall',
       phone: '(078) 326-5001',
       hours: 'Mon-Fri: 8AM - 5PM',
     },
@@ -1041,9 +1041,9 @@ export const serviceDetailsContent: ServiceDetail[] = [
     ],
   },
   {
-    id: 'municipal-engineering',
-    title: 'Municipal Engineering Office',
-    fullTitle: 'Municipal Engineering Office',
+    id: 'city-engineering',
+    title: 'City Engineering Office',
+    fullTitle: 'City Engineering Office',
     category: 'Infrastructure',
     categoryLink: '/services/infrastructure',
     badgeText: 'Infrastructure',
@@ -1052,7 +1052,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
     quickStats: [
       { icon: 'bi-clock', label: 'Processing', value: '5-10 Days' },
       { icon: 'bi-cash', label: 'Fee', value: 'Varies' },
-      { icon: 'bi-geo-alt', label: 'Location', value: 'Municipal Hall' },
+      { icon: 'bi-geo-alt', label: 'Location', value: 'City Hall' },
       { icon: 'bi-calendar-check', label: 'Appointment', value: 'Walk-in' },
     ],
     processSteps: [
@@ -1071,7 +1071,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
       {
         title: 'Site Inspection',
-        description: 'Municipal engineer conducts site inspection.',
+        description: 'City engineer conducts site inspection.',
       },
       {
         title: 'Pay Fees',
@@ -1108,23 +1108,23 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
     ],
     office: {
-      name: 'Municipal Engineering Office',
-      location: 'Municipal Hall',
+      name: 'City Engineering Office',
+      location: 'City Hall',
       phone: '(078) 326-5001',
       hours: 'Mon-Fri: 8AM - 5PM',
     },
     relatedServices: [
       {
-        title: 'Municipal Planning',
+        title: 'City Planning',
         link: '/service-details/municipal-planning',
       },
       { title: 'Fire Safety Certificate', link: '/services/infrastructure' },
     ],
   },
   {
-    id: 'municipal-planning',
-    title: 'Municipal Planning & Development',
-    fullTitle: 'Municipal Planning & Development Office',
+    id: 'city-planning',
+    title: 'City Planning & Development',
+    fullTitle: 'City Planning & Development Office',
     category: 'Infrastructure',
     categoryLink: '/services/infrastructure',
     badgeText: 'Infrastructure',
@@ -1133,7 +1133,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
     quickStats: [
       { icon: 'bi-clock', label: 'Processing', value: '3-5 Days' },
       { icon: 'bi-cash', label: 'Fee', value: '₱100-500' },
-      { icon: 'bi-geo-alt', label: 'Location', value: 'Municipal Hall' },
+      { icon: 'bi-geo-alt', label: 'Location', value: 'City Hall' },
       { icon: 'bi-calendar-check', label: 'Appointment', value: 'Walk-in' },
     ],
     processSteps: [
@@ -1176,22 +1176,22 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
     ],
     office: {
-      name: 'Municipal Planning & Development Office',
-      location: 'Municipal Hall',
+      name: 'City Planning & Development Office',
+      location: 'City Hall',
       phone: '(078) 326-5001',
       hours: 'Mon-Fri: 8AM - 5PM',
     },
     relatedServices: [
       {
-        title: 'Municipal Engineering',
+        title: 'City Engineering',
         link: '/service-details/municipal-engineering',
       },
     ],
   },
   {
-    id: 'municipal-budget',
-    title: 'Municipal Budget Office',
-    fullTitle: 'Municipal Budget Office',
+    id: 'city-budget',
+    title: 'City Budget Office',
+    fullTitle: 'City Budget Office',
     category: 'Budget',
     categoryLink: '/budget',
     badgeText: 'Budget',
@@ -1200,7 +1200,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
     quickStats: [
       { icon: 'bi-clock', label: 'Office Hours', value: 'Mon-Fri 8AM-5PM' },
       { icon: 'bi-telephone', label: 'Contact', value: '(078) 326-5001' },
-      { icon: 'bi-geo-alt', label: 'Location', value: 'Municipal Hall' },
+      { icon: 'bi-geo-alt', label: 'Location', value: 'City Hall' },
       { icon: 'bi-file-text', label: 'Reports', value: 'Public Access' },
     ],
     processSteps: [
@@ -1237,23 +1237,23 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
     ],
     office: {
-      name: 'Municipal Budget Office',
-      location: 'Municipal Hall',
+      name: 'City Budget Office',
+      location: 'City Hall',
       phone: '(078) 326-5001',
       hours: 'Mon-Fri: 8AM - 5PM',
     },
     relatedServices: [
       {
-        title: 'Municipal Accounting',
+        title: 'City Accounting',
         link: '/service-details/municipal-accounting',
       },
       { title: 'Budget Transparency', link: '/budget' },
     ],
   },
   {
-    id: 'municipal-accounting',
-    title: 'Municipal Accounting Office',
-    fullTitle: 'Municipal Accounting Office',
+    id: 'city-accounting',
+    title: 'City Accounting Office',
+    fullTitle: 'City Accounting Office',
     category: 'Budget',
     categoryLink: '/budget',
     badgeText: 'Budget',
@@ -1262,7 +1262,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
     quickStats: [
       { icon: 'bi-clock', label: 'Office Hours', value: 'Mon-Fri 8AM-5PM' },
       { icon: 'bi-telephone', label: 'Contact', value: '(078) 326-5001' },
-      { icon: 'bi-geo-alt', label: 'Location', value: 'Municipal Hall' },
+      { icon: 'bi-geo-alt', label: 'Location', value: 'City Hall' },
       { icon: 'bi-file-text', label: 'Records', value: 'Financial' },
     ],
     processSteps: [
@@ -1299,15 +1299,15 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
     ],
     office: {
-      name: 'Municipal Accounting Office',
-      location: 'Municipal Hall',
+      name: 'City Accounting Office',
+      location: 'City Hall',
       phone: '(078) 326-5001',
       hours: 'Mon-Fri: 8AM - 5PM',
     },
     relatedServices: [
-      { title: 'Municipal Budget', link: '/service-details/municipal-budget' },
+      { title: 'City Budget', link: '/service-details/municipal-budget' },
       {
-        title: 'Municipal Treasurer',
+        title: 'City Treasurer',
         link: '/service-details/municipal-treasurer',
       },
     ],
@@ -1367,7 +1367,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
     ],
     office: {
       name: 'HRMO',
-      location: 'Municipal Hall',
+      location: 'City Hall',
       phone: '(078) 326-5001',
       hours: 'Mon-Fri: 8AM - 5PM',
     },
@@ -1455,7 +1455,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       {
         icon: 'bi-geo-alt',
         label: 'Location',
-        value: 'Municipal Slaughterhouse',
+        value: 'City Slaughterhouse',
       },
       { icon: 'bi-cash', label: 'Fee', value: 'Per head' },
     ],
@@ -1488,7 +1488,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
         icon: 'bi-file-text',
         items: [
           'Certificate of ownership',
-          'Transport permit (if from other municipality)',
+          'Transport permit (if from other city)',
           'Payment of slaughter fee',
         ],
       },
@@ -1501,7 +1501,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
     ],
     office: {
       name: 'SEEDO - Slaughterhouse',
-      location: 'Municipal Slaughterhouse',
+      location: 'City Slaughterhouse',
       phone: '',
       hours: '4AM - 8AM',
     },
@@ -1510,9 +1510,9 @@ export const serviceDetailsContent: ServiceDetail[] = [
     ],
   },
   {
-    id: 'municipal-general-services',
-    title: 'Municipal General Services',
-    fullTitle: 'Municipal General Services Office',
+    id: 'city-general-services',
+    title: 'City General Services',
+    fullTitle: 'City General Services Office',
     category: 'Infrastructure',
     categoryLink: '/services/infrastructure',
     badgeText: 'Services',
@@ -1521,7 +1521,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
     quickStats: [
       { icon: 'bi-clock', label: 'Office Hours', value: 'Mon-Fri 8AM-5PM' },
       { icon: 'bi-telephone', label: 'Contact', value: '(078) 326-5001' },
-      { icon: 'bi-geo-alt', label: 'Location', value: 'Municipal Hall' },
+      { icon: 'bi-geo-alt', label: 'Location', value: 'City Hall' },
       { icon: 'bi-cash', label: 'Rental', value: 'Varies' },
     ],
     processSteps: [
@@ -1558,7 +1558,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
     ],
     office: {
       name: 'General Services Office',
-      location: 'Municipal Hall',
+      location: 'City Hall',
       phone: '(078) 326-5001',
       hours: 'Mon-Fri: 8AM - 5PM',
     },
@@ -1569,7 +1569,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
   {
     id: 'general-services',
     title: 'General Services',
-    fullTitle: 'General Municipal Services',
+    fullTitle: 'General City Services',
     category: 'Services',
     categoryLink: '/services',
     badgeText: 'Services',
@@ -1578,7 +1578,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
     quickStats: [
       { icon: 'bi-clock', label: 'Office Hours', value: 'Mon-Fri 8AM-5PM' },
       { icon: 'bi-telephone', label: 'Contact', value: '(078) 326-5001' },
-      { icon: 'bi-geo-alt', label: 'Location', value: 'Municipal Hall' },
+      { icon: 'bi-geo-alt', label: 'Location', value: 'City Hall' },
       { icon: 'bi-info-circle', label: 'Info Desk', value: 'Ground Floor' },
     ],
     processSteps: [
@@ -1607,16 +1607,219 @@ export const serviceDetailsContent: ServiceDetail[] = [
       {
         question: 'Where can I get information about services?',
         answer:
-          'Visit the Information Desk at the ground floor of Municipal Hall.',
+          'Visit the Information Desk at the ground floor of City Hall.',
       },
     ],
     office: {
       name: 'Information Desk',
-      location: 'Municipal Hall, Ground Floor',
+      location: 'City Hall, Ground Floor',
       phone: '(078) 326-5001',
       hours: 'Mon-Fri: 8AM - 5PM',
     },
     relatedServices: [{ title: 'All Services', link: '/services' }],
+  },
+  {
+    id: 'city-health',
+    title: 'City Health Office',
+    fullTitle: 'City Health Office',
+    category: 'Health',
+    categoryLink: '/services/health',
+    badgeText: 'Health',
+    badgeIcon: 'bi-heart-pulse',
+    description: 'Public health services, vaccination, and medical assistance',
+    quickStats: [
+      { icon: 'bi-clock', label: 'Office Hours', value: 'Mon-Fri 8AM-5PM' },
+      { icon: 'bi-telephone', label: 'Contact', value: '(02) 8776-7268' },
+      { icon: 'bi-geo-alt', label: 'Location', value: 'City Hall Compound' },
+      { icon: 'bi-heart', label: 'Services', value: 'Public Health' },
+    ],
+    processSteps: [
+      {
+        title: 'Visit CHO',
+        description: 'Go to the City Health Office.',
+      },
+      {
+        title: 'Triage/Assessment',
+        description: 'Medical staff will assess your needs.',
+      },
+      {
+        title: 'Receive Service',
+        description: 'Receive vaccination, consultation, or assistance.',
+        isFinal: true,
+      },
+    ],
+    requirements: [
+      {
+        title: 'General',
+        icon: 'bi-file-text',
+        items: ['Valid ID', 'Medical records (if applicable)'],
+      },
+    ],
+    faqs: [
+      {
+        question: 'Is consultation free?',
+        answer: 'Yes, basic consultation at the health office is free.',
+      },
+    ],
+    office: {
+      name: 'City Health Office',
+      location: 'City Hall Compound',
+      phone: '(02) 8776-7268',
+      hours: 'Mon-Fri: 8AM - 5PM',
+    },
+    relatedServices: [
+      { title: 'Vaccination', link: '/service-details/vaccination' },
+    ],
+  },
+  {
+    id: 'vaccination',
+    title: 'Vaccination Programs',
+    fullTitle: 'Immunization & Vaccination Services',
+    category: 'Health',
+    categoryLink: '/services/health',
+    badgeText: 'Health',
+    badgeIcon: 'bi-shield-plus',
+    description: 'Free immunization for children, adults, and senior citizens',
+    quickStats: [
+      { icon: 'bi-clock', label: 'Schedule', value: 'Mon-Fri' },
+      { icon: 'bi-cash', label: 'Fee', value: 'Free' },
+      { icon: 'bi-geo-alt', label: 'Location', value: 'Health Centers' },
+      { icon: 'bi-calendar-check', label: 'Appointment', value: 'Walk-in' },
+    ],
+    processSteps: [
+      {
+        title: 'Registration',
+        description: 'Register at the health center.',
+      },
+      {
+        title: 'Screening',
+        description: 'Health screening and vital signs check.',
+      },
+      {
+        title: 'Vaccination',
+        description: 'Administration of vaccine.',
+        isFinal: true,
+      },
+    ],
+    requirements: [
+      {
+        title: 'For Children',
+        icon: 'bi-person',
+        items: ['Baby book / Immunization card'],
+      },
+    ],
+    faqs: [
+      {
+        question: 'Are vaccines safe?',
+        answer: 'Yes, all vaccines provided are DOH-approved and safe.',
+      },
+    ],
+    office: {
+      name: 'City Health Office',
+      location: 'City Hall Compound',
+      phone: '(02) 8776-7268',
+      hours: 'Mon-Fri: 8AM - 5PM',
+    },
+    relatedServices: [
+      { title: 'City Health Office', link: '/service-details/city-health' },
+    ],
+  },
+  {
+    id: 'cdrrmo',
+    title: 'CDRRMO',
+    fullTitle: 'City Disaster Risk Reduction and Management Office',
+    category: 'Public Safety',
+    categoryLink: '/services/public-safety',
+    badgeText: 'Safety',
+    badgeIcon: 'bi-shield-exclamation',
+    description: 'Emergency response, disaster management, and rescue services',
+    quickStats: [
+      { icon: 'bi-clock', label: 'Operations', value: '24/7' },
+      { icon: 'bi-telephone', label: 'Emergency', value: '(02) 8290-6500' },
+      { icon: 'bi-geo-alt', label: 'Location', value: 'Command Center' },
+      { icon: 'bi-shield', label: 'Service', value: 'Rescue' },
+    ],
+    processSteps: [
+      {
+        title: 'Call Emergency Hotline',
+        description: 'Dial (02) 8290-6500 for emergencies.',
+      },
+      {
+        title: 'Dispatch',
+        description: 'Responders are dispatched to the location.',
+      },
+      {
+        title: 'Response / Rescue',
+        description: 'Emergency assistance is provided.',
+        isFinal: true,
+      },
+    ],
+    requirements: [],
+    faqs: [
+      {
+        question: 'What is the emergency hotline?',
+        answer: '(02) 8290-6500 or 911.',
+      },
+    ],
+    office: {
+      name: 'CDRRMO',
+      location: 'Command Center',
+      phone: '(02) 8290-6500',
+      hours: '24/7 Operations',
+    },
+    relatedServices: [
+      {
+        title: 'Emergency Response',
+        link: '/service-details/emergency-response',
+      },
+    ],
+  },
+  {
+    id: 'emergency-response',
+    title: 'Emergency Response',
+    fullTitle: 'Emergency Rescue & Response',
+    category: 'Public Safety',
+    categoryLink: '/services/public-safety',
+    badgeText: 'Safety',
+    badgeIcon: 'bi-ambulance',
+    description: '24/7 ambulance and rescue assistance',
+    quickStats: [
+      { icon: 'bi-clock', label: 'Response', value: 'Immediate' },
+      { icon: 'bi-telephone', label: 'Hotline', value: '(02) 8290-6500' },
+      { icon: 'bi-geo-alt', label: 'Coverage', value: 'Citywide' },
+      { icon: 'bi-cash', label: 'Fee', value: 'Free' },
+    ],
+    processSteps: [
+      {
+        title: 'Call Hotline',
+        description: 'Call (02) 8290-6500 immediately.',
+      },
+      {
+        title: 'Provide Info',
+        description: 'State nature of emergency and exact location.',
+      },
+      {
+        title: 'Wait for Help',
+        description: 'Stay on the line if instructed. Responders are on the way.',
+        isFinal: true,
+      },
+    ],
+    requirements: [],
+    faqs: [
+      {
+        question: 'Is ambulance service free?',
+        answer: 'Yes, for emergency cases within the city.',
+      },
+    ],
+    office: {
+      name: 'CDRRMO',
+      location: 'Command Center',
+      phone: '(02) 8290-6500',
+      hours: '24/7 Operations',
+    },
+    relatedServices: [
+      { title: 'CDRRMO', link: '/service-details/cdrrmo' },
+    ],
   },
 ]
 

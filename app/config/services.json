@@ -226,7 +226,7 @@
       ],
       "fee": "Free",
       "processingTime": "1-2 weeks",
-      "office": "MSWDO / OSCA",
+      "office": "CSWDO / OSCA",
       "url": "/services/social-services"
     },
     {
@@ -245,7 +245,7 @@
       ],
       "fee": "Free",
       "processingTime": "1-2 weeks",
-      "office": "MSWDO",
+      "office": "CSWDO",
       "url": "/services/social-services"
     },
     {
@@ -265,7 +265,7 @@
       ],
       "fee": "Free",
       "processingTime": "Varies",
-      "office": "MSWDO",
+      "office": "CSWDO",
       "url": "/services/social-services"
     },
     {
@@ -283,7 +283,7 @@
       ],
       "fee": "Free",
       "processingTime": "1-3 days",
-      "office": "MSWDO",
+      "office": "CSWDO",
       "url": "/services/social-services"
     },
     {
@@ -301,7 +301,7 @@
       ],
       "fee": "Free",
       "processingTime": "1-2 weeks",
-      "office": "MSWDO",
+      "office": "CSWDO",
       "url": "/services/social-services"
     },
     {
@@ -357,7 +357,7 @@
       ],
       "fee": "Free",
       "processingTime": "1-3 days",
-      "office": "City Health Office / MSWDO",
+      "office": "City Health Office / CSWDO",
       "url": "/services/health"
     },
     {
@@ -579,7 +579,7 @@
       ],
       "fee": "Free",
       "processingTime": "Varies",
-      "office": "MSWDO",
+      "office": "CSWDO",
       "url": "/services/education"
     },
     {
@@ -598,7 +598,7 @@
       ],
       "fee": "Free",
       "processingTime": "Immediate",
-      "office": "MDRRMO",
+      "office": "CDRRMO",
       "url": "/services/public-safety"
     },
     {
@@ -616,7 +616,7 @@
       ],
       "fee": "Free",
       "processingTime": "Varies",
-      "office": "MDRRMO",
+      "office": "CDRRMO",
       "url": "/services/public-safety"
     },
     {
@@ -679,13 +679,13 @@
       "url": "/service-details/seedo-slaughterhouse"
     },
     {
-      "id": "mswdo-services",
-      "title": "MSWDO Services",
+      "id": "cswdo-services",
+      "title": "CSWDO Services",
       "category": "Social Services & Assistance",
       "categoryId": "social-services",
       "description": "Social case studies, indigency certificates, AICS, PWD and senior citizen assistance",
       "keywords": [
-        "MSWDO",
+        "CSWDO",
         "social welfare",
         "indigency",
         "certificate",
@@ -698,8 +698,8 @@
       ],
       "fee": "Free",
       "processingTime": "28 min - 1.5 hrs",
-      "office": "MSWDO",
-      "url": "/service-details/mswdo-services"
+      "office": "CSWDO",
+      "url": "/service-details/cswdo-services"
     },
     {
       "id": "waste-management",
@@ -879,7 +879,7 @@
       "url": "/service-details/city-assessor"
     },
     {
-      "id": "civil-registrar",
+      "id": "city-civil-registrar",
       "title": "Local Civil Registrar",
       "category": "Certificates & Vital Records",
       "categoryId": "certificates",
@@ -897,7 +897,7 @@
       "fee": "₱150+",
       "processingTime": "15-30 minutes",
       "office": "Local Civil Registrar",
-      "url": "/service-details/civil-registrar"
+      "url": "/service-details/city-civil-registrar"
     },
     {
       "id": "city-engineering",
@@ -959,7 +959,7 @@
       "url": "/service-details/city-agriculture"
     },
     {
-      "id": "general-services",
+      "id": "city-general-services",
       "title": "General Services Office",
       "category": "Government Services",
       "categoryId": "government",
@@ -975,7 +975,7 @@
       "fee": "Free",
       "processingTime": "Varies",
       "office": "General Services Office",
-      "url": "/service-details/general-services"
+      "url": "/service-details/city-general-services"
     },
     {
       "id": "human-resource",
@@ -1072,7 +1072,7 @@
       ],
       "fee": "Varies",
       "processingTime": "Instant",
-      "office": "Municipal Treasurer's Office",
+      "office": "City Treasurer's Office",
       "url": "#"
     },
     {
@@ -1091,7 +1091,7 @@
       ],
       "fee": "Varies",
       "processingTime": "Instant",
-      "office": "Municipal Treasurer's Office",
+      "office": "City Treasurer's Office",
       "url": "#"
     }
   ]

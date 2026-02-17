@@ -29,7 +29,7 @@ function toggleFaq(index: number) {
 </script>
 
 <template>
-  <div>
+  <div v-if="service">
     <UiBreadcrumbs
       :items="[
         { label: 'Services', href: '/services' },
