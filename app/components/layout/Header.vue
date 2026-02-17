@@ -199,6 +199,7 @@ const logoPath = computed(() => site.logo?.main || '/logos/svg/BetterGov_Icon-Pr
       <div class="container mx-auto px-2 pt-2 pb-4 space-y-1 border-t border-gray-200 bg-white">
         <div v-for="item in mainNavigation" :key="item.label">
           <button
+            v-if="item.children"
             type="button"
             class="w-full flex justify-between items-center px-4 py-2 text-base font-medium transition-colors"
             :class="isActiveRoute(route.path, item.href)
@@ -206,9 +207,10 @@ const logoPath = computed(() => site.logo?.main || '/logos/svg/BetterGov_Icon-Pr
               : 'text-gray-700 hover:bg-gray-50 hover:text-primary-500'"
             @click="toggleSubmenu(item.label)"
           >
-            {{ translate(`nav-${item.label.toLowerCase()}`, { defaultValue: item.label }) }}
+            <div class="flex items-center w-full">
+              {{ translate(`nav-${item.label.toLowerCase()}`, { defaultValue: item.label }) }}
+            </div>
             <ChevronDown
-              v-if="item.children"
               class="h-5 w-5 transition-transform"
               :class="[
                 activeMenu === item.label ? 'transform rotate-180' : '',
@@ -216,6 +218,19 @@ const logoPath = computed(() => site.logo?.main || '/logos/svg/BetterGov_Icon-Pr
               ]"
             />
           </button>
+          <NuxtLink
+            v-else
+            :to="item.href"
+            class="w-full flex justify-between items-center px-4 py-2 text-base font-medium transition-colors"
+            :class="isActiveRoute(route.path, item.href)
+              ? 'text-primary-600 bg-primary-50'
+              : 'text-gray-700 hover:bg-gray-50 hover:text-primary-500'"
+            @click="toggleMenu()"
+          >
+            <div class="flex items-center w-full">
+              {{ translate(`nav-${item.label.toLowerCase()}`, { defaultValue: item.label }) }}
+            </div>
+          </NuxtLink>
           <div v-if="item.children && activeMenu === item.label" class="pl-6 py-2 space-y-1 bg-gray-50">
             <template v-for="child in item.children" :key="child.label">
               <a
