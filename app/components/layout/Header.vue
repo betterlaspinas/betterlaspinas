@@ -106,7 +106,7 @@ const logoPath = computed(() => site.logo?.main || '/logos/svg/BetterGov_Icon-Pr
               <div class="text-black font-bold">
                 Better{{ lguNameConcatenated }}
               </div>
-              <div class="text-xs text-gray-800">
+              <div class="text-xs text-gray-800 hidden xl:block">
                 A community-run portal for {{ lguName }}
               </div>
             </div>
