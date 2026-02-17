@@ -54,6 +54,7 @@ export function useSiteConfig() {
     getVolunteerEmail: () => configHelpers.getVolunteerEmail(site),
     getOpenGraphUrl: () => configHelpers.getOpenGraphUrl(site),
     getMapEmbedUrl: () => configHelpers.getMapEmbedUrl(site),
+    getOfficialWebsite: () => configHelpers.getOfficialWebsite(site),
     formatPhoneLink: configHelpers.formatPhoneLink,
   }
 }

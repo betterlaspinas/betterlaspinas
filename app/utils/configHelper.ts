@@ -323,6 +323,13 @@ export const configHelpers = {
   formatPhoneLink: (phone: string): string => {
     return phone.replace(/[\s()-]/g, '')
   },
+
+  /**
+   * Get the official website URL
+   */
+  getOfficialWebsite: (site: SiteConfig): string => {
+    return site.officialWebsite
+  },
 }
 
 // Export configs directly for convenience

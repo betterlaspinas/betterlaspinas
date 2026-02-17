@@ -3,7 +3,7 @@ import History from '@/components/home/History.vue'
 import Breadcrumbs from '@/components/ui/Breadcrumbs.vue'
 import { useSiteConfig } from '@/composables/useSiteConfig'
 
-const { getSiteTitle } = useSiteConfig()
+const { getSiteTitle, lguNameConcatenated } = useSiteConfig()
 const siteTitle = computed(() => getSiteTitle())
 
 useHead({
@@ -44,7 +44,7 @@ useHead({
               Our Mission
             </h2>
             <p class="text-gray-700 leading-relaxed text-lg">
-              {{ siteTitle }} is a community-driven initiative designed to promote transparency, accountability, and accessibility in local governance. By aggregating public data and making it easier to navigate, we empower citizens to engage meaningfully with their local government unit.
+              Better{{ lguNameConcatenated }}.org is a community-driven initiative designed to promote transparency, accountability, and accessibility in local governance. By aggregating public data and making it easier to navigate, we empower citizens to engage meaningfully with their local government unit.
             </p>
           </div>
         </div>

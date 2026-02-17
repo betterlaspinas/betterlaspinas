@@ -18,7 +18,8 @@ const hoveredDropdown = ref<string | null>(null)
 
 const route = useRoute()
 const { translate } = useLanguage()
-const { site, lguName, lguNameConcatenated } = useSiteConfig()
+const { site, lguName, lguNameConcatenated, getOfficialWebsite } = useSiteConfig()
+const officialWebsite = getOfficialWebsite()
 
 const mainNavigation = getNavigationConfig().mainNav
 
@@ -67,15 +68,15 @@ const logoPath = computed(() => site.logo?.main || '/logos/svg/BetterGov_Icon-Pr
             to="/about"
             class="text-xs leading-12 text-gray-800 hover:text-primary-600 transition-colors"
           >
-            About <span class="hidden md:inline">BetterGov.ph</span>
+            About <span class="hidden md:inline">Better{{ lguNameConcatenated }}.org</span>
           </NuxtLink>
           <a
-            href="https://www.gov.ph"
+            :href="officialWebsite"
             class="text-xs leading-12 text-gray-800 hover:text-primary-600 transition-colors"
             target="_blank"
             rel="noreferrer"
           >
-            Official Gov.ph
+            Official {{ lguName }} Website
           </a>
 
           <NuxtLink
