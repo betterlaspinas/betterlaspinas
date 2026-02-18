@@ -2,7 +2,7 @@
 import Breadcrumbs from '@/components/ui/Breadcrumbs.vue'
 import { useSiteConfig } from '@/composables/useSiteConfig'
 
-const { getVolunteerEmail, lguName } = useSiteConfig()
+const { getVolunteerEmail, lguName, site } = useSiteConfig()
 const volunteerEmail = computed(() => getVolunteerEmail())
 
 useHead({
@@ -57,7 +57,7 @@ useHead({
             </a>
 
             <a
-              href="https://github.com/bettergovph/bettergov"
+              :href="site.social.github"
               target="_blank"
               class="inline-flex items-center justify-center gap-2 bg-gray-100 text-gray-800 px-8 py-3 rounded-xl font-semibold transition-all hover:bg-gray-200 hover:text-gray-900"
             >
