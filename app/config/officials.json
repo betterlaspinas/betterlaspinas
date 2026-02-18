@@ -145,12 +145,12 @@
     {
       "id": "engineering",
       "slug": "city-engineering",
-      "name": "",
+      "name": "Engr. Rosabella A. Bantog",
       "department": "City Engineering Office",
       "abbreviation": "MEO",
       "description": "Building permits, construction permits, infrastructure",
       "icon": "bi-building-fill-gear",
-      "email": "",
+      "email": "lp.bldgo@gmail.com",
       "phone": "(02) 8256-9680",
       "services": "infrastructure"
     },
@@ -169,7 +169,7 @@
     {
       "id": "agriculture",
       "slug": "city-agriculture",
-      "name": "",
+      "name": "Ms. Leticia Dela Cruz",
       "department": "City Agriculture Office",
       "abbreviation": "CAO",
       "description": "Agricultural loans, crop insurance, fertilizer assistance",
@@ -277,7 +277,7 @@
     {
       "id": "cdrrmo",
       "slug": "cdrrmo",
-      "name": "",
+      "name": "Mr. Alejandro Dela Merced",
       "department": "City Disaster Risk Reduction and Management Office",
       "abbreviation": "CDRRMO",
       "description": "Disaster preparedness, emergency response, risk reduction",
