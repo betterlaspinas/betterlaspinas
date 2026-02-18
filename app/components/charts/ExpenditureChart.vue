@@ -10,11 +10,11 @@ const props = withDefaults(
     totalExpense?: number
   }>(),
   {
-    gpsValue: 42.76,
-    socialValue: 13.33,
-    economicValue: 11.07,
-    debtValue: 0.35,
-    totalExpense: 67.51,
+    gpsValue: 1550.00,
+    socialValue: 1200.00,
+    economicValue: 800.00,
+    debtValue: 100.00,
+    totalExpense: 3650.00,
   },
 )
 

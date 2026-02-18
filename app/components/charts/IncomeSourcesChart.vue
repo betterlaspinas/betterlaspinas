@@ -8,9 +8,9 @@ const props = withDefaults(
     totalIncome?: number
   }>(),
   {
-    localValue: 88.85,
-    externalValue: 69.62,
-    totalIncome: 158.47,
+    localValue: 2152.96,
+    externalValue: 1741.10,
+    totalIncome: 3894.06,
   },
 )
 

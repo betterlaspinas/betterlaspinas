@@ -8,15 +8,15 @@ const data = {
     'Talon Dos',
     'Talon Uno',
     'Talon Singko',
+    'Pamplona Tres',
     'Pulang Lupa Uno',
     'Almanza Dos',
     'Almanza Uno',
-    'Pamplona Tres',
     'Talon Tres',
   ],
   datasets: [
     {
-      data: [81739, 44351, 43978, 42505, 38684, 38405, 37432, 36232, 35098, 32963],
+      data: [80621, 51459, 44452, 42677, 42013, 37234, 36908, 36679, 33683, 33192],
       backgroundColor: [
         '#0032a0',
         '#F77F00',

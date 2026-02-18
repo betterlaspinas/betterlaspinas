@@ -2,12 +2,12 @@
 import { Bar } from 'vue-chartjs'
 
 const data = {
-  labels: ['Agriculture', 'Trade & Commerce', 'Services', 'Industry'],
+  labels: ['Services', 'Industry', 'Trade & Commerce', 'Agriculture'],
   datasets: [
     {
       label: 'Share',
-      data: [45, 30, 20, 5],
-      backgroundColor: ['#0032a0', '#0077BE', '#06A77D', '#F77F00'],
+      data: [72, 16, 12, 0],
+      backgroundColor: ['#0032a0', '#F77F00', '#0077BE', '#06A77D'],
       borderRadius: 4,
     },
   ],

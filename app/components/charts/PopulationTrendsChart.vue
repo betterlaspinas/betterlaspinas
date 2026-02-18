@@ -6,7 +6,7 @@ const data = {
   datasets: [
     {
       label: 'Population',
-      data: [38006, 42857, 47288, 53004, 56831, 62649, 65896, 69296],
+      data: [297102, 413086, 472780, 532330, 552573, 588894, 606293, 615549],
       borderColor: '#0032a0',
       backgroundColor: 'rgba(0, 50, 160, 0.12)',
       fill: true,
@@ -44,7 +44,7 @@ const options = {
   scales: {
     y: {
       beginAtZero: false,
-      min: 30000,
+      min: 250000,
       ticks: {
         callback: (value: any) =>
           `${(Number(value) / 1000).toFixed(0)}K`,

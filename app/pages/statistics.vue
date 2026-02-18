@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {
   BarangayPopulationChart,
+  CMCIRankingsChart,
   KeyIndicatorsTrendChart,
   PopulationDistributionChart,
   PopulationTrendsChart,
@@ -170,7 +171,7 @@ const cmciPillars = computed(() => statisticsDetailed.value.cmciPillars)
       </div>
     </section>
 
-    <!-- Municipal Finance -->
+    <!-- City Finance -->
     <section class="py-12">
       <div class="container mx-auto px-4">
         <div class="text-center mb-10">
@@ -180,7 +181,7 @@ const cmciPillars = computed(() => statisticsDetailed.value.cmciPillars)
             <i class="bi bi-cash-stack" /> Finance
           </span>
           <h2 class="text-2xl font-bold text-gray-900 mb-2">
-            Municipal Income
+            City Income
           </h2>
           <p class="text-gray-500">
             Financial standing for fiscal year 2023
@@ -205,19 +206,19 @@ const cmciPillars = computed(() => statisticsDetailed.value.cmciPillars)
           <div class="bg-white border border-gray-200 rounded-xl p-6">
             <div class="flex items-center gap-2 mb-4 text-gray-500">
               <i class="bi bi-bank" />
-              <span>IRA Share</span>
+              <span>NTA Share</span>
             </div>
             <div class="text-3xl font-bold text-gray-900 mb-1">
               {{ statisticsDetailed.financialData.iraShare }}
             </div>
             <div class="text-sm text-gray-500">
-              Internal Revenue Allotment
+              National Tax Allotment
             </div>
           </div>
           <div class="bg-white border border-gray-200 rounded-xl p-6">
             <div class="flex items-center gap-2 mb-4 text-gray-500">
               <i class="bi bi-pie-chart-fill" />
-              <span>IRA Dependency</span>
+              <span>NTA Dependency</span>
             </div>
             <div class="text-3xl font-bold text-gray-900 mb-1">
               {{ statisticsDetailed.financialData.iraDependency }}
@@ -243,7 +244,7 @@ const cmciPillars = computed(() => statisticsDetailed.value.cmciPillars)
                 width: statisticsDetailed.financialData.iraDependency,
               }"
             >
-              IRA {{ statisticsDetailed.financialData.iraDependency }}
+              NTA {{ statisticsDetailed.financialData.iraDependency }}
             </div>
             <div
               class="bg-green-500 h-full flex items-center justify-center text-white text-xs font-medium"
@@ -261,7 +262,7 @@ const cmciPillars = computed(() => statisticsDetailed.value.cmciPillars)
               class="flex items-center gap-2 text-sm text-gray-600"
             >
               <span class="w-3 h-3 bg-primary-600 rounded-full" />
-              Internal Revenue Allotment
+              National Tax Allotment
             </div>
             <div
               class="flex items-center gap-2 text-sm text-gray-600"
@@ -301,7 +302,7 @@ const cmciPillars = computed(() => statisticsDetailed.value.cmciPillars)
             Population Trends
           </h2>
           <p class="text-gray-500">
-            Historical growth from 1990 to 2024
+            Population growth from 2020 to 2024
           </p>
         </div>
 
@@ -309,10 +310,10 @@ const cmciPillars = computed(() => statisticsDetailed.value.cmciPillars)
           <div
             class="text-center p-4 bg-white border border-gray-200 rounded-xl"
           >
-            <span class="text-sm text-gray-500">1990</span>
+            <span class="text-sm text-gray-500">2020</span>
             <span class="block text-2xl font-bold text-gray-900">
               {{
-                statisticsDetailed.populationGrowth.year1990.toLocaleString()
+                statisticsDetailed.populationGrowth.year2020.toLocaleString()
               }}
             </span>
           </div>
@@ -322,10 +323,10 @@ const cmciPillars = computed(() => statisticsDetailed.value.cmciPillars)
           <div
             class="text-center p-4 bg-primary-50 border border-primary-200 rounded-xl"
           >
-            <span class="text-sm text-primary-600">2020</span>
+            <span class="text-sm text-primary-600">2024</span>
             <span class="block text-2xl font-bold text-primary-700">
               {{
-                statisticsDetailed.populationGrowth.year2020.toLocaleString()
+                statisticsDetailed.populationGrowth.year2024.toLocaleString()
               }}
             </span>
           </div>
@@ -427,7 +428,7 @@ const cmciPillars = computed(() => statisticsDetailed.value.cmciPillars)
           <summary
             class="p-4 cursor-pointer font-medium text-gray-900 hover:bg-gray-50 flex items-center gap-2"
           >
-            <i class="bi bi-chevron-down" /> View all 22 barangays
+            <i class="bi bi-chevron-down" /> View all 20 barangays
           </summary>
           <div class="p-4 border-t border-gray-200 space-y-3">
             <div
@@ -523,6 +524,16 @@ const cmciPillars = computed(() => statisticsDetailed.value.cmciPillars)
           </div>
         </div>
 
+        <div class="bg-white border border-gray-200 rounded-xl p-6 mb-6">
+          <h4 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+            <i class="bi bi-graph-up-arrow" /> Overall Rankings Trend
+            (2016-2024)
+          </h4>
+          <ClientOnly>
+            <CMCIRankingsChart />
+          </ClientOnly>
+        </div>
+
         <div
           class="bg-white border border-gray-200 rounded-xl p-6 mb-6"
         >
@@ -565,7 +576,7 @@ const cmciPillars = computed(() => statisticsDetailed.value.cmciPillars)
             Population Bar Chart
           </h2>
           <p class="text-gray-500">
-            Comparative view of all 22 barangays
+            Comparative view of all 20 barangays
           </p>
         </div>
 

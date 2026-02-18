@@ -16,7 +16,7 @@ const data = {
   datasets: [
     {
       label: 'Overall Rank',
-      data: [85, 72, 65, 58, 52, 45, 40, 38, 35],
+      data: [25, 24, 23, 26, 20, 25, 31, 30, 30],
       borderColor: '#0032a0',
       backgroundColor: 'rgba(0, 50, 160, 0.1)',
       fill: true,
@@ -47,12 +47,13 @@ const options = {
     y: {
       reverse: true,
       beginAtZero: false,
-      min: 0,
-      max: 100,
+      min: 1,
+      max: 35,
       ticks: {
         callback: (value: any) => `#${value}`,
         font: { size: 10 },
         color: '#666',
+        stepSize: 5,
       },
       grid: {
         color: 'rgba(0, 0, 0, 0.04)',

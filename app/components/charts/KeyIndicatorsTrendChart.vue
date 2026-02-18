@@ -16,7 +16,7 @@ const data = {
   datasets: [
     {
       label: 'Health',
-      data: [2.4, 0.7, 0.45, 0.35, 0.35, 0.4, 0.38, 0.35, 0.32],
+      data: [0.4071, 0.2444, 0.2610, 0.0682, 0.1676, 0.0974, 0.1120, 0.1179, 0.1326],
       borderColor: '#0032a0',
       backgroundColor: '#0032a0',
       tension: 0.35,
@@ -26,7 +26,7 @@ const data = {
     },
     {
       label: 'Education',
-      data: [0.65, 0.32, 0.28, 0.25, 0.18, 0.15, 0.12, 0.1, 0.08],
+      data: [0.7660, 0.3782, 0.4859, 0.3160, 0.3757, 0.1528, 0.1678, 0.1795, 0.1257],
       borderColor: '#f59e0b',
       backgroundColor: '#f59e0b',
       tension: 0.35,
@@ -36,7 +36,7 @@ const data = {
     },
     {
       label: 'Social Protection',
-      data: [0.25, 0.28, 0.22, 0.05, 0.28, 0.35, 0.3, 0.22, 0.18],
+      data: [0.0000, 0.5033, 1.1375, 0.0000, 0.5070, 0.7192, 0.8584, 0.9260, 1.3784],
       borderColor: '#10b981',
       backgroundColor: '#10b981',
       tension: 0.35,
@@ -46,7 +46,7 @@ const data = {
     },
     {
       label: 'Peace & Order',
-      data: [0.12, 0.35, 0.55, 0.42, 0.38, 0.42, 0.4, 0.38, 0.35],
+      data: [0.5570, 0.2996, 0.2637, 0.2063, 0.1657, 0.1210, 0.0001, 0.0174, 0.0095],
       borderColor: '#0ea5e9',
       backgroundColor: '#0ea5e9',
       tension: 0.35,
@@ -56,7 +56,7 @@ const data = {
     },
     {
       label: 'LGU Investment',
-      data: [0.08, 0.15, 0.18, 0.12, 0.1, 0.15, 0.18, 0.22, 0.25],
+      data: [3.3333, 0.6207, 0.7886, 0.1993, 0.3864, 0.1697, 0.1587, 0.9042, 0.0000],
       borderColor: '#8b5cf6',
       backgroundColor: '#8b5cf6',
       tension: 0.35,
@@ -92,7 +92,7 @@ const options = {
   scales: {
     y: {
       beginAtZero: true,
-      max: 2.5,
+      max: 4.0,
       ticks: {
         font: { size: 10 },
         color: '#666',
