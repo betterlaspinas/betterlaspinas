@@ -33,6 +33,7 @@ A modern, accessible, and fully-featured local government unit (LGU) website bui
 
 - **Node.js** 18.x or higher
 - **npm** 9.x or higher
+- **pnpm** 8.x or higher (optional)
 
 ## 🚀 Installation & Setup
 
@@ -47,6 +48,8 @@ cd betterlaspinas
 
 ```bash
 npm install
+# or
+pnpm install
 ```
 
 ### 3. Configure Your LGU
@@ -66,22 +69,24 @@ Edit the configuration files in `app/config/`:
 
 ```bash
 npm run dev
+# or
+pnpm dev
 ```
 
 Visit `http://localhost:3000` to see your site.
 
 ## 📜 Available Scripts
 
-| Command             | Description                  |
-| ------------------- | ---------------------------- |
-| `npm run dev`       | Start development server     |
-| `npm run build`     | Build for production         |
-| `npm run preview`   | Preview production build     |
-| `npm run generate`  | Generate static site         |
-| `npm run lint`      | Check code with ESLint       |
-| `npm run lint:fix`  | Fix ESLint errors            |
-| `npm run test`      | Run tests in watch mode      |
-| `npm run typecheck` | Run TypeScript type checking |
+| Command             | pnpm Alternative | Description                  |
+| ------------------- | ---------------- | ---------------------------- |
+| `npm run dev`       | `pnpm dev`       | Start development server     |
+| `npm run build`     | `pnpm build`     | Build for production         |
+| `npm run preview`   | `pnpm preview`   | Preview production build     |
+| `npm run generate`  | `pnpm generate`  | Generate static site         |
+| `npm run lint`      | `pnpm lint`      | Check code with ESLint       |
+| `npm run lint:fix`  | `pnpm lint:fix`  | Fix ESLint errors            |
+| `npm run test`      | `pnpm test`      | Run tests in watch mode      |
+| `npm run typecheck` | `pnpm typecheck` | Run TypeScript type checking |
 
 ## 🧪 Testing
 
@@ -90,12 +95,18 @@ Run the test suite:
 ```bash
 # Watch mode (for development)
 npm test
+# or
+pnpm test
 
 # Run once (for CI)
 npm run test -- --run
+# or
+pnpm test --run
 
 # With coverage
 npm run test:coverage
+# or
+pnpm test:coverage
 ```
 
 ## 🔒 Git Hooks & Pre-commit Checks
@@ -115,8 +126,16 @@ If any check fails, the commit will be blocked. Fix the issues before committing
 ```bash
 # Run all checks manually
 npm run lint        # Check code style
+# or
+pnpm lint
+
 npm run typecheck   # Check types
+# or
+pnpm typecheck
+
 npm run test -- --run  # Run tests
+# or
+pnpm test --run
 ```
 
 ## 📁 Project Structure
@@ -170,6 +189,8 @@ No code changes required for content updates!
 
 ```bash
 npm run generate
+# or
+pnpm generate
 ```
 
 Output will be in `.output/public/` - deploy to any static host.
@@ -178,6 +199,9 @@ Output will be in `.output/public/` - deploy to any static host.
 
 ```bash
 npm run build
+node .output/server/index.mjs
+# or
+pnpm build
 node .output/server/index.mjs
 ```
 
