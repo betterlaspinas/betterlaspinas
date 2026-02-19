@@ -40,7 +40,7 @@ export const categoriesContent: CategoryContent[] = [
         icon: 'bi-file-earmark-text',
         description:
           'Get a certified copy of birth certificate registered in your municipality',
-        fee: '₱150',
+        fee: '₱75',
         time: '15-30 mins',
         link: '/service-details/birth-certificate',
       },
@@ -50,7 +50,7 @@ export const categoriesContent: CategoryContent[] = [
         icon: 'bi-heart',
         description:
           'Register or request certified true copy of marriage certificate',
-        fee: 'Free (Registration)',
+        fee: '₱150 (Registration)',
         time: '5 mins',
         link: '/service-details/marriage-certificate',
       },
@@ -60,7 +60,7 @@ export const categoriesContent: CategoryContent[] = [
         icon: 'bi-file-earmark-x',
         description:
           'Register death certificate and obtain burial/transfer permit',
-        fee: '₱50-150',
+        fee: '₱75-150',
         time: '~1.5 hrs',
         link: '/service-details/death-certificate',
       },
@@ -91,11 +91,11 @@ export const categoriesContent: CategoryContent[] = [
     ],
     offices: [
       {
-        title: 'Municipal Civil Registrar',
+        title: 'City Civil Registrar',
         icon: 'bi-building',
         description:
           'Birth, death, marriage registration, corrections, and certified copies',
-        link: '/service-details/municipal-civil-registrar',
+        link: '/service-details/city-civil-registrar',
       },
       {
         title: 'Human Resource Management',

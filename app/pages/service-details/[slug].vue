@@ -98,7 +98,7 @@ function toggleFaq(index: number) {
             <h4 class="font-semibold text-gray-900 mb-2">
               {{ step.title }}
             </h4>
-            <p class="text-sm text-gray-500">
+            <p class="text-sm text-gray-800">
               {{ step.description }}
             </p>
           </div>
@@ -128,7 +128,7 @@ function toggleFaq(index: number) {
                   <li
                     v-for="item in req.items"
                     :key="item"
-                    class="flex items-start gap-2 text-sm text-gray-600"
+                    class="flex items-start gap-2 text-sm text-gray-900"
                   >
                     <i class="bi bi-check-circle-fill text-primary-600 mt-0.5" />
                     {{ item }}
@@ -162,7 +162,7 @@ function toggleFaq(index: number) {
                   </button>
                   <div
                     v-if="openFaq === faqIndex"
-                    class="px-4 pb-4 text-sm text-gray-600"
+                    class="px-4 pb-4 text-sm text-gray-900"
                   >
                     {{ faq.answer }}
                   </div>

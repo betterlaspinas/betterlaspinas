@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { NuxtLink } from '#components'
+
 const route = useRoute()
 const category = route.params.category as string
 const categoryContent = getCategoryContent(category)
@@ -50,9 +52,9 @@ useHead({
             ]"
           >
             <component
-              :is="service.link ? 'NuxtLink' : 'div'"
+              :is="service.link ? NuxtLink : 'div'"
               :to="service.link"
-              :class="{ 'block h-full': service.link }"
+              :class="{ 'block h-full cursor-pointer': service.link }"
             >
               <h3
                 class="text-lg font-semibold text-gray-900 mb-2 flex items-center gap-2"

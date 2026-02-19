@@ -51,6 +51,9 @@ export interface ServiceDetail {
 }
 
 export const serviceDetailsContent: ServiceDetail[] = [
+  /**
+   * Certificates & Vital Records
+   */
   {
     id: 'birth-certificate',
     title: 'Birth Certificate',
@@ -63,7 +66,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       'Official certified copy of birth certificate registered in your city',
     quickStats: [
       { icon: 'bi-clock', label: 'Processing', value: '15-30 Minutes' },
-      { icon: 'bi-cash', label: 'Fee', value: '₱150/copy' },
+      { icon: 'bi-cash', label: 'Fee', value: '₱75/copy' },
       {
         icon: 'bi-person-check',
         label: 'Who Can Apply',
@@ -85,22 +88,22 @@ export const serviceDetailsContent: ServiceDetail[] = [
       {
         title: 'Visit Civil Registrar',
         description:
-          'Go to the Local Civil Registrar Office at 2nd Floor, City Hall. Office hours: Mon-Fri, 8AM-5PM.',
+          'Go to the City Civil Registrar Office - Window 4 at 2nd Floor, City Hall. Office hours: Mon-Fri, 8AM-5PM.',
       },
       {
         title: 'Fill Out Request Form',
         description:
-          'Complete the request form with full name, date of birth, place of birth, parents\' names, and purpose.',
+          'Complete the request form / verification slip with full name, date of birth, place of birth, parents\' names, and purpose.',
       },
       {
         title: 'Pay the Fee',
         description:
-          'Pay ₱150 per certified copy at the City Treasurer\'s Office (same building).',
+          'Pay ₱75 per certified copy at Window 2 or 3 of the Civil Registrar or at the City Treasurer\'s Office (same building).',
       },
       {
         title: 'Claim Certificate',
         description:
-          'Return to Civil Registrar with official receipt. Certificate released within 15-30 minutes if record is available.',
+          'Return to Civil Registrar Window 4 with official receipt. Certificate released within 15-30 minutes if record is available.',
         isFinal: true,
       },
     ],
@@ -110,7 +113,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
         icon: 'bi-person',
         items: [
           'Valid government-issued ID (original + photocopy)',
-          'Payment: ₱150 cash per copy',
+          'Payment: ₱75 cash per copy',
         ],
       },
       {
@@ -120,7 +123,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
           'Authorization letter signed by the owner',
           'Valid ID of the owner (photocopy)',
           'Valid ID of the representative (original + photocopy)',
-          'Payment: ₱150 cash per copy',
+          'Payment: ₱75 cash per copy',
         ],
       },
     ],
@@ -129,7 +132,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
         question:
           'Can I get a birth certificate registered in another city?',
         answer:
-          'No. The Local Civil Registrar only has records for births registered in this city. For other cities, request from that city\'s Civil Registrar or from PSA.',
+          'No. The City Civil Registrar only has records for births registered in this city. For other cities, request from that city\'s Civil Registrar or from PSA.',
       },
       {
         question: 'What if I don\'t know the exact date of birth?',
@@ -148,9 +151,9 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
     ],
     office: {
-      name: 'Local Civil Registrar',
+      name: 'City Civil Registrar',
       location: 'City Hall, 2nd Floor',
-      phone: '',
+      phone: '0920 425 8214',
       hours: 'Mon-Fri: 8AM - 5PM',
     },
     relatedServices: [
@@ -176,8 +179,8 @@ export const serviceDetailsContent: ServiceDetail[] = [
     description:
       'Register or request certified true copy of marriage certificate',
     quickStats: [
-      { icon: 'bi-clock', label: 'Processing', value: '5-10 Minutes' },
-      { icon: 'bi-cash', label: 'Fee', value: 'Free (Registration)' },
+      { icon: 'bi-clock', label: 'Processing', value: '3-10 Days' },
+      { icon: 'bi-cash', label: 'Fee', value: '₱150 (Registration)' },
       {
         icon: 'bi-person-check',
         label: 'Who Can Apply',
@@ -197,17 +200,17 @@ export const serviceDetailsContent: ServiceDetail[] = [
           'Go to the Civil Registrar Office, 2nd Floor, City Hall.',
       },
       {
-        title: 'Submit Documents',
+        title: 'Submit Documents & Verification',
         description:
-          'Submit marriage certificate and supporting documents for registration.',
+          'Submit marriage certificate and supporting documents for registration at Window 5. Staff verifies document authenticity and completeness.',
       },
       {
-        title: 'Verification',
-        description: 'Staff verifies document authenticity and completeness.',
+        title: 'Payment',
+        description: 'Pay the Solemnization Fee of ₱150 at Window 2 or 3 in the Civil Registrar Office.',
       },
       {
         title: 'Registration',
-        description: 'Marriage is officially registered in the civil registry.',
+        description: 'Marriage is officially registered in the Civil Registry.',
       },
       {
         title: 'Claim Certificate',
@@ -218,10 +221,21 @@ export const serviceDetailsContent: ServiceDetail[] = [
     ],
     requirements: [
       {
-        title: 'For Registration',
+        title: 'For Timely Registration',
         icon: 'bi-file-text',
         items: [
-          'Original marriage certificate from solemnizing officer',
+          'Duly accomplished Certificate of Marriage - 4 copies',
+          'Marriage solemnized outside Churches or Municipal Court must submit a Request address to solemnizing officer for celebration of Marriage in a place other than those authorized by law',
+          'Valid IDs of both spouses',
+          'Marriage license (if applicable)',
+        ],
+      },
+      {
+        title: 'For Late Registration',
+        icon: 'bi-file-text',
+        items: [
+          'Duly accomplished Certificate of Marriage - 4 copies',
+          'Certificate of Marriage of contracting parties',
           'Valid IDs of both spouses',
           'Marriage license (if applicable)',
         ],
@@ -232,7 +246,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
         items: [
           'Valid ID of spouse or authorized representative',
           'Authorization letter (if representative)',
-          'Payment: ₱150 per copy',
+          'Payment: ₱75 per copy',
         ],
       },
     ],
@@ -249,9 +263,9 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
     ],
     office: {
-      name: 'Local Civil Registrar',
+      name: 'City Civil Registrar',
       location: 'City Hall, 2nd Floor',
-      phone: '',
+      phone: '0920 425 8214',
       hours: 'Mon-Fri: 8AM - 5PM',
     },
     relatedServices: [
@@ -273,7 +287,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
     description: 'Register death certificate and obtain burial/transfer permit',
     quickStats: [
       { icon: 'bi-clock', label: 'Processing', value: '~1.5 Hours' },
-      { icon: 'bi-cash', label: 'Fee', value: '₱50-150' },
+      { icon: 'bi-cash', label: 'Fee', value: '₱75-150' },
       {
         icon: 'bi-person-check',
         label: 'Who Can Apply',
@@ -290,7 +304,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       {
         title: 'Visit Civil Registrar',
         description:
-          'Go to Civil Registrar with death certificate within 48 hours.',
+          'Go to Civil Registrar at Window 5 with death certificate within 48 hours.',
       },
       {
         title: 'Complete Registry',
@@ -299,23 +313,33 @@ export const serviceDetailsContent: ServiceDetail[] = [
       {
         title: 'Pay Fees',
         description:
-          'Pay registration and burial permit fees at Treasurer\'s Office.',
+          'Pay registration of ₱75, ₱150 if late, and burial permit fees at Window 2 or 3 in the Civil Registrar Office or at the City Treasurer\'s Office.',
       },
       {
         title: 'Claim Permits',
-        description: 'Receive burial permit and certified death certificate.',
+        description: 'Receive burial permit and certified death certificate at Window 5.',
         isFinal: true,
       },
     ],
     requirements: [
       {
-        title: 'Required Documents',
+        title: 'For Timely Registration',
         icon: 'bi-file-text',
         items: [
-          'Certificate of death from physician',
+          'Certificate of Death - 4 copies',
           'Valid ID of informant',
           'Valid ID of deceased (if available)',
-          'Payment for burial permit',
+        ],
+      },
+      {
+        title: 'For Late Registration',
+        icon: 'bi-file-text',
+        items: [
+          'Negative Certification from Philippine Statistics Authority',
+          'Duly accomplished Certificate of Death or Certificate of Fetal Death',
+          'Certification from the Cemetery',
+          'Valid ID of informant',
+          'Valid ID of deceased (if available)',
         ],
       },
     ],
@@ -330,11 +354,16 @@ export const serviceDetailsContent: ServiceDetail[] = [
         answer:
           'Yes, burial permit is required before interment in any cemetery.',
       },
+      {
+        question: 'How long is the posting period for Late Registration?',
+        answer:
+          'Evaluator shall prepare documents for posting within 10 days, and the release of Certified True Copy is expiration of 10 days posting period.',
+      },
     ],
     office: {
-      name: 'Local Civil Registrar',
+      name: 'City Civil Registrar',
       location: 'City Hall, 2nd Floor',
-      phone: '',
+      phone: '0920 425 8214',
       hours: 'Mon-Fri: 8AM - 5PM',
     },
     relatedServices: [
@@ -357,7 +386,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       'Birth, death, marriage registration, corrections, and certified copies',
     quickStats: [
       { icon: 'bi-clock', label: 'Office Hours', value: 'Mon-Fri 8AM-5PM' },
-      { icon: 'bi-telephone', label: 'Contact', value: '(078) 326-5001' },
+      { icon: 'bi-telephone', label: 'Contact', value: '0920 425 8214' },
       {
         icon: 'bi-geo-alt',
         label: 'Location',
@@ -407,9 +436,9 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
     ],
     office: {
-      name: 'Local Civil Registrar',
+      name: 'City Civil Registrar',
       location: 'City Hall, 2nd Floor',
-      phone: '',
+      phone: '0920 425 8214',
       hours: 'Mon-Fri: 8AM - 5PM',
     },
     relatedServices: [
@@ -427,6 +456,73 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
     ],
   },
+  {
+    id: 'human-resource-management',
+    title: 'Human Resource Management',
+    fullTitle: 'Human Resource Management Office',
+    category: 'Certificates',
+    categoryLink: '/services/certificates',
+    badgeText: 'HR',
+    badgeIcon: 'bi-people',
+    description:
+      'Service records, employment certificates, and HR services for LGU employees',
+    quickStats: [
+      { icon: 'bi-clock', label: 'Processing', value: '1-3 Days' },
+      { icon: 'bi-cash', label: 'Fee', value: 'Free (employees)' },
+      { icon: 'bi-person-check', label: 'For', value: 'LGU Employees' },
+      { icon: 'bi-calendar-check', label: 'Appointment', value: 'Walk-in' },
+    ],
+    processSteps: [
+      {
+        title: 'Submit Request',
+        description:
+          'File request for the service record or certificate you need.',
+      },
+      {
+        title: 'Verification',
+        description: 'HRMO verifies employment records.',
+      },
+      {
+        title: 'Processing',
+        description: 'Staff prepares the requested document.',
+      },
+      {
+        title: 'Claim Document',
+        description: 'Return to claim service record or certificate.',
+        isFinal: true,
+      },
+    ],
+    requirements: [
+      {
+        title: 'For Service Record',
+        icon: 'bi-file-text',
+        items: [
+          'Request form',
+          'Valid ID',
+          'Previous service record (if available)',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'Who can request service records?',
+        answer: 'Current and former LGU employees for their own records.',
+      },
+    ],
+    office: {
+      name: 'HRMO',
+      location: 'City Hall',
+      phone: '(078) 326-5001',
+      hours: 'Mon-Fri: 8AM - 5PM',
+    },
+    relatedServices: [
+      { title: 'Employment Certification', link: '/services/certificates' },
+    ],
+  },
+
+  /**
+   * Business & Trade
+   */
   {
     id: 'business-permits-licensing',
     title: 'Business Permits & Licensing',
@@ -522,79 +618,85 @@ export const serviceDetailsContent: ServiceDetail[] = [
     ],
   },
   {
-    id: 'city-treasurer',
-    title: 'City Treasurer\'s Office',
-    fullTitle: 'City Treasurer\'s Office',
-    category: 'Taxation',
-    categoryLink: '/services/tax-payments',
-    badgeText: 'Taxation',
-    badgeIcon: 'bi-cash-coin',
-    description: 'Tax payments, revenue collection, and tax clearances',
+    id: 'tricycle-franchising',
+    title: 'Tricycle Franchising',
+    fullTitle: 'Tricycle Franchise Application',
+    category: 'Business',
+    categoryLink: '/services/business',
+    badgeText: 'Business',
+    badgeIcon: 'bi-bicycle',
+    description: 'Application for tricycle-for-hire franchise',
     quickStats: [
-      { icon: 'bi-clock', label: 'Processing', value: '15-30 Minutes' },
-      { icon: 'bi-cash', label: 'Payment Methods', value: 'Cash/Check' },
-      { icon: 'bi-calendar', label: 'Deadline', value: 'Jan 31 (RPT)' },
-      { icon: 'bi-percent', label: 'Discount', value: '10% if paid early' },
+      { icon: 'bi-clock', label: 'Processing', value: '3-5 Days' },
+      { icon: 'bi-cash', label: 'Fee', value: '₱500' },
+      {
+        icon: 'bi-person-check',
+        label: 'Who Can Apply',
+        value: 'Owner/Operator',
+      },
+      { icon: 'bi-calendar-check', label: 'Appointment', value: 'Walk-in' },
     ],
     processSteps: [
       {
-        title: 'Get Tax Bill',
-        description: 'Request your tax bill or assessment from the office.',
+        title: 'Prepare Requirements',
+        description:
+          'Gather vehicle registration, driver\'s license, and barangay clearance.',
       },
       {
-        title: 'Verify Amount',
-        description: 'Check the details and amount due.',
+        title: 'Submit Application',
+        description: 'File application at the City Traffic Office.',
       },
-      { title: 'Make Payment', description: 'Pay at the cashier window.' },
       {
-        title: 'Claim Receipt',
-        description: 'Keep official receipt for your records.',
+        title: 'Vehicle Inspection',
+        description: 'Have your tricycle inspected for safety compliance.',
+      },
+      {
+        title: 'Pay Fees',
+        description: 'Pay franchise fee at Treasurer\'s Office.',
+      },
+      {
+        title: 'Claim Franchise',
+        description: 'Return to claim franchise certificate.',
         isFinal: true,
       },
     ],
     requirements: [
       {
-        title: 'For Real Property Tax',
-        icon: 'bi-house',
+        title: 'Required Documents',
+        icon: 'bi-file-text',
         items: [
-          'Tax Declaration Number',
-          'Previous Official Receipt',
-          'Valid ID',
+          'OR/CR of tricycle motorcycle',
+          'Valid driver\'s license',
+          'Barangay clearance',
+          'Police clearance',
+          'NBI clearance',
+          '2x2 ID pictures',
         ],
-      },
-      {
-        title: 'For Business Tax',
-        icon: 'bi-shop',
-        items: ['Business Permit', 'Assessment from BPLO', 'Valid ID'],
       },
     ],
     faqs: [
       {
-        question: 'Is there a discount for early payment?',
-        answer: 'Yes, 10% discount for RPT paid in full before January 31.',
-      },
-      {
-        question: 'Can I pay quarterly?',
-        answer: 'Yes, RPT can be paid quarterly without discount.',
+        question: 'How long is the franchise valid?',
+        answer: 'Usually 3 years, subject to annual renewal of registration.',
       },
     ],
     office: {
-      name: 'City Treasurer\'s Office',
-      location: 'City Hall, Ground Floor',
+      name: 'City Traffic Office',
+      location: 'City Hall',
       phone: '(078) 326-5001',
       hours: 'Mon-Fri: 8AM - 5PM',
     },
     relatedServices: [
       {
-        title: 'Property Declaration',
-        link: '/service-details/property-declaration',
-      },
-      {
-        title: 'City Assessor',
-        link: '/service-details/municipal-assessor',
+        title: 'Business Permits',
+        link: '/service-details/business-permits-licensing',
       },
     ],
   },
+
+  /**
+   * Taxation & Payments
+   */
   {
     id: 'city-assessor',
     title: 'City Assessor\'s Office',
@@ -673,6 +775,80 @@ export const serviceDetailsContent: ServiceDetail[] = [
     ],
   },
   {
+    id: 'city-treasurer',
+    title: 'City Treasurer\'s Office',
+    fullTitle: 'City Treasurer\'s Office',
+    category: 'Taxation',
+    categoryLink: '/services/tax-payments',
+    badgeText: 'Taxation',
+    badgeIcon: 'bi-cash-coin',
+    description: 'Tax payments, revenue collection, and tax clearances',
+    quickStats: [
+      { icon: 'bi-clock', label: 'Processing', value: '15-30 Minutes' },
+      { icon: 'bi-cash', label: 'Payment Methods', value: 'Cash/Check' },
+      { icon: 'bi-calendar', label: 'Deadline', value: 'Jan 31 (RPT)' },
+      { icon: 'bi-percent', label: 'Discount', value: '10% if paid early' },
+    ],
+    processSteps: [
+      {
+        title: 'Get Tax Bill',
+        description: 'Request your tax bill or assessment from the office.',
+      },
+      {
+        title: 'Verify Amount',
+        description: 'Check the details and amount due.',
+      },
+      { title: 'Make Payment', description: 'Pay at the cashier window.' },
+      {
+        title: 'Claim Receipt',
+        description: 'Keep official receipt for your records.',
+        isFinal: true,
+      },
+    ],
+    requirements: [
+      {
+        title: 'For Real Property Tax',
+        icon: 'bi-house',
+        items: [
+          'Tax Declaration Number',
+          'Previous Official Receipt',
+          'Valid ID',
+        ],
+      },
+      {
+        title: 'For Business Tax',
+        icon: 'bi-shop',
+        items: ['Business Permit', 'Assessment from BPLO', 'Valid ID'],
+      },
+    ],
+    faqs: [
+      {
+        question: 'Is there a discount for early payment?',
+        answer: 'Yes, 10% discount for RPT paid in full before January 31.',
+      },
+      {
+        question: 'Can I pay quarterly?',
+        answer: 'Yes, RPT can be paid quarterly without discount.',
+      },
+    ],
+    office: {
+      name: 'City Treasurer\'s Office',
+      location: 'City Hall, Ground Floor',
+      phone: '(078) 326-5001',
+      hours: 'Mon-Fri: 8AM - 5PM',
+    },
+    relatedServices: [
+      {
+        title: 'Property Declaration',
+        link: '/service-details/property-declaration',
+      },
+      {
+        title: 'City Assessor',
+        link: '/service-details/municipal-assessor',
+      },
+    ],
+  },
+  {
     id: 'property-declaration',
     title: 'Property Declaration',
     fullTitle: 'Tax Declaration & Property Records',
@@ -740,82 +916,10 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
     ],
   },
-  {
-    id: 'tricycle-franchising',
-    title: 'Tricycle Franchising',
-    fullTitle: 'Tricycle Franchise Application',
-    category: 'Business',
-    categoryLink: '/services/business',
-    badgeText: 'Business',
-    badgeIcon: 'bi-bicycle',
-    description: 'Application for tricycle-for-hire franchise',
-    quickStats: [
-      { icon: 'bi-clock', label: 'Processing', value: '3-5 Days' },
-      { icon: 'bi-cash', label: 'Fee', value: '₱500' },
-      {
-        icon: 'bi-person-check',
-        label: 'Who Can Apply',
-        value: 'Owner/Operator',
-      },
-      { icon: 'bi-calendar-check', label: 'Appointment', value: 'Walk-in' },
-    ],
-    processSteps: [
-      {
-        title: 'Prepare Requirements',
-        description:
-          'Gather vehicle registration, driver\'s license, and barangay clearance.',
-      },
-      {
-        title: 'Submit Application',
-        description: 'File application at the City Traffic Office.',
-      },
-      {
-        title: 'Vehicle Inspection',
-        description: 'Have your tricycle inspected for safety compliance.',
-      },
-      {
-        title: 'Pay Fees',
-        description: 'Pay franchise fee at Treasurer\'s Office.',
-      },
-      {
-        title: 'Claim Franchise',
-        description: 'Return to claim franchise certificate.',
-        isFinal: true,
-      },
-    ],
-    requirements: [
-      {
-        title: 'Required Documents',
-        icon: 'bi-file-text',
-        items: [
-          'OR/CR of tricycle motorcycle',
-          'Valid driver\'s license',
-          'Barangay clearance',
-          'Police clearance',
-          'NBI clearance',
-          '2x2 ID pictures',
-        ],
-      },
-    ],
-    faqs: [
-      {
-        question: 'How long is the franchise valid?',
-        answer: 'Usually 3 years, subject to annual renewal of registration.',
-      },
-    ],
-    office: {
-      name: 'City Traffic Office',
-      location: 'City Hall',
-      phone: '(078) 326-5001',
-      hours: 'Mon-Fri: 8AM - 5PM',
-    },
-    relatedServices: [
-      {
-        title: 'Business Permits',
-        link: '/service-details/business-permits-licensing',
-      },
-    ],
-  },
+
+  /**
+   * Social Services
+   */
   {
     id: 'cswdo-services',
     title: 'CSWDO Services',
@@ -967,6 +1071,10 @@ export const serviceDetailsContent: ServiceDetail[] = [
       { title: 'CSWDO Services', link: '/service-details/cswdo-services' },
     ],
   },
+
+  /**
+   * Agriculture
+   */
   {
     id: 'city-agriculture',
     title: 'City Agriculture Office',
@@ -1040,6 +1148,10 @@ export const serviceDetailsContent: ServiceDetail[] = [
       { title: 'Crop Insurance', link: '/services/agriculture' },
     ],
   },
+
+  /**
+   * Infrastructure
+   */
   {
     id: 'city-engineering',
     title: 'City Engineering Office',
@@ -1189,6 +1301,67 @@ export const serviceDetailsContent: ServiceDetail[] = [
     ],
   },
   {
+    id: 'city-general-services',
+    title: 'City General Services',
+    fullTitle: 'City General Services Office',
+    category: 'Infrastructure',
+    categoryLink: '/services/infrastructure',
+    badgeText: 'Services',
+    badgeIcon: 'bi-tools',
+    description: 'Equipment rental, vehicle use, and general services',
+    quickStats: [
+      { icon: 'bi-clock', label: 'Office Hours', value: 'Mon-Fri 8AM-5PM' },
+      { icon: 'bi-telephone', label: 'Contact', value: '(078) 326-5001' },
+      { icon: 'bi-geo-alt', label: 'Location', value: 'City Hall' },
+      { icon: 'bi-cash', label: 'Rental', value: 'Varies' },
+    ],
+    processSteps: [
+      {
+        title: 'Submit Request',
+        description: 'File equipment or vehicle use request.',
+      },
+      { title: 'Approval', description: 'Wait for approval from GSO.' },
+      { title: 'Pay Fees', description: 'Pay rental fees if applicable.' },
+      {
+        title: 'Use Equipment',
+        description: 'Use equipment/vehicle as scheduled.',
+        isFinal: true,
+      },
+    ],
+    requirements: [
+      {
+        title: 'Equipment Request',
+        icon: 'bi-file-text',
+        items: [
+          'Request letter',
+          'Purpose of use',
+          'Valid ID',
+          'Payment (if applicable)',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'What equipment is available?',
+        answer:
+          'Heavy equipment, service vehicles, and other municipal assets for public use.',
+      },
+    ],
+    office: {
+      name: 'General Services Office',
+      location: 'City Hall',
+      phone: '(078) 326-5001',
+      hours: 'Mon-Fri: 8AM - 5PM',
+    },
+    relatedServices: [
+      { title: 'Infrastructure', link: '/services/infrastructure' },
+    ],
+  },
+
+  /**
+   * Budget
+   */
+  {
     id: 'city-budget',
     title: 'City Budget Office',
     fullTitle: 'City Budget Office',
@@ -1312,69 +1485,10 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
     ],
   },
-  {
-    id: 'human-resource-management',
-    title: 'Human Resource Management',
-    fullTitle: 'Human Resource Management Office',
-    category: 'Certificates',
-    categoryLink: '/services/certificates',
-    badgeText: 'HR',
-    badgeIcon: 'bi-people',
-    description:
-      'Service records, employment certificates, and HR services for LGU employees',
-    quickStats: [
-      { icon: 'bi-clock', label: 'Processing', value: '1-3 Days' },
-      { icon: 'bi-cash', label: 'Fee', value: 'Free (employees)' },
-      { icon: 'bi-person-check', label: 'For', value: 'LGU Employees' },
-      { icon: 'bi-calendar-check', label: 'Appointment', value: 'Walk-in' },
-    ],
-    processSteps: [
-      {
-        title: 'Submit Request',
-        description:
-          'File request for the service record or certificate you need.',
-      },
-      {
-        title: 'Verification',
-        description: 'HRMO verifies employment records.',
-      },
-      {
-        title: 'Processing',
-        description: 'Staff prepares the requested document.',
-      },
-      {
-        title: 'Claim Document',
-        description: 'Return to claim service record or certificate.',
-        isFinal: true,
-      },
-    ],
-    requirements: [
-      {
-        title: 'For Service Record',
-        icon: 'bi-file-text',
-        items: [
-          'Request form',
-          'Valid ID',
-          'Previous service record (if available)',
-        ],
-      },
-    ],
-    faqs: [
-      {
-        question: 'Who can request service records?',
-        answer: 'Current and former LGU employees for their own records.',
-      },
-    ],
-    office: {
-      name: 'HRMO',
-      location: 'City Hall',
-      phone: '(078) 326-5001',
-      hours: 'Mon-Fri: 8AM - 5PM',
-    },
-    relatedServices: [
-      { title: 'Employment Certification', link: '/services/certificates' },
-    ],
-  },
+
+  /**
+   * Economy
+   */
   {
     id: 'seedo-public-market',
     title: 'SEEDO Public Market',
@@ -1509,63 +1623,10 @@ export const serviceDetailsContent: ServiceDetail[] = [
       { title: 'Veterinary Services', link: '/services/agriculture' },
     ],
   },
-  {
-    id: 'city-general-services',
-    title: 'City General Services',
-    fullTitle: 'City General Services Office',
-    category: 'Infrastructure',
-    categoryLink: '/services/infrastructure',
-    badgeText: 'Services',
-    badgeIcon: 'bi-tools',
-    description: 'Equipment rental, vehicle use, and general services',
-    quickStats: [
-      { icon: 'bi-clock', label: 'Office Hours', value: 'Mon-Fri 8AM-5PM' },
-      { icon: 'bi-telephone', label: 'Contact', value: '(078) 326-5001' },
-      { icon: 'bi-geo-alt', label: 'Location', value: 'City Hall' },
-      { icon: 'bi-cash', label: 'Rental', value: 'Varies' },
-    ],
-    processSteps: [
-      {
-        title: 'Submit Request',
-        description: 'File equipment or vehicle use request.',
-      },
-      { title: 'Approval', description: 'Wait for approval from GSO.' },
-      { title: 'Pay Fees', description: 'Pay rental fees if applicable.' },
-      {
-        title: 'Use Equipment',
-        description: 'Use equipment/vehicle as scheduled.',
-        isFinal: true,
-      },
-    ],
-    requirements: [
-      {
-        title: 'Equipment Request',
-        icon: 'bi-file-text',
-        items: [
-          'Request letter',
-          'Purpose of use',
-          'Valid ID',
-          'Payment (if applicable)',
-        ],
-      },
-    ],
-    faqs: [
-      {
-        question: 'What equipment is available?',
-        answer:
-          'Heavy equipment, service vehicles, and other municipal assets for public use.',
-      },
-    ],
-    office: {
-      name: 'General Services Office',
-      location: 'City Hall',
-      phone: '(078) 326-5001',
-      hours: 'Mon-Fri: 8AM - 5PM',
-    },
-    relatedServices: [
-      { title: 'Infrastructure', link: '/services/infrastructure' },
-    ],
-  },
+
+  /**
+   * Services
+   */
   {
     id: 'general-services',
     title: 'General Services',
@@ -1618,6 +1679,10 @@ export const serviceDetailsContent: ServiceDetail[] = [
     },
     relatedServices: [{ title: 'All Services', link: '/services' }],
   },
+
+  /**
+   * Health
+   */
   {
     id: 'city-health',
     title: 'City Health Office',
@@ -1724,6 +1789,10 @@ export const serviceDetailsContent: ServiceDetail[] = [
       { title: 'City Health Office', link: '/service-details/city-health' },
     ],
   },
+
+  /**
+   * Public Safety
+   */
   {
     id: 'cdrrmo',
     title: 'CDRRMO',

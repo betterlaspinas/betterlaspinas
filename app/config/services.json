@@ -15,9 +15,9 @@
         "lcr",
         "vital records"
       ],
-      "fee": "₱150",
+      "fee": "₱75",
       "processingTime": "15-30 minutes",
-      "office": "Local Civil Registrar",
+      "office": "Civil Registry Office",
       "url": "/service-details/birth-certificate"
     },
     {
@@ -36,9 +36,9 @@
         "COM",
         "certificate of marriage"
       ],
-      "fee": "Free (Registration)",
-      "processingTime": "5 minutes",
-      "office": "Local Civil Registrar",
+      "fee": "₱150 (Registration)",
+      "processingTime": "3-10 days",
+      "office": "Civil Registry Office",
       "url": "/service-details/marriage-certificate"
     },
     {
@@ -56,9 +56,9 @@
         "burial permit",
         "transfer permit"
       ],
-      "fee": "₱50-150",
-      "processingTime": "1 hour 35 minutes",
-      "office": "Local Civil Registrar",
+      "fee": "₱75-150",
+      "processingTime": "~1 hour 35 minutes",
+      "office": "Civil Registry Office",
       "url": "/service-details/death-certificate"
     },
     {
@@ -880,7 +880,7 @@
     },
     {
       "id": "city-civil-registrar",
-      "title": "Local Civil Registrar",
+      "title": "Civil Registry Office",
       "category": "Certificates & Vital Records",
       "categoryId": "certificates",
       "description": "Birth, marriage, death certificates and civil registry services",
@@ -896,7 +896,7 @@
       ],
       "fee": "₱150+",
       "processingTime": "15-30 minutes",
-      "office": "Local Civil Registrar",
+      "office": "Civil Registry Office",
       "url": "/service-details/city-civil-registrar"
     },
     {
