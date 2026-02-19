@@ -29,6 +29,6 @@
   "logo": {
     "main": "/assets/images/logo/better-laspinas-logo.svg",
     "white": "/assets/images/logo/better-laspinas-logo-white.svg",
-    "favicon": "/assets/images/logo/favicon.svg"
+    "favicon": "/assets/images/logo/favicon.ico"
   }
 }
