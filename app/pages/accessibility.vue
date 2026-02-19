@@ -44,15 +44,7 @@ const features = [
 <template>
   <div>
     <!-- Breadcrumbs -->
-    <div class="container mx-auto px-4">
-      <nav class="py-4 text-sm text-gray-500" aria-label="Breadcrumb">
-        <NuxtLink to="/" class="hover:text-primary-600">
-          Home
-        </NuxtLink>
-        <span class="mx-2">/</span>
-        <span aria-current="page" class="text-gray-900"> Accessibility </span>
-      </nav>
-    </div>
+    <UiBreadcrumbs :items="[{ label: 'Accessibility' }]" />
 
     <!-- Page Header -->
     <section class="bg-gradient-to-br from-primary-600 to-primary-700 py-16">

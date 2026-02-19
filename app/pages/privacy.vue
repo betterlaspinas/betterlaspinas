@@ -27,17 +27,7 @@ const sections = [
 <template>
   <div>
     <!-- Breadcrumbs -->
-    <div class="container mx-auto px-4">
-      <nav class="py-4 text-sm text-gray-500" aria-label="Breadcrumb">
-        <NuxtLink to="/" class="hover:text-primary-600">
-          Home
-        </NuxtLink>
-        <span class="mx-2">/</span>
-        <span aria-current="page" class="text-gray-900">
-          Privacy Policy
-        </span>
-      </nav>
-    </div>
+    <UiBreadcrumbs :items="[{ label: 'Privacy Policy' }]" />
 
     <!-- Hero Section -->
     <section class="bg-gradient-to-br from-primary-600 to-primary-700 py-16">
@@ -367,10 +357,11 @@ const sections = [
                   <i class="bi bi-envelope-fill text-xl" />
                   <span>{{ volunteerEmail }}</span>
                 </a>
-                <p class="text-sm text-gray-400 mt-8">
-                  Last Updated: December 2, 2025
-                </p>
               </section>
+
+              <p class="text-sm text-gray-400">
+                Last Updated: February 19, 2026
+              </p>
             </div>
           </article>
         </div>
