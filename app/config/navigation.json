@@ -1,7 +1,12 @@
 {
   "$schema": "./schema/navigation.schema.json",
   "mainNav": [
-    { "id": "home", "label": "Home", "href": "/", "i18nKey": "nav-home" },
+    {
+      "id": "home",
+      "label": "Home",
+      "href": "/",
+      "i18nKey": "nav-home"
+    },
     {
       "id": "services",
       "label": "Services",
@@ -123,11 +128,26 @@
   ],
   "footerNav": {
     "quickLinks": [
-      { "label": "Sitemap", "href": "/sitemap" },
-      { "label": "Terms of Use", "href": "/terms" },
-      { "label": "Privacy Policy", "href": "/privacy" },
-      { "label": "Accessibility", "href": "/accessibility" },
-      { "label": "FAQ", "href": "/faq" }
+      {
+        "label": "Sitemap",
+        "href": "/sitemap"
+      },
+      {
+        "label": "Terms of Use",
+        "href": "/terms"
+      },
+      {
+        "label": "Privacy Policy",
+        "href": "/privacy"
+      },
+      {
+        "label": "Accessibility",
+        "href": "/accessibility"
+      },
+      {
+        "label": "FAQ",
+        "href": "/faq"
+      }
     ],
     "resources": [
       {
@@ -152,10 +172,13 @@
       }
     ],
     "getInvolved": [
-      { "label": "Volunteer with us", "href": "mailto:volunteer@lgu.gov.ph" },
+      {
+        "label": "Volunteer with us",
+        "href": "/join-us"
+      },
       {
         "label": "Contribute code",
-        "href": "https://github.com/bettergovph/bettergov",
+        "href": "https://github.com/Martin-Enghoy/betterlaspinas",
         "external": true
       }
     ]

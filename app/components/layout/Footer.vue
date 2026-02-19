@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import { useLanguage } from '@/composables/useLanguage'
 import { useSiteConfig } from '@/composables/useSiteConfig'
 import { getNavigationConfig } from '@/utils/configHelper'
 
-const { translate } = useLanguage()
-const { site, lguName, lguNameConcatenated } = useSiteConfig()
+const { site, lguName, siteBrandName, lguNameConcatenated } = useSiteConfig()
 const currentYear = new Date().getFullYear()
 
 const navigationConfig = getNavigationConfig()
@@ -37,16 +35,16 @@ const socialLinks = computed(() => [
           <div class="flex items-center mb-4">
             <img
               :src="logoPath"
-              :alt="`Better ${lguNameConcatenated} Logo`"
+              :alt="`Better${lguNameConcatenated} Logo`"
               class="h-12 w-12 mr-3"
             >
 
             <div>
               <div class="font-bold">
-                Better{{ lguNameConcatenated }}
+                Better {{ lguName }}
               </div>
               <div class="text-xs text-gray-400">
-                BetterGov.ph Portal
+                {{ site.domain }}
               </div>
             </div>
           </div>
@@ -97,16 +95,14 @@ const socialLinks = computed(() => [
 
       <div class="flex justify-center my-24">
         <p class="text-white text-sm md:text-lg bg-gray-800 p-4 px-12 md:px-8 rounded-full border border-gray-700">
-          Cost to build this site to date:
-          <span class="animate-pulse text-red-500">₱0</span>. Cost to the
-          People of {{ lguName }}: <span class="text-green-500">₱0</span>.
+          Cost to the People of {{ lguName }}: <span class="text-green-500">₱0</span>.
         </p>
       </div>
 
       <div class="border-t border-gray-800 mt-8 pt-8">
         <div class="flex flex-col md:flex-row justify-between items-center">
           <p class="text-gray-400 text-sm mb-4 md:mb-0">
-            © {{ currentYear }} {{ translate('footer-copyright') }} MIT | CC BY 1.0 All public
+            © {{ currentYear }} {{ siteBrandName }}. All rights reserved. MIT | CC BY 1.0 All public
             information sourced from official government portals.
           </p>
           <div class="flex space-x-6">
@@ -117,7 +113,7 @@ const socialLinks = computed(() => [
               target="_blank"
               rel="noopener noreferrer"
             >
-              Contribute at GitHub
+              Contribute on GitHub
             </a>
             <NuxtLink
               to="/sitemap"

@@ -13,6 +13,7 @@ import {
   news,
   officials,
   site,
+  siteBrandName,
   statistics,
   statisticsDetailed,
   subdivisions,
@@ -41,6 +42,7 @@ export function useSiteConfig() {
     // Derived values
     lguType: site.lguType,
     lguName,
+    siteBrandName,
     lguNameConcatenated,
     lguNameDomain,
     fullLocation,

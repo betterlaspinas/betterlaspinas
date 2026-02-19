@@ -111,6 +111,15 @@ export function getLGUNameConcatenated(site: SiteConfig): string {
 }
 
 /**
+ * Get the site name for branding (high-level config)
+ * e.g. "BetterLasPinas.org"
+ */
+export function getSiteBrandName(site: SiteConfig): string {
+  const lguNameDomain = getLGUNameDomain(site)
+  return `Better${lguNameDomain}.org`
+}
+
+/**
  * Get the domain-safe LGU name (no spaces, no diacritics/special chars)
  * e.g. "Las Piñas" -> "LasPinas"
  */
@@ -342,6 +351,7 @@ export const statistics = getStatisticsConfig()
 export const translations = getTranslationOverrides()
 export const labels = getLGUTypeLabels(site.lguType)
 export const lguName = getLGUName(site)
+export const siteBrandName = getSiteBrandName(site)
 export const lguNameConcatenated = getLGUNameConcatenated(site)
 export const lguNameDomain = getLGUNameDomain(site)
 export const statisticsDetailed = getStatisticsDetailedConfig()
