@@ -11,7 +11,7 @@ const zoom = 13
 </script>
 
 <template>
-  <div style="height: 300px; width: 100%">
+  <div style="height: 100%; width: 100%">
     <LMap :zoom="zoom" :center="coords" :use-global-leaflet="false">
       <LTileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
