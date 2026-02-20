@@ -1,5 +1,4 @@
 <script setup lang="ts">
-const { translate } = useLanguage()
 const { lguName, getVolunteerEmail } = useSiteConfig()
 const volunteerEmail = computed(() => getVolunteerEmail())
 
@@ -56,13 +55,10 @@ const features = [
             <i class="bi bi-universal-access" /> Accessibility
           </span>
           <h1 class="text-3xl md:text-4xl font-bold text-white mb-4">
-            {{ translate('access-title') || 'Accessibility Statement' }}
+            Accessibility Statement
           </h1>
           <p class="text-lg text-white/90">
-            {{
-              translate('access-subtitle')
-                || 'Our commitment to digital accessibility for all citizens'
-            }}
+            Our commitment to digital accessibility for all citizens
           </p>
         </div>
       </div>
@@ -94,7 +90,7 @@ const features = [
           <!-- Commitment -->
           <div class="bg-white border border-gray-200 rounded-2xl p-8">
             <h2 class="text-xl font-bold text-gray-900 mb-4">
-              {{ translate('access-commitment') || 'Our Commitment' }}
+              Our Commitment
             </h2>
             <p class="text-gray-600 leading-relaxed">
               Better {{ lguName }} is committed to ensuring digital
@@ -107,7 +103,7 @@ const features = [
           <!-- Features Grid -->
           <div class="bg-white border border-gray-200 rounded-2xl p-8">
             <h2 class="text-xl font-bold text-gray-900 mb-6">
-              {{ translate('access-features') || 'Accessibility Features' }}
+              Accessibility Features
             </h2>
             <div
               class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
@@ -133,7 +129,7 @@ const features = [
           <!-- Known Limitations -->
           <div class="bg-white border border-gray-200 rounded-2xl p-8">
             <h2 class="text-xl font-bold text-gray-900 mb-4">
-              {{ translate('access-limitations') || 'Known Limitations' }}
+              Known Limitations
             </h2>
             <ul class="space-y-3">
               <li class="flex items-start gap-3 text-gray-600">
@@ -160,7 +156,7 @@ const features = [
           <!-- Alternative Access -->
           <div class="bg-white border border-gray-200 rounded-2xl p-8">
             <h2 class="text-xl font-bold text-gray-900 mb-4">
-              {{ translate('access-alternative') || 'Alternative Access' }}
+              Alternative Access
             </h2>
             <p class="text-gray-600 mb-4">
               If you encounter difficulty accessing any information, contact
@@ -178,11 +174,11 @@ const features = [
           <!-- Technical Specs -->
           <div class="bg-white border border-gray-200 rounded-2xl p-8">
             <h2 class="text-xl font-bold text-gray-900 mb-4">
-              {{ translate('access-technical') || 'Technical Specifications' }}
+              Technical Specifications
             </h2>
             <div class="flex flex-wrap gap-2">
               <span
-                v-for="tag in ['HTML5', 'CSS3', 'JavaScript', 'ARIA']"
+                v-for="tag in ['HTML', 'CSS', 'JavaScript', 'WAI-ARIA']"
                 :key="tag"
                 class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium"
               >
@@ -200,7 +196,7 @@ const features = [
             />
             <div>
               <h3 class="text-lg font-bold text-gray-900 mb-2">
-                {{ translate('access-promise') || 'Our Promise' }}
+                Our Promise
               </h3>
               <p class="text-gray-600">
                 Better {{ lguName }} is committed to ensuring that our
@@ -212,7 +208,7 @@ const features = [
           </div>
 
           <p class="text-sm text-gray-400 text-center">
-            Last updated: November 29, 2025
+            Last updated: February 19, 2026
           </p>
         </div>
       </div>
