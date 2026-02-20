@@ -18,7 +18,7 @@ const hoveredDropdown = ref<string | null>(null)
 
 const route = useRoute()
 const { translate } = useLanguage()
-const { site, lguName, lguNameConcatenated, getOfficialWebsite } = useSiteConfig()
+const { site, lguName, lguNameConcatenated, getOfficialWebsite, siteBrandName } = useSiteConfig()
 const officialWebsite = getOfficialWebsite()
 
 const mainNavigation = getNavigationConfig().mainNav
@@ -68,7 +68,7 @@ const logoPath = computed(() => site.logo?.main || '/logos/svg/BetterGov_Icon-Pr
             to="/about"
             class="text-xs leading-12 text-gray-800 hover:text-primary-600 transition-colors"
           >
-            About <span class="hidden md:inline">Better{{ lguNameConcatenated }}.org</span>
+            About <span class="hidden md:inline">{{ siteBrandName }}</span>
           </NuxtLink>
           <a
             :href="officialWebsite"

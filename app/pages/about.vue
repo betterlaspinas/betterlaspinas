@@ -3,8 +3,7 @@ import History from '@/components/home/History.vue'
 import Breadcrumbs from '@/components/ui/Breadcrumbs.vue'
 import { useSiteConfig } from '@/composables/useSiteConfig'
 
-const { getSiteTitle, lguNameConcatenated } = useSiteConfig()
-const siteTitle = computed(() => getSiteTitle())
+const { siteBrandName } = useSiteConfig()
 
 useHead({
   title: 'About',
@@ -23,7 +22,7 @@ useHead({
             <i class="bi bi-info-circle-fill" /> About Us
           </span>
           <h1 class="text-3xl md:text-4xl font-bold text-white mb-4">
-            About {{ siteTitle }}
+            About {{ siteBrandName }}
           </h1>
           <p class="text-lg text-white/90">
             Learn about our mission, history, and the community we serve.
@@ -44,7 +43,7 @@ useHead({
               Our Mission
             </h2>
             <p class="text-gray-700 leading-relaxed text-lg">
-              Better{{ lguNameConcatenated }}.org is a community-driven initiative designed to promote transparency, accountability, and accessibility in local governance. By aggregating public data and making it easier to navigate, we empower citizens to engage meaningfully with their local government unit.
+              {{ siteBrandName }} is a community-driven initiative designed to promote transparency, accountability, and accessibility in local governance. By aggregating public data and making it easier to navigate, we empower citizens to engage meaningfully with their local government unit.
             </p>
           </div>
         </div>
