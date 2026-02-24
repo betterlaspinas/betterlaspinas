@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import Breadcrumbs from '@/components/ui/Breadcrumbs.vue'
-import { useSiteConfig } from '@/composables/useSiteConfig'
+import { useConfig } from '@/composables/useConfig'
 
-const { site, hotlines, formatPhoneLink } = useSiteConfig()
+const { site, hotlines, formatPhoneLink } = useConfig()
 
 useHead({
   title: 'Contact',

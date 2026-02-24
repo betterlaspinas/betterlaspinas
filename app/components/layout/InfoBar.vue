@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { lguName } = useSiteConfig()
+const { lguName } = useConfig()
 
 const dateTime = ref({
   date: '--- --, ----',

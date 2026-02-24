@@ -147,10 +147,37 @@ export function getFullLocation(site: SiteConfig): string {
 }
 
 /**
- * Get the site config with proper typing
+ * Get the base site config from site.json with proper typing
  */
 export function getSiteConfig(): SiteConfig {
   return siteConfig as SiteConfig
+}
+
+/**
+ * Merge runtime env overrides onto the base site.json config.
+ * Accepts a partial record of string values (from runtimeConfig.public.site)
+ * and returns a fully typed SiteConfig.
+ * This is a pure function — no Nuxt context required, fully unit-testable.
+ */
+export function getMergedSiteConfig(
+  runtimeSite?: Partial<Record<string, string>>,
+): SiteConfig {
+  const base = getSiteConfig()
+  if (!runtimeSite) {
+    return base
+  }
+  return {
+    ...base,
+    lguType: (runtimeSite.lguType || base.lguType) as LGUType,
+    municipality: runtimeSite.municipality || base.municipality,
+    province: runtimeSite.province || base.province,
+    region: runtimeSite.region || base.region,
+    siteId: runtimeSite.siteId || base.siteId,
+    domain: runtimeSite.domain || base.domain,
+    tagline: runtimeSite.tagline || base.tagline,
+    themeColor: runtimeSite.themeColor || base.themeColor,
+    officialWebsite: runtimeSite.officialWebsite || base.officialWebsite,
+  }
 }
 
 /**
@@ -340,23 +367,3 @@ export const configHelpers = {
     return site.officialWebsite
   },
 }
-
-// Export configs directly for convenience
-export const site = getSiteConfig()
-export const officials = getOfficialsConfig()
-export const subdivisions = getSubdivisionsConfig()
-export const hotlines = getHotlinesConfig()
-export const history = getHistoryConfig()
-export const statistics = getStatisticsConfig()
-export const translations = getTranslationOverrides()
-export const labels = getLGUTypeLabels(site.lguType)
-export const lguName = getLGUName(site)
-export const siteBrandName = getSiteBrandName(site)
-export const lguNameConcatenated = getLGUNameConcatenated(site)
-export const lguNameDomain = getLGUNameDomain(site)
-export const statisticsDetailed = getStatisticsDetailedConfig()
-export const news = getNewsConfig()
-export const faq = getFAQConfig()
-export const budget = getBudgetConfig()
-export const legislative = getLegislativeConfig()
-export const tourism = getTourismConfig()

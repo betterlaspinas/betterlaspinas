@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import History from '@/components/home/History.vue'
 import Breadcrumbs from '@/components/ui/Breadcrumbs.vue'
-import { useSiteConfig } from '@/composables/useSiteConfig'
+import { useConfig } from '@/composables/useConfig'
 
-const { siteBrandName } = useSiteConfig()
+const { siteBrandName } = useConfig()
 
 useHead({
   title: 'About',

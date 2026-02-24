@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useSiteConfig } from '@/composables/useSiteConfig'
+import { useConfig } from '@/composables/useConfig'
 
-const { lguName, statistics, labels } = useSiteConfig()
+const { lguName, statistics, labels } = useConfig()
 
 const stats = computed(() => [
   {
@@ -22,14 +22,14 @@ const stats = computed(() => [
       statistics.subdivisions.count > 0
         ? statistics.subdivisions.count.toString()
         : '—',
-    label: labels.subdivisionTypePlural,
+    label: labels.value.subdivisionTypePlural,
     source: statistics.subdivisions.source || 'Administrative Units',
   },
   {
     href: '/budget',
     icon: 'bi-award-fill',
     value: statistics.incomeClass.class || '—',
-    label: labels.lguTypeLabel,
+    label: labels.value.lguTypeLabel,
     source: statistics.incomeClass.source || 'Income Classification',
   },
   {

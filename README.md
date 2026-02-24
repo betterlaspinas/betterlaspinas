@@ -54,7 +54,11 @@ pnpm install
 
 ### 3. Configure Your LGU
 
-Edit the configuration files in `app/config/`:
+You can configure the portal content and behavior in two ways:
+
+#### Option A: JSON Configuration (Statically Built)
+
+Edit the static configuration files in `app/config/`:
 
 - `site.json` - Basic site information
 - `officials.json` - Government officials
@@ -64,6 +68,24 @@ Edit the configuration files in `app/config/`:
 - `history.json` - LGU milestones
 - `statistics.json` - Population and data
 - `hotlines.json` - Emergency contacts
+
+#### Option B: Environment Variables (Dynamic Deployment)
+
+For deploying to different LGUs or test servers without committing code changes, you can use a `.env` file to override the properties inside `site.json`.
+
+1. Copy `.env.example` to `.env`.
+2. Update the `NUXT_PUBLIC_SITE_*` variables.
+
+NUXT_PUBLIC_SITE_MUNICIPALITY="Las Piñas City"
+NUXT_PUBLIC_SITE_DOMAIN="betterlaspinas.org"
+
+These runtime variables will securely override the `site.json` values during build-time and run-time, making it ideal for CI/CD pipelines.
+
+> **Developer Note:** When building components, always use the `useConfig()` composable — never import directly from `app/utils/configHelper.ts`. The composable is the single source of truth: it merges `.env` overrides with `site.json` and exposes all configs (site, officials, navigation, services, translations, etc.) as reactive refs.
+>
+> **Reactivity rule:** In `<template>` blocks, refs are auto-unwrapped — use `{{ site.domain }}` directly. In `<script setup>` JS (inside `computed()`, functions, etc.), always use `.value` — e.g. `site.value.coordinates.lat`, `labels.value.deptPrefix`.
+>
+> **Exception:** `useSearch.ts` calls `getServicesConfig()` directly from `configHelper` — this is intentional. `useConfig()` internally calls `useRuntimeConfig()`, which requires a Nuxt app context that `useSearch` cannot guarantee (it causes test failures). Since the services list has no `.env`-override needs, a direct getter call is the correct approach here.
 
 ### 4. Start Development Server
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const { translate } = useLanguage()
-const { lguName, labels, faq, getSiteTitle, getVolunteerEmail } = useSiteConfig()
+const { lguName, labels, faq, getSiteTitle, getVolunteerEmail } = useConfig()
 const siteTitle = computed(() => getSiteTitle())
 const volunteerEmail = computed(() => getVolunteerEmail())
 
@@ -21,8 +21,8 @@ function interpolateFAQContent(
 }
 
 const templateVars = computed(() => ({
-  hallName: labels.hallName,
-  lguName,
+  hallName: labels.value.hallName,
+  lguName: lguName.value,
   siteTitle: siteTitle.value,
   volunteerEmail: volunteerEmail.value,
 }))

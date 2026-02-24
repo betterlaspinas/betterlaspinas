@@ -1,7 +1,4 @@
-import {
-  getTranslationOverrides,
-} from '@/utils/configHelper'
-import { useSiteConfig } from './useSiteConfig'
+import { useConfig } from './useConfig'
 
 // Base translations
 const baseTranslations: Record<string, Record<string, string>> = {
@@ -428,24 +425,23 @@ export function useLanguage() {
     lguNameDomain,
     labels,
     fullLocation,
-  } = useSiteConfig()
-
-  const translationOverrides = getTranslationOverrides()
+    translations: translationOverrides,
+  } = useConfig()
 
   const defaultVariables = computed(() => ({
-    lguName,
-    lguNameConcatenated,
-    lguNameDomain,
-    municipality: site.municipality,
-    province: site.province,
-    region: site.region,
-    lguType: labels.lguTypeLabel,
-    leaderTitle: labels.leaderTitle,
-    viceLeaderTitle: labels.viceLeaderTitle,
-    hallName: labels.hallName,
-    deptPrefix: labels.deptPrefix,
-    legislativeBody: labels.legislativeBody,
-    fullLocation,
+    lguName: lguName.value,
+    lguNameConcatenated: lguNameConcatenated.value,
+    lguNameDomain: lguNameDomain.value,
+    municipality: site.value.municipality,
+    province: site.value.province,
+    region: site.value.region,
+    lguType: labels.value.lguTypeLabel,
+    leaderTitle: labels.value.leaderTitle,
+    viceLeaderTitle: labels.value.viceLeaderTitle,
+    hallName: labels.value.hallName,
+    deptPrefix: labels.value.deptPrefix,
+    legislativeBody: labels.value.legislativeBody,
+    fullLocation: fullLocation.value,
   }))
 
   const translations = computed(() => {
@@ -468,7 +464,7 @@ export function useLanguage() {
     language.value = lang
     // Persist
     if (import.meta.client) {
-      const storageKey = `better${lguNameDomain.toLowerCase()}_lang`
+      const storageKey = `better${lguNameDomain.value.toLowerCase()}_lang`
       localStorage.setItem(storageKey, lang)
     }
   }
@@ -476,7 +472,7 @@ export function useLanguage() {
   // Initialize from storage
   onMounted(() => {
     if (import.meta.client) {
-      const storageKey = `better${lguNameDomain.toLowerCase()}_lang`
+      const storageKey = `better${lguNameDomain.value.toLowerCase()}_lang`
       const savedLang = localStorage.getItem(storageKey) as Language
       if (savedLang && ['en', 'fil', 'ilo'].includes(savedLang)) {
         language.value = savedLang

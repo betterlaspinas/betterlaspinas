@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import Breadcrumbs from '~/components/ui/Breadcrumbs.vue'
 
-const config = useSiteConfig()
-const lguName = computed(() => config.lguName)
-const labels = computed(() => config.labels)
+const { lguName, labels } = useConfig()
 
 useHead({
   title: 'Legislative',

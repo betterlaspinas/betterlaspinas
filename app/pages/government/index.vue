@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import Breadcrumbs from '@/components/ui/Breadcrumbs.vue'
-import { useSiteConfig } from '@/composables/useSiteConfig'
+import { useConfig } from '@/composables/useConfig'
 
-const { lguName, labels, officials, subdivisions, formatPhoneLink } = useSiteConfig()
+const { lguName, labels, officials, subdivisions, formatPhoneLink } = useConfig()
 
 useHead({
   title: 'Government',

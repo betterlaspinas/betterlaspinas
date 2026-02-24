@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import { useConfig } from '@/composables/useConfig'
 import { useLanguage } from '@/composables/useLanguage'
-import { useSiteConfig } from '@/composables/useSiteConfig'
 
 const { translate } = useLanguage()
-const { lguName } = useSiteConfig()
+const { lguName } = useConfig()
 </script>
 
 <template>

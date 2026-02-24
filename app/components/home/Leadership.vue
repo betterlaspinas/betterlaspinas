@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import { useConfig } from '@/composables/useConfig'
 import { useLanguage } from '@/composables/useLanguage'
-import { useSiteConfig } from '@/composables/useSiteConfig'
 
 const { translate } = useLanguage()
-const { officials, labels, formatPhoneLink } = useSiteConfig()
+const { officials, labels, formatPhoneLink } = useConfig()
 
 const leader = computed(() => officials.executive.find(
   o => o.position === 'mayor' || o.position === 'governor',

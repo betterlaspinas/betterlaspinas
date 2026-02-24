@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { getSiteTitle, getVolunteerEmail } = useSiteConfig()
+const { getSiteTitle, getVolunteerEmail } = useConfig()
 const siteTitle = computed(() => getSiteTitle())
 const volunteerEmail = computed(() => getVolunteerEmail())
 

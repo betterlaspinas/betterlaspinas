@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { hotlines, formatPhoneLink } = useSiteConfig()
+const { hotlines, formatPhoneLink } = useConfig()
 
 const displayHotlines = computed(() => {
   return [

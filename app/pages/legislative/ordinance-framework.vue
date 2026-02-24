@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import Breadcrumbs from '~/components/ui/Breadcrumbs.vue'
 
-const config = useSiteConfig()
-const lguName = computed(() => config.lguName)
-const labels = computed(() => config.labels)
-const legislative = computed(() => config.legislative)
+const { lguName, labels, legislative } = useConfig()
 
 useHead({
   title: 'Ordinance Framework',
@@ -12,10 +9,10 @@ useHead({
 
 // Get ordinance categories and items from config
 const ordinanceCategories = computed(
-  () => legislative.value.ordinances.categories,
+  () => legislative.ordinances.categories,
 )
 const sampleOrdinances = computed(() =>
-  legislative.value.ordinances.items.map((ord: any) => ({
+  legislative.ordinances.items.map((ord: any) => ({
     no: ord.number,
     title: ord.title,
     date: ord.date,

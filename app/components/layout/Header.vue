@@ -8,9 +8,8 @@ import {
 } from 'lucide-vue-next'
 import { ref } from 'vue'
 import LanguageSelector from '@/components/ui/LanguageSelector.vue'
+import { useConfig } from '@/composables/useConfig'
 import { useLanguage } from '@/composables/useLanguage'
-import { useSiteConfig } from '@/composables/useSiteConfig'
-import { getNavigationConfig } from '@/utils/configHelper'
 
 const isOpen = ref(false)
 const activeMenu = ref<string | null>(null)
@@ -18,10 +17,10 @@ const hoveredDropdown = ref<string | null>(null)
 
 const route = useRoute()
 const { translate } = useLanguage()
-const { site, lguName, lguNameConcatenated, getOfficialWebsite, siteBrandName } = useSiteConfig()
+const { site, lguName, lguNameConcatenated, getOfficialWebsite, siteBrandName, navigation } = useConfig()
 const officialWebsite = getOfficialWebsite()
 
-const mainNavigation = getNavigationConfig().mainNav
+const mainNavigation = navigation.mainNav
 
 function isActiveRoute(pathname: string, href: string): boolean {
   if (!href)
@@ -49,7 +48,7 @@ function toggleSubmenu(label: string) {
   activeMenu.value = activeMenu.value === label ? null : label
 }
 
-const logoPath = computed(() => site.logo?.main || '/logos/svg/BetterGov_Icon-Primary.svg')
+const logoPath = computed(() => site.value.logo?.main || '/logos/svg/BetterGov_Icon-Primary.svg')
 </script>
 
 <template>

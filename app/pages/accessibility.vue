@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { lguName, getVolunteerEmail } = useSiteConfig()
+const { lguName, getVolunteerEmail } = useConfig()
 const volunteerEmail = computed(() => getVolunteerEmail())
 
 useHead({

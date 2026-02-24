@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import LeafletMap from '@/components/home/LeafletMap.vue'
-import { useSiteConfig } from '@/composables/useSiteConfig'
+import { useConfig } from '@/composables/useConfig'
 
-const { site, lguName, fullLocation, labels } = useSiteConfig()
-const coords = [site.coordinates.lat, site.coordinates.lng] as [number, number]
+const { site, lguName, fullLocation, labels } = useConfig()
+const coords = computed(() => [site.value.coordinates.lat, site.value.coordinates.lng] as [number, number])
 
 // Weather Logic
 const weatherTemp = ref<number | null>(null)
@@ -71,7 +71,7 @@ const weatherDescription = computed(() => {
 
 async function fetchWeather() {
   try {
-    const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${site.coordinates.lat}&longitude=${site.coordinates.lng}&current_weather=true&daily=temperature_2m_max,temperature_2m_min&hourly=temperature_2m,weathercode&timezone=Asia%2FManila`)
+    const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${site.value.coordinates.lat}&longitude=${site.value.coordinates.lng}&current_weather=true&daily=temperature_2m_max,temperature_2m_min&hourly=temperature_2m,weathercode&timezone=Asia%2FManila`)
     const data = await response.json()
 
     if (data && data.current_weather) {

@@ -1,8 +1,5 @@
 <script setup lang="ts">
-const config = useSiteConfig()
-const lguName = computed(() => config.lguName)
-const tourism = computed(() => config.tourism)
-const labels = computed(() => config.labels)
+const { lguName, tourism, labels } = useConfig()
 
 useHead({
   title: 'Tourism',

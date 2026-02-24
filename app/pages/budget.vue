@@ -4,11 +4,7 @@ import {
   IncomeSourcesChart,
 } from '~/components/charts'
 
-const config = useSiteConfig()
-const lguName = computed(() => config.lguName)
-const fullLocation = computed(() => config.fullLocation)
-const labels = computed(() => config.labels)
-const budget = computed(() => config.budget)
+const { lguName, fullLocation, labels, budget } = useConfig()
 
 useHead({
   title: 'Budget & Transparency',
@@ -23,7 +19,7 @@ useHead({
 type QuarterKey = 'q1' | 'q2' | 'q3' | 'q4'
 const activeQuarter = ref<QuarterKey>('q1')
 
-const q = computed(() => budget.value.quarters[activeQuarter.value])
+const q = computed(() => budget.quarters[activeQuarter.value])
 
 function formatLocation(location: string) {
   return location.replace('{{fullLocation}}', fullLocation.value)

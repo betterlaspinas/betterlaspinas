@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import Breadcrumbs from '~/components/ui/Breadcrumbs.vue'
 
-const config = useSiteConfig()
-const lguName = computed(() => config.lguName)
-const site = computed(() => config.site)
-const labels = computed(() => config.labels)
+const { lguName, labels, site } = useConfig()
 
 useHead({
   title: 'Sitemap',

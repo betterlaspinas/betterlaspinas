@@ -7,12 +7,7 @@ import {
   PopulationTrendsChart,
 } from '~/components/charts'
 
-const config = useSiteConfig()
-const statistics = computed(() => config.statistics)
-const statisticsDetailed = computed(() => config.statisticsDetailed)
-const labels = computed(() => config.labels)
-const lguName = computed(() => config.lguName)
-const fullLocation = computed(() => config.fullLocation)
+const { statistics, statisticsDetailed, labels, lguName, fullLocation } = useConfig()
 
 useHead({
   title: 'Statistics',

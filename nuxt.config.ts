@@ -7,6 +7,21 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
   modules: ['@pinia/nuxt'],
+  runtimeConfig: {
+    public: {
+      site: {
+        lguType: '',
+        municipality: '',
+        province: '',
+        region: '',
+        siteId: '',
+        domain: '',
+        tagline: '',
+        themeColor: '',
+        officialWebsite: '',
+      },
+    },
+  },
   postcss: {
     plugins: {
       '@tailwindcss/postcss': {},

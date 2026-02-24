@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import Breadcrumbs from '@/components/ui/Breadcrumbs.vue'
-import { useSiteConfig } from '@/composables/useSiteConfig'
+import { useConfig } from '@/composables/useConfig'
 
-const { lguName, labels, news } = useSiteConfig()
+const { lguName, labels, news } = useConfig()
 
 useHead({
   title: 'News & Announcements',
@@ -25,8 +25,8 @@ const newsItems = computed(() => news.articles.map((article: any) => ({
   badge: article.badge,
   badgeColorClass: badgeColorMap[article.badgeColor] || badgeColorMap.blue,
   description: article.description
-    .replace(/\{\{deptPrefix\}\}/g, labels.deptPrefix)
-    .replace(/\{\{lguName\}\}/g, lguName),
+    .replace(/\{\{deptPrefix\}\}/g, labels.value.deptPrefix)
+    .replace(/\{\{lguName\}\}/g, lguName.value),
   slug: article.slug,
 })))
 </script>

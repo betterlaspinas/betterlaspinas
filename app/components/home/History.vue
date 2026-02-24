@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useSiteConfig } from '@/composables/useSiteConfig'
+import { useConfig } from '@/composables/useConfig'
 
-const { history, lguName } = useSiteConfig()
+const { history, lguName } = useConfig()
 </script>
 
 <template>

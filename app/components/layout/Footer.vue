@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import { useSiteConfig } from '@/composables/useSiteConfig'
-import { getNavigationConfig } from '@/utils/configHelper'
+import { useConfig } from '@/composables/useConfig'
 
-const { site, lguName, siteBrandName, lguNameConcatenated } = useSiteConfig()
+const { site, lguName, siteBrandName, lguNameConcatenated, navigation } = useConfig()
 const currentYear = new Date().getFullYear()
 
-const navigationConfig = getNavigationConfig()
-const footerNav = navigationConfig.footerNav
+const footerNav = navigation.footerNav
 
 const footerNavigation = computed(() => ({
   mainSections: [
@@ -16,14 +14,14 @@ const footerNavigation = computed(() => ({
   ],
 }))
 
-const logoPath = computed(() => site.logo?.white || '/logos/svg/BetterGov_Icon-White.svg')
+const logoPath = computed(() => site.value.logo?.white || '/logos/svg/BetterGov_Icon-White.svg')
 
 const socialLinks = computed(() => [
-  { label: 'Facebook', href: site.social.facebook, icon: 'bi-facebook' },
-  { label: 'Twitter', href: site.social.twitter, icon: 'bi-twitter-x' },
-  { label: 'Instagram', href: site.social.instagram, icon: 'bi-instagram' },
-  { label: 'YouTube', href: site.social.youtube, icon: 'bi-youtube' },
-  { label: 'Discord', href: site.social.discord, icon: 'bi-discord' },
+  { label: 'Facebook', href: site.value.social.facebook, icon: 'bi-facebook' },
+  { label: 'Twitter', href: site.value.social.twitter, icon: 'bi-twitter-x' },
+  { label: 'Instagram', href: site.value.social.instagram, icon: 'bi-instagram' },
+  { label: 'YouTube', href: site.value.social.youtube, icon: 'bi-youtube' },
+  { label: 'Discord', href: site.value.social.discord, icon: 'bi-discord' },
 ].filter(link => link.href))
 </script>
 

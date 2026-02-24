@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import Breadcrumbs from '@/components/ui/Breadcrumbs.vue'
-import { useSiteConfig } from '@/composables/useSiteConfig'
+import { useConfig } from '@/composables/useConfig'
 
-const { getVolunteerEmail, lguName, site } = useSiteConfig()
+const { getVolunteerEmail, lguName, site } = useConfig()
 const volunteerEmail = computed(() => getVolunteerEmail())
 
 useHead({

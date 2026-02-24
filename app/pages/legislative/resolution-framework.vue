@@ -1,19 +1,16 @@
 <script setup lang="ts">
 import Breadcrumbs from '~/components/ui/Breadcrumbs.vue'
 
-const config = useSiteConfig()
-const lguName = computed(() => config.lguName)
-const labels = computed(() => config.labels)
-const legislative = computed(() => config.legislative)
+const { lguName, labels, legislative } = useConfig()
 
 useHead({
   title: 'Resolution Framework',
 })
 
 // Get resolution types and items from config
-const resolutionTypes = computed(() => legislative.value.resolutions.types)
+const resolutionTypes = computed(() => legislative.resolutions.types)
 const sampleResolutions = computed(() =>
-  legislative.value.resolutions.items.map((res: any) => ({
+  legislative.resolutions.items.map((res: any) => ({
     no: res.number,
     title: res.title,
     date: res.date,
