@@ -111,37 +111,37 @@ useHead({
             </h2>
           </div>
           <div class="divide-y divide-gray-100">
-            <div class="flex items-center justify-between p-4 bg-green-50">
-              <span class="font-medium text-gray-900">
+            <div class="grid grid-cols-3 items-center p-4 bg-green-50">
+              <span class="pl-4 font-medium text-gray-900">
                 Monday - Friday
               </span>
-              <span class="text-gray-600">8:00 AM - 5:00 PM</span>
-              <span class="inline-flex items-center gap-1 text-green-600 text-sm font-medium">
+              <span class="text-gray-600 pl-4 md:pl-16">8:00 AM - 5:00 PM</span>
+              <span class="inline-flex gap-1 text-green-600 text-sm font-medium pl-8 md:pl-32">
                 <i class="bi bi-check-circle-fill" /> Open
               </span>
             </div>
-            <div class="flex items-center justify-between p-4 bg-yellow-50">
-              <span class="font-medium text-gray-900">Lunch Break</span>
-              <span class="text-gray-600">12:00 PM - 1:00 PM</span>
-              <span class="inline-flex items-center gap-1 text-yellow-600 text-sm font-medium">
+            <div class="grid grid-cols-3 items-center p-4 bg-yellow-50">
+              <span class="pl-4 font-medium text-gray-900">Lunch Break</span>
+              <span class="text-gray-600 pl-4 md:pl-16">12:00 PM - 1:00 PM</span>
+              <span class="inline-flex items-center gap-1 text-yellow-600 text-sm font-medium pl-8 md:pl-32">
                 <i class="bi bi-pause-circle-fill" /> Break
               </span>
             </div>
-            <div class="flex items-center justify-between p-4 bg-red-50">
-              <span class="font-medium text-gray-900">
+            <div class="grid grid-cols-3 items-center p-4 bg-red-50">
+              <span class="pl-4 font-medium text-gray-900">
                 Saturday & Sunday
               </span>
-              <span class="text-gray-600">Closed</span>
-              <span class="inline-flex items-center gap-1 text-red-600 text-sm font-medium">
+              <span class="text-gray-600 pl-4 md:pl-16">Closed</span>
+              <span class="inline-flex items-center gap-1 text-red-600 text-sm font-medium pl-8 md:pl-32">
                 <i class="bi bi-x-circle-fill" /> Closed
               </span>
             </div>
-            <div class="flex items-center justify-between p-4 bg-red-50">
-              <span class="font-medium text-gray-900">
+            <div class="grid grid-cols-3 items-center p-4 bg-red-50">
+              <span class="pl-4 font-medium text-gray-900">
                 National & Local Holidays
               </span>
-              <span class="text-gray-600">Closed</span>
-              <span class="inline-flex items-center gap-1 text-red-600 text-sm font-medium">
+              <span class="text-gray-600 pl-4 md:pl-16">Closed</span>
+              <span class="inline-flex items-center gap-1 text-red-600 text-sm font-medium pl-8 md:pl-32">
                 <i class="bi bi-x-circle-fill" /> Closed
               </span>
             </div>

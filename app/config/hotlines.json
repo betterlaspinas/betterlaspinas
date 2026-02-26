@@ -1,39 +1,46 @@
 {
   "emergency": [
     {
+      "id": "command-center",
+      "name": "Command Center",
+      "number": "8290-6500",
+      "icon": "bi-building-fill",
+      "category": "emergency"
+    },
+    {
       "id": "police",
       "name": "Police Station",
-      "number": "",
+      "number": "8551-6401",
       "icon": "bi-shield-fill",
       "category": "emergency"
     },
     {
       "id": "fire",
       "name": "Fire Station",
-      "number": "",
+      "number": "8874-6177",
       "icon": "bi-fire",
       "category": "emergency"
     },
     {
-      "id": "mdrrmo",
-      "name": "MDRRMO",
-      "number": "",
+      "id": "cdrrmo",
+      "name": "CDRRMO",
+      "number": "8290-6500",
       "icon": "bi-exclamation-triangle-fill",
       "category": "emergency"
     }
   ],
   "medical": [
     {
-      "id": "rhu",
-      "name": "Rural Health Unit",
-      "number": "",
+      "id": "cho",
+      "name": "City Health Office",
+      "number": "8994-5782",
       "icon": "bi-hospital",
       "category": "medical"
     },
     {
       "id": "red-cross",
       "name": "Red Cross",
-      "number": "",
+      "number": "143",
       "icon": "bi-plus-circle-fill",
       "category": "medical"
     }
@@ -42,37 +49,37 @@
     {
       "id": "mayors-office",
       "name": "Mayor's Office",
-      "number": "",
+      "number": "8871-4343",
       "icon": "bi-building-fill",
       "category": "government"
     },
     {
-      "id": "mswdo",
-      "name": "MSWDO",
-      "number": "",
+      "id": "cswdo",
+      "name": "CSWDO",
+      "number": "8403-7045",
       "icon": "bi-heart-fill",
       "category": "government"
     },
     {
       "id": "dilg",
-      "name": "DILG",
-      "number": "",
-      "icon": "bi-building",
+      "name": "DILG Field Office",
+      "number": "8241-9709",
+      "icon": "bi-people-fill",
       "category": "government"
     }
   ],
   "utilities": [
     {
       "id": "electric",
-      "name": "Electric Cooperative",
-      "number": "",
+      "name": "Meralco",
+      "number": "16211",
       "icon": "bi-lightning-fill",
       "category": "utilities"
     },
     {
       "id": "water",
-      "name": "Water District",
-      "number": "",
+      "name": "Maynilad Water Services, Inc.",
+      "number": "1626",
       "icon": "bi-droplet-fill",
       "category": "utilities"
     }
