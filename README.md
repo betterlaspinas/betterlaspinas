@@ -40,7 +40,7 @@ A modern, accessible, and fully-featured local government unit (LGU) website bui
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/Martin-Enghoy/betterlaspinas.git
+git clone https://github.com/betterlaspinas/betterlaspinas.git
 cd betterlaspinas
 ```
 
@@ -248,11 +248,11 @@ Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for gu
 
 We would like to thank all the contributors who have helped build and maintain this project.
 
-<a href="https://github.com/Martin-Enghoy/betterlaspinas/graphs/contributors">
-    <img src="https://contributors-img.web.app/image?repo=Martin-Enghoy/betterlaspinas&max=750&columns=20" />
+<a href="https://github.com/betterlaspinas/betterlaspinas/graphs/contributors">
+    <img src="https://contributors-img.web.app/image?repo=betterlaspinas/betterlaspinas&max=750&columns=20" />
 </a>
 
-[See the full list of contributors](https://github.com/Martin-Enghoy/betterlaspinas/graphs/contributors)
+[See the full list of contributors](https://github.com/betterlaspinas/betterlaspinas/graphs/contributors)
 
 ## 🙏 Acknowledgments
 
@@ -266,8 +266,8 @@ We would like to thank all the contributors who have helped build and maintain t
 
 For issues and questions:
 
-- **Issues**: [GitHub Issues](https://github.com/Martin-Enghoy/betterlaspinas/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/Martin-Enghoy/betterlaspinas/discussions)
+- **Issues**: [GitHub Issues](https://github.com/betterlaspinas/betterlaspinas/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/betterlaspinas/betterlaspinas/discussions)
 
 ---
 

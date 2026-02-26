@@ -222,7 +222,8 @@ const ipmr = computed(() => officials.legislative.find((o: any) => o.position ==
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <NuxtLink
+          <!-- TODO: Add back when available -->
+          <!-- <NuxtLink
             v-for="dept in officials.departments"
             :key="dept.id"
             :to="`/service-details/${dept.slug}`"
@@ -252,7 +253,37 @@ const ipmr = computed(() => officials.legislative.find((o: any) => o.position ==
                 </span>
               </div>
             </div>
-          </NuxtLink>
+          </NuxtLink> -->
+
+          <!-- Current active block with links temporarily removed -->
+          <div
+            v-for="dept in officials.departments"
+            :key="dept.id"
+            class="group bg-white border border-gray-200 rounded-xl p-6 transition-all duration-200 hover:border-primary-500 hover:shadow-lg"
+          >
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 flex items-center justify-center bg-primary-50 rounded-xl text-primary-600 text-xl shrink-0 transition-all duration-200">
+                <i class="bi" :class="[dept.icon]" />
+              </div>
+              <div class="flex-1 min-w-0">
+                <h4 class="text-base font-semibold text-gray-900 mb-1">
+                  {{ dept.department }}
+                </h4>
+                <p class="text-sm text-gray-500 mb-3">
+                  {{ dept.description }}
+                </p>
+                <div class="space-y-1 text-xs text-gray-500">
+                  <span v-if="dept.phone" class="flex items-center gap-1">
+                    <i class="bi bi-telephone" /> {{ dept.phone }}
+                  </span>
+                  <span v-if="dept.email" class="flex items-center gap-1">
+                    <i class="bi bi-envelope" /> {{ dept.email }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End of current active block -->
         </div>
       </div>
     </section>

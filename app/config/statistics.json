@@ -17,7 +17,7 @@
   "incomeClass": {
     "class": "1st Class",
     "description": "Highly Urbanized City",
-    "source": "City Classification"
+    "source": "Income Classification"
   },
   "additionalStats": []
 }

@@ -37,12 +37,13 @@ const {
 } = useSearch(props.initialQuery)
 
 const CATEGORIES = [
-  { id: '', label: 'All' },
+  // TODO: Uncomment the hidden categories to restore all service categories
+  // { id: '', label: 'All' },
   { id: 'certificates', label: 'Certificates' },
-  { id: 'business', label: 'Business' },
-  { id: 'social-services', label: 'Social' },
-  { id: 'health', label: 'Health' },
-  { id: 'tax-payments', label: 'Taxation' },
+  // { id: 'business', label: 'Business' },
+  // { id: 'social-services', label: 'Social' },
+  // { id: 'health', label: 'Health' },
+  // { id: 'tax-payments', label: 'Taxation' },
 ] as const
 
 const showDropdown = computed(() =>

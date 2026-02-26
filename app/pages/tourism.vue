@@ -9,9 +9,9 @@ const activeCategory = ref('all')
 
 const filteredAttractions = computed(() => {
   if (activeCategory.value === 'all') {
-    return tourism.value.attractions
+    return tourism.attractions
   }
-  return tourism.value.attractions.filter(
+  return tourism.attractions.filter(
     (a: any) => a.category === activeCategory.value,
   )
 })

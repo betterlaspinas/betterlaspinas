@@ -1,6 +1,12 @@
-MIT License
+# License
 
-Copyright (c) 2026 Better Las Piñas Contributors
+This project is licensed under a dual-license model to best serve its goals as a civic-tech initiative.
+
+## Software License (Code)
+
+The software and source code of this project are licensed under the **MIT License**.
+
+Copyright (c) 2026 BetterLasPiñas.org Contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -9,7 +15,8 @@ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
 
-The above content is provided as-is without any express or implied warranties. In no event shall the authors or copyright holders be liable for any claim, damages, or other liability, whether in an action of contract, tort, or otherwise, arising from, out of, or in connection with the software or the use or other dealings in the software.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -18,3 +25,21 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+---
+
+## Content License (Text, Design, and Media)
+
+All non-software content, including text, documentation, design assets, and data representations, is licensed under the **Creative Commons Attribution 4.0 International License (CC BY 4.0)**.
+
+To view a copy of this license, visit [http://creativecommons.org/licenses/by/4.0/](http://creativecommons.org/licenses/by/4.0/).
+
+### Attribution
+
+When citing or reusing content from this project, please provide attribution to **BetterLasPiñas.org**.
+
+---
+
+## Public Information Disclaimer
+
+Portions of information displayed on this site are sourced from official government portals. Such information remains subject to the original source's terms of use and its status within the public domain.

@@ -21,54 +21,63 @@ const categories = [
     icon: 'bi-shop',
     titleKey: 'cat-business',
     descKey: 'cat-business-desc',
+    hidden: true,
   },
   {
     href: '/services/social-services',
     icon: 'bi-people-fill',
     titleKey: 'cat-social',
     descKey: 'cat-social-desc',
+    hidden: true,
   },
   {
     href: '/services/health',
     icon: 'bi-heart-pulse-fill',
     titleKey: 'cat-health',
     descKey: 'cat-health-desc',
+    hidden: true,
   },
   {
     href: '/services/tax-payments',
     icon: 'bi-cash-coin',
     titleKey: 'cat-tax',
     descKey: 'cat-tax-desc',
+    hidden: true,
   },
   {
     href: '/services/agriculture',
     icon: 'bi-tree-fill',
     titleKey: 'cat-agriculture',
     descKey: 'cat-agriculture-desc',
+    hidden: true,
   },
   {
     href: '/services/infrastructure',
     icon: 'bi-building-fill-gear',
     titleKey: 'cat-infrastructure',
     descKey: 'cat-infrastructure-desc',
+    hidden: true,
   },
   {
     href: '/services/education',
     icon: 'bi-mortarboard-fill',
     titleKey: 'cat-education',
     descKey: 'cat-education-desc',
+    hidden: true,
   },
   {
     href: '/services/public-safety',
     icon: 'bi-shield-fill-check',
     titleKey: 'cat-safety',
     descKey: 'cat-safety-desc',
+    hidden: true,
   },
   {
     href: '/services/environment',
     icon: 'bi-globe-americas',
     titleKey: 'cat-environment',
     descKey: 'cat-environment-desc',
+    hidden: true,
   },
 ]
 
@@ -77,6 +86,7 @@ const lifeEvents = [
     href: '/services/business',
     icon: 'bi-shop',
     labelKey: 'life-starting-business',
+    hidden: true,
   },
   {
     href: '/services/certificates',
@@ -92,26 +102,31 @@ const lifeEvents = [
     href: '/services/social-services',
     icon: 'bi-wallet2',
     labelKey: 'life-financial-help',
+    hidden: true,
   },
   {
     href: '/services/social-services',
     icon: 'bi-person-badge',
     labelKey: 'life-senior',
+    hidden: true,
   },
   {
     href: '/services/social-services',
     icon: 'bi-universal-access',
     labelKey: 'life-pwd',
+    hidden: true,
   },
   {
     href: '/services/infrastructure',
     icon: 'bi-hammer',
     labelKey: 'life-building',
+    hidden: true,
   },
   {
     href: '/services/public-safety',
     icon: 'bi-question-circle',
     labelKey: 'life-trouble',
+    hidden: true,
   },
 ]
 </script>
@@ -154,7 +169,7 @@ const lifeEvents = [
       <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <NuxtLink
-            v-for="cat in categories"
+            v-for="cat in categories.filter(c => !c.hidden)"
             :key="cat.href"
             :to="cat.href"
             class="group flex items-start gap-4 p-6 bg-white border border-gray-200 rounded-xl no-underline text-gray-800 transition-all duration-200 hover:border-primary-500 hover:shadow-lg"
@@ -191,7 +206,7 @@ const lifeEvents = [
         </div>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
           <NuxtLink
-            v-for="event in lifeEvents"
+            v-for="event in lifeEvents.filter(e => !e.hidden)"
             :key="event.labelKey"
             :to="event.href"
             class="flex flex-col items-center gap-3 p-6 bg-white border border-gray-200 rounded-xl no-underline text-gray-800 text-center transition-all duration-200 hover:border-primary-500 hover:shadow-md hover:-translate-y-1"

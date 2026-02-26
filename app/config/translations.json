@@ -1,5 +1,11 @@
 {
-  "en": {},
-  "fil": {},
-  "ilo": {}
+  "en": {
+    "faq-about": "About This Project"
+  },
+  "fil": {
+    "faq-about": "Tungkol sa Proyektong Ito"
+  },
+  "ilo": {
+    "faq-about": "Maipapan iti Daytoy a Proyekto"
+  }
 }

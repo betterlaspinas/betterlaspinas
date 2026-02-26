@@ -29,22 +29,23 @@ interface SearchSuggestions {
 const RECENT_SEARCHES_KEY = 'betterlgu_recent_searches'
 const MAX_RECENT_SEARCHES = 10
 
+// TODO: Uncomment the hidden categories to restore all service categories
 const CURATED_POPULAR = [
   'birth certificate',
-  'business permit',
-  'cedula',
-  'real property tax',
-  'senior citizen id',
-  'pwd id',
+  // 'business permit',
+  // 'cedula',
+  // 'real property tax',
+  // 'senior citizen id',
+  // 'pwd id',
   'barangay clearance',
-  'building permit',
+  // 'building permit',
   'marriage certificate',
   'death certificate',
-  'tricycle franchise',
-  'property declaration',
-  'online payment',
-  'mswdo',
-  'slaughterhouse',
+  // 'tricycle franchise',
+  // 'property declaration',
+  // 'online payment',
+  // 'mswdo',
+  // 'slaughterhouse',
 ]
 
 // Fuse.js configuration for fuzzy search
@@ -103,7 +104,9 @@ function clearStoredRecentSearches(): void {
 
 export function useSearch(initialQuery = '') {
   const query = ref(initialQuery)
-  const category = ref('')
+  // const category = ref('')
+  // TODO: Remove this and uncomment above to restore all categories
+  const category = ref('certificates')
   const results = ref<SearchResult[]>([])
   const suggestions = ref<SearchSuggestions>({
     popular: [],
@@ -114,7 +117,9 @@ export function useSearch(initialQuery = '') {
   const selectedIndex = ref(-1)
   const pendingNavigation = ref<string | null>(null)
 
-  const services = computed(() => getServicesConfig().services as Service[])
+  // const services = computed(() => getServicesConfig().services as Service[])
+  // TODO: Remove this and uncomment above to restore all services
+  const services = computed(() => (getServicesConfig().services as Service[]).filter(s => s.categoryId === 'certificates'))
 
   // Create Fuse instance for fuzzy search
   const fuse = computed(() => new Fuse(services.value, FUSE_OPTIONS))
@@ -163,9 +168,16 @@ export function useSearch(initialQuery = '') {
 
   const getSuggestions = (searchQuery: string): SearchSuggestions => {
     if (!searchQuery || searchQuery.length < 1) {
+      // TODO: Remove this block and uncomment below to restore all recent searches
+      const validKeywords = new Set([...services.value.map(s => s.title.toLowerCase()), ...CURATED_POPULAR.map(p => p.toLowerCase())])
+      const validRecent = getRecentSearches().filter(r =>
+        Array.from(validKeywords).some(v => v.includes(r.toLowerCase()) || r.toLowerCase().includes(v)),
+      ).slice(0, 3)
+
       return {
         popular: CURATED_POPULAR.slice(0, 4),
-        recent: getRecentSearches().slice(0, 3),
+        // recent: getRecentSearches().slice(0, 3),
+        recent: validRecent,
         suggestions: [],
       }
     }

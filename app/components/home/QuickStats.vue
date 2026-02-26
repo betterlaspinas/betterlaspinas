@@ -26,7 +26,7 @@ const stats = computed(() => [
     source: statistics.subdivisions.source || 'Administrative Units',
   },
   {
-    href: '/budget',
+    href: '/statistics', // TODO: Change to budget when available
     icon: 'bi-award-fill',
     value: statistics.incomeClass.class || '—',
     label: labels.value.lguTypeLabel,

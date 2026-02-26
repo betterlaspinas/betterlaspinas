@@ -11,6 +11,7 @@ interface SitemapLink {
   href: string
   label: string
   external?: boolean
+  hidden?: boolean
 }
 
 interface SitemapSection {
@@ -29,8 +30,8 @@ const sections = computed<SitemapSection[]>(() => [
       { href: '/services', label: 'Services' },
       { href: '/government', label: 'Government' },
       { href: '/statistics', label: 'Statistics' },
-      { href: '/legislative', label: 'Legislative' },
-      { href: '/budget', label: 'Transparency' },
+      { href: '/legislative', label: 'Legislative', hidden: true },
+      { href: '/budget', label: 'Transparency', hidden: true },
       { href: '/contact', label: 'Contact' },
       { href: '/news', label: 'News' },
       { href: '/faq', label: 'FAQ' },
@@ -45,15 +46,15 @@ const sections = computed<SitemapSection[]>(() => [
         href: '/services/certificates',
         label: 'Certificates & Vital Records',
       },
-      { href: '/services/business', label: 'Business Services' },
-      { href: '/services/social-services', label: 'Social Services' },
-      { href: '/services/health', label: 'Health & Wellness' },
-      { href: '/services/tax-payments', label: 'Tax & Payments' },
-      { href: '/services/agriculture', label: 'Agriculture' },
-      { href: '/services/infrastructure', label: 'Infrastructure' },
-      { href: '/services/education', label: 'Education' },
-      { href: '/services/environment', label: 'Environment' },
-      { href: '/services/public-safety', label: 'Public Safety' },
+      { href: '/services/business', label: 'Business Services', hidden: true },
+      { href: '/services/social-services', label: 'Social Services', hidden: true },
+      { href: '/services/health', label: 'Health & Wellness', hidden: true },
+      { href: '/services/tax-payments', label: 'Tax & Payments', hidden: true },
+      { href: '/services/agriculture', label: 'Agriculture', hidden: true },
+      { href: '/services/infrastructure', label: 'Infrastructure', hidden: true },
+      { href: '/services/education', label: 'Education', hidden: true },
+      { href: '/services/environment', label: 'Environment', hidden: true },
+      { href: '/services/public-safety', label: 'Public Safety', hidden: true },
     ],
   },
   {
@@ -110,7 +111,7 @@ const sections = computed<SitemapSection[]>(() => [
     title: 'Government & Legislative',
     links: [
       { href: '/government', label: 'Government Structure' },
-      { href: '/legislative', label: 'Legislative Documents' },
+      { href: '/legislative', label: 'Legislative Documents', hidden: true },
       {
         href: '/legislative/ordinance-framework',
         label: 'Ordinance Framework',
@@ -193,7 +194,7 @@ const sections = computed<SitemapSection[]>(() => [
                   : 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3'
               "
             >
-              <template v-for="link in section.links" :key="link.href">
+              <template v-for="link in section.links.filter(l => !l.hidden)" :key="link.href">
                 <a
                   v-if="link.external"
                   :href="link.href"

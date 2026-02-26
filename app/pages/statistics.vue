@@ -35,7 +35,7 @@ function getTrendIcon(trendType: string): string {
 }
 
 const allBarangays = computed(() =>
-  statisticsDetailed.value.barangayPopulation.map((b: any) => ({
+  statisticsDetailed.barangayPopulation.map((b: any) => ({
     rank: b.rank,
     name: b.name,
     pop: b.population,
@@ -44,7 +44,7 @@ const allBarangays = computed(() =>
 )
 
 const barangayData = computed(() => allBarangays.value.slice(0, 10))
-const cmciPillars = computed(() => statisticsDetailed.value.cmciPillars)
+const cmciPillars = computed(() => statisticsDetailed.cmciPillars)
 </script>
 
 <template>

@@ -9,6 +9,7 @@ Thank you for your interest in contributing to Better Las Piñas! This document 
 - [Development Setup](#development-setup)
 - [Coding Standards](#coding-standards)
 - [Commit Guidelines](#commit-guidelines)
+- [Branching & Versioning](#branching--versioning)
 - [Pull Request Process](#pull-request-process)
 - [Testing Requirements](#testing-requirements)
 
@@ -20,7 +21,7 @@ This project adheres to the [Contributor Covenant Code of Conduct](CODE_OF_CONDU
 
 ### Reporting Bugs
 
-- **Check existing issues** - Search [GitHub Issues](https://github.com/Martin-Enghoy/betterlaspinas/issues) to avoid duplicates
+- **Check existing issues** - Search [GitHub Issues](https://github.com/betterlaspinas/betterlaspinas/issues) to avoid duplicates
 - **Use the bug report template** - Provide clear steps to reproduce
 - **Include environment details** - OS, Node version, browser, etc.
 
@@ -64,7 +65,7 @@ This project adheres to the [Contributor Covenant Code of Conduct](CODE_OF_CONDU
 
 ```bash
 # Clone your fork
-git clone https://github.com/Martin-Enghoy/betterlaspinas.git
+git clone https://github.com/betterlaspinas/betterlaspinas.git
 cd betterlaspinas
 
 # Install dependencies
@@ -133,6 +134,28 @@ app/
 - **Utils**: camelCase (`configHelper.ts`)
 - **Types**: PascalCase (`LGUConfig`, `ServiceItem`)
 - **CSS Classes**: kebab-case or Tailwind utilities
+
+## 🌿 Branching & Versioning
+
+This project adheres to professional standards for branching and versioning to ensure consistency and predictability.
+
+### Branching Strategy
+
+We use **GitHub Flow** for our development cycle:
+
+1.  **Main Branch**: The `main` branch always contains production-ready code.
+2.  **Feature Branches**: All new work (features, fixes, docs) must be done in a branch.
+3.  **Pull Requests**: Merge into `main` only via Pull Requests followed by successful CI checks and human review.
+
+### Versioning Strategy
+
+This project adheres to **[Semantic Versioning (SemVer)](https://semver.org/)** (`MAJOR.MINOR.PATCH`):
+
+- **MAJOR**: Breaking changes
+- **MINOR**: New functionality in a backwards-compatible manner
+- **PATCH**: Backwards-compatible bug fixes
+
+All releases are tagged in git and documented in the [CHANGELOG.md](CHANGELOG.md).
 
 ## 🌿 Branch Naming
 
@@ -286,8 +309,8 @@ npm test path/to/test.spec.ts
 ## 📞 Getting Help
 
 - **Documentation**: Check README.md and inline comments
-- **Issues**: Search existing [GitHub Issues](https://github.com/Martin-Enghoy/betterlaspinas/issues)
-- **Discussions**: Ask in [GitHub Discussions](https://github.com/Martin-Enghoy/betterlaspinas/discussions)
+- **Issues**: Search existing [GitHub Issues](https://github.com/betterlaspinas/betterlaspinas/issues)
+- **Discussions**: Ask in [GitHub Discussions](https://github.com/betterlaspinas/betterlaspinas/discussions)
 - **Community**: Join our community channels (if available)
 
 ## 🎉 Recognition

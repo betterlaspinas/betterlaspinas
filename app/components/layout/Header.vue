@@ -85,7 +85,8 @@ const logoPath = computed(() => site.value.logo?.main || '/logos/svg/BetterGov_I
             Hotlines
           </NuxtLink>
           <div class="hidden md:block">
-            <LanguageSelector class="text-xs" />
+            <!-- TEMPORARY: Remove v-if="false" to re-enable Language Selector -->
+            <LanguageSelector v-if="false" class="text-xs" />
           </div>
         </div>
       </div>
@@ -281,7 +282,8 @@ const logoPath = computed(() => site.value.logo?.main || '/logos/svg/BetterGov_I
         >
           Sitemap
         </NuxtLink>
-        <div class="px-4 py-3 border-t border-gray-200">
+        <!-- TEMPORARY: Remove v-if="false" to re-enable Language Selector -->
+        <div v-if="false" class="px-4 py-3 border-t border-gray-200">
           <div class="flex items-center">
             <Globe class="h-5 w-5 text-gray-800 mr-2" />
             <LanguageSelector class="text-sm" />

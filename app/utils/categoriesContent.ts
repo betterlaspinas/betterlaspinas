@@ -13,6 +13,7 @@ export interface OfficeCard {
   icon: string
   description: string
   link: string
+  hidden?: boolean
 }
 
 export interface CategoryContent {
@@ -23,6 +24,7 @@ export interface CategoryContent {
   description: string
   services: ServiceItem[]
   offices: OfficeCard[]
+  hidden?: boolean
 }
 
 export const categoriesContent: CategoryContent[] = [
@@ -103,6 +105,7 @@ export const categoriesContent: CategoryContent[] = [
         description:
           'Service records, employment certificates, leave credits for LGU employees',
         link: '/service-details/human-resource-management',
+        hidden: true,
       },
     ],
   },
@@ -112,6 +115,7 @@ export const categoriesContent: CategoryContent[] = [
     icon: 'bi-shop',
     badgeText: 'Business',
     description: 'Business permits, licenses, and trade registration services',
+    hidden: true,
     services: [
       {
         id: 'business-permit',
@@ -189,6 +193,7 @@ export const categoriesContent: CategoryContent[] = [
     icon: 'bi-cash-coin',
     badgeText: 'Taxation',
     description: 'Property tax, business tax, payments, and tax clearance',
+    hidden: true,
     services: [
       {
         id: 'rpt',
@@ -267,6 +272,7 @@ export const categoriesContent: CategoryContent[] = [
     badgeText: 'Social Services',
     description:
       'Welfare programs, senior citizen services, PWD benefits, and financial aid',
+    hidden: true,
     services: [
       {
         id: 'senior-id',
@@ -339,6 +345,7 @@ export const categoriesContent: CategoryContent[] = [
     badgeText: 'Health',
     description:
       'Vaccination programs, health certificates, and medical assistance',
+    hidden: true,
     services: [
       {
         id: 'health-cert',
@@ -405,6 +412,7 @@ export const categoriesContent: CategoryContent[] = [
     badgeText: 'Agriculture',
     description:
       'Agricultural loans, crop insurance, fertilizer assistance, and training',
+    hidden: true,
     services: [
       {
         id: 'rsbsa',
@@ -477,6 +485,7 @@ export const categoriesContent: CategoryContent[] = [
     badgeText: 'Infrastructure',
     description:
       'Construction permits, road maintenance requests, and public facilities',
+    hidden: true,
     services: [
       {
         id: 'building-permit',
@@ -555,6 +564,7 @@ export const categoriesContent: CategoryContent[] = [
     badgeText: 'Education',
     description:
       'Scholarship programs, student assistance, and educational grants',
+    hidden: true,
     services: [
       {
         id: 'scholarship',
@@ -621,6 +631,7 @@ export const categoriesContent: CategoryContent[] = [
     badgeText: 'Public Safety',
     description:
       'Emergency services, disaster preparedness, and community safety programs',
+    hidden: true,
     services: [
       {
         id: 'disaster-prep',
@@ -687,6 +698,7 @@ export const categoriesContent: CategoryContent[] = [
     badgeText: 'Environment',
     description:
       'Environmental permits, waste management, and conservation programs',
+    hidden: true,
     services: [
       {
         id: 'waste-mgmt',

@@ -23,55 +23,64 @@
           "id": "business",
           "label": "Business",
           "href": "/services/business",
-          "i18nKey": "service-business"
+          "i18nKey": "service-business",
+          "hidden": true
         },
         {
           "id": "tax-payments",
           "label": "Tax Payments",
           "href": "/services/tax-payments",
-          "i18nKey": "service-tax"
+          "i18nKey": "service-tax",
+          "hidden": true
         },
         {
           "id": "social-services",
           "label": "Social Services",
           "href": "/services/social-services",
-          "i18nKey": "service-social"
+          "i18nKey": "service-social",
+          "hidden": true
         },
         {
           "id": "health",
           "label": "Health",
           "href": "/services/health",
-          "i18nKey": "service-health"
+          "i18nKey": "service-health",
+          "hidden": true
         },
         {
           "id": "agriculture",
           "label": "Agriculture",
           "href": "/services/agriculture",
-          "i18nKey": "cat-agriculture"
+          "i18nKey": "cat-agriculture",
+          "hidden": true
         },
         {
           "id": "infrastructure",
           "label": "Infrastructure",
           "href": "/services/infrastructure",
-          "i18nKey": "cat-infrastructure"
+          "i18nKey": "cat-infrastructure",
+          "hidden": true
         },
         {
           "id": "education",
           "label": "Education",
           "href": "/services/education",
-          "i18nKey": "cat-education"
+          "i18nKey": "cat-education",
+          "hidden": true
         },
         {
           "id": "public-safety",
           "label": "Public Safety",
           "href": "/services/public-safety",
-          "i18nKey": "cat-safety"
+          "i18nKey": "cat-safety",
+          "hidden": true
         },
         {
           "id": "environment",
           "label": "Environment",
           "href": "/services/environment",
-          "i18nKey": "cat-environment"
+          "i18nKey": "cat-environment",
+          "hidden": true
         }
       ]
     },
@@ -91,13 +100,15 @@
       "id": "tourism",
       "label": "Tourism",
       "href": "/tourism",
-      "i18nKey": "nav-tourism"
+      "i18nKey": "nav-tourism",
+      "hidden": true
     },
     {
       "id": "legislative",
       "label": "Legislative",
       "href": "/legislative",
       "i18nKey": "nav-legislative",
+      "hidden": true,
       "children": [
         {
           "id": "ordinances",
@@ -117,7 +128,8 @@
       "id": "transparency",
       "label": "Transparency",
       "href": "/budget",
-      "i18nKey": "nav-transparency"
+      "i18nKey": "nav-transparency",
+      "hidden": true
     },
     {
       "id": "contact",
@@ -178,7 +190,7 @@
       },
       {
         "label": "Contribute code",
-        "href": "https://github.com/Martin-Enghoy/betterlaspinas",
+        "href": "https://github.com/betterlaspinas/betterlaspinas",
         "external": true
       }
     ]

@@ -126,8 +126,8 @@
       "items": [
         {
           "id": "who-developed",
-          "question": "Who developed {{siteTitle}}?",
-          "answer": "This website is based on the <a href=\"https://github.com/Martin-Enghoy/betterlaspinas\" target=\"_blank\" rel=\"noopener noreferrer\">Better Las Piñas</a> project, originally developed by <a href=\"https://ramonloganjr.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Ramon Logan Jr.</a> as part of the <a href=\"https://bettergov.ph\" target=\"_blank\" rel=\"noopener noreferrer\">BetterGov.ph</a> civic-tech initiative. The project is open source under MIT | CC BY 1.0 to empower community-driven development."
+          "question": "Who developed {{siteBrandName}}?",
+          "answer": "This website is an open-source initiative powered by the <a href=\"https://bettergov.ph\" target=\"_blank\" rel=\"noopener noreferrer\">BetterGov.ph</a> civic-tech framework. It is freely available under the MIT and CC BY 4.0 licenses to encourage digital transformation and community-driven development across local governments."
         }
       ]
     }

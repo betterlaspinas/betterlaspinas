@@ -7,6 +7,7 @@ interface ServiceCard {
   titleKey: string
   descKey: string
   isViewAll?: boolean
+  hidden?: boolean
 }
 
 const { translate } = useLanguage()
@@ -23,24 +24,28 @@ const services: ServiceCard[] = [
     icon: 'bi-shop',
     titleKey: 'service-business',
     descKey: 'service-business-desc',
+    hidden: true,
   },
   {
     href: '/services/tax-payments',
     icon: 'bi-cash-coin',
     titleKey: 'service-tax',
     descKey: 'service-tax-desc',
+    hidden: true,
   },
   {
     href: '/services/social-services',
     icon: 'bi-people-fill',
     titleKey: 'service-social',
     descKey: 'service-social-desc',
+    hidden: true,
   },
   {
     href: '/services/health',
     icon: 'bi-heart-pulse-fill',
     titleKey: 'service-health',
     descKey: 'service-health-desc',
+    hidden: true,
   },
   {
     href: '/services',
@@ -68,13 +73,13 @@ const services: ServiceCard[] = [
       <!-- Services Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <NuxtLink
-          v-for="service in services"
+          v-for="service in services.filter(s => !s.hidden)"
           :key="service.href + service.titleKey"
           :to="service.href"
-          class="group flex items-center gap-4 p-6 bg-white border rounded-xl no-underline transition-all duration-200"
+          class="group flex items-center gap-4 p-6 border rounded-xl no-underline transition-all duration-200"
           :class="service.isViewAll
             ? 'bg-primary-600 border-transparent text-white hover:shadow-lg'
-            : 'border-gray-200 text-gray-800 hover:border-primary-500 hover:shadow-md'"
+            : 'bg-white border-gray-200 text-gray-800 hover:border-primary-500 hover:shadow-md'"
         >
           <!-- Icon -->
           <div

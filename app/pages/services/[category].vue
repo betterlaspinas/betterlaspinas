@@ -90,7 +90,7 @@ useHead({
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <NuxtLink
-            v-for="office in categoryContent.offices"
+            v-for="office in categoryContent.offices.filter(o => o.hidden !== true)"
             :key="office.title"
             :to="office.link"
             class="flex items-center gap-4 p-4 bg-white border border-gray-200 rounded-xl no-underline transition-all duration-200 hover:border-primary-500 hover:shadow-md"

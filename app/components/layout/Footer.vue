@@ -100,8 +100,7 @@ const socialLinks = computed(() => [
       <div class="border-t border-gray-800 mt-8 pt-8">
         <div class="flex flex-col md:flex-row justify-between items-center">
           <p class="text-gray-400 text-sm mb-4 md:mb-0">
-            © {{ currentYear }} {{ siteBrandName }}. All rights reserved. MIT | CC BY 1.0 All public
-            information sourced from official government portals.
+            &copy; {{ currentYear }} {{ siteBrandName }}. MIT | CC BY 4.0 | All public information sourced from official government portals.
           </p>
           <div class="flex space-x-6">
             <a

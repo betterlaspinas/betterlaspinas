@@ -226,7 +226,19 @@ export function getTranslationOverrides(): TranslationOverrides {
  * Get the navigation config with proper typing
  */
 export function getNavigationConfig(): NavigationConfig {
-  return navigationConfig as NavigationConfig
+  const config = navigationConfig as NavigationConfig
+
+  // Filter out hidden items from mainNav
+  if (config.mainNav) {
+    config.mainNav = config.mainNav.filter((item: any) => !item.hidden).map((item: any) => {
+      if (item.children) {
+        item.children = item.children.filter((child: any) => !child.hidden)
+      }
+      return item
+    })
+  }
+
+  return config
 }
 
 /**
@@ -240,7 +252,13 @@ export function getCategoriesConfig(): CategoriesConfig {
  * Get the services config with proper typing
  */
 export function getServicesConfig(): ServicesConfig {
-  return servicesConfig as ServicesConfig
+  // return servicesConfig as ServicesConfig
+  // TODO: Remove this and uncomment above to restore all services globally
+  const config = servicesConfig as ServicesConfig
+  return {
+    ...config,
+    services: config.services.filter((s: any) => s.categoryId === 'certificates'),
+  }
 }
 
 /**

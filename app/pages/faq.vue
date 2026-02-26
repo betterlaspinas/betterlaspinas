@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const { translate } = useLanguage()
-const { lguName, labels, faq, getSiteTitle, getVolunteerEmail } = useConfig()
+const { lguName, labels, faq, getSiteTitle, getVolunteerEmail, siteBrandName } = useConfig()
 const siteTitle = computed(() => getSiteTitle())
 const volunteerEmail = computed(() => getVolunteerEmail())
 
@@ -24,6 +24,7 @@ const templateVars = computed(() => ({
   hallName: labels.value.hallName,
   lguName: lguName.value,
   siteTitle: siteTitle.value,
+  siteBrandName: siteBrandName.value,
   volunteerEmail: volunteerEmail.value,
 }))
 
@@ -60,7 +61,7 @@ const faqCategories = computed(() =>
           <p class="text-lg text-white/90">
             {{
               translate('faq-subtitle')
-                || 'Find answers to common questions about municipal services'
+                || 'Find answers to common questions about city services'
             }}
           </p>
         </div>
