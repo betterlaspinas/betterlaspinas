@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import History from '@/components/home/History.vue'
-import Breadcrumbs from '@/components/ui/Breadcrumbs.vue'
-import { useConfig } from '@/composables/useConfig'
-
 const { siteBrandName } = useConfig()
 
 useHead({
@@ -12,7 +8,7 @@ useHead({
 
 <template>
   <div>
-    <Breadcrumbs :items="[{ label: 'About' }]" />
+    <UiBreadcrumbs :items="[{ label: 'About' }]" />
 
     <UiPageHero
       badge-icon="bi-info-circle-fill"
@@ -41,7 +37,7 @@ useHead({
     </section>
 
     <!-- History Component -->
-    <History />
+    <HomeHistory />
 
     <!-- Quick Links Grid -->
     <section class="py-16 bg-gray-50">

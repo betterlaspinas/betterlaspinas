@@ -6,7 +6,7 @@ import { highlightMatch, useSearch } from '@/composables/useSearch'
 
 const props = defineProps<{
   placeholder?: string
-  customClass?: string
+  class?: any
   initialQuery?: string
 }>()
 
@@ -85,7 +85,7 @@ function onFocus() {
 </script>
 
 <template>
-  <div class="relative w-full flex-1" :class="customClass">
+  <div class="relative w-full flex-1" :class="props.class">
     <input
       ref="inputRef"
       type="search"

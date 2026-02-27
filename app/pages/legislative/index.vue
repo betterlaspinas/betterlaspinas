@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import Breadcrumbs from '~/components/ui/Breadcrumbs.vue'
-
 const { lguName, labels } = useConfig()
 
 useHead({
@@ -151,7 +149,7 @@ const steps = computed(() =>
 
 <template>
   <div>
-    <Breadcrumbs :items="[{ label: 'Legislative' }]" />
+    <UiBreadcrumbs :items="[{ label: 'Legislative' }]" />
 
     <!-- Hero Section -->
     <section class="bg-gradient-to-br from-primary-600 to-primary-700 py-16">
