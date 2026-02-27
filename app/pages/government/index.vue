@@ -33,41 +33,27 @@ const ipmr = computed(() => officials.legislative.find((o: any) => o.position ==
   <div>
     <Breadcrumbs :items="[{ label: 'Government' }]" />
 
-    <!-- Page Header -->
-    <section class="bg-gradient-to-br from-primary-600 to-primary-700 py-16">
-      <div class="container mx-auto px-4">
-        <div class="text-center max-w-2xl mx-auto">
-          <span class="inline-flex items-center gap-2 bg-white/20 text-white px-4 py-2 rounded-full text-sm font-medium mb-4">
-            <i class="bi bi-building-fill" /> Government
-          </span>
-          <h1 class="text-3xl md:text-4xl font-bold text-white mb-4">
-            Government Structure & Officials
-          </h1>
-          <p class="text-lg text-white/90">
-            Meet the leadership and offices serving {{ lguName }}
-          </p>
-        </div>
-      </div>
-    </section>
+    <UiPageHero
+      badge-icon="bi-building-fill"
+      badge-text="Government"
+      title="Government Structure & Officials"
+      :description="`Meet the leadership and offices serving ${lguName}`"
+    />
 
     <!-- Executive Branch -->
     <section class="py-12 bg-gray-50">
       <div class="container mx-auto px-4">
-        <div class="text-center mb-10">
-          <span class="inline-flex items-center gap-2 bg-primary-600 text-white px-5 py-2 rounded-full text-sm font-medium mb-3">
-            <i class="bi bi-star-fill" /> Executive Branch
-          </span>
-          <h2 class="text-2xl font-bold text-gray-900 mb-2">
-            {{ labels.lguTypeLabel }} Leadership
-          </h2>
-          <p class="text-gray-500">
-            The executive officials leading {{ lguName }}'s governance
-          </p>
-        </div>
+        <UiSectionHeader
+          :title="`${labels.lguTypeLabel} Leadership`"
+          :description="`The executive officials leading ${lguName}'s governance`"
+          badge-icon="bi-star-fill"
+          badge-text="Executive Branch"
+          badge-class="bg-primary-600 text-white"
+        />
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           <!-- Leader -->
-          <div class="bg-white border border-gray-200 rounded-xl overflow-hidden transition-all duration-200 hover:border-primary-500 hover:shadow-lg">
+          <UiCard padding="p-0" interactive class="overflow-hidden">
             <div class="bg-primary-600 text-white p-6 text-center">
               <span class="inline-block bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full mb-2 uppercase tracking-wide">
                 {{ labels.lguTypeLabel }} {{ labels.leaderTitle }}
@@ -97,10 +83,10 @@ const ipmr = computed(() => officials.legislative.find((o: any) => o.position ==
                 <i class="bi bi-clock text-primary-600" /> Mon-Fri: 8:00 AM - 5:00 PM
               </span>
             </div>
-          </div>
+          </UiCard>
 
           <!-- Vice Leader -->
-          <div class="bg-white border border-gray-200 rounded-xl overflow-hidden transition-all duration-200 hover:border-primary-500 hover:shadow-lg">
+          <UiCard padding="p-0" interactive class="overflow-hidden">
             <div class="bg-primary-600 text-white p-6 text-center">
               <span class="inline-block bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full mb-2 uppercase tracking-wide">
                 {{ labels.lguTypeLabel }} {{ labels.viceLeaderTitle }}
@@ -130,7 +116,7 @@ const ipmr = computed(() => officials.legislative.find((o: any) => o.position ==
                 <i class="bi bi-clock text-primary-600" /> Mon-Fri: 8:00 AM - 5:00 PM
               </span>
             </div>
-          </div>
+          </UiCard>
         </div>
       </div>
     </section>
@@ -138,23 +124,19 @@ const ipmr = computed(() => officials.legislative.find((o: any) => o.position ==
     <!-- Legislative Branch -->
     <section class="py-12">
       <div class="container mx-auto px-4">
-        <div class="text-center mb-10">
-          <span class="inline-flex items-center gap-2 bg-primary-600 text-white px-5 py-2 rounded-full text-sm font-medium mb-3">
-            <i class="bi bi-people-fill" /> Legislative Branch
-          </span>
-          <h2 class="text-2xl font-bold text-gray-900 mb-2">
-            {{ labels.legislativeBody }} Members
-          </h2>
-          <p class="text-gray-500">
-            {{ labels.legislativeMembers }} serving the people of {{ lguName }}
-          </p>
-        </div>
+        <UiSectionHeader
+          :title="`${labels.legislativeBody} Members`"
+          :description="`${labels.legislativeMembers} serving the people of ${lguName}`"
+          badge-icon="bi-people-fill"
+          badge-text="Legislative Branch"
+          badge-class="bg-primary-600 text-white"
+        />
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div
+          <UiCard
             v-for="member in sbMembers"
             :key="member.id"
-            class="bg-white border border-gray-200 rounded-xl p-6 transition-all duration-200 hover:border-primary-500 hover:shadow-md"
+            interactive
           >
             <h4 class="text-lg font-semibold text-gray-900 mb-2">
               {{ member.name ? `Hon. ${member.name}` : 'To be updated' }}
@@ -165,9 +147,9 @@ const ipmr = computed(() => officials.legislative.find((o: any) => o.position ==
             <p v-if="member.committees" class="text-sm text-gray-500">
               {{ member.committees }}
             </p>
-          </div>
+          </UiCard>
 
-          <div v-if="ligaPresident" class="bg-white border border-green-200 rounded-xl p-6 transition-all duration-200 hover:border-green-500 hover:shadow-md">
+          <UiCard v-if="ligaPresident" interactive class="border-green-200 hover:border-green-500">
             <h4 class="text-lg font-semibold text-gray-900 mb-2">
               {{ ligaPresident.name ? `Hon. ${ligaPresident.name}` : 'To be updated' }}
             </h4>
@@ -177,9 +159,9 @@ const ipmr = computed(() => officials.legislative.find((o: any) => o.position ==
             <p v-if="ligaPresident.committees" class="text-sm text-gray-500">
               {{ ligaPresident.committees }}
             </p>
-          </div>
+          </UiCard>
 
-          <div v-if="skPresident" class="bg-white border border-yellow-200 rounded-xl p-6 transition-all duration-200 hover:border-yellow-500 hover:shadow-md">
+          <UiCard v-if="skPresident" interactive class="border-yellow-200 hover:border-yellow-500">
             <h4 class="text-lg font-semibold text-gray-900 mb-2">
               {{ skPresident.name ? `Hon. ${skPresident.name}` : 'To be updated' }}
             </h4>
@@ -189,9 +171,9 @@ const ipmr = computed(() => officials.legislative.find((o: any) => o.position ==
             <p v-if="skPresident.committees" class="text-sm text-gray-500">
               {{ skPresident.committees }}
             </p>
-          </div>
+          </UiCard>
 
-          <div v-if="ipmr" class="bg-white border border-purple-200 rounded-xl p-6 transition-all duration-200 hover:border-purple-500 hover:shadow-md">
+          <UiCard v-if="ipmr" interactive class="border-purple-200 hover:border-purple-500">
             <h4 class="text-lg font-semibold text-gray-900 mb-2">
               {{ ipmr.name ? `Hon. ${ipmr.name}` : 'To be updated' }}
             </h4>
@@ -201,7 +183,7 @@ const ipmr = computed(() => officials.legislative.find((o: any) => o.position ==
             <p v-if="ipmr.committees" class="text-sm text-gray-500">
               {{ ipmr.committees }}
             </p>
-          </div>
+          </UiCard>
         </div>
       </div>
     </section>
@@ -209,17 +191,13 @@ const ipmr = computed(() => officials.legislative.find((o: any) => o.position ==
     <!-- Department Heads -->
     <section class="py-12 bg-gray-50">
       <div class="container mx-auto px-4">
-        <div class="text-center mb-10">
-          <span class="inline-flex items-center gap-2 bg-primary-600 text-white px-5 py-2 rounded-full text-sm font-medium mb-3">
-            <i class="bi bi-building-fill" /> {{ labels.deptPrefix }} Offices
-          </span>
-          <h2 class="text-2xl font-bold text-gray-900 mb-2">
-            Department Heads & Key Offices
-          </h2>
-          <p class="text-gray-500">
-            {{ labels.deptPrefix }} offices providing services to citizens
-          </p>
-        </div>
+        <UiSectionHeader
+          title="Department Heads & Key Offices"
+          :description="`${labels.deptPrefix} offices providing services to citizens`"
+          badge-icon="bi-building-fill"
+          :badge-text="`${labels.deptPrefix} Offices`"
+          badge-class="bg-primary-600 text-white"
+        />
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <!-- TODO: Add back when available -->
@@ -256,10 +234,11 @@ const ipmr = computed(() => officials.legislative.find((o: any) => o.position ==
           </NuxtLink> -->
 
           <!-- Current active block with links temporarily removed -->
-          <div
+          <UiCard
             v-for="dept in officials.departments"
             :key="dept.id"
-            class="group bg-white border border-gray-200 rounded-xl p-6 transition-all duration-200 hover:border-primary-500 hover:shadow-lg"
+            interactive
+            class="group"
           >
             <div class="flex items-start gap-4">
               <div class="w-12 h-12 flex items-center justify-center bg-primary-50 rounded-xl text-primary-600 text-xl shrink-0 transition-all duration-200">
@@ -282,7 +261,7 @@ const ipmr = computed(() => officials.legislative.find((o: any) => o.position ==
                 </div>
               </div>
             </div>
-          </div>
+          </UiCard>
           <!-- End of current active block -->
         </div>
       </div>
@@ -291,25 +270,21 @@ const ipmr = computed(() => officials.legislative.find((o: any) => o.position ==
     <!-- Subdivisions -->
     <section class="py-12">
       <div class="container mx-auto px-4">
-        <div class="text-center mb-10">
-          <span class="inline-flex items-center gap-2 bg-primary-600 text-white px-5 py-2 rounded-full text-sm font-medium mb-3">
-            <i class="bi bi-geo-alt-fill" />
-            {{ labels.subdivisionTypePlural }}
-          </span>
-          <h2 class="text-2xl font-bold text-gray-900 mb-2">
-            {{ labels.subdivisionTypePlural }} of {{ lguName }}
-          </h2>
-          <p class="text-gray-500">
-            {{ subdivisions.count }} {{ labels.subdivisionTypePlural }} serving our community
-          </p>
-        </div>
+        <UiSectionHeader
+          :title="`${labels.subdivisionTypePlural} of ${lguName}`"
+          :description="`${subdivisions.count} ${labels.subdivisionTypePlural} serving our community`"
+          badge-icon="bi-geo-alt-fill"
+          :badge-text="labels.subdivisionTypePlural"
+          badge-class="bg-primary-600 text-white"
+        />
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          <a
+          <UiCard
             v-for="item in subdivisions.items"
             :key="item.id"
             :href="item.phone ? `tel:${formatPhoneLink(item.phone)}` : '#'"
-            class="bg-white border border-gray-200 rounded-xl p-4 no-underline transition-all duration-200 hover:border-primary-500 hover:shadow-md"
+            padding="p-4"
+            interactive
           >
             <div class="flex items-center gap-3 mb-2">
               <i class="bi bi-geo-alt-fill text-primary-600" />
@@ -323,7 +298,7 @@ const ipmr = computed(() => officials.legislative.find((o: any) => o.position ==
                 <i class="bi bi-telephone" /> {{ item.phone }}
               </span>
             </div>
-          </a>
+          </UiCard>
         </div>
       </div>
     </section>

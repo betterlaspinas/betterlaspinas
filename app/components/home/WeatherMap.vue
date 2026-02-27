@@ -132,7 +132,7 @@ onMounted(() => {
         <!-- Weather Column -->
         <div class="flex flex-col">
           <div id="weather-container" class="h-full">
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 h-full flex flex-col transition-all duration-300 hover:shadow-md hover:-translate-y-0.5">
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 h-full flex flex-col hover-card-premium">
               <ClientOnly>
                 <div v-if="!weatherError" class="flex flex-col h-full">
                   <!-- Current Weather -->

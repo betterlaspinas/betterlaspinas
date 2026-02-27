@@ -24,7 +24,7 @@ const { lguName } = useConfig()
         </NuxtLink>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <article class="bg-white border border-gray-200 rounded-xl p-6 transition-all duration-200 hover:border-primary-500 hover:shadow-md">
+        <UiCard interactive>
           <div class="flex items-center gap-3 mb-4">
             <span class="bg-blue-100 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full">
               Announcement
@@ -42,8 +42,8 @@ const { lguName } = useConfig()
           <p class="text-gray-500 text-sm">
             Stay tuned for the latest news and announcements from {{ lguName }}.
           </p>
-        </article>
-        <article class="bg-white border border-gray-200 rounded-xl p-6 transition-all duration-200 hover:border-primary-500 hover:shadow-md">
+        </UiCard>
+        <UiCard interactive>
           <div class="flex items-center gap-3 mb-4">
             <span class="bg-green-100 text-green-700 text-xs font-semibold px-3 py-1 rounded-full">
               Project
@@ -61,8 +61,8 @@ const { lguName } = useConfig()
           <p class="text-gray-500 text-sm">
             Updates on ongoing and upcoming infrastructure projects in {{ lguName }}.
           </p>
-        </article>
-        <article class="bg-white border border-gray-200 rounded-xl p-6 transition-all duration-200 hover:border-primary-500 hover:shadow-md">
+        </UiCard>
+        <UiCard interactive>
           <div class="flex items-center gap-3 mb-4">
             <span class="bg-yellow-100 text-yellow-700 text-xs font-semibold px-3 py-1 rounded-full">
               Advisory
@@ -80,7 +80,7 @@ const { lguName } = useConfig()
           <p class="text-gray-500 text-sm">
             Important advisories and notices for residents of {{ lguName }}.
           </p>
-        </article>
+        </UiCard>
       </div>
     </div>
   </section>

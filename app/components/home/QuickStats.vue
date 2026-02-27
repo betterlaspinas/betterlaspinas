@@ -63,11 +63,12 @@ const stats = computed(() => [
 
       <!-- Stats Grid -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <NuxtLink
+        <UiCard
           v-for="stat in stats"
           :key="stat.label"
           :to="stat.href"
-          class="group relative flex items-center gap-4 p-6 bg-white border border-gray-200 rounded-xl no-underline text-gray-800 transition-all duration-300 overflow-hidden hover:border-primary-500 hover:shadow-lg hover:-translate-y-0.5"
+          interactive
+          class="group relative flex items-center gap-4 overflow-hidden"
         >
           <!-- Left accent bar (hidden by default, shows on hover) -->
           <div class="absolute top-0 left-0 w-1 h-full bg-primary-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -89,7 +90,7 @@ const stats = computed(() => [
               {{ stat.source }}
             </span>
           </div>
-        </NuxtLink>
+        </UiCard>
       </div>
     </div>
   </section>

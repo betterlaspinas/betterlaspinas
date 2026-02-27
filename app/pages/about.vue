@@ -14,22 +14,12 @@ useHead({
   <div>
     <Breadcrumbs :items="[{ label: 'About' }]" />
 
-    <!-- Hero Section -->
-    <section class="bg-gradient-to-br from-primary-600 to-primary-700 py-16">
-      <div class="container mx-auto px-4">
-        <div class="text-center max-w-2xl mx-auto">
-          <span class="inline-flex items-center gap-2 bg-white/20 text-white px-4 py-2 rounded-full text-sm font-medium mb-4">
-            <i class="bi bi-info-circle-fill" /> About Us
-          </span>
-          <h1 class="text-3xl md:text-4xl font-bold text-white mb-4">
-            About {{ siteBrandName }}
-          </h1>
-          <p class="text-lg text-white/90">
-            Learn about our mission, history, and the community we serve.
-          </p>
-        </div>
-      </div>
-    </section>
+    <UiPageHero
+      badge-icon="bi-info-circle-fill"
+      badge-text="About Us"
+      :title="`About ${siteBrandName}`"
+      description="Learn about our mission, history, and the community we serve."
+    />
 
     <!-- Project Mission -->
     <section class="py-12 bg-white">
@@ -56,11 +46,12 @@ useHead({
     <!-- Quick Links Grid -->
     <section class="py-16 bg-gray-50">
       <div class="container mx-auto px-4">
-        <div class="text-center mb-10">
-          <h2 class="text-2xl font-bold text-gray-900">
-            Explore More
-          </h2>
-        </div>
+        <UiSectionHeader
+          title="Explore More"
+          badge-icon="bi-compass"
+          badge-text="Navigate"
+          badge-class="bg-primary-600 text-white"
+        />
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           <NuxtLink to="/government" class="group bg-white p-8 rounded-xl border border-gray-200 hover:border-primary-500 hover:shadow-lg transition-all text-center no-underline">

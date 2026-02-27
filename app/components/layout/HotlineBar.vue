@@ -32,7 +32,7 @@ const displayHotlines = computed(() => {
             v-for="hotline in displayHotlines"
             :key="hotline.id"
             :href="`tel:${formatPhoneLink(hotline.number)}`"
-            class="inline-flex items-center gap-1 text-white bg-white/15 px-2.5 py-1 rounded-full whitespace-nowrap transition-all duration-200 hover:bg-white/30 hover:-translate-y-0.5"
+            class="inline-flex items-center gap-1 text-white bg-white/15 px-2.5 py-1 rounded-full whitespace-nowrap hover-btn-premium hover:bg-white/30"
           >
             <i :class="`bi ${hotline.icon} text-xs`" />
             <span>

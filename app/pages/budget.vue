@@ -57,11 +57,7 @@ function formatLocation(location: string) {
           class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8"
         >
           <div>
-            <span
-              class="inline-flex items-center gap-2 bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm font-medium mb-2"
-            >
-              <i class="bi bi-graph-up-arrow" /> Financial Report
-            </span>
+            <UiBadge icon="bi-graph-up-arrow" text="Financial Report" class="mb-2" />
             <h2 class="text-2xl font-bold text-gray-900">
               Statement of Receipts & Expenditures
             </h2>
@@ -428,11 +424,7 @@ function formatLocation(location: string) {
     <section class="py-12 bg-gray-50">
       <div class="container mx-auto px-4">
         <div class="mb-8">
-          <span
-            class="inline-flex items-center gap-2 bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm font-medium mb-2"
-          >
-            <i class="bi bi-building-gear" /> Public Works
-          </span>
+          <UiBadge icon="bi-building-gear" text="Public Works" class="mb-2" />
           <h2 class="text-2xl font-bold text-gray-900">
             Infrastructure Investments
           </h2>
@@ -449,18 +441,8 @@ function formatLocation(location: string) {
         >
           <div class="p-6 border-b border-gray-200">
             <div class="flex flex-wrap gap-2 mb-3">
-              <span
-                class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium"
-              >
-                {{ project.year }}
-              </span>
-              <span
-                class="px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1"
-                :class="`bg-${project.typeColor}-100 text-${project.typeColor}-700`"
-              >
-                <i :class="`bi ${project.typeIcon}`" />
-                {{ project.type }}
-              </span>
+              <UiBadge variant="gray" size="md" :text="project.year" />
+              <UiBadge :variant="project.typeColor" :icon="project.typeIcon" :text="project.type" />
             </div>
             <h3 class="text-lg font-bold text-gray-900 mb-1">
               {{ project.title }}
@@ -510,11 +492,7 @@ function formatLocation(location: string) {
     <section class="py-12">
       <div class="container mx-auto px-4">
         <div class="mb-8">
-          <span
-            class="inline-flex items-center gap-2 bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm font-medium mb-2"
-          >
-            <i class="bi bi-building" /> National Government Projects
-          </span>
+          <UiBadge icon="bi-building" text="National Government Projects" class="mb-2" />
           <h2 class="text-2xl font-bold text-gray-900">
             DPWH Infrastructure Projects in {{ lguName }}
           </h2>

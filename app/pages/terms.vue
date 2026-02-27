@@ -53,9 +53,7 @@ const sections = [
         <div class="flex flex-col lg:flex-row gap-8">
           <!-- Table of Contents -->
           <aside class="lg:w-64 shrink-0">
-            <div
-              class="sticky top-24 bg-white border border-gray-200 rounded-xl p-6"
-            >
+            <UiCard class="sticky top-24" padding="p-6">
               <h4
                 class="font-semibold text-gray-900 mb-4 flex items-center gap-2"
               >
@@ -71,16 +69,13 @@ const sections = [
                   {{ section.title }}
                 </a>
               </nav>
-            </div>
+            </UiCard>
           </aside>
 
           <!-- Main Content -->
           <article class="flex-1 max-w-3xl">
             <div class="space-y-8">
-              <section
-                id="introduction"
-                class="bg-white border border-gray-200 rounded-xl p-8"
-              >
+              <UiCard id="introduction" padding="p-8">
                 <h2 class="text-xl font-bold text-gray-900 mb-4">
                   Introduction
                 </h2>
@@ -101,12 +96,9 @@ const sections = [
                     <strong>free of charge</strong> as a public service.
                   </span>
                 </div>
-              </section>
+              </UiCard>
 
-              <section
-                id="acceptance"
-                class="bg-white border border-gray-200 rounded-xl p-8"
-              >
+              <UiCard id="acceptance" padding="p-8">
                 <h2 class="text-xl font-bold text-gray-900 mb-4">
                   Acceptance of Terms
                 </h2>
@@ -116,12 +108,9 @@ const sections = [
                   continued use of the site signifies your ongoing
                   acceptance of this agreement.
                 </p>
-              </section>
+              </UiCard>
 
-              <section
-                id="public-domain"
-                class="bg-white border border-gray-200 rounded-xl p-8"
-              >
+              <UiCard id="public-domain" padding="p-8">
                 <h2 class="text-xl font-bold text-gray-900 mb-4">
                   Public Domain Content and Volunteer Operation
                 </h2>
@@ -144,12 +133,9 @@ const sections = [
                     verification.
                   </p>
                 </div>
-              </section>
+              </UiCard>
 
-              <section
-                id="disclaimer"
-                class="bg-white border border-gray-200 rounded-xl p-8"
-              >
+              <UiCard id="disclaimer" padding="p-8">
                 <h2 class="text-xl font-bold text-gray-900 mb-4">
                   "As Is" Disclaimer
                 </h2>
@@ -159,12 +145,9 @@ const sections = [
                   merchantability, fitness for a particular purpose,
                   accuracy, completeness, or reliability of information.
                 </p>
-              </section>
+              </UiCard>
 
-              <section
-                id="limitation"
-                class="bg-white border border-gray-200 rounded-xl p-8"
-              >
+              <UiCard id="limitation" padding="p-8">
                 <h2 class="text-xl font-bold text-gray-900 mb-4">
                   Limitation of Liability
                 </h2>
@@ -175,12 +158,9 @@ const sections = [
                   consequential damages arising from your use of this
                   website.
                 </p>
-              </section>
+              </UiCard>
 
-              <section
-                id="responsibilities"
-                class="bg-white border border-gray-200 rounded-xl p-8"
-              >
+              <UiCard id="responsibilities" padding="p-8">
                 <h2 class="text-xl font-bold text-gray-900 mb-4">
                   User Responsibilities
                 </h2>
@@ -189,12 +169,9 @@ const sections = [
                   information, reviewing source links, and cross-checking
                   with official sources before making decisions.
                 </p>
-              </section>
+              </UiCard>
 
-              <section
-                id="no-advice"
-                class="bg-white border border-gray-200 rounded-xl p-8"
-              >
+              <UiCard id="no-advice" padding="p-8">
                 <h2 class="text-xl font-bold text-gray-900 mb-4">
                   No Professional Advice
                 </h2>
@@ -204,12 +181,9 @@ const sections = [
                   constitute legal, medical, financial, or any other form of
                   professional advice.
                 </p>
-              </section>
+              </UiCard>
 
-              <section
-                id="external-links"
-                class="bg-white border border-gray-200 rounded-xl p-8"
-              >
+              <UiCard id="external-links" padding="p-8">
                 <h2 class="text-xl font-bold text-gray-900 mb-4">
                   Source Links and External References
                 </h2>
@@ -218,12 +192,9 @@ const sections = [
                   government documents. The continued availability and
                   accuracy of external links cannot be guaranteed.
                 </p>
-              </section>
+              </UiCard>
 
-              <section
-                id="availability"
-                class="bg-white border border-gray-200 rounded-xl p-8"
-              >
+              <UiCard id="availability" padding="p-8">
                 <h2 class="text-xl font-bold text-gray-900 mb-4">
                   Website Availability
                 </h2>
@@ -232,12 +203,9 @@ const sections = [
                   be available or accessible at all times, error-free, or
                   fully compatible with all devices and browsers.
                 </p>
-              </section>
+              </UiCard>
 
-              <section
-                id="modifications"
-                class="bg-white border border-gray-200 rounded-xl p-8"
-              >
+              <UiCard id="modifications" padding="p-8">
                 <h2 class="text-xl font-bold text-gray-900 mb-4">
                   Modifications
                 </h2>
@@ -247,12 +215,9 @@ const sections = [
                   after changes are posted constitutes your acceptance of
                   the updated terms.
                 </p>
-              </section>
+              </UiCard>
 
-              <section
-                id="governing-law"
-                class="bg-white border border-gray-200 rounded-xl p-8"
-              >
+              <UiCard id="governing-law" padding="p-8">
                 <h2 class="text-xl font-bold text-gray-900 mb-4">
                   Governing Law
                 </h2>
@@ -260,12 +225,9 @@ const sections = [
                   These terms are governed by and construed in accordance
                   with the laws of the Republic of the Philippines.
                 </p>
-              </section>
+              </UiCard>
 
-              <section
-                id="contact"
-                class="bg-white border border-gray-200 rounded-xl p-8"
-              >
+              <UiCard id="contact" padding="p-8">
                 <h2 class="text-xl font-bold text-gray-900 mb-4">
                   Contact Information
                 </h2>
@@ -285,7 +247,7 @@ const sections = [
                   support civic engagement, transparency, and informed
                   participation in local governance.
                 </p>
-              </section>
+              </UiCard>
             </div>
           </article>
         </div>
