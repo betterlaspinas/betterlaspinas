@@ -1,0 +1,89 @@
+version: 2
+
+updates:
+  # ── npm packages ──────────────────────────────────────────────
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: '09:00'
+      timezone: Asia/Manila
+    open-pull-requests-limit: 10
+    labels:
+      - dependencies
+      - npm
+    commit-message:
+      prefix: chore
+      prefix-development: chore
+      include: scope
+    groups:
+      nuxt-ecosystem:
+        patterns:
+          - nuxt
+          - '@nuxt/*'
+          - nuxi
+          - vue
+          - 'vue-*'
+          - '@vue/*'
+          - vue-router
+      tailwind:
+        patterns:
+          - tailwindcss
+          - '@tailwindcss/*'
+          - 'tailwind-*'
+          - autoprefixer
+          - postcss
+      pinia:
+        patterns:
+          - pinia
+          - '@pinia/*'
+      ui-and-icons:
+        patterns:
+          - lucide-vue-next
+          - bootstrap-icons
+          - '@headlessui/*'
+          - clsx
+          - tailwind-merge
+      charts-and-maps:
+        patterns:
+          - chart.js
+          - vue-chartjs
+          - leaflet
+          - '@vue-leaflet/*'
+          - '@types/leaflet'
+      testing:
+        patterns:
+          - vitest
+          - '@vitest/*'
+          - '@nuxt/test-utils'
+          - '@vue/test-utils'
+          - happy-dom
+      linting-and-tooling:
+        patterns:
+          - eslint
+          - 'eslint-*'
+          - '@antfu/eslint-config'
+          - husky
+          - typescript
+          - vue-tsc
+
+  # ── GitHub Actions ─────────────────────────────────────────────
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: '09:00'
+      timezone: Asia/Manila
+    open-pull-requests-limit: 5
+    labels:
+      - dependencies
+      - github-actions
+    commit-message:
+      prefix: chore
+      include: scope
+    groups:
+      github-actions:
+        patterns:
+          - '*'
