@@ -4,25 +4,6 @@ import { useConfig } from '@/composables/useConfig'
 
 const { lguName, labels, news } = useConfig()
 
-const { getFullSiteTitle, getOpenGraphUrl } = useConfig()
-
-const seoDesc = computed(() => `Stay updated with the latest news, announcements, and press releases from the ${labels.value.lguTypeLabel} of ${lguName.value}.`)
-
-useHead({
-  title: 'News & Announcements',
-})
-
-useSeoMeta({
-  description: () => seoDesc.value,
-  ogTitle: () => getFullSiteTitle('News & Announcements'),
-  ogDescription: () => seoDesc.value,
-  ogType: 'website',
-  ogUrl: () => `${getOpenGraphUrl()}news`,
-  twitterCard: 'summary',
-  twitterTitle: () => getFullSiteTitle('News & Announcements'),
-  twitterDescription: () => seoDesc.value,
-})
-
 // Badge color mapping
 const badgeColorMap: Record<string, string> = {
   blue: 'bg-blue-100 text-blue-700',

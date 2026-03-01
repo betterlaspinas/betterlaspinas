@@ -11,23 +11,6 @@ if (!service) {
   })
 }
 
-const { getFullSiteTitle, getOpenGraphUrl } = useConfig()
-
-useHead({
-  title: service.title || 'Service Details',
-})
-
-useSeoMeta({
-  description: service.description,
-  ogTitle: getFullSiteTitle(service.title || 'Service Details'),
-  ogDescription: service.description,
-  ogType: 'website',
-  ogUrl: `${getOpenGraphUrl()}service-details/${slug}`,
-  twitterCard: 'summary',
-  twitterTitle: getFullSiteTitle(service.title || 'Service Details'),
-  twitterDescription: service.description,
-})
-
 const openFaq = ref<number | null>(null)
 
 function toggleFaq(index: number) {

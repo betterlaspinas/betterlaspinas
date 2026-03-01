@@ -6,25 +6,6 @@ import Leadership from '@/components/home/Leadership.vue'
 import PopularServices from '@/components/home/PopularServices.vue'
 import QuickStats from '@/components/home/QuickStats.vue'
 import WeatherMap from '@/components/home/WeatherMap.vue'
-
-const { getFullSiteTitle, getOpenGraphUrl, lguName, labels } = useConfig()
-
-const seoDesc = computed(() => `Welcome to Better ${lguName.value} — your digital gateway to ${labels.value.lguTypeLabel} of ${lguName.value} services, government information, and community resources.`)
-
-useHead({
-  title: 'Home',
-})
-
-useSeoMeta({
-  description: () => seoDesc.value,
-  ogTitle: () => getFullSiteTitle('Home'),
-  ogDescription: () => seoDesc.value,
-  ogType: 'website',
-  ogUrl: () => getOpenGraphUrl(),
-  twitterCard: 'summary',
-  twitterTitle: () => getFullSiteTitle('Home'),
-  twitterDescription: () => seoDesc.value,
-})
 </script>
 
 <template>

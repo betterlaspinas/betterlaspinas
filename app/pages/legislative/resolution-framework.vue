@@ -3,25 +3,6 @@ import Breadcrumbs from '~/components/ui/Breadcrumbs.vue'
 
 const { lguName, labels, legislative } = useConfig()
 
-const { getFullSiteTitle, getOpenGraphUrl } = useConfig()
-
-const seoDesc = computed(() => `Resolutions passed by the ${labels.value.legislativeBody} of ${lguName.value}. View formal expressions of opinion and official statements.`)
-
-useHead({
-  title: 'Resolution Framework',
-})
-
-useSeoMeta({
-  description: () => seoDesc.value,
-  ogTitle: () => getFullSiteTitle('Resolution Framework'),
-  ogDescription: () => seoDesc.value,
-  ogType: 'website',
-  ogUrl: () => `${getOpenGraphUrl()}legislative/resolution-framework`,
-  twitterCard: 'summary',
-  twitterTitle: () => getFullSiteTitle('Resolution Framework'),
-  twitterDescription: () => seoDesc.value,
-})
-
 // Get resolution types and items from config
 const resolutionTypes = computed(() => legislative.resolutions.types)
 const sampleResolutions = computed(() =>

@@ -9,25 +9,6 @@ import {
 
 const { statistics, statisticsDetailed, labels, lguName, fullLocation } = useConfig()
 
-const { getFullSiteTitle, getOpenGraphUrl } = useConfig()
-
-const seoDesc = computed(() => `Explore key statistics, population data, demographics, and competitive index rankings for ${lguName.value}.`)
-
-useHead({
-  title: 'Statistics',
-})
-
-useSeoMeta({
-  description: () => seoDesc.value,
-  ogTitle: () => getFullSiteTitle('Statistics'),
-  ogDescription: () => seoDesc.value,
-  ogType: 'website',
-  ogUrl: () => `${getOpenGraphUrl()}statistics`,
-  twitterCard: 'summary',
-  twitterTitle: () => getFullSiteTitle('Statistics'),
-  twitterDescription: () => seoDesc.value,
-})
-
 // Trend styling lookup tables
 const TREND_COLORS: Record<string, string> = {
   up: 'text-green-600',

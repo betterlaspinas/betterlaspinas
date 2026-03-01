@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   },
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
-  modules: ['@pinia/nuxt'],
+  modules: ['@pinia/nuxt', '@nuxtjs/seo'],
   runtimeConfig: {
     public: {
       site: {

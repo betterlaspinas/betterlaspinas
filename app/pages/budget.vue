@@ -6,16 +6,6 @@ import {
 
 const { lguName, fullLocation, labels, budget } = useConfig()
 
-useHead({
-  title: 'Budget & Transparency',
-  script: [
-    {
-      src: '/assets/js/dpwh-projects.js',
-      async: true,
-    },
-  ],
-})
-
 // TODO: Add SEO when budget feature gets implemented.
 
 type QuarterKey = 'q1' | 'q2' | 'q3' | 'q4'

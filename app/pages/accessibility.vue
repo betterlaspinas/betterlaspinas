@@ -2,25 +2,6 @@
 const { lguName, getVolunteerEmail } = useConfig()
 const volunteerEmail = computed(() => getVolunteerEmail())
 
-const { getFullSiteTitle, getOpenGraphUrl } = useConfig()
-
-const seoDesc = computed(() => `Read our Accessibility Statement. Better ${lguName.value} is committed to ensuring our digital services are accessible to all citizens.`)
-
-useHead({
-  title: 'Accessibility',
-})
-
-useSeoMeta({
-  description: () => seoDesc.value,
-  ogTitle: () => getFullSiteTitle('Accessibility'),
-  ogDescription: () => seoDesc.value,
-  ogType: 'website',
-  ogUrl: () => `${getOpenGraphUrl()}accessibility`,
-  twitterCard: 'summary',
-  twitterTitle: () => getFullSiteTitle('Accessibility'),
-  twitterDescription: () => seoDesc.value,
-})
-
 const features = [
   {
     icon: 'bi-keyboard',
