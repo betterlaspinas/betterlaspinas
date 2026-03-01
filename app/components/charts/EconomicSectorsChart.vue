@@ -27,7 +27,7 @@ const options = {
       padding: 8,
       cornerRadius: 5,
       callbacks: {
-        label: (context: any) => `${context.raw}%`,
+        label: (context: { raw: unknown }) => `${context.raw}%`,
       },
     },
   },
@@ -36,7 +36,7 @@ const options = {
       beginAtZero: true,
       max: 50,
       ticks: {
-        callback: (value: any) => `${value}%`,
+        callback: (value: unknown) => `${value}%`,
         font: { size: 10 },
         color: '#666',
       },

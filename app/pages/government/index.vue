@@ -10,23 +10,23 @@ useHead({
 
 // Get executive officials
 const leader = computed(() => officials.executive.find(
-  (o: any) => o.position === 'mayor' || o.position === 'governor',
+  official => official.position === 'mayor' || official.position === 'governor',
 ))
 const viceLeader = computed(() => officials.executive.find(
-  (o: any) => o.position === 'vice_mayor' || o.position === 'vice_governor',
+  official => official.position === 'vice_mayor' || official.position === 'vice_governor',
 ))
 
 // Get legislative members
 const sbMembers = computed(() => officials.legislative.filter(
-  (o: any) => o.position === 'sb_member' || o.position === 'board_member',
+  official => official.position === 'sb_member' || official.position === 'board_member',
 ))
 const ligaPresident = computed(() => officials.legislative.find(
-  (o: any) => o.position === 'liga_president',
+  official => official.position === 'liga_president',
 ))
 const skPresident = computed(() => officials.legislative.find(
-  (o: any) => o.position === 'sk_president',
+  official => official.position === 'sk_president',
 ))
-const ipmr = computed(() => officials.legislative.find((o: any) => o.position === 'ipmr'))
+const ipmr = computed(() => officials.legislative.find(official => official.position === 'ipmr'))
 </script>
 
 <template>

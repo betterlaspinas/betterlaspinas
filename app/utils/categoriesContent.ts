@@ -763,5 +763,5 @@ export const categoriesContent: CategoryContent[] = [
 export function getCategoryContent(
   categoryId: string,
 ): CategoryContent | undefined {
-  return categoriesContent.find(c => c.id === categoryId)
+  return categoriesContent.find(category => category.id === categoryId)
 }

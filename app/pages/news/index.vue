@@ -18,7 +18,7 @@ const badgeColorMap: Record<string, string> = {
 }
 
 // Map news articles
-const newsItems = computed(() => news.articles.map((article: any) => ({
+const newsItems = computed(() => news.articles.map(article => ({
   id: article.id,
   title: article.title,
   date: article.date,

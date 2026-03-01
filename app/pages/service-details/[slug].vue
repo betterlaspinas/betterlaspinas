@@ -117,16 +117,16 @@ function toggleFaq(index: number) {
                 <i class="bi bi-clipboard-check text-primary-600" /> Requirements
               </h2>
               <div
-                v-for="req in service.requirements"
-                :key="req.title"
+                v-for="requirement in service.requirements"
+                :key="requirement.title"
                 class="bg-white border border-gray-200 rounded-xl p-4 mb-4"
               >
                 <h4 class="font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                  <i :class="`bi ${req.icon} text-primary-600`" /> {{ req.title }}
+                  <i :class="`bi ${requirement.icon} text-primary-600`" /> {{ requirement.title }}
                 </h4>
                 <ul class="space-y-2">
                   <li
-                    v-for="item in req.items"
+                    v-for="item in requirement.items"
                     :key="item"
                     class="flex items-start gap-2 text-sm text-gray-900"
                   >

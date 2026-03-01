@@ -59,7 +59,7 @@ const options = {
       padding: 10,
       cornerRadius: 6,
       callbacks: {
-        label: (context: any) => {
+        label: (context: { raw: unknown, dataset: { data: unknown[] } }) => {
           const total = (context.dataset.data as number[]).reduce(
             (a: number, b: number) => a + b,
             0,

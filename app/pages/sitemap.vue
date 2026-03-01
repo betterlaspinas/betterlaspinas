@@ -194,7 +194,7 @@ const sections = computed<SitemapSection[]>(() => [
                   : 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3'
               "
             >
-              <template v-for="link in section.links.filter(l => !l.hidden)" :key="link.href">
+              <template v-for="link in section.links.filter(link => !link.hidden)" :key="link.href">
                 <a
                   v-if="link.external"
                   :href="link.href"

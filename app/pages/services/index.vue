@@ -169,7 +169,7 @@ const lifeEvents = [
       <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <NuxtLink
-            v-for="cat in categories.filter(c => !c.hidden)"
+            v-for="cat in categories.filter(category => !category.hidden)"
             :key="cat.href"
             :to="cat.href"
             class="group flex items-start gap-4 p-6 bg-white border border-gray-200 rounded-xl no-underline text-gray-800 transition-all duration-200 hover:border-primary-500 hover:shadow-lg"
@@ -206,7 +206,7 @@ const lifeEvents = [
         </div>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
           <NuxtLink
-            v-for="event in lifeEvents.filter(e => !e.hidden)"
+            v-for="event in lifeEvents.filter(event => !event.hidden)"
             :key="event.labelKey"
             :to="event.href"
             class="flex flex-col items-center gap-3 p-6 bg-white border border-gray-200 rounded-xl no-underline text-gray-800 text-center transition-all duration-200 hover:border-primary-500 hover:shadow-md hover:-translate-y-1"

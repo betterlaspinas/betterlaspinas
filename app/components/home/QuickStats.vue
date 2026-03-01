@@ -8,39 +8,39 @@ const stats = computed(() => [
     href: '/statistics',
     icon: 'bi-people-fill',
     value:
-      statistics.population.count > 0
+      statistics.population?.count && statistics.population.count > 0
         ? statistics.population.count.toLocaleString()
         : '—',
     label: 'Population',
     source:
-      statistics.population.source || `${statistics.population.year} Census`,
+      statistics.population?.source || `${statistics.population?.year || 'Current'} Census`,
   },
   {
     href: '/government',
     icon: 'bi-geo-alt-fill',
     value:
-      statistics.subdivisions.count > 0
+      statistics.subdivisions?.count && statistics.subdivisions.count > 0
         ? statistics.subdivisions.count.toString()
         : '—',
     label: labels.value.subdivisionTypePlural,
-    source: statistics.subdivisions.source || 'Administrative Units',
+    source: statistics.subdivisions?.source || 'Administrative Units',
   },
   {
     href: '/statistics', // TODO: Change to budget when available
     icon: 'bi-award-fill',
-    value: statistics.incomeClass.class || '—',
+    value: statistics.incomeClass?.class || '—',
     label: labels.value.lguTypeLabel,
-    source: statistics.incomeClass.source || 'Income Classification',
+    source: statistics.incomeClass?.source || 'Income Classification',
   },
   {
     href: '/statistics',
     icon: 'bi-rulers',
     value:
-      statistics.landArea.value > 0
-        ? `${statistics.landArea.value} ${statistics.landArea.unit}`
+      statistics.landArea?.value && statistics.landArea.value > 0
+        ? `${statistics.landArea.value} ${statistics.landArea.unit || ''}`
         : '—',
     label: 'Land Area',
-    source: statistics.landArea.source || 'Total Area',
+    source: statistics.landArea?.source || 'Total Area',
   },
 ])
 </script>

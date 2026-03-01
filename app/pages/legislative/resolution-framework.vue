@@ -10,10 +10,10 @@ useHead({
 // Get resolution types and items from config
 const resolutionTypes = computed(() => legislative.resolutions.types)
 const sampleResolutions = computed(() =>
-  legislative.resolutions.items.map((res: any) => ({
-    no: res.number,
-    title: res.title,
-    date: res.date,
+  legislative.resolutions.items.map(resolution => ({
+    no: resolution.number,
+    title: resolution.title,
+    date: resolution.date,
   })),
 )
 </script>

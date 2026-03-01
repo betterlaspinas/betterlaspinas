@@ -138,10 +138,10 @@ function onFocus() {
           </button>
         </div>
         <button
-          v-for="(item, idx) in suggestions.recent"
+          v-for="(item, index) in suggestions.recent"
           :key="`recent-${item}`"
           class="flex items-center w-full py-3 px-4 text-sm text-gray-700 text-left border-none bg-transparent border-l-[3px] border-l-transparent cursor-pointer transition-all hover:bg-gradient-to-r hover:from-blue-50 hover:to-transparent hover:border-l-blue-700 hover:text-blue-700"
-          :class="{ 'bg-gradient-to-r from-blue-50 to-transparent border-l-blue-700 text-blue-700': selectedIndex === idx }"
+          :class="{ 'bg-gradient-to-r from-blue-50 to-transparent border-l-blue-700 text-blue-700': selectedIndex === index }"
           type="button"
           @click="handleSuggestionClick(item)"
         >
@@ -159,10 +159,10 @@ function onFocus() {
           </span>
         </div>
         <button
-          v-for="(item, idx) in suggestions.popular"
+          v-for="(item, index) in suggestions.popular"
           :key="`popular-${item}`"
           class="flex items-center w-full py-3 px-4 text-sm text-gray-700 text-left border-none bg-transparent border-l-[3px] border-l-transparent cursor-pointer transition-all hover:bg-gradient-to-r hover:from-blue-50 hover:to-transparent hover:border-l-blue-700 hover:text-blue-700"
-          :class="{ 'bg-gradient-to-r from-blue-50 to-transparent border-l-blue-700 text-blue-700': selectedIndex === suggestions.recent.length + idx }"
+          :class="{ 'bg-gradient-to-r from-blue-50 to-transparent border-l-blue-700 text-blue-700': selectedIndex === suggestions.recent.length + index }"
           type="button"
           @click="handleSuggestionClick(item)"
         >
@@ -180,10 +180,10 @@ function onFocus() {
           </span>
         </div>
         <button
-          v-for="(item, idx) in suggestions.suggestions.slice(0, 5)"
+          v-for="(item, index) in suggestions.suggestions.slice(0, 5)"
           :key="`suggest-${item}`"
           class="flex items-center w-full py-3 px-4 text-sm text-gray-700 text-left border-none bg-transparent border-l-[3px] border-l-transparent cursor-pointer transition-all hover:bg-gradient-to-r hover:from-blue-50 hover:to-transparent hover:border-l-blue-700 hover:text-blue-700"
-          :class="{ 'bg-gradient-to-r from-blue-50 to-transparent border-l-blue-700 text-blue-700': selectedIndex === idx }"
+          :class="{ 'bg-gradient-to-r from-blue-50 to-transparent border-l-blue-700 text-blue-700': selectedIndex === index }"
           type="button"
           @click="handleSuggestionClick(item)"
         >

@@ -56,7 +56,7 @@ const options = {
       cornerRadius: 5,
       displayColors: false,
       callbacks: {
-        label: (context: any) =>
+        label: (context: { raw: unknown }) =>
           `Population: ${(context.raw as number).toLocaleString()}`,
       },
     },
@@ -67,7 +67,7 @@ const options = {
         color: 'rgba(0, 0, 0, 0.04)',
       },
       ticks: {
-        callback: (value: any) =>
+        callback: (value: unknown) =>
           `${(Number(value) / 1000).toFixed(0)}K`,
         font: { size: 10 },
         color: '#666',

@@ -73,7 +73,7 @@ const services: ServiceCard[] = [
       <!-- Services Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <NuxtLink
-          v-for="service in services.filter(s => !s.hidden)"
+          v-for="service in services.filter(service => !service.hidden)"
           :key="service.href + service.titleKey"
           :to="service.href"
           class="group flex items-center gap-4 p-6 border rounded-xl no-underline transition-all duration-200"

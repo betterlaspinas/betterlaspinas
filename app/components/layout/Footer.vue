@@ -4,7 +4,7 @@ import { useConfig } from '@/composables/useConfig'
 const { site, lguName, siteBrandName, lguNameConcatenated, navigation } = useConfig()
 const currentYear = new Date().getFullYear()
 
-const footerNav = navigation.footerNav
+const footerNav = navigation.footerNav || { quickLinks: [], resources: [], getInvolved: [] }
 
 const footerNavigation = computed(() => ({
   mainSections: [
