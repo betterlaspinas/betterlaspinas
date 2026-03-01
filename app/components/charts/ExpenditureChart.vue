@@ -51,7 +51,7 @@ const options = {
       padding: 8,
       cornerRadius: 5,
       callbacks: {
-        label: (context: any) =>
+        label: (context: { raw: unknown }) =>
           `₱${(context.raw as number).toFixed(2)}M (${(((context.raw as number) / props.totalExpense) * 100).toFixed(1)}%)`,
       },
     },

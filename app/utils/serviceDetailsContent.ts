@@ -1893,5 +1893,5 @@ export const serviceDetailsContent: ServiceDetail[] = [
 ]
 
 export function getServiceDetail(slug: string): ServiceDetail | undefined {
-  return serviceDetailsContent.find(s => s.id === slug)
+  return serviceDetailsContent.find(service => service.id === slug)
 }

@@ -84,7 +84,13 @@ export interface OfficialsConfig {
 }
 
 export interface SubdivisionsConfig {
-  [key: string]: any
+  count: number
+  items: Array<{
+    id: string
+    name: string
+    leader: string
+    phone?: string
+  }>
 }
 
 export interface HotlinesConfig {
@@ -115,19 +121,96 @@ export interface HotlinesConfig {
 }
 
 export interface HistoryConfig {
-  [key: string]: any
+  content?: string
+  imageUrl?: string
+  timeline?: Array<{
+    year: string
+    title: string
+    description: string
+  }>
+  facts?: Array<{
+    id: string
+    title: string
+    description: string
+    icon: string
+  }>
+  [key: string]: unknown
 }
 
 export interface StatisticsConfig {
-  [key: string]: any
+  population?: {
+    count: number
+    year: number
+    source: string
+  }
+  landArea?: {
+    value: number
+    unit: string
+    source: string
+  }
+  subdivisions?: {
+    count: number
+    type: string
+    source: string
+  }
+  incomeClass?: {
+    class: string
+    description: string
+    source: string
+  }
+  [key: string]: unknown
+}
+
+export interface BarangayPopulation {
+  rank: number
+  name: string
+  population: number
+  percentage: number
+  growth?: number
 }
 
 export interface StatisticsDetailedConfig {
-  [key: string]: any
+  barangayPopulation: BarangayPopulation[]
+  cmciPillars: Array<{
+    id: string
+    title: string
+    icon: string
+    score: number | string
+    trendType: string
+    trend: string
+  }>
+  financialData: {
+    annualIncome: string
+    annualIncomeDetailed: string
+    iraShare: string
+    iraDependency: string
+    localSourcesPercentage: string
+    sourceUrl: string
+    source: string
+    year: string | number
+  }
+  populationGrowth: {
+    year2020: number
+    year2024: number
+    growthRate: string
+  }
+  [key: string]: unknown
+}
+
+export interface NewsArticle {
+  id: string | number
+  title: string
+  date: string
+  badge: string
+  badgeColor: string
+  description: string
+  slug: string
+  content?: string
 }
 
 export interface NewsConfig {
-  [key: string]: any
+  articles: NewsArticle[]
+  [key: string]: unknown
 }
 
 export interface FAQConfig {
@@ -144,8 +227,43 @@ export interface FAQConfig {
   }>
 }
 
+export interface BudgetQuarterData {
+  totalIncome: string
+  totalExpense: string
+  netIncome: string
+  fundBalance: string
+  totalIncomeValue: number
+  totalExpenseValue: number
+  income: {
+    local: { amount: string, percentage: string, value: number }
+    external: { amount: string, percentage: string, value: number }
+  }
+  expenditure: {
+    gps: { amount: string, percentage: string, value: number }
+    social: { amount: string, percentage: string, value: number }
+    economic: { amount: string, percentage: string, value: number }
+    debt: { amount: string, percentage: string, value: number }
+  }
+}
+
+export interface InfrastructureProject {
+  id: string
+  year: number
+  title: string
+  type: string
+  typeIcon: string
+  typeColor: string
+  location: string
+  typeOfWork: string
+  contractor: string
+  contractCost: string
+}
+
 export interface BudgetConfig {
-  [key: string]: any
+  fiscalYear?: number
+  quarters?: Record<'q1' | 'q2' | 'q3' | 'q4', BudgetQuarterData>
+  infrastructureProjects?: InfrastructureProject[]
+  [key: string]: unknown
 }
 
 export interface LegislativeConfig {
@@ -175,20 +293,79 @@ export interface LegislativeConfig {
   }
 }
 
+export interface TourismCategory {
+  id: string
+  label: string
+  icon: string
+}
+
+export interface TourismAttraction {
+  id: string
+  name: string
+  category: string
+  description: string
+  location: string
+  image?: string
+}
+
+export interface TourismEvent {
+  id: string
+  name: string
+  date: string
+  description: string
+  location: string
+}
+
 export interface TourismConfig {
-  [key: string]: any
+  categories: TourismCategory[]
+  attractions: TourismAttraction[]
+  events: TourismEvent[]
+  travelInfo: {
+    howToGetThere: string
+    bestTimeToVisit: string
+    tips: string[]
+  }
+  [key: string]: unknown
+}
+
+export interface ServiceItem {
+  id: string
+  title: string
+  description: string
+  category: string
+  categoryId?: string
+  keywords: string[]
+  office?: string
+  fee?: string
+  processingTime?: string
+  url: string
 }
 
 export interface ServicesConfig {
-  [key: string]: any
+  services: ServiceItem[]
+  [key: string]: unknown
+}
+
+export interface NavigationItem {
+  label: string
+  href: string
+  icon?: string
+  description?: string
+  hidden?: boolean
+  children?: NavigationItem[]
 }
 
 export interface NavigationConfig {
-  [key: string]: any
+  mainNav?: NavigationItem[]
+  footerNav?: {
+    quickLinks: NavigationItem[]
+    resources: NavigationItem[]
+    getInvolved: NavigationItem[]
+  }
 }
 
 export interface CategoriesConfig {
-  [key: string]: any
+  [key: string]: unknown
 }
 
 export interface TranslationOverrides {

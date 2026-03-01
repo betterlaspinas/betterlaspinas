@@ -12,7 +12,7 @@ const filteredAttractions = computed(() => {
     return tourism.attractions
   }
   return tourism.attractions.filter(
-    (a: any) => a.category === activeCategory.value,
+    attraction => attraction.category === activeCategory.value,
   )
 })
 </script>
@@ -108,7 +108,7 @@ const filteredAttractions = computed(() => {
               <div v-else class="text-center text-gray-400">
                 <i
                   class="text-5xl"
-                  :class="`bi ${tourism.categories.find((c: any) => c.id === attraction.category)?.icon || 'bi-image'}`"
+                  :class="`bi ${tourism.categories.find(category => category.id === attraction.category)?.icon || 'bi-image'}`"
                 />
                 <p class="text-sm mt-2">
                   No image
@@ -121,10 +121,10 @@ const filteredAttractions = computed(() => {
                   class="inline-flex items-center gap-1 bg-primary-50 text-primary-700 px-2 py-1 rounded text-xs font-medium"
                 >
                   <i
-                    :class="`bi ${tourism.categories.find((c: any) => c.id === attraction.category)?.icon || 'bi-geo'}`"
+                    :class="`bi ${tourism.categories.find(category => category.id === attraction.category)?.icon || 'bi-geo'}`"
                   />
                   {{
-                    tourism.categories.find((c: any) => c.id === attraction.category)
+                    tourism.categories.find(category => category.id === attraction.category)
                       ?.label || 'Other'
                   }}
                 </span>

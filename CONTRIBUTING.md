@@ -242,26 +242,33 @@ Use the provided PR template and fill out all sections:
 
 ### Writing Tests
 
+**Component Test Example:**
+
 ```typescript
-// Component test example
 import { mount } from '@vue/test-utils'
-// Composable test example
 import { describe, expect, it } from 'vitest'
 
 import Header from './Header.vue'
+
+describe('Header', () => {
+  it('should render navigation', () => {
+    const wrapper = mount(Header)
+    expect(wrapper.find('nav').exists()).toBe(true)
+  })
+})
+```
+
+**Composable Test Example:**
+
+```typescript
+import { describe, expect, it } from 'vitest'
+
 import { useLanguage } from './useLanguage'
 
 describe('useLanguage', () => {
   it('should translate keys correctly', () => {
     const { translate } = useLanguage()
     expect(translate('nav-home')).toBe('Home')
-  })
-})
-
-describe('header', () => {
-  it('should render navigation', () => {
-    const wrapper = mount(Header)
-    expect(wrapper.find('nav').exists()).toBe(true)
   })
 })
 ```

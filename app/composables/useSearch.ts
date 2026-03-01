@@ -1,21 +1,10 @@
 import type { IFuseOptions } from 'fuse.js'
+import type { ServiceItem } from '@/types/config'
 import Fuse from 'fuse.js'
+
 import { getServicesConfig } from '@/utils/configHelper'
 
-interface Service {
-  id: string
-  title: string
-  description: string
-  category: string
-  categoryId?: string
-  keywords: string[]
-  office?: string
-  fee?: string
-  processingTime?: string
-  url: string
-}
-
-interface SearchResult extends Service {
+interface SearchResult extends ServiceItem {
   score: number
   _query: string
 }
@@ -49,7 +38,7 @@ const CURATED_POPULAR = [
 ]
 
 // Fuse.js configuration for fuzzy search
-const FUSE_OPTIONS: IFuseOptions<Service> = {
+const FUSE_OPTIONS: IFuseOptions<ServiceItem> = {
   keys: [
     { name: 'title', weight: 0.4 },
     { name: 'keywords', weight: 0.3 },
@@ -81,7 +70,7 @@ function saveRecentSearch(query: string): void {
 
   try {
     let recent = getRecentSearches()
-    recent = recent.filter(q => q.toLowerCase() !== query.toLowerCase())
+    recent = recent.filter(recentQuery => recentQuery.toLowerCase() !== query.toLowerCase())
     recent.unshift(query)
     recent = recent.slice(0, MAX_RECENT_SEARCHES)
     localStorage.setItem(RECENT_SEARCHES_KEY, JSON.stringify(recent))
@@ -119,7 +108,7 @@ export function useSearch(initialQuery = '') {
 
   // const services = computed(() => getServicesConfig().services as Service[])
   // TODO: Remove this and uncomment above to restore all services
-  const services = computed(() => (getServicesConfig().services as Service[]).filter(s => s.categoryId === 'certificates'))
+  const services = computed(() => (getServicesConfig().services).filter(service => service.categoryId === 'certificates'))
 
   // Create Fuse instance for fuzzy search
   const fuse = computed(() => new Fuse(services.value, FUSE_OPTIONS))
@@ -128,7 +117,7 @@ export function useSearch(initialQuery = '') {
   const suggestionFuse = computed(
     () =>
       new Fuse(
-        [...services.value.map(s => s.title), ...CURATED_POPULAR].map(
+        [...services.value.map(service => service.title), ...CURATED_POPULAR].map(
           text => ({ text }),
         ),
         { keys: ['text'], threshold: 0.4, includeScore: true },
@@ -169,9 +158,9 @@ export function useSearch(initialQuery = '') {
   const getSuggestions = (searchQuery: string): SearchSuggestions => {
     if (!searchQuery || searchQuery.length < 1) {
       // TODO: Remove this block and uncomment below to restore all recent searches
-      const validKeywords = new Set([...services.value.map(s => s.title.toLowerCase()), ...CURATED_POPULAR.map(p => p.toLowerCase())])
-      const validRecent = getRecentSearches().filter(r =>
-        Array.from(validKeywords).some(v => v.includes(r.toLowerCase()) || r.toLowerCase().includes(v)),
+      const validKeywords = new Set([...services.value.map(service => service.title.toLowerCase()), ...CURATED_POPULAR.map(popular => popular.toLowerCase())])
+      const validRecent = getRecentSearches().filter(recentSearch =>
+        Array.from(validKeywords).some(keyword => keyword.includes(recentSearch.toLowerCase()) || recentSearch.toLowerCase().includes(keyword)),
       ).slice(0, 3)
 
       return {
@@ -184,7 +173,7 @@ export function useSearch(initialQuery = '') {
 
     const fuseResults = suggestionFuse.value.search(searchQuery)
     const uniqueSuggestions = [
-      ...new Set(fuseResults.slice(0, 8).map(r => r.item.text)),
+      ...new Set(fuseResults.slice(0, 8).map(fuseResult => fuseResult.item.text)),
     ]
 
     return {
@@ -229,10 +218,10 @@ export function useSearch(initialQuery = '') {
   }
 
   const handleSubmit = (searchQuery?: string) => {
-    const q = searchQuery || query.value
-    if (q.length >= 2) {
-      saveRecentSearch(q)
-      search(q)
+    const activeQuery = searchQuery || query.value
+    if (activeQuery.length >= 2) {
+      saveRecentSearch(activeQuery)
+      search(activeQuery)
     }
   }
 
@@ -334,7 +323,7 @@ export function highlightMatch(text: string, query: string): string {
   const terms = query
     .toLowerCase()
     .split(/\s+/)
-    .filter(t => t.length >= 2)
+    .filter(term => term.length >= 2)
 
   let result = text
   for (const term of terms) {

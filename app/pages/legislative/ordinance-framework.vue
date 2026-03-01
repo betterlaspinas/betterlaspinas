@@ -12,10 +12,10 @@ const ordinanceCategories = computed(
   () => legislative.ordinances.categories,
 )
 const sampleOrdinances = computed(() =>
-  legislative.ordinances.items.map((ord: any) => ({
-    no: ord.number,
-    title: ord.title,
-    date: ord.date,
+  legislative.ordinances.items.map(ordinance => ({
+    no: ordinance.number,
+    title: ordinance.title,
+    date: ordinance.date,
   })),
 )
 </script>

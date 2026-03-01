@@ -6,7 +6,7 @@ const route = useRoute()
 const { news, labels, lguName } = useConfig()
 
 const slug = route.params.slug as string
-const article = computed(() => news.articles.find((a: any) => a.slug === slug))
+const article = computed(() => news.articles.find(article => article.slug === slug))
 
 useHead({
   title: article.value ? article.value.title : 'News Article',

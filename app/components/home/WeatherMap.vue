@@ -201,7 +201,7 @@ onMounted(() => {
                     <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4 px-1">
                       Hourly Forecast
                     </p>
-                    <div class="flex justify-between overflow-x-auto pb-2 px-1 hide-scrollbar">
+                    <div class="flex justify-between overflow-x-auto pb-2 px-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                       <div v-for="(hour, index) in hourlyForecast" :key="index" class="flex flex-col items-center min-w-[3rem]">
                         <span class="text-[0.7rem] font-medium text-gray-500 mb-2 whitespace-nowrap">{{ index === 0 ? 'Now' : hour.time }}</span>
                         <i :class="`bi ${hour.icon} text-xl text-primary-600 mb-2`" />
@@ -253,13 +253,3 @@ onMounted(() => {
     </div>
   </section>
 </template>
-
-<style scoped>
-.hide-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.hide-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-</style>

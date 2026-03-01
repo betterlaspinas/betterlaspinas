@@ -7,6 +7,13 @@ const { site, hotlines, formatPhoneLink } = useConfig()
 useHead({
   title: 'Contact',
 })
+
+const officeHours = [
+  { day: 'Monday - Friday', time: '8:00 AM - 5:00 PM', status: 'Open', icon: 'bi-check-circle-fill', textClass: 'text-green-600', bgClass: 'bg-green-50' },
+  { day: 'Lunch Break', time: '12:00 PM - 1:00 PM', status: 'Break', icon: 'bi-pause-circle-fill', textClass: 'text-yellow-600', bgClass: 'bg-yellow-50' },
+  { day: 'Saturday & Sunday', time: 'Closed', status: 'Closed', icon: 'bi-x-circle-fill', textClass: 'text-red-600', bgClass: 'bg-red-50' },
+  { day: 'National & Local Holidays', time: 'Closed', status: 'Closed', icon: 'bi-x-circle-fill', textClass: 'text-red-600', bgClass: 'bg-red-50' },
+]
 </script>
 
 <template>
@@ -111,38 +118,21 @@ useHead({
             </h2>
           </div>
           <div class="divide-y divide-gray-100">
-            <div class="grid grid-cols-3 items-center p-4 bg-green-50">
-              <span class="pl-4 font-medium text-gray-900">
-                Monday - Friday
+            <div
+              v-for="hours in officeHours"
+              :key="hours.day"
+              class="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-6 items-center p-4 sm:px-8"
+              :class="hours.bgClass"
+            >
+              <span class="font-medium text-gray-900">
+                {{ hours.day }}
               </span>
-              <span class="text-gray-600 pl-4 md:pl-16">8:00 AM - 5:00 PM</span>
-              <span class="inline-flex gap-1 text-green-600 text-sm font-medium pl-8 md:pl-32">
-                <i class="bi bi-check-circle-fill" /> Open
-              </span>
-            </div>
-            <div class="grid grid-cols-3 items-center p-4 bg-yellow-50">
-              <span class="pl-4 font-medium text-gray-900">Lunch Break</span>
-              <span class="text-gray-600 pl-4 md:pl-16">12:00 PM - 1:00 PM</span>
-              <span class="inline-flex items-center gap-1 text-yellow-600 text-sm font-medium pl-8 md:pl-32">
-                <i class="bi bi-pause-circle-fill" /> Break
-              </span>
-            </div>
-            <div class="grid grid-cols-3 items-center p-4 bg-red-50">
-              <span class="pl-4 font-medium text-gray-900">
-                Saturday & Sunday
-              </span>
-              <span class="text-gray-600 pl-4 md:pl-16">Closed</span>
-              <span class="inline-flex items-center gap-1 text-red-600 text-sm font-medium pl-8 md:pl-32">
-                <i class="bi bi-x-circle-fill" /> Closed
-              </span>
-            </div>
-            <div class="grid grid-cols-3 items-center p-4 bg-red-50">
-              <span class="pl-4 font-medium text-gray-900">
-                National & Local Holidays
-              </span>
-              <span class="text-gray-600 pl-4 md:pl-16">Closed</span>
-              <span class="inline-flex items-center gap-1 text-red-600 text-sm font-medium pl-8 md:pl-32">
-                <i class="bi bi-x-circle-fill" /> Closed
+              <span class="text-gray-600">{{ hours.time }}</span>
+              <span
+                class="inline-flex items-center gap-1 text-sm font-medium"
+                :class="hours.textClass"
+              >
+                <i class="bi" :class="hours.icon" /> {{ hours.status }}
               </span>
             </div>
           </div>
@@ -217,7 +207,7 @@ useHead({
     </section>
 
     <!-- Medical Emergency Hotlines -->
-    <section v-if="hotlines.medical.some((h: any) => h.number)" class="py-12 bg-gray-50">
+    <section v-if="hotlines.medical.some((h) => h.number)" class="py-12 bg-gray-50">
       <div class="container mx-auto px-4">
         <div class="text-center mb-8">
           <span class="inline-flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-full text-sm font-medium mb-3">

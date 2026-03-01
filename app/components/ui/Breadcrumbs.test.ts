@@ -54,7 +54,7 @@ describe('breadcrumbs', () => {
     // First link is Hardcoded Home (path /)
     // Second link is Home item from props (path /)
     // Check specific items
-    const itemLinks = links.filter(l => l.props().to === '/services')
+    const itemLinks = links.filter(link => link.props().to === '/services')
     expect(itemLinks.length).toBe(1)
   })
 

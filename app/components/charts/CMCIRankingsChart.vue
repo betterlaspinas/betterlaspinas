@@ -50,7 +50,7 @@ const options = {
       min: 1,
       max: 35,
       ticks: {
-        callback: (value: any) => `#${value}`,
+        callback: (value: unknown) => `#${value}`,
         font: { size: 10 },
         color: '#666',
         stepSize: 5,
