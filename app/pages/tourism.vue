@@ -1,8 +1,21 @@
 <script setup lang="ts">
-const { lguName, tourism, labels } = useConfig()
+const { lguName, tourism, labels, getFullSiteTitle, getOpenGraphUrl } = useConfig()
+
+const seoDesc = computed(() => `Explore the beauty, culture, and hospitality of ${lguName.value}. Discover local attractions, vibrant festivals, and plan your visit to our ${labels.value.lguTypeLabel.toLowerCase()}.`)
 
 useHead({
   title: 'Tourism',
+})
+
+useSeoMeta({
+  description: () => seoDesc.value,
+  ogTitle: () => getFullSiteTitle('Tourism'),
+  ogDescription: () => seoDesc.value,
+  ogType: 'website',
+  ogUrl: () => `${getOpenGraphUrl()}tourism`,
+  twitterCard: 'summary',
+  twitterTitle: () => getFullSiteTitle('Tourism'),
+  twitterDescription: () => seoDesc.value,
 })
 
 const activeCategory = ref('all')

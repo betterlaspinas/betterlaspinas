@@ -13,14 +13,21 @@ if (!categoryContent) {
   })
 }
 
+const { getFullSiteTitle, getOpenGraphUrl } = useConfig()
+
 useHead({
   title: categoryContent.name || 'Service Category',
-  meta: [
-    {
-      name: 'description',
-      content: categoryContent.description,
-    },
-  ],
+})
+
+useSeoMeta({
+  description: categoryContent.description,
+  ogTitle: getFullSiteTitle(categoryContent.name || 'Service Category'),
+  ogDescription: categoryContent.description,
+  ogType: 'website',
+  ogUrl: `${getOpenGraphUrl()}services/${category}`,
+  twitterCard: 'summary',
+  twitterTitle: getFullSiteTitle(categoryContent.name || 'Service Category'),
+  twitterDescription: categoryContent.description,
 })
 </script>
 

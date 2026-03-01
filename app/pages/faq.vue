@@ -4,8 +4,23 @@ const { lguName, labels, faq, getSiteTitle, getVolunteerEmail, siteBrandName } =
 const siteTitle = computed(() => getSiteTitle())
 const volunteerEmail = computed(() => getVolunteerEmail())
 
+const { getFullSiteTitle, getOpenGraphUrl } = useConfig()
+
+const seoDesc = computed(() => `Frequently Asked Questions (FAQ) about ${lguName.value}'s services, processes, and government programs. Find quick answers here.`)
+
 useHead({
   title: 'FAQ',
+})
+
+useSeoMeta({
+  description: () => seoDesc.value,
+  ogTitle: () => getFullSiteTitle('FAQ'),
+  ogDescription: () => seoDesc.value,
+  ogType: 'website',
+  ogUrl: () => `${getOpenGraphUrl()}faq`,
+  twitterCard: 'summary',
+  twitterTitle: () => getFullSiteTitle('FAQ'),
+  twitterDescription: () => seoDesc.value,
 })
 
 // Helper to interpolate template variables in FAQ content

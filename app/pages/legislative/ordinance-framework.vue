@@ -3,8 +3,23 @@ import Breadcrumbs from '~/components/ui/Breadcrumbs.vue'
 
 const { lguName, labels, legislative } = useConfig()
 
+const { getFullSiteTitle, getOpenGraphUrl } = useConfig()
+
+const seoDesc = computed(() => `${labels.value.deptPrefix} ordinances enacted by the ${labels.value.legislativeBody} of ${lguName.value}. Browse local laws and regulations.`)
+
 useHead({
   title: 'Ordinance Framework',
+})
+
+useSeoMeta({
+  description: () => seoDesc.value,
+  ogTitle: () => getFullSiteTitle('Ordinance Framework'),
+  ogDescription: () => seoDesc.value,
+  ogType: 'website',
+  ogUrl: () => `${getOpenGraphUrl()}legislative/ordinance-framework`,
+  twitterCard: 'summary',
+  twitterTitle: () => getFullSiteTitle('Ordinance Framework'),
+  twitterDescription: () => seoDesc.value,
 })
 
 // Get ordinance categories and items from config

@@ -4,9 +4,23 @@ import { useLanguage } from '@/composables/useLanguage'
 const { translate } = useLanguage()
 const route = useRoute()
 const initialQuery = computed(() => (route.query.q as string) || '')
+const { getFullSiteTitle, getOpenGraphUrl, lguName } = useConfig()
+
+const seoDesc = computed(() => `Browse and access all public services provided by the local government of ${lguName.value}. Find information on certificates, permits, and more.`)
 
 useHead({
   title: 'Services',
+})
+
+useSeoMeta({
+  description: () => seoDesc.value,
+  ogTitle: () => getFullSiteTitle('Services'),
+  ogDescription: () => seoDesc.value,
+  ogType: 'website',
+  ogUrl: () => `${getOpenGraphUrl()}services`,
+  twitterCard: 'summary',
+  twitterTitle: () => getFullSiteTitle('Services'),
+  twitterDescription: () => seoDesc.value,
 })
 
 const categories = [
