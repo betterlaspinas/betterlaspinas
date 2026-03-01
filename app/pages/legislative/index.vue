@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import Breadcrumbs from '~/components/ui/Breadcrumbs.vue'
-
 const { lguName, labels } = useConfig()
 
 useHead({
@@ -151,7 +149,7 @@ const steps = computed(() =>
 
 <template>
   <div>
-    <Breadcrumbs :items="[{ label: 'Legislative' }]" />
+    <UiBreadcrumbs :items="[{ label: 'Legislative' }]" />
 
     <!-- Hero Section -->
     <section class="bg-gradient-to-br from-primary-600 to-primary-700 py-16">
@@ -179,9 +177,11 @@ const steps = computed(() =>
         <div
           class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto"
         >
-          <NuxtLink
+          <UiCard
             to="/legislative/ordinance-framework"
-            class="group bg-white border border-gray-200 rounded-xl p-8 no-underline transition-all duration-200 hover:border-primary-500 hover:shadow-lg"
+            padding="p-8"
+            interactive
+            class="group"
           >
             <div
               class="w-14 h-14 flex items-center justify-center bg-primary-50 rounded-xl text-primary-600 text-2xl mb-4 transition-all duration-200 group-hover:bg-primary-600 group-hover:text-white"
@@ -201,10 +201,12 @@ const steps = computed(() =>
             >
               Browse Ordinances <i class="bi bi-arrow-right" />
             </span>
-          </NuxtLink>
-          <NuxtLink
+          </UiCard>
+          <UiCard
             to="/legislative/resolution-framework"
-            class="group bg-white border border-gray-200 rounded-xl p-8 no-underline transition-all duration-200 hover:border-primary-500 hover:shadow-lg"
+            padding="p-8"
+            interactive
+            class="group"
           >
             <div
               class="w-14 h-14 flex items-center justify-center bg-primary-50 rounded-xl text-primary-600 text-2xl mb-4 transition-all duration-200 group-hover:bg-primary-600 group-hover:text-white"
@@ -224,7 +226,7 @@ const steps = computed(() =>
             >
               Browse Resolutions <i class="bi bi-arrow-right" />
             </span>
-          </NuxtLink>
+          </UiCard>
         </div>
       </div>
     </section>
@@ -232,19 +234,13 @@ const steps = computed(() =>
     <!-- Legislative Process -->
     <section class="py-12 bg-gray-50">
       <div class="container mx-auto px-4">
-        <div class="text-center mb-10">
-          <span
-            class="inline-flex items-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-full text-sm font-medium mb-3"
-          >
-            <i class="bi bi-diagram-3-fill" /> Process Flow
-          </span>
-          <h2 class="text-2xl font-bold text-gray-900 mb-2">
-            Flowchart for Legislative Proposal
-          </h2>
-          <p class="text-gray-500">
-            Step-by-step process for enacting ordinances and resolutions
-          </p>
-        </div>
+        <UiSectionHeader
+          title="Flowchart for Legislative Proposal"
+          description="Step-by-step process for enacting ordinances and resolutions"
+          badge-icon="bi-diagram-3-fill"
+          badge-text="Process Flow"
+          badge-class="bg-primary-600 text-white"
+        />
 
         <!-- Tabs -->
         <div class="flex justify-center gap-4 mb-8">
@@ -324,28 +320,21 @@ const steps = computed(() =>
     <!-- Info Section -->
     <section class="py-12">
       <div class="container mx-auto px-4">
-        <div class="text-center mb-10">
-          <span
-            class="inline-flex items-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-full text-sm font-medium mb-3"
-          >
-            <i class="bi bi-info-circle-fill" /> About
-          </span>
-          <h2 class="text-2xl font-bold text-gray-900 mb-2">
-            Understanding Local Legislation
-          </h2>
-          <p class="text-gray-500">
-            Learn about the legislative process of the
-            {{ labels.legislativeBody }}
-          </p>
-        </div>
+        <UiSectionHeader
+          title="Understanding Local Legislation"
+          :description="`Learn about the legislative process of the ${labels.legislativeBody}`"
+          badge-icon="bi-info-circle-fill"
+          badge-text="About"
+          badge-class="bg-primary-600 text-white"
+        />
 
         <div
           class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
         >
-          <div
+          <UiCard
             v-for="card in infoCards"
             :key="card.title"
-            class="bg-white border border-gray-200 rounded-xl p-6 text-center"
+            class="text-center"
           >
             <div
               class="w-12 h-12 flex items-center justify-center bg-primary-50 rounded-xl text-primary-600 text-xl mx-auto mb-4"
@@ -358,7 +347,7 @@ const steps = computed(() =>
             <p class="text-sm text-gray-500">
               {{ card.desc }}
             </p>
-          </div>
+          </UiCard>
         </div>
       </div>
     </section>

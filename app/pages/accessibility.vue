@@ -88,7 +88,7 @@ const features = [
           </div>
 
           <!-- Commitment -->
-          <div class="bg-white border border-gray-200 rounded-2xl p-8">
+          <UiCard padding="p-8" class="rounded-2xl">
             <h2 class="text-xl font-bold text-gray-900 mb-4">
               Our Commitment
             </h2>
@@ -98,36 +98,28 @@ const features = [
               improving the user experience for everyone and applying the
               relevant accessibility standards.
             </p>
-          </div>
+          </UiCard>
 
           <!-- Features Grid -->
-          <div class="bg-white border border-gray-200 rounded-2xl p-8">
+          <UiCard padding="p-8" class="rounded-2xl">
             <h2 class="text-xl font-bold text-gray-900 mb-6">
               Accessibility Features
             </h2>
             <div
               class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
             >
-              <div
+              <UiIconBox
                 v-for="feature in features"
                 :key="feature.icon"
-                class="text-center p-4"
-              >
-                <i
-                  :class="`bi ${feature.icon} text-3xl text-primary-600 mb-3 block`"
-                />
-                <h3 class="font-semibold text-gray-900 mb-1">
-                  {{ feature.title }}
-                </h3>
-                <p class="text-sm text-gray-500">
-                  {{ feature.desc }}
-                </p>
-              </div>
+                :icon="feature.icon"
+                :title="feature.title"
+                :description="feature.desc"
+              />
             </div>
-          </div>
+          </UiCard>
 
           <!-- Known Limitations -->
-          <div class="bg-white border border-gray-200 rounded-2xl p-8">
+          <UiCard padding="p-8" class="rounded-2xl">
             <h2 class="text-xl font-bold text-gray-900 mb-4">
               Known Limitations
             </h2>
@@ -151,10 +143,10 @@ const features = [
                 </span>
               </li>
             </ul>
-          </div>
+          </UiCard>
 
           <!-- Alternative Access -->
-          <div class="bg-white border border-gray-200 rounded-2xl p-8">
+          <UiCard padding="p-8" class="rounded-2xl">
             <h2 class="text-xl font-bold text-gray-900 mb-4">
               Alternative Access
             </h2>
@@ -162,50 +154,45 @@ const features = [
               If you encounter difficulty accessing any information, contact
               us:
             </p>
-            <a
+            <UiButton
               :href="`mailto:${volunteerEmail}`"
-              class="inline-flex items-center gap-3 p-4 bg-primary-50 border border-primary-200 rounded-xl text-primary-700 font-medium hover:bg-primary-100 transition-colors"
+              variant="soft"
+              color="primary"
+              size="lg"
             >
               <i class="bi bi-envelope-fill text-xl" />
               <span>{{ volunteerEmail }}</span>
-            </a>
-          </div>
+            </UiButton>
+          </UiCard>
 
           <!-- Technical Specs -->
-          <div class="bg-white border border-gray-200 rounded-2xl p-8">
+          <UiCard padding="p-8" class="rounded-2xl">
             <h2 class="text-xl font-bold text-gray-900 mb-4">
               Technical Specifications
             </h2>
             <div class="flex flex-wrap gap-2">
-              <span
+              <UiBadge
                 v-for="tag in ['HTML', 'CSS', 'JavaScript', 'WAI-ARIA']"
                 :key="tag"
-                class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium"
-              >
-                {{ tag }}
-              </span>
+                variant="gray"
+                size="lg"
+                :text="tag"
+              />
             </div>
-          </div>
+          </UiCard>
 
           <!-- Promise Card -->
-          <div
-            class="bg-primary-50 border border-primary-200 rounded-2xl p-8 flex items-start gap-4"
+          <UiAlert
+            variant="primary"
+            layout="row"
+            icon="bi-heart-fill"
+            title="Our Promise"
           >
-            <i
-              class="bi bi-heart-fill text-3xl text-primary-600 shrink-0"
-            />
-            <div>
-              <h3 class="text-lg font-bold text-gray-900 mb-2">
-                Our Promise
-              </h3>
-              <p class="text-gray-600">
-                Better {{ lguName }} is committed to ensuring that our
-                digital services are accessible to all citizens, regardless
-                of ability. We view accessibility not as a feature, but as a
-                fundamental right.
-              </p>
-            </div>
-          </div>
+            Better {{ lguName }} is committed to ensuring that our
+            digital services are accessible to all citizens, regardless
+            of ability. We view accessibility not as a feature, but as a
+            fundamental right.
+          </UiAlert>
 
           <p class="text-sm text-gray-400 text-center">
             Last updated: February 19, 2026

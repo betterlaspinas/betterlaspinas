@@ -21,10 +21,11 @@ const { site, labels, fullLocation, formatPhoneLink } = useConfig()
         </NuxtLink>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <a
+        <UiCard
           v-if="site.contact.phone"
           :href="`tel:${formatPhoneLink(site.contact.phone)}`"
-          class="group flex items-start gap-4 p-6 bg-white border border-gray-200 rounded-xl no-underline text-gray-800 transition-all duration-200 hover:border-primary-500 hover:shadow-md"
+          interactive
+          class="group flex items-start gap-4 text-gray-800 hover:border-primary-500"
         >
           <div class="w-11 h-11 flex items-center justify-center bg-primary-600 text-white rounded-lg text-lg shrink-0">
             <i class="bi bi-telephone-fill" />
@@ -40,11 +41,12 @@ const { site, labels, fullLocation, formatPhoneLink } = useConfig()
               {{ translate('contact-hours') }}
             </span>
           </div>
-        </a>
-        <a
+        </UiCard>
+        <UiCard
           v-if="site.contact.email"
           :href="`mailto:${site.contact.email}`"
-          class="group flex items-start gap-4 p-6 bg-white border border-gray-200 rounded-xl no-underline text-gray-800 transition-all duration-200 hover:border-primary-500 hover:shadow-md"
+          interactive
+          class="group flex items-start gap-4 text-gray-800 hover:border-primary-500"
         >
           <div class="w-11 h-11 flex items-center justify-center bg-primary-600 text-white rounded-lg text-lg shrink-0">
             <i class="bi bi-envelope-fill" />
@@ -60,8 +62,8 @@ const { site, labels, fullLocation, formatPhoneLink } = useConfig()
               {{ translate('contact-response') }}
             </span>
           </div>
-        </a>
-        <div class="flex items-start gap-4 p-6 bg-white border border-gray-200 rounded-xl">
+        </UiCard>
+        <UiCard class="flex items-start gap-4">
           <div class="w-11 h-11 flex items-center justify-center bg-primary-600 text-white rounded-lg text-lg shrink-0">
             <i class="bi bi-geo-alt-fill" />
           </div>
@@ -76,7 +78,7 @@ const { site, labels, fullLocation, formatPhoneLink } = useConfig()
               {{ fullLocation }} {{ site.contact.postalCode }}
             </span>
           </div>
-        </div>
+        </UiCard>
       </div>
     </div>
   </section>

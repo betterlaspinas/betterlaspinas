@@ -50,9 +50,7 @@ const sampleResolutions = computed(() =>
     <!-- About Resolutions -->
     <section class="py-12">
       <div class="container mx-auto px-4">
-        <div
-          class="max-w-3xl mx-auto bg-white border border-gray-200 rounded-xl p-8"
-        >
+        <UiCard padding="p-8" class="max-w-3xl mx-auto">
           <div class="flex items-start gap-4">
             <div
               class="w-12 h-12 flex items-center justify-center bg-primary-50 rounded-xl text-primary-600 text-xl shrink-0"
@@ -77,7 +75,7 @@ const sampleResolutions = computed(() =>
               </p>
             </div>
           </div>
-        </div>
+        </UiCard>
       </div>
     </section>
 
@@ -118,10 +116,8 @@ const sampleResolutions = computed(() =>
             {{ labels.legislativeBody }}
           </p>
         </div>
-        <div class="overflow-x-auto">
-          <table
-            class="w-full bg-white border border-gray-200 rounded-xl overflow-hidden"
-          >
+        <UiCard padding="p-0" class="overflow-x-auto">
+          <table class="w-full min-w-[600px]">
             <thead class="bg-gray-50">
               <tr>
                 <th
@@ -166,7 +162,7 @@ const sampleResolutions = computed(() =>
               </tr>
             </tbody>
           </table>
-        </div>
+        </UiCard>
         <div class="text-center mt-6">
           <p
             class="text-sm text-gray-500 flex items-center justify-center gap-2"

@@ -13,27 +13,17 @@ useHead({
   <div>
     <Breadcrumbs :items="[{ label: 'History' }]" />
 
-    <!-- Hero Section -->
-    <section class="bg-gradient-to-br from-primary-600 to-primary-700 py-16">
-      <div class="container mx-auto px-4">
-        <div class="text-center max-w-2xl mx-auto">
-          <span class="inline-flex items-center gap-2 bg-white/20 text-white px-4 py-2 rounded-full text-sm font-medium mb-4">
-            <i class="bi bi-clock-history" /> Heritage
-          </span>
-          <h1 class="text-3xl md:text-4xl font-bold text-white mb-4">
-            History of {{ lguName }}
-          </h1>
-          <p class="text-lg text-white/90">
-            Tracing the roots and evolution of our community
-          </p>
-        </div>
-      </div>
-    </section>
+    <UiPageHero
+      badge-icon="bi-clock-history"
+      badge-text="Heritage"
+      :title="`History of ${lguName}`"
+      description="Tracing the roots and evolution of our community"
+    />
 
     <!-- Main Content -->
     <section class="py-12">
       <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
+        <UiCard padding="p-0" class="max-w-4xl mx-auto overflow-hidden shadow-sm">
           <!-- Featured Image -->
           <div v-if="history.imageUrl" class="h-64 sm:h-96 w-full relative">
             <img
@@ -68,7 +58,7 @@ useHead({
               </div>
             </div>
           </div>
-        </div>
+        </UiCard>
 
         <div class="text-center mt-12">
           <NuxtLink to="/about" class="text-primary-600 font-medium hover:underline inline-flex items-center gap-2">

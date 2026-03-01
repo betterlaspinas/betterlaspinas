@@ -59,19 +59,19 @@ const logoPath = computed(() => site.value.logo?.main || '/logos/svg/BetterGov_I
         <div class="flex items-center space-x-4">
           <NuxtLink
             to="/join-us"
-            class="text-xs leading-12 text-primary-600 hover:text-primary-700 font-semibold transition-colors"
+            class="text-xs leading-12 text-primary-600 hover:text-primary-700 font-semibold transition-colors duration-200"
           >
             🚀 Join Us
           </NuxtLink>
           <NuxtLink
             to="/about"
-            class="text-xs leading-12 text-gray-800 hover:text-primary-600 transition-colors"
+            class="text-xs leading-12 text-gray-800 hover:text-primary-600 transition-colors duration-200"
           >
             About <span class="hidden md:inline">{{ siteBrandName }}</span>
           </NuxtLink>
           <a
             :href="officialWebsite"
-            class="text-xs leading-12 text-gray-800 hover:text-primary-600 transition-colors"
+            class="text-xs leading-12 text-gray-800 hover:text-primary-600 transition-colors duration-200"
             target="_blank"
             rel="noreferrer"
           >
@@ -80,7 +80,7 @@ const logoPath = computed(() => site.value.logo?.main || '/logos/svg/BetterGov_I
 
           <NuxtLink
             to="/contact"
-            class="text-xs leading-12 text-gray-800 hover:text-primary-600 transition-colors"
+            class="text-xs leading-12 text-gray-800 hover:text-primary-600 transition-colors duration-200"
           >
             Hotlines
           </NuxtLink>
@@ -124,7 +124,7 @@ const logoPath = computed(() => site.value.logo?.main || '/logos/svg/BetterGov_I
           >
             <NuxtLink
               :to="item.href"
-              class="flex items-center font-medium transition-colors pb-1 border-b-2 whitespace-nowrap"
+              class="flex items-center font-medium transition-colors duration-200 pb-1 border-b-2 whitespace-nowrap"
               :class="isActiveRoute(route.path, item.href)
                 ? 'text-primary-600 border-primary-600'
                 : 'text-gray-700 hover:text-primary-600 border-transparent'"
@@ -132,7 +132,7 @@ const logoPath = computed(() => site.value.logo?.main || '/logos/svg/BetterGov_I
               {{ translate(`nav-${item.label.toLowerCase()}`, { defaultValue: item.label }) }}
               <ChevronDown
                 v-if="item.children"
-                class="ml-1 h-4 w-4 transition-colors"
+                class="ml-1 h-4 w-4 transition-colors duration-200"
                 :class="isActiveRoute(route.path, item.href)
                   ? 'text-primary-600'
                   : 'text-gray-800 group-hover:text-primary-600'"
@@ -173,7 +173,7 @@ const logoPath = computed(() => site.value.logo?.main || '/logos/svg/BetterGov_I
         <div class="hidden lg:flex items-center space-x-6">
           <NuxtLink
             to="/services"
-            class="flex items-center text-gray-700 hover:text-primary-600 font-medium transition-colors"
+            class="flex items-center text-gray-700 hover:text-primary-600 font-medium transition-colors duration-200"
           >
             <Search class="h-4 w-4 mr-1" />
             Search
@@ -202,7 +202,7 @@ const logoPath = computed(() => site.value.logo?.main || '/logos/svg/BetterGov_I
           <button
             v-if="item.children"
             type="button"
-            class="w-full flex justify-between items-center px-4 py-2 text-base font-medium transition-colors"
+            class="w-full flex justify-between items-center px-4 py-2 text-base font-medium transition-colors duration-200"
             :class="isActiveRoute(route.path, item.href)
               ? 'text-primary-600 bg-primary-50'
               : 'text-gray-700 hover:bg-gray-50 hover:text-primary-500'"
@@ -222,7 +222,7 @@ const logoPath = computed(() => site.value.logo?.main || '/logos/svg/BetterGov_I
           <NuxtLink
             v-else
             :to="item.href"
-            class="w-full flex justify-between items-center px-4 py-2 text-base font-medium transition-colors"
+            class="w-full flex justify-between items-center px-4 py-2 text-base font-medium transition-colors duration-200"
             :class="isActiveRoute(route.path, item.href)
               ? 'text-primary-600 bg-primary-50'
               : 'text-gray-700 hover:bg-gray-50 hover:text-primary-500'"

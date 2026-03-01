@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { NuxtLink } from '#components'
-
 const route = useRoute()
 const category = route.params.category as string
 const categoryContent = getCategoryContent(category)
@@ -44,37 +42,31 @@ useHead({
     <section class="py-12">
       <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div
+          <UiCard
             v-for="service in categoryContent.services"
             :key="service.id"
-            class="block p-6 bg-white border border-gray-200 rounded-xl transition-all duration-200" :class="[
-              service.link ? 'hover:border-primary-500 hover:shadow-lg' : '',
-            ]"
+            :to="service.link"
+            :interactive="!!service.link"
+            class="h-full"
           >
-            <component
-              :is="service.link ? NuxtLink : 'div'"
-              :to="service.link"
-              :class="{ 'block h-full cursor-pointer': service.link }"
+            <h3
+              class="text-lg font-semibold text-gray-900 mb-2 flex items-center gap-2"
             >
-              <h3
-                class="text-lg font-semibold text-gray-900 mb-2 flex items-center gap-2"
-              >
-                <i :class="`bi ${service.icon} text-primary-600`" />
-                {{ service.title }}
-              </h3>
-              <p class="text-sm text-gray-500 mb-4">
-                {{ service.description }}
-              </p>
-              <div class="flex gap-4 text-sm text-gray-600">
-                <span>
-                  <strong>Fee:</strong> {{ service.fee }}
-                </span>
-                <span>
-                  <strong>Time:</strong> {{ service.time }}
-                </span>
-              </div>
-            </component>
-          </div>
+              <i :class="`bi ${service.icon} text-primary-600`" />
+              {{ service.title }}
+            </h3>
+            <p class="text-sm text-gray-500 mb-4">
+              {{ service.description }}
+            </p>
+            <div class="flex gap-4 text-sm text-gray-600">
+              <span>
+                <strong>Fee:</strong> {{ service.fee }}
+              </span>
+              <span>
+                <strong>Time:</strong> {{ service.time }}
+              </span>
+            </div>
+          </UiCard>
         </div>
       </div>
     </section>
@@ -89,11 +81,13 @@ useHead({
           Responsible Offices
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <NuxtLink
+          <UiCard
             v-for="office in categoryContent.offices.filter(o => o.hidden !== true)"
             :key="office.title"
             :to="office.link"
-            class="flex items-center gap-4 p-4 bg-white border border-gray-200 rounded-xl no-underline transition-all duration-200 hover:border-primary-500 hover:shadow-md"
+            padding="p-4"
+            interactive
+            class="flex items-center gap-4"
           >
             <div
               class="w-12 h-12 flex items-center justify-center bg-primary-50 rounded-xl text-primary-600 text-xl shrink-0"
@@ -109,7 +103,7 @@ useHead({
               </p>
             </div>
             <i class="bi bi-arrow-right text-gray-400" />
-          </NuxtLink>
+          </UiCard>
         </div>
       </div>
     </section>
