@@ -4,8 +4,23 @@ import { useConfig } from '@/composables/useConfig'
 
 const { lguName, labels, officials, subdivisions, formatPhoneLink } = useConfig()
 
+const { getFullSiteTitle, getOpenGraphUrl } = useConfig()
+
+const seoDesc = computed(() => `Meet the leadership and offices serving ${lguName.value}. View the executive, legislative, and department heads of the ${labels.value.lguTypeLabel}.`)
+
 useHead({
   title: 'Government',
+})
+
+useSeoMeta({
+  description: () => seoDesc.value,
+  ogTitle: () => getFullSiteTitle('Government'),
+  ogDescription: () => seoDesc.value,
+  ogType: 'website',
+  ogUrl: () => `${getOpenGraphUrl()}government`,
+  twitterCard: 'summary',
+  twitterTitle: () => getFullSiteTitle('Government'),
+  twitterDescription: () => seoDesc.value,
 })
 
 // Get executive officials

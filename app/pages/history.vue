@@ -7,6 +7,8 @@ const { history, lguName } = useConfig()
 useHead({
   title: 'History',
 })
+
+// TODO: Add SEO when history feature gets implemented.
 </script>
 
 <template>

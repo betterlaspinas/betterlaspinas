@@ -3,10 +3,23 @@ import History from '@/components/home/History.vue'
 import Breadcrumbs from '@/components/ui/Breadcrumbs.vue'
 import { useConfig } from '@/composables/useConfig'
 
-const { siteBrandName } = useConfig()
+const { lguName, siteBrandName, getFullSiteTitle, getOpenGraphUrl } = useConfig()
+
+const seoDesc = computed(() => `Learn about Better ${lguName.value} — our mission, history, and how ${siteBrandName.value} promotes transparency and accessibility in local governance.`)
 
 useHead({
   title: 'About',
+})
+
+useSeoMeta({
+  description: () => seoDesc.value,
+  ogTitle: () => getFullSiteTitle('About'),
+  ogDescription: () => seoDesc.value,
+  ogType: 'website',
+  ogUrl: () => `${getOpenGraphUrl()}about`,
+  twitterCard: 'summary',
+  twitterTitle: () => getFullSiteTitle('About'),
+  twitterDescription: () => seoDesc.value,
 })
 </script>
 

@@ -3,8 +3,23 @@ const { lguName, getSiteTitle, getVolunteerEmail } = useConfig()
 const siteTitle = computed(() => getSiteTitle())
 const volunteerEmail = computed(() => getVolunteerEmail())
 
+const { getFullSiteTitle, getOpenGraphUrl } = useConfig()
+
+const seoDesc = computed(() => `Terms of Use for the Official Portal of ${lguName.value}. Read our policies, guidelines, and terms for accessing government digital services.`)
+
 useHead({
   title: 'Terms of Use',
+})
+
+useSeoMeta({
+  description: () => seoDesc.value,
+  ogTitle: () => getFullSiteTitle('Terms of Use'),
+  ogDescription: () => seoDesc.value,
+  ogType: 'website',
+  ogUrl: () => `${getOpenGraphUrl()}terms`,
+  twitterCard: 'summary',
+  twitterTitle: () => getFullSiteTitle('Terms of Use'),
+  twitterDescription: () => seoDesc.value,
 })
 
 const sections = [

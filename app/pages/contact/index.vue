@@ -4,8 +4,23 @@ import { useConfig } from '@/composables/useConfig'
 
 const { site, hotlines, formatPhoneLink } = useConfig()
 
+const { getFullSiteTitle, getOpenGraphUrl } = useConfig()
+
+const seoDesc = computed(() => `Contact information, office hours, and emergency hotlines for the ${site.value.lguType} of ${site.value.municipality || site.value.city}. We're here to help.`)
+
 useHead({
   title: 'Contact',
+})
+
+useSeoMeta({
+  description: () => seoDesc.value,
+  ogTitle: () => getFullSiteTitle('Contact'),
+  ogDescription: () => seoDesc.value,
+  ogType: 'website',
+  ogUrl: () => `${getOpenGraphUrl()}contact`,
+  twitterCard: 'summary',
+  twitterTitle: () => getFullSiteTitle('Contact'),
+  twitterDescription: () => seoDesc.value,
 })
 </script>
 

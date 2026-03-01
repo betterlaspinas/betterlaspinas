@@ -3,8 +3,23 @@ import Breadcrumbs from '~/components/ui/Breadcrumbs.vue'
 
 const { lguName, labels, site } = useConfig()
 
+const { getFullSiteTitle, getOpenGraphUrl } = useConfig()
+
+const seoDesc = computed(() => `Complete sitemap of Better ${lguName.value} — find all pages, services, and government resources available on this portal.`)
+
 useHead({
   title: 'Sitemap',
+})
+
+useSeoMeta({
+  description: () => seoDesc.value,
+  ogTitle: () => getFullSiteTitle('Sitemap'),
+  ogDescription: () => seoDesc.value,
+  ogType: 'website',
+  ogUrl: () => `${getOpenGraphUrl()}sitemap`,
+  twitterCard: 'summary',
+  twitterTitle: () => getFullSiteTitle('Sitemap'),
+  twitterDescription: () => seoDesc.value,
 })
 
 interface SitemapLink {

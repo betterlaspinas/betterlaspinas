@@ -12,6 +12,8 @@ useHead({
   title: article.value ? article.value.title : 'News Article',
 })
 
+// TODO: Add SEO when news feature gets implemented.
+
 // Badge color mapping (reused from index)
 const badgeColorMap: Record<string, string> = {
   blue: 'bg-blue-100 text-blue-700',

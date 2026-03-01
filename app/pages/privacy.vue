@@ -3,8 +3,23 @@ const { getSiteTitle, getVolunteerEmail } = useConfig()
 const siteTitle = computed(() => getSiteTitle())
 const volunteerEmail = computed(() => getVolunteerEmail())
 
+const { getFullSiteTitle, getOpenGraphUrl, lguName } = useConfig()
+
+const seoDesc = computed(() => `Privacy Policy of ${lguName.value}. Learn how we protect, collect, and use your personal information when using our digital government services.`)
+
 useHead({
   title: 'Privacy Policy',
+})
+
+useSeoMeta({
+  description: () => seoDesc.value,
+  ogTitle: () => getFullSiteTitle('Privacy Policy'),
+  ogDescription: () => seoDesc.value,
+  ogType: 'website',
+  ogUrl: () => `${getOpenGraphUrl()}privacy`,
+  twitterCard: 'summary',
+  twitterTitle: () => getFullSiteTitle('Privacy Policy'),
+  twitterDescription: () => seoDesc.value,
 })
 
 const sections = [
