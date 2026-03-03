@@ -96,7 +96,7 @@
         {
           "id": "senior-benefits",
           "question": "What benefits do senior citizens receive?",
-          "answer": "Senior citizens enjoy 20% discount and VAT exemption on purchases (with a minimum purchase amount per establishment), priority lanes, and access to special programs and medical assistance from the cityity."
+          "answer": "Senior citizens enjoy 20% discount and VAT exemption on purchases (with a minimum purchase amount per establishment), priority lanes, and access to special programs and medical assistance from the city."
         }
       ]
     },
@@ -126,8 +126,83 @@
       "items": [
         {
           "id": "who-developed",
-          "question": "Who developed {{siteBrandName}}?",
-          "answer": "This website is an open-source initiative powered by the <a href=\"https://bettergov.ph\" target=\"_blank\" rel=\"noopener noreferrer\">BetterGov.ph</a> civic-tech framework. It is freely available under the MIT and CC BY 4.0 licenses to encourage digital transformation and community-driven development across local governments."
+          "question": "Who developed this website?",
+          "answer": "The original concept and framework were created by the open-source community at <a href=\"https://bettergov.ph\" target=\"_blank\" rel=\"noopener noreferrer\">BetterGov.ph</a>. This specific platform was then developed by a local collective of volunteer developers who adapted the concept to serve our community."
+        },
+        {
+          "id": "who-maintains",
+          "question": "Who maintains the {{siteBrandName}} initiative?",
+          "answer": "{{siteBrandName}} is organized and maintained by an independent collective of local residents and volunteer developers. We operate as a non-partisan community project focused on improving local transparency."
+        },
+        {
+          "id": "political-stance",
+          "question": "What is {{siteBrandName}}'s political stance?",
+          "answer": "{{siteBrandName}} is strictly non-partisan and independent. We do not endorse any political party, candidate, or ideology. Our sole focus is to provide objective information and tools that empower residents to engage more effectively with their local government."
+        },
+        {
+          "id": "funding-sources",
+          "question": "How is {{siteBrandName}} funded?",
+          "answer": "{{siteBrandName}} is currently funded by a small group of dedicated volunteers and through community donations. We operate with minimal overhead, relying on open-source technology and volunteer time to keep our services free and accessible to everyone."
+        },
+        {
+          "id": "data-sources",
+          "question": "Where does the data on this website come from?",
+          "answer": "Our data comes from official sources including the {{lguName}} Local Government Unit (LGU), national government agencies, and publicly available records. We strive for accuracy and transparency in how we collect, process, and present information."
+        },
+        {
+          "id": "data-accuracy",
+          "question": "How do you ensure the accuracy of the information presented?",
+          "answer": "We prioritize data accuracy by sourcing information from official government channels and cross-referencing with reliable sources. While we strive for 100% accuracy, we encourage residents to verify critical information with the relevant government agencies for official purposes."
+        },
+        {
+          "id": "data-updates",
+          "question": "How often is the data on this website updated?",
+          "answer": "We update the data regularly, typically on a monthly basis or as new information becomes available from official sources. For time-sensitive information such as business hours or service requirements, we recommend verifying directly with the relevant government agency."
+        },
+        {
+          "id": "data-privacy",
+          "question": "How do you protect resident privacy and data?",
+          "answer": "Protecting resident privacy is a top priority. We only display publicly available information and do not collect or store sensitive personal data. All data displayed is anonymized and aggregated where appropriate to ensure privacy."
+        },
+        {
+          "id": "data-ownership",
+          "question": "Who owns the data presented on this website?",
+          "answer": "All data remains the property of the respective government agencies and organizations that created it. We are simply providing a user-friendly interface to access this information more easily."
+        },
+        {
+          "id": "data-correction",
+          "question": "What should I do if I find incorrect information on the website?",
+          "answer": "We appreciate you helping us maintain accuracy! Please contact us at <a href=\"mailto:{{volunteerEmail}}\">{{volunteerEmail}}</a> with the subject \"Data Correction\" and provide the details of the incorrect information and the correct details."
+        },
+        {
+          "id": "data-request",
+          "question": "Can I request additional data or features for the website?",
+          "answer": "Yes! We welcome suggestions for improving the website. Please send your ideas to <a href=\"mailto:{{volunteerEmail}}\">{{volunteerEmail}}</a> with the subject \"Feature Request\" and let us know what you'd like to see."
+        },
+        {
+          "id": "data-sharing",
+          "question": "Can I share or use the data from this website for my own purposes?",
+          "answer": "Yes, you are free to share and use the information presented on this website for personal or community purposes. We encourage transparency and the use of this data to promote civic engagement. When sharing, please provide proper attribution to the original data sources."
+        },
+        {
+          "id": "data-licensing",
+          "question": "What is the data licensing policy for this website?",
+          "answer": "All data presented on this website is for informational purposes only. While we encourage transparency and the use of this data for civic engagement, we do not claim ownership of the data. Users are responsible for complying with applicable data protection laws and regulations when using or sharing this information."
+        },
+        {
+          "id": "data-disclaimer",
+          "question": "Is the information on this website official government data?",
+          "answer": "The information presented on this website is compiled from various sources including official government agencies, public records, and community-sourced data. While we strive for accuracy, this website is intended for informational purposes only and should not be considered official government communication. For official purposes, please refer to the respective government agencies."
+        },
+        {
+          "id": "data-limitations",
+          "question": "What are the limitations of the data presented on this website?",
+          "answer": "While we strive for accuracy, the data presented on this website has certain limitations. Some data may be outdated, incomplete, or not fully representative of the entire community. Additionally, the website does not provide real-time data for all services and may have delays in updates. For the most accurate and up-to-date information, please refer to the respective government agencies."
+        },
+        {
+          "id": "data-verification",
+          "question": "How can I verify the accuracy of the information presented on this website?",
+          "answer": "To verify the accuracy of the information presented on this website, please refer to the original data sources which are cited where applicable. For official purposes, we recommend contacting the respective government agencies directly. You can also reach out to us at <a href=\"mailto:{{volunteerEmail}}\">{{volunteerEmail}}</a> with any questions or concerns about the data."
         }
       ]
     }
