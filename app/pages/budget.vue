@@ -6,8 +6,6 @@ import {
 
 const { lguName, fullLocation, labels, budget } = useConfig()
 
-// TODO: Add SEO when budget feature gets implemented.
-
 type QuarterKey = 'q1' | 'q2' | 'q3' | 'q4'
 const activeQuarter = ref<QuarterKey>('q1')
 

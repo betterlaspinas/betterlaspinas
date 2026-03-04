@@ -3,8 +3,6 @@ import Breadcrumbs from '@/components/ui/Breadcrumbs.vue'
 import { useConfig } from '@/composables/useConfig'
 
 const { history, lguName } = useConfig()
-
-// TODO: Add SEO when history feature gets implemented.
 </script>
 
 <template>
