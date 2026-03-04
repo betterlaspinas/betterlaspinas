@@ -1,16 +1,14 @@
 <script setup lang="ts">
 import { cn } from '~/utils/cn'
 
-interface Props {
+withDefaults(defineProps<{
   badgeIcon: string
   badgeText: string
   title: string
   description?: string
   badgeClass?: string
   class?: any
-}
-
-withDefaults(defineProps<Props>(), {
+}>(), {
   description: undefined,
   badgeClass: 'bg-primary-600 text-white',
 })

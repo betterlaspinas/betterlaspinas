@@ -1,15 +1,13 @@
 <script setup lang="ts">
 import { cn } from '~/utils/cn'
 
-interface Props {
+defineProps<{
   badgeIcon: string
   badgeText: string
   title: string
   description: string
   class?: any
-}
-
-defineProps<Props>()
+}>()
 </script>
 
 <template>
