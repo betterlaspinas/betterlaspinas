@@ -10,6 +10,7 @@ export interface SeoMetaData {
   twitterCard?: 'summary' | 'summary_large_image'
   twitterTitle?: string | (() => string)
   twitterDescription?: string | (() => string)
+  hidden?: boolean
 }
 
 export function getSeoConfig() {
@@ -21,6 +22,7 @@ export function getSeoConfig() {
     urlPath: string,
     ogType: 'website' | 'article' = 'website',
     twitterCard: 'summary' | 'summary_large_image' = 'summary',
+    hidden: boolean = false,
   ): SeoMetaData {
     return {
       title,
@@ -32,6 +34,7 @@ export function getSeoConfig() {
       twitterCard,
       twitterTitle: () => title,
       twitterDescription: descriptionFn,
+      hidden,
     }
   }
 
@@ -60,16 +63,30 @@ export function getSeoConfig() {
       getFullSiteTitle('Budget & Transparency'),
       () => `Explore the budget and transparency reports of ${lguName.value}. Learn how public funds are allocated and utilized.`,
       'budget',
+      'website',
+      'summary',
+      true,
     ),
     'government-index': createSeoData(
       getFullSiteTitle('Government'),
       () => `Meet the leadership and offices serving ${lguName.value}. View the executive, legislative, and department heads of the ${labels.value.lguTypeLabel}.`,
       'government',
     ),
+    'legislative-index': createSeoData(
+      getFullSiteTitle('Legislative'),
+      () => `Ordinances and resolutions of the ${labels.value.legislativeBody} ng ${lguName.value}.`,
+      'legislative',
+      'website',
+      'summary',
+      true,
+    ),
     'history': createSeoData(
       getFullSiteTitle('History'),
       () => `Tracing the roots and evolution of our community in ${lguName.value}.`,
       'history',
+      'website',
+      'summary',
+      true,
     ),
     'join-us': createSeoData(
       getFullSiteTitle('Join Us'),
@@ -95,11 +112,6 @@ export function getSeoConfig() {
       getFullSiteTitle('News & Announcements'),
       () => `Stay updated with the latest news, announcements, and press releases from the ${labels.value.lguTypeLabel} of ${lguName.value}.`,
       'news',
-    ),
-    'legislative-index': createSeoData(
-      getFullSiteTitle('Legislative'),
-      () => `Ordinances and resolutions of the ${labels.value.legislativeBody} ng ${lguName.value}.`,
-      'legislative',
     ),
     'legislative-ordinance-framework': createSeoData(
       getFullSiteTitle('Ordinance Framework'),
@@ -151,4 +163,15 @@ export function getSeoConfig() {
   }
 
   return seoData
+}
+
+/**
+ * Returns only the entries where `hidden` is not true.
+ * Use this in the SEO middleware so hidden pages are skipped entirely.
+ */
+export function getVisibleSeoConfig(): Record<string, SeoMetaData> {
+  const all = getSeoConfig()
+  return Object.fromEntries(
+    Object.entries(all).filter(([, meta]) => !meta.hidden),
+  )
 }

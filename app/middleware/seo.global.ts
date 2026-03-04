@@ -1,7 +1,7 @@
-import { getSeoConfig } from '../utils/seo-data'
+import { getVisibleSeoConfig } from '../utils/seo-data'
 
 export default defineNuxtRouteMiddleware((to) => {
-  const seoConfig = getSeoConfig()
+  const seoConfig = getVisibleSeoConfig()
   const routeName = to.name as string
   const meta = seoConfig[routeName]
 
