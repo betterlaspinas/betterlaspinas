@@ -162,7 +162,7 @@ pnpm test --run
 
 ## 📁 Project Structure
 
-```
+```text
 betterlaspinas/
 ├── app/
 │   ├── assets/          # CSS, images, fonts
@@ -249,7 +249,7 @@ Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for gu
 We would like to thank all the contributors who have helped build and maintain this project.
 
 <a href="https://github.com/betterlaspinas/betterlaspinas/graphs/contributors">
-    <img src="https://contributors-img.web.app/image?repo=betterlaspinas/betterlaspinas&max=750&columns=20" />
+    <img src="https://contributors-img.web.app/image?repo=betterlaspinas/betterlaspinas&max=750&columns=20" alt="Contributors" />
 </a>
 
 [See the full list of contributors](https://github.com/betterlaspinas/betterlaspinas/graphs/contributors)

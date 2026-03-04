@@ -4,14 +4,14 @@ Thank you for your interest in contributing to Better Las Piñas! This document 
 
 ## 📋 Table of Contents
 
-- [Code of Conduct](#code-of-conduct)
-- [How Can I Contribute?](#how-can-i-contribute)
-- [Development Setup](#development-setup)
-- [Coding Standards](#coding-standards)
-- [Commit Guidelines](#commit-guidelines)
-- [Branching & Versioning](#branching--versioning)
-- [Pull Request Process](#pull-request-process)
-- [Testing Requirements](#testing-requirements)
+- [Code of Conduct](#-code-of-conduct)
+- [How Can I Contribute?](#-how-can-i-contribute)
+- [Development Setup](#️-development-setup)
+- [Coding Standards](#-coding-standards)
+- [Commit Guidelines](#-commit-guidelines)
+- [Branching & Versioning](#-branching--versioning)
+- [Pull Request Process](#-pull-request-process)
+- [Testing Requirements](#-testing-requirements)
 
 ## 📜 Code of Conduct
 
@@ -37,7 +37,7 @@ This project adheres to the [Contributor Covenant Code of Conduct](CODE_OF_CONDU
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Make your changes following our [Coding Standards](#coding-standards)
+3. Make your changes following our [Coding Standards](#-coding-standards)
 4. Write tests for your changes
 5. Ensure all tests pass
 6. Commit with a descriptive message
@@ -114,7 +114,7 @@ npm run lint && npm run typecheck && npm run test -- --run
 
 ### File Organization
 
-```
+```text
 app/
 ├── components/
 │   ├── charts/        # Chart components
@@ -171,7 +171,7 @@ We follow a convention that mirrors our commit types: `type/short-description`.
 
 ### Format
 
-```
+```text
 type(scope): subject
 
 body (optional)
