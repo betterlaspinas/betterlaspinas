@@ -41,5 +41,8 @@ useHead({
 
     <!-- Competitive Index Component -->
     <StatisticsCompetitiveIndex :statistics-detailed="statisticsDetailed" :lgu-name="lguName" />
+
+    <!-- Bar Chart Component -->
+    <StatisticsBarangayBarChart />
   </div>
 </template>

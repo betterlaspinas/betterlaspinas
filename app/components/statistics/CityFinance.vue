@@ -10,9 +10,7 @@ defineProps<{
   <section class="py-12">
     <div class="container mx-auto px-4">
       <div class="text-center mb-10">
-        <span class="inline-flex items-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-full text-sm font-medium mb-3">
-          <i class="bi bi-cash-stack" /> Finance
-        </span>
+        <UiBadge variant="solid-primary" size="lg" icon="bi-cash-stack" text="Finance" class="mb-3" />
         <h2 class="text-2xl font-bold text-gray-900 mb-2">
           City Income
         </h2>

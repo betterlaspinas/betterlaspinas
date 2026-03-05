@@ -275,12 +275,9 @@ const filteredAttractions = computed(() => {
           Contact our local tourism office for more information and assistance
           in planning your visit.
         </p>
-        <NuxtLink
-          to="/contact"
-          class="inline-flex items-center gap-2 bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-primary-700"
-        >
+        <UiButton to="/contact" variant="solid" color="primary">
           Contact Us <i class="bi bi-arrow-right" />
-        </NuxtLink>
+        </UiButton>
       </div>
     </section>
   </div>

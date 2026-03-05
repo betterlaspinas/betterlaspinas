@@ -18,9 +18,7 @@ const quarterData = computed(() => props.budget.quarters?.[activeQuarter.value])
     <div class="container mx-auto px-4">
       <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
         <div>
-          <span class="inline-flex items-center gap-2 bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm font-medium mb-2">
-            <i class="bi bi-graph-up-arrow" /> Financial Report
-          </span>
+          <UiBadge icon="bi-graph-up-arrow" text="Financial Report" class="mb-2" />
           <h2 class="text-2xl font-bold text-gray-900">
             Statement of Receipts & Expenditures
           </h2>
@@ -95,7 +93,7 @@ const quarterData = computed(() => props.budget.quarters?.[activeQuarter.value])
               <span class="block text-2xl font-bold text-green-700">
                 {{ quarterData.totalIncome }}
               </span>
-              <span class="text-sm text-green-600">Total Income</span>
+              <UiBadge variant="success" text="Total Income" />
             </div>
           </div>
         </div>
@@ -108,7 +106,7 @@ const quarterData = computed(() => props.budget.quarters?.[activeQuarter.value])
               <span class="block text-2xl font-bold text-red-700">
                 {{ quarterData.totalExpense }}
               </span>
-              <span class="text-sm text-red-600">Total Expenditures</span>
+              <UiBadge variant="danger" text="Total Expenditures" />
             </div>
           </div>
         </div>
@@ -121,7 +119,7 @@ const quarterData = computed(() => props.budget.quarters?.[activeQuarter.value])
               <span class="block text-2xl font-bold text-blue-700">
                 {{ quarterData.netIncome }}
               </span>
-              <span class="text-sm text-blue-600">Net Operating Income</span>
+              <UiBadge variant="primary" text="Net Operating Income" />
             </div>
           </div>
         </div>
@@ -134,7 +132,7 @@ const quarterData = computed(() => props.budget.quarters?.[activeQuarter.value])
               <span class="block text-2xl font-bold text-purple-700">
                 {{ quarterData.fundBalance }}
               </span>
-              <span class="text-sm text-purple-600">Fund Balance (End)</span>
+              <UiBadge variant="warning" text="Fund Balance (End)" />
             </div>
           </div>
         </div>

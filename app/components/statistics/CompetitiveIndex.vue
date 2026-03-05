@@ -35,9 +35,7 @@ function getTrendIcon(trendType: string): string {
   <section id="competitive-index" class="py-12 bg-gray-50">
     <div class="container mx-auto px-4">
       <div class="text-center mb-10">
-        <span class="inline-flex items-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-full text-sm font-medium mb-3">
-          <i class="bi bi-trophy-fill" /> Competitiveness
-        </span>
+        <UiBadge variant="solid-primary" size="lg" icon="bi-trophy-fill" text="Competitiveness" class="mb-3" />
         <h2 class="text-2xl font-bold text-gray-900 mb-2">
           {{ lguName }} Competitive Index
         </h2>
@@ -47,10 +45,10 @@ function getTrendIcon(trendType: string): string {
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
-        <div
+        <UiCard
           v-for="pillar in cmciPillars"
           :key="pillar.id"
-          class="bg-white border border-gray-200 rounded-xl p-6 text-center"
+          class="text-center"
         >
           <div class="w-12 h-12 flex items-center justify-center bg-primary-50 text-primary-600 rounded-xl text-xl mx-auto mb-3">
             <i :class="`bi ${pillar.icon}`" />
@@ -68,26 +66,26 @@ function getTrendIcon(trendType: string): string {
             <i :class="`bi ${getTrendIcon(pillar.trendType)}`" />
             {{ pillar.trend }}
           </div>
-        </div>
+        </UiCard>
       </div>
 
-      <div class="bg-white border border-gray-200 rounded-xl p-6 mb-6">
+      <UiCard class="mb-6">
         <h4 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
           <i class="bi bi-graph-up-arrow" /> Overall Rankings Trend (2016-2024)
         </h4>
         <ClientOnly>
           <ChartsCMCIRankingsChart />
         </ClientOnly>
-      </div>
+      </UiCard>
 
-      <div class="bg-white border border-gray-200 rounded-xl p-6 mb-6">
+      <UiCard class="mb-6">
         <h4 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
           <i class="bi bi-bar-chart-line" /> Key Indicators Trend (2016-2024)
         </h4>
         <ClientOnly>
           <ChartsKeyIndicatorsTrendChart />
         </ClientOnly>
-      </div>
+      </UiCard>
 
       <p class="text-sm text-gray-500 flex items-center gap-2">
         <i class="bi bi-info-circle" />

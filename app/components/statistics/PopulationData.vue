@@ -24,9 +24,7 @@ const barangayData = computed(() => allBarangays.value.slice(0, 10))
     <section class="py-12 bg-gray-50">
       <div class="container mx-auto px-4">
         <div class="text-center mb-10">
-          <span class="inline-flex items-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-full text-sm font-medium mb-3">
-            <i class="bi bi-graph-up" /> Growth
-          </span>
+          <UiBadge variant="solid-primary" size="lg" icon="bi-graph-up" text="Growth" class="mb-3" />
           <h2 class="text-2xl font-bold text-gray-900 mb-2">
             Population Trends
           </h2>
@@ -59,11 +57,11 @@ const barangayData = computed(() => allBarangays.value.slice(0, 10))
           </div>
         </div>
 
-        <div class="bg-white border border-gray-200 rounded-xl p-6 mb-6">
+        <UiCard class="mb-6">
           <ClientOnly>
             <ChartsPopulationTrendsChart />
           </ClientOnly>
-        </div>
+        </UiCard>
 
         <p class="text-sm text-gray-500 flex items-center gap-2">
           <i class="bi bi-info-circle" />
@@ -84,9 +82,7 @@ const barangayData = computed(() => allBarangays.value.slice(0, 10))
     <section class="py-12">
       <div class="container mx-auto px-4">
         <div class="text-center mb-10">
-          <span class="inline-flex items-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-full text-sm font-medium mb-3">
-            <i class="bi bi-pie-chart-fill" /> Distribution
-          </span>
+          <UiBadge variant="solid-primary" size="lg" icon="bi-pie-chart-fill" text="Distribution" class="mb-3" />
           <h2 class="text-2xl font-bold text-gray-900 mb-2">
             Population by Barangay
           </h2>
@@ -96,98 +92,80 @@ const barangayData = computed(() => allBarangays.value.slice(0, 10))
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-6">
-          <div class="bg-white border border-gray-200 rounded-xl p-6">
+          <UiCard>
             <ClientOnly>
               <ChartsPopulationDistributionChart />
             </ClientOnly>
-          </div>
+          </UiCard>
           <div class="space-y-3">
-            <div
+            <UiCard
               v-for="barangay in barangayData"
               :key="barangay.rank"
-              class="flex items-center gap-3 p-3 bg-white border border-gray-200 rounded-lg"
+              padding="p-3"
+              class="flex items-center gap-3"
             >
               <span
                 class="w-8 h-8 flex items-center justify-center rounded-full text-sm font-bold"
-                :class="barangay.rank <= 3 ? 'bg-primary-600 text-white' : 'bg-gray-100 text-gray-600'"
+                :class="
+                  barangay.rank <= 3
+                    ? 'bg-primary-600 text-white'
+                    : 'bg-gray-100 text-gray-600'
+                "
               >
                 #{{ barangay.rank }}
               </span>
               <span class="font-medium text-gray-900 w-32">
                 {{ barangay.name }}
               </span>
-              <div class="flex-1 h-3 bg-gray-100 rounded-full overflow-hidden">
-                <div class="h-full bg-primary-500 rounded-full" :style="{ width: `${barangay.pct}%` }" />
+              <div
+                class="flex-1 h-3 bg-gray-100 rounded-full overflow-hidden"
+              >
+                <div
+                  class="h-full bg-primary-500 rounded-full"
+                  :style="{ width: `${barangay.pct}%` }"
+                />
               </div>
               <span class="text-sm font-semibold text-gray-700 w-16 text-right">
                 {{ barangay.pop.toLocaleString() }}
               </span>
-            </div>
+            </UiCard>
           </div>
         </div>
 
-        <details class="bg-white border border-gray-200 rounded-xl overflow-hidden mb-6">
-          <summary class="p-4 cursor-pointer font-medium text-gray-900 hover:bg-gray-50 flex items-center gap-2">
-            <i class="bi bi-chevron-down" /> View all 20 barangays
-          </summary>
-          <div class="p-4 border-t border-gray-200 space-y-3">
+        <UiAccordion title="View all 20 barangays" class="mb-6">
+          <template #title>
+            <span class="flex items-center gap-2"><i class="bi bi-list-ul" /> View all 20 barangays</span>
+          </template>
+          <div class="space-y-3">
             <div
               v-for="barangay in allBarangays.slice(10)"
               :key="barangay.rank"
               class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg"
             >
-              <span class="w-8 h-8 flex items-center justify-center rounded-full text-sm font-bold bg-gray-100 text-gray-600">
+              <span
+                class="w-8 h-8 flex items-center justify-center rounded-full text-sm font-bold bg-gray-100 text-gray-600"
+              >
                 #{{ barangay.rank }}
               </span>
               <span class="font-medium text-gray-900 w-32">
                 {{ barangay.name }}
               </span>
-              <div class="flex-1 h-3 bg-gray-200 rounded-full overflow-hidden">
-                <div class="h-full bg-primary-400 rounded-full" :style="{ width: `${barangay.pct}%` }" />
+              <div
+                class="flex-1 h-3 bg-gray-200 rounded-full overflow-hidden"
+              >
+                <div
+                  class="h-full bg-primary-400 rounded-full"
+                  :style="{ width: `${barangay.pct}%` }"
+                />
               </div>
-              <span class="text-sm font-semibold text-gray-700 w-16 text-right">
+              <span
+                class="text-sm font-semibold text-gray-700 w-16 text-right"
+              >
                 {{ barangay.pop.toLocaleString() }}
               </span>
             </div>
           </div>
-        </details>
-
-        <p class="text-sm text-gray-500 flex items-center gap-2">
-          <i class="bi bi-info-circle" />
-          Source:
-          <a
-            href="https://psa.gov.ph/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-primary-600 hover:underline"
-          >
-            Philippine Statistics Authority (PSA)
-          </a>
-          - 2024 Census
-        </p>
-      </div>
-    </section>
-
-    <!-- Bar Chart Section -->
-    <section class="py-12">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-10">
-          <span class="inline-flex items-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-full text-sm font-medium mb-3">
-            <i class="bi bi-bar-chart-fill" /> Visual
-          </span>
-          <h2 class="text-2xl font-bold text-gray-900 mb-2">
-            Population Bar Chart
-          </h2>
-          <p class="text-gray-500">
-            Comparative view of all 20 barangays
-          </p>
-        </div>
-
-        <div class="bg-white border border-gray-200 rounded-xl p-6 mb-6">
-          <ClientOnly>
-            <ChartsBarangayPopulationChart />
-          </ClientOnly>
-        </div>
+        </UiAccordion>
 
         <p class="text-sm text-gray-500 flex items-center gap-2">
           <i class="bi bi-info-circle" />
