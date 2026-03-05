@@ -1,0 +1,38 @@
+app:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'app/**/*'
+          - 'server/**/*'
+          - 'public/**/*'
+
+tests:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'tests/**/*'
+          - 'coverage/**/*'
+
+dependencies:
+  - changed-files:
+      - any-glob-to-any-file:
+          - package.json
+          - package-lock.json
+          - pnpm-lock.yaml
+
+documentation:
+  - changed-files:
+      - any-glob-to-any-file:
+          - '**/*.md'
+
+config:
+  - changed-files:
+      - any-glob-to-any-file:
+          - nuxt.config.ts
+          - vitest.config.ts
+          - eslint.config.mjs
+          - tsconfig.json
+          - ecosystem.config.cjs
+
+github_actions:
+  - changed-files:
+      - any-glob-to-any-file:
+          - '.github/**/*'

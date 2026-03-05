@@ -72,10 +72,11 @@ const faqCategories = computed(() =>
     <section class="py-12">
       <div class="container mx-auto px-4">
         <div class="max-w-3xl mx-auto space-y-8">
-          <div
+          <UiCard
             v-for="category in faqCategories"
             :key="category.id"
-            class="bg-white border border-gray-200 rounded-2xl overflow-hidden"
+            padding="p-0"
+            class="overflow-hidden mb-8 last:mb-0"
           >
             <div
               class="flex items-center gap-3 p-6 border-b border-gray-200 bg-gray-50"
@@ -88,49 +89,38 @@ const faqCategories = computed(() =>
               </h2>
             </div>
             <div class="divide-y divide-gray-100">
-              <details
+              <UiAccordion
                 v-for="item in category.items"
                 :key="item.id"
-                class="group"
+                :title="item.q"
+                class="border-0 rounded-none border-b last:border-b-0"
               >
-                <summary
-                  class="flex items-center justify-between cursor-pointer p-6 text-left font-medium text-gray-900 hover:bg-gray-50 transition-colors"
-                >
-                  <span>{{ item.q }}</span>
-                  <i
-                    class="bi bi-chevron-down text-gray-400 transition-transform group-open:rotate-180"
-                  />
-                </summary>
-                <div class="px-6 pb-6 text-gray-600 leading-relaxed">
+                <div class="text-gray-600 leading-relaxed">
                   <div v-html="item.a" />
                 </div>
-              </details>
+              </UiAccordion>
             </div>
-          </div>
+          </UiCard>
 
           <!-- Still Have Questions -->
-          <div
-            class="bg-primary-50 border border-primary-200 rounded-2xl p-8 text-center"
+          <UiAlert
+            variant="primary"
+            layout="col"
+            icon="bi-chat-dots-fill"
           >
-            <i
-              class="bi bi-chat-dots-fill text-4xl text-primary-600 mb-4 block"
-            />
-            <h3 class="text-xl font-semibold text-gray-900 mb-2">
+            <template #title>
               {{ translate('faq-still-questions') || 'Still have questions?' }}
-            </h3>
-            <p class="text-gray-600 mb-6">
+            </template>
+            <p class="mb-6">
               {{
                 translate('faq-contact-help')
                   || "If you didn't find the answer you were looking for, please don't hesitate to contact us."
               }}
             </p>
-            <NuxtLink
-              to="/contact"
-              class="inline-flex items-center gap-2 bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-primary-700"
-            >
+            <UiButton to="/contact" variant="solid" color="primary">
               Contact Us <i class="bi bi-arrow-right" />
-            </NuxtLink>
-          </div>
+            </UiButton>
+          </UiAlert>
         </div>
       </div>
     </section>

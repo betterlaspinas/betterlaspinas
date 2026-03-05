@@ -72,14 +72,15 @@ const services: ServiceCard[] = [
 
       <!-- Services Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <NuxtLink
+        <UiCard
           v-for="service in services.filter(s => !s.hidden)"
           :key="service.href + service.titleKey"
           :to="service.href"
-          class="group flex items-center gap-4 p-6 border rounded-xl no-underline transition-all duration-200"
+          interactive
+          class="group flex items-center gap-4"
           :class="service.isViewAll
-            ? 'bg-primary-600 border-transparent text-white hover:shadow-lg'
-            : 'bg-white border-gray-200 text-gray-800 hover:border-primary-500 hover:shadow-md'"
+            ? '!bg-primary-600 !border-transparent text-white'
+            : 'text-gray-800'"
         >
           <!-- Icon -->
           <div
@@ -116,7 +117,7 @@ const services: ServiceCard[] = [
             class="bi bi-arrow-right transition-all duration-200 opacity-0 group-hover:opacity-100 group-hover:translate-x-1"
             :class="service.isViewAll ? 'text-white' : 'text-gray-400'"
           />
-        </NuxtLink>
+        </UiCard>
       </div>
     </div>
   </section>
