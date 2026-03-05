@@ -13,31 +13,22 @@ useHead({
   <div>
     <Breadcrumbs :items="[{ label: 'Contact' }]" />
 
-    <!-- Page Header -->
-    <section class="bg-gradient-to-br from-primary-600 to-primary-700 py-16">
-      <div class="container mx-auto px-4">
-        <div class="text-center max-w-2xl mx-auto">
-          <span class="inline-flex items-center gap-2 bg-white/20 text-white px-4 py-2 rounded-full text-sm font-medium mb-4">
-            <i class="bi bi-envelope-fill" /> Contact
-          </span>
-          <h1 class="text-3xl md:text-4xl font-bold text-white mb-4">
-            Contact Us
-          </h1>
-          <p class="text-lg text-white/90">
-            We're here to help. Reach out to us through any of these channels.
-          </p>
-        </div>
-      </div>
-    </section>
+    <UiPageHero
+      badge-icon="bi-envelope-fill"
+      badge-text="Contact"
+      title="Contact Us"
+      description="We're here to help. Reach out to us through any of these channels."
+    />
 
     <!-- Contact Information -->
     <section class="py-12">
       <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <a
+          <UiCard
             v-if="site.contact.email"
             :href="`mailto:${site.contact.email}`"
-            class="group flex items-start gap-4 p-6 bg-white border border-gray-200 rounded-xl no-underline text-gray-800 transition-all duration-200 hover:border-primary-500 hover:shadow-lg"
+            interactive
+            class="group flex items-start gap-4 text-gray-800 hover:border-primary-500"
           >
             <div class="w-12 h-12 flex items-center justify-center bg-primary-600 text-white rounded-xl text-xl shrink-0">
               <i class="bi bi-envelope-fill" />
@@ -53,12 +44,13 @@ useHead({
                 We'll respond within 24 hours
               </span>
             </div>
-          </a>
+          </UiCard>
 
-          <a
+          <UiCard
             v-if="site.contact.mobile"
             :href="`tel:${formatPhoneLink(site.contact.mobile)}`"
-            class="group flex items-start gap-4 p-6 bg-white border border-gray-200 rounded-xl no-underline text-gray-800 transition-all duration-200 hover:border-primary-500 hover:shadow-lg"
+            interactive
+            class="group flex items-start gap-4 text-gray-800 hover:border-primary-500"
           >
             <div class="w-12 h-12 flex items-center justify-center bg-primary-600 text-white rounded-xl text-xl shrink-0">
               <i class="bi bi-phone-fill" />
@@ -74,12 +66,13 @@ useHead({
                 Mon-Fri: 8:00 AM - 5:00 PM
               </span>
             </div>
-          </a>
+          </UiCard>
 
-          <a
+          <UiCard
             v-if="site.contact.phone"
             :href="`tel:${formatPhoneLink(site.contact.phone)}`"
-            class="group flex items-start gap-4 p-6 bg-white border border-gray-200 rounded-xl no-underline text-gray-800 transition-all duration-200 hover:border-primary-500 hover:shadow-lg"
+            interactive
+            class="group flex items-start gap-4 text-gray-800 hover:border-primary-500"
           >
             <div class="w-12 h-12 flex items-center justify-center bg-primary-600 text-white rounded-xl text-xl shrink-0">
               <i class="bi bi-telephone-fill" />
@@ -95,7 +88,7 @@ useHead({
                 Mon-Fri: 8:00 AM - 5:00 PM
               </span>
             </div>
-          </a>
+          </UiCard>
         </div>
       </div>
     </section>
@@ -153,17 +146,13 @@ useHead({
     <!-- Emergency Hotlines -->
     <section v-if="hotlines.emergency.some((h) => h.number)" class="py-12">
       <div class="container mx-auto px-4">
-        <div class="text-center mb-8">
-          <span class="inline-flex items-center gap-2 bg-red-600 text-white px-4 py-2 rounded-full text-sm font-medium mb-3">
-            <i class="bi bi-exclamation-triangle-fill" /> Emergency
-          </span>
-          <h2 class="text-2xl font-bold text-gray-900 mb-2">
-            Emergency Hotlines
-          </h2>
-          <p class="text-gray-500">
-            For emergencies and inquiries, contact these numbers anytime.
-          </p>
-        </div>
+        <UiSectionHeader
+          title="Emergency Hotlines"
+          description="For emergencies and inquiries, contact these numbers anytime."
+          badge-icon="bi-exclamation-triangle-fill"
+          badge-text="Emergency"
+          badge-class="bg-red-600 text-white"
+        />
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           <template v-for="hotline in hotlines.emergency" :key="hotline.id">
             <a
@@ -219,17 +208,13 @@ useHead({
     <!-- Medical Emergency Hotlines -->
     <section v-if="hotlines.medical.some((h: any) => h.number)" class="py-12 bg-gray-50">
       <div class="container mx-auto px-4">
-        <div class="text-center mb-8">
-          <span class="inline-flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-full text-sm font-medium mb-3">
-            <i class="bi bi-hospital-fill" /> Medical
-          </span>
-          <h2 class="text-2xl font-bold text-gray-900 mb-2">
-            Medical Emergency Hotlines
-          </h2>
-          <p class="text-gray-500">
-            For medical emergencies and hospital inquiries.
-          </p>
-        </div>
+        <UiSectionHeader
+          title="Medical Emergency Hotlines"
+          description="For medical emergencies and hospital inquiries."
+          badge-icon="bi-hospital-fill"
+          badge-text="Medical"
+          badge-class="bg-green-600 text-white"
+        />
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           <template v-for="hotline in hotlines.medical" :key="hotline.id">
             <a

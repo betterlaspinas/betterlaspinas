@@ -50,10 +50,11 @@ function toggleFaq(index: number) {
     <section class="py-8 bg-gray-50">
       <div class="container mx-auto px-4">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div
+          <UiCard
             v-for="stat in service.quickStats"
             :key="stat.label"
-            class="bg-white border border-gray-200 rounded-xl p-4 text-center"
+            padding="p-4"
+            class="text-center"
           >
             <i
               :class="`bi ${stat.icon} text-2xl text-primary-600 mb-2 block`"
@@ -64,7 +65,7 @@ function toggleFaq(index: number) {
             <p class="font-semibold text-gray-900">
               {{ stat.value }}
             </p>
-          </div>
+          </UiCard>
         </div>
       </div>
     </section>
@@ -81,11 +82,11 @@ function toggleFaq(index: number) {
           </p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
-          <div
+          <UiCard
             v-for="(step, stepIndex) in service.processSteps"
             :key="step.title"
-            class="relative bg-white border rounded-xl p-6" :class="[
-              step.isFinal ? 'border-green-300 bg-green-50' : 'border-gray-200',
+            class="relative" :class="[
+              step.isFinal ? 'border-green-300 bg-green-50' : '',
             ]"
           >
             <span
@@ -101,7 +102,7 @@ function toggleFaq(index: number) {
             <p class="text-sm text-gray-800">
               {{ step.description }}
             </p>
-          </div>
+          </UiCard>
         </div>
       </div>
     </section>
@@ -116,10 +117,11 @@ function toggleFaq(index: number) {
               <h2 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
                 <i class="bi bi-clipboard-check text-primary-600" /> Requirements
               </h2>
-              <div
+              <UiCard
                 v-for="req in service.requirements"
                 :key="req.title"
-                class="bg-white border border-gray-200 rounded-xl p-4 mb-4"
+                padding="p-4"
+                class="mb-4"
               >
                 <h4 class="font-semibold text-gray-900 mb-3 flex items-center gap-2">
                   <i :class="`bi ${req.icon} text-primary-600`" /> {{ req.title }}
@@ -134,7 +136,7 @@ function toggleFaq(index: number) {
                     {{ item }}
                   </li>
                 </ul>
-              </div>
+              </UiCard>
             </div>
 
             <!-- FAQs -->
@@ -143,10 +145,11 @@ function toggleFaq(index: number) {
                 <i class="bi bi-question-circle text-primary-600" /> Frequently Asked Questions
               </h2>
               <div class="space-y-2">
-                <div
+                <UiCard
                   v-for="(faq, faqIndex) in service.faqs"
                   :key="faq.question"
-                  class="bg-white border border-gray-200 rounded-xl overflow-hidden"
+                  padding="p-0"
+                  class="overflow-hidden"
                 >
                   <button
                     type="button"
@@ -166,14 +169,14 @@ function toggleFaq(index: number) {
                   >
                     {{ faq.answer }}
                   </div>
-                </div>
+                </UiCard>
               </div>
             </div>
           </div>
 
           <!-- Sidebar -->
           <div class="space-y-4">
-            <div class="bg-white border border-gray-200 rounded-xl p-6">
+            <UiCard>
               <h4 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
                 <i class="bi bi-building text-primary-600" /> Office Information
               </h4>
@@ -189,11 +192,10 @@ function toggleFaq(index: number) {
               <p class="text-sm text-gray-600 mt-1 flex items-center gap-2">
                 <i class="bi bi-clock" /> {{ service.office.hours }}
               </p>
-            </div>
+            </UiCard>
 
-            <div
+            <UiCard
               v-if="service.relatedServices.length > 0"
-              class="bg-white border border-gray-200 rounded-xl p-6"
             >
               <h4 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
                 <i class="bi bi-link-45deg text-primary-600" /> Related Services
@@ -208,23 +210,25 @@ function toggleFaq(index: number) {
                   </NuxtLink>
                 </li>
               </ul>
-            </div>
+            </UiCard>
 
-            <div class="bg-white border border-gray-200 rounded-xl p-6">
+            <UiCard>
               <h4 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
                 <i class="bi bi-info-circle text-primary-600" /> Need Help?
               </h4>
               <p class="text-sm text-gray-600 mb-4">
                 Contact us for assistance with this service.
               </p>
-              <NuxtLink
+              <UiButton
                 to="/contact"
-                class="block w-full text-center bg-primary-600 text-white py-3 rounded-lg font-medium hover:bg-primary-700 transition-colors"
+                variant="solid"
+                color="primary"
+                class="w-full"
                 no-prefetch
               >
                 Contact Us
-              </NuxtLink>
-            </div>
+              </UiButton>
+            </UiCard>
           </div>
         </div>
       </div>

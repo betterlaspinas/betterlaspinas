@@ -35,32 +35,22 @@ const newsItems = computed(() => news.articles.map((article: any) => ({
   <div>
     <Breadcrumbs :items="[{ label: 'News & Announcements' }]" />
 
-    <!-- Page Header -->
-    <section class="bg-gradient-to-br from-primary-600 to-primary-700 py-16">
-      <div class="container mx-auto px-4">
-        <div class="text-center max-w-2xl mx-auto">
-          <span class="inline-flex items-center gap-2 bg-white/20 text-white px-4 py-2 rounded-full text-sm font-medium mb-4">
-            <i class="bi bi-newspaper" /> News
-          </span>
-          <h1 class="text-3xl md:text-4xl font-bold text-white mb-4">
-            News & Announcements
-          </h1>
-          <p class="text-lg text-white/90">
-            Stay updated with the latest news and announcements from the
-            {{ labels.lguTypeLabel }} of {{ lguName }}
-          </p>
-        </div>
-      </div>
-    </section>
+    <UiPageHero
+      badge-icon="bi-newspaper"
+      badge-text="News"
+      title="News & Announcements"
+      :description="`Stay updated with the latest news and announcements from the ${labels.lguTypeLabel} of ${lguName}`"
+    />
 
     <!-- News List -->
     <section class="py-12">
       <div class="container mx-auto px-4">
         <div class="max-w-3xl mx-auto space-y-6">
-          <article
+          <UiCard
             v-for="item in newsItems"
             :key="item.id"
-            class="bg-white border border-gray-200 rounded-xl p-6 transition-all duration-200 hover:border-primary-500 hover:shadow-lg"
+            interactive
+            class="border-transparent hover:border-primary-500"
           >
             <div class="flex items-center gap-3 mb-4">
               <span
@@ -85,7 +75,7 @@ const newsItems = computed(() => news.articles.map((article: any) => ({
             >
               Read More <i class="bi bi-arrow-right" />
             </NuxtLink>
-          </article>
+          </UiCard>
         </div>
       </div>
     </section>

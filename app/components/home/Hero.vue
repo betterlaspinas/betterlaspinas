@@ -19,13 +19,13 @@ const { translate } = useLanguage()
           <div class="flex gap-4 flex-wrap lg:justify-start justify-center">
             <NuxtLink
               to="/services"
-              class="inline-flex items-center gap-2 bg-white text-primary-600 px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-gray-100"
+              class="inline-flex items-center gap-2 bg-white text-primary-600 px-6 py-3 rounded-lg font-semibold hover-btn-premium"
             >
               Browse Services <i class="bi bi-arrow-right" />
             </NuxtLink>
             <NuxtLink
               to="/contact"
-              class="inline-flex items-center gap-2 bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-white/15"
+              class="inline-flex items-center gap-2 bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover-btn-premium hover:bg-white/15"
             >
               Contact Us
             </NuxtLink>

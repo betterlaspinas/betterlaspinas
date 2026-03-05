@@ -52,9 +52,7 @@ const sampleOrdinances = computed(() =>
     <!-- About Ordinances -->
     <section class="py-12">
       <div class="container mx-auto px-4">
-        <div
-          class="max-w-3xl mx-auto bg-white border border-gray-200 rounded-xl p-8"
-        >
+        <UiCard padding="p-8" class="max-w-3xl mx-auto">
           <div class="flex items-start gap-4">
             <div
               class="w-12 h-12 flex items-center justify-center bg-primary-50 rounded-xl text-primary-600 text-xl shrink-0"
@@ -81,7 +79,7 @@ const sampleOrdinances = computed(() =>
               </p>
             </div>
           </div>
-        </div>
+        </UiCard>
       </div>
     </section>
 
@@ -96,16 +94,17 @@ const sampleOrdinances = computed(() =>
         <div
           class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-4xl mx-auto"
         >
-          <div
+          <UiCard
             v-for="cat in ordinanceCategories"
             :key="cat.id"
-            class="flex items-center gap-2 p-4 bg-white border border-gray-200 rounded-xl text-center justify-center"
+            padding="p-4"
+            class="flex items-center gap-2 text-center justify-center"
           >
             <i :class="`bi ${cat.icon} text-primary-600`" />
             <span class="text-sm font-medium text-gray-700">
               {{ cat.label }}
             </span>
-          </div>
+          </UiCard>
         </div>
       </div>
     </section>
@@ -122,10 +121,8 @@ const sampleOrdinances = computed(() =>
             {{ labels.legislativeBody }}
           </p>
         </div>
-        <div class="overflow-x-auto">
-          <table
-            class="w-full bg-white border border-gray-200 rounded-xl overflow-hidden"
-          >
+        <UiCard padding="p-0" class="overflow-x-auto">
+          <table class="w-full min-w-[600px]">
             <thead class="bg-gray-50">
               <tr>
                 <th
@@ -170,7 +167,7 @@ const sampleOrdinances = computed(() =>
               </tr>
             </tbody>
           </table>
-        </div>
+        </UiCard>
         <div class="text-center mt-6">
           <p
             class="text-sm text-gray-500 flex items-center justify-center gap-2"
