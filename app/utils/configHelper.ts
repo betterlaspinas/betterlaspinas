@@ -11,7 +11,6 @@ import type {
   NavigationConfig,
   NewsConfig,
   OfficialsConfig,
-  SeoMetaData,
   SeoRouteConfig,
   ServicesConfig,
   SiteConfig,
@@ -322,6 +321,13 @@ export function getLGUConfig(): LGUConfig {
 }
 
 /**
+ * Get the raw SEO metadata for every route defined in seo.json.
+ */
+export function getSeoConfig(): Record<string, SeoRouteConfig> {
+  return seoConfig as Record<string, SeoRouteConfig>
+}
+
+/**
  * Helper functions for common config operations
  */
 export const configHelpers = {
@@ -387,22 +393,4 @@ export const configHelpers = {
   getOfficialWebsite: (site: SiteConfig): string => {
     return site.officialWebsite
   },
-}
-
-/**
- * Get the raw SEO metadata for every route defined in seo.json.
- */
-export function getSeoConfig(): Record<string, SeoRouteConfig> {
-  return seoConfig as Record<string, SeoRouteConfig>
-}
-
-/**
- * Returns only the entries where `hidden` is not true.
- * Use this in the SEO middleware so hidden pages are skipped entirely.
- */
-export function getVisibleSeoConfig(): Record<string, SeoRouteConfig> {
-  const all = getSeoConfig()
-  return Object.fromEntries(
-    Object.entries(all).filter(([, meta]) => !meta.hidden),
-  )
 }

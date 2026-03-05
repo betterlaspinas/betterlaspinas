@@ -1,5 +1,4 @@
 import type { SeoMetaData } from '@/types/config'
-import { getVisibleSeoConfig } from '~/utils/configHelper'
 
 // Helper to interpolate template variables
 function interpolateString(
@@ -17,11 +16,14 @@ function interpolateString(
 
 export default defineNuxtRouteMiddleware((to) => {
   const config = useConfig()
-  const rawSeoConfig = getVisibleSeoConfig()
+  const rawSeoConfig = getSeoConfig()
   const routeName = to.name as string
   const routeConfig = rawSeoConfig[routeName]
 
-  if (routeConfig) {
+  if (
+    routeConfig
+    && !routeConfig.hidden
+  ) {
     // Build template variables for interpolation
     const templateVars = {
       lguName: config.lguName.value,
