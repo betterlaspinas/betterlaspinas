@@ -31,7 +31,7 @@ const viceLeader = computed(() => officials.executive.find(
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <!-- Leader Card -->
-        <div class="bg-white border border-gray-200 rounded-xl overflow-hidden transition-all duration-200 hover:border-primary-500 hover:shadow-md">
+        <UiCard padding="p-0" interactive class="overflow-hidden hover:border-primary-500 border-transparent">
           <div class="bg-primary-600 text-white p-6 text-center">
             <span class="inline-block bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full mb-2 uppercase tracking-wide">
               {{ labels.lguTypeLabel }} {{ labels.leaderTitle }}
@@ -58,10 +58,10 @@ const viceLeader = computed(() => officials.executive.find(
               {{ leader.phone }}
             </a>
           </div>
-        </div>
+        </UiCard>
 
         <!-- Vice Leader Card -->
-        <div class="bg-white border border-gray-200 rounded-xl overflow-hidden transition-all duration-200 hover:border-primary-500 hover:shadow-md">
+        <UiCard padding="p-0" interactive class="overflow-hidden hover:border-primary-500 border-transparent">
           <div class="bg-primary-600 text-white p-6 text-center">
             <span class="inline-block bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full mb-2 uppercase tracking-wide">
               {{ labels.lguTypeLabel }} {{ labels.viceLeaderTitle }}
@@ -88,7 +88,7 @@ const viceLeader = computed(() => officials.executive.find(
               {{ viceLeader.phone }}
             </a>
           </div>
-        </div>
+        </UiCard>
       </div>
     </div>
   </section>
