@@ -9,6 +9,9 @@ export default defineNuxtConfig({
     zeroRuntime: true,
   },
   ssr: true,
+  ogImage: {
+    enabled: true,
+  },
   css: ['~/assets/css/main.css'],
   modules: ['@pinia/nuxt', '@nuxtjs/seo'],
   runtimeConfig: {
