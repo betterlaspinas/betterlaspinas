@@ -206,3 +206,24 @@ export interface LGUConfig {
   statistics: StatisticsConfig
   translations: TranslationOverrides
 }
+
+export interface SeoRouteConfig {
+  titleFragment: string
+  urlPath: string
+  ogType: 'website' | 'article'
+  twitterCard: 'summary' | 'summary_large_image'
+  hidden: boolean
+}
+
+export interface SeoMetaData {
+  title?: string
+  description?: string | (() => string)
+  ogTitle?: string | (() => string)
+  ogDescription?: string | (() => string)
+  ogType?: 'website' | 'article'
+  ogUrl?: string | (() => string)
+  twitterCard?: 'summary' | 'summary_large_image'
+  twitterTitle?: string | (() => string)
+  twitterDescription?: string | (() => string)
+  hidden?: boolean
+}
