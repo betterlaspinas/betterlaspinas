@@ -1,12 +1,55 @@
-import { getVisibleSeoConfig } from '../utils/configHelper'
+import type { SeoMetaData } from '@/types/config'
+import { getVisibleSeoConfig } from '~/utils/configHelper'
+
+// Helper to interpolate template variables
+function interpolateString(
+  content: string,
+  vars: Record<string, string>,
+): string {
+  if (!content)
+    return ''
+  return Object.entries(vars).reduce(
+    (text, [key, value]) =>
+      text.replace(new RegExp(`\\{\\{${key}\\}\\}`, 'g'), value),
+    content,
+  )
+}
 
 export default defineNuxtRouteMiddleware((to) => {
-  const { site } = useConfig()
-  const seoConfig = getVisibleSeoConfig(site.value)
+  const config = useConfig()
+  const rawSeoConfig = getVisibleSeoConfig()
   const routeName = to.name as string
-  const meta = seoConfig[routeName]
+  const routeConfig = rawSeoConfig[routeName]
 
-  if (meta) {
+  if (routeConfig) {
+    // Build template variables for interpolation
+    const templateVars = {
+      lguName: config.lguName.value,
+      siteBrandName: config.siteBrandName.value,
+      lguTypeLabel: config.labels.value.lguTypeLabel,
+      legislativeBody: config.labels.value.legislativeBody,
+      deptPrefix: config.labels.value.deptPrefix,
+    }
+
+    // Map raw config to SeoMetaData
+    const title = config.getFullSiteTitle(routeConfig.titleFragment)
+    const description = interpolateString(routeConfig.description, templateVars)
+    const openGraphUrl = config.getOpenGraphUrl()
+    const ogUrl = routeConfig.urlPath ? `${openGraphUrl}${routeConfig.urlPath}` : openGraphUrl
+
+    const meta: SeoMetaData = {
+      title,
+      description,
+      ogTitle: title,
+      ogDescription: description,
+      ogType: routeConfig.ogType,
+      ogUrl,
+      twitterCard: routeConfig.twitterCard,
+      twitterTitle: title,
+      twitterDescription: description,
+      hidden: routeConfig.hidden,
+    }
+
     useSeoMeta({
       title: meta.title,
       description: meta.description,

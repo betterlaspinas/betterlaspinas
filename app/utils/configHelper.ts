@@ -390,73 +390,18 @@ export const configHelpers = {
 }
 
 /**
- * Build the full runtime SEO metadata for every route defined in seo.json.
- * Pure function — accepts a resolved SiteConfig, no Vue/Nuxt context required.
+ * Get the raw SEO metadata for every route defined in seo.json.
  */
-export function getSeoConfig(site: SiteConfig): Record<string, SeoMetaData> {
-  const lguName = getLGUName(site)
-  const siteBrandName = getSiteBrandName(site)
-  const labels = getLGUTypeLabels(site.lguType)
-  const openGraphUrl = configHelpers.getOpenGraphUrl(site)
-
-  function getFullSiteTitle(fragment: string): string {
-    return configHelpers.getFullSiteTitle(site, fragment)
-  }
-
-  const descriptions: Record<string, () => string> = {
-    'index': () => `Welcome to Better ${lguName} — your digital gateway to ${labels.lguTypeLabel} of ${lguName} services, government information, and community resources.`,
-    'about': () => `Learn about Better ${lguName} — our mission, history, and how ${siteBrandName} promotes transparency and accessibility in local governance.`,
-    'accessibility': () => `Read our Accessibility Statement. Better ${lguName} is committed to ensuring our digital services are accessible to all citizens.`,
-    'faq': () => `Frequently Asked Questions (FAQ) about ${lguName}'s services, processes, and government programs. Find quick answers here.`,
-    'budget': () => `Explore the budget and transparency reports of ${lguName}. Learn how public funds are allocated and utilized.`,
-    'government-index': () => `Meet the leadership and offices serving ${lguName}. View the executive, legislative, and department heads of the ${labels.lguTypeLabel}.`,
-    'legislative-index': () => `Ordinances and resolutions of the ${labels.legislativeBody} ng ${lguName}.`,
-    'history': () => `Tracing the roots and evolution of our community in ${lguName}.`,
-    'join-us': () => `Be part of the movement for transparent and accessible governance data in ${lguName}.`,
-    'privacy': () => `Privacy Policy of ${lguName}. Learn how we protect, collect, and use your personal information.`,
-    'terms': () => `Terms of Use for the Official Portal of ${lguName}. Read our policies, guidelines, and terms.`,
-    'tourism': () => `Explore the beauty, culture, and hospitality of ${lguName}. Discover local attractions and vibrant festivals.`,
-    'news-index': () => `Stay updated with the latest news, announcements, and press releases from the ${labels.lguTypeLabel} of ${lguName}.`,
-    'legislative-ordinance-framework': () => `${labels.deptPrefix} ordinances enacted by the ${labels.legislativeBody} of ${lguName}.`,
-    'legislative-resolution-framework': () => `Resolutions passed by the ${labels.legislativeBody} of ${lguName}.`,
-    'services-index': () => `Browse and access all public services provided by the local government of ${lguName}.`,
-    'sitemap': () => `Complete sitemap of Better ${lguName} — find all pages, services, and government resources available on this portal.`,
-    'statistics': () => `Explore statistics and data on ${lguName}'s governance activities. Find insights and trends.`,
-    'contact': () => `Get in touch with the ${labels.lguTypeLabel} of ${lguName}. Find contact information for various offices and departments.`,
-    'news-slug': () => `Read the latest news and announcements from the ${labels.lguTypeLabel} of ${lguName}.`,
-    'services-category': () => `Browse government services by category in ${lguName}.`,
-    'service-details-slug': () => `Detailed information about local government services in ${lguName}.`,
-  }
-
-  return Object.fromEntries(
-    Object.entries(seoConfig as Record<string, SeoRouteConfig>).map(([route, config]) => {
-      const title = getFullSiteTitle(config.titleFragment)
-      const descFn = descriptions[route] ?? (() => '')
-      return [
-        route,
-        {
-          title,
-          description: descFn,
-          ogTitle: () => title,
-          ogDescription: descFn,
-          ogType: config.ogType,
-          ogUrl: () => config.urlPath ? `${openGraphUrl}${config.urlPath}` : openGraphUrl,
-          twitterCard: config.twitterCard,
-          twitterTitle: () => title,
-          twitterDescription: descFn,
-          hidden: config.hidden,
-        } satisfies SeoMetaData,
-      ]
-    }),
-  )
+export function getSeoConfig(): Record<string, SeoRouteConfig> {
+  return seoConfig as Record<string, SeoRouteConfig>
 }
 
 /**
  * Returns only the entries where `hidden` is not true.
  * Use this in the SEO middleware so hidden pages are skipped entirely.
  */
-export function getVisibleSeoConfig(site: SiteConfig): Record<string, SeoMetaData> {
-  const all = getSeoConfig(site)
+export function getVisibleSeoConfig(): Record<string, SeoRouteConfig> {
+  const all = getSeoConfig()
   return Object.fromEntries(
     Object.entries(all).filter(([, meta]) => !meta.hidden),
   )
