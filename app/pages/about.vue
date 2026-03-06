@@ -1,9 +1,7 @@
 <script setup lang="ts">
-const { siteBrandName } = useConfig()
+import { useConfig } from '@/composables/useConfig'
 
-useHead({
-  title: 'About',
-})
+const { siteBrandName } = useConfig()
 </script>
 
 <template>

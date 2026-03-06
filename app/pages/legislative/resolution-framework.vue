@@ -3,10 +3,6 @@ import Breadcrumbs from '~/components/ui/Breadcrumbs.vue'
 
 const { lguName, labels, legislative } = useConfig()
 
-useHead({
-  title: 'Resolution Framework',
-})
-
 // Get resolution types and items from config
 const resolutionTypes = computed(() => legislative.resolutions.types)
 const sampleResolutions = computed(() =>

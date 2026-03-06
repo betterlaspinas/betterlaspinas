@@ -3,10 +3,6 @@ import Breadcrumbs from '@/components/ui/Breadcrumbs.vue'
 import { useConfig } from '@/composables/useConfig'
 
 const { site, hotlines, formatPhoneLink } = useConfig()
-
-useHead({
-  title: 'Contact',
-})
 </script>
 
 <template>

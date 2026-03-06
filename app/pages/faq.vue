@@ -4,10 +4,6 @@ const { lguName, labels, faq, getSiteTitle, getVolunteerEmail, siteBrandName } =
 const siteTitle = computed(() => getSiteTitle())
 const volunteerEmail = computed(() => getVolunteerEmail())
 
-useHead({
-  title: 'FAQ',
-})
-
 // Helper to interpolate template variables in FAQ content
 function interpolateFAQContent(
   content: string,
