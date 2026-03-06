@@ -3,10 +3,6 @@ const { getSiteTitle, getVolunteerEmail } = useConfig()
 const siteTitle = computed(() => getSiteTitle())
 const volunteerEmail = computed(() => getVolunteerEmail())
 
-useHead({
-  title: 'Privacy Policy',
-})
-
 const sections = [
   { id: 'introduction', title: 'Introduction' },
   { id: 'legal-basis', title: 'Legal Basis' },

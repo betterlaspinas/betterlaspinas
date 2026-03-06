@@ -3,10 +3,6 @@ const { lguName, getSiteTitle, getVolunteerEmail } = useConfig()
 const siteTitle = computed(() => getSiteTitle())
 const volunteerEmail = computed(() => getVolunteerEmail())
 
-useHead({
-  title: 'Terms of Use',
-})
-
 const sections = [
   { id: 'introduction', title: 'Introduction' },
   { id: 'acceptance', title: 'Acceptance of Terms' },

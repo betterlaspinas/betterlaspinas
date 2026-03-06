@@ -1,10 +1,6 @@
 <script setup lang="ts">
 const { lguName, labels } = useConfig()
 
-useHead({
-  title: 'Legislative',
-})
-
 const activeTab = ref('ordinances')
 
 const ordinanceSteps = computed(() => [
