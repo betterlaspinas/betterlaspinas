@@ -2,11 +2,11 @@
 
 ## Supported Versions
 
-This project is currently in **active pre-release development**. No stable version has been formally published yet. All security fixes are applied to the latest commit on the `main` branch.
+This project is currently actively maintained. Security fixes are applied to the latest commit on the `main` branch.
 
-| Version              | Supported          |
-| -------------------- | ------------------ |
-| `main` (pre-release) | :white_check_mark: |
+| Version | Supported          |
+| ------- | ------------------ |
+| `1.x`   | :white_check_mark: |
 
 ## Reporting a Vulnerability
 

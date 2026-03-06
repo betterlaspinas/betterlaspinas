@@ -2,7 +2,7 @@
  * PM2 Ecosystem Config for Better Las Piñas (Nuxt 4)
  *
  * Usage:
- *   Build first:  npm run build
+ *   Build first:  pnpm run build
  *   Start:        pm2 start ecosystem.config.cjs
  *   Save:         pm2 save
  *   Startup:      pm2 startup

@@ -1,5 +1,7 @@
 # Better Las Piñas - Community-Driven LGU Portal
 
+[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/betterlaspinas/betterlaspinas)
+
 A modern, accessible, and fully-featured local government unit (LGU) website built with **Nuxt 4** and **Vue 3**. This project provides a comprehensive digital platform for LGUs to deliver government services, information, and resources to their citizens.
 
 ## 🌟 Features
