@@ -2,10 +2,6 @@
 const { lguName, getVolunteerEmail } = useConfig()
 const volunteerEmail = computed(() => getVolunteerEmail())
 
-useHead({
-  title: 'Accessibility',
-})
-
 const features = [
   {
     icon: 'bi-keyboard',

@@ -8,10 +8,6 @@ const { news, labels, lguName } = useConfig()
 const slug = route.params.slug as string
 const article = computed(() => news.articles.find((a: any) => a.slug === slug))
 
-useHead({
-  title: article.value ? article.value.title : 'News Article',
-})
-
 // Badge color mapping (reused from index)
 const badgeColorMap: Record<string, string> = {
   blue: 'bg-blue-100 text-blue-700',
@@ -33,6 +29,18 @@ const processedDescription = computed(() => {
   return article.value.description
     .replace(/\{\{deptPrefix\}\}/g, labels.value.deptPrefix)
     .replace(/\{\{lguName\}\}/g, lguName.value)
+})
+
+// Override global SEO fallback with article-specific metadata
+useSeoMeta({
+  title: computed(() => article.value?.title),
+  description: computed(() => processedDescription.value || undefined),
+  ogTitle: computed(() => article.value?.title),
+  ogDescription: computed(() => processedDescription.value || undefined),
+  ogType: 'article',
+  twitterCard: 'summary_large_image',
+  twitterTitle: computed(() => article.value?.title),
+  twitterDescription: computed(() => processedDescription.value || undefined),
 })
 </script>
 

@@ -3,10 +3,6 @@ import Breadcrumbs from '@/components/ui/Breadcrumbs.vue'
 import { useConfig } from '@/composables/useConfig'
 
 const { history, lguName } = useConfig()
-
-useHead({
-  title: 'History',
-})
 </script>
 
 <template>

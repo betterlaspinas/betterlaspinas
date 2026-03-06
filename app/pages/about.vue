@@ -2,10 +2,6 @@
 import { useConfig } from '@/composables/useConfig'
 
 const { siteBrandName, lguName } = useConfig()
-
-useHead({
-  title: 'About',
-})
 </script>
 
 <template>
