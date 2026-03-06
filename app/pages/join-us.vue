@@ -4,10 +4,6 @@ import { useConfig } from '@/composables/useConfig'
 
 const { getVolunteerEmail, lguName, site } = useConfig()
 const volunteerEmail = computed(() => getVolunteerEmail())
-
-useHead({
-  title: 'Join Us',
-})
 </script>
 
 <template>

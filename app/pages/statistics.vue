@@ -9,10 +9,6 @@ import {
 
 const { statistics, statisticsDetailed, labels, lguName, fullLocation } = useConfig()
 
-useHead({
-  title: 'Statistics',
-})
-
 // Trend styling lookup tables
 const TREND_COLORS: Record<string, string> = {
   up: 'text-green-600',

@@ -5,8 +5,15 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
   devtools: { enabled: true },
+  sitemap: {
+    zeroRuntime: true,
+  },
+  ssr: true,
+  ogImage: {
+    enabled: true,
+  },
   css: ['~/assets/css/main.css'],
-  modules: ['@pinia/nuxt'],
+  modules: ['@pinia/nuxt', '@nuxtjs/seo'],
   runtimeConfig: {
     public: {
       site: {
