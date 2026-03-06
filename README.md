@@ -17,14 +17,14 @@ A modern, accessible, and fully-featured local government unit (LGU) website bui
 
 ## 🛠️ Tech Stack
 
-- **Framework**: [Nuxt 4.3.1](https://nuxt.com/) (Vue 3 Composition API)
+- **Framework**: [Nuxt](https://nuxt.com/) v4 (Vue 3 Composition API)
 - **Language**: TypeScript (Strict Mode)
 - **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
 - **State Management**: [Pinia](https://pinia.vuejs.org/)
 - **Charts**: [Chart.js](https://www.chartjs.org/) + vue-chartjs
 - **Maps**: [Leaflet](https://leafletjs.com/) + vue-leaflet
 - **Search**: [Fuse.js](https://fusejs.io/) (Fuzzy search)
-- **Icons**: [Bootstrap Icons](https://icons.getbootstrap.com/)
+- **Icons**: [Bootstrap Icons](https://icons.getbootstrap.com/) + [Lucide](https://lucide.dev/)
 - **Testing**: [Vitest](https://vitest.dev/) + @vue/test-utils
 - **Linting**: [ESLint](https://eslint.org/) (@antfu/eslint-config)
 - **Git Hooks**: [Husky](https://typicode.github.io/husky/)
@@ -32,8 +32,8 @@ A modern, accessible, and fully-featured local government unit (LGU) website bui
 ## 📋 Prerequisites
 
 - **Node.js** 18.x or higher
-- **npm** 9.x or higher
-- **pnpm** 8.x or higher (optional)
+- **pnpm** 9.x or higher (recommended)
+- **npm** 9.x or higher (alternative)
 
 ## 🚀 Installation & Setup
 
@@ -170,6 +170,7 @@ betterlaspinas/
 │   │   ├── charts/      # Chart components
 │   │   ├── home/        # Homepage sections
 │   │   ├── layout/      # Header, Footer, etc.
+│   │   ├── services/    # Services page components
 │   │   └── ui/          # Reusable UI components
 │   ├── composables/     # Vue composables
 │   ├── config/          # JSON configuration files
@@ -177,8 +178,7 @@ betterlaspinas/
 │   ├── types/           # TypeScript definitions
 │   └── utils/           # Helper functions
 ├── public/              # Static assets
-├── .husky/              # Git hooks
-└── tests/               # Test files
+└── .husky/              # Git hooks
 
 ```
 

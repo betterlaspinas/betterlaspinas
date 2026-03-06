@@ -58,7 +58,8 @@ This project adheres to the [Contributor Covenant Code of Conduct](CODE_OF_CONDU
 ### Prerequisites
 
 - Node.js 18.x or higher
-- npm 9.x or higher
+- pnpm 9.x or higher (recommended)
+- npm 9.x or higher (alternative)
 - Git
 
 ### Setup Instructions
@@ -120,12 +121,15 @@ app/
 │   ├── charts/        # Chart components
 │   ├── home/          # Homepage-specific
 │   ├── layout/        # Layout components
+│   ├── services/      # Services page components
 │   └── ui/            # Reusable UI components
-├── composables/       # Composables (use prefix)
+├── composables/       # Composables (use prefix) — tests co-located here
 ├── pages/             # Nuxt pages (file-based routing)
 ├── types/             # TypeScript definitions
-└── utils/             # Helper functions
+└── utils/             # Helper functions — tests co-located here
 ```
+
+> **Note on tests**: Test files (`.test.ts`) are co-located alongside the source files they test (e.g. `app/utils/configHelper.test.ts`, `app/composables/useSearch.test.ts`). There is no separate root-level `tests/` directory.
 
 ### Naming Conventions
 

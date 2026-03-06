@@ -8,15 +8,43 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- **Core LGU Portal Foundation**: Complete portal template built with Nuxt 4 and Vue 3, featuring Server-Side Rendering (SSR), Static Site Generation (SSG), and PWA-ready architecture.
-- **Citizen Service Directory**: Comprehensive services showcase with fuzzy search, autocomplete, and logical categorization for easy information discovery.
-- **Government & Leadership**: Structured directories for government officials, city departments, and a dedicated legislative framework viewer for ordinances and resolutions.
-- **Interactive Data & Maps**: Real-time statistics, budget transparency visualizations via Chart.js, and interactive maps using Leaflet for city landmarks and tourism highlights.
-- **Tourism & Attractions**: Dedicated showcase of local destinations with GPS coordinates, integrated branding assets, and high-quality media support.
-- **Communication & Real-time Info**: Integrated emergency hotlines, dynamic weather forecasts, exchange rate widgets, and multi-language support (English/Filipino).
-- **Modern UX & Accessibility**: WCAG 2.1 compliant design with a mobile-first responsive layout, unified navigation system, and smooth animations.
-- **Flexible Configuration**: Zero-code content management via JSON-driven architecture (site, navigation, FAQ, services, etc.) with support for environment variable overrides.
-- **Robust Developer Environment**: Strict TypeScript implementation, standardized ESLint configuration, comprehensive Vitest suite, and Husky pre-commit quality gates.
-- **Open Source Governance**: Full documentation (README, CONTRIBUTING, LICENSE, CODE_OF_CONDUCT), standardized issue/PR templates, and security/vulnerability reporting guidelines.
+- Home page with hero section, quick stats, featured services, and emergency hotlines overview
+- Services page with fuzzy search, autocomplete, and category filters; includes `/services/certificates` sub-page
+- Service detail pages for individual LGU service entries
+- Government directory page with city officials and department listings
+- Statistics page with interactive Chart.js data visualizations
+- FAQ page with accordion-style question and answer layout
+- About page with mission, vision, and governance information
+- Contact page with form and LGU contact details
+- Accessibility statement page (WCAG 2.1 compliant)
+- Privacy policy and terms of use pages
+- Join Us page for volunteer and community involvement
+- Sitemap page for full site navigation overview
+- `useConfig()` composable as the single source of truth for all site configuration, with `NUXT_PUBLIC_SITE_*` environment variable overrides
+- `useLanguage()` composable for English/Filipino multi-language support with browser locale persistence
+- `useSearch()` composable for Fuse.js-powered fuzzy search with autocomplete
+- `useClickOutside()` composable for dismissing dropdowns and modals
+- JSON-driven content architecture via 17 config files in `app/config/` (site, officials, services, navigation, hotlines, statistics, statistics-detailed, tourism, subdivisions, history, faq, legislative, news, budget, categories, translations, seo)
+- `UiBreadcrumbs` component for breadcrumb navigation
+- `LanguageSelector` component for runtime EN/FIL language switching
+- Tailwind CSS v4 with custom CSS variables for theming
+- Responsive mobile-first layout with keyboard navigation and WCAG 2.1 accessibility
+- Interactive maps via Leaflet and `@vue-leaflet/vue-leaflet`
+- Bootstrap Icons (CDN) and Lucide Vue Next for iconography
+- Strict TypeScript configuration across all Vue and Nuxt files
+- ESLint with `@antfu/eslint-config` and Husky pre-commit hooks enforcing lint, typecheck, and tests
+- Vitest test suite with `@vue/test-utils`, `happy-dom`, and `@vitest/coverage-v8`; tests co-located with source files
+- GitHub Actions CI pipeline running lint, typecheck, and tests on every push and pull request to `main`
+- Dependabot configuration for automated dependency update pull requests
+- PM2 process management via `ecosystem.config.cjs` with auto-restart and log paths
+- Open source governance files: `README`, `CONTRIBUTING`, `LICENSE`, `CODE_OF_CONDUCT`, issue/PR templates, and `SECURITY` policy
+
+### Deprecated
+- News listing and detail pages (`/news`) — built but not yet linked in navigation
+- History page (`/history`) — built but not yet linked in navigation
+- Tourism page (`/tourism`) — built but hidden from navigation pending content review
+- Legislative framework page (`/legislative`) — built but hidden from navigation pending content review
+- Budget transparency page (`/budget`) — built but hidden from navigation pending content review
+- Service category sub-pages (`/services/business`, `/services/health`, `/services/tax-payments`, and others) — built but hidden from navigation pending content review
 
 [Unreleased]: https://github.com/betterlaspinas/betterlaspinas
