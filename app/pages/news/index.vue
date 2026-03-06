@@ -4,10 +4,6 @@ import { useConfig } from '@/composables/useConfig'
 
 const { lguName, labels, news } = useConfig()
 
-useHead({
-  title: 'News & Announcements',
-})
-
 // Badge color mapping
 const badgeColorMap: Record<string, string> = {
   blue: 'bg-blue-100 text-blue-700',

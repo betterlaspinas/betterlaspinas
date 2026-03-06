@@ -11,16 +11,6 @@ if (!service) {
   })
 }
 
-useHead({
-  title: service.title || 'Service Details',
-  meta: [
-    {
-      name: 'description',
-      content: service.description,
-    },
-  ],
-})
-
 const openFaq = ref<number | null>(null)
 
 function toggleFaq(index: number) {

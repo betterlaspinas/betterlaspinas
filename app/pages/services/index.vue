@@ -5,10 +5,6 @@ const { translate } = useLanguage()
 const route = useRoute()
 const initialQuery = computed(() => (route.query.q as string) || '')
 
-useHead({
-  title: 'Services',
-})
-
 const categories = [
   {
     href: '/services/certificates',

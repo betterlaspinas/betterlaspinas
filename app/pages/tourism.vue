@@ -1,10 +1,6 @@
 <script setup lang="ts">
 const { lguName, tourism, labels } = useConfig()
 
-useHead({
-  title: 'Tourism',
-})
-
 const activeCategory = ref('all')
 
 const filteredAttractions = computed(() => {

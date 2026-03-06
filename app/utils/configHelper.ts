@@ -12,6 +12,7 @@ import type {
   NavigationItem,
   NewsConfig,
   OfficialsConfig,
+  SeoRouteConfig,
   ServiceItem,
   ServicesConfig,
   SiteConfig,
@@ -31,8 +32,9 @@ import legislativeConfig from '../config/legislative.json'
 import navigationConfig from '../config/navigation.json'
 import newsConfig from '../config/news.json'
 import officialsConfig from '../config/officials.json'
-import servicesConfig from '../config/services.json'
 // Import JSON config files
+import seoConfig from '../config/seo.json'
+import servicesConfig from '../config/services.json'
 import siteConfig from '../config/site.json'
 import statisticsDetailedConfig from '../config/statistics-detailed.json'
 import statisticsConfig from '../config/statistics.json'
@@ -318,6 +320,13 @@ export function getLGUConfig(): LGUConfig {
     statistics: getStatisticsConfig(),
     translations: getTranslationOverrides(),
   }
+}
+
+/**
+ * Get the raw SEO metadata for every route defined in seo.json.
+ */
+export function getSeoConfig(): Record<string, SeoRouteConfig> {
+  return seoConfig as Record<string, SeoRouteConfig>
 }
 
 /**

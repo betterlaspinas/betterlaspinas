@@ -1,13 +1,7 @@
 <script setup lang="ts">
-import Breadcrumbs from '@/components/ui/Breadcrumbs.vue'
 import { useConfig } from '@/composables/useConfig'
 
 const { site, hotlines, formatPhoneLink } = useConfig()
-
-useHead({
-  title: 'Contact',
-})
-
 const officeHours = [
   { day: 'Monday - Friday', time: '8:00 AM - 5:00 PM', status: 'Open', icon: 'bi-check-circle-fill', textClass: 'text-green-600', bgClass: 'bg-green-50' },
   { day: 'Lunch Break', time: '12:00 PM - 1:00 PM', status: 'Break', icon: 'bi-pause-circle-fill', textClass: 'text-yellow-600', bgClass: 'bg-yellow-50' },
@@ -18,7 +12,7 @@ const officeHours = [
 
 <template>
   <div>
-    <Breadcrumbs :items="[{ label: 'Contact' }]" />
+    <UiBreadcrumbs :items="[{ label: 'Contact' }]" />
 
     <UiPageHero
       badge-icon="bi-envelope-fill"

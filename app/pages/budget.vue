@@ -2,7 +2,6 @@
 const { lguName, fullLocation, labels, budget } = useConfig()
 
 useHead({
-  title: 'Budget & Transparency',
   script: [
     {
       src: '/assets/js/dpwh-projects.js',

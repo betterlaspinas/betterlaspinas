@@ -1,9 +1,5 @@
 <script setup lang="ts">
 const { statistics, statisticsDetailed, labels, lguName, fullLocation } = useConfig()
-
-useHead({
-  title: 'Statistics',
-})
 </script>
 
 <template>

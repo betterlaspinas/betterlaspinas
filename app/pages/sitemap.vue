@@ -1,10 +1,6 @@
 <script setup lang="ts">
 const { lguName, labels, site } = useConfig()
 
-useHead({
-  title: 'Sitemap',
-})
-
 interface SitemapLink {
   href: string
   label: string

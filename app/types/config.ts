@@ -383,3 +383,11 @@ export interface LGUConfig {
   statistics: StatisticsConfig
   translations: TranslationOverrides
 }
+
+export interface SeoRouteConfig {
+  titleFragment: string
+  description: string
+  ogType: 'website' | 'article'
+  twitterCard: 'summary' | 'summary_large_image'
+  hidden: boolean
+}

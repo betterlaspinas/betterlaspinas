@@ -3,10 +3,6 @@ import Breadcrumbs from '~/components/ui/Breadcrumbs.vue'
 
 const { lguName, labels, legislative } = useConfig()
 
-useHead({
-  title: 'Ordinance Framework',
-})
-
 // Get ordinance categories and items from config
 const ordinanceCategories = computed(
   () => legislative.ordinances.categories,

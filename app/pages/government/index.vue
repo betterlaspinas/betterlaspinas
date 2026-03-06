@@ -4,10 +4,6 @@ import { useConfig } from '@/composables/useConfig'
 
 const { lguName, labels, officials, subdivisions, formatPhoneLink } = useConfig()
 
-useHead({
-  title: 'Government',
-})
-
 // Get executive officials
 const leader = computed(() => officials.executive.find(
   official => official.position === 'mayor' || official.position === 'governor',

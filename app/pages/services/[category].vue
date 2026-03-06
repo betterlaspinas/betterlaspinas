@@ -10,16 +10,6 @@ if (!categoryContent) {
     fatal: true,
   })
 }
-
-useHead({
-  title: categoryContent.name || 'Service Category',
-  meta: [
-    {
-      name: 'description',
-      content: categoryContent.description,
-    },
-  ],
-})
 </script>
 
 <template>
