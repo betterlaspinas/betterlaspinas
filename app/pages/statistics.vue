@@ -331,13 +331,11 @@ const cmciPillars = computed(() => statisticsDetailed.cmciPillars)
           </div>
         </div>
 
-        <div
-          class="bg-white border border-gray-200 rounded-xl p-6 mb-6"
-        >
+        <UiCard class="mb-6">
           <ClientOnly>
             <PopulationTrendsChart />
           </ClientOnly>
-        </div>
+        </UiCard>
 
         <p class="text-sm text-gray-500 flex items-center gap-2">
           <i class="bi bi-info-circle" />
@@ -372,16 +370,17 @@ const cmciPillars = computed(() => statisticsDetailed.cmciPillars)
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-6">
-          <div class="bg-white border border-gray-200 rounded-xl p-6">
+          <UiCard>
             <ClientOnly>
               <PopulationDistributionChart />
             </ClientOnly>
-          </div>
+          </UiCard>
           <div class="space-y-3">
-            <div
+            <UiCard
               v-for="b in barangayData"
               :key="b.rank"
-              class="flex items-center gap-3 p-3 bg-white border border-gray-200 rounded-lg"
+              padding="p-3"
+              class="flex items-center gap-3"
             >
               <span
                 class="w-8 h-8 flex items-center justify-center rounded-full text-sm font-bold"
@@ -409,19 +408,15 @@ const cmciPillars = computed(() => statisticsDetailed.cmciPillars)
               >
                 {{ b.pop.toLocaleString() }}
               </span>
-            </div>
+            </UiCard>
           </div>
         </div>
 
-        <details
-          class="bg-white border border-gray-200 rounded-xl overflow-hidden mb-6"
-        >
-          <summary
-            class="p-4 cursor-pointer font-medium text-gray-900 hover:bg-gray-50 flex items-center gap-2"
-          >
-            <i class="bi bi-chevron-down" /> View all 20 barangays
-          </summary>
-          <div class="p-4 border-t border-gray-200 space-y-3">
+        <UiAccordion title="View all 20 barangays" class="mb-6">
+          <template #title>
+            <span class="flex items-center gap-2"><i class="bi bi-list-ul" /> View all 20 barangays</span>
+          </template>
+          <div class="space-y-3">
             <div
               v-for="b in allBarangays.slice(10)"
               :key="b.rank"
@@ -450,7 +445,7 @@ const cmciPillars = computed(() => statisticsDetailed.cmciPillars)
               </span>
             </div>
           </div>
-        </details>
+        </UiAccordion>
 
         <p class="text-sm text-gray-500 flex items-center gap-2">
           <i class="bi bi-info-circle" />
@@ -489,10 +484,10 @@ const cmciPillars = computed(() => statisticsDetailed.cmciPillars)
         <div
           class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-8"
         >
-          <div
+          <UiCard
             v-for="pillar in cmciPillars"
             :key="pillar.id"
-            class="bg-white border border-gray-200 rounded-xl p-6 text-center"
+            class="text-center"
           >
             <div
               class="w-12 h-12 flex items-center justify-center bg-primary-50 text-primary-600 rounded-xl text-xl mx-auto mb-3"
@@ -512,10 +507,10 @@ const cmciPillars = computed(() => statisticsDetailed.cmciPillars)
               <i :class="`bi ${getTrendIcon(pillar.trendType)}`" />
               {{ pillar.trend }}
             </div>
-          </div>
+          </UiCard>
         </div>
 
-        <div class="bg-white border border-gray-200 rounded-xl p-6 mb-6">
+        <UiCard class="mb-6">
           <h4 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
             <i class="bi bi-graph-up-arrow" /> Overall Rankings Trend
             (2016-2024)
@@ -523,11 +518,9 @@ const cmciPillars = computed(() => statisticsDetailed.cmciPillars)
           <ClientOnly>
             <CMCIRankingsChart />
           </ClientOnly>
-        </div>
+        </UiCard>
 
-        <div
-          class="bg-white border border-gray-200 rounded-xl p-6 mb-6"
-        >
+        <UiCard class="mb-6">
           <h4
             class="font-semibold text-gray-900 mb-4 flex items-center gap-2"
           >
@@ -537,7 +530,7 @@ const cmciPillars = computed(() => statisticsDetailed.cmciPillars)
           <ClientOnly>
             <KeyIndicatorsTrendChart />
           </ClientOnly>
-        </div>
+        </UiCard>
 
         <p class="text-sm text-gray-500 flex items-center gap-2">
           <i class="bi bi-info-circle" />
@@ -571,13 +564,11 @@ const cmciPillars = computed(() => statisticsDetailed.cmciPillars)
           </p>
         </div>
 
-        <div
-          class="bg-white border border-gray-200 rounded-xl p-6 mb-6"
-        >
+        <UiCard class="mb-6">
           <ClientOnly>
             <BarangayPopulationChart />
           </ClientOnly>
-        </div>
+        </UiCard>
 
         <p class="text-sm text-gray-500 flex items-center gap-2">
           <i class="bi bi-info-circle" />

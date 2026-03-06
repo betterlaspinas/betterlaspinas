@@ -267,3 +267,22 @@
 .scrollbar-thin::-webkit-scrollbar-thumb:hover {
   background: var(--color-gray-400);
 }
+
+@utility hover-card-premium {
+  transition-property: all;
+  transition-duration: 200ms;
+  &:hover {
+    transform: translateY(-0.25rem);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary-500);
+  }
+}
+
+@utility hover-btn-premium {
+  transition-property: all;
+  transition-duration: 200ms;
+  &:hover {
+    transform: translateY(-0.125rem);
+    box-shadow: var(--shadow-md);
+  }
+}

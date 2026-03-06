@@ -50,9 +50,7 @@ const sections = [
         <div class="flex flex-col lg:flex-row gap-8">
           <!-- Table of Contents -->
           <aside class="lg:w-64 shrink-0">
-            <div
-              class="sticky top-24 bg-white border border-gray-200 rounded-xl p-6"
-            >
+            <UiCard class="sticky top-24" padding="p-6">
               <h4
                 class="font-semibold text-gray-900 mb-4 flex items-center gap-2"
               >
@@ -68,16 +66,13 @@ const sections = [
                   {{ section.title }}
                 </a>
               </nav>
-            </div>
+            </UiCard>
           </aside>
 
           <!-- Main Content -->
           <article class="flex-1 max-w-3xl">
             <div class="space-y-8">
-              <section
-                id="introduction"
-                class="bg-white border border-gray-200 rounded-xl p-8"
-              >
+              <UiCard id="introduction" padding="p-8">
                 <h2 class="text-xl font-bold text-gray-900 mb-4">
                   Introduction
                 </h2>
@@ -108,12 +103,9 @@ const sections = [
                     what is necessary.
                   </span>
                 </div>
-              </section>
+              </UiCard>
 
-              <section
-                id="legal-basis"
-                class="bg-white border border-gray-200 rounded-xl p-8"
-              >
+              <UiCard id="legal-basis" padding="p-8">
                 <h2 class="text-xl font-bold text-gray-900 mb-4">
                   Legal Basis for Processing
                 </h2>
@@ -141,12 +133,9 @@ const sections = [
                     transparency and civic engagement in local governance
                   </li>
                 </ul>
-              </section>
+              </UiCard>
 
-              <section
-                id="information-collected"
-                class="bg-white border border-gray-200 rounded-xl p-8"
-              >
+              <UiCard id="information-collected" padding="p-8">
                 <h2 class="text-xl font-bold text-gray-900 mb-4">
                   Information We Collect
                 </h2>
@@ -171,12 +160,9 @@ const sections = [
                   <li>Device type and operating system</li>
                   <li>Pages visited and time spent on pages</li>
                 </ul>
-              </section>
+              </UiCard>
 
-              <section
-                id="how-we-use"
-                class="bg-white border border-gray-200 rounded-xl p-8"
-              >
+              <UiCard id="how-we-use" padding="p-8">
                 <h2 class="text-xl font-bold text-gray-900 mb-4">
                   How We Use Your Information
                 </h2>
@@ -189,12 +175,9 @@ const sections = [
                   <li>To ensure website security and prevent abuse</li>
                   <li>To comply with legal obligations</li>
                 </ul>
-              </section>
+              </UiCard>
 
-              <section
-                id="cookies"
-                class="bg-white border border-gray-200 rounded-xl p-8"
-              >
+              <UiCard id="cookies" padding="p-8">
                 <h2 class="text-xl font-bold text-gray-900 mb-4">
                   Cookies and Analytics
                 </h2>
@@ -203,12 +186,9 @@ const sections = [
                   browsing experience. We use Google Analytics to collect
                   anonymized data about website usage.
                 </p>
-              </section>
+              </UiCard>
 
-              <section
-                id="data-sharing"
-                class="bg-white border border-gray-200 rounded-xl p-8"
-              >
+              <UiCard id="data-sharing" padding="p-8">
                 <h2 class="text-xl font-bold text-gray-900 mb-4">
                   Data Sharing and Disclosure
                 </h2>
@@ -218,12 +198,9 @@ const sections = [
                   service providers, when required by law, or with your
                   explicit consent.
                 </p>
-              </section>
+              </UiCard>
 
-              <section
-                id="data-security"
-                class="bg-white border border-gray-200 rounded-xl p-8"
-              >
+              <UiCard id="data-security" padding="p-8">
                 <h2 class="text-xl font-bold text-gray-900 mb-4">
                   Data Security
                 </h2>
@@ -233,12 +210,9 @@ const sections = [
                   SSL/TLS encryption, secure hosting infrastructure, and
                   regular security assessments.
                 </p>
-              </section>
+              </UiCard>
 
-              <section
-                id="data-retention"
-                class="bg-white border border-gray-200 rounded-xl p-8"
-              >
+              <UiCard id="data-retention" padding="p-8">
                 <h2 class="text-xl font-bold text-gray-900 mb-4">
                   Data Retention
                 </h2>
@@ -248,12 +222,9 @@ const sections = [
                   last contact. Server logs are automatically deleted after
                   90 days.
                 </p>
-              </section>
+              </UiCard>
 
-              <section
-                id="your-rights"
-                class="bg-white border border-gray-200 rounded-xl p-8"
-              >
+              <UiCard id="your-rights" padding="p-8">
                 <h2 class="text-xl font-bold text-gray-900 mb-4">
                   Your Rights Under the Data Privacy Act
                 </h2>
@@ -292,12 +263,9 @@ const sections = [
                   </a>
                   .
                 </p>
-              </section>
+              </UiCard>
 
-              <section
-                id="childrens-privacy"
-                class="bg-white border border-gray-200 rounded-xl p-8"
-              >
+              <UiCard id="childrens-privacy" padding="p-8">
                 <h2 class="text-xl font-bold text-gray-900 mb-4">
                   Children's Privacy
                 </h2>
@@ -305,12 +273,9 @@ const sections = [
                   We do not knowingly collect personal information from
                   children under 18 years of age without parental consent.
                 </p>
-              </section>
+              </UiCard>
 
-              <section
-                id="third-party"
-                class="bg-white border border-gray-200 rounded-xl p-8"
-              >
+              <UiCard id="third-party" padding="p-8">
                 <h2 class="text-xl font-bold text-gray-900 mb-4">
                   Third-Party Links
                 </h2>
@@ -319,12 +284,9 @@ const sections = [
                   not responsible for the privacy practices of these
                   third-party sites.
                 </p>
-              </section>
+              </UiCard>
 
-              <section
-                id="changes"
-                class="bg-white border border-gray-200 rounded-xl p-8"
-              >
+              <UiCard id="changes" padding="p-8">
                 <h2 class="text-xl font-bold text-gray-900 mb-4">
                   Changes to This Privacy Policy
                 </h2>
@@ -333,12 +295,9 @@ const sections = [
                   "Last Updated" date at the bottom of this page will be
                   revised when changes are made.
                 </p>
-              </section>
+              </UiCard>
 
-              <section
-                id="contact"
-                class="bg-white border border-gray-200 rounded-xl p-8"
-              >
+              <UiCard id="contact" padding="p-8">
                 <h2 class="text-xl font-bold text-gray-900 mb-4">
                   Contact Us
                 </h2>
@@ -353,7 +312,7 @@ const sections = [
                   <i class="bi bi-envelope-fill text-xl" />
                   <span>{{ volunteerEmail }}</span>
                 </a>
-              </section>
+              </UiCard>
 
               <p class="text-sm text-gray-400">
                 Last Updated: February 19, 2026

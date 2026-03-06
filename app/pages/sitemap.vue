@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import Breadcrumbs from '~/components/ui/Breadcrumbs.vue'
-
 const { lguName, labels, site } = useConfig()
 
 interface SitemapLink {
@@ -140,7 +138,7 @@ const sections = computed<SitemapSection[]>(() => [
 
 <template>
   <div>
-    <Breadcrumbs :items="[{ label: 'Sitemap' }]" />
+    <UiBreadcrumbs :items="[{ label: 'Sitemap' }]" />
 
     <!-- Page Header -->
     <section class="bg-gradient-to-br from-primary-600 to-primary-700 py-16">
@@ -165,10 +163,11 @@ const sections = computed<SitemapSection[]>(() => [
     <section class="py-12">
       <div class="container mx-auto px-4">
         <div class="space-y-8">
-          <div
+          <UiCard
             v-for="section in sections"
             :key="section.title"
-            class="bg-white border border-gray-200 rounded-2xl overflow-hidden"
+            padding="p-0"
+            class="overflow-hidden"
           >
             <div
               class="flex items-center gap-3 p-6 border-b border-gray-200 bg-gray-50"
@@ -210,7 +209,7 @@ const sections = computed<SitemapSection[]>(() => [
                 </NuxtLink>
               </template>
             </div>
-          </div>
+          </UiCard>
         </div>
       </div>
     </section>
