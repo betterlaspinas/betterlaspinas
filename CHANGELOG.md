@@ -24,7 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `useLanguage()` composable for English/Filipino multi-language support with browser locale persistence
 - `useSearch()` composable for Fuse.js-powered fuzzy search with autocomplete
 - `useClickOutside()` composable for dismissing dropdowns and modals
-- JSON-driven content architecture via 15 config files in `app/config/` (site, officials, services, navigation, hotlines, statistics, tourism, subdivisions, history, faq, legislative, news, budget, categories, translations)
+- JSON-driven content architecture via 17 config files in `app/config/` (site, officials, services, navigation, hotlines, statistics, statistics-detailed, tourism, subdivisions, history, faq, legislative, news, budget, categories, translations, seo)
 - `UiBreadcrumbs` component for breadcrumb navigation
 - `LanguageSelector` component for runtime EN/FIL language switching
 - Tailwind CSS v4 with custom CSS variables for theming
