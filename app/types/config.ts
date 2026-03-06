@@ -210,21 +210,7 @@ export interface LGUConfig {
 export interface SeoRouteConfig {
   titleFragment: string
   description: string
-  urlPath: string
   ogType: 'website' | 'article'
   twitterCard: 'summary' | 'summary_large_image'
   hidden: boolean
-}
-
-export interface SeoMetaData {
-  title?: string
-  description?: string
-  ogTitle?: string
-  ogDescription?: string
-  ogType?: 'website' | 'article'
-  ogUrl?: string
-  twitterCard?: 'summary' | 'summary_large_image'
-  twitterTitle?: string
-  twitterDescription?: string
-  hidden?: boolean
 }

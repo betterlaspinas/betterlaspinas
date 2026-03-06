@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import History from '@/components/home/History.vue'
-import Breadcrumbs from '@/components/ui/Breadcrumbs.vue'
 import { useConfig } from '@/composables/useConfig'
 
 const { siteBrandName } = useConfig()
@@ -8,7 +6,7 @@ const { siteBrandName } = useConfig()
 
 <template>
   <div>
-    <Breadcrumbs :items="[{ label: 'About' }]" />
+    <UiBreadcrumbs :items="[{ label: 'About' }]" />
 
     <!-- Hero Section -->
     <section class="bg-gradient-to-br from-primary-600 to-primary-700 py-16">
@@ -47,7 +45,7 @@ const { siteBrandName } = useConfig()
     </section>
 
     <!-- History Component -->
-    <History />
+    <HomeHistory />
 
     <!-- Quick Links Grid -->
     <section class="py-16 bg-gray-50">

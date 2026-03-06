@@ -30,6 +30,18 @@ const processedDescription = computed(() => {
     .replace(/\{\{deptPrefix\}\}/g, labels.value.deptPrefix)
     .replace(/\{\{lguName\}\}/g, lguName.value)
 })
+
+// Override global SEO fallback with article-specific metadata
+useSeoMeta({
+  title: computed(() => article.value?.title),
+  description: computed(() => processedDescription.value || undefined),
+  ogTitle: computed(() => article.value?.title),
+  ogDescription: computed(() => processedDescription.value || undefined),
+  ogType: 'article',
+  twitterCard: 'summary_large_image',
+  twitterTitle: computed(() => article.value?.title),
+  twitterDescription: computed(() => processedDescription.value || undefined),
+})
 </script>
 
 <template>

@@ -2,15 +2,13 @@
   "index": {
     "titleFragment": "Home",
     "description": "Welcome to Better {{lguName}} — your digital gateway to {{lguTypeLabel}} of {{lguName}} services, government information, and community resources.",
-    "urlPath": "",
     "ogType": "website",
     "twitterCard": "summary",
     "hidden": false
   },
   "about": {
     "titleFragment": "About",
-    "description": "Learn about Better {{lguName}} — our mission, history, and how {{siteBrandName}} promotes transparency and accessibility in local governance.",
-    "urlPath": "about",
+    "description": "Learn about Better {{lguName}} â€” our mission, history, and how {{siteBrandName}} promotes transparency and accessibility in local governance.",
     "ogType": "website",
     "twitterCard": "summary",
     "hidden": false
@@ -18,7 +16,6 @@
   "accessibility": {
     "titleFragment": "Accessibility",
     "description": "Read our Accessibility Statement. Better {{lguName}} is committed to ensuring our digital services are accessible to all citizens.",
-    "urlPath": "accessibility",
     "ogType": "website",
     "twitterCard": "summary",
     "hidden": false
@@ -26,7 +23,6 @@
   "faq": {
     "titleFragment": "FAQ",
     "description": "Frequently Asked Questions (FAQ) about {{lguName}}'s services, processes, and government programs. Find quick answers here.",
-    "urlPath": "faq",
     "ogType": "website",
     "twitterCard": "summary",
     "hidden": false
@@ -34,7 +30,6 @@
   "budget": {
     "titleFragment": "Budget & Transparency",
     "description": "Explore the budget and transparency reports of {{lguName}}. Learn how public funds are allocated and utilized.",
-    "urlPath": "budget",
     "ogType": "website",
     "twitterCard": "summary",
     "hidden": true
@@ -42,7 +37,6 @@
   "government-index": {
     "titleFragment": "Government",
     "description": "Meet the leadership and offices serving {{lguName}}. View the executive, legislative, and department heads of the {{lguTypeLabel}}.",
-    "urlPath": "government",
     "ogType": "website",
     "twitterCard": "summary",
     "hidden": false
@@ -50,7 +44,6 @@
   "legislative-index": {
     "titleFragment": "Legislative",
     "description": "Ordinances and resolutions of the {{legislativeBody}} ng {{lguName}}.",
-    "urlPath": "legislative",
     "ogType": "website",
     "twitterCard": "summary",
     "hidden": true
@@ -58,7 +51,6 @@
   "history": {
     "titleFragment": "History",
     "description": "Tracing the roots and evolution of our community in {{lguName}}.",
-    "urlPath": "history",
     "ogType": "website",
     "twitterCard": "summary",
     "hidden": true
@@ -66,7 +58,6 @@
   "join-us": {
     "titleFragment": "Join Us",
     "description": "Be part of the movement for transparent and accessible governance data in {{lguName}}.",
-    "urlPath": "join-us",
     "ogType": "website",
     "twitterCard": "summary",
     "hidden": false
@@ -74,7 +65,6 @@
   "privacy": {
     "titleFragment": "Privacy Policy",
     "description": "Privacy Policy of {{lguName}}. Learn how we protect, collect, and use your personal information.",
-    "urlPath": "privacy",
     "ogType": "website",
     "twitterCard": "summary",
     "hidden": false
@@ -82,7 +72,6 @@
   "terms": {
     "titleFragment": "Terms of Use",
     "description": "Terms of Use for the Official Portal of {{lguName}}. Read our policies, guidelines, and terms.",
-    "urlPath": "terms",
     "ogType": "website",
     "twitterCard": "summary",
     "hidden": false
@@ -90,7 +79,6 @@
   "tourism": {
     "titleFragment": "Tourism",
     "description": "Explore the beauty, culture, and hospitality of {{lguName}}. Discover local attractions and vibrant festivals.",
-    "urlPath": "tourism",
     "ogType": "website",
     "twitterCard": "summary",
     "hidden": false
@@ -98,7 +86,6 @@
   "news-index": {
     "titleFragment": "News & Announcements",
     "description": "Stay updated with the latest news, announcements, and press releases from the {{lguTypeLabel}} of {{lguName}}.",
-    "urlPath": "news",
     "ogType": "website",
     "twitterCard": "summary",
     "hidden": false
@@ -106,7 +93,6 @@
   "legislative-ordinance-framework": {
     "titleFragment": "Ordinance Framework",
     "description": "{{deptPrefix}} ordinances enacted by the {{legislativeBody}} of {{lguName}}.",
-    "urlPath": "legislative/ordinance-framework",
     "ogType": "website",
     "twitterCard": "summary",
     "hidden": false
@@ -114,7 +100,6 @@
   "legislative-resolution-framework": {
     "titleFragment": "Resolution Framework",
     "description": "Resolutions passed by the {{legislativeBody}} of {{lguName}}.",
-    "urlPath": "legislative/resolution-framework",
     "ogType": "website",
     "twitterCard": "summary",
     "hidden": false
@@ -122,7 +107,6 @@
   "services-index": {
     "titleFragment": "Services",
     "description": "Browse and access all public services provided by the local government of {{lguName}}.",
-    "urlPath": "services",
     "ogType": "website",
     "twitterCard": "summary",
     "hidden": false
@@ -130,7 +114,6 @@
   "sitemap": {
     "titleFragment": "Sitemap",
     "description": "Complete sitemap of Better {{lguName}} — find all pages, services, and government resources available on this portal.",
-    "urlPath": "sitemap",
     "ogType": "website",
     "twitterCard": "summary",
     "hidden": false
@@ -138,15 +121,13 @@
   "statistics": {
     "titleFragment": "Statistics",
     "description": "Explore statistics and data on {{lguName}}'s governance activities. Find insights and trends.",
-    "urlPath": "statistics",
     "ogType": "website",
     "twitterCard": "summary",
     "hidden": false
   },
-  "contact": {
+  "contact-index": {
     "titleFragment": "Contact Us",
     "description": "Get in touch with the {{lguTypeLabel}} of {{lguName}}. Find contact information for various offices and departments.",
-    "urlPath": "contact",
     "ogType": "website",
     "twitterCard": "summary",
     "hidden": false
@@ -154,7 +135,6 @@
   "news-slug": {
     "titleFragment": "News Article",
     "description": "Read the latest news and announcements from the {{lguTypeLabel}} of {{lguName}}.",
-    "urlPath": "news",
     "ogType": "article",
     "twitterCard": "summary_large_image",
     "hidden": false
@@ -162,7 +142,6 @@
   "services-category": {
     "titleFragment": "Service Category",
     "description": "Browse government services by category in {{lguName}}.",
-    "urlPath": "services",
     "ogType": "website",
     "twitterCard": "summary",
     "hidden": false
@@ -170,7 +149,6 @@
   "service-details-slug": {
     "titleFragment": "Service Details",
     "description": "Detailed information about local government services in {{lguName}}.",
-    "urlPath": "services",
     "ogType": "website",
     "twitterCard": "summary",
     "hidden": false
