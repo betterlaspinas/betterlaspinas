@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [1.0.0] - 2026-03-06
 
 ### Added
 - Home page with hero section, quick stats, featured services, and emergency hotlines overview
@@ -47,4 +47,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Budget transparency page (`/budget`) — built but hidden from navigation pending content review
 - Service category sub-pages (`/services/business`, `/services/health`, `/services/tax-payments`, and others) — built but hidden from navigation pending content review
 
-[Unreleased]: https://github.com/betterlaspinas/betterlaspinas
+[1.0.0]: https://github.com/betterlaspinas/betterlaspinas/releases/tag/v1.0.0
