@@ -346,7 +346,7 @@ export const configHelpers = {
   getFullSiteTitle: (site: SiteConfig, pageTitle?: string): string => {
     const siteTitle = configHelpers.getSiteTitle(site)
     return pageTitle
-      ? `${pageTitle} | ${siteTitle}`
+      ? `${siteTitle} | ${pageTitle}`
       : `${siteTitle} | Official Portal`
   },
 

@@ -32,7 +32,7 @@ export default defineNuxtRouteMiddleware((to) => {
       deptPrefix: config.labels.value.deptPrefix,
     }
 
-    const title = config.getFullSiteTitle(routeConfig.titleFragment)
+    const title = `${config.siteBrandName.value} | ${routeConfig.titleFragment}`
     const description = interpolateString(routeConfig.description, templateVars)
     // Use the live route path for ogUrl so dynamic routes (e.g. news/[slug]) get the correct URL
     const ogUrl = `${config.getOpenGraphUrl().replace(/\/$/, '')}${to.path}`
@@ -47,6 +47,10 @@ export default defineNuxtRouteMiddleware((to) => {
       twitterCard: routeConfig.twitterCard || 'summary',
       twitterTitle: title,
       twitterDescription: description,
+    })
+
+    useHead({
+      titleTemplate: '%s',
     })
   }
 })
