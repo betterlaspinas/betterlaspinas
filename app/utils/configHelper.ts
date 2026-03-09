@@ -344,10 +344,13 @@ export const configHelpers = {
    * Get the full site title with suffix
    */
   getFullSiteTitle: (site: SiteConfig, pageTitle?: string): string => {
-    const siteTitle = configHelpers.getSiteTitle(site)
-    return pageTitle
-      ? `${pageTitle} | ${siteTitle}`
-      : `${siteTitle} | Official Portal`
+    const siteBrandName = getSiteBrandName(site)
+
+    if (pageTitle) {
+      return `${pageTitle} | ${siteBrandName}`
+    }
+
+    return `${siteBrandName} | Official Portal`
   },
 
   /**
