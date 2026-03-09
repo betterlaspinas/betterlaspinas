@@ -6,7 +6,7 @@ import InfoBar from '@/components/layout/InfoBar.vue'
 </script>
 
 <template>
-  <div class="max-w-[1920px] mx-auto bg-white shadow-xl min-h-screen relative">
+  <div class="max-w-full mx-auto bg-white shadow-xl min-h-screen relative">
     <a href="#main-content" class="skip-link">
       Skip to main content
     </a>

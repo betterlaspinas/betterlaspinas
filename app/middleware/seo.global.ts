@@ -48,5 +48,9 @@ export default defineNuxtRouteMiddleware((to) => {
       twitterTitle: title,
       twitterDescription: description,
     })
+
+    useHead({
+      titleTemplate: '%s',
+    })
   }
 })
