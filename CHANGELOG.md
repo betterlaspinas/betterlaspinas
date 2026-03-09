@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Talon Uno Barangay Chairman updated to Kap. Lester Aranda
+- Barangay Chairmen have been updated to the latest as of Q1 2026
 
 ## [1.0.0] - 2026-03-06
 

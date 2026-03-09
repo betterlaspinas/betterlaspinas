@@ -5,55 +5,55 @@
     {
       "id": "almanza-dos",
       "name": "Almanza Dos",
-      "leader": "Kap. Mira-Jon D. Alovera",
-      "phone": "(02) 8842-7217"
+      "leader": "Kap. Vicente A. Alovera Jr.",
+      "phone": "(02) 8641-3533"
     },
     {
       "id": "almanza-uno",
       "name": "Almanza Uno",
-      "leader": "Kap. Bonifacio M. Ramos",
-      "phone": "(02) 8800-3554"
+      "leader": "Kap. Carlo T. Francisco",
+      "phone": "(02) 8801-2916"
     },
     {
       "id": "bf-international",
       "name": "B.F. International Village",
-      "leader": "Kap. Filemon A. Aguilar Jr.",
-      "phone": "(02) 8810-7917"
+      "leader": "Kap. Asuncion C. Aguilar",
+      "phone": "(02) 8567-0169"
     },
     {
       "id": "daniel-fajardo",
       "name": "Daniel Fajardo (Poblacion)",
-      "leader": "Kap. Roberto B. Cristobal",
-      "phone": "(02) 8828-5314"
+      "leader": "Kap. Rodolfo B. Cristobal",
+      "phone": "(02) 8723-4792"
     },
     {
       "id": "elias-aldana",
       "name": "Elias Aldana",
-      "leader": "Kap. Mark Joseph C. Santos",
-      "phone": "(02) 8828-0127"
+      "leader": "Kap. Edwardo O. Robles",
+      "phone": "(02) 8551-2036"
     },
     {
       "id": "ilaya",
       "name": "Ilaya",
-      "leader": "Kap. Rustico H. Antonio",
+      "leader": "Kap. Generoso D. Miranda",
       "phone": "(02) 8829-9185"
     },
     {
       "id": "manuyo-dos",
       "name": "Manuyo Dos",
       "leader": "Kap. Mark G. Nery",
-      "phone": "(02) 8829-0186"
+      "phone": "(02) 8820-1551"
     },
     {
       "id": "manuyo-uno",
       "name": "Manuyo Uno",
-      "leader": "Kap. Garry T. Riggs",
-      "phone": "(02) 8829-6035"
+      "leader": "Kap. Florante S. Dela Cruz",
+      "phone": "(02) 8835-2465"
     },
     {
       "id": "pamplona-dos",
       "name": "Pamplona Dos",
-      "leader": "Kap. Romualda C. Villalon",
+      "leader": "Kap. Roberto D.H. Villalon",
       "phone": "(02) 8874-6224"
     },
     {
@@ -71,44 +71,44 @@
     {
       "id": "pilar",
       "name": "Pilar",
-      "leader": "Kap. Restituto D. Martinez",
+      "leader": "Kap. Ronillo B. Fuentes",
       "phone": "(02) 8806-7241"
     },
     {
       "id": "pulang-lupa-dos",
       "name": "Pulang Lupa Dos",
-      "leader": "Kap. Teodoro R. Quilatan",
-      "phone": "(02) 8871-0094"
+      "leader": "Kap. Julie R. Quines",
+      "phone": "(02) 8710-0094"
     },
     {
       "id": "pulang-lupa-uno",
       "name": "Pulang Lupa Uno",
       "leader": "Kap. Guadalupe A. Rosales",
-      "phone": "(02) 8872-1001"
+      "phone": "(02) 8478-6251"
     },
     {
       "id": "talon-dos",
       "name": "Talon Dos",
       "leader": "Kap. Arnold F. Reyes",
-      "phone": "(02) 8873-1939"
+      "phone": "(02) 8873-6763"
     },
     {
       "id": "talon-kuatro",
       "name": "Talon Kuatro",
-      "leader": "Kap. Lawrence Philip D. Roco",
+      "leader": "Kap. Ignacio B. Sangga",
       "phone": "(02) 8800-3466"
     },
     {
       "id": "talon-singko",
       "name": "Talon Singko",
       "leader": "Kap. Josefina B. Bumanlag",
-      "phone": "(02) 8561-0210"
+      "phone": "(02) 8802-4727"
     },
     {
       "id": "talon-tres",
       "name": "Talon Tres",
       "leader": "Kap. Christopher A. Lucena",
-      "phone": "(02) 8800-6788"
+      "phone": "(02) 8800-7688"
     },
     {
       "id": "talon-uno",
@@ -119,8 +119,8 @@
     {
       "id": "zapote",
       "name": "Zapote",
-      "leader": "Kap. Cesar T. Rubio",
-      "phone": "(02) 8871-1229"
+      "leader": "Kap. Donato Gabriel R. Gonzalez",
+      "phone": "(02) 8804-1545"
     }
   ]
 }
