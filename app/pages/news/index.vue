@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Breadcrumbs from '@/components/ui/Breadcrumbs.vue'
 import { useConfig } from '@/composables/useConfig'
+import { DEPT_PREFIX_PLACEHOLDER_REGEX, LGU_NAME_PLACEHOLDER_REGEX } from '@/utils/regexConstants'
 
 const { lguName, labels, news } = useConfig()
 
@@ -14,15 +15,15 @@ const badgeColorMap: Record<string, string> = {
 }
 
 // Map news articles
-const newsItems = computed(() => news.articles.map(article => ({
+const newsItems = computed(() => news.articles.map((article: any) => ({
   id: article.id,
   title: article.title,
   date: article.date,
   badge: article.badge,
   badgeColorClass: badgeColorMap[article.badgeColor] || badgeColorMap.blue,
   description: article.description
-    .replace(/\{\{deptPrefix\}\}/g, labels.value.deptPrefix)
-    .replace(/\{\{lguName\}\}/g, lguName.value),
+    .replace(DEPT_PREFIX_PLACEHOLDER_REGEX, labels.value.deptPrefix)
+    .replace(LGU_NAME_PLACEHOLDER_REGEX, lguName.value),
   slug: article.slug,
 })))
 </script>

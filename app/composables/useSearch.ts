@@ -3,6 +3,7 @@ import type { ServiceItem } from '@/types/config'
 import Fuse from 'fuse.js'
 
 import { getServicesConfig } from '@/utils/configHelper'
+import { ESCAPE_REGEX, SPLIT_WHITESPACE_REGEX } from '@/utils/regexConstants'
 
 interface SearchResult extends ServiceItem {
   score: number
@@ -160,7 +161,7 @@ export function useSearch(initialQuery = '') {
       // TODO: Remove this block and uncomment below to restore all recent searches
       const validKeywords = new Set([...services.value.map(service => service.title.toLowerCase()), ...CURATED_POPULAR.map(popular => popular.toLowerCase())])
       const validRecent = getRecentSearches().filter(recentSearch =>
-        Array.from(validKeywords).some(keyword => keyword.includes(recentSearch.toLowerCase()) || recentSearch.toLowerCase().includes(keyword)),
+        [...validKeywords].some(keyword => keyword.includes(recentSearch.toLowerCase()) || recentSearch.toLowerCase().includes(keyword)),
       ).slice(0, 3)
 
       return {
@@ -232,11 +233,7 @@ export function useSearch(initialQuery = '') {
   }
 
   const handleKeyDown = (e: KeyboardEvent): string | null => {
-    const totalItems
-      = results.value.length
-        + suggestions.value.suggestions.length
-        + suggestions.value.recent.length
-        + suggestions.value.popular.length
+    const totalItems = results.value.length + suggestions.value.suggestions.length + suggestions.value.recent.length + suggestions.value.popular.length
 
     switch (e.key) {
       case 'ArrowDown':
@@ -322,13 +319,13 @@ export function highlightMatch(text: string, query: string): string {
 
   const terms = query
     .toLowerCase()
-    .split(/\s+/)
+    .split(SPLIT_WHITESPACE_REGEX)
     .filter(term => term.length >= 2)
 
   let result = text
   for (const term of terms) {
     const regex = new RegExp(
-      `(${term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`,
+      `(${term.replace(ESCAPE_REGEX, '\\$&')})`,
       'gi',
     )
     result = result.replace(regex, '<mark>$1</mark>')
