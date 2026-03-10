@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import Breadcrumbs from '@/components/ui/Breadcrumbs.vue'
 import { useConfig } from '@/composables/useConfig'
+import { DEPT_PREFIX_PLACEHOLDER_REGEX, LGU_NAME_PLACEHOLDER_REGEX } from '@/utils/regexConstants'
 
 const route = useRoute()
 const { news, labels, lguName } = useConfig()
 
 const slug = route.params.slug as string
-const article = computed(() => news.articles.find(article => article.slug === slug))
+const article = computed(() => news.articles.find((article: any) => article.slug === slug))
 
 // Badge color mapping (reused from index)
 const badgeColorMap: Record<string, string> = {
@@ -27,8 +28,8 @@ const processedDescription = computed(() => {
   if (!article.value)
     return ''
   return article.value.description
-    .replace(/\{\{deptPrefix\}\}/g, labels.value.deptPrefix)
-    .replace(/\{\{lguName\}\}/g, lguName.value)
+    .replace(DEPT_PREFIX_PLACEHOLDER_REGEX, labels.value.deptPrefix)
+    .replace(LGU_NAME_PLACEHOLDER_REGEX, lguName.value)
 })
 
 // Override global SEO fallback with article-specific metadata
