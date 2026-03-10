@@ -1,4 +1,6 @@
 name: Continuous Deployment
+permissions:
+  contents: read
 
 on:
   push:
@@ -19,18 +21,36 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_PORT || '22' }}
           script: |
-            # 1. Navigate to the App Root directory
+            # 1. Load shell environment
+            [ -s "$HOME/.bashrc" ] && . "$HOME/.bashrc"
+            [ -s "$HOME/.profile" ] && . "$HOME/.profile"
+
+            # 2. Diagnostic checks
+            echo "Current User: $(whoami)"
+            echo "Node version: $(node -v)"
+            echo "NPM path: $(which npm)"
+
+            # 3. Navigate to the App Root directory
             cd ~/htdocs/${{ secrets.SERVER_DOMAIN }}
 
-            # 2. Pull the latest code
+            # 4. Pull the latest code
             git pull origin main
 
-            # 3. Install/Enable pnpm globally then install deps
-            npm install -g pnpm pm2
+            # 5. Install/Enable pnpm/pm2 only if missing
+            command -v pnpm >/dev/null 2>&1 || npm install -g pnpm
+            command -v pm2 >/dev/null 2>&1 || npm install -g pm2
+
+            # Refresh path for pnpm/pm2
+            export PATH="$HOME/.local/share/pnpm:$PATH"
+            export PATH="$(npm config get prefix)/bin:$PATH"
+
+            echo "PNPM version: $(pnpm -v)"
+            echo "PM2 version: $(pm2 -v)"
+
             pnpm install --frozen-lockfile
 
-            # 4. Build Nuxt
+            # 6. Build Nuxt
             pnpm run build
 
-            # 5. Reload PM2 zero-downtime
+            # 7. Reload PM2 zero-downtime
             pm2 reload betterlaspinas || NITRO_PORT=${{ secrets.APP_PORT || 3000 }} pm2 start ecosystem.config.cjs
