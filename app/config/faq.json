@@ -9,7 +9,7 @@
         {
           "id": "office-hours",
           "question": "What are the office hours of the {{hallName}}?",
-          "answer": "The {{hallName}} is open Monday to Friday, 8:00 AM to 5:00 PM, with a lunch break from 12:00 PM to 1:00 PM. We are closed on weekends and national/local holidays."
+          "answer": "The {{hallName}} is open Monday to Thursday, 8:00 AM to 7:00 PM, with a lunch break from 12:00 PM to 1:00 PM. We are closed on Fridays, weekends and national/local holidays. Essential services remain operational on regular operations."
         },
         {
           "id": "contact-office",

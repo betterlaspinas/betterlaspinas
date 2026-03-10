@@ -76,7 +76,7 @@ const ipmr = computed(() => officials.legislative.find(official => official.posi
                 {{ leader.phone }}
               </a>
               <span class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg text-gray-700">
-                <i class="bi bi-clock text-primary-600" /> Mon-Fri: 8:00 AM - 5:00 PM
+                <i class="bi bi-clock text-primary-600" /> Mon-Thu: 8:00 AM - 7:00 PM
               </span>
             </div>
           </UiCard>
@@ -109,7 +109,7 @@ const ipmr = computed(() => officials.legislative.find(official => official.posi
                 {{ viceLeader.phone }}
               </a>
               <span class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg text-gray-700">
-                <i class="bi bi-clock text-primary-600" /> Mon-Fri: 8:00 AM - 5:00 PM
+                <i class="bi bi-clock text-primary-600" /> Mon-Thu: 8:00 AM - 7:00 PM
               </span>
             </div>
           </UiCard>

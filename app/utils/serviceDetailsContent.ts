@@ -154,7 +154,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       name: 'City Civil Registrar',
       location: 'City Hall, 2nd Floor',
       phone: '0920 425 8214',
-      hours: 'Mon-Fri: 8AM - 5PM',
+      hours: 'Mon-Thu: 8AM - 7PM',
     },
     relatedServices: [
       {
@@ -266,7 +266,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       name: 'City Civil Registrar',
       location: 'City Hall, 2nd Floor',
       phone: '0920 425 8214',
-      hours: 'Mon-Fri: 8AM - 5PM',
+      hours: 'Mon-Thu: 8AM - 7PM',
     },
     relatedServices: [
       {
@@ -364,7 +364,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       name: 'City Civil Registrar',
       location: 'City Hall, 2nd Floor',
       phone: '0920 425 8214',
-      hours: 'Mon-Fri: 8AM - 5PM',
+      hours: 'Mon-Thu: 8AM - 7PM',
     },
     relatedServices: [
       {
@@ -439,7 +439,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       name: 'City Civil Registrar',
       location: 'City Hall, 2nd Floor',
       phone: '0920 425 8214',
-      hours: 'Mon-Fri: 8AM - 5PM',
+      hours: 'Mon-Thu: 8AM - 7PM',
     },
     relatedServices: [
       {
@@ -513,7 +513,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       name: 'HRMO',
       location: 'City Hall',
       phone: '(078) 326-5001',
-      hours: 'Mon-Fri: 8AM - 5PM',
+      hours: 'Mon-Thu: 8AM - 7PM',
     },
     relatedServices: [
       { title: 'Employment Certification', link: '/services/certificates' },
@@ -607,7 +607,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       name: 'Business Permits & Licensing Office',
       location: 'City Hall, Ground Floor',
       phone: '(078) 326-5001',
-      hours: 'Mon-Fri: 8AM - 5PM',
+      hours: 'Mon-Thu: 8AM - 7PM',
     },
     relatedServices: [
       {
@@ -761,7 +761,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       name: 'City Assessor\'s Office',
       location: 'City Hall, Ground Floor',
       phone: '(078) 326-5001',
-      hours: 'Mon-Fri: 8AM - 5PM',
+      hours: 'Mon-Thu: 8AM - 7PM',
     },
     relatedServices: [
       {
@@ -835,7 +835,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       name: 'City Treasurer\'s Office',
       location: 'City Hall, Ground Floor',
       phone: '(078) 326-5001',
-      hours: 'Mon-Fri: 8AM - 5PM',
+      hours: 'Mon-Thu: 8AM - 7PM',
     },
     relatedServices: [
       {
@@ -903,7 +903,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       name: 'City Assessor\'s Office',
       location: 'City Hall, Ground Floor',
       phone: '(078) 326-5001',
-      hours: 'Mon-Fri: 8AM - 5PM',
+      hours: 'Mon-Thu: 8AM - 7PM',
     },
     relatedServices: [
       {
@@ -1003,7 +1003,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       name: 'CSWDO',
       location: 'City Hall, Ground Floor',
       phone: '0916 284 0885',
-      hours: 'Mon-Fri: 8AM - 5PM',
+      hours: 'Mon-Thu: 8AM - 7PM',
     },
     relatedServices: [
       { title: 'Senior Citizen Services', link: '/services/social-services' },
@@ -1058,14 +1058,14 @@ export const serviceDetailsContent: ServiceDetail[] = [
     faqs: [
       {
         question: 'What are the office hours?',
-        answer: 'Monday to Friday, 8:00 AM to 5:00 PM.',
+        answer: 'Monday to Thursday, 8:00 AM to 7:00 PM.',
       },
     ],
     office: {
       name: 'CSWDO',
       location: 'City Hall, Ground Floor',
       phone: '0916 284 0885',
-      hours: 'Mon-Fri: 8AM - 5PM',
+      hours: 'Mon-Thu: 8AM - 7PM',
     },
     relatedServices: [
       { title: 'CSWDO Services', link: '/service-details/cswdo-services' },
@@ -1141,7 +1141,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       name: 'City Agriculture Office',
       location: 'City Hall',
       phone: '(078) 326-5001',
-      hours: 'Mon-Fri: 8AM - 5PM',
+      hours: 'Mon-Thu: 8AM - 7PM',
     },
     relatedServices: [
       { title: 'Fertilizer Assistance', link: '/services/agriculture' },
@@ -1291,7 +1291,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       name: 'City Planning & Development Office',
       location: 'City Hall',
       phone: '(078) 326-5001',
-      hours: 'Mon-Fri: 8AM - 5PM',
+      hours: 'Mon-Thu: 8AM - 7PM',
     },
     relatedServices: [
       {
@@ -1351,7 +1351,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       name: 'General Services Office',
       location: 'City Hall',
       phone: '(078) 326-5001',
-      hours: 'Mon-Fri: 8AM - 5PM',
+      hours: 'Mon-Thu: 8AM - 7PM',
     },
     relatedServices: [
       { title: 'Infrastructure', link: '/services/infrastructure' },
@@ -1413,7 +1413,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       name: 'City Budget Office',
       location: 'City Hall',
       phone: '(078) 326-5001',
-      hours: 'Mon-Fri: 8AM - 5PM',
+      hours: 'Mon-Thu: 8AM - 7PM',
     },
     relatedServices: [
       {
@@ -1475,7 +1475,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       name: 'City Accounting Office',
       location: 'City Hall',
       phone: '(078) 326-5001',
-      hours: 'Mon-Fri: 8AM - 5PM',
+      hours: 'Mon-Thu: 8AM - 7PM',
     },
     relatedServices: [
       { title: 'City Budget', link: '/service-details/municipal-budget' },
@@ -1545,7 +1545,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       name: 'SEEDO Office',
       location: 'Public Market',
       phone: '',
-      hours: 'Mon-Fri: 8AM - 5PM',
+      hours: 'Mon-Thu: 8AM - 7PM',
     },
     relatedServices: [
       {
@@ -1675,7 +1675,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       name: 'Information Desk',
       location: 'City Hall, Ground Floor',
       phone: '(078) 326-5001',
-      hours: 'Mon-Fri: 8AM - 5PM',
+      hours: 'Mon-Thu: 8AM - 7PM',
     },
     relatedServices: [{ title: 'All Services', link: '/services' }],
   },
