@@ -23,6 +23,12 @@ import type {
   TranslationOverrides,
 } from '@/types/config'
 
+import {
+  DIACRITICS_REGEX,
+  PHONE_CLEANUP_REGEX,
+  WHITESPACE_REGEX,
+} from '@/utils/regexConstants'
+
 import budgetConfig from '../config/budget.json'
 import categoriesConfig from '../config/categories.json'
 import faqConfig from '../config/faq.json'
@@ -111,7 +117,7 @@ export function getLGUName(site: SiteConfig): string {
  * Get the concatenated LGU name (no spaces) for branding (e.g. BetterLasPiñas)
  */
 export function getLGUNameConcatenated(site: SiteConfig): string {
-  return getLGUName(site).replace(/\s+/g, '')
+  return getLGUName(site).replace(WHITESPACE_REGEX, '')
 }
 
 /**
@@ -130,8 +136,8 @@ export function getSiteBrandName(site: SiteConfig): string {
 export function getLGUNameDomain(site: SiteConfig): string {
   return getLGUName(site)
     .normalize('NFD')
-    .replace(/[\u0300-\u036F]/g, '')
-    .replace(/\s+/g, '')
+    .replace(DIACRITICS_REGEX, '')
+    .replace(WHITESPACE_REGEX, '')
 }
 
 /**
@@ -344,10 +350,13 @@ export const configHelpers = {
    * Get the full site title with suffix
    */
   getFullSiteTitle: (site: SiteConfig, pageTitle?: string): string => {
-    const siteTitle = configHelpers.getSiteTitle(site)
-    return pageTitle
-      ? `${pageTitle} | ${siteTitle}`
-      : `${siteTitle} | Official Portal`
+    const siteBrandName = getSiteBrandName(site)
+
+    if (pageTitle) {
+      return `${pageTitle} | ${siteBrandName}`
+    }
+
+    return `${siteBrandName} | Official Portal`
   },
 
   /**
@@ -386,7 +395,7 @@ export const configHelpers = {
    * Format a phone number for tel: links
    */
   formatPhoneLink: (phone: string): string => {
-    return phone.replace(/[\s()-]/g, '')
+    return phone.replace(PHONE_CLEANUP_REGEX, '')
   },
 
   /**

@@ -1,3 +1,4 @@
+import { interpolateString } from '@/utils/stringHelpers'
 import { useConfig } from './useConfig'
 
 // Base translations
@@ -406,15 +407,6 @@ const baseTranslations: Record<string, Record<string, string>> = {
 
 type Language = 'en' | 'fil' | 'ilo'
 
-function interpolate(
-  template: string,
-  variables: Record<string, string>,
-): string {
-  return template.replace(/\{\{(\w+)\}\}/g, (match, key) => {
-    return variables[key] !== undefined ? variables[key] : match
-  })
-}
-
 export function useLanguage() {
   const language = useState<Language>('language', () => 'en')
 
@@ -483,7 +475,7 @@ export function useLanguage() {
   const translate = (key: string, vars?: Record<string, string>): string => {
     const template = translations.value[language.value]?.[key] || translations.value.en?.[key] || key
     const allVariables = vars ? { ...defaultVariables.value, ...vars } : defaultVariables.value
-    return interpolate(template, allVariables)
+    return interpolateString(template, allVariables)
   }
 
   return {

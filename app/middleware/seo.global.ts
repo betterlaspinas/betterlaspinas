@@ -1,16 +1,5 @@
-// Helper to interpolate template variables
-function interpolateString(
-  content: string,
-  vars: Record<string, string>,
-): string {
-  if (!content)
-    return ''
-  return Object.entries(vars).reduce(
-    (text, [key, value]) =>
-      text.replace(new RegExp(`\\{\\{${key}\\}\\}`, 'g'), value),
-    content,
-  )
-}
+import { TRAILING_SLASH_REGEX } from '@/utils/regexConstants'
+import { interpolateString } from '@/utils/stringHelpers'
 
 export default defineNuxtRouteMiddleware((to) => {
   const config = useConfig()
@@ -35,7 +24,7 @@ export default defineNuxtRouteMiddleware((to) => {
     const title = config.getFullSiteTitle(routeConfig.titleFragment)
     const description = interpolateString(routeConfig.description, templateVars)
     // Use the live route path for ogUrl so dynamic routes (e.g. news/[slug]) get the correct URL
-    const ogUrl = `${config.getOpenGraphUrl().replace(/\/$/, '')}${to.path}`
+    const ogUrl = `${config.getOpenGraphUrl().replace(TRAILING_SLASH_REGEX, '')}${to.path}`
 
     useSeoMeta({
       title,
@@ -47,6 +36,10 @@ export default defineNuxtRouteMiddleware((to) => {
       twitterCard: routeConfig.twitterCard || 'summary',
       twitterTitle: title,
       twitterDescription: description,
+    })
+
+    useHead({
+      titleTemplate: '%s',
     })
   }
 })
