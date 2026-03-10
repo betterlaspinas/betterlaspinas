@@ -51,7 +51,7 @@ const baseTranslations: Record<string, Record<string, string>> = {
     'contact-phone': 'Phone',
     'contact-email': 'Email',
     'contact-address': 'Address',
-    'contact-hours': 'Mon-Fri: 8:00 AM - 5:00 PM',
+    'contact-hours': 'Mon-Thu: 8:00 AM - 7:00 PM',
     'contact-response': 'We\'ll respond within 24 hours',
     'contact-municipal-hall': '{{hallName}}',
 
@@ -184,7 +184,7 @@ const baseTranslations: Record<string, Record<string, string>> = {
     'contact-phone': 'Telepono',
     'contact-email': 'Email',
     'contact-address': 'Tirahan',
-    'contact-hours': 'Lunes-Biyernes: 8:00 AM - 5:00 PM',
+    'contact-hours': 'Lunes-Huwebes: 8:00 AM - 7:00 PM',
     'contact-response': 'Sasagutin namin sa loob ng 24 na oras',
     'contact-municipal-hall': '{{hallName}}',
 
@@ -317,7 +317,7 @@ const baseTranslations: Record<string, Record<string, string>> = {
     'contact-phone': 'Telepono',
     'contact-email': 'Email',
     'contact-address': 'Pagtaengan',
-    'contact-hours': 'Lunes-Biernes: 8:00 AM - 5:00 PM',
+    'contact-hours': 'Lunes-Huebes: 8:00 AM - 7:00 PM',
     'contact-response': 'Sumungbat kami iti uneg ti 24 nga oras',
     'contact-municipal-hall': '{{hallName}}',
 

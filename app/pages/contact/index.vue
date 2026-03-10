@@ -3,7 +3,8 @@ import { useConfig } from '@/composables/useConfig'
 
 const { site, hotlines, formatPhoneLink } = useConfig()
 const officeHours = [
-  { day: 'Monday - Friday', time: '8:00 AM - 5:00 PM', status: 'Open', icon: 'bi-check-circle-fill', textClass: 'text-green-600', bgClass: 'bg-green-50' },
+  { day: 'Monday - Thursday', time: '8:00 AM - 7:00 PM', status: 'Open', icon: 'bi-check-circle-fill', textClass: 'text-green-600', bgClass: 'bg-green-50' },
+  { day: 'Friday', time: 'Essential Services Only', status: 'Partial', icon: 'bi-info-circle-fill', textClass: 'text-blue-600', bgClass: 'bg-blue-50' },
   { day: 'Lunch Break', time: '12:00 PM - 1:00 PM', status: 'Break', icon: 'bi-pause-circle-fill', textClass: 'text-yellow-600', bgClass: 'bg-yellow-50' },
   { day: 'Saturday & Sunday', time: 'Closed', status: 'Closed', icon: 'bi-x-circle-fill', textClass: 'text-red-600', bgClass: 'bg-red-50' },
   { day: 'National & Local Holidays', time: 'Closed', status: 'Closed', icon: 'bi-x-circle-fill', textClass: 'text-red-600', bgClass: 'bg-red-50' },
@@ -64,7 +65,7 @@ const officeHours = [
                 {{ site.contact.mobile }}
               </p>
               <span class="text-sm text-gray-500">
-                Mon-Fri: 8:00 AM - 5:00 PM
+                Mon-Thu: 8:00 AM - 7:00 PM
               </span>
             </div>
           </UiCard>
@@ -86,7 +87,7 @@ const officeHours = [
                 {{ site.contact.phone }}
               </p>
               <span class="text-sm text-gray-500">
-                Mon-Fri: 8:00 AM - 5:00 PM
+                Mon-Thu: 8:00 AM - 7:00 PM
               </span>
             </div>
           </UiCard>
