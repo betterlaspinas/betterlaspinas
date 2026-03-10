@@ -1,0 +1,36 @@
+name: Continuous Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Deploy to Server
+        uses: appleboy/ssh-action@v1.2.3
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          port: ${{ secrets.SERVER_PORT || '22' }}
+          script: |
+            # 1. Navigate to the App Root directory
+            cd ~/htdocs/${{ secrets.SERVER_DOMAIN }}
+
+            # 2. Pull the latest code
+            git pull origin main
+
+            # 3. Install/Enable pnpm globally then install deps
+            npm install -g pnpm pm2
+            pnpm install --frozen-lockfile
+
+            # 4. Build Nuxt
+            pnpm run build
+
+            # 5. Reload PM2 zero-downtime
+            pm2 reload betterlaspinas || NITRO_PORT=${{ secrets.APP_PORT || 3000 }} pm2 start ecosystem.config.cjs
