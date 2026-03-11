@@ -7,6 +7,25 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   sitemap: {
     zeroRuntime: true,
+    exclude: [
+      '/budget',
+      '/history',
+      '/legislative/**',
+      '/news',
+      '/services/business',
+      '/services/social-services',
+      '/services/health',
+      '/services/tax-payments',
+      '/services/agriculture',
+      '/services/infrastructure',
+      '/services/education',
+      '/services/environment',
+      '/services/public-safety',
+      '/tourism',
+    ],
+    urls: [
+      '/services/certificates',
+    ],
   },
   ssr: true,
   ogImage: {
