@@ -165,12 +165,12 @@
   ],
   "financialData": {
     "annualIncome": "₱3.89B",
-    "annualIncomeDetailed": "₱3,894,064,737.00",
-    "iraShare": "₱1.74B",
-    "iraDependency": "44.72%",
-    "localSourcesPercentage": "55.28%",
+    "annualIncomeDetailed": "₱3,894,064,737.40",
+    "ntaShare": "₱1.74B",
+    "ntaDependency": "44.60%",
+    "localSourcesPercentage": "55.10%",
     "source": "Bureau of Local Government Finance (BLGF)",
-    "sourceUrl": "https://blgf.gov.ph/",
+    "sourceUrl": "https://blgf.gov.ph/lgu-fiscal-data/",
     "year": 2024
   },
   "populationGrowth": {
