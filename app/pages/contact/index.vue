@@ -5,7 +5,6 @@ const { site, hotlines, formatPhoneLink } = useConfig()
 const officeHours = [
   { day: 'Monday - Thursday', time: '8:00 AM - 7:00 PM', status: 'Open', icon: 'bi-check-circle-fill', textClass: 'text-green-600', bgClass: 'bg-green-50' },
   { day: 'Friday', time: '8:00 AM - 5:00 PM (Essential Services: CHO, Traffic, Emergency Teams)', status: 'Partial', icon: 'bi-info-circle-fill', textClass: 'text-blue-600', bgClass: 'bg-blue-50' },
-  { day: 'Lunch Break', time: '12:00 PM - 1:00 PM', status: 'Break', icon: 'bi-pause-circle-fill', textClass: 'text-yellow-600', bgClass: 'bg-yellow-50' },
   { day: 'Saturday & Sunday', time: 'Closed', status: 'Closed', icon: 'bi-x-circle-fill', textClass: 'text-red-600', bgClass: 'bg-red-50' },
   { day: 'National & Local Holidays', time: 'Closed', status: 'Closed', icon: 'bi-x-circle-fill', textClass: 'text-red-600', bgClass: 'bg-red-50' },
 ]
