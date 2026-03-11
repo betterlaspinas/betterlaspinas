@@ -21,36 +21,17 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_PORT || '22' }}
           script: |
-            # 1. Load shell environment
-            [ -s "$HOME/.bashrc" ] && . "$HOME/.bashrc"
-            [ -s "$HOME/.profile" ] && . "$HOME/.profile"
+            # 1. Setup PATH
+            # Required for Node-based tools (pnpm, pm2) to find 'node' via their shebangs.
+            export PATH="${{ secrets.SERVER_BIN_PATH }}:$PATH"
 
-            # 2. Diagnostic checks
-            echo "Current User: $(whoami)"
-            echo "Node version: $(node -v)"
-            echo "NPM path: $(which npm)"
-
-            # 3. Navigate to the App Root directory
+            # 2. Navigate and Fetch/Reset
+            # Using reset --hard instead of pull to resolve branch divergence and force-pushes.
             cd ~/htdocs/${{ secrets.SERVER_DOMAIN }}
+            git fetch origin main
+            git reset --hard origin/main
 
-            # 4. Pull the latest code
-            git pull origin main
-
-            # 5. Install/Enable pnpm/pm2 only if missing
-            command -v pnpm >/dev/null 2>&1 || npm install -g pnpm
-            command -v pm2 >/dev/null 2>&1 || npm install -g pm2
-
-            # Refresh path for pnpm/pm2
-            export PATH="$HOME/.local/share/pnpm:$PATH"
-            export PATH="$(npm config get prefix)/bin:$PATH"
-
-            echo "PNPM version: $(pnpm -v)"
-            echo "PM2 version: $(pm2 -v)"
-
+            # 3. Install, Build, and Restart
             pnpm install --frozen-lockfile
-
-            # 6. Build Nuxt
-            pnpm run build
-
-            # 7. Reload PM2 zero-downtime
+            pnpm build
             pm2 reload betterlaspinas || NITRO_PORT=${{ secrets.APP_PORT || 3000 }} pm2 start ecosystem.config.cjs
