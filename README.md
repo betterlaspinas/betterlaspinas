@@ -33,9 +33,8 @@ A modern, accessible, and fully-featured local government unit (LGU) website bui
 
 ## 📋 Prerequisites
 
-- **Node.js** 18.x or higher
-- **pnpm** 9.x or higher (recommended)
-- **npm** 9.x or higher (alternative)
+- **Node.js** 22.x or higher
+- **pnpm** 10.x or higher
 
 ## 🚀 Installation & Setup
 
@@ -49,8 +48,6 @@ cd betterlaspinas
 ### 2. Install Dependencies
 
 ```bash
-npm install
-# or
 pnpm install
 ```
 
@@ -92,8 +89,6 @@ These runtime variables will securely override the `site.json` values during bui
 ### 4. Start Development Server
 
 ```bash
-npm run dev
-# or
 pnpm dev
 ```
 
@@ -101,16 +96,16 @@ Visit `http://localhost:3000` to see your site.
 
 ## 📜 Available Scripts
 
-| Command             | pnpm Alternative | Description                  |
-| ------------------- | ---------------- | ---------------------------- |
-| `npm run dev`       | `pnpm dev`       | Start development server     |
-| `npm run build`     | `pnpm build`     | Build for production         |
-| `npm run preview`   | `pnpm preview`   | Preview production build     |
-| `npm run generate`  | `pnpm generate`  | Generate static site         |
-| `npm run lint`      | `pnpm lint`      | Check code with ESLint       |
-| `npm run lint:fix`  | `pnpm lint:fix`  | Fix ESLint errors            |
-| `npm run test`      | `pnpm test`      | Run tests in watch mode      |
-| `npm run typecheck` | `pnpm typecheck` | Run TypeScript type checking |
+| Command          | Description                  |
+| :--------------- | :--------------------------- |
+| `pnpm dev`       | Start development server     |
+| `pnpm build`     | Build for production         |
+| `pnpm preview`   | Preview production build     |
+| `pnpm generate`  | Generate static site         |
+| `pnpm lint`      | Check code with ESLint       |
+| `pnpm lint:fix`  | Fix ESLint errors            |
+| `pnpm test`      | Run tests in watch mode      |
+| `pnpm typecheck` | Run TypeScript type checking |
 
 ## 🧪 Testing
 
@@ -118,18 +113,12 @@ Run the test suite:
 
 ```bash
 # Watch mode (for development)
-npm test
-# or
 pnpm test
 
 # Run once (for CI)
-npm run test -- --run
-# or
 pnpm test --run
 
 # With coverage
-npm run test:coverage
-# or
 pnpm test:coverage
 ```
 
@@ -149,17 +138,9 @@ If any check fails, the commit will be blocked. Fix the issues before committing
 
 ```bash
 # Run all checks manually
-npm run lint        # Check code style
-# or
-pnpm lint
-
-npm run typecheck   # Check types
-# or
-pnpm typecheck
-
-npm run test -- --run  # Run tests
-# or
-pnpm test --run
+pnpm lint        # Check code style
+pnpm typecheck   # Check types
+pnpm test --run  # Run tests
 ```
 
 ## 📁 Project Structure
@@ -212,8 +193,6 @@ No code changes required for content updates!
 ### Static Site Generation
 
 ```bash
-npm run generate
-# or
 pnpm generate
 ```
 
@@ -222,9 +201,6 @@ Output will be in `.output/public/` - deploy to any static host.
 ### Node.js Server
 
 ```bash
-npm run build
-node .output/server/index.mjs
-# or
 pnpm build
 node .output/server/index.mjs
 ```
