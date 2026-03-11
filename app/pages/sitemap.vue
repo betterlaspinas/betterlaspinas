@@ -27,7 +27,7 @@ const sections = computed<SitemapSection[]>(() => [
       { href: '/legislative', label: 'Legislative', hidden: true },
       { href: '/budget', label: 'Transparency', hidden: true },
       { href: '/contact', label: 'Contact' },
-      { href: '/news', label: 'News' },
+      { href: '/news', label: 'News', hidden: true },
       { href: '/faq', label: 'FAQ' },
       { href: '/accessibility', label: 'Accessibility' },
     ],
@@ -59,44 +59,54 @@ const sections = computed<SitemapSection[]>(() => [
       {
         href: '/service-details/civil-registrar',
         label: 'Local Civil Registrar',
+        hidden: true,
       },
       {
         href: '/service-details/municipal-treasurer',
         label: 'Treasurer\'s Office',
+        hidden: true,
       },
       {
         href: '/service-details/municipal-assessor',
         label: 'Assessor\'s Office',
+        hidden: true,
       },
-      { href: '/service-details/municipal-budget', label: 'Budget Office' },
+      { href: '/service-details/municipal-budget', label: 'Budget Office', hidden: true },
       {
         href: '/service-details/municipal-accounting',
         label: 'Accounting Office',
+        hidden: true,
       },
       {
         href: '/service-details/municipal-engineering',
         label: 'Engineering Office',
+        hidden: true,
       },
       {
         href: '/service-details/municipal-planning',
         label: 'Planning Office',
+        hidden: true,
       },
       {
         href: '/service-details/municipal-agriculture',
         label: 'Agriculture Office',
+        hidden: true,
       },
-      { href: '/service-details/mswdo-services', label: 'MSWDO' },
+      { href: '/service-details/mswdo-services', label: 'MSWDO', hidden: true },
       {
         href: '/service-details/business-permits-licensing',
         label: 'BPLS Office',
+        hidden: true,
       },
       {
         href: '/service-details/general-services',
         label: 'General Services',
+        hidden: true,
       },
       {
         href: '/service-details/human-resource-management',
         label: 'HR Management',
+        hidden: true,
       },
     ],
   },
@@ -109,10 +119,12 @@ const sections = computed<SitemapSection[]>(() => [
       {
         href: '/legislative/ordinance-framework',
         label: 'Ordinance Framework',
+        hidden: true,
       },
       {
         href: '/legislative/resolution-framework',
         label: 'Resolution Framework',
+        hidden: true,
       },
     ],
   },
@@ -164,7 +176,7 @@ const sections = computed<SitemapSection[]>(() => [
       <div class="container mx-auto px-4">
         <div class="space-y-8">
           <UiCard
-            v-for="section in sections"
+            v-for="section in sections.filter(section => section.links.some(link => !link.hidden))"
             :key="section.title"
             padding="p-0"
             class="overflow-hidden"
