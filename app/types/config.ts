@@ -182,8 +182,8 @@ export interface StatisticsDetailedConfig {
   financialData: {
     annualIncome: string
     annualIncomeDetailed: string
-    iraShare: string
-    iraDependency: string
+    ntaShare: string
+    ntaDependency: string
     localSourcesPercentage: string
     sourceUrl: string
     source: string
