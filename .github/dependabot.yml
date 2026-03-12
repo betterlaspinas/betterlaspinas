@@ -1,7 +1,7 @@
 version: 2
 
 updates:
-  # ── npm packages ──────────────────────────────────────────────
+  # ── pnpm packages ──────────────────────────────────────────────
   - package-ecosystem: npm
     directory: /
     schedule:
@@ -12,7 +12,7 @@ updates:
     open-pull-requests-limit: 10
     labels:
       - dependencies
-      - npm
+      - pnpm
     commit-message:
       prefix: chore
       prefix-development: chore
