@@ -1,13 +1,5 @@
 <script setup lang="ts">
-const { siteBrandName } = useConfig()
 const { entries, getSectionBadgeColor, getSectionIcon, getPrefixColorClass } = useChangelog()
-
-useHead({
-  title: `Changelog | ${siteBrandName.value}`,
-  meta: [
-    { name: 'description', content: `View the history of updates and improvements to ${siteBrandName.value}.` },
-  ],
-})
 </script>
 
 <template>
