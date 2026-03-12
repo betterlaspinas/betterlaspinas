@@ -27,6 +27,7 @@ export interface SiteConfig {
   tagline: string
   themeColor: string
   officialWebsite: string
+  version: string
   contact: {
     phone: string
     mobile: string
