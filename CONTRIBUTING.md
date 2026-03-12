@@ -57,9 +57,8 @@ This project adheres to the [Contributor Covenant Code of Conduct](CODE_OF_CONDU
 
 ### Prerequisites
 
-- Node.js 18.x or higher
-- pnpm 9.x or higher (recommended)
-- npm 9.x or higher (alternative)
+- Node.js 22.x or higher
+- pnpm 10.x or higher
 - Git
 
 ### Setup Instructions
@@ -70,26 +69,26 @@ git clone https://github.com/betterlaspinas/betterlaspinas.git
 cd betterlaspinas
 
 # Install dependencies
-npm install
+pnpm install
 
 # Start development server
-npm run dev
+pnpm dev
 ```
 
 ### Running Quality Checks
 
 ```bash
 # Lint
-npm run lint
+pnpm lint
 
 # Type check
-npm run typecheck
+pnpm typecheck
 
 # Tests
-npm test
+pnpm test
 
 # All checks (what pre-commit runs)
-npm run lint && npm run typecheck && npm run test -- --run
+pnpm lint && pnpm typecheck && pnpm test --run
 ```
 
 ## 📝 Coding Standards
@@ -110,7 +109,7 @@ npm run lint && npm run typecheck && npm run test -- --run
 ### ESLint
 
 - Follow [@antfu/eslint-config](https://github.com/antfu/eslint-config)
-- Run `npm run lint:fix` to auto-fix issues
+- Run `pnpm lint:fix` to auto-fix issues
 - Pre-commit hooks will enforce these rules
 
 ### File Organization
@@ -281,13 +280,13 @@ describe('useLanguage', () => {
 
 ```bash
 # Watch mode (development)
-npm test
+pnpm test
 
 # Single run (CI)
-npm run test -- --run
+pnpm test --run
 
 # With coverage
-npm run test:coverage
+pnpm test:coverage
 ```
 
 ## 🐛 Debugging Tips
@@ -299,22 +298,22 @@ npm run test:coverage
 ```bash
 # Clear Nuxt cache
 rm -rf .nuxt
-npm run dev
+pnpm dev
 ```
 
 **Type errors**
 
 ```bash
 # Regenerate types
-npm run postinstall
-npm run typecheck
+pnpm postinstall
+pnpm typecheck
 ```
 
 **Test failures**
 
 ```bash
 # Run specific test file
-npm test path/to/test.spec.ts
+pnpm test path/to/test.spec.ts
 ```
 
 ## 📞 Getting Help
