@@ -23,3 +23,10 @@ export const TRAILING_SLASH_REGEX = /\/$/
 // News / Articles placeholders
 export const DEPT_PREFIX_PLACEHOLDER_REGEX = /\{\{deptPrefix\}\}/g
 export const LGU_NAME_PLACEHOLDER_REGEX = /\{\{lguName\}\}/g
+
+// Changelog Parser
+export const CHANGELOG_VERSION_REGEX = /^## \[(.*?)\](?: - (.*))?/
+export const CHANGELOG_SECTION_REGEX = /^### (.*)/
+export const CHANGELOG_ITEM_REGEX = /^- (.*)/
+export const CHANGELOG_LINK_REGEX = /^\[(.*?)\]: (.*)/
+export const CHANGELOG_ITEM_PREFIX_REGEX = /^\*\*(.*?)\*\*:\s*(.*)/
