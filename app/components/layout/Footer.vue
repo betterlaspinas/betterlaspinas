@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useConfig } from '@/composables/useConfig'
+import { GIT_DESCRIBE_REGEX } from '@/utils/regexConstants'
 
 const { site, lguName, siteBrandName, lguNameConcatenated, navigation } = useConfig()
 const currentYear = new Date().getFullYear()
@@ -23,6 +24,31 @@ const socialLinks = computed(() => [
   { label: 'YouTube', href: site.value.social.youtube, icon: 'bi-youtube' },
   { label: 'Discord', href: site.value.social.discord, icon: 'bi-discord' },
 ].filter(link => link.href))
+
+const parsedVersion = computed(() => {
+  const version = site.value.version
+  // Matches tag, distance, and hash from git describe
+  const match = version.match(GIT_DESCRIBE_REGEX)
+
+  if (match) {
+    const [_, base, distance, hash] = match
+    return {
+      base,
+      distance,
+      hash,
+      isClean: !distance,
+      display: distance ? `v${base}+${hash}` : `v${base}`,
+    }
+  }
+
+  // Fallback for just hash or unknown format
+  return {
+    base: version,
+    hash: version,
+    isClean: true,
+    display: version.startsWith('v') ? version : `v${version}`,
+  }
+})
 </script>
 
 <template>
@@ -105,7 +131,7 @@ const socialLinks = computed(() => [
               to="/changelog"
               class="hover:text-primary-400 transition-colors"
             >
-              v{{ site.version }}
+              {{ parsedVersion.display }}
             </NuxtLink>
             | MIT | CC BY 4.0 | All public information sourced from official government portals.
           </p>

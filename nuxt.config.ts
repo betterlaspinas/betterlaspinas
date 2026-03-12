@@ -1,5 +1,18 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { execSync } from 'node:child_process'
 import pkg from './package.json'
+
+function getVersion() {
+  try {
+    return execSync('git describe --tags --always').toString().trim()
+  }
+  catch (e) {
+    console.warn('Failed to get version from git:', e)
+    return pkg.version
+  }
+}
+
+const version = getVersion()
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
@@ -47,7 +60,7 @@ export default defineNuxtConfig({
         tagline: '',
         themeColor: '',
         officialWebsite: '',
-        version: pkg.version,
+        version,
       },
     },
   },
