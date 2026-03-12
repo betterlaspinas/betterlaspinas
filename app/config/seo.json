@@ -81,14 +81,14 @@
     "description": "Explore the beauty, culture, and hospitality of {{lguName}}. Discover local attractions and vibrant festivals.",
     "ogType": "website",
     "twitterCard": "summary",
-    "hidden": false
+    "hidden": true
   },
   "news-index": {
     "titleFragment": "News & Announcements",
     "description": "Stay updated with the latest news, announcements, and press releases from the {{lguTypeLabel}} of {{lguName}}.",
     "ogType": "website",
     "twitterCard": "summary",
-    "hidden": false
+    "hidden": true
   },
   "legislative-ordinance-framework": {
     "titleFragment": "Ordinance Framework",
@@ -137,7 +137,7 @@
     "description": "Read the latest news and announcements from the {{lguTypeLabel}} of {{lguName}}.",
     "ogType": "article",
     "twitterCard": "summary_large_image",
-    "hidden": false
+    "hidden": true
   },
   "services-category": {
     "titleFragment": "Service Category",

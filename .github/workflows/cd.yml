@@ -1,4 +1,6 @@
 name: Continuous Deployment
+permissions:
+  contents: read
 
 on:
   push:
@@ -19,18 +21,17 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_PORT || '22' }}
           script: |
-            # 1. Navigate to the App Root directory
+            # 1. Setup PATH
+            # Required for Node-based tools (pnpm, pm2) to find 'node' via their shebangs.
+            export PATH="${{ secrets.SERVER_BIN_PATH }}:$PATH"
+
+            # 2. Navigate and Fetch/Reset
+            # Using reset --hard instead of pull to resolve branch divergence and force-pushes.
             cd ~/htdocs/${{ secrets.SERVER_DOMAIN }}
+            git fetch origin main
+            git reset --hard origin/main
 
-            # 2. Pull the latest code
-            git pull origin main
-
-            # 3. Install/Enable pnpm globally then install deps
-            npm install -g pnpm pm2
+            # 3. Install, Build, and Restart
             pnpm install --frozen-lockfile
-
-            # 4. Build Nuxt
-            pnpm run build
-
-            # 5. Reload PM2 zero-downtime
+            pnpm build
             pm2 reload betterlaspinas || NITRO_PORT=${{ secrets.APP_PORT || 3000 }} pm2 start ecosystem.config.cjs
