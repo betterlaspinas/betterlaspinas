@@ -140,8 +140,8 @@
     "hidden": true
   },
   "services-category": {
-    "titleFragment": "Service Category",
-    "description": "Browse government services by category in {{lguName}}.",
+    "titleFragment": "{{category}} | Services",
+    "description": "Browse {{category}} government services in {{lguName}}.",
     "ogType": "website",
     "twitterCard": "summary",
     "hidden": false
