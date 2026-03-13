@@ -187,6 +187,7 @@ export function getMergedSiteConfig(
     tagline: runtimeSite.tagline || base.tagline,
     themeColor: runtimeSite.themeColor || base.themeColor,
     officialWebsite: runtimeSite.officialWebsite || base.officialWebsite,
+    version: runtimeSite.version || base.version,
   }
 }
 
