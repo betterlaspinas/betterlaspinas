@@ -152,5 +152,12 @@
     "ogType": "website",
     "twitterCard": "summary",
     "hidden": false
+  },
+  "changelog": {
+    "titleFragment": "Changelog",
+    "description": "View the history of updates, improvements, and new features added to {{siteBrandName}}.",
+    "ogType": "website",
+    "twitterCard": "summary",
+    "hidden": false
   }
 }

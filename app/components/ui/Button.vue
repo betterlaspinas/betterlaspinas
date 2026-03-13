@@ -6,7 +6,7 @@ const props = withDefaults(defineProps<{
   href?: string
   type?: 'button' | 'submit' | 'reset'
   variant?: 'solid' | 'outline' | 'ghost' | 'soft'
-  color?: 'primary' | 'gray' | 'success' | 'danger'
+  color?: 'primary' | 'gray' | 'success' | 'error'
   size?: 'sm' | 'md' | 'lg'
   disabled?: boolean
   class?: any
@@ -24,8 +24,8 @@ const button = tv({
     color: {
       primary: 'focus:ring-primary-500',
       gray: 'focus:ring-gray-500',
-      success: 'focus:ring-green-500',
-      danger: 'focus:ring-red-500',
+      success: 'focus:ring-success-500',
+      error: 'focus:ring-error-500',
     },
     variant: {
       solid: '',
@@ -50,15 +50,15 @@ const button = tv({
     { color: 'gray', variant: 'ghost', class: 'text-gray-600 hover:bg-gray-50' },
     { color: 'gray', variant: 'soft', class: 'bg-gray-100 text-gray-700 hover:bg-gray-200' },
 
-    { color: 'success', variant: 'solid', class: 'bg-green-600 text-white hover:bg-green-700 border-transparent' },
-    { color: 'success', variant: 'outline', class: 'border-green-600 text-green-600 hover:bg-green-50' },
-    { color: 'success', variant: 'ghost', class: 'text-green-600 hover:bg-green-50' },
-    { color: 'success', variant: 'soft', class: 'bg-green-50 text-green-700 hover:bg-green-100' },
+    { color: 'success', variant: 'solid', class: 'bg-success-600 text-white hover:bg-success-700 border-transparent' },
+    { color: 'success', variant: 'outline', class: 'border-success-600 text-success-600 hover:bg-success-50' },
+    { color: 'success', variant: 'ghost', class: 'text-success-600 hover:bg-success-50' },
+    { color: 'success', variant: 'soft', class: 'bg-success-50 text-success-700 hover:bg-success-100' },
 
-    { color: 'danger', variant: 'solid', class: 'bg-red-600 text-white hover:bg-red-700 border-transparent' },
-    { color: 'danger', variant: 'outline', class: 'border-red-600 text-red-600 hover:bg-red-50' },
-    { color: 'danger', variant: 'ghost', class: 'text-red-600 hover:bg-red-50' },
-    { color: 'danger', variant: 'soft', class: 'bg-red-50 text-red-700 hover:bg-red-100' },
+    { color: 'error', variant: 'solid', class: 'bg-error-600 text-white hover:bg-error-700 border-transparent' },
+    { color: 'error', variant: 'outline', class: 'border-error-600 text-error-600 hover:bg-error-50' },
+    { color: 'error', variant: 'ghost', class: 'text-error-600 hover:bg-error-50' },
+    { color: 'error', variant: 'soft', class: 'bg-error-50 text-error-700 hover:bg-error-100' },
   ],
   defaultVariants: {
     color: 'primary',
