@@ -133,7 +133,7 @@
     "hidden": false
   },
   "news-slug": {
-    "titleFragment": "News Article",
+    "titleFragment": "{{slug}} | News Article",
     "description": "Read the latest news and announcements from the {{lguTypeLabel}} of {{lguName}}.",
     "ogType": "article",
     "twitterCard": "summary_large_image",
@@ -147,8 +147,8 @@
     "hidden": false
   },
   "service-details-slug": {
-    "titleFragment": "Service Details",
-    "description": "Detailed information about local government services in {{lguName}}.",
+    "titleFragment": "{{slug}} | Service Details",
+    "description": "Detailed information about {{slug}} local government services in {{lguName}}.",
     "ogType": "website",
     "twitterCard": "summary",
     "hidden": false
