@@ -84,35 +84,35 @@ const quarterData = computed(() => props.budget.quarters?.[activeQuarter.value])
 
       <!-- Metrics -->
       <div v-if="quarterData" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-        <div class="bg-green-50 border border-green-200 rounded-xl p-6">
+        <div class="bg-success-50 border border-success-200 rounded-xl p-6">
           <div class="flex items-center gap-3">
-            <div class="w-10 h-10 flex items-center justify-center bg-green-100 text-green-600 rounded-lg">
+            <div class="w-10 h-10 flex items-center justify-center bg-success-100 text-success-600 rounded-lg">
               <i class="bi bi-arrow-down-circle text-xl" />
             </div>
             <div>
-              <span class="block text-2xl font-bold text-green-700">
+              <span class="block text-2xl font-bold text-success-700">
                 {{ quarterData.totalIncome }}
               </span>
               <UiBadge variant="success" text="Total Income" />
             </div>
           </div>
         </div>
-        <div class="bg-red-50 border border-red-200 rounded-xl p-6">
+        <div class="bg-error-50 border border-error-200 rounded-xl p-6">
           <div class="flex items-center gap-3">
-            <div class="w-10 h-10 flex items-center justify-center bg-red-100 text-red-600 rounded-lg">
+            <div class="w-10 h-10 flex items-center justify-center bg-error-100 text-error-600 rounded-lg">
               <i class="bi bi-arrow-up-circle text-xl" />
             </div>
             <div>
-              <span class="block text-2xl font-bold text-red-700">
+              <span class="block text-2xl font-bold text-error-700">
                 {{ quarterData.totalExpense }}
               </span>
-              <UiBadge variant="danger" text="Total Expenditures" />
+              <UiBadge variant="error" text="Total Expenditures" />
             </div>
           </div>
         </div>
-        <div class="bg-blue-50 border border-blue-200 rounded-xl p-6">
+        <div class="bg-primary-50 border border-primary-200 rounded-xl p-6">
           <div class="flex items-center gap-3">
-            <div class="w-10 h-10 flex items-center justify-center bg-blue-100 text-blue-600 rounded-lg">
+            <div class="w-10 h-10 flex items-center justify-center bg-primary-100 text-primary-600 rounded-lg">
               <i class="bi bi-plus-slash-minus text-xl" />
             </div>
             <div>
