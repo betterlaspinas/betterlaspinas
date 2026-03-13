@@ -14,3 +14,16 @@ export function interpolateString(
     return variables[key] !== undefined ? variables[key] : match
   })
 }
+
+/**
+ * Helper to convert a slug into Title Case format.
+ * Examples: 'social-services' -> 'Social Services'
+ */
+export function slugToTitleCase(slug: string): string {
+  if (!slug)
+    return ''
+  return slug
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(' ')
+}
