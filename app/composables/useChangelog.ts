@@ -159,14 +159,14 @@ export function useChangelog() {
     return result
   })
 
-  const getSectionBadgeColor = (title: string): 'primary' | 'solid-primary' | 'white-translucent' | 'gray' | 'success' | 'warning' | 'danger' => {
+  const getSectionBadgeColor = (title: string): 'primary' | 'solid-primary' | 'white-translucent' | 'gray' | 'success' | 'warning' | 'error' => {
     switch (title.toLowerCase()) {
       case 'added': return 'success'
       case 'changed': return 'primary'
       case 'deprecated': return 'warning'
-      case 'removed': return 'danger'
+      case 'removed': return 'error'
       case 'fixed': return 'primary'
-      case 'security': return 'danger'
+      case 'security': return 'error'
       case 'infrastructure':
       case 'internal':
       case 'technical': return 'gray'
@@ -194,9 +194,11 @@ export function useChangelog() {
       case 'added': return 'text-success-600 bg-success-50 border-success-100'
       case 'fixed': return 'text-primary-600 bg-primary-50 border-primary-100'
       case 'changed': return 'text-primary-600 bg-primary-50 border-primary-100'
-      case 'removed': return 'text-danger-600 bg-danger-50 border-danger-100'
+      case 'updated': return 'text-secondary-600 bg-secondary-50 border-secondary-100'
+      case 'refactored': return 'text-accent-600 bg-accent-50 border-accent-100'
+      case 'removed': return 'text-error-600 bg-error-50 border-error-100'
       case 'deprecated': return 'text-warning-600 bg-warning-50 border-warning-100'
-      case 'security': return 'text-danger-600 bg-danger-50 border-danger-100'
+      case 'security': return 'text-error-600 bg-error-50 border-error-100'
       default: return 'text-gray-600 bg-gray-50 border-gray-100'
     }
   }
