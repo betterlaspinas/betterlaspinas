@@ -23,3 +23,14 @@ export const TRAILING_SLASH_REGEX = /\/$/
 // News / Articles placeholders
 export const DEPT_PREFIX_PLACEHOLDER_REGEX = /\{\{deptPrefix\}\}/g
 export const LGU_NAME_PLACEHOLDER_REGEX = /\{\{lguName\}\}/g
+
+// Changelog Parser
+export const CHANGELOG_VERSION_REGEX = /^## \[(.*?)\](?: - (.*))?/
+export const CHANGELOG_SECTION_REGEX = /^### (.*)/
+export const CHANGELOG_ITEM_REGEX = /^- (.*)/
+export const CHANGELOG_LINK_REGEX = /^\[(.*?)\]: (.*)/
+export const CHANGELOG_ITEM_PREFIX_REGEX = /^\*\*(.*?)\*\*:\s*(.*)/
+
+// Git describe version (used in Footer.vue)
+// Matches tag, distance, and hash from git describe (e.g. v1.2.3-4-gabc123)
+export const GIT_DESCRIBE_REGEX = /^v?([0-9.]+)(?:-(\d+)-g([0-9a-f]+))?$/

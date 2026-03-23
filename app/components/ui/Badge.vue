@@ -4,7 +4,7 @@ import { tv } from 'tailwind-variants'
 const props = withDefaults(defineProps<{
   text?: string
   icon?: string
-  variant?: 'primary' | 'solid-primary' | 'white-translucent' | 'gray' | 'success' | 'warning' | 'danger'
+  variant?: 'primary' | 'solid-primary' | 'white-translucent' | 'gray' | 'success' | 'warning' | 'error'
   size?: 'sm' | 'md' | 'lg'
   class?: any
 }>(), {
@@ -23,9 +23,9 @@ const badge = tv({
       'solid-primary': 'bg-primary-600 text-white',
       'white-translucent': 'bg-white/20 text-white',
       'gray': 'bg-gray-100 text-gray-700',
-      'success': 'bg-green-100 text-green-700',
-      'warning': 'bg-yellow-100 text-yellow-800',
-      'danger': 'bg-red-100 text-red-700',
+      'success': 'bg-success-100 text-success-700',
+      'warning': 'bg-warning-100 text-warning-800',
+      'error': 'bg-error-100 text-error-700',
     },
     size: {
       sm: 'px-2.5 py-0.5 text-xs',
