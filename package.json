@@ -41,7 +41,7 @@
     "@antfu/eslint-config": "^7.7.2",
     "@nuxt/test-utils": "^4.0.0",
     "@nuxtjs/seo": "^3.4.0",
-    "@tailwindcss/postcss": "^4.2.1",
+    "@tailwindcss/postcss": "^4.2.2",
     "@vitest/coverage-v8": "^4.1.0",
     "@vue/test-utils": "^2.4.6",
     "autoprefixer": "^10.4.27",
@@ -51,7 +51,7 @@
     "happy-dom": "^20.8.4",
     "husky": "^9.1.7",
     "postcss": "^8.5.8",
-    "tailwindcss": "^4.2.1",
+    "tailwindcss": "^4.2.2",
     "vitest": "^4.1.0",
     "vue-tsc": "^3.2.5"
   }
