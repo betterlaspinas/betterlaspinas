@@ -1,5 +1,5 @@
 import { TRAILING_SLASH_REGEX } from '@/utils/regexConstants'
-import { interpolateString } from '@/utils/stringHelpers'
+import { interpolateString, slugToTitleCase } from '@/utils/stringHelpers'
 
 export default defineNuxtRouteMiddleware((to) => {
   const config = useConfig()
@@ -13,7 +13,7 @@ export default defineNuxtRouteMiddleware((to) => {
 
   if (routeConfig && !routeConfig.hidden) {
     // Build template variables for interpolation
-    const templateVars = {
+    const templateVars: Record<string, string> = {
       lguName: config.lguName.value,
       siteBrandName: config.siteBrandName.value,
       lguTypeLabel: config.labels.value.lguTypeLabel,
@@ -21,7 +21,15 @@ export default defineNuxtRouteMiddleware((to) => {
       deptPrefix: config.labels.value.deptPrefix,
     }
 
-    const title = config.getFullSiteTitle(routeConfig.titleFragment)
+    if (to.params) {
+      for (const [key, value] of Object.entries(to.params)) {
+        const strValue = Array.isArray(value) ? value.join('-') : String(value)
+        templateVars[key] = slugToTitleCase(strValue)
+      }
+    }
+
+    const titleFragment = interpolateString(routeConfig.titleFragment, templateVars)
+    const title = config.getFullSiteTitle(titleFragment)
     const description = interpolateString(routeConfig.description, templateVars)
     // Use the live route path for ogUrl so dynamic routes (e.g. news/[slug]) get the correct URL
     const ogUrl = `${config.getOpenGraphUrl().replace(TRAILING_SLASH_REGEX, '')}${to.path}`

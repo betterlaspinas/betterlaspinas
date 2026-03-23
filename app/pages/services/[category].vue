@@ -21,7 +21,7 @@ if (!categoryContent) {
       ]"
     />
 
-    <ServicesPageHeader
+    <UiSectionHeader
       :badge-icon="categoryContent.icon"
       :badge-text="categoryContent.badgeText"
       :title="categoryContent.name"
