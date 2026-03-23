@@ -38,7 +38,7 @@
     "vue-router": "^5.0.4"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^7.7.2",
+    "@antfu/eslint-config": "^7.7.3",
     "@nuxt/test-utils": "^4.0.0",
     "@nuxtjs/seo": "^3.4.0",
     "@tailwindcss/postcss": "^4.2.2",
@@ -46,13 +46,13 @@
     "@vue/test-utils": "^2.4.6",
     "autoprefixer": "^10.4.27",
     "commander": "^13.1.0",
-    "eslint": "^10.0.3",
+    "eslint": "^10.1.0",
     "eslint-plugin-format": "^2.0.1",
     "happy-dom": "^20.8.4",
     "husky": "^9.1.7",
     "postcss": "^8.5.8",
     "tailwindcss": "^4.2.2",
     "vitest": "^4.1.0",
-    "vue-tsc": "^3.2.5"
+    "vue-tsc": "^3.2.6"
   }
 }
