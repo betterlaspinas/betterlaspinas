@@ -29,6 +29,7 @@ const sections = computed<SitemapSection[]>(() => [
       { href: '/contact', label: 'Contact' },
       { href: '/news', label: 'News', hidden: true },
       { href: '/faq', label: 'FAQ' },
+      { href: '/changelog', label: 'Changelog' },
       { href: '/accessibility', label: 'Accessibility' },
     ],
   },

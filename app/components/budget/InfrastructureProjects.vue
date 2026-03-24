@@ -36,7 +36,7 @@ function formatLocation(location: string) {
           <div class="p-6 border-b border-gray-200">
             <div class="flex flex-wrap gap-2 mb-3">
               <UiBadge variant="gray" size="md" :text="String(project.year)" />
-              <UiBadge :variant="(project.typeColor as 'primary' | 'solid-primary' | 'white-translucent' | 'gray' | 'success' | 'warning' | 'danger')" :icon="project.typeIcon" :text="project.type" />
+              <UiBadge :variant="(project.typeColor as 'primary' | 'solid-primary' | 'white-translucent' | 'gray' | 'success' | 'warning' | 'error')" :icon="project.typeIcon" :text="project.type" />
             </div>
             <h3 class="text-lg font-bold text-gray-900 mb-1">
               {{ project.title }}
