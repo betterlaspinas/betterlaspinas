@@ -2,13 +2,13 @@
 // These props are automatically passed by nuxt-og-image
 import { SVG_EXTENSION_REGEX } from '~/utils/regexConstants'
 
-defineProps<{
+const props = defineProps<{
   title: string
   description?: string
   siteName?: string
 }>()
 
-const { site, siteBrandName } = useConfig()
+const { site } = useConfig()
 
 const logoPath = computed(() => {
   const path = site.value.logo?.white || '/logos/svg/BetterGov_Icon-White.svg'
@@ -23,7 +23,7 @@ const logoPath = computed(() => {
     <div class="flex flex-col gap-6 w-full mt-16 items-center">
       <img :src="logoPath" alt="Logo" class="object-contain" width="160" height="160">
       <h1 class="text-7xl font-bold leading-tight tracking-tight text-white">
-        {{ siteBrandName }}
+        {{ props.title }}
       </h1>
       <h1 class="text-3xl leading-tight tracking-tight text-white">
         Empowering the people of Las Piñas
