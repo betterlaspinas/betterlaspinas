@@ -15,7 +15,7 @@ defineProps<{
           City Income
         </h2>
         <p class="text-gray-500">
-          Financial standing for fiscal year 2023
+          Financial standing for fiscal year {{ statisticsDetailed.financialData?.year }}
         </p>
       </div>
 
@@ -38,7 +38,7 @@ defineProps<{
             <span>NTA Share</span>
           </div>
           <div class="text-3xl font-bold text-gray-900 mb-1">
-            {{ statisticsDetailed.financialData?.iraShare }}
+            {{ statisticsDetailed.financialData?.ntaShare }}
           </div>
           <div class="text-sm text-gray-500">
             National Tax Allotment
@@ -50,7 +50,7 @@ defineProps<{
             <span>NTA Dependency</span>
           </div>
           <div class="text-3xl font-bold text-gray-900 mb-1">
-            {{ statisticsDetailed.financialData?.iraDependency }}
+            {{ statisticsDetailed.financialData?.ntaDependency }}
           </div>
           <div class="text-sm text-gray-500">
             National Tax Share
@@ -65,9 +65,9 @@ defineProps<{
         <div class="h-6 bg-gray-100 rounded-full overflow-hidden flex">
           <div
             class="bg-primary-600 h-full flex items-center justify-center text-white text-xs font-medium"
-            :style="{ width: statisticsDetailed.financialData?.iraDependency }"
+            :style="{ width: statisticsDetailed.financialData?.ntaDependency }"
           >
-            NTA {{ statisticsDetailed.financialData?.iraDependency }}
+            NTA {{ statisticsDetailed.financialData?.ntaDependency }}
           </div>
           <div
             class="bg-green-500 h-full flex items-center justify-center text-white text-xs font-medium"
@@ -99,7 +99,7 @@ defineProps<{
         >
           {{ statisticsDetailed.financialData?.source }}
         </a>
-        – {{ statisticsDetailed.financialData?.year }} SRE Data
+        – {{ statisticsDetailed.financialData?.year }} Annual Regular Income (ARI) and Dependencies
       </p>
     </div>
   </section>
