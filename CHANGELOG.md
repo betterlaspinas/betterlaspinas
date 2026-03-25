@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Friday opening information added to relevant LGU services
 
 ### Changed
+- Updated app version display formatting in site footer for better clarity
 - Updated hardcoded year and income data in city statistics
 - Updated office hours to remove lunch breaks and clarify continuous operation
 - Cleaned up sitemap to exclude hidden and draft pages from public search indexing
@@ -20,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Infrastructure
 - **Added**: GitHub Actions workflow for automated deployment (`cd.yml`)
+- **Updated**: GitHub Actions deployment workflow to support tag-based releases (`cd.yml`)
 - **Removed**: `npm` package manager in favor of `pnpm` (updated `pnpm-lock.yaml`)
 - **Updated**: Maintenance workflows and CI/CD pipelines (`ci.yml`, `codeql.yml`, `dependabot.yml`, etc.)
 

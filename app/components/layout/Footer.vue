@@ -36,17 +36,12 @@ const parsedVersion = computed(() => {
       base,
       distance,
       hash,
-      isClean: !distance,
-      display: distance ? `v${base}+${hash}` : `v${base}`,
     }
   }
 
   // Fallback for just hash or unknown format
   return {
-    base: version,
-    hash: version,
-    isClean: true,
-    display: version.startsWith('v') ? version : `v${version}`,
+    base: version.startsWith('v') ? version.slice(1) : version,
   }
 })
 </script>
@@ -125,13 +120,19 @@ const parsedVersion = computed(() => {
 
       <div class="border-t border-gray-800 mt-8 pt-8">
         <div class="flex flex-col md:flex-row justify-between items-center">
-          <p class="text-gray-400 text-sm mb-4 md:mb-0">
+          <p class="text-gray-400 text-sm mb-4 md:mb-0 leading-loose">
             &copy; {{ currentYear }} {{ siteBrandName }}
             <NuxtLink
               to="/changelog"
-              class="hover:text-primary-400 transition-colors"
+              class="hover:text-primary-400 transition-colors inline-flex items-baseline gap-1"
             >
-              {{ parsedVersion.display }}
+              <template v-if="parsedVersion.distance">
+                <span>v{{ parsedVersion.base }}</span>
+                <span class="opacity-70">(+{{ parsedVersion.distance }}) &bull; {{ parsedVersion.hash }}</span>
+              </template>
+              <template v-else>
+                <span>v{{ parsedVersion.base }}</span>
+              </template>
             </NuxtLink>
             | MIT | CC BY 4.0 | All public information sourced from official government portals.
           </p>
