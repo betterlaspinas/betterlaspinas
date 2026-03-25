@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Friday opening information added to relevant LGU services
 
 ### Changed
+- Updated hardcoded year and income data in city statistics
 - Updated office hours to remove lunch breaks and clarify continuous operation
 - Cleaned up sitemap to exclude hidden and draft pages from public search indexing
 - Barangay Chairmen have been updated to the latest as of Q1 2026
