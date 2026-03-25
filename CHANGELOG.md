@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Nuxt OG Image v6 has been added to generate social media preview images
+
 ### Changed
 
 - Barangay Chairmen have been updated to the latest as of Q1 2026
