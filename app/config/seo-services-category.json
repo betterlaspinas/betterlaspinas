@@ -1,0 +1,12 @@
+{
+  "certificates": "Official documents for birth, death, marriage, and other vital records in {{lguName}}.",
+  "business": "Business permits, licenses, and trade registration services in {{lguName}}.",
+  "tax-payments": "Property tax, business tax, payments, and tax clearance in {{lguName}}.",
+  "social-services": "Welfare programs, senior citizen services, PWD benefits, and financial aid in {{lguName}}.",
+  "health": "Vaccination programs, health certificates, and medical assistance in {{lguName}}.",
+  "agriculture": "Agricultural loans, crop insurance, fertilizer assistance, and training in {{lguName}}.",
+  "infrastructure": "Construction permits, road maintenance requests, and public facilities in {{lguName}}.",
+  "education": "Scholarship programs, student assistance, and educational grants in {{lguName}}.",
+  "public-safety": "Emergency services, disaster preparedness, and community safety programs in {{lguName}}.",
+  "environment": "Environmental permits, waste management, and conservation programs in {{lguName}}."
+}

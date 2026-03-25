@@ -1,3 +1,6 @@
+import seoServiceDetailsSlug from '@/config/seo-service-details-slug.json'
+import seoServicesCategory from '@/config/seo-services-category.json'
+
 import { TRAILING_SLASH_REGEX } from '@/utils/regexConstants'
 import { interpolateString, slugToTitleCase } from '@/utils/stringHelpers'
 
@@ -30,7 +33,25 @@ export default defineNuxtRouteMiddleware((to) => {
 
     const titleFragment = interpolateString(routeConfig.titleFragment, templateVars)
     const title = config.getFullSiteTitle(titleFragment)
-    const description = interpolateString(routeConfig.description, templateVars)
+
+    let descriptionTemplate = routeConfig.description
+
+    if (routeName === 'services-category' && to.params.category) {
+      const categorySlug = (Array.isArray(to.params.category) ? to.params.category[0] : to.params.category) as string
+      const customDesc = (seoServicesCategory as Record<string, string>)[categorySlug]
+      if (customDesc) {
+        descriptionTemplate = customDesc
+      }
+    }
+    else if (routeName === 'service-details-slug' && to.params.slug) {
+      const serviceSlug = (Array.isArray(to.params.slug) ? to.params.slug[0] : to.params.slug) as string
+      const customDesc = (seoServiceDetailsSlug as Record<string, string>)[serviceSlug]
+      if (customDesc) {
+        descriptionTemplate = customDesc
+      }
+    }
+
+    const description = interpolateString(descriptionTemplate, templateVars)
     // Use the live route path for ogUrl so dynamic routes (e.g. news/[slug]) get the correct URL
     const ogUrl = `${config.getOpenGraphUrl().replace(TRAILING_SLASH_REGEX, '')}${to.path}`
 
