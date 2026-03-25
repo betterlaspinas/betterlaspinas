@@ -33,7 +33,7 @@ export default defineNuxtRouteMiddleware((to) => {
       ogDescription: description,
       ogType: routeConfig.ogType || 'website',
       ogUrl,
-      twitterCard: routeConfig.twitterCard || 'summary',
+      twitterCard: routeConfig.twitterCard || 'summary_large_image',
       twitterTitle: title,
       twitterDescription: description,
     })

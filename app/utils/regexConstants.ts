@@ -23,3 +23,6 @@ export const TRAILING_SLASH_REGEX = /\/$/
 // News / Articles placeholders
 export const DEPT_PREFIX_PLACEHOLDER_REGEX = /\{\{deptPrefix\}\}/g
 export const LGU_NAME_PLACEHOLDER_REGEX = /\{\{lguName\}\}/g
+
+// Helper for finding .svg file extension
+export const SVG_EXTENSION_REGEX = /\.svg$/
