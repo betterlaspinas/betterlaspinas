@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useConfig } from '@/composables/useConfig'
+import { GIT_DESCRIBE_REGEX } from '@/utils/regexConstants'
 
 const { site, lguName, siteBrandName, lguNameConcatenated, navigation } = useConfig()
 const currentYear = new Date().getFullYear()
@@ -23,6 +24,26 @@ const socialLinks = computed(() => [
   { label: 'YouTube', href: site.value.social.youtube, icon: 'bi-youtube' },
   { label: 'Discord', href: site.value.social.discord, icon: 'bi-discord' },
 ].filter(link => link.href))
+
+const parsedVersion = computed(() => {
+  const version = site.value.version
+  // Matches tag, distance, and hash from git describe
+  const match = version.match(GIT_DESCRIBE_REGEX)
+
+  if (match) {
+    const [_, base, distance, hash] = match
+    return {
+      base,
+      distance,
+      hash,
+    }
+  }
+
+  // Fallback for just hash or unknown format
+  return {
+    base: version.startsWith('v') ? version.slice(1) : version,
+  }
+})
 </script>
 
 <template>
@@ -99,8 +120,21 @@ const socialLinks = computed(() => [
 
       <div class="border-t border-gray-800 mt-8 pt-8">
         <div class="flex flex-col md:flex-row justify-between items-center">
-          <p class="text-gray-400 text-sm mb-4 md:mb-0">
-            &copy; {{ currentYear }} {{ siteBrandName }} v{{ site.version }} | MIT | CC BY 4.0 | All public information sourced from official government portals.
+          <p class="text-gray-400 text-sm mb-4 md:mb-0 leading-loose">
+            &copy; {{ currentYear }} {{ siteBrandName }}
+            <NuxtLink
+              to="/changelog"
+              class="hover:text-primary-400 transition-colors inline-flex items-baseline gap-1"
+            >
+              <template v-if="parsedVersion.distance">
+                <span>v{{ parsedVersion.base }}</span>
+                <span class="opacity-70">(+{{ parsedVersion.distance }}) &bull; {{ parsedVersion.hash }}</span>
+              </template>
+              <template v-else>
+                <span>v{{ parsedVersion.base }}</span>
+              </template>
+            </NuxtLink>
+            | MIT | CC BY 4.0 | All public information sourced from official government portals.
           </p>
           <div class="flex space-x-6">
             <a

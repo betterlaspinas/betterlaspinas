@@ -4,7 +4,7 @@ import { tv } from 'tailwind-variants'
 const props = withDefaults(defineProps<{
   title?: string
   icon?: string
-  variant?: 'primary' | 'success' | 'warning' | 'danger' | 'info' | 'gray'
+  variant?: 'primary' | 'success' | 'warning' | 'error' | 'info' | 'gray'
   layout?: 'row' | 'col'
   class?: any
 }>(), {
@@ -19,9 +19,9 @@ const alert = tv({
   variants: {
     variant: {
       primary: 'bg-primary-50 border-primary-200',
-      success: 'bg-green-50 border-green-200',
-      warning: 'bg-yellow-50 border-yellow-200',
-      danger: 'bg-red-50 border-red-200',
+      success: 'bg-success-50 border-success-200',
+      warning: 'bg-warning-50 border-warning-200',
+      error: 'bg-error-50 border-error-200',
       info: 'bg-blue-50 border-blue-200',
       gray: 'bg-gray-50 border-gray-200',
     },
@@ -54,9 +54,9 @@ const iconColor = tv({
   variants: {
     variant: {
       primary: 'text-primary-600',
-      success: 'text-green-600',
-      warning: 'text-yellow-600',
-      danger: 'text-red-600',
+      success: 'text-success-600',
+      warning: 'text-warning-600',
+      error: 'text-error-600',
       info: 'text-blue-600',
       gray: 'text-gray-600',
     },
