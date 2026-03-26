@@ -34,14 +34,14 @@
     "twitterCard": "summary",
     "hidden": true
   },
-  "government-index": {
+  "government": {
     "titleFragment": "Government",
     "description": "Meet the leadership and offices serving {{lguName}}. View the executive, legislative, and department heads of the {{lguTypeLabel}}.",
     "ogType": "website",
     "twitterCard": "summary",
     "hidden": false
   },
-  "legislative-index": {
+  "legislative": {
     "titleFragment": "Legislative",
     "description": "Ordinances and resolutions of the {{legislativeBody}} ng {{lguName}}.",
     "ogType": "website",
@@ -83,7 +83,7 @@
     "twitterCard": "summary",
     "hidden": true
   },
-  "news-index": {
+  "news": {
     "titleFragment": "News & Announcements",
     "description": "Stay updated with the latest news, announcements, and press releases from the {{lguTypeLabel}} of {{lguName}}.",
     "ogType": "website",
@@ -104,7 +104,7 @@
     "twitterCard": "summary",
     "hidden": false
   },
-  "services-index": {
+  "services": {
     "titleFragment": "Services",
     "description": "Browse and access all public services provided by the local government of {{lguName}}.",
     "ogType": "website",
@@ -125,7 +125,7 @@
     "twitterCard": "summary",
     "hidden": false
   },
-  "contact-index": {
+  "contact": {
     "titleFragment": "Contact Us",
     "description": "Get in touch with the {{lguTypeLabel}} of {{lguName}}. Find contact information for various offices and departments.",
     "ogType": "website",
@@ -133,22 +133,22 @@
     "hidden": false
   },
   "news-slug": {
-    "titleFragment": "News Article",
+    "titleFragment": "{{slug}} | News Article",
     "description": "Read the latest news and announcements from the {{lguTypeLabel}} of {{lguName}}.",
     "ogType": "article",
     "twitterCard": "summary_large_image",
     "hidden": true
   },
   "services-category": {
-    "titleFragment": "Service Category",
-    "description": "Browse government services by category in {{lguName}}.",
+    "titleFragment": "{{category}} | Services",
+    "description": "Browse {{category}} government services in {{lguName}}.",
     "ogType": "website",
     "twitterCard": "summary",
     "hidden": false
   },
   "service-details-slug": {
-    "titleFragment": "Service Details",
-    "description": "Detailed information about local government services in {{lguName}}.",
+    "titleFragment": "{{slug}} | Service Details",
+    "description": "Detailed information about {{slug}} local government services in {{lguName}}.",
     "ogType": "website",
     "twitterCard": "summary",
     "hidden": false
