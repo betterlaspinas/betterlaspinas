@@ -20,6 +20,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Cleaned up sitemap to exclude hidden and draft pages from public search indexing
 - Barangay Chairmen have been updated to the latest as of Q1 2026
 
+### Fixed
+- Hydration mismatch issues in layout and statistics components by synchronizing non-deterministic states and structural placeholders
+
 ### Infrastructure
 - **Added**: GitHub Actions deployment workflow (`cd.yml`) with support for tag-based releases
 - **Removed**: `npm` package manager in favor of `pnpm` (updated `pnpm-lock.yaml`)

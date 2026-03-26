@@ -63,7 +63,7 @@ const barangayData = computed(() => allBarangays.value.slice(0, 10))
           </ClientOnly>
         </UiCard>
 
-        <p class="text-sm text-gray-500 flex items-center gap-2">
+        <div class="text-sm text-gray-500 flex items-center gap-2">
           <i class="bi bi-info-circle" />
           Source:
           <a
@@ -74,7 +74,7 @@ const barangayData = computed(() => allBarangays.value.slice(0, 10))
           >
             Philippine Statistics Authority (PSA)
           </a>
-        </p>
+        </div>
       </div>
     </section>
 
@@ -167,7 +167,7 @@ const barangayData = computed(() => allBarangays.value.slice(0, 10))
           </div>
         </UiAccordion>
 
-        <p class="text-sm text-gray-500 flex items-center gap-2">
+        <div class="text-sm text-gray-500 flex items-center gap-2">
           <i class="bi bi-info-circle" />
           Source:
           <a
@@ -179,7 +179,7 @@ const barangayData = computed(() => allBarangays.value.slice(0, 10))
             Philippine Statistics Authority (PSA)
           </a>
           - 2024 Census
-        </p>
+        </div>
       </div>
     </section>
   </div>

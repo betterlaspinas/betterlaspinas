@@ -174,7 +174,7 @@ onUnmounted(() => {
               </span>
             </Transition>
             <template #fallback>
-              <span class="inline-block text-white">Loading rates...</span>
+              <span class="inline-block text-white">Loading...</span>
             </template>
           </ClientOnly>
         </div>
@@ -186,40 +186,71 @@ onUnmounted(() => {
           :aria-label="`Current weather in ${lguName}`"
         >
           <ClientOnly>
-            <i :class="`bi ${weatherIcon} text-xs text-yellow-400`" />
-            <span class="font-normal text-white">{{ lguName }}</span>
-            <Transition
-              mode="out-in"
-              enter-active-class="transition-opacity duration-300"
-              leave-active-class="transition-opacity duration-300"
-              enter-from-class="opacity-0"
-              leave-to-class="opacity-0"
-            >
-              <span v-if="weatherTemp" class="font-normal text-white">{{ weatherTemp }}°C</span>
-              <span v-else class="font-normal text-white text-xs">...</span>
-            </Transition>
+            <div class="flex items-center gap-1.5">
+              <i :class="`bi ${weatherIcon} text-xs text-yellow-400`" />
+              <span class="font-normal text-white">{{ lguName }}</span>
+              <Transition
+                mode="out-in"
+                enter-active-class="transition-opacity duration-300"
+                leave-active-class="transition-opacity duration-300"
+                enter-from-class="opacity-0"
+                leave-to-class="opacity-0"
+              >
+                <span v-if="weatherTemp" class="font-normal text-white">{{ weatherTemp }}°C</span>
+                <span v-else class="font-normal text-white text-xs">...</span>
+              </Transition>
+            </div>
+            <template #fallback>
+              <div class="flex items-center gap-1.5">
+                <i class="bi bi-thermometer-half text-xs text-yellow-400" />
+                <span class="font-normal text-white">{{ lguName }}</span>
+                <span class="font-normal text-white text-xs">...</span>
+              </div>
+            </template>
           </ClientOnly>
         </div>
 
         <!-- Date & Time -->
-        <div
-          class="inline-flex items-center gap-1.5 text-white pl-4 border-l border-white/15"
-          aria-label="Philippine Date and Time"
-        >
-          <i class="bi bi-calendar3 text-xs text-yellow-400" />
-          <span class="font-normal text-white">{{ dateTime.date }}</span>
-          <span
-            class="text-white mx-0.5 text-[0.5rem]"
-            aria-hidden="true"
+        <ClientOnly>
+          <div
+            class="inline-flex items-center gap-1.5 text-white pl-4 border-l border-white/15"
+            aria-label="Philippine Date and Time"
           >
-            •
-          </span>
-          <i class="bi bi-clock text-xs text-yellow-400" />
-          <span class="font-medium text-white">{{ dateTime.time }}</span>
-          <span class="font-normal text-white text-[0.625rem] uppercase tracking-wide">
-            PHT
-          </span>
-        </div>
+            <i class="bi bi-calendar3 text-xs text-yellow-400" />
+            <span class="font-normal text-white">{{ dateTime.date }}</span>
+            <span
+              class="text-white mx-0.5 text-[0.5rem]"
+              aria-hidden="true"
+            >
+              •
+            </span>
+            <i class="bi bi-clock text-xs text-yellow-400" />
+            <span class="font-medium text-white">{{ dateTime.time }}</span>
+            <span class="font-normal text-white text-[0.625rem] uppercase tracking-wide">
+              PHT
+            </span>
+          </div>
+          <template #fallback>
+            <div
+              class="inline-flex items-center gap-1.5 text-white pl-4 border-l border-white/15"
+              aria-label="Philippine Date and Time"
+            >
+              <i class="bi bi-calendar3 text-xs text-yellow-400" />
+              <span class="font-normal text-white">--- --, ----</span>
+              <span
+                class="text-white mx-0.5 text-[0.5rem]"
+                aria-hidden="true"
+              >
+                •
+              </span>
+              <i class="bi bi-clock text-xs text-yellow-400" />
+              <span class="font-medium text-white">--:-- --</span>
+              <span class="font-normal text-white text-[0.625rem] uppercase tracking-wide">
+                PHT
+              </span>
+            </div>
+          </template>
+        </ClientOnly>
       </div>
     </div>
   </div>
