@@ -1,5 +1,8 @@
+import seoServiceDetailsSlug from '@/config/seo-service-details-slug.json'
+import seoServicesCategory from '@/config/seo-services-category.json'
+
 import { TRAILING_SLASH_REGEX } from '@/utils/regexConstants'
-import { interpolateString } from '@/utils/stringHelpers'
+import { interpolateString, slugToTitleCase } from '@/utils/stringHelpers'
 
 export default defineNuxtRouteMiddleware((to) => {
   const config = useConfig()
@@ -13,7 +16,7 @@ export default defineNuxtRouteMiddleware((to) => {
 
   if (routeConfig && !routeConfig.hidden) {
     // Build template variables for interpolation
-    const templateVars = {
+    const templateVars: Record<string, string> = {
       lguName: config.lguName.value,
       siteBrandName: config.siteBrandName.value,
       lguTypeLabel: config.labels.value.lguTypeLabel,
@@ -21,8 +24,34 @@ export default defineNuxtRouteMiddleware((to) => {
       deptPrefix: config.labels.value.deptPrefix,
     }
 
-    const title = config.getFullSiteTitle(routeConfig.titleFragment)
-    const description = interpolateString(routeConfig.description, templateVars)
+    if (to.params) {
+      for (const [key, value] of Object.entries(to.params)) {
+        const strValue = Array.isArray(value) ? value.join('-') : String(value)
+        templateVars[key] = slugToTitleCase(strValue)
+      }
+    }
+
+    const titleFragment = interpolateString(routeConfig.titleFragment, templateVars)
+    const title = config.getFullSiteTitle(titleFragment)
+
+    let descriptionTemplate = routeConfig.description
+
+    if (routeName === 'services-category' && to.params.category) {
+      const categorySlug = (Array.isArray(to.params.category) ? to.params.category[0] : to.params.category) as string
+      const customDesc = (seoServicesCategory as Record<string, string>)[categorySlug]
+      if (customDesc) {
+        descriptionTemplate = customDesc
+      }
+    }
+    else if (routeName === 'service-details-slug' && to.params.slug) {
+      const serviceSlug = (Array.isArray(to.params.slug) ? to.params.slug[0] : to.params.slug) as string
+      const customDesc = (seoServiceDetailsSlug as Record<string, string>)[serviceSlug]
+      if (customDesc) {
+        descriptionTemplate = customDesc
+      }
+    }
+
+    const description = interpolateString(descriptionTemplate, templateVars)
     // Use the live route path for ogUrl so dynamic routes (e.g. news/[slug]) get the correct URL
     const ogUrl = `${config.getOpenGraphUrl().replace(TRAILING_SLASH_REGEX, '')}${to.path}`
 
