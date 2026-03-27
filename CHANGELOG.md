@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Friday opening information added to relevant LGU services
 
 ### Changed
+- Improved SEO title generation for slug-based routes (News, Services, Details) and modularized SEO configuration files
 - Updated app version display formatting in site footer for better clarity
 - Updated hardcoded year and income data in city statistics
 - Updated office hours to remove lunch breaks and clarify continuous operation
@@ -28,7 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Technical
 - **Added**: Project maintenance strategy documentation (`CHANGELOG_STRATEGY.md`)
 - **Added**: Centralized `regexConstants.ts` for static regular expressions
-- **Updated**: Contribution guidelines and development standards (`CONTRIBUTING.md`)
+- **Updated**: Contribution guidelines and development standards (`CONTRIBUTING.md`) with instructions for finding tasks using the GitHub Project board
 - **Refactored**: Modular search and changelog parsing logic with shared regex utilities
 - **Fixed**: UI rendering issues, TypeScript errors, and deployment script environment loading
 
