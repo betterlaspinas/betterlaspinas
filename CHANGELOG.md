@@ -21,9 +21,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Barangay Chairmen have been updated to the latest as of Q1 2026
 
 ### Infrastructure
-- **Added**: GitHub Actions workflow for automated deployment (`cd.yml`)
-- **Updated**: GitHub Actions deployment workflow to support tag-based releases (`cd.yml`)
+- **Added**: GitHub Actions deployment workflow (`cd.yml`) with support for tag-based releases
 - **Removed**: `npm` package manager in favor of `pnpm` (updated `pnpm-lock.yaml`)
+- **Updated**: Core dependencies and development tools (`nuxt` 4.4, `vue` 3.5, `tailwindcss` 4.2, `vitest` 4.1, `eslint` 10.1, etc.)
 - **Updated**: Maintenance workflows and CI/CD pipelines (`ci.yml`, `codeql.yml`, `dependabot.yml`, etc.)
 
 ### Technical
