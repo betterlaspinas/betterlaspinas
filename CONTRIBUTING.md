@@ -6,6 +6,7 @@ Thank you for your interest in contributing to Better Las Piñas! This document 
 
 - [Code of Conduct](#-code-of-conduct)
 - [How Can I Contribute?](#-how-can-i-contribute)
+  - [Finding Tasks](#-finding-tasks)
 - [Development Setup](#️-development-setup)
 - [Coding Standards](#-coding-standards)
 - [Commit Guidelines](#-commit-guidelines)
@@ -18,6 +19,21 @@ Thank you for your interest in contributing to Better Las Piñas! This document 
 This project adheres to the [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code.
 
 ## 🤝 How Can I Contribute?
+
+### 🔍 Finding Tasks
+
+We use a [GitHub Project Board](https://github.com/orgs/betterlaspinas/projects/3) to manage and track all active tasks. This is the best place to find something to work on.
+
+- **🌟 Start Here**: If you're new to the project, check this tab. It contains issues labeled `good first issue` or `help wanted`.
+- **📋 Triage**: A complete list of all active tasks, grouped by priority.
+- **⚡ Active Sprint**: See what's currently being worked on for the current development cycle.
+
+**How to claim a task:**
+
+1.  Browse the **Todo** column in the **🌟 Start Here** or **⚡ Active Sprint** tabs.
+2.  Open the issue you're interested in and read the description.
+3.  **Comment on the issue** stating you'd like to work on it.
+4.  Once a maintainer assigns it to you (or gives a thumbs up), you can start!
 
 ### Reporting Bugs
 
