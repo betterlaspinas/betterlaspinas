@@ -42,7 +42,7 @@
     "@nuxt/test-utils": "^4.0.0",
     "@nuxtjs/seo": "^4.0.2",
     "@tailwindcss/postcss": "^4.2.2",
-    "@vitest/coverage-v8": "^4.1.0",
+    "@vitest/coverage-v8": "^4.1.2",
     "@vue/test-utils": "^2.4.6",
     "autoprefixer": "^10.4.27",
     "commander": "^13.1.0",
@@ -52,7 +52,7 @@
     "husky": "^9.1.7",
     "postcss": "^8.5.8",
     "tailwindcss": "^4.2.2",
-    "vitest": "^4.1.0",
+    "vitest": "^4.1.2",
     "vue-tsc": "^3.2.6"
   }
 }
