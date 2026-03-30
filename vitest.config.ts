@@ -3,7 +3,7 @@ import { defineVitestConfig } from '@nuxt/test-utils/config'
 export default defineVitestConfig({
   test: {
     environment: 'happy-dom',
-    exclude: ['legacy_backup/**', 'node_modules/**', '.nuxt/**', '.output/**'],
+    exclude: ['legacy_backup/**', 'node_modules/**', '.nuxt/**', '.output/**', './tests/e2e/**'],
     coverage: {
       provider: 'v8',
       reporter: ['text', 'html', 'json-summary'],
