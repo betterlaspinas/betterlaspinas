@@ -15,11 +15,14 @@ module.exports = {
     {
       name: 'betterlaspinas',
 
+      // Absolute path to symlink directory
+      cwd: '/home/betterlaspinas/htdocs/betterlaspinas.org/current',
+
       // Nuxt 4 server output entry point
-      script: './.output/server/index.mjs',
+      script: 'server/index.mjs',
 
       // Load environment variables from .env automatically (PM2 v5+)
-      env_file: '.env',
+      env_file: '/home/betterlaspinas/htdocs/betterlaspinas.org/.env',
 
       // Auto-restart on crash
       autorestart: true,
@@ -27,8 +30,8 @@ module.exports = {
       max_memory_restart: '512M',
 
       // Logging
-      out_file: './logs/pm2-out.log',
-      error_file: './logs/pm2-error.log',
+      out_file: '/home/betterlaspinas/htdocs/betterlaspinas.org/logs/pm2-out.log',
+      error_file: '/home/betterlaspinas/htdocs/betterlaspinas.org/logs/pm2-error.log',
       merge_logs: true,
       log_date_format: 'YYYY-MM-DD HH:mm:ss Z',
     },

@@ -1,4 +1,5 @@
 name: Continuous Deployment
+
 permissions:
   contents: read
 
@@ -10,12 +11,59 @@ on:
       - 'v*'
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: pnpm
+
+      - name: Install and Build
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm build
+
+      - name: Include ecosystem config in artifact
+        run: cp ecosystem.config.cjs .output/
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-${{ github.sha }}
+          path: .output/
+          retention-days: 7
+
   deploy:
+    needs: build
     runs-on: ubuntu-latest
     environment: production
-
     steps:
-      - name: Deploy to Server
+      - name: Download Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build-${{ github.sha }}
+          path: ./artifact
+
+      - name: SCP Artifact to Server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          port: ${{ secrets.SERVER_PORT || '22' }}
+          source: ./artifact
+          target: '~/deploys/${{ github.sha }}'
+
+      - name: Switch Symlink and Reload
         uses: appleboy/ssh-action@v1.2.5
         with:
           host: ${{ secrets.SERVER_IP }}
@@ -23,17 +71,7 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_PORT || '22' }}
           script: |
-            # 1. Setup PATH
-            # Required for Node-based tools (pnpm, pm2) to find 'node' via their shebangs.
             export PATH="${{ secrets.SERVER_BIN_PATH }}:$PATH"
-
-            # 2. Navigate and Fetch/Reset
-            # Using reset --hard instead of pull to resolve branch divergence and force-pushes.
-            cd ~/htdocs/${{ secrets.SERVER_DOMAIN }}
-            git fetch origin ${{ github.ref_name }}
-            git reset --hard FETCH_HEAD
-
-            # 3. Install, Build, and Restart
-            pnpm install --frozen-lockfile
-            pnpm build
-            pm2 reload betterlaspinas || NITRO_PORT=${{ secrets.APP_PORT || 3000 }} pm2 start ecosystem.config.cjs
+            ln -sfn ~/deploys/${{ github.sha }}/artifact ~/htdocs/${{ secrets.SERVER_DOMAIN }}/current
+            pm2 reload betterlaspinas || pm2 start ~/htdocs/${{ secrets.SERVER_DOMAIN }}/current/ecosystem.config.cjs
+            ls -dt ~/deploys/*/ | tail -n +6 | xargs -r rm -rf

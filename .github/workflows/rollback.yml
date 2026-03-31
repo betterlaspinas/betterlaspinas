@@ -1,0 +1,40 @@
+name: Rollback Deployment
+
+on:
+  workflow_dispatch:
+    inputs:
+      commit_sha:
+        description: Commit SHA to roll back to (leave empty for previous deploy)
+        required: false
+        type: string
+
+jobs:
+  rollback:
+    runs-on: ubuntu-latest
+    environment: production-rollback
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: SCP Rollback Script
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          port: ${{ secrets.SERVER_PORT || '22' }}
+          source: scripts/rollback.sh
+          target: '~'
+
+      - name: Execute Rollback
+        uses: appleboy/ssh-action@v1.2.5
+        env:
+          COMMIT_SHA: ${{ inputs.commit_sha }}
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          port: ${{ secrets.SERVER_PORT || '22' }}
+          envs: COMMIT_SHA
+          script: |
+            chmod +x ~/scripts/rollback.sh
+            ~/scripts/rollback.sh "$COMMIT_SHA"
