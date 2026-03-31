@@ -3,7 +3,7 @@ import { useConfig } from '@/composables/useConfig'
 import { GIT_DESCRIBE_REGEX } from '@/utils/regexConstants'
 
 const { site, lguName, siteBrandName, lguNameConcatenated, navigation } = useConfig()
-const currentYear = new Date().getFullYear()
+const currentYear = useState('current-year', () => new Date().getFullYear())
 
 const footerNav = navigation.footerNav || { quickLinks: [], resources: [], getInvolved: [] }
 
