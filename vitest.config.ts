@@ -16,10 +16,10 @@ export default defineVitestConfig({
         'app/components/ui/shadcn/**', // Exclude shadcn components if they are auto-generated/copied
       ],
     },
-  },
-  poolOptions: {
-    threads: {
-      singleThread: true,
+    poolOptions: {
+      threads: {
+        singleThread: true,
+      },
     },
   },
 })
