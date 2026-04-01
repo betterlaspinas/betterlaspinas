@@ -87,7 +87,7 @@ function getTrendIcon(trendType: string): string {
         </ClientOnly>
       </UiCard>
 
-      <p class="text-sm text-gray-500 flex items-center gap-2">
+      <div class="text-sm text-gray-500 flex items-center gap-2">
         <i class="bi bi-info-circle" />
         Source:
         <a
@@ -98,7 +98,7 @@ function getTrendIcon(trendType: string): string {
         >
           DTI Cities and Municipalities Competitiveness Index (CMCI)
         </a>
-      </p>
+      </div>
     </div>
   </section>
 </template>
