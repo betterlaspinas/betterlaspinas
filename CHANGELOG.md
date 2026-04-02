@@ -14,22 +14,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Friday opening information added to relevant LGU services
 
 ### Changed
+- Improved SEO title generation for slug-based routes (News, Services, Details) and modularized SEO configuration files
 - Updated app version display formatting in site footer for better clarity
 - Updated hardcoded year and income data in city statistics
 - Updated office hours to remove lunch breaks and clarify continuous operation
 - Cleaned up sitemap to exclude hidden and draft pages from public search indexing
 - Barangay Chairmen have been updated to the latest as of Q1 2026
 
+### Fixed
+- Hydration mismatch issues in layout and statistics components by synchronizing non-deterministic states and structural placeholders
+
 ### Infrastructure
-- **Added**: GitHub Actions workflow for automated deployment (`cd.yml`)
-- **Updated**: GitHub Actions deployment workflow to support tag-based releases (`cd.yml`)
+- **Added**: GitHub Actions deployment workflow (`cd.yml`) with support for tag-based releases
 - **Removed**: `npm` package manager in favor of `pnpm` (updated `pnpm-lock.yaml`)
+- **Updated**: Core dependencies and development tools (`nuxt` 4.4, `vue` 3.5, `tailwindcss` 4.2, `vitest` 4.1, `eslint` 10.1, etc.)
 - **Updated**: Maintenance workflows and CI/CD pipelines (`ci.yml`, `codeql.yml`, `dependabot.yml`, etc.)
 
 ### Technical
 - **Added**: Project maintenance strategy documentation (`CHANGELOG_STRATEGY.md`)
 - **Added**: Centralized `regexConstants.ts` for static regular expressions
-- **Updated**: Contribution guidelines and development standards (`CONTRIBUTING.md`)
+- **Updated**: Contribution guidelines and development standards (`CONTRIBUTING.md`) with instructions for finding tasks using the GitHub Project board
 - **Refactored**: Modular search and changelog parsing logic with shared regex utilities
 - **Fixed**: UI rendering issues, TypeScript errors, and deployment script environment loading
 
