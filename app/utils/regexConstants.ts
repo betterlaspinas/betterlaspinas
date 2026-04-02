@@ -34,6 +34,3 @@ export const CHANGELOG_ITEM_PREFIX_REGEX = /^\*\*(.*?)\*\*:\s*(.*)/
 // Git describe version (used in Footer.vue)
 // Matches tag, distance, and hash from git describe (e.g. v1.2.3-4-gabc123)
 export const GIT_DESCRIBE_REGEX = /^v?([0-9.]+)(?:-(\d+)-g([0-9a-f]+))?$/
-
-// Helper for finding .svg file extension
-export const SVG_EXTENSION_REGEX = /\.svg$/
