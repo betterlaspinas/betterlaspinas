@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Nuxt OG Image v6 has been added to generate social media preview images
 - Feature: Dynamic Changelog page with a premium alternating timeline, including footer links and dynamic parsing logic
 - App version display in the site footer for improved maintenance and support tracking
 - Friday opening information added to relevant LGU services

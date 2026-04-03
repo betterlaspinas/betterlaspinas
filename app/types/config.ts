@@ -51,6 +51,7 @@ export interface SiteConfig {
   logo: {
     main: string
     white: string
+    whitePng: string
     favicon: string
   }
 }

@@ -47,7 +47,7 @@ export default defineNuxtConfig({
     enabled: true,
   },
   css: ['~/assets/css/main.css'],
-  modules: ['@pinia/nuxt', '@nuxtjs/seo'],
+  modules: ['@pinia/nuxt', '@nuxtjs/seo', 'nuxt-og-image'],
   runtimeConfig: {
     public: {
       site: {
