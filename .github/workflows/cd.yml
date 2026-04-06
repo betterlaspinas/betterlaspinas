@@ -6,8 +6,6 @@ on:
   push:
     branches:
       - main
-    tags:
-      - 'v*'
 
 jobs:
   deploy:
@@ -30,7 +28,7 @@ jobs:
             # 2. Navigate and Fetch/Reset
             # Using reset --hard instead of pull to resolve branch divergence and force-pushes.
             cd ~/htdocs/${{ secrets.SERVER_DOMAIN }}
-            git fetch origin ${{ github.ref_name }}
+            git fetch --tags origin ${{ github.ref_name }}
             git reset --hard FETCH_HEAD
 
             # 3. Install, Build, and Restart
