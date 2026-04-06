@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-04-06
+
 ### Added
 - Nuxt OG Image v6 has been added to generate social media preview images
 - Feature: Dynamic Changelog page with a premium alternating timeline, including footer links and dynamic parsing logic
@@ -27,7 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Infrastructure
 - **Added**: GitHub Actions deployment workflow (`cd.yml`) with support for tag-based releases
 - **Removed**: `npm` package manager in favor of `pnpm` (updated `pnpm-lock.yaml`)
-- **Updated**: Core dependencies and development tools (`nuxt` 4.4, `vue` 3.5, `tailwindcss` 4.2, `vitest` 4.1, `eslint` 10.1, etc.)
+- **Updated**: Core dependencies and development tools (`nuxt` 4.4, `vue` 3.5, `tailwindcss` 4.2, `vitest` 4.1, `eslint` 10.2, etc.)
 - **Updated**: Maintenance workflows and CI/CD pipelines (`ci.yml`, `codeql.yml`, `dependabot.yml`, etc.)
 
 ### Technical
@@ -82,5 +84,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Technical
 - **Added**: Open source governance: `README`, `CONTRIBUTING`, `LICENSE`, `CODE_OF_CONDUCT`
 
-[Unreleased]: https://github.com/betterlaspinas/betterlaspinas/compare/v1.0.0...main
+[Unreleased]: https://github.com/betterlaspinas/betterlaspinas/compare/v1.1.0...main
+[1.1.0]: https://github.com/betterlaspinas/betterlaspinas/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/betterlaspinas/betterlaspinas/releases/tag/v1.0.0
