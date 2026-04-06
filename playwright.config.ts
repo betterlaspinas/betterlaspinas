@@ -43,7 +43,7 @@ export default defineConfig({
     testIdAttribute: 'data-test',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on',
+    trace: 'on-first-retry',
     /* Timeout for each action like click(), fill() etc. */
     actionTimeout: 0,
   },
@@ -70,32 +70,12 @@ export default defineConfig({
     //   use: { ...devices['Desktop Firefox'], permissions: ['clipboard-read'] },
     // },
 
-    // {
-    //   name: 'webkit',
-    //   /* ensures setup project runs before this one, allowing us to set up the environment (e.g., log in) before running tests that require it. */
-    //   dependencies: ['setup'],
-    //   use: { ...devices['Desktop Safari'], permissions: ['clipboard-read'] },
-    // },
-
     /* Test against mobile viewports. */
     // {
     //   name: 'Mobile Chrome',
     //   use: { ...devices['Pixel 5'] },
     // },
-    // {
-    //   name: 'Mobile Safari',
-    //   use: { ...devices['iPhone 12'] },
-    // },
 
-    /* Test against branded browsers. */
-    // {
-    //   name: 'Microsoft Edge',
-    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    // },
-    // {
-    //   name: 'Google Chrome',
-    //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
-    // },
   ],
 
   /* Run your local dev server before starting the tests */

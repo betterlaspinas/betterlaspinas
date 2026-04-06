@@ -48,7 +48,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "^7.7.3",
     "@nuxt/test-utils": "^4.0.0",
-    "@nuxtjs/seo": "^4.0.2",
+    "@nuxtjs/seo": "^5.1.0",
     "@playwright/test": "^1.58.2",
     "@tailwindcss/postcss": "^4.2.2",
     "@types/node": "^25.5.0",
