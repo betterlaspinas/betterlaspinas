@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Fixed
+- Fixed hydration mismatch issue in service details layout
 - Prevented empty "Unreleased" section (and other empty versions or sections) from being rendered on the Changelog page
 
 ### Infrastructure
