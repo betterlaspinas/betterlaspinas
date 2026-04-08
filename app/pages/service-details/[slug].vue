@@ -28,13 +28,22 @@ function toggleFaq(index: number) {
       ]"
     />
 
-    <ServicesPageHeader
+    <UiPageHero
       :badge-icon="service.badgeIcon"
       :badge-text="service.badgeText"
       :title="service.fullTitle"
       :description="service.description"
-      search-placeholder="Search other services..."
-    />
+    >
+      <div class="max-w-xl mx-auto mt-8">
+        <div class="relative flex items-center">
+          <i class="bi bi-search absolute left-4 text-gray-400 z-10 pointer-events-none" />
+          <ServicesSearch
+            placeholder="Search services (e.g., birth certificate, marriage certificate)"
+            class="w-full [&_input]:pl-12 [&_input]:pr-4 [&_input]:py-4 [&_input]:rounded-xl [&_input]:text-base [&_input]:border-0 [&_input]:shadow-lg"
+          />
+        </div>
+      </div>
+    </UiPageHero>
 
     <!-- Quick Stats -->
     <section class="py-8 bg-gray-50">
