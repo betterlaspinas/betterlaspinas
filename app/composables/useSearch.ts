@@ -94,9 +94,7 @@ function clearStoredRecentSearches(): void {
 
 export function useSearch(initialQuery = '') {
   const query = ref(initialQuery)
-  // const category = ref('')
-  // TODO: Remove this and uncomment above to restore all categories
-  const category = ref('certificates')
+  const category = ref()
   const results = ref<SearchResult[]>([])
   const suggestions = ref<SearchSuggestions>({
     popular: [],
@@ -109,7 +107,7 @@ export function useSearch(initialQuery = '') {
 
   // const services = computed(() => getServicesConfig().services as Service[])
   // TODO: Remove this and uncomment above to restore all services
-  const services = computed(() => (getServicesConfig().services).filter(service => service.categoryId === 'certificates'))
+  const services = computed(() => (getServicesConfig().services).filter(service => service.categoryId === 'certificates' || service.categoryId === 'business'))
 
   // Create Fuse instance for fuzzy search
   const fuse = computed(() => new Fuse(services.value, FUSE_OPTIONS))

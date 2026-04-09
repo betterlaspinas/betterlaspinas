@@ -24,7 +24,6 @@ const services: ServiceCard[] = [
     icon: 'bi-shop',
     titleKey: 'service-business',
     descKey: 'service-business-desc',
-    hidden: true,
   },
   {
     href: '/services/tax-payments',

@@ -111,11 +111,10 @@ export const categoriesContent: CategoryContent[] = [
   },
   {
     id: 'business',
-    name: 'Business & Trade',
+    name: 'Business, Trade & Investment',
     icon: 'bi-shop',
     badgeText: 'Business',
     description: 'Business permits, licenses, and trade registration services',
-    hidden: true,
     services: [
       {
         id: 'business-permit',
@@ -124,8 +123,8 @@ export const categoriesContent: CategoryContent[] = [
         description:
           'New business permit application for commercial operations',
         fee: 'Varies',
-        time: '1-3 days',
-        link: '/service-details/business-permits-licensing',
+        time: '1 day',
+        link: '/service-details/business-permit-new',
       },
       {
         id: 'business-renewal',
@@ -133,8 +132,8 @@ export const categoriesContent: CategoryContent[] = [
         icon: 'bi-arrow-repeat',
         description: 'Annual renewal of existing business permits',
         fee: 'Varies',
-        time: '1-2 days',
-        link: '/service-details/business-permits-licensing',
+        time: 'Approx. 3 hours',
+        link: '/service-details/business-permit-renewal',
       },
       {
         id: 'mayors-clearance',
@@ -177,13 +176,13 @@ export const categoriesContent: CategoryContent[] = [
         icon: 'bi-shop-window',
         description:
           'Business permits, Mayor\'s clearance, and licensing services',
-        link: '/service-details/business-permits-licensing',
+        link: '/service-details/business-permit-new',
       },
       {
-        title: 'Municipal Treasurer\'s Office',
+        title: 'City Treasurer\'s Office',
         icon: 'bi-cash-coin',
         description: 'Business tax payments and fee collection',
-        link: '/service-details/municipal-treasurer',
+        link: '/service-details/city-treasurer',
       },
     ],
   },
@@ -203,7 +202,7 @@ export const categoriesContent: CategoryContent[] = [
           'Payment of annual real property tax for land and buildings',
         fee: 'Based on assessment',
         time: '15-30 mins',
-        link: '/service-details/municipal-treasurer',
+        link: '/service-details/city-treasurer',
       },
       {
         id: 'tax-clearance',
@@ -212,7 +211,7 @@ export const categoriesContent: CategoryContent[] = [
         description: 'Certificate of no tax delinquency',
         fee: '₱50',
         time: '15-30 mins',
-        link: '/service-details/municipal-treasurer',
+        link: '/service-details/city-treasurer',
       },
       {
         id: 'tax-declaration',
@@ -230,7 +229,7 @@ export const categoriesContent: CategoryContent[] = [
         description: 'Payment of business taxes and fees',
         fee: 'Varies',
         time: '15-30 mins',
-        link: '/service-details/municipal-treasurer',
+        link: '/service-details/city-treasurer',
       },
       {
         id: 'cedula',
@@ -255,7 +254,7 @@ export const categoriesContent: CategoryContent[] = [
         title: 'Municipal Treasurer\'s Office',
         icon: 'bi-cash-coin',
         description: 'Tax payments, revenue collection, and tax clearances',
-        link: '/service-details/municipal-treasurer',
+        link: '/service-details/city-treasurer',
       },
       {
         title: 'Municipal Assessor\'s Office',

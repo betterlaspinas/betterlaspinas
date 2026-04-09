@@ -48,6 +48,9 @@ export interface ServiceDetail {
   faqs: FAQ[]
   office: OfficeInfo
   relatedServices: RelatedService[]
+  onlineLink?: string
+  sourceUrl?: string
+  sourceName?: string
 }
 
 export const serviceDetailsContent: ServiceDetail[] = [
@@ -521,74 +524,183 @@ export const serviceDetailsContent: ServiceDetail[] = [
   },
 
   /**
-   * Business & Trade
+   * Business, Trade & Investment
    */
   {
-    id: 'business-permits-licensing',
-    title: 'Business Permits & Licensing',
-    fullTitle: 'Business Permits & Licensing Office',
+    id: 'business-permit-new',
+    title: 'Business Permit (New)',
+    fullTitle: 'Issuance of New Business License and Mayor’s Permit',
     category: 'Business',
     categoryLink: '/services/business',
     badgeText: 'Business',
     badgeIcon: 'bi-shop',
-    description: 'Business permits, Mayor\'s clearance, and licensing services',
+    description: 'Apply for a new mayor\'s permit to operate a business within the city as per City Ordinance No: 1373-16',
     quickStats: [
-      { icon: 'bi-clock', label: 'Processing', value: '1-3 Days' },
-      { icon: 'bi-cash', label: 'Fee', value: 'Varies by Business' },
+      { icon: 'bi-clock', label: 'Processing', value: '1 Day' },
+      { icon: 'bi-cash', label: 'Fee', value: 'Varies on Assessment' },
       {
         icon: 'bi-person-check',
         label: 'Who Can Apply',
-        value: 'Business Owner',
+        value: 'Stakeholders and Business Owners',
       },
-      { icon: 'bi-calendar-check', label: 'Appointment', value: 'Walk-in' },
+      { icon: 'bi-calendar-check', label: 'Appointment', value: 'Online / Walk-in' },
     ],
     processSteps: [
       {
-        title: 'Secure Barangay Clearance',
-        description:
-          'Get business clearance from the barangay where your business is located.',
-      },
-      {
-        title: 'Prepare Documents',
-        description:
-          'Gather DTI/SEC registration, lease contract, and other requirements.',
-      },
-      {
         title: 'Submit Application',
         description:
-          'Go to BPLO and submit application with required documents.',
+          'Submit duly accomplished Unified Application Form together with complete requirements to BPLO.',
       },
       {
-        title: 'Pay Fees',
-        description: 'Pay business taxes and fees at Treasurer\'s Office.',
+        title: 'Planning & Engineering Evaluation',
+        description:
+          'Personnel from Planning (Zoning/Locational Clearance) and Engineering (Occupancy) evaluate the application at the BPLO office.',
       },
       {
-        title: 'Claim Permit',
-        description: 'Return to BPLO to claim your business permit.',
+        title: 'Data Verification',
+        description:
+          'Verification of accounts and issuance of a Business Account Number at the Electronic Data Processing (EDP) division.',
+      },
+      {
+        title: 'Approval',
+        description:
+          'The application is forwarded for approval by the Chief of BPLO or their authorized representative.',
+      },
+      {
+        title: 'Generate Payment Order',
+        description:
+          'Release of the signed Tax Order of Payment (TOP) covering consolidated taxes, fees, and regulatory charges.',
+      },
+      {
+        title: 'Pay Taxes and Fees',
+        description:
+          'Present TOP to the Business License Tax Division, Treasury Department and pay assessed fees. An Official Receipt and Cedula will be issued.',
+      },
+      {
+        title: 'Claim Permit & Clearances',
+        description:
+          'Claim your Business License, Mayor\'s Permit, Sanitary Permit, and other clearances at BPLO.',
         isFinal: true,
       },
     ],
     requirements: [
       {
-        title: 'New Business',
-        icon: 'bi-shop',
+        title: 'Documentary Requirements',
+        icon: 'bi-file-text',
         items: [
-          'DTI/SEC Registration',
-          'Barangay Business Clearance',
-          'Contract of Lease or Land Title',
-          'Fire Safety Certificate',
-          'Sanitary Permit',
-          'Valid ID',
+          'Unified Application Form',
+          'Business Name Registration (DTI / SEC / CDA)',
+          'Proof of Legal Ownership (Tax Dec, TCT) or Notarized Contract of Lease',
+          'Picture of Business Establishment (3R Size Colored, 1pc)',
+          'Picture of Owner/President/Treasurer (2x2 Size, 1pc)',
+          'Homeowners/Subdivision/Villages Clearance or Condominium Approval',
+          'Undertaking (BPLO)',
+          'Special Requirements based on line of business (if applicable)',
         ],
       },
       {
-        title: 'Renewal',
+        title: 'If Applied Through Representative',
+        icon: 'bi-people',
+        items: [
+          'Letter of Authority / Special Power of Attorney / Secretary Certificate',
+          'Valid ID of owner and representative',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'How long does the processing take?',
+        answer: 'As prescribed by R.A. 11032 (Ease of Doing Business Law), government transactions follow a 3-7-20 day rule. While typical applications are processed within 1 Day, official timelines are: Up to 3 days for Simple, 7 days for Complex, and 20 days for Highly Technical transactions. If City Council approval is required, it may take 45 working days (extendable by 20 days).',
+      },
+      {
+        question: 'What if that location had a previous tenant?',
+        answer: 'The previous tenant must have filed a formal Closure/Retirement of business to the City Treasurer\'s Office. Otherwise, the building owner must submit a Termination of Lease Contract and an Affidavit of No Relation so the new applicant can secure an account number.',
+      },
+    ],
+    office: {
+      name: 'Business Permits & Licensing Office',
+      location: 'City Hall, Ground Floor',
+      phone: '(02) 8551-5930',
+      hours: 'Mon-Thu: 8AM - 7PM',
+    },
+    relatedServices: [
+      {
+        title: 'Business Permit Renewal',
+        link: '/service-details/business-permit-renewal',
+      },
+      {
+        title: 'City Treasurer',
+        link: '/service-details/city-treasurer',
+      },
+    ],
+    onlineLink: 'https://cityoflaspinas.ph/',
+    sourceUrl: 'https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf',
+    sourceName: 'Citizen\'s Charter 2022 (1st Edition)',
+  },
+  {
+    id: 'business-permit-renewal',
+    title: 'Business Permit (Renewal)',
+    fullTitle: 'Renewal of Business License and Mayor\'s Permit',
+    category: 'Business',
+    categoryLink: '/services/business',
+    badgeText: 'Business',
+    badgeIcon: 'bi-shop',
+    description: 'Renew your annual business permit, Mayor\'s clearance, and licensing services as per City Ordinance No: 1373-16',
+    quickStats: [
+      { icon: 'bi-clock', label: 'Processing', value: 'Approx. 3 Hours' },
+      { icon: 'bi-cash', label: 'Fee', value: 'Varies by Assessment' },
+      {
+        icon: 'bi-person-check',
+        label: 'Who Can Apply',
+        value: 'Registered Business Owner',
+      },
+      { icon: 'bi-calendar-check', label: 'Appointment', value: 'Online / Walk-in' },
+    ],
+    processSteps: [
+      {
+        title: 'Submit Application',
+        description:
+          'Submit duly accomplished application form indicating gross sale/receipt together with complete requirements to BPLO.',
+      },
+      {
+        title: 'Evaluation & Approval',
+        description:
+          'BPLO personnel reviews requirements. The application is then forwarded for approval by the BPLO Chief or authorized representative.',
+      },
+      {
+        title: 'Generate Payment Order',
+        description:
+          'Once approved, a computer-generated Tax Order of Payment (TOP) is released, covering consolidated taxes and fees.',
+      },
+      {
+        title: 'Pay Taxes and Fees',
+        description: 'Present TOP and pay at the Business License Division, Treasury Department. Receive Official Receipt and Cedula.',
+      },
+      {
+        title: 'Claim Permit & Clearances',
+        description: 'Return to BPLO to claim your Business License, Mayor\'s Permit, Sanitary Permit, and other regulatory clearances.',
+        isFinal: true,
+      },
+    ],
+    requirements: [
+      {
+        title: 'Documentary Requirements',
         icon: 'bi-arrow-repeat',
         items: [
-          'Previous Business Permit',
-          'Community Tax Certificate (Cedula)',
-          'Barangay Business Clearance',
-          'Updated Fire Safety Certificate',
+          'Unified Application Form',
+          'Prior Year Audited Financial Statement / ITR (Last 2 years)',
+          'Monthly/Quarterly VAT Returns / Percentage Tax Returns of previous years',
+          'Homeowners/Subdivision/Condominium Clearance to conduct business',
+          'Undertaking (BPLO)',
+          'Special Requirements based on line of business (if applicable)',
+        ],
+      },
+      {
+        title: 'If Applied Through Representative',
+        icon: 'bi-people',
+        items: [
+          'Letter of Authority / Special Power of Attorney / Secretary Certificate',
+          'Valid ID of owner and representative',
         ],
       },
     ],
@@ -598,24 +710,31 @@ export const serviceDetailsContent: ServiceDetail[] = [
         answer: 'Before January 20 of each year to avoid penalties.',
       },
       {
-        question: 'What are the penalties for late renewal?',
+        question: 'How long does the processing take?',
+        answer: 'According to the Citizen\'s Charter 2022, the total processing time for a simple renewal is approximately 3 hours and 10 minutes.',
+      },
+      {
+        question: 'What happens if I renew late?',
         answer:
-          'A surcharge of 25% plus 2% interest per month on unpaid taxes.',
+          'Renewals after the January 20 deadline are subject to surcharges and monthly interest as prescribed by the City\'s Revenue Code (Ordinance 1373-16).',
       },
     ],
     office: {
       name: 'Business Permits & Licensing Office',
       location: 'City Hall, Ground Floor',
-      phone: '(078) 326-5001',
+      phone: '(02) 8551-5930',
       hours: 'Mon-Thu: 8AM - 7PM',
     },
     relatedServices: [
       {
         title: 'City Treasurer',
-        link: '/service-details/municipal-treasurer',
+        link: '/service-details/city-treasurer',
       },
       { title: 'Fire Safety Certificate', link: '/services/business' },
     ],
+    onlineLink: 'https://cityoflaspinas.ph/',
+    sourceUrl: 'https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf',
+    sourceName: 'Citizen\'s Charter 2022 (1st Edition)',
   },
   {
     id: 'tricycle-franchising',
@@ -652,7 +771,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
       {
         title: 'Pay Fees',
-        description: 'Pay franchise fee at Treasurer\'s Office.',
+        description: 'Pay franchise fee at City Treasurer\'s Office.',
       },
       {
         title: 'Claim Franchise',
@@ -669,7 +788,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
           'Valid driver\'s license',
           'Barangay clearance',
           'Police clearance',
-          'NBI clearance',
+          'TODA Endorsement/Certification',
           '2x2 ID pictures',
         ],
       },
@@ -688,8 +807,8 @@ export const serviceDetailsContent: ServiceDetail[] = [
     },
     relatedServices: [
       {
-        title: 'Business Permits',
-        link: '/service-details/business-permits-licensing',
+        title: 'New Business Permit',
+        link: '/service-details/business-permit-new',
       },
     ],
   },
@@ -710,7 +829,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       { icon: 'bi-clock', label: 'Processing', value: '1-5 Days' },
       { icon: 'bi-file-text', label: 'Records', value: 'Property Info' },
       { icon: 'bi-geo-alt', label: 'Location', value: 'Ground Floor' },
-      { icon: 'bi-calendar-check', label: 'Appointment', value: 'Walk-in' },
+      { icon: 'bi-calendar-check', label: 'Appointment', value: 'Online / Walk-in' },
     ],
     processSteps: [
       {
@@ -766,7 +885,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
     relatedServices: [
       {
         title: 'City Treasurer',
-        link: '/service-details/municipal-treasurer',
+        link: '/service-details/city-treasurer',
       },
       {
         title: 'Property Declaration',
@@ -847,6 +966,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
         link: '/service-details/municipal-assessor',
       },
     ],
+    onlineLink: 'https://cityoflaspinas.ph/',
   },
   {
     id: 'property-declaration',
@@ -912,7 +1032,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
       {
         title: 'City Treasurer',
-        link: '/service-details/municipal-treasurer',
+        link: '/service-details/city-treasurer',
       },
     ],
   },
@@ -1481,146 +1601,8 @@ export const serviceDetailsContent: ServiceDetail[] = [
       { title: 'City Budget', link: '/service-details/municipal-budget' },
       {
         title: 'City Treasurer',
-        link: '/service-details/municipal-treasurer',
+        link: '/service-details/city-treasurer',
       },
-    ],
-  },
-
-  /**
-   * Economy
-   */
-  {
-    id: 'seedo-public-market',
-    title: 'SEEDO Public Market',
-    fullTitle: 'SEEDO Public Market Services',
-    category: 'Economy',
-    categoryLink: '/services/business',
-    badgeText: 'Economy',
-    badgeIcon: 'bi-shop',
-    description: 'Market stall rentals and public market services',
-    quickStats: [
-      { icon: 'bi-clock', label: 'Market Hours', value: '5AM-6PM' },
-      { icon: 'bi-telephone', label: 'Contact', value: '(078) 326-5001' },
-      { icon: 'bi-geo-alt', label: 'Location', value: 'Public Market' },
-      { icon: 'bi-cash', label: 'Stall Rental', value: 'Varies' },
-    ],
-    processSteps: [
-      {
-        title: 'Inquire Availability',
-        description: 'Check available market stalls at SEEDO office.',
-      },
-      {
-        title: 'Submit Application',
-        description: 'File stall rental application.',
-      },
-      {
-        title: 'Pay Rental',
-        description: 'Pay rental fees at Treasurer\'s Office.',
-      },
-      {
-        title: 'Claim Contract',
-        description: 'Receive stall assignment and contract.',
-        isFinal: true,
-      },
-    ],
-    requirements: [
-      {
-        title: 'Stall Application',
-        icon: 'bi-file-text',
-        items: [
-          'Valid ID',
-          'Barangay clearance',
-          'Business name (if applicable)',
-          'Payment of rental fees',
-        ],
-      },
-    ],
-    faqs: [
-      {
-        question: 'How are stalls assigned?',
-        answer: 'Based on availability and first-come-first-served basis.',
-      },
-    ],
-    office: {
-      name: 'SEEDO Office',
-      location: 'Public Market',
-      phone: '',
-      hours: 'Mon-Thu: 8AM - 7PM',
-    },
-    relatedServices: [
-      {
-        title: 'Business Permits',
-        link: '/service-details/business-permits-licensing',
-      },
-    ],
-  },
-  {
-    id: 'seedo-slaughterhouse',
-    title: 'SEEDO Slaughterhouse',
-    fullTitle: 'SEEDO Slaughterhouse Services',
-    category: 'Economy',
-    categoryLink: '/services/business',
-    badgeText: 'Economy',
-    badgeIcon: 'bi-building',
-    description: 'Livestock slaughtering and meat inspection services',
-    quickStats: [
-      { icon: 'bi-clock', label: 'Hours', value: '4AM-8AM' },
-      { icon: 'bi-telephone', label: 'Contact', value: '(078) 326-5001' },
-      {
-        icon: 'bi-geo-alt',
-        label: 'Location',
-        value: 'City Slaughterhouse',
-      },
-      { icon: 'bi-cash', label: 'Fee', value: 'Per head' },
-    ],
-    processSteps: [
-      {
-        title: 'Bring Livestock',
-        description: 'Transport livestock to the slaughterhouse.',
-      },
-      {
-        title: 'Ante-mortem Inspection',
-        description: 'Veterinarian inspects animals before slaughter.',
-      },
-      {
-        title: 'Slaughter Process',
-        description: 'Animals are slaughtered following proper procedures.',
-      },
-      {
-        title: 'Post-mortem Inspection',
-        description: 'Meat is inspected and stamped for safety.',
-      },
-      {
-        title: 'Claim Meat',
-        description: 'Collect inspected and stamped meat products.',
-        isFinal: true,
-      },
-    ],
-    requirements: [
-      {
-        title: 'For Slaughter',
-        icon: 'bi-file-text',
-        items: [
-          'Certificate of ownership',
-          'Transport permit (if from other city)',
-          'Payment of slaughter fee',
-        ],
-      },
-    ],
-    faqs: [
-      {
-        question: 'What time should I bring livestock?',
-        answer: 'Animals should arrive between 4AM-6AM for morning slaughter.',
-      },
-    ],
-    office: {
-      name: 'SEEDO - Slaughterhouse',
-      location: 'City Slaughterhouse',
-      phone: '',
-      hours: '4AM - 8AM',
-    },
-    relatedServices: [
-      { title: 'Veterinary Services', link: '/services/agriculture' },
     ],
   },
 

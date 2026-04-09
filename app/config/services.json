@@ -131,9 +131,10 @@
         "shop"
       ],
       "fee": "Varies",
-      "processingTime": "3-5 days",
+      "processingTime": "1 day",
       "office": "Business Permits & Licensing Office",
-      "url": "/services/business"
+      "url-old": "/services/business",
+      "url": "/service-details/business-permit-new"
     },
     {
       "id": "business-permit-renewal",
@@ -150,9 +151,9 @@
         "negosyo"
       ],
       "fee": "Varies",
-      "processingTime": "Same day",
+      "processingTime": "Approx. 3 hours",
       "office": "Business Permits & Licensing Office",
-      "url": "/services/business"
+      "url": "/service-details/business-permit-renewal"
     },
     {
       "id": "business-closure",
@@ -656,29 +657,6 @@
       "url": "/services/environment"
     },
     {
-      "id": "seedo-slaughterhouse",
-      "title": "SEEDO Slaughterhouse",
-      "category": "Business, Trade & Investment",
-      "categoryId": "business",
-      "description": "Hog, cattle, goat, and carabao slaughter with meat inspection services",
-      "keywords": [
-        "slaughterhouse",
-        "slaughter",
-        "hog",
-        "cattle",
-        "goat",
-        "carabao",
-        "meat",
-        "inspection",
-        "butcher",
-        "SEEDO"
-      ],
-      "fee": "₱40-350",
-      "processingTime": "37 min - 1.5 hrs",
-      "office": "SEEDO Slaughterhouse",
-      "url": "/service-details/seedo-slaughterhouse"
-    },
-    {
       "id": "cswdo-services",
       "title": "CSWDO Services",
       "category": "Social Services & Assistance",
@@ -721,55 +699,15 @@
       "url": "/services/environment"
     },
     {
-      "id": "seedo-public-market",
-      "title": "SEEDO Public Market",
-      "category": "Business, Trade & Investment",
-      "categoryId": "business",
-      "description": "Market clearance, entrance fees, vendor services, and CTC issuance",
-      "keywords": [
-        "public market",
-        "market",
-        "vendor",
-        "stall",
-        "clearance",
-        "entrance",
-        "SEEDO",
-        "palengke"
-      ],
-      "fee": "₱5-50",
-      "processingTime": "Same day",
-      "office": "SEEDO Public Market",
-      "url": "/service-details/seedo-public-market"
-    },
-    {
-      "id": "business-permits-licensing",
-      "title": "Business Permits & Licensing Office",
-      "category": "Business, Trade & Investment",
-      "categoryId": "business",
-      "description": "New permits, renewals, Mayor's clearance, and other business permits",
-      "keywords": [
-        "BPLS",
-        "business permit",
-        "license",
-        "mayor clearance",
-        "renewal",
-        "new business"
-      ],
-      "fee": "Varies",
-      "processingTime": "1-5 days",
-      "office": "Mayor's Office - BPLS",
-      "url": "/service-details/business-permits-licensing"
-    },
-    {
       "id": "tricycle-franchising",
       "title": "Tricycle Franchising & Records",
       "category": "Business, Trade & Investment",
       "categoryId": "business",
-      "description": "Apply for tricycle franchise (MTOF) and request records",
+      "description": "Apply for tricycle franchise (CTOF) and request records",
       "keywords": [
         "tricycle",
         "franchise",
-        "MTOF",
+        "CTOF",
         "pedicab",
         "toda",
         "driver",
