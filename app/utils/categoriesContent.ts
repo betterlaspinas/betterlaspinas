@@ -6,6 +6,7 @@ export interface ServiceItem {
   fee: string
   time: string
   link?: string
+  hidden?: boolean
 }
 
 export interface OfficeCard {
@@ -118,7 +119,7 @@ export const categoriesContent: CategoryContent[] = [
     services: [
       {
         id: 'business-permit',
-        title: 'Business Permit',
+        title: 'Business Permit (New)',
         icon: 'bi-shop',
         description:
           'New business permit application for commercial operations',
@@ -128,7 +129,7 @@ export const categoriesContent: CategoryContent[] = [
       },
       {
         id: 'business-renewal',
-        title: 'Business Permit Renewal',
+        title: 'Business Permit (Renewal)',
         icon: 'bi-arrow-repeat',
         description: 'Annual renewal of existing business permits',
         fee: 'Varies',
@@ -143,6 +144,7 @@ export const categoriesContent: CategoryContent[] = [
           'Clearance from the Mayor\'s Office for business operations',
         fee: '₱100',
         time: 'Same day',
+        hidden: true,
       },
       {
         id: 'tricycle-franchise',
@@ -152,6 +154,7 @@ export const categoriesContent: CategoryContent[] = [
         fee: '₱500',
         time: '3-5 days',
         link: '/service-details/tricycle-franchising',
+        hidden: true,
       },
       {
         id: 'sanitary-permit',
@@ -160,6 +163,7 @@ export const categoriesContent: CategoryContent[] = [
         description: 'Health and sanitation permit for food establishments',
         fee: '₱200-500',
         time: '1-2 days',
+        hidden: true,
       },
       {
         id: 'fire-safety',
@@ -168,6 +172,7 @@ export const categoriesContent: CategoryContent[] = [
         description: 'Fire safety inspection certificate for business premises',
         fee: 'Varies',
         time: '3-5 days',
+        hidden: true,
       },
     ],
     offices: [
@@ -762,5 +767,13 @@ export const categoriesContent: CategoryContent[] = [
 export function getCategoryContent(
   categoryId: string,
 ): CategoryContent | undefined {
-  return categoriesContent.find(category => category.id === categoryId)
+  const category = categoriesContent.find(category => category.id === categoryId)
+
+  if (!category)
+    return undefined
+
+  return {
+    ...category,
+    services: category.services.filter(service => !service.hidden),
+  }
 }

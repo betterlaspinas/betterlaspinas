@@ -51,6 +51,7 @@ export interface ServiceDetail {
   onlineLink?: string
   sourceUrl?: string
   sourceName?: string
+  hidden?: boolean
 }
 
 export const serviceDetailsContent: ServiceDetail[] = [
@@ -730,7 +731,11 @@ export const serviceDetailsContent: ServiceDetail[] = [
         title: 'City Treasurer',
         link: '/service-details/city-treasurer',
       },
-      { title: 'Fire Safety Certificate', link: '/services/business' },
+      // Bring back when we have the details
+      // {
+      //   title: 'Fire Safety Certificate',
+      //   link: '/services/business',
+      // },
     ],
     onlineLink: 'https://cityoflaspinas.ph/',
     sourceUrl: 'https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf',
@@ -738,6 +743,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
   },
   {
     id: 'tricycle-franchising',
+    hidden: true,
     title: 'Tricycle Franchising',
     fullTitle: 'Tricycle Franchise Application',
     category: 'Business',
@@ -1875,5 +1881,10 @@ export const serviceDetailsContent: ServiceDetail[] = [
 ]
 
 export function getServiceDetail(slug: string): ServiceDetail | undefined {
-  return serviceDetailsContent.find(service => service.id === slug)
+  const service = serviceDetailsContent.find(service => service.id === slug)
+
+  if (!service || service.hidden)
+    return undefined
+
+  return service
 }

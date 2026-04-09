@@ -22,7 +22,7 @@ const MAX_RECENT_SEARCHES = 10
 // TODO: Uncomment the hidden categories to restore all service categories
 const CURATED_POPULAR = [
   'birth certificate',
-  // 'business permit',
+  'business permit',
   // 'cedula',
   // 'real property tax',
   // 'senior citizen id',
@@ -105,9 +105,7 @@ export function useSearch(initialQuery = '') {
   const selectedIndex = ref(-1)
   const pendingNavigation = ref<string | null>(null)
 
-  // const services = computed(() => getServicesConfig().services as Service[])
-  // TODO: Remove this and uncomment above to restore all services
-  const services = computed(() => (getServicesConfig().services).filter(service => service.categoryId === 'certificates' || service.categoryId === 'business'))
+  const services = computed(() => getServicesConfig().services as ServiceItem[])
 
   // Create Fuse instance for fuzzy search
   const fuse = computed(() => new Fuse(services.value, FUSE_OPTIONS))

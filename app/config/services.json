@@ -171,7 +171,8 @@
       "fee": "Free",
       "processingTime": "1-2 days",
       "office": "Business Permits & Licensing Office",
-      "url": "/services/business"
+      "url": "/services/business",
+      "hidden": true
     },
     {
       "id": "sanitary-permit",
@@ -190,7 +191,8 @@
       "fee": "Varies",
       "processingTime": "1-3 days",
       "office": "City Health Office",
-      "url": "/services/business"
+      "url": "/services/business",
+      "hidden": true
     },
     {
       "id": "cedula",
@@ -208,7 +210,8 @@
       "fee": "₱5+",
       "processingTime": "Same day",
       "office": "City Treasurer's Office",
-      "url": "/services/business"
+      "url": "/services/business",
+      "hidden": true
     },
     {
       "id": "senior-citizen-id",
@@ -716,7 +719,8 @@
       "fee": "Varies",
       "processingTime": "3-5 days",
       "office": "BPLS / SBO",
-      "url": "/service-details/tricycle-franchising"
+      "url": "/service-details/tricycle-franchising",
+      "hidden": true
     },
     {
       "id": "city-treasurer",

@@ -268,7 +268,11 @@ export function getServicesConfig(): ServicesConfig {
   const config = servicesConfig as ServicesConfig
   return {
     ...config,
-    services: config.services ? config.services.filter((service: ServiceItem) => service.categoryId === 'certificates' || service.categoryId === 'business') : [],
+    services: config.services
+      ? config.services
+          .filter((service: ServiceItem) => service.categoryId === 'certificates' || service.categoryId === 'business')
+          .filter((service: ServiceItem) => !service.hidden)
+      : [],
   }
 }
 
