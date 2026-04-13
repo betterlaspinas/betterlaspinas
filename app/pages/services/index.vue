@@ -17,7 +17,6 @@ const categories = [
     icon: 'bi-shop',
     titleKey: 'cat-business',
     descKey: 'cat-business-desc',
-    hidden: true,
   },
   {
     href: '/services/social-services',
@@ -82,7 +81,6 @@ const lifeEvents = [
     href: '/services/business',
     icon: 'bi-shop',
     labelKey: 'life-starting-business',
-    hidden: true,
   },
   {
     href: '/services/certificates',
