@@ -55,20 +55,23 @@ export default defineNuxtRouteMiddleware((to) => {
     // Use the live route path for ogUrl so dynamic routes (e.g. news/[slug]) get the correct URL
     const ogUrl = `${config.getOpenGraphUrl().replace(TRAILING_SLASH_REGEX, '')}${to.path}`
 
-    useSeoMeta({
-      title,
-      description,
-      ogTitle: title,
-      ogDescription: description,
-      ogType: routeConfig.ogType || 'website',
-      ogUrl,
-      twitterCard: routeConfig.twitterCard || 'summary_large_image',
-      twitterTitle: title,
-      twitterDescription: description,
-    })
+    const nuxtApp = useNuxtApp()
+    nuxtApp.runWithContext(() => {
+      useSeoMeta({
+        title,
+        description,
+        ogTitle: title,
+        ogDescription: description,
+        ogType: routeConfig.ogType || 'website',
+        ogUrl,
+        twitterCard: routeConfig.twitterCard || 'summary_large_image',
+        twitterTitle: title,
+        twitterDescription: description,
+      })
 
-    useHead({
-      titleTemplate: '%s',
+      useHead({
+        titleTemplate: '%s',
+      })
     })
   }
 })

@@ -1,5 +1,7 @@
 {
   "birth-certificate": "Get a certified copy of birth certificate registered in {{lguName}}.",
   "marriage-certificate": "Register or request certified true copy of marriage certificate in {{lguName}}.",
-  "death-certificate": "Register death certificate and obtain burial or transfer permit in {{lguName}}."
+  "death-certificate": "Register death certificate and obtain burial or transfer permit in {{lguName}}.",
+  "business-permit-new": "Apply for a new Business License and Mayor's Permit in {{lguName}}.",
+  "business-permit-renewal": "Renew your annual Business License and Mayor's Permit in {{lguName}}."
 }

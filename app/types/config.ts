@@ -341,6 +341,7 @@ export interface ServiceItem {
   fee?: string
   processingTime?: string
   url: string
+  hidden?: boolean
 }
 
 export interface ServicesConfig {
