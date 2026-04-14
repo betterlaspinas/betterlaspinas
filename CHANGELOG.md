@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Prevented empty "Unreleased" section (and other empty versions or sections) from being rendered on the Changelog page
 
 ### Infrastructure
+- **Added**: `CODEOWNERS` file to define repository maintainers
 - **Added**: `--tags` to `git fetch` in `cd.yml` to support `git describe`
 - **Removed**: Redundant tag-based deployment trigger from `cd.yml`
 
