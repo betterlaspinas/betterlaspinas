@@ -20,6 +20,18 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
   devtools: { enabled: true },
+  vite: {
+    optimizeDeps: {
+      include: [
+        'chart.js',
+        'tailwind-variants',
+        '@vue-leaflet/vue-leaflet',
+        'fuse.js',
+        'clsx',
+        'tailwind-merge',
+      ],
+    },
+  },
   sitemap: {
     zeroRuntime: true,
     exclude: [
