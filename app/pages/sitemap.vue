@@ -58,8 +58,8 @@ const sections = computed<SitemapSection[]>(() => [
     cols: 4,
     links: [
       {
-        href: '/service-details/civil-registrar',
-        label: 'Local Civil Registrar',
+        href: '/service-details/city-civil-registry',
+        label: 'Local Civil Registry',
         hidden: true,
       },
       {

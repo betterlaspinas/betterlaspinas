@@ -822,7 +822,7 @@
       "url": "/service-details/city-assessor"
     },
     {
-      "id": "city-civil-registrar",
+      "id": "city-civil-registry",
       "title": "Civil Registry Office",
       "category": "Certificates & Vital Records",
       "categoryId": "certificates",
@@ -840,7 +840,7 @@
       "fee": "₱150+",
       "processingTime": "15-30 minutes",
       "office": "Civil Registry Office",
-      "url": "/service-details/city-civil-registrar"
+      "url": "/service-details/city-civil-registry"
     },
     {
       "id": "city-engineering",

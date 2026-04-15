@@ -94,11 +94,11 @@ export const categoriesContent: CategoryContent[] = [
     ],
     offices: [
       {
-        title: 'City Civil Registrar',
+        title: 'City Civil Registry',
         icon: 'bi-building',
         description:
           'Birth, death, marriage registration, corrections, and certified copies',
-        link: '/service-details/city-civil-registrar',
+        link: '/service-details/city-civil-registry',
       },
       {
         title: 'Human Resource Management',

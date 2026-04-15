@@ -10,6 +10,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Launched "Business, Trade & Investment" category with detailed guides for New and Renewal Business Permits, featuring online application support and official Citizen's Charter attribution
 
+### Changed
+- Updated naming from "City Civil Registrar" to "City Civil Registry" across the application
+- Updated City Civil Registry contact details (telephone, mobile, email, Facebook) and physical address in service records
+
 ### Fixed
 - Fixed hydration mismatch issue in service details layout
 - Prevented empty "Unreleased" section (and other empty versions or sections) from being rendered on the Changelog page
