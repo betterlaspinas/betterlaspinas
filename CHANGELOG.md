@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Updated naming from "City Civil Registrar" to "City Civil Registry" across the application
 - Updated City Civil Registry contact details (telephone, mobile, email, Facebook) and physical address in service records
+- Updated the City Health Office contact information to reflect new phone numbers, mobile, and official Facebook page
 
 ### Fixed
 - Fixed hydration mismatch issue in service details layout

@@ -239,7 +239,7 @@ function toggleFaq(index: number) {
               <p class="text-sm text-gray-600 mt-2">
                 {{ service.office.location }}
               </p>
-              <p class="text-sm text-gray-600 mt-1 flex items-center gap-2">
+              <p v-if="service.office.phone" class="text-sm text-gray-600 mt-1 flex items-center gap-2">
                 <i class="bi bi-telephone" /> {{ service.office.phone }}
               </p>
               <p v-if="service.office.mobile" class="text-sm text-gray-600 mt-1 flex items-center gap-2">
