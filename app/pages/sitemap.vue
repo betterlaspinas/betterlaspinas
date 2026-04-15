@@ -95,14 +95,6 @@ const sections = computed<SitemapSection[]>(() => [
       },
       { href: '/service-details/mswdo-services', label: 'MSWDO', hidden: true },
       {
-        href: '/service-details/business-permit-new',
-        label: 'BPLS Office',
-      },
-      {
-        href: '/service-details/business-permit-renewal',
-        label: 'BPLS Office',
-      },
-      {
         href: '/service-details/general-services',
         label: 'General Services',
         hidden: true,

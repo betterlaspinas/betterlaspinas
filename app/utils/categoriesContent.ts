@@ -137,6 +137,15 @@ export const categoriesContent: CategoryContent[] = [
         link: '/service-details/business-permit-renewal',
       },
       {
+        id: 'special-permit',
+        title: 'Special Permit',
+        icon: 'bi-shop',
+        description: 'Special Permit issued by the City Government for business establishment',
+        fee: 'Varies',
+        time: '2 hours 10 mins',
+        link: '/service-details/special-permit',
+      },
+      {
         id: 'mayors-clearance',
         title: 'Mayor\'s Clearance',
         icon: 'bi-patch-check',
@@ -182,6 +191,7 @@ export const categoriesContent: CategoryContent[] = [
         description:
           'Business permits, Mayor\'s clearance, and licensing services',
         link: '/service-details/business-permit-new',
+        hidden: true,
       },
       {
         title: 'City Treasurer\'s Office',

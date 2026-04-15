@@ -156,6 +156,24 @@
       "url": "/service-details/business-permit-renewal"
     },
     {
+      "id": "special-permit",
+      "title": "Special Permit",
+      "category": "Business, Trade & Investment",
+      "categoryId": "business",
+      "description": "Apply for a Special Permit to operate a business",
+      "keywords": [
+        "special",
+        "permit",
+        "business",
+        "mayor",
+        "license"
+      ],
+      "fee": "Varies on Assessment",
+      "processingTime": "Approx. 2 hours 10 mins",
+      "office": "Business Permits & Licensing Office",
+      "url": "/service-details/special-permit"
+    },
+    {
       "id": "business-closure",
       "title": "Business Closure",
       "category": "Business, Trade & Investment",
