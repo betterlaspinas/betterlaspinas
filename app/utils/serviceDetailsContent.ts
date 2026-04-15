@@ -1698,7 +1698,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
     description: 'Public health services, vaccination, and medical assistance',
     quickStats: [
       { icon: 'bi-clock', label: 'Office Hours', value: 'Mon-Fri 8AM-5PM' },
-      { icon: 'bi-telephone', label: 'Contact', value: '(02) 8776-7268' },
+      { icon: 'bi-telephone', label: 'Contact', value: '(02) 8367-3406' },
       { icon: 'bi-geo-alt', label: 'Location', value: 'City Hall Compound' },
       { icon: 'bi-heart', label: 'Services', value: 'Public Health' },
     ],
@@ -1733,7 +1733,9 @@ export const serviceDetailsContent: ServiceDetail[] = [
     office: {
       name: 'City Health Office',
       location: 'City Hall Compound',
-      phone: '(02) 8776-7268',
+      phone: '(02) 8367-3406',
+      mobile: '0998 977 8597',
+      facebook: 'https://www.facebook.com/LPCityhealth',
       hours: 'Mon-Fri: 8AM - 5PM',
     },
     relatedServices: [
@@ -1786,7 +1788,9 @@ export const serviceDetailsContent: ServiceDetail[] = [
     office: {
       name: 'City Health Office',
       location: 'City Hall Compound',
-      phone: '(02) 8776-7268',
+      phone: '(02) 8367-3406',
+      mobile: '0998 977 8597',
+      facebook: 'https://www.facebook.com/LPCityhealth',
       hours: 'Mon-Fri: 8AM - 5PM',
     },
     relatedServices: [
