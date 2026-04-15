@@ -3,10 +3,9 @@
 const props = defineProps<{
   title: string
   description?: string
-  siteName?: string
 }>()
 
-const { site, lguName } = useConfig()
+const { site } = useConfig()
 
 const logoPath = computed(() => site.value.logo?.whitePng || '/logos/svg/BetterGov_Icon-White.png')
 </script>
@@ -21,7 +20,7 @@ const logoPath = computed(() => site.value.logo?.whitePng || '/logos/svg/BetterG
         {{ props.title }}
       </h1>
       <h1 class="text-3xl leading-tight tracking-tight text-white">
-        Empowering the people of {{ lguName }}
+        {{ props.description }}
       </h1>
     </div>
   </div>

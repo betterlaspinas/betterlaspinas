@@ -72,6 +72,14 @@ export default defineNuxtRouteMiddleware((to) => {
       useHead({
         titleTemplate: '%s',
       })
+
+      const ogImageData = config.getOgImageRouteConfig(routeName, templateVars)
+      if (ogImageData) {
+        defineOgImage('DefaultBranding.takumi', {
+          title: ogImageData.title,
+          description: ogImageData.description,
+        })
+      }
     })
   }
 })
