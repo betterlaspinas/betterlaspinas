@@ -25,6 +25,9 @@ export interface OfficeInfo {
   name: string
   location: string
   phone: string
+  mobile?: string
+  email?: string
+  facebook?: string
   hours: string
 }
 
@@ -90,9 +93,9 @@ export const serviceDetailsContent: ServiceDetail[] = [
           'Bring valid government-issued ID. If representative: authorization letter and IDs of both owner and representative.',
       },
       {
-        title: 'Visit Civil Registrar',
+        title: 'Visit Civil Registry',
         description:
-          'Go to the City Civil Registrar Office - Window 4 at 2nd Floor, City Hall. Office hours: Mon-Fri, 8AM-5PM.',
+          'Go to the City Civil Registry Office - Window 4 at 1st Floor, Administrative Building. Office hours: Mon-Fri, 8AM-5PM.',
       },
       {
         title: 'Fill Out Request Form',
@@ -102,12 +105,12 @@ export const serviceDetailsContent: ServiceDetail[] = [
       {
         title: 'Pay the Fee',
         description:
-          'Pay ₱75 per certified copy at Window 2 or 3 of the Civil Registrar or at the City Treasurer\'s Office (same building).',
+          'Pay ₱75 per certified copy at Window 2 or 3 of the Civil Registry or at the City Treasurer\'s Office (same building).',
       },
       {
         title: 'Claim Certificate',
         description:
-          'Return to Civil Registrar Window 4 with official receipt. Certificate released within 15-30 minutes if record is available.',
+          'Return to Civil Registry Window 4 with official receipt. Certificate released within 15-30 minutes if record is available.',
         isFinal: true,
       },
     ],
@@ -136,7 +139,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
         question:
           'Can I get a birth certificate registered in another city?',
         answer:
-          'No. The City Civil Registrar only has records for births registered in this city. For other cities, request from that city\'s Civil Registrar or from PSA.',
+          'No. The City Civil Registry only has records for births registered in this city. For other cities, request from that city\'s Civil Registry or from PSA.',
       },
       {
         question: 'What if I don\'t know the exact date of birth?',
@@ -155,9 +158,12 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
     ],
     office: {
-      name: 'City Civil Registrar',
-      location: 'City Hall, 2nd Floor',
-      phone: '0920 425 8214',
+      name: 'City Civil Registry',
+      location: '1st Floor, Administrative Building, Las Piñas City Hall Compound',
+      phone: '(02) 8253-4370',
+      mobile: '0998 587 9659',
+      email: 'lpcivilreg@gmail.com',
+      facebook: 'https://www.facebook.com/civilreglaspinas',
       hours: 'Mon-Thu: 8AM - 7PM',
     },
     relatedServices: [
@@ -199,9 +205,9 @@ export const serviceDetailsContent: ServiceDetail[] = [
           'Prepare marriage certificate from solemnizing officer and valid IDs.',
       },
       {
-        title: 'Visit Civil Registrar',
+        title: 'Visit Civil Registry',
         description:
-          'Go to the Civil Registrar Office, 2nd Floor, City Hall.',
+          'Go to the Civil Registry Office, 1st Floor, Administrative Building.',
       },
       {
         title: 'Submit Documents & Verification',
@@ -210,7 +216,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
       {
         title: 'Payment',
-        description: 'Pay the Solemnization Fee of ₱150 at Window 2 or 3 in the Civil Registrar Office.',
+        description: 'Pay the Solemnization Fee of ₱150 at Window 2 or 3 in the Civil Registry Office.',
       },
       {
         title: 'Registration',
@@ -267,9 +273,12 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
     ],
     office: {
-      name: 'City Civil Registrar',
-      location: 'City Hall, 2nd Floor',
-      phone: '0920 425 8214',
+      name: 'City Civil Registry',
+      location: '1st Floor, Administrative Building, Las Piñas City Hall Compound',
+      phone: '(02) 8253-4370',
+      mobile: '0998 587 9659',
+      email: 'lpcivilreg@gmail.com',
+      facebook: 'https://www.facebook.com/civilreglaspinas',
       hours: 'Mon-Thu: 8AM - 7PM',
     },
     relatedServices: [
@@ -306,9 +315,9 @@ export const serviceDetailsContent: ServiceDetail[] = [
           'Get certificate of death from attending physician or hospital.',
       },
       {
-        title: 'Visit Civil Registrar',
+        title: 'Visit Civil Registry',
         description:
-          'Go to Civil Registrar at Window 5 with death certificate within 48 hours.',
+          'Go to Civil Registry at Window 5 with death certificate within 48 hours.',
       },
       {
         title: 'Complete Registry',
@@ -317,7 +326,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       {
         title: 'Pay Fees',
         description:
-          'Pay registration of ₱75, ₱150 if late, and burial permit fees at Window 2 or 3 in the Civil Registrar Office or at the City Treasurer\'s Office.',
+          'Pay registration of ₱75, ₱150 if late, and burial permit fees at Window 2 or 3 in the Civil Registry Office or at the City Treasurer\'s Office.',
       },
       {
         title: 'Claim Permits',
@@ -365,9 +374,12 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
     ],
     office: {
-      name: 'City Civil Registrar',
-      location: 'City Hall, 2nd Floor',
-      phone: '0920 425 8214',
+      name: 'City Civil Registry',
+      location: '1st Floor, Administrative Building, Las Piñas City Hall Compound',
+      phone: '(02) 8253-4370',
+      mobile: '0998 587 9659',
+      email: 'lpcivilreg@gmail.com',
+      facebook: 'https://www.facebook.com/civilreglaspinas',
       hours: 'Mon-Thu: 8AM - 7PM',
     },
     relatedServices: [
@@ -379,9 +391,9 @@ export const serviceDetailsContent: ServiceDetail[] = [
     ],
   },
   {
-    id: 'city-civil-registrar',
-    title: 'City Civil Registrar',
-    fullTitle: 'City Civil Registrar Office',
+    id: 'city-civil-registry',
+    title: 'City Civil Registry',
+    fullTitle: 'City Civil Registry Office',
     category: 'Certificates',
     categoryLink: '/services/certificates',
     badgeText: 'Office',
@@ -390,11 +402,11 @@ export const serviceDetailsContent: ServiceDetail[] = [
       'Birth, death, marriage registration, corrections, and certified copies',
     quickStats: [
       { icon: 'bi-clock', label: 'Office Hours', value: 'Mon-Fri 8AM-5PM' },
-      { icon: 'bi-telephone', label: 'Contact', value: '0920 425 8214' },
+      { icon: 'bi-telephone', label: 'Contact', value: '(02) 8253-4370 / 0998 587 9659' },
       {
         icon: 'bi-geo-alt',
         label: 'Location',
-        value: '2nd Floor, City Hall',
+        value: '1st Floor, Admin Bldg',
       },
       { icon: 'bi-calendar-check', label: 'Appointment', value: 'Walk-in' },
     ],
@@ -409,7 +421,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
       {
         title: 'Visit Office',
-        description: 'Go to Civil Registrar, 2nd Floor of City Hall.',
+        description: 'Go to Civil Registry, 1st Floor, Administrative Building.',
       },
       {
         title: 'Submit Application',
@@ -440,9 +452,12 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
     ],
     office: {
-      name: 'City Civil Registrar',
-      location: 'City Hall, 2nd Floor',
-      phone: '0920 425 8214',
+      name: 'City Civil Registry',
+      location: '1st Floor, Administrative Building, Las Piñas City Hall Compound',
+      phone: '(02) 8253-4370',
+      mobile: '0998 587 9659',
+      email: 'lpcivilreg@gmail.com',
+      facebook: 'https://www.facebook.com/civilreglaspinas',
       hours: 'Mon-Thu: 8AM - 7PM',
     },
     relatedServices: [
