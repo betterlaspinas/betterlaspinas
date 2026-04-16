@@ -6,6 +6,7 @@ export interface ServiceItem {
   fee: string
   time: string
   link?: string
+  hidden?: boolean
 }
 
 export interface OfficeCard {
@@ -93,11 +94,11 @@ export const categoriesContent: CategoryContent[] = [
     ],
     offices: [
       {
-        title: 'City Civil Registrar',
+        title: 'City Civil Registry',
         icon: 'bi-building',
         description:
           'Birth, death, marriage registration, corrections, and certified copies',
-        link: '/service-details/city-civil-registrar',
+        link: '/service-details/city-civil-registry',
       },
       {
         title: 'Human Resource Management',
@@ -111,30 +112,38 @@ export const categoriesContent: CategoryContent[] = [
   },
   {
     id: 'business',
-    name: 'Business & Trade',
+    name: 'Business, Trade & Investment',
     icon: 'bi-shop',
     badgeText: 'Business',
     description: 'Business permits, licenses, and trade registration services',
-    hidden: true,
     services: [
       {
         id: 'business-permit',
-        title: 'Business Permit',
+        title: 'Business Permit (New)',
         icon: 'bi-shop',
         description:
           'New business permit application for commercial operations',
         fee: 'Varies',
-        time: '1-3 days',
-        link: '/service-details/business-permits-licensing',
+        time: '1 day',
+        link: '/service-details/business-permit-new',
       },
       {
         id: 'business-renewal',
-        title: 'Business Permit Renewal',
+        title: 'Business Permit (Renewal)',
         icon: 'bi-arrow-repeat',
         description: 'Annual renewal of existing business permits',
         fee: 'Varies',
-        time: '1-2 days',
-        link: '/service-details/business-permits-licensing',
+        time: 'Approx. 3 hours',
+        link: '/service-details/business-permit-renewal',
+      },
+      {
+        id: 'special-permit',
+        title: 'Special Permit',
+        icon: 'bi-shop',
+        description: 'Special Permit issued by the City Government for business establishment',
+        fee: 'Varies',
+        time: '2 hours 10 mins',
+        link: '/service-details/special-permit',
       },
       {
         id: 'mayors-clearance',
@@ -144,6 +153,7 @@ export const categoriesContent: CategoryContent[] = [
           'Clearance from the Mayor\'s Office for business operations',
         fee: '₱100',
         time: 'Same day',
+        hidden: true,
       },
       {
         id: 'tricycle-franchise',
@@ -153,6 +163,7 @@ export const categoriesContent: CategoryContent[] = [
         fee: '₱500',
         time: '3-5 days',
         link: '/service-details/tricycle-franchising',
+        hidden: true,
       },
       {
         id: 'sanitary-permit',
@@ -161,6 +172,7 @@ export const categoriesContent: CategoryContent[] = [
         description: 'Health and sanitation permit for food establishments',
         fee: '₱200-500',
         time: '1-2 days',
+        hidden: true,
       },
       {
         id: 'fire-safety',
@@ -169,6 +181,7 @@ export const categoriesContent: CategoryContent[] = [
         description: 'Fire safety inspection certificate for business premises',
         fee: 'Varies',
         time: '3-5 days',
+        hidden: true,
       },
     ],
     offices: [
@@ -177,13 +190,15 @@ export const categoriesContent: CategoryContent[] = [
         icon: 'bi-shop-window',
         description:
           'Business permits, Mayor\'s clearance, and licensing services',
-        link: '/service-details/business-permits-licensing',
+        link: '/service-details/business-permit-new',
+        hidden: true,
       },
       {
-        title: 'Municipal Treasurer\'s Office',
+        title: 'City Treasurer\'s Office',
         icon: 'bi-cash-coin',
         description: 'Business tax payments and fee collection',
-        link: '/service-details/municipal-treasurer',
+        link: '/service-details/city-treasurer',
+        hidden: true,
       },
     ],
   },
@@ -203,7 +218,7 @@ export const categoriesContent: CategoryContent[] = [
           'Payment of annual real property tax for land and buildings',
         fee: 'Based on assessment',
         time: '15-30 mins',
-        link: '/service-details/municipal-treasurer',
+        link: '/service-details/city-treasurer',
       },
       {
         id: 'tax-clearance',
@@ -212,7 +227,7 @@ export const categoriesContent: CategoryContent[] = [
         description: 'Certificate of no tax delinquency',
         fee: '₱50',
         time: '15-30 mins',
-        link: '/service-details/municipal-treasurer',
+        link: '/service-details/city-treasurer',
       },
       {
         id: 'tax-declaration',
@@ -230,7 +245,7 @@ export const categoriesContent: CategoryContent[] = [
         description: 'Payment of business taxes and fees',
         fee: 'Varies',
         time: '15-30 mins',
-        link: '/service-details/municipal-treasurer',
+        link: '/service-details/city-treasurer',
       },
       {
         id: 'cedula',
@@ -255,7 +270,7 @@ export const categoriesContent: CategoryContent[] = [
         title: 'Municipal Treasurer\'s Office',
         icon: 'bi-cash-coin',
         description: 'Tax payments, revenue collection, and tax clearances',
-        link: '/service-details/municipal-treasurer',
+        link: '/service-details/city-treasurer',
       },
       {
         title: 'Municipal Assessor\'s Office',
@@ -763,5 +778,14 @@ export const categoriesContent: CategoryContent[] = [
 export function getCategoryContent(
   categoryId: string,
 ): CategoryContent | undefined {
-  return categoriesContent.find(category => category.id === categoryId)
+  const category = categoriesContent.find(category => category.id === categoryId)
+
+  if (!category)
+    return undefined
+
+  return {
+    ...category,
+    services: category.services.filter(service => !service.hidden),
+    offices: category.offices.filter(office => !office.hidden),
+  }
 }

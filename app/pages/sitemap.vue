@@ -41,7 +41,7 @@ const sections = computed<SitemapSection[]>(() => [
         href: '/services/certificates',
         label: 'Certificates & Vital Records',
       },
-      { href: '/services/business', label: 'Business Services', hidden: true },
+      { href: '/services/business', label: 'Business Services' },
       { href: '/services/social-services', label: 'Social Services', hidden: true },
       { href: '/services/health', label: 'Health & Wellness', hidden: true },
       { href: '/services/tax-payments', label: 'Tax & Payments', hidden: true },
@@ -58,12 +58,12 @@ const sections = computed<SitemapSection[]>(() => [
     cols: 4,
     links: [
       {
-        href: '/service-details/civil-registrar',
-        label: 'Local Civil Registrar',
+        href: '/service-details/city-civil-registry',
+        label: 'Local Civil Registry',
         hidden: true,
       },
       {
-        href: '/service-details/municipal-treasurer',
+        href: '/service-details/city-treasurer',
         label: 'Treasurer\'s Office',
         hidden: true,
       },
@@ -94,11 +94,6 @@ const sections = computed<SitemapSection[]>(() => [
         hidden: true,
       },
       { href: '/service-details/mswdo-services', label: 'MSWDO', hidden: true },
-      {
-        href: '/service-details/business-permits-licensing',
-        label: 'BPLS Office',
-        hidden: true,
-      },
       {
         href: '/service-details/general-services',
         label: 'General Services',

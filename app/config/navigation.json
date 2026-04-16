@@ -23,8 +23,7 @@
           "id": "business",
           "label": "Business",
           "href": "/services/business",
-          "i18nKey": "service-business",
-          "hidden": true
+          "i18nKey": "service-business"
         },
         {
           "id": "tax-payments",
@@ -162,6 +161,11 @@
       }
     ],
     "resources": [
+      {
+        "label": "Citizen's Charter 2022 (1st Edition)",
+        "href": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
+        "external": true
+      },
       {
         "label": "Open Data Philippines",
         "href": "https://data.gov.ph",
