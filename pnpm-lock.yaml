@@ -93,9 +93,6 @@ importers:
       husky:
         specifier: ^9.1.7
         version: 9.1.7
-      nuxt-og-image:
-        specifier: ^6.3.2
-        version: 6.3.2(01b4ed352590eb7c9d54aca1c482d203)
       postcss:
         specifier: ^8.5.8
         version: 8.5.8
