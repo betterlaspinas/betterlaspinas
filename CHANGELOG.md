@@ -9,12 +9,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Launched "Business, Trade & Investment" category with detailed guides for New and Renewal Business Permits, featuring online application support and official Citizen's Charter attribution
+- Nuxt Schema Org to change the site name in search results
+- Added new "Issuance of Special Permit" service to the Business, Trade & Investment category with full Citizen's Charter details
+- Launched "Business, Trade & Investment" category with detailed guides for New and Renewal Business Permits, featuring online application support and official Citizen's Charter attribution
+
+### Changed
+- Updated naming from "City Civil Registrar" to "City Civil Registry" across the application
+- Updated City Civil Registry contact details (telephone, mobile, email, Facebook) and physical address in service records
+- Updated the City Health Office contact information to reflect new phone numbers, mobile, and official Facebook page
 
 ### Fixed
 - Fixed hydration mismatch issue in service details layout
 - Prevented empty "Unreleased" section (and other empty versions or sections) from being rendered on the Changelog page
 
 ### Infrastructure
+- **Added**: `CODEOWNERS` file to define repository maintainers
 - **Added**: `--tags` to `git fetch` in `cd.yml` to support `git describe`
 - **Removed**: Redundant tag-based deployment trigger from `cd.yml`
 

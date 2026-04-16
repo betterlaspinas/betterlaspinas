@@ -94,11 +94,11 @@ export const categoriesContent: CategoryContent[] = [
     ],
     offices: [
       {
-        title: 'City Civil Registrar',
+        title: 'City Civil Registry',
         icon: 'bi-building',
         description:
           'Birth, death, marriage registration, corrections, and certified copies',
-        link: '/service-details/city-civil-registrar',
+        link: '/service-details/city-civil-registry',
       },
       {
         title: 'Human Resource Management',
@@ -135,6 +135,15 @@ export const categoriesContent: CategoryContent[] = [
         fee: 'Varies',
         time: 'Approx. 3 hours',
         link: '/service-details/business-permit-renewal',
+      },
+      {
+        id: 'special-permit',
+        title: 'Special Permit',
+        icon: 'bi-shop',
+        description: 'Special Permit issued by the City Government for business establishment',
+        fee: 'Varies',
+        time: '2 hours 10 mins',
+        link: '/service-details/special-permit',
       },
       {
         id: 'mayors-clearance',
@@ -182,12 +191,14 @@ export const categoriesContent: CategoryContent[] = [
         description:
           'Business permits, Mayor\'s clearance, and licensing services',
         link: '/service-details/business-permit-new',
+        hidden: true,
       },
       {
         title: 'City Treasurer\'s Office',
         icon: 'bi-cash-coin',
         description: 'Business tax payments and fee collection',
         link: '/service-details/city-treasurer',
+        hidden: true,
       },
     ],
   },
@@ -775,5 +786,6 @@ export function getCategoryContent(
   return {
     ...category,
     services: category.services.filter(service => !service.hidden),
+    offices: category.offices.filter(office => !office.hidden),
   }
 }

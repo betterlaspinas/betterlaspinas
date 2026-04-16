@@ -156,6 +156,24 @@
       "url": "/service-details/business-permit-renewal"
     },
     {
+      "id": "special-permit",
+      "title": "Special Permit",
+      "category": "Business, Trade & Investment",
+      "categoryId": "business",
+      "description": "Apply for a Special Permit to operate a business",
+      "keywords": [
+        "special",
+        "permit",
+        "business",
+        "mayor",
+        "license"
+      ],
+      "fee": "Varies on Assessment",
+      "processingTime": "Approx. 2 hours 10 mins",
+      "office": "Business Permits & Licensing Office",
+      "url": "/service-details/special-permit"
+    },
+    {
       "id": "business-closure",
       "title": "Business Closure",
       "category": "Business, Trade & Investment",
@@ -740,7 +758,8 @@
       "fee": "Varies",
       "processingTime": "Same day",
       "office": "City Treasurer's Office",
-      "url": "/service-details/city-treasurer"
+      "url": "/service-details/city-treasurer",
+      "hidden": true
     },
     {
       "id": "city-budget",
@@ -821,7 +840,7 @@
       "url": "/service-details/city-assessor"
     },
     {
-      "id": "city-civil-registrar",
+      "id": "city-civil-registry",
       "title": "Civil Registry Office",
       "category": "Certificates & Vital Records",
       "categoryId": "certificates",
@@ -839,7 +858,7 @@
       "fee": "₱150+",
       "processingTime": "15-30 minutes",
       "office": "Civil Registry Office",
-      "url": "/service-details/city-civil-registrar"
+      "url": "/service-details/city-civil-registry"
     },
     {
       "id": "city-engineering",

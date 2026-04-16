@@ -239,8 +239,17 @@ function toggleFaq(index: number) {
               <p class="text-sm text-gray-600 mt-2">
                 {{ service.office.location }}
               </p>
-              <p class="text-sm text-gray-600 mt-1 flex items-center gap-2">
+              <p v-if="service.office.phone" class="text-sm text-gray-600 mt-1 flex items-center gap-2">
                 <i class="bi bi-telephone" /> {{ service.office.phone }}
+              </p>
+              <p v-if="service.office.mobile" class="text-sm text-gray-600 mt-1 flex items-center gap-2">
+                <i class="bi bi-phone" /> {{ service.office.mobile }}
+              </p>
+              <p v-if="service.office.email" class="text-sm text-gray-600 mt-1 flex items-center gap-2">
+                <i class="bi bi-envelope" /> <a :href="`mailto:${service.office.email}`" class="hover:underline text-primary-600">{{ service.office.email }}</a>
+              </p>
+              <p v-if="service.office.facebook" class="text-sm text-gray-600 mt-1 flex items-center gap-2">
+                <i class="bi bi-facebook" /> <a :href="service.office.facebook" target="_blank" rel="noopener noreferrer" class="hover:underline text-primary-600">Facebook Page</a>
               </p>
               <p class="text-sm text-gray-600 mt-1 flex items-center gap-2">
                 <i class="bi bi-clock" /> {{ service.office.hours }}

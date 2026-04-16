@@ -58,8 +58,8 @@ const sections = computed<SitemapSection[]>(() => [
     cols: 4,
     links: [
       {
-        href: '/service-details/civil-registrar',
-        label: 'Local Civil Registrar',
+        href: '/service-details/city-civil-registry',
+        label: 'Local Civil Registry',
         hidden: true,
       },
       {
@@ -94,14 +94,6 @@ const sections = computed<SitemapSection[]>(() => [
         hidden: true,
       },
       { href: '/service-details/mswdo-services', label: 'MSWDO', hidden: true },
-      {
-        href: '/service-details/business-permit-new',
-        label: 'BPLS Office',
-      },
-      {
-        href: '/service-details/business-permit-renewal',
-        label: 'BPLS Office',
-      },
       {
         href: '/service-details/general-services',
         label: 'General Services',

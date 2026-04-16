@@ -119,10 +119,10 @@
   ],
   "departments": [
     {
-      "id": "civil-registrar",
-      "slug": "city-civil-registrar",
+      "id": "civil-registry",
+      "slug": "city-civil-registry",
       "name": "Atty. Billy James G. Ramos",
-      "department": "City Civil Registrar",
+      "department": "City Civil Registry",
       "abbreviation": "MCR",
       "description": "Birth, death, marriage certificates, CENOMAR",
       "icon": "bi-file-earmark-text-fill",
@@ -247,7 +247,7 @@
       "description": "Vaccination, health certificates, medical assistance",
       "icon": "bi-heart-pulse-fill",
       "email": "",
-      "phone": "(02) 8776-7268",
+      "phone": "(02) 8367-3406",
       "services": "health"
     },
     {

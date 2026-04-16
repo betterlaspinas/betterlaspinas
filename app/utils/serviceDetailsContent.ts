@@ -25,6 +25,9 @@ export interface OfficeInfo {
   name: string
   location: string
   phone: string
+  mobile?: string
+  email?: string
+  facebook?: string
   hours: string
 }
 
@@ -90,9 +93,9 @@ export const serviceDetailsContent: ServiceDetail[] = [
           'Bring valid government-issued ID. If representative: authorization letter and IDs of both owner and representative.',
       },
       {
-        title: 'Visit Civil Registrar',
+        title: 'Visit Civil Registry',
         description:
-          'Go to the City Civil Registrar Office - Window 4 at 2nd Floor, City Hall. Office hours: Mon-Fri, 8AM-5PM.',
+          'Go to the City Civil Registry Office - Window 4 at 1st Floor, Administrative Building. Office hours: Mon-Fri, 8AM-5PM.',
       },
       {
         title: 'Fill Out Request Form',
@@ -102,12 +105,12 @@ export const serviceDetailsContent: ServiceDetail[] = [
       {
         title: 'Pay the Fee',
         description:
-          'Pay ₱75 per certified copy at Window 2 or 3 of the Civil Registrar or at the City Treasurer\'s Office (same building).',
+          'Pay ₱75 per certified copy at Window 2 or 3 of the Civil Registry or at the City Treasurer\'s Office (same building).',
       },
       {
         title: 'Claim Certificate',
         description:
-          'Return to Civil Registrar Window 4 with official receipt. Certificate released within 15-30 minutes if record is available.',
+          'Return to Civil Registry Window 4 with official receipt. Certificate released within 15-30 minutes if record is available.',
         isFinal: true,
       },
     ],
@@ -136,7 +139,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
         question:
           'Can I get a birth certificate registered in another city?',
         answer:
-          'No. The City Civil Registrar only has records for births registered in this city. For other cities, request from that city\'s Civil Registrar or from PSA.',
+          'No. The City Civil Registry only has records for births registered in this city. For other cities, request from that city\'s Civil Registry or from PSA.',
       },
       {
         question: 'What if I don\'t know the exact date of birth?',
@@ -155,9 +158,12 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
     ],
     office: {
-      name: 'City Civil Registrar',
-      location: 'City Hall, 2nd Floor',
-      phone: '0920 425 8214',
+      name: 'City Civil Registry',
+      location: '1st Floor, Administrative Building, Las Piñas City Hall Compound',
+      phone: '(02) 8253-4370',
+      mobile: '0998 587 9659',
+      email: 'lpcivilreg@gmail.com',
+      facebook: 'https://www.facebook.com/civilreglaspinas',
       hours: 'Mon-Thu: 8AM - 7PM',
     },
     relatedServices: [
@@ -199,9 +205,9 @@ export const serviceDetailsContent: ServiceDetail[] = [
           'Prepare marriage certificate from solemnizing officer and valid IDs.',
       },
       {
-        title: 'Visit Civil Registrar',
+        title: 'Visit Civil Registry',
         description:
-          'Go to the Civil Registrar Office, 2nd Floor, City Hall.',
+          'Go to the Civil Registry Office, 1st Floor, Administrative Building.',
       },
       {
         title: 'Submit Documents & Verification',
@@ -210,7 +216,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
       {
         title: 'Payment',
-        description: 'Pay the Solemnization Fee of ₱150 at Window 2 or 3 in the Civil Registrar Office.',
+        description: 'Pay the Solemnization Fee of ₱150 at Window 2 or 3 in the Civil Registry Office.',
       },
       {
         title: 'Registration',
@@ -267,9 +273,12 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
     ],
     office: {
-      name: 'City Civil Registrar',
-      location: 'City Hall, 2nd Floor',
-      phone: '0920 425 8214',
+      name: 'City Civil Registry',
+      location: '1st Floor, Administrative Building, Las Piñas City Hall Compound',
+      phone: '(02) 8253-4370',
+      mobile: '0998 587 9659',
+      email: 'lpcivilreg@gmail.com',
+      facebook: 'https://www.facebook.com/civilreglaspinas',
       hours: 'Mon-Thu: 8AM - 7PM',
     },
     relatedServices: [
@@ -306,9 +315,9 @@ export const serviceDetailsContent: ServiceDetail[] = [
           'Get certificate of death from attending physician or hospital.',
       },
       {
-        title: 'Visit Civil Registrar',
+        title: 'Visit Civil Registry',
         description:
-          'Go to Civil Registrar at Window 5 with death certificate within 48 hours.',
+          'Go to Civil Registry at Window 5 with death certificate within 48 hours.',
       },
       {
         title: 'Complete Registry',
@@ -317,7 +326,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       {
         title: 'Pay Fees',
         description:
-          'Pay registration of ₱75, ₱150 if late, and burial permit fees at Window 2 or 3 in the Civil Registrar Office or at the City Treasurer\'s Office.',
+          'Pay registration of ₱75, ₱150 if late, and burial permit fees at Window 2 or 3 in the Civil Registry Office or at the City Treasurer\'s Office.',
       },
       {
         title: 'Claim Permits',
@@ -365,9 +374,12 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
     ],
     office: {
-      name: 'City Civil Registrar',
-      location: 'City Hall, 2nd Floor',
-      phone: '0920 425 8214',
+      name: 'City Civil Registry',
+      location: '1st Floor, Administrative Building, Las Piñas City Hall Compound',
+      phone: '(02) 8253-4370',
+      mobile: '0998 587 9659',
+      email: 'lpcivilreg@gmail.com',
+      facebook: 'https://www.facebook.com/civilreglaspinas',
       hours: 'Mon-Thu: 8AM - 7PM',
     },
     relatedServices: [
@@ -379,9 +391,9 @@ export const serviceDetailsContent: ServiceDetail[] = [
     ],
   },
   {
-    id: 'city-civil-registrar',
-    title: 'City Civil Registrar',
-    fullTitle: 'City Civil Registrar Office',
+    id: 'city-civil-registry',
+    title: 'City Civil Registry',
+    fullTitle: 'City Civil Registry Office',
     category: 'Certificates',
     categoryLink: '/services/certificates',
     badgeText: 'Office',
@@ -390,11 +402,11 @@ export const serviceDetailsContent: ServiceDetail[] = [
       'Birth, death, marriage registration, corrections, and certified copies',
     quickStats: [
       { icon: 'bi-clock', label: 'Office Hours', value: 'Mon-Fri 8AM-5PM' },
-      { icon: 'bi-telephone', label: 'Contact', value: '0920 425 8214' },
+      { icon: 'bi-telephone', label: 'Contact', value: '(02) 8253-4370 / 0998 587 9659' },
       {
         icon: 'bi-geo-alt',
         label: 'Location',
-        value: '2nd Floor, City Hall',
+        value: '1st Floor, Admin Bldg',
       },
       { icon: 'bi-calendar-check', label: 'Appointment', value: 'Walk-in' },
     ],
@@ -409,7 +421,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
       {
         title: 'Visit Office',
-        description: 'Go to Civil Registrar, 2nd Floor of City Hall.',
+        description: 'Go to Civil Registry, 1st Floor, Administrative Building.',
       },
       {
         title: 'Submit Application',
@@ -440,9 +452,12 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
     ],
     office: {
-      name: 'City Civil Registrar',
-      location: 'City Hall, 2nd Floor',
-      phone: '0920 425 8214',
+      name: 'City Civil Registry',
+      location: '1st Floor, Administrative Building, Las Piñas City Hall Compound',
+      phone: '(02) 8253-4370',
+      mobile: '0998 587 9659',
+      email: 'lpcivilreg@gmail.com',
+      facebook: 'https://www.facebook.com/civilreglaspinas',
       hours: 'Mon-Thu: 8AM - 7PM',
     },
     relatedServices: [
@@ -742,6 +757,91 @@ export const serviceDetailsContent: ServiceDetail[] = [
     sourceName: 'Citizen\'s Charter 2022 (1st Edition)',
   },
   {
+    id: 'special-permit',
+    title: 'Special Permit',
+    fullTitle: 'Issuance of Special Permit',
+    category: 'Business',
+    categoryLink: '/services/business',
+    badgeText: 'Business',
+    badgeIcon: 'bi-shop',
+    description: 'Special Permit issued by the City Government to all business establishment that operates within its territorial jurisdiction pursuant to City Ordinance No: 1373 - 16.',
+    quickStats: [
+      { icon: 'bi-clock', label: 'Processing', value: '2 Hours 10 Mins' },
+      { icon: 'bi-cash', label: 'Fee', value: 'Varies on Assessment' },
+      {
+        icon: 'bi-person-check',
+        label: 'Who Can Apply',
+        value: 'Registered Business Owner',
+      },
+      { icon: 'bi-calendar-check', label: 'Appointment', value: 'Walk-in' },
+    ],
+    processSteps: [
+      {
+        title: 'Submit Application & Verification',
+        description: 'Submit accomplished application form and complete requirements to the BPLO front liners for receiving, reviewing, and validating. Evaluated by Planning Department for Zoning Fees. Passed for approval of the Chief of BPLO, who issues a Tax Order Payment (TOP) routing you to the City Treasurer\'s.',
+      },
+      {
+        title: 'Pay Taxes and Fees',
+        description: 'Present the TOP to the Business License Tax Miscellaneous Division. Taxes are calculated based on the Revenue Code. Payment is accepted and Official Receipt is printed/issued.',
+      },
+      {
+        title: 'Claim Special Permit',
+        description: 'Return to Business Permit & Licensing Office (BPLO) for the processing, printing, signing, and releasing of the Special Permit.',
+        isFinal: true,
+      },
+    ],
+    requirements: [
+      {
+        title: 'Documentary Requirements',
+        icon: 'bi-file-text',
+        items: [
+          'Unified Application Form',
+          'Business Name Registration (1 Copy: DTI Registration or SEC Registration & Articles of Incorporation)',
+          'Proof of Legal Ownership: Tax Declaration/TCT, Notarized Contract of Lease, or Letter of Authority to use property',
+          'Picture of Business Establishment',
+          'Picture of Owner / President or Treasurer',
+          'Homeowners / Subdivision / Villages Clearance or Condominium Approval to conduct business',
+          'Undertaking (BPLO)',
+        ],
+      },
+      {
+        title: 'If Applied Through Representative',
+        icon: 'bi-people',
+        items: [
+          'Letter of Authority / Special Power of Attorney / Secretary Certificate',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'How long does the processing take?',
+        answer: 'According to the Citizen\'s Charter, the total processing time for a Special Permit is approximately 2 hours and 10 minutes.',
+      },
+      {
+        question: 'What if that location had a previous tenant?',
+        answer: 'The previous tenant must have filed a formal Closure/Retirement of business to the City Treasurer\'s Office. Otherwise, the building owner must submit a Termination of Lease Contract and an Affidavit of No Relation so the new applicant can secure an account number.',
+      },
+    ],
+    office: {
+      name: 'Business Permits & Licensing Office',
+      location: 'City Hall, Ground Floor',
+      phone: '(02) 8551-5930',
+      hours: 'Mon-Thu: 8AM - 7PM',
+    },
+    relatedServices: [
+      {
+        title: 'Business Permit (New)',
+        link: '/service-details/business-permit-new',
+      },
+      {
+        title: 'Business Permit Renewal',
+        link: '/service-details/business-permit-renewal',
+      },
+    ],
+    sourceUrl: 'https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf',
+    sourceName: 'Citizen\'s Charter 2022 (1st Edition)',
+  },
+  {
     id: 'tricycle-franchising',
     hidden: true,
     title: 'Tricycle Franchising',
@@ -901,6 +1001,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
   },
   {
     id: 'city-treasurer',
+    hidden: true,
     title: 'City Treasurer\'s Office',
     fullTitle: 'City Treasurer\'s Office',
     category: 'Taxation',
@@ -1682,7 +1783,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
     description: 'Public health services, vaccination, and medical assistance',
     quickStats: [
       { icon: 'bi-clock', label: 'Office Hours', value: 'Mon-Fri 8AM-5PM' },
-      { icon: 'bi-telephone', label: 'Contact', value: '(02) 8776-7268' },
+      { icon: 'bi-telephone', label: 'Contact', value: '(02) 8367-3406' },
       { icon: 'bi-geo-alt', label: 'Location', value: 'City Hall Compound' },
       { icon: 'bi-heart', label: 'Services', value: 'Public Health' },
     ],
@@ -1717,7 +1818,9 @@ export const serviceDetailsContent: ServiceDetail[] = [
     office: {
       name: 'City Health Office',
       location: 'City Hall Compound',
-      phone: '(02) 8776-7268',
+      phone: '(02) 8367-3406',
+      mobile: '0998 977 8597',
+      facebook: 'https://www.facebook.com/LPCityhealth',
       hours: 'Mon-Fri: 8AM - 5PM',
     },
     relatedServices: [
@@ -1770,7 +1873,9 @@ export const serviceDetailsContent: ServiceDetail[] = [
     office: {
       name: 'City Health Office',
       location: 'City Hall Compound',
-      phone: '(02) 8776-7268',
+      phone: '(02) 8367-3406',
+      mobile: '0998 977 8597',
+      facebook: 'https://www.facebook.com/LPCityhealth',
       hours: 'Mon-Fri: 8AM - 5PM',
     },
     relatedServices: [
