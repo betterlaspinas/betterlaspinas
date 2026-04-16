@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Nuxt Schema Org to change the site name in search results
 - Added new "Issuance of Special Permit" service to the Business, Trade & Investment category with full Citizen's Charter details
 - Launched "Business, Trade & Investment" category with detailed guides for New and Renewal Business Permits, featuring online application support and official Citizen's Charter attribution
 
