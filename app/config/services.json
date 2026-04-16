@@ -194,6 +194,30 @@
       "url": "/service-details/occupational-permit"
     },
     {
+      "id": "occupational-permit-jobseeker",
+      "title": "Occupational Mayor's Permit (First Time Job Seeker)",
+      "category": "Business, Trade & Investment",
+      "categoryId": "business",
+      "description": "Free Occupational Mayor's Permit for first-time job seekers (R.A. 11261)",
+      "keywords": [
+        "occupational",
+        "permit",
+        "mayor",
+        "worker",
+        "employee",
+        "job",
+        "work",
+        "first time",
+        "job seeker",
+        "jobseeker",
+        "free"
+      ],
+      "fee": "Free",
+      "processingTime": "Approx. 3 hours",
+      "office": "Business Permits & Licensing Office",
+      "url": "/service-details/occupational-permit-jobseeker"
+    },
+    {
       "id": "business-closure",
       "title": "Business Closure",
       "category": "Business, Trade & Investment",

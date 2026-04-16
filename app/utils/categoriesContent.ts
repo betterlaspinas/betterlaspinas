@@ -155,6 +155,15 @@ export const categoriesContent: CategoryContent[] = [
         link: '/service-details/occupational-permit',
       },
       {
+        id: 'occupational-permit-jobseeker',
+        title: 'Occupational Permit (First Time Job Seeker)',
+        icon: 'bi-person-check',
+        description: 'Free Occupational Mayor\'s Permit for first-time job seekers (R.A. 11261)',
+        fee: 'Free',
+        time: 'Approx. 3 hours',
+        link: '/service-details/occupational-permit-jobseeker',
+      },
+      {
         id: 'mayors-clearance',
         title: 'Mayor\'s Clearance',
         icon: 'bi-patch-check',

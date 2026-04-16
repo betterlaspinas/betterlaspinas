@@ -927,6 +927,97 @@ export const serviceDetailsContent: ServiceDetail[] = [
     sourceName: 'Citizen\'s Charter 2022 (1st Edition)',
   },
   {
+    id: 'occupational-permit-jobseeker',
+    title: 'Occupational Mayor\'s Permit (First Time Job Seeker)',
+    fullTitle: 'Occupational Mayor\'s Permit (First Time Job Seeker)',
+    category: 'Business',
+    categoryLink: '/services/business',
+    badgeText: 'Business',
+    badgeIcon: 'bi-person-check',
+    description: 'The City Government of Las Piñas provides assistance to "First Time Job Seekers" regarding the issuance of an Occupational Mayor’s Permit, in compliance with Republic Act No. 11261, the "First Time Jobseekers Assistance Act" of 2019.',
+    quickStats: [
+      { icon: 'bi-clock', label: 'Processing', value: 'Approx. 3 hours' },
+      { icon: 'bi-cash', label: 'Fee', value: 'Free' },
+      {
+        icon: 'bi-person-check',
+        label: 'Who Can Apply',
+        value: 'First-time Job Seekers',
+      },
+      { icon: 'bi-calendar-check', label: 'Appointment', value: 'Walk-in' },
+    ],
+    processSteps: [
+      {
+        title: 'Secure Application Form',
+        description: 'Secure and fill out the application form at the Business Permit and Licensing Office (BPLO).',
+      },
+      {
+        title: 'Submit Requirements',
+        description: 'Submit the application form along with the required documents such as Cedula, NBI/Police Clearance, and your Barangay Certificate with First-time job seeker undertaking.',
+      },
+      {
+        title: 'Assessment and Evaluation',
+        description: 'Proceed through the assessment where personnel will evaluate your requirements and check your Barangay Certificate to waive local fees.',
+      },
+      {
+        title: 'Claim Permit',
+        description: 'Claim the Occupational Mayor\'s Permit once processed and approved.',
+        isFinal: true,
+      },
+    ],
+    requirements: [
+      {
+        title: 'Documentary Requirements',
+        icon: 'bi-file-text',
+        items: [
+          'Barangay Certificate with an undertaking stating you are a first-time job seeker (RA 11261)',
+          'Application Form (2 copies - secured from BPLO)',
+          'Community Tax Certificate (Cedula)',
+          'NBI Clearance or Police Clearance',
+        ],
+      },
+      {
+        title: 'Additional Medical Requirements',
+        icon: 'bi-heart-pulse',
+        items: [
+          'Medical Results (X-Ray Result)',
+          'Urine and Stool test results (specifically required for food handlers)',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'Who is considered a First Time Job Seeker?',
+        answer: 'A First Time Job Seeker is defined as a Filipino citizen looking for work for the first time, who is between 15 to 30 years old, and not currently receiving benefits from other government job programs.',
+      },
+      {
+        question: 'Are all fees waived under RA 11261?',
+        answer: 'Yes, government regulatory fees for standard documents such as the Occupational Permit, Barangay Clearance, and NBI Clearance are free of charge for valid first-time job seekers.',
+      },
+      {
+        question: 'What if I am a food handler?',
+        answer: 'If you are applying as a food handler, you will be required to submit specific test results (Urine and Stool) and also undergo a seminar at the Sanitation Office.',
+      },
+    ],
+    office: {
+      name: 'Business Permits & Licensing Office',
+      location: 'City Hall, Ground Floor',
+      phone: '(02) 8551-5930',
+      hours: 'Mon-Thu: 8AM - 7PM',
+    },
+    relatedServices: [
+      {
+        title: 'Occupational Mayor\'s Permit (Regular)',
+        link: '/service-details/occupational-permit',
+      },
+      {
+        title: 'Sanitary Permit',
+        link: '/services/business',
+      },
+    ],
+    sourceUrl: 'https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf',
+    sourceName: 'Citizen\'s Charter 2022 (1st Edition)',
+  },
+  {
     id: 'tricycle-franchising',
     hidden: true,
     title: 'Tricycle Franchising',
