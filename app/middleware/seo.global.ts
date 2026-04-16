@@ -55,8 +55,6 @@ export default defineNuxtRouteMiddleware((to) => {
     // Use the live route path for ogUrl so dynamic routes (e.g. news/[slug]) get the correct URL
     const ogUrl = `${config.getOpenGraphUrl().replace(TRAILING_SLASH_REGEX, '')}${to.path}`
 
-    const ogImageData = config.getOgImageRouteConfig(routeName, templateVars)
-
     const nuxtApp = useNuxtApp()
     nuxtApp.runWithContext(() => {
       useSeoMeta({
@@ -74,22 +72,6 @@ export default defineNuxtRouteMiddleware((to) => {
       useHead({
         titleTemplate: '%s',
       })
-
-      if (ogImageData) {
-        // Suppress `useRoute` warning from Nuxt when calling `defineOgImage` inside middleware
-        const isCallingMiddleware = (nuxtApp as any)._isCallingMiddleware
-        try {
-          nuxtApp._isCallingMiddleware = false
-
-          defineOgImage('DefaultBranding.takumi', {
-            title: ogImageData.title,
-            description: ogImageData.description,
-          })
-        }
-        finally {
-          nuxtApp._isCallingMiddleware = isCallingMiddleware
-        }
-      }
     })
   }
 })
