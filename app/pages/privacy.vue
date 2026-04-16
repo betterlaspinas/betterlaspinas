@@ -1,4 +1,6 @@
 <script setup lang="ts">
+usePageOgImage()
+
 const { getSiteTitle, getVolunteerEmail } = useConfig()
 const siteTitle = computed(() => getSiteTitle())
 const volunteerEmail = computed(() => getVolunteerEmail())

@@ -3,6 +3,8 @@ import Breadcrumbs from '@/components/ui/Breadcrumbs.vue'
 import { useConfig } from '@/composables/useConfig'
 import { DEPT_PREFIX_PLACEHOLDER_REGEX, LGU_NAME_PLACEHOLDER_REGEX } from '@/utils/regexConstants'
 
+usePageOgImage()
+
 const route = useRoute()
 const { news, labels, lguName } = useConfig()
 

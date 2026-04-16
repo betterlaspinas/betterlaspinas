@@ -6,6 +6,8 @@ import Leadership from '@/components/home/Leadership.vue'
 import PopularServices from '@/components/home/PopularServices.vue'
 import QuickStats from '@/components/home/QuickStats.vue'
 import WeatherMap from '@/components/home/WeatherMap.vue'
+
+usePageOgImage()
 </script>
 
 <template>

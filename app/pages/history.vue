@@ -2,6 +2,8 @@
 import Breadcrumbs from '@/components/ui/Breadcrumbs.vue'
 import { useConfig } from '@/composables/useConfig'
 
+usePageOgImage()
+
 const { history, lguName } = useConfig()
 </script>
 

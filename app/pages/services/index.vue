@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useLanguage } from '@/composables/useLanguage'
 
+usePageOgImage()
+
 const { translate } = useLanguage()
 const route = useRoute()
 const initialQuery = computed(() => (route.query.q as string) || '')

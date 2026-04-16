@@ -1,4 +1,6 @@
 <script setup lang="ts">
+usePageOgImage()
+
 const { lguName, getVolunteerEmail } = useConfig()
 const volunteerEmail = computed(() => getVolunteerEmail())
 

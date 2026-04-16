@@ -1,4 +1,6 @@
 <script setup lang="ts">
+usePageOgImage()
+
 const { entries, getSectionBadgeColor, getSectionIcon, getPrefixColorClass } = useChangelog()
 </script>
 

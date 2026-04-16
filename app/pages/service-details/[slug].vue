@@ -1,4 +1,6 @@
 <script setup lang="ts">
+usePageOgImage()
+
 const route = useRoute()
 const slug = route.params.slug as string
 const service = getServiceDetail(slug)

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+usePageOgImage()
+
 const route = useRoute()
 const category = route.params.category as string
 const categoryContent = getCategoryContent(category)
