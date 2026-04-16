@@ -146,6 +146,15 @@ export const categoriesContent: CategoryContent[] = [
         link: '/service-details/special-permit',
       },
       {
+        id: 'business-status-certificate',
+        title: 'Certificates on Status of Business',
+        icon: 'bi-file-earmark-check',
+        description: 'Certification on the status of a business entity registered in Las Piñas',
+        fee: '₱75 + ₱15/page',
+        time: 'Approx. 1 hour',
+        link: '/service-details/business-status-certificate',
+      },
+      {
         id: 'occupational-permit',
         title: 'Occupational Mayor\'s Permit',
         icon: 'bi-person-vcard',

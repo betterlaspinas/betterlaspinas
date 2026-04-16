@@ -842,6 +842,94 @@ export const serviceDetailsContent: ServiceDetail[] = [
     sourceName: 'Citizen\'s Charter 2022 (1st Edition)',
   },
   {
+    id: 'business-status-certificate',
+    title: 'Business Status Certificate',
+    fullTitle: 'Issuance of Certificates on Status of Business',
+    category: 'Business',
+    categoryLink: '/services/business',
+    badgeText: 'Business',
+    badgeIcon: 'bi-file-earmark-check',
+    description: 'Certification issued by the City Government to all who want to verify the status of a business entity registered with the BPLO. Information access is limited pursuant to the Data Privacy Act of 2012 to maintain record integrity.',
+    quickStats: [
+      { icon: 'bi-clock', label: 'Processing', value: 'Approx. 1 hour' },
+      { icon: 'bi-cash', label: 'Fee', value: '₱75 + ₱15/page' },
+      {
+        icon: 'bi-person-check',
+        label: 'Who Can Apply',
+        value: 'Government & Private Sector',
+      },
+      { icon: 'bi-calendar-check', label: 'Appointment', value: 'Walk-in' },
+    ],
+    processSteps: [
+      {
+        title: 'Submit Application & Requirements',
+        description: 'Fill up the application form and submit the request letter together with other required documents to BPLO frontliners for review and validation. BPLO will verify records and issue an Order of Payment.',
+      },
+      {
+        title: 'Pay the Fee',
+        description: 'Proceed to the Office of the City Treasurer\'s – Miscellaneous Division and pay ₱75, plus ₱15 per additional page. An Official Receipt will be issued.',
+      },
+      {
+        title: 'Claim the Certification',
+        description: 'Return to BPLO for the processing and printing of the Certification, signing by the Chief BPLO, and release to the applicant.',
+        isFinal: true,
+      },
+    ],
+    requirements: [
+      {
+        title: 'Documentary Requirements',
+        icon: 'bi-file-text',
+        items: [
+          'Request Letter indicating the name of requestor and purpose of certification',
+          'Identification Card',
+          'Barangay Clearance',
+          'Assessor\'s Certificate',
+          'Referral letter from Hospital/DSWD/PAO or other government agencies (if applicable)',
+        ],
+      },
+      {
+        title: 'If Applying Through a Representative',
+        icon: 'bi-people',
+        items: [
+          'Letter of Authority, Special Power of Attorney, or Secretary Certificate',
+          'Valid ID of both the owner and representative',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'What is the purpose of this certification?',
+        answer: 'This certification is used to verify the legal status of a business entity registered in Las Piñas City. It is accepted for legal, government, and private transactions.',
+      },
+      {
+        question: 'Why is access to business records limited?',
+        answer: 'Pursuant to the Data Privacy Act of 2012 (RA 10173), the BPLO limits the data that can be accessed to protect the integrity and privacy of the information in its records.',
+      },
+    ],
+    office: {
+      name: 'Business Permits & Licensing Office',
+      location: 'City Hall, Ground Floor',
+      phone: '(02) 8551-5930',
+      hours: 'Mon-Thu: 8AM - 7PM',
+    },
+    relatedServices: [
+      {
+        title: 'Business Permit (New)',
+        link: '/service-details/business-permit-new',
+      },
+      {
+        title: 'Business Permit Renewal',
+        link: '/service-details/business-permit-renewal',
+      },
+      {
+        title: 'Special Permit',
+        link: '/service-details/special-permit',
+      },
+    ],
+    sourceUrl: 'https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf',
+    sourceName: 'Citizen\'s Charter 2022 (1st Edition)',
+  },
+  {
     id: 'occupational-permit',
     title: 'Occupational Mayor\'s Permit',
     fullTitle: 'Occupational Mayor\'s Permit (Regular)',
@@ -914,6 +1002,10 @@ export const serviceDetailsContent: ServiceDetail[] = [
       hours: 'Mon-Thu: 8AM - 7PM',
     },
     relatedServices: [
+      {
+        title: 'Occupational Mayor\'s Permit (First Time Job Seeker)',
+        link: '/service-details/occupational-permit-jobseeker',
+      },
       {
         title: 'Business Permit (New)',
         link: '/service-details/business-permit-new',
