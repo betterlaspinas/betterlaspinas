@@ -7,7 +7,9 @@ import PopularServices from '@/components/home/PopularServices.vue'
 import QuickStats from '@/components/home/QuickStats.vue'
 import WeatherMap from '@/components/home/WeatherMap.vue'
 
-usePageOgImage()
+usePageOgImage({
+  isHomePage: true,
+})
 </script>
 
 <template>

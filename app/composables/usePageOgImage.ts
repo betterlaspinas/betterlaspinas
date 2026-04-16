@@ -1,6 +1,6 @@
 import { slugToTitleCase } from '@/utils/stringHelpers'
 
-export function usePageOgImage() {
+export function usePageOgImage({ isHomePage = false }: { isHomePage?: boolean } = {}) {
   const route = useRoute()
   const config = useConfig()
   const routeName = route.name as string
@@ -22,8 +22,10 @@ export function usePageOgImage() {
 
   const ogImageData = config.getOgImageRouteConfig(routeName, templateVars)
 
+  const brandingTemplate = isHomePage ? 'DefaultBranding.takumi' : 'SubPageBranding.takumi'
+
   if (ogImageData) {
-    defineOgImage('DefaultBranding.takumi', {
+    defineOgImage(brandingTemplate, {
       title: ogImageData.title,
       description: ogImageData.description,
     })

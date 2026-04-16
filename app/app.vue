@@ -11,7 +11,6 @@ useSchemaOrg([
     url: config.getOpenGraphUrl(),
   }),
 ])
-usePageOgImage()
 </script>
 
 <template>
