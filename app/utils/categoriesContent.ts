@@ -146,6 +146,15 @@ export const categoriesContent: CategoryContent[] = [
         link: '/service-details/special-permit',
       },
       {
+        id: 'occupational-permit',
+        title: 'Occupational Mayor\'s Permit',
+        icon: 'bi-person-vcard',
+        description: 'Occupational Mayor\'s Permit for workers or employees',
+        fee: 'Varies by Assessment',
+        time: 'Approx. 3 hours',
+        link: '/service-details/occupational-permit',
+      },
+      {
         id: 'mayors-clearance',
         title: 'Mayor\'s Clearance',
         icon: 'bi-patch-check',

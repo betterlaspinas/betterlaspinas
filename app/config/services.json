@@ -174,6 +174,26 @@
       "url": "/service-details/special-permit"
     },
     {
+      "id": "occupational-permit",
+      "title": "Occupational Mayor's Permit (Regular)",
+      "category": "Business, Trade & Investment",
+      "categoryId": "business",
+      "description": "Apply for an Occupational Mayor's Permit for workers or employees",
+      "keywords": [
+        "occupational",
+        "permit",
+        "mayor",
+        "worker",
+        "employee",
+        "job",
+        "work"
+      ],
+      "fee": "Varies by Assessment",
+      "processingTime": "Approx. 3 hours",
+      "office": "Business Permits & Licensing Office",
+      "url": "/service-details/occupational-permit"
+    },
+    {
       "id": "business-closure",
       "title": "Business Closure",
       "category": "Business, Trade & Investment",

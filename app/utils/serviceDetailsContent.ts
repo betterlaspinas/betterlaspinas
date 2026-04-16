@@ -842,6 +842,91 @@ export const serviceDetailsContent: ServiceDetail[] = [
     sourceName: 'Citizen\'s Charter 2022 (1st Edition)',
   },
   {
+    id: 'occupational-permit',
+    title: 'Occupational Mayor\'s Permit',
+    fullTitle: 'Occupational Mayor\'s Permit (Regular)',
+    category: 'Business',
+    categoryLink: '/services/business',
+    badgeText: 'Business',
+    badgeIcon: 'bi-person-vcard',
+    description: 'The Occupational Mayor\'s Permit is issued by the City Government to all workers or employees (temporary or permanent) employed within the territorial jurisdiction of Las Piñas, pursuant to the local Revenue Code.',
+    quickStats: [
+      { icon: 'bi-clock', label: 'Processing', value: 'Approx. 3 hours' },
+      { icon: 'bi-cash', label: 'Fee', value: 'Varies by Assessment' },
+      {
+        icon: 'bi-person-check',
+        label: 'Who Can Apply',
+        value: 'Workers & Employees',
+      },
+      { icon: 'bi-calendar-check', label: 'Appointment', value: 'Walk-in' },
+    ],
+    processSteps: [
+      {
+        title: 'Secure Application Form',
+        description: 'Secure and fill out the application form at the Business Permit and Licensing Office (BPLO).',
+      },
+      {
+        title: 'Submit Requirements',
+        description: 'Submit the application form along with the required documents such as Cedula and NBI/Police Clearance for evaluation.',
+      },
+      {
+        title: 'Assessment and Payment',
+        description: 'Proceed through the assessment and pay the assessed fees as directed by BPLO personnel.',
+      },
+      {
+        title: 'Claim Permit',
+        description: 'Claim the Occupational Mayor\'s Permit once processed and approved.',
+        isFinal: true,
+      },
+    ],
+    requirements: [
+      {
+        title: 'Documentary Requirements',
+        icon: 'bi-file-text',
+        items: [
+          'Application Form (2 copies - secured from BPLO)',
+          'Community Tax Certificate (Cedula)',
+          'NBI Clearance or Police Clearance',
+        ],
+      },
+      {
+        title: 'For First-Time Jobseekers (R.A. 11261)',
+        icon: 'bi-person-plus',
+        items: [
+          'Barangay Certificate with an undertaking stating you are a first-time job seeker to avail the assistance.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'What is the processing time for the permit?',
+        answer: 'The BPLO classifies the issuance of the Occupational Mayor\'s Permit as a simple transaction, typically taking around 3 hours depending on the volume of applicants.',
+      },
+      {
+        question: 'Do I need to apply in person?',
+        answer: 'While in-person application is standard, the city has been integrating services online. Please check the official Las Piñas City website for recent updates.',
+      },
+    ],
+    office: {
+      name: 'Business Permits & Licensing Office',
+      location: 'City Hall, Ground Floor',
+      phone: '(02) 8551-5930',
+      hours: 'Mon-Thu: 8AM - 7PM',
+    },
+    relatedServices: [
+      {
+        title: 'Business Permit (New)',
+        link: '/service-details/business-permit-new',
+      },
+      {
+        title: 'Special Permit',
+        link: '/service-details/special-permit',
+      },
+    ],
+    sourceUrl: 'https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf',
+    sourceName: 'Citizen\'s Charter 2022 (1st Edition)',
+  },
+  {
     id: 'tricycle-franchising',
     hidden: true,
     title: 'Tricycle Franchising',
