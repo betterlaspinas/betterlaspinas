@@ -849,7 +849,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
     categoryLink: '/services/business',
     badgeText: 'Business',
     badgeIcon: 'bi-file-earmark-check',
-    description: 'Certification issued by the City Government to all who want to verify the status of a business entity registered with the BPLO. Information access is limited pursuant to the Data Privacy Act of 2012 to maintain record integrity.',
+    description: 'Certification issued by the City Government to all who want to verify the status of a business entity registered with the Business Permit and Licensing Office (BPLO). Information access is limited pursuant to the Data Privacy Act of 2012 to maintain record integrity.',
     quickStats: [
       { icon: 'bi-clock', label: 'Processing', value: 'Approx. 1 hour' },
       { icon: 'bi-cash', label: 'Fee', value: '₱75 + ₱15/page' },
@@ -863,7 +863,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
     processSteps: [
       {
         title: 'Submit Application & Requirements',
-        description: 'Fill up the application form and submit the request letter together with other required documents to BPLO frontliners for review and validation. BPLO will verify records and issue an Order of Payment.',
+        description: 'Fill out the application form and submit the request letter together with other required documents to the BPLO frontliners for review and validation. The BPLO will verify records and issue an Order of Payment.',
       },
       {
         title: 'Pay the Fee',
@@ -871,7 +871,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
       {
         title: 'Claim the Certification',
-        description: 'Return to BPLO for the processing and printing of the Certification, signing by the Chief BPLO, and release to the applicant.',
+        description: 'Return to the BPLO for the processing and printing of the Certification, signing by the Chief of BPLO, and release to the applicant.',
         isFinal: true,
       },
     ],
@@ -959,7 +959,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
       {
         title: 'Assessment and Payment',
-        description: 'Proceed through the assessment and pay the assessed fees as directed by BPLO personnel.',
+        description: 'Proceed through the assessment and pay the assessed fees as directed by the BPLO personnel.',
       },
       {
         title: 'Claim Permit',
