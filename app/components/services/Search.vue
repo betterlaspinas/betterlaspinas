@@ -217,20 +217,20 @@ function onFocus() {
           </div>
           <div class="flex flex-wrap gap-3 text-xs mb-1.5">
             <span class="inline-flex items-center gap-1 text-gray-500 bg-gray-100 px-2 py-0.5 rounded">
-              <i class="bi bi-folder text-[11px] opacity-80" />
+              <i class="bi bi-folder text-[12px] opacity-80" />
               {{ result.category }}
             </span>
             <span v-if="result.fee" class="inline-flex items-center gap-1 text-emerald-600 font-semibold">
-              <i class="bi bi-cash text-[11px] opacity-80" />
+              <i class="bi bi-cash text-[12px] opacity-80" />
               {{ result.fee }}
             </span>
             <span v-if="result.processingTime" class="inline-flex items-center gap-1 text-blue-600">
-              <i class="bi bi-clock text-[11px] opacity-80" />
+              <i class="bi bi-clock text-[12px] opacity-80" />
               {{ result.processingTime }}
             </span>
           </div>
           <div v-if="result.office" class="text-xs text-gray-500 mb-1 flex items-center">
-            <i class="bi bi-building mr-1.5 text-[11px] text-blue-700" />
+            <i class="bi bi-building mr-1.5 text-[12px] text-blue-700" />
             {{ result.office }}
           </div>
           <div v-if="result.description" class="text-sm text-gray-500 whitespace-nowrap overflow-hidden text-ellipsis leading-relaxed">
