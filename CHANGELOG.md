@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Launched "Business, Trade & Investment" category with detailed guides for New and Renewal Business Permits, featuring online application support and official Citizen's Charter attribution
 - Nuxt Schema Org to change the site name in search results
 - Added new "Issuance of Special Permit" service to the Business, Trade & Investment category with full Citizen's Charter details
+- Added new "Occupational Mayor's Permit (Regular)" service to the Business, Trade & Investment category with full Citizen's Charter details
+- Added new "Occupational Mayor's Permit (First Time Job Seeker)" service highlighting free assistance under R.A. 11261
+- Added new "Certificates on Status of Business" service for verifying registered business entity status via the BPLO
 - Launched "Business, Trade & Investment" category with detailed guides for New and Renewal Business Permits, featuring online application support and official Citizen's Charter attribution
 
 ### Changed
@@ -21,6 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Fixed hydration mismatch issue in service details layout
 - Prevented empty "Unreleased" section (and other empty versions or sections) from being rendered on the Changelog page
+- Adjusted icon size from 11px to 12px in Search Results info badges
 
 ### Infrastructure
 - **Added**: `CODEOWNERS` file to define repository maintainers
