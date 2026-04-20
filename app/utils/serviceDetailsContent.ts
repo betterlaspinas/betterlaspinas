@@ -842,6 +842,274 @@ export const serviceDetailsContent: ServiceDetail[] = [
     sourceName: 'Citizen\'s Charter 2022 (1st Edition)',
   },
   {
+    id: 'business-status-certificate',
+    title: 'Business Status Certificate',
+    fullTitle: 'Issuance of Certificates on Status of Business',
+    category: 'Business',
+    categoryLink: '/services/business',
+    badgeText: 'Business',
+    badgeIcon: 'bi-file-earmark-check',
+    description: 'Certification issued by the City Government to all who want to verify the status of a business entity registered with the Business Permit and Licensing Office (BPLO). Information access is limited pursuant to the Data Privacy Act of 2012 to maintain record integrity.',
+    quickStats: [
+      { icon: 'bi-clock', label: 'Processing', value: 'Approx. 1 hour' },
+      { icon: 'bi-cash', label: 'Fee', value: '₱75 + ₱15/page' },
+      {
+        icon: 'bi-person-check',
+        label: 'Who Can Apply',
+        value: 'Government & Private Sector',
+      },
+      { icon: 'bi-calendar-check', label: 'Appointment', value: 'Walk-in' },
+    ],
+    processSteps: [
+      {
+        title: 'Submit Application & Requirements',
+        description: 'Fill out the application form and submit the request letter together with other required documents to the BPLO frontliners for review and validation. The BPLO will verify records and issue an Order of Payment.',
+      },
+      {
+        title: 'Pay the Fee',
+        description: 'Proceed to the Office of the City Treasurer\'s – Miscellaneous Division and pay ₱75, plus ₱15 per additional page. An Official Receipt will be issued.',
+      },
+      {
+        title: 'Claim the Certification',
+        description: 'Return to the BPLO for the processing and printing of the Certification, signing by the Chief of BPLO, and release to the applicant.',
+        isFinal: true,
+      },
+    ],
+    requirements: [
+      {
+        title: 'Documentary Requirements',
+        icon: 'bi-file-text',
+        items: [
+          'Request Letter indicating the name of requestor and purpose of certification',
+          'Identification Card',
+          'Barangay Clearance',
+          'Assessor\'s Certificate',
+          'Referral letter from Hospital/DSWD/PAO or other government agencies (if applicable)',
+        ],
+      },
+      {
+        title: 'If Applying Through a Representative',
+        icon: 'bi-people',
+        items: [
+          'Letter of Authority, Special Power of Attorney, or Secretary Certificate',
+          'Valid ID of both the owner and representative',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'What is the purpose of this certification?',
+        answer: 'This certification is used to verify the legal status of a business entity registered in Las Piñas City. It is accepted for legal, government, and private transactions.',
+      },
+      {
+        question: 'Why is access to business records limited?',
+        answer: 'Pursuant to the Data Privacy Act of 2012 (RA 10173), the BPLO limits the data that can be accessed to protect the integrity and privacy of the information in its records.',
+      },
+    ],
+    office: {
+      name: 'Business Permits & Licensing Office',
+      location: 'City Hall, Ground Floor',
+      phone: '(02) 8551-5930',
+      hours: 'Mon-Thu: 8AM - 7PM',
+    },
+    relatedServices: [
+      {
+        title: 'Business Permit (New)',
+        link: '/service-details/business-permit-new',
+      },
+      {
+        title: 'Business Permit Renewal',
+        link: '/service-details/business-permit-renewal',
+      },
+      {
+        title: 'Special Permit',
+        link: '/service-details/special-permit',
+      },
+    ],
+    sourceUrl: 'https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf',
+    sourceName: 'Citizen\'s Charter 2022 (1st Edition)',
+  },
+  {
+    id: 'occupational-permit',
+    title: 'Occupational Mayor\'s Permit',
+    fullTitle: 'Occupational Mayor\'s Permit (Regular)',
+    category: 'Business',
+    categoryLink: '/services/business',
+    badgeText: 'Business',
+    badgeIcon: 'bi-person-vcard',
+    description: 'The Occupational Mayor\'s Permit is issued by the City Government to all workers or employees (temporary or permanent) employed within the territorial jurisdiction of Las Piñas, pursuant to the local Revenue Code.',
+    quickStats: [
+      { icon: 'bi-clock', label: 'Processing', value: 'Approx. 3 hours' },
+      { icon: 'bi-cash', label: 'Fee', value: 'Varies by Assessment' },
+      {
+        icon: 'bi-person-check',
+        label: 'Who Can Apply',
+        value: 'Workers & Employees',
+      },
+      { icon: 'bi-calendar-check', label: 'Appointment', value: 'Walk-in' },
+    ],
+    processSteps: [
+      {
+        title: 'Secure Application Form',
+        description: 'Secure and fill out the application form at the Business Permit and Licensing Office (BPLO).',
+      },
+      {
+        title: 'Submit Requirements',
+        description: 'Submit the application form along with the required documents such as Cedula and NBI/Police Clearance for evaluation.',
+      },
+      {
+        title: 'Assessment and Payment',
+        description: 'Proceed through the assessment and pay the assessed fees as directed by the BPLO personnel.',
+      },
+      {
+        title: 'Claim Permit',
+        description: 'Claim the Occupational Mayor\'s Permit once processed and approved.',
+        isFinal: true,
+      },
+    ],
+    requirements: [
+      {
+        title: 'Documentary Requirements',
+        icon: 'bi-file-text',
+        items: [
+          'Application Form (2 copies - secured from BPLO)',
+          'Community Tax Certificate (Cedula)',
+          'NBI Clearance or Police Clearance',
+        ],
+      },
+      {
+        title: 'For First-Time Jobseekers (R.A. 11261)',
+        icon: 'bi-person-plus',
+        items: [
+          'Barangay Certificate with an undertaking stating you are a first-time job seeker to avail the assistance.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'What is the processing time for the permit?',
+        answer: 'The BPLO classifies the issuance of the Occupational Mayor\'s Permit as a simple transaction, typically taking around 3 hours depending on the volume of applicants.',
+      },
+      {
+        question: 'Do I need to apply in person?',
+        answer: 'While in-person application is standard, the city has been integrating services online. Please check the official Las Piñas City website for recent updates.',
+      },
+    ],
+    office: {
+      name: 'Business Permits & Licensing Office',
+      location: 'City Hall, Ground Floor',
+      phone: '(02) 8551-5930',
+      hours: 'Mon-Thu: 8AM - 7PM',
+    },
+    relatedServices: [
+      {
+        title: 'Occupational Mayor\'s Permit (First Time Job Seeker)',
+        link: '/service-details/occupational-permit-jobseeker',
+      },
+      {
+        title: 'Business Permit (New)',
+        link: '/service-details/business-permit-new',
+      },
+      {
+        title: 'Special Permit',
+        link: '/service-details/special-permit',
+      },
+    ],
+    sourceUrl: 'https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf',
+    sourceName: 'Citizen\'s Charter 2022 (1st Edition)',
+  },
+  {
+    id: 'occupational-permit-jobseeker',
+    title: 'Occupational Mayor\'s Permit (First Time Job Seeker)',
+    fullTitle: 'Occupational Mayor\'s Permit (First Time Job Seeker)',
+    category: 'Business',
+    categoryLink: '/services/business',
+    badgeText: 'Business',
+    badgeIcon: 'bi-person-check',
+    description: 'The City Government of Las Piñas provides assistance to "First Time Job Seekers" regarding the issuance of an Occupational Mayor’s Permit, in compliance with Republic Act No. 11261, the "First Time Jobseekers Assistance Act" of 2019.',
+    quickStats: [
+      { icon: 'bi-clock', label: 'Processing', value: 'Approx. 3 hours' },
+      { icon: 'bi-cash', label: 'Fee', value: 'Free' },
+      {
+        icon: 'bi-person-check',
+        label: 'Who Can Apply',
+        value: 'First-time Job Seekers',
+      },
+      { icon: 'bi-calendar-check', label: 'Appointment', value: 'Walk-in' },
+    ],
+    processSteps: [
+      {
+        title: 'Secure Application Form',
+        description: 'Secure and fill out the application form at the Business Permit and Licensing Office (BPLO).',
+      },
+      {
+        title: 'Submit Requirements',
+        description: 'Submit the application form along with the required documents such as Cedula, NBI/Police Clearance, and your Barangay Certificate with First-time job seeker undertaking.',
+      },
+      {
+        title: 'Assessment and Evaluation',
+        description: 'Proceed through the assessment where personnel will evaluate your requirements and check your Barangay Certificate to waive local fees.',
+      },
+      {
+        title: 'Claim Permit',
+        description: 'Claim the Occupational Mayor\'s Permit once processed and approved.',
+        isFinal: true,
+      },
+    ],
+    requirements: [
+      {
+        title: 'Documentary Requirements',
+        icon: 'bi-file-text',
+        items: [
+          'Barangay Certificate with an undertaking stating you are a first-time job seeker (RA 11261)',
+          'Application Form (2 copies - secured from BPLO)',
+          'Community Tax Certificate (Cedula)',
+          'NBI Clearance or Police Clearance',
+        ],
+      },
+      {
+        title: 'Additional Medical Requirements',
+        icon: 'bi-heart-pulse',
+        items: [
+          'Medical Results (X-Ray Result)',
+          'Urine and Stool test results (specifically required for food handlers)',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'Who is considered a First Time Job Seeker?',
+        answer: 'A First Time Job Seeker is defined as a Filipino citizen looking for work for the first time, who is between 15 to 30 years old, and not currently receiving benefits from other government job programs.',
+      },
+      {
+        question: 'Are all fees waived under RA 11261?',
+        answer: 'Yes, government regulatory fees for standard documents such as the Occupational Permit, Barangay Clearance, and NBI Clearance are free of charge for valid first-time job seekers.',
+      },
+      {
+        question: 'What if I am a food handler?',
+        answer: 'If you are applying as a food handler, you will be required to submit specific test results (Urine and Stool) and also undergo a seminar at the Sanitation Office.',
+      },
+    ],
+    office: {
+      name: 'Business Permits & Licensing Office',
+      location: 'City Hall, Ground Floor',
+      phone: '(02) 8551-5930',
+      hours: 'Mon-Thu: 8AM - 7PM',
+    },
+    relatedServices: [
+      {
+        title: 'Occupational Mayor\'s Permit (Regular)',
+        link: '/service-details/occupational-permit',
+      },
+      {
+        title: 'Sanitary Permit',
+        link: '/services/business',
+      },
+    ],
+    sourceUrl: 'https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf',
+    sourceName: 'Citizen\'s Charter 2022 (1st Edition)',
+  },
+  {
     id: 'tricycle-franchising',
     hidden: true,
     title: 'Tricycle Franchising',
