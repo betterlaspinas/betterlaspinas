@@ -47,13 +47,13 @@
     "@vue/test-utils": "^2.4.6",
     "autoprefixer": "^10.5.0",
     "commander": "^13.1.0",
-    "eslint": "^10.2.0",
+    "eslint": "^10.2.1",
     "eslint-plugin-format": "^2.0.1",
     "happy-dom": "^20.9.0",
     "husky": "^9.1.7",
     "postcss": "^8.5.10",
     "tailwindcss": "^4.2.2",
     "vitest": "^4.1.4",
-    "vue-tsc": "^3.2.6"
+    "vue-tsc": "^3.2.7"
   }
 }
