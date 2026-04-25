@@ -1,4 +1,5 @@
 name: Continuous Deployment
+
 permissions:
   contents: read
 
@@ -8,12 +9,72 @@ on:
       - main
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      NUXT_PUBLIC_SITE_LGU_TYPE: ${{ secrets.NUXT_PUBLIC_SITE_LGU_TYPE }}
+      NUXT_PUBLIC_SITE_MUNICIPALITY: ${{ secrets.NUXT_PUBLIC_SITE_MUNICIPALITY }}
+      NUXT_PUBLIC_SITE_PROVINCE: ${{ secrets.NUXT_PUBLIC_SITE_PROVINCE }}
+      NUXT_PUBLIC_SITE_REGION: ${{ secrets.NUXT_PUBLIC_SITE_REGION }}
+      NUXT_PUBLIC_SITE_SITE_ID: ${{ secrets.NUXT_PUBLIC_SITE_SITE_ID }}
+      NUXT_PUBLIC_SITE_DOMAIN: ${{ secrets.NUXT_PUBLIC_SITE_DOMAIN }}
+      NUXT_PUBLIC_SITE_TAGLINE: ${{ secrets.NUXT_PUBLIC_SITE_TAGLINE }}
+      NUXT_PUBLIC_SITE_THEME_COLOR: ${{ secrets.NUXT_PUBLIC_SITE_THEME_COLOR }}
+      NUXT_PUBLIC_SITE_OFFICIAL_WEBSITE: ${{ secrets.NUXT_PUBLIC_SITE_OFFICIAL_WEBSITE }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Required for git describe to work correctly
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Generate Static Site (SSG)
+        run: pnpm generate
+
+      - name: Archive build
+        # We only archive the static public folder for pure static hosting
+        run: tar -czf artifact.tar.gz -C .output public
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifact
+          path: artifact.tar.gz
+          retention-days: 1
+
   deploy:
+    needs: build
     runs-on: ubuntu-latest
     environment: production
 
     steps:
-      - name: Deploy to Server
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifact
+
+      - name: Copy artifact to server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          port: ${{ secrets.SERVER_PORT || '22' }}
+          source: "artifact.tar.gz"
+          target: "/tmp"
+
+      - name: Extract and Update Symlink
         uses: appleboy/ssh-action@v1.2.5
         with:
           host: ${{ secrets.SERVER_IP }}
@@ -21,17 +82,22 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_PORT || '22' }}
           script: |
-            # 1. Setup PATH
-            # Required for Node-based tools (pnpm, pm2) to find 'node' via their shebangs.
-            export PATH="${{ secrets.SERVER_BIN_PATH }}:$PATH"
+            # 1. Prepare Release Directory
+            PROJECT_ROOT=~/htdocs/${{ secrets.SERVER_DOMAIN }}
+            RELEASES_DIR=$PROJECT_ROOT/releases
+            TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+            RELEASE_PATH=$RELEASES_DIR/$TIMESTAMP
 
-            # 2. Navigate and Fetch/Reset
-            # Using reset --hard instead of pull to resolve branch divergence and force-pushes.
-            cd ~/htdocs/${{ secrets.SERVER_DOMAIN }}
-            git fetch --tags origin ${{ github.ref_name }}
-            git reset --hard FETCH_HEAD
+            mkdir -p $RELEASE_PATH
 
-            # 3. Install, Build, and Restart
-            pnpm install --frozen-lockfile
-            pnpm build
-            pm2 reload betterlaspinas || NITRO_PORT=${{ secrets.APP_PORT || 3000 }} pm2 start ecosystem.config.cjs
+            # 2. Extract Static Assets
+            tar -xzf /tmp/artifact.tar.gz -C $RELEASE_PATH
+            rm /tmp/artifact.tar.gz
+
+            # 3. Atomic swap of the 'current' symlink
+            # Your web server (Nginx/Apache) should point to $PROJECT_ROOT/current
+            ln -sfn $RELEASE_PATH $PROJECT_ROOT/current
+
+            # 4. Cleanup: Keep only the 10 most recent releases
+            cd $RELEASES_DIR
+            ls -1t | tail -n +11 | xargs rm -rf 2>/dev/null || true

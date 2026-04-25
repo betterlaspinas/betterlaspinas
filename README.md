@@ -68,19 +68,14 @@ Edit the static configuration files in `app/config/`:
 - `statistics.json` - Population and data
 - `hotlines.json` - Emergency contacts
 
-#### Option B: Environment Variables (Dynamic Deployment)
+#### Option B: Environment Variables (CI/CD Deployment)
 
-For deploying to different LGUs or test servers without committing code changes, you can use a `.env` file to override the properties inside `site.json`.
+For deploying to different LGUs or test servers, use GitHub Actions Secrets to provide environment variables. These variables are **baked into the static site during the build process** on GitHub Actions.
 
-1. Copy `.env.example` to `.env`.
-2. Update the `NUXT_PUBLIC_SITE_*` variables.
+1. Add `NUXT_PUBLIC_SITE_*` secrets to your GitHub repository.
+2. The `cd.yml` workflow will automatically use these during `pnpm generate`.
 
-NUXT_PUBLIC_SITE_MUNICIPALITY="Las Piñas City"
-NUXT_PUBLIC_SITE_DOMAIN="betterlaspinas.org"
-
-These runtime variables will securely override the `site.json` values during build-time and run-time, making it ideal for CI/CD pipelines.
-
-> **Developer Note:** When building components, always use the `useConfig()` composable — never import directly from `app/utils/configHelper.ts`. The composable is the single source of truth: it merges `.env` overrides with `site.json` and exposes all configs (site, officials, navigation, services, translations, etc.) as reactive refs.
+> **Developer Note:** When building components, always use the `useConfig()` composable — never import directly from `app/utils/configHelper.ts`. The composable is the single source of truth: it merges `.env` (local dev) or baked-in secrets (production) with `site.json` and exposes all configs as reactive refs.
 >
 > **Reactivity rule:** In `<template>` blocks, refs are auto-unwrapped — use `{{ site.domain }}` directly. In `<script setup>` JS (inside `computed()`, functions, etc.), always use `.value` — e.g. `site.value.coordinates.lat`, `labels.value.deptPrefix`.
 >
@@ -190,27 +185,30 @@ No code changes required for content updates!
 
 ## 🌐 Deployment
 
-### Static Site Generation
+This project uses an **artifact-based, release-tracking deployment strategy** via GitHub Actions.
 
-```bash
-pnpm generate
-```
+### Automated Workflow
 
-Output will be in `.output/public/` - deploy to any static host.
+1. **Build**: GitHub Actions runs `pnpm generate` to create a pure static site.
+2. **Archive**: The `.output/public` folder is archived.
+3. **Deploy**: The artifact is securely transferred to the server, extracted into a timestamped release folder, and an atomic symlink swap updates the live site.
+4. **Cleanup**: The last 10 deployments are kept on the server for instant rollbacks.
 
-### Node.js Server
+### Manual Commands
 
-```bash
-pnpm build
-node .output/server/index.mjs
-```
+| Command          | Description                                      |
+| :--------------- | :----------------------------------------------- |
+| `pnpm generate`  | Generate the pure static site in `.output/public` |
+| `pnpm preview`   | Locally preview the generated static site        |
 
-### Recommended Platforms
+### Rollbacks
 
-- **Vercel** - Zero-config Nuxt deployment
-- **Netlify** - Static site hosting
-- **Cloudflare Pages** - Global CDN
-- **VPS** - Full control (Nginx + PM2)
+If a deployment needs to be reverted, use the **Rollback Deployment** workflow in the GitHub Actions tab. It will instantly point the `current` symlink back to the previous successful release.
+
+### Server Requirements
+
+- **Web Server**: Nginx or Apache (configured to serve the `current` symlink).
+- **Node.js**: Only required on the build runner (GitHub Actions); **not required** on the production server.
 
 See [Nuxt Deployment Docs](https://nuxt.com/docs/getting-started/deployment) for more options.
 

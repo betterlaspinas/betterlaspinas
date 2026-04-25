@@ -1,0 +1,52 @@
+name: Rollback Deployment
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_name:
+        description: 'Release timestamp to rollback to (optional, defaults to previous)'
+        required: false
+        default: ''
+
+jobs:
+  rollback:
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Rollback on Server
+        uses: appleboy/ssh-action@v1.2.5
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          port: ${{ secrets.SERVER_PORT || '22' }}
+          script: |
+            PROJECT_ROOT=~/htdocs/${{ secrets.SERVER_DOMAIN }}
+            RELEASES_DIR=$PROJECT_ROOT/releases
+            
+            cd $RELEASES_DIR
+
+            # 1. Determine target release
+            TARGET_RELEASE="${{ github.event.inputs.release_name }}"
+            
+            if [ -z "$TARGET_RELEASE" ]; then
+              # Get the 2nd most recent directory (the one before current)
+              TARGET_RELEASE=$(ls -1t | sed -n '2p')
+            fi
+
+            if [ -z "$TARGET_RELEASE" ]; then
+              echo "Error: No previous release found to rollback to."
+              exit 1
+            fi
+
+            if [ ! -d "$TARGET_RELEASE" ]; then
+              echo "Error: Release directory '$TARGET_RELEASE' does not exist."
+              exit 1
+            fi
+
+            # 2. Perform Rollback
+            echo "Rolling back to: $TARGET_RELEASE"
+            ln -sfn $RELEASES_DIR/$TARGET_RELEASE $PROJECT_ROOT/current
+            
+            echo "Successfully rolled back to $TARGET_RELEASE"

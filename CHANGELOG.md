@@ -26,9 +26,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Adjusted icon size from 11px to 12px in Search Results info badges
 
 ### Infrastructure
+- **Added**: `rollback.yml` workflow for manual one-click rollbacks via GitHub Actions
+- **Changed**: Migrated deployment strategy from server-side SSR builds to a pure static (SSG) artifact-based workflow
+- **Updated**: `cd.yml` with a release-based directory structure, atomic symlink swaps, and automated cleanup (retains last 10 deployments)
+- **Removed**: Redundant `ecosystem.config.cjs` as PM2/Node.js is no longer required on the production server
 - **Added**: `CODEOWNERS` file to define repository maintainers
 - **Added**: `--tags` to `git fetch` in `cd.yml` to support `git describe`
 - **Removed**: Redundant tag-based deployment trigger from `cd.yml`
+
+### Technical
+- **Updated**: `README.md` and `CONTRIBUTING.md` with new deployment and configuration instructions
+- **Fixed**: Internal deployment script environment loading and related type checking issues
 
 ## [1.1.0] - 2026-04-06
 
