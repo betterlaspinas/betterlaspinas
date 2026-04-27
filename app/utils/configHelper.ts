@@ -12,6 +12,7 @@ import type {
   NavigationItem,
   NewsConfig,
   OfficialsConfig,
+  OgImageRouteConfig,
   SeoRouteConfig,
   ServiceItem,
   ServicesConfig,
@@ -38,6 +39,7 @@ import legislativeConfig from '../config/legislative.json'
 import navigationConfig from '../config/navigation.json'
 import newsConfig from '../config/news.json'
 import officialsConfig from '../config/officials.json'
+import ogImageConfig from '../config/og-image.json'
 // Import JSON config files
 import seoConfig from '../config/seo.json'
 import servicesConfig from '../config/services.json'
@@ -338,6 +340,39 @@ export function getLGUConfig(): LGUConfig {
  */
 export function getSeoConfig(): Record<string, SeoRouteConfig> {
   return seoConfig as Record<string, SeoRouteConfig>
+}
+
+/**
+ * Get the OG image config for all routes
+ */
+export function getOgImageConfig(): Record<string, OgImageRouteConfig> {
+  return ogImageConfig as Record<string, OgImageRouteConfig>
+}
+
+/**
+ * Get the OG image config for a specific route, with template variable interpolation.
+ * Returns undefined if no config exists for the route.
+ */
+export function getOgImageRouteConfig(
+  routeKey: string,
+  vars: Record<string, string> = {},
+): OgImageRouteConfig | undefined {
+  const config = getOgImageConfig()
+  const entry = config[routeKey]
+  if (!entry) {
+    return undefined
+  }
+
+  const interpolate = (str: string) =>
+    Object.entries(vars).reduce(
+      (text, [key, value]) => text.replace(new RegExp(`\\{\\{${key}\\}\\}`, 'g'), value),
+      str,
+    )
+
+  return {
+    title: interpolate(entry.title),
+    description: entry.description ? interpolate(entry.description) : undefined,
+  }
 }
 
 /**

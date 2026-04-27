@@ -8,17 +8,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Launched "Business, Trade & Investment" category with detailed guides for New and Renewal Business Permits, featuring online application support and official Citizen's Charter attribution
 - Nuxt Schema Org to change the site name in search results
 - Added new "Issuance of Special Permit" service to the Business, Trade & Investment category with full Citizen's Charter details
 - Added new "Occupational Mayor's Permit (Regular)" service to the Business, Trade & Investment category with full Citizen's Charter details
 - Added new "Occupational Mayor's Permit (First Time Job Seeker)" service highlighting free assistance under R.A. 11261
 - Added new "Certificates on Status of Business" service for verifying registered business entity status via the BPLO
 - Launched "Business, Trade & Investment" category with detailed guides for New and Renewal Business Permits, featuring online application support and official Citizen's Charter attribution
+- Page-specific OG Image config functions along with the necessary `.json` for ease of editing
 
 ### Changed
 - Updated naming from "City Civil Registrar" to "City Civil Registry" across the application
 - Updated City Civil Registry contact details (telephone, mobile, email, Facebook) and physical address in service records
 - Updated the City Health Office contact information to reflect new phone numbers, mobile, and official Facebook page
+- Updated implementation of Nuxt OG Image to have page-specific OG Images with an easily editable JSON config for page descriptions
 
 ### Fixed
 - Fixed hydration mismatch issue in service details layout

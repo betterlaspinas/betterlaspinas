@@ -1,4 +1,6 @@
 <script setup lang="ts">
+usePageOgImage()
+
 const { lguName, labels, site } = useConfig()
 
 interface SitemapLink {

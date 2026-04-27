@@ -394,3 +394,8 @@ export interface SeoRouteConfig {
   twitterCard: 'summary' | 'summary_large_image'
   hidden: boolean
 }
+
+export interface OgImageRouteConfig {
+  title: string
+  description?: string
+}

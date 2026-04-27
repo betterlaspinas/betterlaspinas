@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { getMergedSiteConfig, getSiteConfig } from './configHelper'
+import { getMergedSiteConfig, getOgImageConfig, getOgImageRouteConfig, getSiteConfig } from './configHelper'
 
 describe('configHelper', () => {
   it('getSiteConfig should return site config', () => {
@@ -49,6 +49,39 @@ describe('configHelper', () => {
       const base = getSiteConfig()
       const merged = getMergedSiteConfig({ municipality: '' })
       expect(merged.municipality).toBe(base.municipality)
+    })
+  })
+
+  describe('getOgImageConfig', () => {
+    it('should return og image config', () => {
+      const config = getOgImageConfig()
+      expect(config).toBeDefined()
+      expect(config.index).toBeDefined()
+      expect(config.index?.title).toBeDefined()
+    })
+  })
+
+  describe('getOgImageRouteConfig', () => {
+    it('returns undefined for unknown route', () => {
+      const result = getOgImageRouteConfig('nonexistent')
+      expect(result).toBeUndefined()
+    })
+
+    it('interpolates template variables', () => {
+      const result = getOgImageRouteConfig('index', {
+        siteBrandName: 'BetterLasPinas.org',
+        lguName: 'Las Piñas',
+      })
+      expect(result).toBeDefined()
+      expect(result!.title).not.toContain('{{')
+    })
+
+    it('returns description when present', () => {
+      const result = getOgImageRouteConfig('about', {
+        siteBrandName: 'BetterLasPinas.org',
+        lguName: 'Las Piñas',
+      })
+      expect(result?.description).toBeDefined()
     })
   })
 })

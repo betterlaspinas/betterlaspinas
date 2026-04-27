@@ -1,4 +1,6 @@
 <script setup lang="ts">
+usePageOgImage()
+
 const { statistics, statisticsDetailed, labels, lguName, fullLocation } = useConfig()
 </script>
 

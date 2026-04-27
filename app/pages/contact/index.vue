@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useConfig } from '@/composables/useConfig'
 
+usePageOgImage()
+
 const { site, hotlines, formatPhoneLink } = useConfig()
 const officeHours = [
   { day: 'Monday - Thursday', time: '8:00 AM - 7:00 PM', status: 'Open', icon: 'bi-check-circle-fill', textClass: 'text-green-600', bgClass: 'bg-green-50' },
