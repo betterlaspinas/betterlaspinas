@@ -33,9 +33,9 @@
     "pinia": "^3.0.4",
     "tailwind-merge": "^3.5.0",
     "tailwind-variants": "^3.2.2",
-    "vue": "^3.5.32",
+    "vue": "^3.5.33",
     "vue-chartjs": "^5.3.3",
-    "vue-router": "^5.0.4"
+    "vue-router": "^5.0.6"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^8.2.0",
