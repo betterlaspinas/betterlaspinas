@@ -5,7 +5,7 @@ const props = defineProps<{
   description?: string
 }>()
 
-const { site, siteBrandName } = useConfig()
+const { site, siteBrandName, lguName } = useConfig()
 
 const logoPath = computed(() => site.value.logo?.whitePng || '/logos/svg/BetterGov_Icon-White.png')
 </script>
@@ -22,11 +22,20 @@ const logoPath = computed(() => site.value.logo?.whitePng || '/logos/svg/BetterG
         {{ props.description }}
       </h1>
     </div>
-    <div class="w-full flex flex-row justify-center items-center gap-4">
-      <img :src="logoPath" alt="Logo" class="object-contain" width="80" height="80">
-      <p class="text-3xl font-bold leading-tight tracking-tight text-white">
-        {{ siteBrandName }}
-      </p>
+
+    <!-- Logo and Site brand name with one-liner -->
+    <div class="w-full flex flex-row justify-between items-center gap-4">
+      <div class="w-1/2 flex flex-row justify-start items-center gap-4">
+        <img :src="logoPath" alt="Logo" class="object-contain" width="64" height="64">
+        <p class="text-3xl font-bold leading-tight tracking-tight text-white">
+          {{ siteBrandName }}
+        </p>
+      </div>
+      <div class="w-1/2 flex flex-row justify-end items-center gap-4">
+        <p class="text-3xl leading-tight tracking-tight text-white">
+          Empowering the people of {{ lguName }}
+        </p>
+      </div>
     </div>
   </div>
 </template>
