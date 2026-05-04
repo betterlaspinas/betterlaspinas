@@ -47,7 +47,7 @@
     "@vue/test-utils": "^2.4.9",
     "autoprefixer": "^10.5.0",
     "commander": "^13.1.0",
-    "eslint": "^10.2.1",
+    "eslint": "^10.3.0",
     "eslint-plugin-format": "^2.0.1",
     "happy-dom": "^20.9.0",
     "husky": "^9.1.7",
