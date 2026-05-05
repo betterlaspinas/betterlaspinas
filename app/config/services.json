@@ -194,6 +194,27 @@
       "url": "/service-details/business-status-certificate"
     },
     {
+      "id": "ctc-business-license",
+      "title": "Certified True Copy of Business License and Mayor's Permit",
+      "category": "Business, Trade & Investment",
+      "categoryId": "business",
+      "description": "Certified Copy of Business License and Mayor’s Permit for legal purposes",
+      "keywords": [
+        "certified",
+        "true",
+        "copy",
+        "business",
+        "license",
+        "mayor",
+        "permit",
+        "ctc"
+      ],
+      "fee": "₱90",
+      "processingTime": "Approx. 1 hour",
+      "office": "Business Permits & Licensing Office",
+      "url": "/service-details/ctc-business-license"
+    },
+    {
       "id": "occupational-permit",
       "title": "Occupational Mayor's Permit (Regular)",
       "category": "Business, Trade & Investment",

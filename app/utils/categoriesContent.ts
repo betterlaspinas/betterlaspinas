@@ -155,6 +155,15 @@ export const categoriesContent: CategoryContent[] = [
         link: '/service-details/business-status-certificate',
       },
       {
+        id: 'ctc-business-license',
+        title: 'Certified True Copy of Business License',
+        icon: 'bi-files',
+        description: 'Certified True Copy of Business License and Mayor\'s Permit',
+        fee: '₱90',
+        time: 'Approx. 1 hour',
+        link: '/service-details/ctc-business-license',
+      },
+      {
         id: 'occupational-permit',
         title: 'Occupational Mayor\'s Permit',
         icon: 'bi-person-vcard',
