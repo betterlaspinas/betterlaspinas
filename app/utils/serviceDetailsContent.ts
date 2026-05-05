@@ -930,6 +930,86 @@ export const serviceDetailsContent: ServiceDetail[] = [
     sourceName: 'Citizen\'s Charter 2022 (1st Edition)',
   },
   {
+    id: 'ctc-business-license',
+    title: 'CTC of Business License',
+    fullTitle: 'Issuance of Certified True Copy of Business License and Mayor’s Permit',
+    category: 'Business',
+    categoryLink: '/services/business',
+    badgeText: 'Business',
+    badgeIcon: 'bi-files',
+    description: 'Certified Copy of Business License and Mayor’s Permit issued by the City Government to Business Owners who request it in whatever legal purposes it may serve.',
+    quickStats: [
+      { icon: 'bi-clock', label: 'Processing', value: 'Approx. 1 hour' },
+      { icon: 'bi-cash', label: 'Fee', value: '₱90' },
+      {
+        icon: 'bi-person-check',
+        label: 'Who Can Apply',
+        value: 'Government & Private Sector',
+      },
+      { icon: 'bi-calendar-check', label: 'Appointment', value: 'Walk-in' },
+    ],
+    processSteps: [
+      {
+        title: 'Submit Requirements',
+        description: 'Submit the requirements to the BPLO frontliners for review, validation, and verification of records. An Order of Payment will be issued.',
+      },
+      {
+        title: 'Pay the Fee',
+        description: 'Upon receiving the Order of Payment, pay ₱90 at the Office of the City Treasurer’s – Miscellaneous Division. An Official Receipt will be issued.',
+      },
+      {
+        title: 'Claim the Document',
+        description: 'Return to the BPLO for the stamping, signing, and releasing of the Certified True Copy of Business License and Mayor’s Permit.',
+        isFinal: true,
+      },
+    ],
+    requirements: [
+      {
+        title: 'Documentary Requirements',
+        icon: 'bi-file-text',
+        items: [
+          'Photocopy of Business License and Mayor’s Permit',
+          'Identification Card',
+        ],
+      },
+      {
+        title: 'If Applying Through a Representative',
+        icon: 'bi-people',
+        items: [
+          'Letter of Authority, Special Power of Attorney, or Secretary Certificate',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'What is the purpose of this certified true copy?',
+        answer: 'It is issued by the City Government to Business Owners who request it for whatever legal purposes it may serve.',
+      },
+    ],
+    office: {
+      name: 'Business Permits & Licensing Office',
+      location: 'City Hall, Ground Floor',
+      phone: '(02) 8551-5930',
+      hours: 'Mon-Thu: 8AM - 7PM',
+    },
+    relatedServices: [
+      {
+        title: 'Business Permit (New)',
+        link: '/service-details/business-permit-new',
+      },
+      {
+        title: 'Business Permit Renewal',
+        link: '/service-details/business-permit-renewal',
+      },
+      {
+        title: 'Certificates on Status of Business',
+        link: '/service-details/business-status-certificate',
+      },
+    ],
+    sourceUrl: 'https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf',
+    sourceName: 'Citizen\'s Charter 2022 (1st Edition)',
+  },
+  {
     id: 'occupational-permit',
     title: 'Occupational Mayor\'s Permit',
     fullTitle: 'Occupational Mayor\'s Permit (Regular)',
