@@ -173,6 +173,15 @@ export const categoriesContent: CategoryContent[] = [
         link: '/service-details/occupational-permit-jobseeker',
       },
       {
+        id: 'safety-seal',
+        title: 'Safety Seal Certificate',
+        icon: 'bi-shield-check',
+        description: 'Certification for business establishments following Minimum Public Health Standards',
+        fee: 'Free',
+        time: '7 working days',
+        link: '/service-details/safety-seal',
+      },
+      {
         id: 'mayors-clearance',
         title: 'Mayor\'s Clearance',
         icon: 'bi-patch-check',

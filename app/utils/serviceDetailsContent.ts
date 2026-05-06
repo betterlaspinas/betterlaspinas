@@ -1110,6 +1110,117 @@ export const serviceDetailsContent: ServiceDetail[] = [
     sourceName: 'Citizen\'s Charter 2022 (1st Edition)',
   },
   {
+    id: 'safety-seal',
+    title: 'Safety Seal Certificate',
+    fullTitle: 'Issuance of Safety Seal Certificate',
+    category: 'Business',
+    categoryLink: '/services/business',
+    badgeText: 'Business',
+    badgeIcon: 'bi-shield-check',
+    description: 'Certification issued by the City Government to ensure that all business establishments follow Minimum Public Health Standards (MPHS) and promote business without compromising public health.',
+    quickStats: [
+      { icon: 'bi-clock', label: 'Processing', value: '7 Working Days' },
+      { icon: 'bi-cash', label: 'Fee', value: 'Free' },
+      {
+        icon: 'bi-person-check',
+        label: 'Who Can Apply',
+        value: 'Selected Business Establishments',
+      },
+      { icon: 'bi-calendar-check', label: 'Appointment', value: 'Walk-in' },
+    ],
+    processSteps: [
+      {
+        title: 'Submit Application',
+        description: 'Submit the duly accomplished Safety Seal Certification Form along with attached eligibility requirements to the BPLO.',
+      },
+      {
+        title: 'Review & Scheduling',
+        description: 'BPLO personnel will review and validate the requirements submitted and schedule the date of inspection.',
+      },
+      {
+        title: 'Field Inspection',
+        description: 'Inspectors from the BPLO and related divisions will inspect the business establishment to validate compliance with health standards.',
+      },
+      {
+        title: 'Database Recording',
+        description: 'The inspected establishment is encoded into the database for recording and tracking.',
+      },
+      {
+        title: 'Issuance of Certificate',
+        description: 'The Safety Seal Certificate is issued and sent to the applicant\'s registered email address.',
+        isFinal: true,
+      },
+    ],
+    requirements: [
+      {
+        title: 'Application Documents',
+        icon: 'bi-file-text',
+        items: [
+          'Duly Accomplished Safety Seal Certification Form',
+          'Valid Business License and Mayor\'s Permit',
+        ],
+      },
+      {
+        title: 'Health & Safety Protocols',
+        icon: 'bi-heart-pulse',
+        items: [
+          'Use of StaySafe.ph or integrated contact tracing tool',
+          'Availability of thermal scanners for employees and clients',
+          'Health declaration sheets for individuals entering the premises',
+          'Designated isolation area for symptomatic employees',
+          'BHERT and COVID-19 hotlines placed in conspicuous areas',
+          'Hand washing stations with soap and sanitizers',
+          'Physical barriers and floor markers for social distancing',
+          'Windows for adequate air exchange in indoor areas',
+        ],
+      },
+      {
+        title: 'Compliance & Personnel',
+        icon: 'bi-people',
+        items: [
+          'Availability of personnel-in-charge for protocol monitoring',
+          'Designated Safety Officer for contact tracing and referral',
+          'Established referral system for medical and psychosocial services',
+          'Regular disinfection protocol (at least twice a week)',
+          'Mandatory wearing of face masks and shields',
+          'Storage facility for used facemasks and infectious waste',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'Is there a fee for the Safety Seal?',
+        answer: 'No, the issuance of the Safety Seal Certificate is free of charge as part of the city\'s effort to support safe business operations.',
+      },
+      {
+        question: 'How long is the processing time?',
+        answer: 'The total processing time from submission to issuance via email is 7 working days.',
+      },
+    ],
+    office: {
+      name: 'Business Permits & Licensing Office',
+      location: 'City Hall, Ground Floor',
+      phone: '(02) 8551-5930',
+      hours: 'Mon-Thu: 8AM - 7PM',
+    },
+    relatedServices: [
+      {
+        title: 'Business Permit (New)',
+        link: '/service-details/business-permit-new',
+      },
+      {
+        title: 'Business Permit Renewal',
+        link: '/service-details/business-permit-renewal',
+      },
+      {
+        title: 'Sanitary Permit',
+        link: '/services/business',
+      },
+    ],
+    sourceUrl: 'https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf',
+    sourceName: 'Citizen\'s Charter 2022 (1st Edition)',
+  },
+  {
     id: 'tricycle-franchising',
     hidden: true,
     title: 'Tricycle Franchising',
