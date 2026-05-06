@@ -1023,6 +1023,27 @@
       "url": "/service-details/human-resource-management"
     },
     {
+      "id": "safety-seal",
+      "title": "Safety Seal Certificate",
+      "category": "Business, Trade & Investment",
+      "categoryId": "business",
+      "description": "Certification for business establishments following Minimum Public Health Standards (MPHS)",
+      "keywords": [
+        "safety",
+        "seal",
+        "certificate",
+        "BPLO",
+        "health standards",
+        "MPHS",
+        "StaySafe",
+        "COVID-19"
+      ],
+      "fee": "Free",
+      "processingTime": "7 working days",
+      "office": "Business Permits & Licensing Office",
+      "url": "/service-details/safety-seal"
+    },
+    {
       "id": "online-business-billing",
       "title": "Business Online Billing & Payment",
       "category": "Online Services",
