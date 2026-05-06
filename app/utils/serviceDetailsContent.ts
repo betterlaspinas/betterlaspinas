@@ -545,7 +545,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
   {
     id: 'business-permit-new',
     title: 'Business Permit (New)',
-    fullTitle: 'Issuance of New Business License and Mayor’s Permit',
+    fullTitle: 'Issuance of New Business License and Mayor\'s Permit',
     category: 'Business',
     categoryLink: '/services/business',
     badgeText: 'Business',
@@ -932,12 +932,12 @@ export const serviceDetailsContent: ServiceDetail[] = [
   {
     id: 'ctc-business-license',
     title: 'CTC of Business License',
-    fullTitle: 'Issuance of Certified True Copy of Business License and Mayor’s Permit',
+    fullTitle: 'Issuance of Certified True Copy of Business License and Mayor\'s Permit',
     category: 'Business',
     categoryLink: '/services/business',
     badgeText: 'Business',
     badgeIcon: 'bi-files',
-    description: 'Certified Copy of Business License and Mayor’s Permit issued by the City Government to Business Owners who request it in whatever legal purposes it may serve.',
+    description: 'Certified Copy of Business License and Mayor\'s Permit issued by the City Government to Business Owners who request it in whatever legal purposes it may serve.',
     quickStats: [
       { icon: 'bi-clock', label: 'Processing', value: 'Approx. 1 hour' },
       { icon: 'bi-cash', label: 'Fee', value: '₱90' },
@@ -955,11 +955,11 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
       {
         title: 'Pay the Fee',
-        description: 'Upon receiving the Order of Payment, pay ₱90 at the Office of the City Treasurer’s – Miscellaneous Division. An Official Receipt will be issued.',
+        description: 'Upon receiving the Order of Payment, pay ₱90 at the Office of the City Treasurer\'s – Miscellaneous Division. An Official Receipt will be issued.',
       },
       {
         title: 'Claim the Document',
-        description: 'Return to the BPLO for the stamping, signing, and releasing of the Certified True Copy of Business License and Mayor’s Permit.',
+        description: 'Return to the BPLO for the stamping, signing, and releasing of the Certified True Copy of Business License and Mayor\'s Permit.',
         isFinal: true,
       },
     ],
@@ -968,7 +968,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
         title: 'Documentary Requirements',
         icon: 'bi-file-text',
         items: [
-          'Photocopy of Business License and Mayor’s Permit',
+          'Photocopy of Business License and Mayor\'s Permit',
           'Identification Card',
         ],
       },
@@ -1106,7 +1106,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
     categoryLink: '/services/business',
     badgeText: 'Business',
     badgeIcon: 'bi-person-check',
-    description: 'The City Government of Las Piñas provides assistance to "First Time Job Seekers" regarding the issuance of an Occupational Mayor’s Permit, in compliance with Republic Act No. 11261, the "First Time Jobseekers Assistance Act" of 2019.',
+    description: 'The City Government of Las Piñas provides assistance to "First Time Job Seekers" regarding the issuance of an Occupational Mayor\'s Permit, in compliance with Republic Act No. 11261, the "First Time Jobseekers Assistance Act" of 2019.',
     quickStats: [
       { icon: 'bi-clock', label: 'Processing', value: 'Approx. 3 hours' },
       { icon: 'bi-cash', label: 'Fee', value: 'Free' },
