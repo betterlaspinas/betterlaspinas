@@ -79,7 +79,7 @@ export default defineNuxtConfig({
         'default-src': ['\'none\''],
         'manifest-src': ['\'self\''],
         'script-src': ['\'self\'', '\'strict-dynamic\'', '\'unsafe-inline\''],
-        'style-src': ['\'self\'', '\'unsafe-inline\'', 'https://fonts.googleapis.com'],
+        'style-src': ['\'self\'', '\'unsafe-inline\'', 'https://fonts.googleapis.com', 'https://cdn.jsdelivr.net'],
         'font-src': ['\'self\'', 'https://fonts.gstatic.com', 'https://cdn.jsdelivr.net'],
         'img-src': ['\'self\'', 'https:', 'data:'],
         'connect-src': ['\'self\'', 'https://api.open-meteo.com', 'https://open.er-api.com'],
