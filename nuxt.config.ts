@@ -63,17 +63,11 @@ export default defineNuxtConfig({
   },
   security: {
     headers: {
-      xFrameOptions: 'DENY',
-      xContentTypeOptions: 'nosniff',
       referrerPolicy: 'strict-origin-when-cross-origin',
       permissionsPolicy: {
         camera: [],
         microphone: [],
         geolocation: [],
-      },
-      strictTransportSecurity: {
-        maxAge: 31536000,
-        includeSubdomains: true,
       },
       contentSecurityPolicy: {
         'default-src': ['\'none\''],
