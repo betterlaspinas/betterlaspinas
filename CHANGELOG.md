@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added new "Certificates on Status of Business" service for verifying registered business entity status via the BPLO
 - Launched "Business, Trade & Investment" category with detailed guides for New and Renewal Business Permits, featuring online application support and official Citizen's Charter attribution
 - Page-specific OG Image config functions along with the necessary `.json` for ease of editing
+- Added new "Issuance of Certified True Copy of Business License and Mayor's Permit" service to the Business, Trade & Investment category
 
 ### Changed
 - Updated naming from "City Civil Registrar" to "City Civil Registry" across the application

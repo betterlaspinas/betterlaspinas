@@ -7,5 +7,6 @@
   "special-permit": "Apply for a Special Permit to operate your business establishment in {{lguName}}.",
   "occupational-permit": "Secure an Occupational Mayor's Permit for workers or employees in {{lguName}}.",
   "occupational-permit-jobseeker": "Avail the free Occupational Mayor's Permit for First Time Job Seekers in {{lguName}} under RA 11261.",
-  "business-status-certificate": "Verify the status of a business entity registered with the BPLO in {{lguName}}."
+  "business-status-certificate": "Verify the status of a business entity registered with the BPLO in {{lguName}}.",
+  "ctc-business-license": "Request a Certified True Copy of Business License and Mayor's Permit in {{lguName}}."
 }
