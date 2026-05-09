@@ -63,17 +63,18 @@ export default defineNuxtConfig({
   },
   security: {
     headers: {
-      xFrameOptions: 'DENY',
-      xContentTypeOptions: 'nosniff',
-      referrerPolicy: 'strict-origin-when-cross-origin',
+      // Disabled — CF Pages/Cloudflare CDN already sets these; enabling causes duplicates
+      referrerPolicy: false,
+      xFrameOptions: false,
+      xContentTypeOptions: false,
+      xXSSProtection: false,
+      strictTransportSecurity: false,
+      xDownloadOptions: false,
+      xPermittedCrossDomainPolicies: false,
       permissionsPolicy: {
         camera: [],
         microphone: [],
         geolocation: [],
-      },
-      strictTransportSecurity: {
-        maxAge: 31536000,
-        includeSubdomains: true,
       },
       contentSecurityPolicy: {
         'default-src': ['\'none\''],
