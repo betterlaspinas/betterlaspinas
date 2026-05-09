@@ -545,7 +545,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
   {
     id: 'business-permit-new',
     title: 'Business Permit (New)',
-    fullTitle: 'Issuance of New Business License and Mayor’s Permit',
+    fullTitle: 'Issuance of New Business License and Mayor\'s Permit',
     category: 'Business',
     categoryLink: '/services/business',
     badgeText: 'Business',
@@ -644,10 +644,8 @@ export const serviceDetailsContent: ServiceDetail[] = [
         title: 'Business Permit Renewal',
         link: '/service-details/business-permit-renewal',
       },
-      {
-        title: 'City Treasurer',
-        link: '/service-details/city-treasurer',
-      },
+      // TODO: Uncomment when city-treasurer page is ready
+      // { title: 'City Treasurer', link: '/service-details/city-treasurer' },
     ],
     onlineLink: 'https://cityoflaspinas.ph/',
     sourceUrl: 'https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf',
@@ -742,10 +740,8 @@ export const serviceDetailsContent: ServiceDetail[] = [
       hours: 'Mon-Thu: 8AM - 7PM',
     },
     relatedServices: [
-      {
-        title: 'City Treasurer',
-        link: '/service-details/city-treasurer',
-      },
+      // TODO: Uncomment when city-treasurer page is ready
+      // { title: 'City Treasurer', link: '/service-details/city-treasurer' },
       // Bring back when we have the details
       // {
       //   title: 'Fire Safety Certificate',
@@ -930,6 +926,86 @@ export const serviceDetailsContent: ServiceDetail[] = [
     sourceName: 'Citizen\'s Charter 2022 (1st Edition)',
   },
   {
+    id: 'ctc-business-license',
+    title: 'CTC of Business License',
+    fullTitle: 'Issuance of Certified True Copy of Business License and Mayor\'s Permit',
+    category: 'Business',
+    categoryLink: '/services/business',
+    badgeText: 'Business',
+    badgeIcon: 'bi-files',
+    description: 'Certified Copy of Business License and Mayor\'s Permit issued by the City Government to Business Owners who request it in whatever legal purposes it may serve.',
+    quickStats: [
+      { icon: 'bi-clock', label: 'Processing', value: 'Approx. 1 hour' },
+      { icon: 'bi-cash', label: 'Fee', value: '₱90' },
+      {
+        icon: 'bi-person-check',
+        label: 'Who Can Apply',
+        value: 'Government & Private Sector',
+      },
+      { icon: 'bi-calendar-check', label: 'Appointment', value: 'Walk-in' },
+    ],
+    processSteps: [
+      {
+        title: 'Submit Requirements',
+        description: 'Submit the requirements to the BPLO frontliners for review, validation, and verification of records. An Order of Payment will be issued.',
+      },
+      {
+        title: 'Pay the Fee',
+        description: 'Upon receiving the Order of Payment, pay ₱90 at the Office of the City Treasurer\'s – Miscellaneous Division. An Official Receipt will be issued.',
+      },
+      {
+        title: 'Claim the Document',
+        description: 'Return to the BPLO for the stamping, signing, and releasing of the Certified True Copy of Business License and Mayor\'s Permit.',
+        isFinal: true,
+      },
+    ],
+    requirements: [
+      {
+        title: 'Documentary Requirements',
+        icon: 'bi-file-text',
+        items: [
+          'Photocopy of Business License and Mayor\'s Permit',
+          'Identification Card',
+        ],
+      },
+      {
+        title: 'If Applying Through a Representative',
+        icon: 'bi-people',
+        items: [
+          'Letter of Authority, Special Power of Attorney, or Secretary Certificate',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'What is the purpose of this certified true copy?',
+        answer: 'It is issued by the City Government to Business Owners who request it for whatever legal purposes it may serve.',
+      },
+    ],
+    office: {
+      name: 'Business Permits & Licensing Office',
+      location: 'City Hall, Ground Floor',
+      phone: '(02) 8551-5930',
+      hours: 'Mon-Thu: 8AM - 7PM',
+    },
+    relatedServices: [
+      {
+        title: 'Business Permit (New)',
+        link: '/service-details/business-permit-new',
+      },
+      {
+        title: 'Business Permit Renewal',
+        link: '/service-details/business-permit-renewal',
+      },
+      {
+        title: 'Certificates on Status of Business',
+        link: '/service-details/business-status-certificate',
+      },
+    ],
+    sourceUrl: 'https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf',
+    sourceName: 'Citizen\'s Charter 2022 (1st Edition)',
+  },
+  {
     id: 'occupational-permit',
     title: 'Occupational Mayor\'s Permit',
     fullTitle: 'Occupational Mayor\'s Permit (Regular)',
@@ -1026,7 +1102,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
     categoryLink: '/services/business',
     badgeText: 'Business',
     badgeIcon: 'bi-person-check',
-    description: 'The City Government of Las Piñas provides assistance to "First Time Job Seekers" regarding the issuance of an Occupational Mayor’s Permit, in compliance with Republic Act No. 11261, the "First Time Jobseekers Assistance Act" of 2019.',
+    description: 'The City Government of Las Piñas provides assistance to "First Time Job Seekers" regarding the issuance of an Occupational Mayor\'s Permit, in compliance with Republic Act No. 11261, the "First Time Jobseekers Assistance Act" of 2019.',
     quickStats: [
       { icon: 'bi-clock', label: 'Processing', value: 'Approx. 3 hours' },
       { icon: 'bi-cash', label: 'Fee', value: 'Free' },
@@ -1369,13 +1445,11 @@ export const serviceDetailsContent: ServiceDetail[] = [
     },
     relatedServices: [
       {
-        title: 'City Treasurer',
-        link: '/service-details/city-treasurer',
-      },
-      {
         title: 'Property Declaration',
         link: '/service-details/property-declaration',
       },
+      // TODO: Uncomment when city-treasurer page is ready
+      // { title: 'City Treasurer', link: '/service-details/city-treasurer' },
     ],
   },
   {
@@ -1449,7 +1523,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
       {
         title: 'City Assessor',
-        link: '/service-details/municipal-assessor',
+        link: '/service-details/city-assessor',
       },
     ],
     onlineLink: 'https://cityoflaspinas.ph/',
@@ -1514,12 +1588,10 @@ export const serviceDetailsContent: ServiceDetail[] = [
     relatedServices: [
       {
         title: 'City Assessor',
-        link: '/service-details/municipal-assessor',
+        link: '/service-details/city-assessor',
       },
-      {
-        title: 'City Treasurer',
-        link: '/service-details/city-treasurer',
-      },
+      // TODO: Uncomment when city-treasurer page is ready
+      // { title: 'City Treasurer', link: '/service-details/city-treasurer' },
     ],
   },
 
@@ -1834,7 +1906,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
     relatedServices: [
       {
         title: 'City Planning',
-        link: '/service-details/municipal-planning',
+        link: '/service-details/city-planning',
       },
       { title: 'Fire Safety Certificate', link: '/services/infrastructure' },
     ],
@@ -1902,7 +1974,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
     relatedServices: [
       {
         title: 'City Engineering',
-        link: '/service-details/municipal-engineering',
+        link: '/service-details/city-engineering',
       },
     ],
   },
@@ -2024,7 +2096,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
     relatedServices: [
       {
         title: 'City Accounting',
-        link: '/service-details/municipal-accounting',
+        link: '/service-details/city-accounting',
       },
       { title: 'Budget Transparency', link: '/budget' },
     ],
@@ -2084,11 +2156,9 @@ export const serviceDetailsContent: ServiceDetail[] = [
       hours: 'Mon-Thu: 8AM - 7PM',
     },
     relatedServices: [
-      { title: 'City Budget', link: '/service-details/municipal-budget' },
-      {
-        title: 'City Treasurer',
-        link: '/service-details/city-treasurer',
-      },
+      { title: 'City Budget', link: '/service-details/city-budget' },
+      // TODO: Uncomment when city-treasurer page is ready
+      // { title: 'City Treasurer', link: '/service-details/city-treasurer' },
     ],
   },
 
