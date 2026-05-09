@@ -54,12 +54,50 @@ export default defineNuxtConfig({
       '/services/certificates',
     ],
   },
+  routeRules: {
+    '/': {
+      headers: {
+        'Cache-Control': 'no-cache, must-revalidate',
+      },
+    },
+  },
+  security: {
+    headers: {
+      xFrameOptions: 'DENY',
+      xContentTypeOptions: 'nosniff',
+      referrerPolicy: 'strict-origin-when-cross-origin',
+      permissionsPolicy: {
+        camera: [],
+        microphone: [],
+        geolocation: [],
+      },
+      strictTransportSecurity: {
+        maxAge: 31536000,
+        includeSubdomains: true,
+      },
+      contentSecurityPolicy: {
+        'default-src': ['\'none\''],
+        'manifest-src': ['\'self\''],
+        'script-src': ['\'self\'', '\'unsafe-inline\''],
+        'style-src': ['\'self\'', '\'unsafe-inline\'', 'https://fonts.googleapis.com', 'https://cdn.jsdelivr.net'],
+        'font-src': ['\'self\'', 'https://fonts.gstatic.com', 'https://cdn.jsdelivr.net'],
+        'img-src': ['\'self\'', 'https:', 'data:'],
+        'connect-src': ['\'self\'', 'https://api.open-meteo.com', 'https://open.er-api.com'],
+        'base-uri': ['\'self\''],
+        'form-action': ['\'none\''],
+      },
+    },
+    sri: false,
+    ssg: {
+      hashScripts: false,
+    },
+  },
   ssr: true,
   ogImage: {
     enabled: true,
   },
   css: ['~/assets/css/main.css'],
-  modules: ['@pinia/nuxt', '@nuxtjs/seo', 'nuxt-og-image'],
+  modules: ['@pinia/nuxt', '@nuxtjs/seo', 'nuxt-og-image', 'nuxt-security'],
   runtimeConfig: {
     public: {
       site: {
