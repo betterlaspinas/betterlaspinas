@@ -88,6 +88,9 @@ export default defineNuxtConfig({
       },
     },
     sri: false,
+    ssg: {
+      hashScripts: false,
+    },
   },
   ssr: true,
   ogImage: {
