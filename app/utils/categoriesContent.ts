@@ -323,7 +323,7 @@ export const categoriesContent: CategoryContent[] = [
         description: 'Registration and ID for citizens aged 60 and above',
         fee: 'Free',
         time: '1-2 weeks',
-        link: '/service-details/mswdo-services',
+        link: '/service-details/cswdo-services',
       },
       {
         id: 'pwd-id',
@@ -332,7 +332,7 @@ export const categoriesContent: CategoryContent[] = [
         description: 'Registration and ID for persons with disability',
         fee: 'Free',
         time: '1-2 weeks',
-        link: '/service-details/mswdo-services',
+        link: '/service-details/cswdo-services',
       },
       {
         id: 'solo-parent',
@@ -341,7 +341,7 @@ export const categoriesContent: CategoryContent[] = [
         description: 'Registration for solo parent benefits',
         fee: 'Free',
         time: '1-2 weeks',
-        link: '/service-details/mswdo-services',
+        link: '/service-details/cswdo-services',
       },
       {
         id: 'financial-aid',
@@ -350,7 +350,7 @@ export const categoriesContent: CategoryContent[] = [
         description: 'Emergency financial assistance for indigent families',
         fee: 'Free',
         time: 'Varies',
-        link: '/service-details/mswdo-services',
+        link: '/service-details/cswdo-services',
       },
       {
         id: 'burial-assist',
@@ -359,7 +359,7 @@ export const categoriesContent: CategoryContent[] = [
         description: 'Financial assistance for burial expenses',
         fee: 'Free',
         time: '1-3 days',
-        link: '/service-details/mswdo-services',
+        link: '/service-details/cswdo-services',
       },
       {
         id: 'medical-assist',
@@ -368,7 +368,7 @@ export const categoriesContent: CategoryContent[] = [
         description: 'Assistance for hospitalization and medical expenses',
         fee: 'Free',
         time: '1-3 days',
-        link: '/service-details/mswdo-services',
+        link: '/service-details/cswdo-services',
       },
     ],
     offices: [
@@ -376,7 +376,7 @@ export const categoriesContent: CategoryContent[] = [
         title: 'MSWDO',
         icon: 'bi-people',
         description: 'Social welfare programs, IDs, and financial assistance',
-        link: '/service-details/mswdo-services',
+        link: '/service-details/cswdo-services',
       },
     ],
   },
