@@ -644,10 +644,8 @@ export const serviceDetailsContent: ServiceDetail[] = [
         title: 'Business Permit Renewal',
         link: '/service-details/business-permit-renewal',
       },
-      {
-        title: 'City Treasurer',
-        link: '/service-details/city-treasurer',
-      },
+      // TODO: Uncomment when city-treasurer page is ready
+      // { title: 'City Treasurer', link: '/service-details/city-treasurer' },
     ],
     onlineLink: 'https://cityoflaspinas.ph/',
     sourceUrl: 'https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf',
@@ -742,10 +740,8 @@ export const serviceDetailsContent: ServiceDetail[] = [
       hours: 'Mon-Thu: 8AM - 7PM',
     },
     relatedServices: [
-      {
-        title: 'City Treasurer',
-        link: '/service-details/city-treasurer',
-      },
+      // TODO: Uncomment when city-treasurer page is ready
+      // { title: 'City Treasurer', link: '/service-details/city-treasurer' },
       // Bring back when we have the details
       // {
       //   title: 'Fire Safety Certificate',
@@ -1258,13 +1254,11 @@ export const serviceDetailsContent: ServiceDetail[] = [
     },
     relatedServices: [
       {
-        title: 'City Treasurer',
-        link: '/service-details/city-treasurer',
-      },
-      {
         title: 'Property Declaration',
         link: '/service-details/property-declaration',
       },
+      // TODO: Uncomment when city-treasurer page is ready
+      // { title: 'City Treasurer', link: '/service-details/city-treasurer' },
     ],
   },
   {
@@ -1338,7 +1332,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
       {
         title: 'City Assessor',
-        link: '/service-details/municipal-assessor',
+        link: '/service-details/city-assessor',
       },
     ],
     onlineLink: 'https://cityoflaspinas.ph/',
@@ -1403,12 +1397,10 @@ export const serviceDetailsContent: ServiceDetail[] = [
     relatedServices: [
       {
         title: 'City Assessor',
-        link: '/service-details/municipal-assessor',
+        link: '/service-details/city-assessor',
       },
-      {
-        title: 'City Treasurer',
-        link: '/service-details/city-treasurer',
-      },
+      // TODO: Uncomment when city-treasurer page is ready
+      // { title: 'City Treasurer', link: '/service-details/city-treasurer' },
     ],
   },
 
@@ -1723,7 +1715,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
     relatedServices: [
       {
         title: 'City Planning',
-        link: '/service-details/municipal-planning',
+        link: '/service-details/city-planning',
       },
       { title: 'Fire Safety Certificate', link: '/services/infrastructure' },
     ],
@@ -1791,7 +1783,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
     relatedServices: [
       {
         title: 'City Engineering',
-        link: '/service-details/municipal-engineering',
+        link: '/service-details/city-engineering',
       },
     ],
   },
@@ -1913,7 +1905,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
     relatedServices: [
       {
         title: 'City Accounting',
-        link: '/service-details/municipal-accounting',
+        link: '/service-details/city-accounting',
       },
       { title: 'Budget Transparency', link: '/budget' },
     ],
@@ -1973,11 +1965,9 @@ export const serviceDetailsContent: ServiceDetail[] = [
       hours: 'Mon-Thu: 8AM - 7PM',
     },
     relatedServices: [
-      { title: 'City Budget', link: '/service-details/municipal-budget' },
-      {
-        title: 'City Treasurer',
-        link: '/service-details/city-treasurer',
-      },
+      { title: 'City Budget', link: '/service-details/city-budget' },
+      // TODO: Uncomment when city-treasurer page is ready
+      // { title: 'City Treasurer', link: '/service-details/city-treasurer' },
     ],
   },
 
