@@ -5,35 +5,44 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [1.2.0] - 2026-05-10
 
 ### Added
-- Added new "Safety Seal Certificate" service to the Business category with full requirements and procedures
-- Launched "Business, Trade & Investment" category with detailed guides for New and Renewal Business Permits, featuring online application support and official Citizen's Charter attribution
-- Nuxt Schema Org to change the site name in search results
-- Added new "Issuance of Special Permit" service to the Business, Trade & Investment category with full Citizen's Charter details
-- Added new "Occupational Mayor's Permit (Regular)" service to the Business, Trade & Investment category with full Citizen's Charter details
-- Added new "Occupational Mayor's Permit (First Time Job Seeker)" service highlighting free assistance under R.A. 11261
-- Added new "Certificates on Status of Business" service for verifying registered business entity status via the BPLO
-- Launched "Business, Trade & Investment" category with detailed guides for New and Renewal Business Permits, featuring online application support and official Citizen's Charter attribution
-- Page-specific OG Image config functions along with the necessary `.json` for ease of editing
-- Added new "Issuance of Certified True Copy of Business License and Mayor's Permit" service to the Business, Trade & Investment category
+- Launched "Business, Trade & Investment" category with comprehensive guides for New and Renewal Business Permits, featuring online application support and official Citizen's Charter attribution
+- Added "Safety Seal Certificate" service to the Business category with full requirements and procedures
+- Added "Issuance of Special Permit" service to the Business category with full Citizen's Charter details
+- Added "Occupational Mayor's Permit (Regular)" service with full Citizen's Charter details
+- Added "Occupational Mayor's Permit (First Time Job Seeker)" service highlighting assistance under R.A. 11261
+- Added "Certificates on Status of Business" service for verification of registered entities via the BPLO
+- Added "Certified True Copy" of Business License and Mayor's Permit service
+- Nuxt Schema Org integration to enhance site name display in search results
+- Page-specific Open Graph (OG) image configuration and JSON-driven description management
 
 ### Changed
-- Updated naming from "City Civil Registrar" to "City Civil Registry" across the application
-- Updated City Civil Registry contact details (telephone, mobile, email, Facebook) and physical address in service records
-- Updated the City Health Office contact information to reflect new phone numbers, mobile, and official Facebook page
-- Updated implementation of Nuxt OG Image to have page-specific OG Images with an easily editable JSON config for page descriptions
+- Revamped the Changelog page with a modern vertical timeline, improved visual hierarchy, and intuitive grouping of technical updates
+- Refined City department branding by updating "City Civil Registrar" to "City Civil Registry" across all components
+- Updated official contact details, physical addresses, and social media links for the City Civil Registry and City Health Office
+- Enhanced OG Image implementation with a JSON-driven configuration for easier management of page-specific descriptions
 
 ### Fixed
-- Fixed hydration mismatch issue in service details layout
-- Prevented empty "Unreleased" section (and other empty versions or sections) from being rendered on the Changelog page
-- Adjusted icon size from 11px to 12px in Search Results info badges
+- Resolved broken internal navigation by synchronizing service slugs and fixing department-level links (e.g., MSWDO to CSWDO)
+- Fixed hydration mismatch errors in service detail layouts and deterministic state management
+- Corrected changelog rendering logic to prevent empty sections or the "Unreleased" header from displaying when no updates are present
+- Improved search result UI by adjusting info badge icon alignment and increasing size to 12px
 
 ### Infrastructure
-- **Added**: `CODEOWNERS` file to define repository maintainers
-- **Added**: `--tags` to `git fetch` in `cd.yml` to support `git describe`
-- **Removed**: Redundant tag-based deployment trigger from `cd.yml`
+- **Added**: Project governance and environment files including `CODEOWNERS` and `.nvmrc` (Node 24)
+- **Updated**: Core framework and development dependencies including `nuxt` 4.4.4 and `@vue/test-utils` 4.0.3
+- **Updated**: Security architecture via `nuxt-security` module, including hardened CSP policies and Cloudflare-specific header optimizations
+- **Removed**: Outdated GitHub Actions deployment workflow (`cd.yml`)
+
+### Internal
+- **Refactored**: Standardized service routing by migrating `municipal-*` slugs to `city-*` to align with the city's official status
+- **Refactored**: Optimized internal link routing logic in `categoriesContent.ts` and `serviceDetailsContent.ts`
+
+### Technical
+- **Removed**: Redundant security header definitions from `nuxt.config.ts` to eliminate conflicts with the new security module
+- **Cleaned**: Removed unused issue link logic from prerendering configuration to improve build stability
 
 ## [1.1.0] - 2026-04-06
 
@@ -112,6 +121,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Technical
 - **Added**: Open source governance: `README`, `CONTRIBUTING`, `LICENSE`, `CODE_OF_CONDUCT`
 
-[Unreleased]: https://github.com/betterlaspinas/betterlaspinas/compare/v1.1.0...main
+[Unreleased]: https://github.com/betterlaspinas/betterlaspinas/compare/v1.2.0...main
+[1.2.0]: https://github.com/betterlaspinas/betterlaspinas/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/betterlaspinas/betterlaspinas/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/betterlaspinas/betterlaspinas/releases/tag/v1.0.0

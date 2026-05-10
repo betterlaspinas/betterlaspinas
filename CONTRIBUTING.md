@@ -73,7 +73,7 @@ We use a [GitHub Project Board](https://github.com/orgs/betterlaspinas/projects/
 
 ### Prerequisites
 
-- Node.js 22.x or higher
+- Node.js 24.x or higher
 - pnpm 10.x or higher
 - Git
 

@@ -135,7 +135,7 @@
       "slug": "city-treasurer",
       "name": "Ms. Susan M. Bombita",
       "department": "City Treasurer's Office",
-      "abbreviation": "MTO",
+      "abbreviation": "CTO",
       "description": "Tax payments, real property tax, revenue collection",
       "icon": "bi-cash-coin",
       "email": "",
@@ -147,7 +147,7 @@
       "slug": "city-engineering",
       "name": "Engr. Rosabella A. Bantog",
       "department": "City Engineering Office",
-      "abbreviation": "MEO",
+      "abbreviation": "CEO",
       "description": "Building permits, construction permits, infrastructure",
       "icon": "bi-building-fill-gear",
       "email": "lp.bldgo@gmail.com",
@@ -155,7 +155,7 @@
       "services": "infrastructure"
     },
     {
-      "id": "mswdo",
+      "id": "cswdo",
       "slug": "cswdo-services",
       "name": "Ms. Junet M. Barilla",
       "department": "City Social Welfare and Development Office",

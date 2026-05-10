@@ -2,6 +2,17 @@
 usePageOgImage()
 
 const { entries, getSectionBadgeColor, getSectionIcon, getPrefixColorClass } = useChangelog()
+
+const HIGHLIGHT_SECTIONS = ['added', 'changed', 'deprecated', 'removed', 'fixed', 'security']
+const TECHNICAL_SECTIONS = ['infrastructure', 'internal', 'technical']
+
+function getHighlights(entry: any) {
+  return entry.sections.filter((s: any) => HIGHLIGHT_SECTIONS.includes(s.title.toLowerCase()))
+}
+
+function getTechnical(entry: any) {
+  return entry.sections.filter((s: any) => TECHNICAL_SECTIONS.includes(s.title.toLowerCase()))
+}
 </script>
 
 <template>
@@ -31,68 +42,58 @@ const { entries, getSectionBadgeColor, getSectionIcon, getPrefixColorClass } = u
     <!-- Content -->
     <section class="py-12 bg-gray-50/50">
       <div class="container mx-auto px-4">
-        <div class="max-w-5xl mx-auto">
+        <div class="max-w-4xl mx-auto">
           <!-- Timeline -->
           <div class="relative">
-            <!-- Central Line -->
-            <div class="hidden md:block absolute left-1/2 top-4 bottom-4 w-0.5 bg-gray-200 -translate-x-1/2" />
+            <!-- Vertical Line -->
+            <div class="absolute left-2 md:left-3 top-2 bottom-2 w-px bg-gray-200" />
 
             <!-- Entries -->
-            <div class="space-y-12">
+            <div class="space-y-16">
               <div
-                v-for="(entry, index) in entries"
+                v-for="entry in entries"
                 :key="entry.version"
-                class="relative grid grid-cols-1 md:grid-cols-2 gap-8 items-start"
+                class="relative pl-10 md:pl-14"
               >
-                <!-- Central Indicator (Absolute) -->
-                <div class="hidden md:flex absolute left-1/2 top-6 -translate-x-1/2 z-20 items-center justify-center w-8 h-8 rounded-full border-4 border-white bg-white text-primary-600 shadow-sm overflow-hidden group-hover:bg-primary-600 group-hover:text-white transition-colors">
-                  <div class="w-full h-full flex items-center justify-center bg-gray-50 group-hover:bg-primary-600 transition-colors">
-                    <i :class="entry.version === 'Unreleased' ? 'bi-stars' : 'bi-patch-check-fill'" class="text-sm" />
+                <!-- Indicator -->
+                <div
+                  class="absolute left-2 md:left-3 top-[11px] md:top-[14px] -translate-x-1/2 z-20 flex items-center justify-center w-4 h-4 rounded-full border-2 border-white bg-primary-600 shadow-sm"
+                  :class="entry.version === 'Unreleased' ? 'animate-pulse' : ''"
+                />
+
+                <!-- Version Header (Chapter Style) -->
+                <div class="mb-6">
+                  <div class="flex flex-wrap items-baseline gap-3 mb-2">
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-900">
+                      {{ entry.version === 'Unreleased' ? 'Recent Updates' : `v${entry.version}` }}
+                    </h2>
+                    <span v-if="entry.date" class="text-sm font-semibold text-primary-600 bg-primary-50 px-2.5 py-1 rounded-md">
+                      {{ entry.date }}
+                    </span>
+                    <UiBadge v-if="entry.version === 'Unreleased'" variant="solid-primary" size="sm">
+                      Current
+                    </UiBadge>
+                  </div>
+
+                  <div class="flex items-center gap-4">
+                    <a
+                      v-if="entry.githubUrl"
+                      :href="entry.githubUrl"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center gap-1.5 text-xs font-bold text-gray-600 hover:text-primary-700 transition-colors"
+                    >
+                      <i class="bi bi-github" />
+                      <span>Compare on GitHub</span>
+                    </a>
                   </div>
                 </div>
 
-                <!-- Date Area (Visible on opposite side on desktop) -->
-                <div
-                  class="hidden md:flex flex-col mt-7"
-                  :class="index % 2 === 0 ? 'text-right items-end pr-12 order-1' : 'text-left items-start pl-12 order-2'"
-                >
-                  <div v-if="entry.date" class="flex flex-col" :class="index % 2 === 0 ? 'items-end' : 'items-start'">
-                    <span class="text-sm font-bold text-gray-900">{{ entry.date }}</span>
-                    <span class="text-xs text-gray-400 font-medium uppercase tracking-tighter mt-1">Release Date</span>
-                  </div>
-                </div>
-
-                <!-- Content Card Area -->
-                <div
-                  class="relative group"
-                  :class="index % 2 === 0 ? 'md:pl-12 order-2' : 'md:pr-12 order-1'"
-                >
-                  <!-- Mobile Indicator -->
-                  <div class="md:hidden absolute -left-7 top-6 w-4 h-4 rounded-full border-2 border-white bg-primary-600 shadow-sm z-10" />
-
-                  <!-- Card Header (Badge & GitHub) -->
-                  <div class="flex items-center justify-between mb-4">
-                    <div class="flex items-center gap-3">
-                      <UiBadge :variant="entry.version === 'Unreleased' ? 'solid-primary' : 'primary'" size="lg" class="shadow-sm">
-                        {{ entry.version === 'Unreleased' ? 'Recent Updates' : `v${entry.version}` }}
-                      </UiBadge>
-
-                      <a
-                        v-if="entry.githubUrl"
-                        :href="entry.githubUrl"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="flex items-center gap-1.5 text-xs font-bold text-gray-500 hover:text-primary-600 transition-colors bg-white px-3 py-1.5 rounded-full border border-gray-200 shadow-sm"
-                      >
-                        <i class="bi bi-github" />
-                        <span>Source</span>
-                      </a>
-                    </div>
-                  </div>
-
-                  <!-- Card Body -->
-                  <UiCard padding="p-6" class="border-gray-100 shadow-sm hover:shadow-md transition-all duration-300">
-                    <div v-for="section in entry.sections" :key="section.title" class="mb-8 last:mb-0">
+                <!-- Content Area -->
+                <div class="space-y-6">
+                  <!-- Highlights Section -->
+                  <div v-if="getHighlights(entry).length > 0" class="space-y-8">
+                    <div v-for="section in getHighlights(entry)" :key="section.title">
                       <div class="flex items-center gap-2 mb-4">
                         <UiBadge :variant="getSectionBadgeColor(section.title)" size="sm">
                           <div class="flex items-center gap-1.5">
@@ -102,9 +103,9 @@ const { entries, getSectionBadgeColor, getSectionIcon, getPrefixColorClass } = u
                         </UiBadge>
                       </div>
 
-                      <ul class="space-y-4 pl-1">
-                        <li v-for="item in section.items" :key="item.content" class="flex items-start gap-3 text-sm text-gray-600 leading-relaxed group/item">
-                          <span class="mt-2 w-1.5 h-1.5 rounded-full bg-primary-500 shrink-0 group-hover/item:scale-125 transition-transform" />
+                      <ul class="space-y-3 pl-1">
+                        <li v-for="item in section.items" :key="item.content" class="flex items-start gap-3 text-sm text-gray-800 leading-relaxed">
+                          <span class="mt-2 w-1.5 h-1.5 rounded-full bg-primary-600 shrink-0" />
                           <div class="flex flex-col gap-1.5">
                             <div v-if="item.prefix" class="flex">
                               <span
@@ -114,12 +115,47 @@ const { entries, getSectionBadgeColor, getSectionIcon, getPrefixColorClass } = u
                                 {{ item.prefix }}
                               </span>
                             </div>
-                            <span class="group-hover/item:text-gray-900 transition-colors">{{ item.content }}</span>
+                            <span>{{ item.content }}</span>
                           </div>
                         </li>
                       </ul>
                     </div>
-                  </UiCard>
+                  </div>
+
+                  <!-- Technical Details Section (Gray Block) -->
+                  <div v-if="getTechnical(entry).length > 0" class="bg-gray-100/80 rounded-xl p-5 md:p-6 border border-gray-200/60">
+                    <div class="flex items-center gap-2 mb-4">
+                      <span class="text-xs font-bold text-gray-600 uppercase tracking-widest flex items-center gap-2">
+                        <i class="bi bi-cpu text-sm" /> Technical Details
+                      </span>
+                    </div>
+
+                    <div class="space-y-6">
+                      <div v-for="section in getTechnical(entry)" :key="section.title">
+                        <div class="flex items-center gap-2 mb-3">
+                          <span class="text-xs font-bold text-gray-800 flex items-center gap-1.5">
+                            <i :class="getSectionIcon(section.title)" />
+                            {{ section.title }}
+                          </span>
+                        </div>
+
+                        <ul class="space-y-2.5 pl-1">
+                          <li v-for="item in section.items" :key="item.content" class="flex items-start gap-3 text-sm text-gray-700 leading-relaxed">
+                            <span class="mt-2 w-1 h-1 rounded-full bg-gray-500 shrink-0" />
+                            <div class="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                              <span
+                                v-if="item.prefix"
+                                class="inline-block px-1.5 py-0.5 rounded-[3px] text-[9px] font-bold uppercase tracking-wider border border-gray-300 bg-white text-gray-600 leading-none"
+                              >
+                                {{ item.prefix }}
+                              </span>
+                              <span>{{ item.content }}</span>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
