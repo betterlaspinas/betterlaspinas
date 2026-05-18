@@ -30,7 +30,7 @@
     "leaflet": "^1.9.4",
     "lucide-vue-next": "^1.0.0",
     "nuxt": "^4.4.5",
-    "nuxt-security": "^2.5.1",
+    "nuxt-security": "^2.6.0",
     "pinia": "^3.0.4",
     "tailwind-merge": "^3.6.0",
     "tailwind-variants": "^3.2.2",
