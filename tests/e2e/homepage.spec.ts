@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test'
+import { expect, test } from '../../lib/fixtures/search.fixture'
 
 test.describe('Home Page/Landing Page', () => {
   test.beforeEach(async ({ page }) => {
@@ -29,6 +29,7 @@ test.describe('Home Page/Landing Page', () => {
       await expect(page.getByRole('link', { name: 'Services', exact: true })).toBeVisible()
       await page.getByRole('link', { name: 'Services', exact: true }).hover()
       await expect(page.getByRole('menuitem', { name: 'Certificates', exact: true })).toBeVisible()
+      await expect(page.getByRole('menuitem', { name: 'Business', exact: true })).toBeVisible()
       await expect(page.getByRole('link', { name: 'Government', exact: true })).toBeVisible()
       await expect(page.getByRole('link', { name: 'Statistics', exact: true })).toBeVisible()
       await expect(page.getByRole('link', { name: 'Contact', exact: true })).toBeVisible()
@@ -86,17 +87,20 @@ test.describe('Home Page/Landing Page', () => {
     })
   })
 
-  test('should have working search functionality ', async ({ page }) => {
-    const searchInput = page.getByPlaceholder('e.g., birth certificate, business permit')
-    await expect(searchInput).toBeVisible()
-    await searchInput.fill('birth certificate')
-
-    const searchResult = page.locator('button').filter({ hasText: 'Birth Certificate' })
-    await expect(searchResult).toBeVisible()
-    await searchResult.click()
-
-    // Verify that the user is navigated to the correct service page
-    await expect(page).toHaveURL('https://betterlaspinas.org/service-details/birth-certificate')
+  test('should have working search functionality ', async ({ page, searchFunctionality }) => {
+    // Use page object model for search functionality
+    await expect(searchFunctionality.searchInput).toBeVisible()
+    await searchFunctionality.search('birth certificate')
+    await searchFunctionality.clickResult('Birth Certificate')
     await expect(page.getByRole('heading', { name: 'Birth Certificate (Local Copy)', level: 1, exact: true })).toBeVisible()
+    await expect(page).toHaveURL(/\/birth-certificate/i)
+  })
+
+  test('should have working search functionality cycle 2', async ({ page, searchFunctionality }) => {
+    await expect(searchFunctionality.searchInput).toBeVisible()
+    await searchFunctionality.search('marriage certificate')
+    await searchFunctionality.clickResult('Marriage Certificate')
+    await expect(page.getByRole('heading', { name: 'Marriage Certificate Registration & Copy', level: 1, exact: true })).toBeVisible()
+    await expect(page).toHaveURL(/\/marriage-certificate/i)
   })
 })
