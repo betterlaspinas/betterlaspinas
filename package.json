@@ -52,7 +52,7 @@
     "eslint-plugin-format": "^2.0.1",
     "happy-dom": "^20.9.0",
     "husky": "^9.1.7",
-    "postcss": "^8.5.14",
+    "postcss": "^8.5.15",
     "tailwindcss": "^4.3.0",
     "vitest": "^4.1.6",
     "vue-tsc": "^3.2.9"
