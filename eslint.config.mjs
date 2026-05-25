@@ -4,4 +4,8 @@ export default antfu({
   formatters: true,
   vue: true,
   typescript: true,
+  ignores: [
+    '.antigravitycli/**',
+    'research.md',
+  ],
 })
