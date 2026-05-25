@@ -55,6 +55,6 @@
     "postcss": "^8.5.15",
     "tailwindcss": "^4.3.0",
     "vitest": "^4.1.7",
-    "vue-tsc": "^3.2.9"
+    "vue-tsc": "^3.3.1"
   }
 }
