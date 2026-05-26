@@ -16,6 +16,8 @@ import {
   getNavigationConfig,
   getNewsConfig,
   getOfficialsConfig,
+  getOgImageConfig,
+  getOgImageRouteConfig,
   getServicesConfig,
   getSiteBrandName,
   getStatisticsConfig,
@@ -68,6 +70,10 @@ export function useConfig() {
     servicesConfig: getServicesConfig(),
     translations: getTranslationOverrides(),
     categories: getCategoriesConfig(),
+
+    // --- OG Image config ---
+    ogImageConfig: getOgImageConfig(),
+    getOgImageRouteConfig,
 
     // --- Derived computed values ---
     lguType,

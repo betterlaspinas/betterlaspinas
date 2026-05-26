@@ -1,4 +1,6 @@
 <script setup lang="ts">
+usePageOgImage()
+
 const { lguName, fullLocation, labels, budget } = useConfig()
 
 useHead({

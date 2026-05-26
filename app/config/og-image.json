@@ -1,0 +1,94 @@
+{
+  "index": {
+    "title": "{{siteBrandName}}",
+    "description": "Empowering the people of {{lguName}}"
+  },
+  "about": {
+    "title": "About",
+    "description": "Our mission, history, and community in {{lguName}}"
+  },
+  "accessibility": {
+    "title": "Accessibility",
+    "description": "Accessibility statement and resources for {{siteBrandName}}"
+  },
+  "faq": {
+    "title": "FAQ",
+    "description": "Frequently Asked Questions about {{lguName}}"
+  },
+  "budget": {
+    "title": "Budget & Finance",
+    "description": "Financial transparency, allocations, and expenditures of {{lguName}}"
+  },
+  "government": {
+    "title": "Government Officials",
+    "description": "Meet the leaders and officials of {{lguName}}"
+  },
+  "legislative": {
+    "title": "Legislative Action",
+    "description": "Ordinances and resolutions from the {{legislativeBody}}"
+  },
+  "history": {
+    "title": "History & Heritage",
+    "description": "The rich cultural heritage and history of {{lguName}}"
+  },
+  "join-us": {
+    "title": "Join Us",
+    "description": "Careers, volunteering, and opportunities in {{lguName}}"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "description": "Data privacy and user agreements for {{siteBrandName}}"
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "description": "Terms of service and usage guidelines for {{siteBrandName}}"
+  },
+  "tourism": {
+    "title": "Tourism & Culture",
+    "description": "Explore the sights, attractions, and culture of {{lguName}}"
+  },
+  "news": {
+    "title": "News & Updates",
+    "description": "The latest announcements and press releases from {{lguName}}"
+  },
+  "legislative-ordinance-framework": {
+    "title": "Ordinance Framework",
+    "description": "Understanding local ordinances in {{lguName}}"
+  },
+  "legislative-resolution-framework": {
+    "title": "Resolution Framework",
+    "description": "Understanding local resolutions in {{lguName}}"
+  },
+  "services": {
+    "title": "Services",
+    "description": "Public services and resources provided by {{lguName}}"
+  },
+  "sitemap": {
+    "title": "Sitemap",
+    "description": "Index of all pages on {{siteBrandName}}"
+  },
+  "statistics": {
+    "title": "Open Data & Statistics",
+    "description": "Demographics and statistics of {{lguName}}"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "description": "Get in touch with the {{lguName}} local government"
+  },
+  "news-slug": {
+    "title": "News",
+    "description": "Latest updates from {{lguName}}"
+  },
+  "services-category": {
+    "title": "{{category}} Services",
+    "description": "Explore {{category}} services offered by {{lguName}}"
+  },
+  "service-details-slug": {
+    "title": "Service Details",
+    "description": "Detailed information about this service in {{lguName}}"
+  },
+  "changelog": {
+    "title": "Changelog",
+    "description": "Site updates and new features for {{siteBrandName}}"
+  }
+}

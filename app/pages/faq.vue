@@ -1,4 +1,6 @@
 <script setup lang="ts">
+usePageOgImage()
+
 const { translate } = useLanguage()
 const { lguName, labels, faq, getSiteTitle, getVolunteerEmail, siteBrandName } = useConfig()
 const siteTitle = computed(() => getSiteTitle())

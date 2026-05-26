@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import Breadcrumbs from '~/components/ui/Breadcrumbs.vue'
 
+usePageOgImage()
+
 const { lguName, labels, legislative } = useConfig()
 
 // Get resolution types and items from config

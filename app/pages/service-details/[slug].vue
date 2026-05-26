@@ -1,4 +1,6 @@
 <script setup lang="ts">
+usePageOgImage()
+
 const route = useRoute()
 const slug = route.params.slug as string
 const service = getServiceDetail(slug)
@@ -12,6 +14,8 @@ if (!service) {
 }
 
 const openFaq = ref<number | null>(null)
+
+const { lguName } = useConfig()
 
 function toggleFaq(index: number) {
   openFaq.value = openFaq.value === index ? null : index
@@ -28,13 +32,22 @@ function toggleFaq(index: number) {
       ]"
     />
 
-    <ServicesPageHeader
+    <UiPageHero
       :badge-icon="service.badgeIcon"
       :badge-text="service.badgeText"
       :title="service.fullTitle"
       :description="service.description"
-      search-placeholder="Search other services..."
-    />
+    >
+      <div class="max-w-xl mx-auto mt-8">
+        <div class="relative flex items-center">
+          <i class="bi bi-search absolute left-4 text-gray-400 z-10 pointer-events-none" />
+          <ServicesSearch
+            placeholder="Search services (e.g., birth certificate, marriage certificate)"
+            class="w-full [&_input]:pl-12 [&_input]:pr-4 [&_input]:py-4 [&_input]:rounded-xl [&_input]:text-base [&_input]:border-0 [&_input]:shadow-lg"
+          />
+        </div>
+      </div>
+    </UiPageHero>
 
     <!-- Quick Stats -->
     <section class="py-8 bg-gray-50">
@@ -60,15 +73,67 @@ function toggleFaq(index: number) {
       </div>
     </section>
 
-    <!-- Step-by-Step Process -->
-    <section class="py-12">
+    <!-- Application Methods (Online) -->
+    <section v-if="service.onlineLink" class="py-12 border-b border-gray-100">
       <div class="container mx-auto px-4">
         <div class="text-center mb-8">
           <h2 class="text-xl font-bold text-gray-900 flex items-center justify-center gap-2">
-            <i class="bi bi-list-ol text-primary-600" /> Step-by-Step Process
+            <i class="bi bi-laptop text-primary-600" /> Choose Application Method
           </h2>
           <p class="text-gray-500">
-            Follow these steps to complete this service
+            Apply online for faster processing or visit our office in person
+          </p>
+        </div>
+
+        <div class="max-w-4xl mx-auto">
+          <UiCard class="border-primary-200 bg-primary-50 px-6 py-8 md:px-10 md:py-12 overflow-hidden">
+            <div class="md:flex items-center gap-10">
+              <div class="flex-1">
+                <div class="flex items-center gap-2 mb-4">
+                  <span class="bg-primary-600 text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">Highly Recommended</span>
+                  <h3 class="text-2xl font-bold text-gray-900">
+                    Online Application
+                  </h3>
+                </div>
+                <p class="text-gray-700 text-lg mb-8 leading-relaxed">
+                  Avoid queues and process your {{ service.title }} through the official {{ lguName }} eBPLS portal. This digital service is available 24/7 for your convenience.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                  <UiButton
+                    :href="service.onlineLink"
+                    variant="solid"
+                    color="primary"
+                    size="lg"
+                    class="flex items-center justify-center gap-2 px-10"
+                    external
+                    target="_blank"
+                  >
+                    Start Online Application <i class="bi bi-box-arrow-up-right" />
+                  </UiButton>
+                </div>
+              </div>
+              <div class="hidden md:flex items-center justify-center w-48 h-48 bg-primary-100 rounded-2xl">
+                <i class="bi bi-laptop-fill text-7xl text-primary-600" />
+              </div>
+            </div>
+          </UiCard>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step-by-Step Process (In-Person) -->
+    <section class="py-12" :class="[service.onlineLink ? 'bg-gray-50/50' : '']">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-8">
+          <div v-if="service.onlineLink" class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-200 text-gray-600 text-xs font-bold uppercase tracking-wider mb-4">
+            Alternative Method
+          </div>
+          <h2 class="text-xl font-bold text-gray-900 flex items-center justify-center gap-2">
+            <i :class="service.onlineLink ? 'bi bi-person-walking' : 'bi bi-list-ol'" class="text-primary-600" />
+            {{ service.onlineLink ? 'In-Person Application Method' : 'Step-by-Step Process' }}
+          </h2>
+          <p class="text-gray-500">
+            {{ service.onlineLink ? 'If you prefer to apply at the City Hall, follow these steps:' : 'Follow these steps to complete this service' }}
           </p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
@@ -76,7 +141,7 @@ function toggleFaq(index: number) {
             v-for="(step, stepIndex) in service.processSteps"
             :key="step.title"
             class="relative" :class="[
-              step.isFinal ? 'border-green-300 bg-green-50' : '',
+              step.isFinal ? 'border-green-300 bg-green-50' : 'bg-white',
             ]"
           >
             <span
@@ -176,8 +241,17 @@ function toggleFaq(index: number) {
               <p class="text-sm text-gray-600 mt-2">
                 {{ service.office.location }}
               </p>
-              <p class="text-sm text-gray-600 mt-1 flex items-center gap-2">
+              <p v-if="service.office.phone" class="text-sm text-gray-600 mt-1 flex items-center gap-2">
                 <i class="bi bi-telephone" /> {{ service.office.phone }}
+              </p>
+              <p v-if="service.office.mobile" class="text-sm text-gray-600 mt-1 flex items-center gap-2">
+                <i class="bi bi-phone" /> {{ service.office.mobile }}
+              </p>
+              <p v-if="service.office.email" class="text-sm text-gray-600 mt-1 flex items-center gap-2">
+                <i class="bi bi-envelope" /> <a :href="`mailto:${service.office.email}`" class="hover:underline text-primary-600">{{ service.office.email }}</a>
+              </p>
+              <p v-if="service.office.facebook" class="text-sm text-gray-600 mt-1 flex items-center gap-2">
+                <i class="bi bi-facebook" /> <a :href="service.office.facebook" target="_blank" rel="noopener noreferrer" class="hover:underline text-primary-600">Facebook Page</a>
               </p>
               <p class="text-sm text-gray-600 mt-1 flex items-center gap-2">
                 <i class="bi bi-clock" /> {{ service.office.hours }}
@@ -218,6 +292,26 @@ function toggleFaq(index: number) {
               >
                 Contact Us
               </UiButton>
+            </UiCard>
+
+            <UiCard
+              v-if="service.sourceUrl"
+            >
+              <h4 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                <i class="bi bi-patch-check text-primary-600" /> Verified Source
+              </h4>
+              <p class="text-sm text-gray-600 mb-4">
+                This information is sourced directly from the official city documentation.
+              </p>
+              <a
+                :href="service.sourceUrl"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 text-sm font-medium text-primary-600 hover:text-primary-700 transition-colors"
+              >
+                {{ service.sourceName || 'Citizen\'s Charter' }}
+                <i class="bi bi-box-arrow-up-right text-xs" />
+              </a>
             </UiCard>
           </div>
         </div>

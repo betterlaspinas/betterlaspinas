@@ -51,6 +51,7 @@ export interface SiteConfig {
   logo: {
     main: string
     white: string
+    whitePng: string
     favicon: string
   }
 }
@@ -340,6 +341,7 @@ export interface ServiceItem {
   fee?: string
   processingTime?: string
   url: string
+  hidden?: boolean
 }
 
 export interface ServicesConfig {
@@ -391,4 +393,9 @@ export interface SeoRouteConfig {
   ogType: 'website' | 'article'
   twitterCard: 'summary' | 'summary_large_image'
   hidden: boolean
+}
+
+export interface OgImageRouteConfig {
+  title: string
+  description?: string
 }

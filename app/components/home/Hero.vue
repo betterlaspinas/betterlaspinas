@@ -51,14 +51,20 @@ const { translate } = useLanguage()
             >
               Birth Certificate
             </NuxtLink>
-            <!-- TODO: Add back when available -->
-            <!-- <NuxtLink
-              to="/service-details/business-permits-licensing"
+            <NuxtLink
+              to="/service-details/business-permit-new"
               class="text-primary-600 bg-primary-500/5 px-3 py-1.5 rounded-full no-underline transition-all duration-200 font-medium border border-transparent hover:bg-primary-500/10 hover:border-primary-500/15"
             >
-              Business Permit
+              Business Permit (New)
             </NuxtLink>
             <NuxtLink
+              to="/service-details/business-permit-renewal"
+              class="text-primary-600 bg-primary-500/5 px-3 py-1.5 rounded-full no-underline transition-all duration-200 font-medium border border-transparent hover:bg-primary-500/10 hover:border-primary-500/15"
+            >
+              Business Permit (Renewal)
+            </NuxtLink>
+            <!-- TODO: Add back when available -->
+            <!-- <NuxtLink
               to="/service-details/city-treasurer"
               class="text-primary-600 bg-primary-500/5 px-3 py-1.5 rounded-full no-underline transition-all duration-200 font-medium border border-transparent hover:bg-primary-500/10 hover:border-primary-500/15"
             >

@@ -25,6 +25,9 @@ export interface OfficeInfo {
   name: string
   location: string
   phone: string
+  mobile?: string
+  email?: string
+  facebook?: string
   hours: string
 }
 
@@ -48,6 +51,10 @@ export interface ServiceDetail {
   faqs: FAQ[]
   office: OfficeInfo
   relatedServices: RelatedService[]
+  onlineLink?: string
+  sourceUrl?: string
+  sourceName?: string
+  hidden?: boolean
 }
 
 export const serviceDetailsContent: ServiceDetail[] = [
@@ -86,9 +93,9 @@ export const serviceDetailsContent: ServiceDetail[] = [
           'Bring valid government-issued ID. If representative: authorization letter and IDs of both owner and representative.',
       },
       {
-        title: 'Visit Civil Registrar',
+        title: 'Visit Civil Registry',
         description:
-          'Go to the City Civil Registrar Office - Window 4 at 2nd Floor, City Hall. Office hours: Mon-Fri, 8AM-5PM.',
+          'Go to the City Civil Registry Office - Window 4 at 1st Floor, Administrative Building. Office hours: Mon-Fri, 8AM-5PM.',
       },
       {
         title: 'Fill Out Request Form',
@@ -98,12 +105,12 @@ export const serviceDetailsContent: ServiceDetail[] = [
       {
         title: 'Pay the Fee',
         description:
-          'Pay ₱75 per certified copy at Window 2 or 3 of the Civil Registrar or at the City Treasurer\'s Office (same building).',
+          'Pay ₱75 per certified copy at Window 2 or 3 of the Civil Registry or at the City Treasurer\'s Office (same building).',
       },
       {
         title: 'Claim Certificate',
         description:
-          'Return to Civil Registrar Window 4 with official receipt. Certificate released within 15-30 minutes if record is available.',
+          'Return to Civil Registry Window 4 with official receipt. Certificate released within 15-30 minutes if record is available.',
         isFinal: true,
       },
     ],
@@ -132,7 +139,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
         question:
           'Can I get a birth certificate registered in another city?',
         answer:
-          'No. The City Civil Registrar only has records for births registered in this city. For other cities, request from that city\'s Civil Registrar or from PSA.',
+          'No. The City Civil Registry only has records for births registered in this city. For other cities, request from that city\'s Civil Registry or from PSA.',
       },
       {
         question: 'What if I don\'t know the exact date of birth?',
@@ -151,9 +158,12 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
     ],
     office: {
-      name: 'City Civil Registrar',
-      location: 'City Hall, 2nd Floor',
-      phone: '0920 425 8214',
+      name: 'City Civil Registry',
+      location: '1st Floor, Administrative Building, Las Piñas City Hall Compound',
+      phone: '(02) 8253-4370',
+      mobile: '0998 587 9659',
+      email: 'lpcivilreg@gmail.com',
+      facebook: 'https://www.facebook.com/civilreglaspinas',
       hours: 'Mon-Thu: 8AM - 7PM',
     },
     relatedServices: [
@@ -195,9 +205,9 @@ export const serviceDetailsContent: ServiceDetail[] = [
           'Prepare marriage certificate from solemnizing officer and valid IDs.',
       },
       {
-        title: 'Visit Civil Registrar',
+        title: 'Visit Civil Registry',
         description:
-          'Go to the Civil Registrar Office, 2nd Floor, City Hall.',
+          'Go to the Civil Registry Office, 1st Floor, Administrative Building.',
       },
       {
         title: 'Submit Documents & Verification',
@@ -206,7 +216,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
       {
         title: 'Payment',
-        description: 'Pay the Solemnization Fee of ₱150 at Window 2 or 3 in the Civil Registrar Office.',
+        description: 'Pay the Solemnization Fee of ₱150 at Window 2 or 3 in the Civil Registry Office.',
       },
       {
         title: 'Registration',
@@ -263,9 +273,12 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
     ],
     office: {
-      name: 'City Civil Registrar',
-      location: 'City Hall, 2nd Floor',
-      phone: '0920 425 8214',
+      name: 'City Civil Registry',
+      location: '1st Floor, Administrative Building, Las Piñas City Hall Compound',
+      phone: '(02) 8253-4370',
+      mobile: '0998 587 9659',
+      email: 'lpcivilreg@gmail.com',
+      facebook: 'https://www.facebook.com/civilreglaspinas',
       hours: 'Mon-Thu: 8AM - 7PM',
     },
     relatedServices: [
@@ -302,9 +315,9 @@ export const serviceDetailsContent: ServiceDetail[] = [
           'Get certificate of death from attending physician or hospital.',
       },
       {
-        title: 'Visit Civil Registrar',
+        title: 'Visit Civil Registry',
         description:
-          'Go to Civil Registrar at Window 5 with death certificate within 48 hours.',
+          'Go to Civil Registry at Window 5 with death certificate within 48 hours.',
       },
       {
         title: 'Complete Registry',
@@ -313,7 +326,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       {
         title: 'Pay Fees',
         description:
-          'Pay registration of ₱75, ₱150 if late, and burial permit fees at Window 2 or 3 in the Civil Registrar Office or at the City Treasurer\'s Office.',
+          'Pay registration of ₱75, ₱150 if late, and burial permit fees at Window 2 or 3 in the Civil Registry Office or at the City Treasurer\'s Office.',
       },
       {
         title: 'Claim Permits',
@@ -361,9 +374,12 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
     ],
     office: {
-      name: 'City Civil Registrar',
-      location: 'City Hall, 2nd Floor',
-      phone: '0920 425 8214',
+      name: 'City Civil Registry',
+      location: '1st Floor, Administrative Building, Las Piñas City Hall Compound',
+      phone: '(02) 8253-4370',
+      mobile: '0998 587 9659',
+      email: 'lpcivilreg@gmail.com',
+      facebook: 'https://www.facebook.com/civilreglaspinas',
       hours: 'Mon-Thu: 8AM - 7PM',
     },
     relatedServices: [
@@ -375,9 +391,9 @@ export const serviceDetailsContent: ServiceDetail[] = [
     ],
   },
   {
-    id: 'city-civil-registrar',
-    title: 'City Civil Registrar',
-    fullTitle: 'City Civil Registrar Office',
+    id: 'city-civil-registry',
+    title: 'City Civil Registry',
+    fullTitle: 'City Civil Registry Office',
     category: 'Certificates',
     categoryLink: '/services/certificates',
     badgeText: 'Office',
@@ -386,11 +402,11 @@ export const serviceDetailsContent: ServiceDetail[] = [
       'Birth, death, marriage registration, corrections, and certified copies',
     quickStats: [
       { icon: 'bi-clock', label: 'Office Hours', value: 'Mon-Fri 8AM-5PM' },
-      { icon: 'bi-telephone', label: 'Contact', value: '0920 425 8214' },
+      { icon: 'bi-telephone', label: 'Contact', value: '(02) 8253-4370 / 0998 587 9659' },
       {
         icon: 'bi-geo-alt',
         label: 'Location',
-        value: '2nd Floor, City Hall',
+        value: '1st Floor, Admin Bldg',
       },
       { icon: 'bi-calendar-check', label: 'Appointment', value: 'Walk-in' },
     ],
@@ -405,7 +421,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
       {
         title: 'Visit Office',
-        description: 'Go to Civil Registrar, 2nd Floor of City Hall.',
+        description: 'Go to Civil Registry, 1st Floor, Administrative Building.',
       },
       {
         title: 'Submit Application',
@@ -436,9 +452,12 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
     ],
     office: {
-      name: 'City Civil Registrar',
-      location: 'City Hall, 2nd Floor',
-      phone: '0920 425 8214',
+      name: 'City Civil Registry',
+      location: '1st Floor, Administrative Building, Las Piñas City Hall Compound',
+      phone: '(02) 8253-4370',
+      mobile: '0998 587 9659',
+      email: 'lpcivilreg@gmail.com',
+      facebook: 'https://www.facebook.com/civilreglaspinas',
       hours: 'Mon-Thu: 8AM - 7PM',
     },
     relatedServices: [
@@ -521,74 +540,181 @@ export const serviceDetailsContent: ServiceDetail[] = [
   },
 
   /**
-   * Business & Trade
+   * Business, Trade & Investment
    */
   {
-    id: 'business-permits-licensing',
-    title: 'Business Permits & Licensing',
-    fullTitle: 'Business Permits & Licensing Office',
+    id: 'business-permit-new',
+    title: 'Business Permit (New)',
+    fullTitle: 'Issuance of New Business License and Mayor\'s Permit',
     category: 'Business',
     categoryLink: '/services/business',
     badgeText: 'Business',
     badgeIcon: 'bi-shop',
-    description: 'Business permits, Mayor\'s clearance, and licensing services',
+    description: 'Apply for a new mayor\'s permit to operate a business within the city as per City Ordinance No: 1373-16',
     quickStats: [
-      { icon: 'bi-clock', label: 'Processing', value: '1-3 Days' },
-      { icon: 'bi-cash', label: 'Fee', value: 'Varies by Business' },
+      { icon: 'bi-clock', label: 'Processing', value: '1 Day' },
+      { icon: 'bi-cash', label: 'Fee', value: 'Varies on Assessment' },
       {
         icon: 'bi-person-check',
         label: 'Who Can Apply',
-        value: 'Business Owner',
+        value: 'Stakeholders and Business Owners',
       },
-      { icon: 'bi-calendar-check', label: 'Appointment', value: 'Walk-in' },
+      { icon: 'bi-calendar-check', label: 'Appointment', value: 'Online / Walk-in' },
     ],
     processSteps: [
       {
-        title: 'Secure Barangay Clearance',
-        description:
-          'Get business clearance from the barangay where your business is located.',
-      },
-      {
-        title: 'Prepare Documents',
-        description:
-          'Gather DTI/SEC registration, lease contract, and other requirements.',
-      },
-      {
         title: 'Submit Application',
         description:
-          'Go to BPLO and submit application with required documents.',
+          'Submit duly accomplished Unified Application Form together with complete requirements to BPLO.',
       },
       {
-        title: 'Pay Fees',
-        description: 'Pay business taxes and fees at Treasurer\'s Office.',
+        title: 'Planning & Engineering Evaluation',
+        description:
+          'Personnel from Planning (Zoning/Locational Clearance) and Engineering (Occupancy) evaluate the application at the BPLO office.',
       },
       {
-        title: 'Claim Permit',
-        description: 'Return to BPLO to claim your business permit.',
+        title: 'Data Verification',
+        description:
+          'Verification of accounts and issuance of a Business Account Number at the Electronic Data Processing (EDP) division.',
+      },
+      {
+        title: 'Approval',
+        description:
+          'The application is forwarded for approval by the Chief of BPLO or their authorized representative.',
+      },
+      {
+        title: 'Generate Payment Order',
+        description:
+          'Release of the signed Tax Order of Payment (TOP) covering consolidated taxes, fees, and regulatory charges.',
+      },
+      {
+        title: 'Pay Taxes and Fees',
+        description:
+          'Present TOP to the Business License Tax Division, Treasury Department and pay assessed fees. An Official Receipt and Cedula will be issued.',
+      },
+      {
+        title: 'Claim Permit & Clearances',
+        description:
+          'Claim your Business License, Mayor\'s Permit, Sanitary Permit, and other clearances at BPLO.',
         isFinal: true,
       },
     ],
     requirements: [
       {
-        title: 'New Business',
-        icon: 'bi-shop',
+        title: 'Documentary Requirements',
+        icon: 'bi-file-text',
         items: [
-          'DTI/SEC Registration',
-          'Barangay Business Clearance',
-          'Contract of Lease or Land Title',
-          'Fire Safety Certificate',
-          'Sanitary Permit',
-          'Valid ID',
+          'Unified Application Form',
+          'Business Name Registration (DTI / SEC / CDA)',
+          'Proof of Legal Ownership (Tax Dec, TCT) or Notarized Contract of Lease',
+          'Picture of Business Establishment (3R Size Colored, 1pc)',
+          'Picture of Owner/President/Treasurer (2x2 Size, 1pc)',
+          'Homeowners/Subdivision/Villages Clearance or Condominium Approval',
+          'Undertaking (BPLO)',
+          'Special Requirements based on line of business (if applicable)',
         ],
       },
       {
-        title: 'Renewal',
+        title: 'If Applied Through Representative',
+        icon: 'bi-people',
+        items: [
+          'Letter of Authority / Special Power of Attorney / Secretary Certificate',
+          'Valid ID of owner and representative',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'How long does the processing take?',
+        answer: 'As prescribed by R.A. 11032 (Ease of Doing Business Law), government transactions follow a 3-7-20 day rule. While typical applications are processed within 1 Day, official timelines are: Up to 3 days for Simple, 7 days for Complex, and 20 days for Highly Technical transactions. If City Council approval is required, it may take 45 working days (extendable by 20 days).',
+      },
+      {
+        question: 'What if that location had a previous tenant?',
+        answer: 'The previous tenant must have filed a formal Closure/Retirement of business to the City Treasurer\'s Office. Otherwise, the building owner must submit a Termination of Lease Contract and an Affidavit of No Relation so the new applicant can secure an account number.',
+      },
+    ],
+    office: {
+      name: 'Business Permits & Licensing Office',
+      location: 'City Hall, Ground Floor',
+      phone: '(02) 8551-5930',
+      hours: 'Mon-Thu: 8AM - 7PM',
+    },
+    relatedServices: [
+      {
+        title: 'Business Permit Renewal',
+        link: '/service-details/business-permit-renewal',
+      },
+      // TODO: Uncomment when city-treasurer page is ready
+      // { title: 'City Treasurer', link: '/service-details/city-treasurer' },
+    ],
+    onlineLink: 'https://cityoflaspinas.ph/',
+    sourceUrl: 'https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf',
+    sourceName: 'Citizen\'s Charter 2022 (1st Edition)',
+  },
+  {
+    id: 'business-permit-renewal',
+    title: 'Business Permit (Renewal)',
+    fullTitle: 'Renewal of Business License and Mayor\'s Permit',
+    category: 'Business',
+    categoryLink: '/services/business',
+    badgeText: 'Business',
+    badgeIcon: 'bi-shop',
+    description: 'Renew your annual business permit, Mayor\'s clearance, and licensing services as per City Ordinance No: 1373-16',
+    quickStats: [
+      { icon: 'bi-clock', label: 'Processing', value: 'Approx. 3 Hours' },
+      { icon: 'bi-cash', label: 'Fee', value: 'Varies by Assessment' },
+      {
+        icon: 'bi-person-check',
+        label: 'Who Can Apply',
+        value: 'Registered Business Owner',
+      },
+      { icon: 'bi-calendar-check', label: 'Appointment', value: 'Online / Walk-in' },
+    ],
+    processSteps: [
+      {
+        title: 'Submit Application',
+        description:
+          'Submit duly accomplished application form indicating gross sale/receipt together with complete requirements to BPLO.',
+      },
+      {
+        title: 'Evaluation & Approval',
+        description:
+          'BPLO personnel reviews requirements. The application is then forwarded for approval by the BPLO Chief or authorized representative.',
+      },
+      {
+        title: 'Generate Payment Order',
+        description:
+          'Once approved, a computer-generated Tax Order of Payment (TOP) is released, covering consolidated taxes and fees.',
+      },
+      {
+        title: 'Pay Taxes and Fees',
+        description: 'Present TOP and pay at the Business License Division, Treasury Department. Receive Official Receipt and Cedula.',
+      },
+      {
+        title: 'Claim Permit & Clearances',
+        description: 'Return to BPLO to claim your Business License, Mayor\'s Permit, Sanitary Permit, and other regulatory clearances.',
+        isFinal: true,
+      },
+    ],
+    requirements: [
+      {
+        title: 'Documentary Requirements',
         icon: 'bi-arrow-repeat',
         items: [
-          'Previous Business Permit',
-          'Community Tax Certificate (Cedula)',
-          'Barangay Business Clearance',
-          'Updated Fire Safety Certificate',
+          'Unified Application Form',
+          'Prior Year Audited Financial Statement / ITR (Last 2 years)',
+          'Monthly/Quarterly VAT Returns / Percentage Tax Returns of previous years',
+          'Homeowners/Subdivision/Condominium Clearance to conduct business',
+          'Undertaking (BPLO)',
+          'Special Requirements based on line of business (if applicable)',
+        ],
+      },
+      {
+        title: 'If Applied Through Representative',
+        icon: 'bi-people',
+        items: [
+          'Letter of Authority / Special Power of Attorney / Secretary Certificate',
+          'Valid ID of owner and representative',
         ],
       },
     ],
@@ -598,27 +724,581 @@ export const serviceDetailsContent: ServiceDetail[] = [
         answer: 'Before January 20 of each year to avoid penalties.',
       },
       {
-        question: 'What are the penalties for late renewal?',
+        question: 'How long does the processing take?',
+        answer: 'According to the Citizen\'s Charter 2022, the total processing time for a simple renewal is approximately 3 hours and 10 minutes.',
+      },
+      {
+        question: 'What happens if I renew late?',
         answer:
-          'A surcharge of 25% plus 2% interest per month on unpaid taxes.',
+          'Renewals after the January 20 deadline are subject to surcharges and monthly interest as prescribed by the City\'s Revenue Code (Ordinance 1373-16).',
       },
     ],
     office: {
       name: 'Business Permits & Licensing Office',
       location: 'City Hall, Ground Floor',
-      phone: '(078) 326-5001',
+      phone: '(02) 8551-5930',
+      hours: 'Mon-Thu: 8AM - 7PM',
+    },
+    relatedServices: [
+      // TODO: Uncomment when city-treasurer page is ready
+      // { title: 'City Treasurer', link: '/service-details/city-treasurer' },
+      // Bring back when we have the details
+      // {
+      //   title: 'Fire Safety Certificate',
+      //   link: '/services/business',
+      // },
+    ],
+    onlineLink: 'https://cityoflaspinas.ph/',
+    sourceUrl: 'https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf',
+    sourceName: 'Citizen\'s Charter 2022 (1st Edition)',
+  },
+  {
+    id: 'special-permit',
+    title: 'Special Permit',
+    fullTitle: 'Issuance of Special Permit',
+    category: 'Business',
+    categoryLink: '/services/business',
+    badgeText: 'Business',
+    badgeIcon: 'bi-shop',
+    description: 'Special Permit issued by the City Government to all business establishment that operates within its territorial jurisdiction pursuant to City Ordinance No: 1373 - 16.',
+    quickStats: [
+      { icon: 'bi-clock', label: 'Processing', value: '2 Hours 10 Mins' },
+      { icon: 'bi-cash', label: 'Fee', value: 'Varies on Assessment' },
+      {
+        icon: 'bi-person-check',
+        label: 'Who Can Apply',
+        value: 'Registered Business Owner',
+      },
+      { icon: 'bi-calendar-check', label: 'Appointment', value: 'Walk-in' },
+    ],
+    processSteps: [
+      {
+        title: 'Submit Application & Verification',
+        description: 'Submit accomplished application form and complete requirements to the BPLO front liners for receiving, reviewing, and validating. Evaluated by Planning Department for Zoning Fees. Passed for approval of the Chief of BPLO, who issues a Tax Order Payment (TOP) routing you to the City Treasurer\'s.',
+      },
+      {
+        title: 'Pay Taxes and Fees',
+        description: 'Present the TOP to the Business License Tax Miscellaneous Division. Taxes are calculated based on the Revenue Code. Payment is accepted and Official Receipt is printed/issued.',
+      },
+      {
+        title: 'Claim Special Permit',
+        description: 'Return to Business Permit & Licensing Office (BPLO) for the processing, printing, signing, and releasing of the Special Permit.',
+        isFinal: true,
+      },
+    ],
+    requirements: [
+      {
+        title: 'Documentary Requirements',
+        icon: 'bi-file-text',
+        items: [
+          'Unified Application Form',
+          'Business Name Registration (1 Copy: DTI Registration or SEC Registration & Articles of Incorporation)',
+          'Proof of Legal Ownership: Tax Declaration/TCT, Notarized Contract of Lease, or Letter of Authority to use property',
+          'Picture of Business Establishment',
+          'Picture of Owner / President or Treasurer',
+          'Homeowners / Subdivision / Villages Clearance or Condominium Approval to conduct business',
+          'Undertaking (BPLO)',
+        ],
+      },
+      {
+        title: 'If Applied Through Representative',
+        icon: 'bi-people',
+        items: [
+          'Letter of Authority / Special Power of Attorney / Secretary Certificate',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'How long does the processing take?',
+        answer: 'According to the Citizen\'s Charter, the total processing time for a Special Permit is approximately 2 hours and 10 minutes.',
+      },
+      {
+        question: 'What if that location had a previous tenant?',
+        answer: 'The previous tenant must have filed a formal Closure/Retirement of business to the City Treasurer\'s Office. Otherwise, the building owner must submit a Termination of Lease Contract and an Affidavit of No Relation so the new applicant can secure an account number.',
+      },
+    ],
+    office: {
+      name: 'Business Permits & Licensing Office',
+      location: 'City Hall, Ground Floor',
+      phone: '(02) 8551-5930',
       hours: 'Mon-Thu: 8AM - 7PM',
     },
     relatedServices: [
       {
-        title: 'City Treasurer',
-        link: '/service-details/municipal-treasurer',
+        title: 'Business Permit (New)',
+        link: '/service-details/business-permit-new',
       },
-      { title: 'Fire Safety Certificate', link: '/services/business' },
+      {
+        title: 'Business Permit Renewal',
+        link: '/service-details/business-permit-renewal',
+      },
     ],
+    sourceUrl: 'https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf',
+    sourceName: 'Citizen\'s Charter 2022 (1st Edition)',
+  },
+  {
+    id: 'business-status-certificate',
+    title: 'Business Status Certificate',
+    fullTitle: 'Issuance of Certificates on Status of Business',
+    category: 'Business',
+    categoryLink: '/services/business',
+    badgeText: 'Business',
+    badgeIcon: 'bi-file-earmark-check',
+    description: 'Certification issued by the City Government to all who want to verify the status of a business entity registered with the Business Permit and Licensing Office (BPLO). Information access is limited pursuant to the Data Privacy Act of 2012 to maintain record integrity.',
+    quickStats: [
+      { icon: 'bi-clock', label: 'Processing', value: 'Approx. 1 hour' },
+      { icon: 'bi-cash', label: 'Fee', value: '₱75 + ₱15/page' },
+      {
+        icon: 'bi-person-check',
+        label: 'Who Can Apply',
+        value: 'Government & Private Sector',
+      },
+      { icon: 'bi-calendar-check', label: 'Appointment', value: 'Walk-in' },
+    ],
+    processSteps: [
+      {
+        title: 'Submit Application & Requirements',
+        description: 'Fill out the application form and submit the request letter together with other required documents to the BPLO frontliners for review and validation. The BPLO will verify records and issue an Order of Payment.',
+      },
+      {
+        title: 'Pay the Fee',
+        description: 'Proceed to the Office of the City Treasurer\'s – Miscellaneous Division and pay ₱75, plus ₱15 per additional page. An Official Receipt will be issued.',
+      },
+      {
+        title: 'Claim the Certification',
+        description: 'Return to the BPLO for the processing and printing of the Certification, signing by the Chief of BPLO, and release to the applicant.',
+        isFinal: true,
+      },
+    ],
+    requirements: [
+      {
+        title: 'Documentary Requirements',
+        icon: 'bi-file-text',
+        items: [
+          'Request Letter indicating the name of requestor and purpose of certification',
+          'Identification Card',
+          'Barangay Clearance',
+          'Assessor\'s Certificate',
+          'Referral letter from Hospital/DSWD/PAO or other government agencies (if applicable)',
+        ],
+      },
+      {
+        title: 'If Applying Through a Representative',
+        icon: 'bi-people',
+        items: [
+          'Letter of Authority, Special Power of Attorney, or Secretary Certificate',
+          'Valid ID of both the owner and representative',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'What is the purpose of this certification?',
+        answer: 'This certification is used to verify the legal status of a business entity registered in Las Piñas City. It is accepted for legal, government, and private transactions.',
+      },
+      {
+        question: 'Why is access to business records limited?',
+        answer: 'Pursuant to the Data Privacy Act of 2012 (RA 10173), the BPLO limits the data that can be accessed to protect the integrity and privacy of the information in its records.',
+      },
+    ],
+    office: {
+      name: 'Business Permits & Licensing Office',
+      location: 'City Hall, Ground Floor',
+      phone: '(02) 8551-5930',
+      hours: 'Mon-Thu: 8AM - 7PM',
+    },
+    relatedServices: [
+      {
+        title: 'Business Permit (New)',
+        link: '/service-details/business-permit-new',
+      },
+      {
+        title: 'Business Permit Renewal',
+        link: '/service-details/business-permit-renewal',
+      },
+      {
+        title: 'Special Permit',
+        link: '/service-details/special-permit',
+      },
+    ],
+    sourceUrl: 'https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf',
+    sourceName: 'Citizen\'s Charter 2022 (1st Edition)',
+  },
+  {
+    id: 'ctc-business-license',
+    title: 'CTC of Business License',
+    fullTitle: 'Issuance of Certified True Copy of Business License and Mayor\'s Permit',
+    category: 'Business',
+    categoryLink: '/services/business',
+    badgeText: 'Business',
+    badgeIcon: 'bi-files',
+    description: 'Certified Copy of Business License and Mayor\'s Permit issued by the City Government to Business Owners who request it in whatever legal purposes it may serve.',
+    quickStats: [
+      { icon: 'bi-clock', label: 'Processing', value: 'Approx. 1 hour' },
+      { icon: 'bi-cash', label: 'Fee', value: '₱90' },
+      {
+        icon: 'bi-person-check',
+        label: 'Who Can Apply',
+        value: 'Government & Private Sector',
+      },
+      { icon: 'bi-calendar-check', label: 'Appointment', value: 'Walk-in' },
+    ],
+    processSteps: [
+      {
+        title: 'Submit Requirements',
+        description: 'Submit the requirements to the BPLO frontliners for review, validation, and verification of records. An Order of Payment will be issued.',
+      },
+      {
+        title: 'Pay the Fee',
+        description: 'Upon receiving the Order of Payment, pay ₱90 at the Office of the City Treasurer\'s – Miscellaneous Division. An Official Receipt will be issued.',
+      },
+      {
+        title: 'Claim the Document',
+        description: 'Return to the BPLO for the stamping, signing, and releasing of the Certified True Copy of Business License and Mayor\'s Permit.',
+        isFinal: true,
+      },
+    ],
+    requirements: [
+      {
+        title: 'Documentary Requirements',
+        icon: 'bi-file-text',
+        items: [
+          'Photocopy of Business License and Mayor\'s Permit',
+          'Identification Card',
+        ],
+      },
+      {
+        title: 'If Applying Through a Representative',
+        icon: 'bi-people',
+        items: [
+          'Letter of Authority, Special Power of Attorney, or Secretary Certificate',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'What is the purpose of this certified true copy?',
+        answer: 'It is issued by the City Government to Business Owners who request it for whatever legal purposes it may serve.',
+      },
+    ],
+    office: {
+      name: 'Business Permits & Licensing Office',
+      location: 'City Hall, Ground Floor',
+      phone: '(02) 8551-5930',
+      hours: 'Mon-Thu: 8AM - 7PM',
+    },
+    relatedServices: [
+      {
+        title: 'Business Permit (New)',
+        link: '/service-details/business-permit-new',
+      },
+      {
+        title: 'Business Permit Renewal',
+        link: '/service-details/business-permit-renewal',
+      },
+      {
+        title: 'Certificates on Status of Business',
+        link: '/service-details/business-status-certificate',
+      },
+    ],
+    sourceUrl: 'https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf',
+    sourceName: 'Citizen\'s Charter 2022 (1st Edition)',
+  },
+  {
+    id: 'occupational-permit',
+    title: 'Occupational Mayor\'s Permit',
+    fullTitle: 'Occupational Mayor\'s Permit (Regular)',
+    category: 'Business',
+    categoryLink: '/services/business',
+    badgeText: 'Business',
+    badgeIcon: 'bi-person-vcard',
+    description: 'The Occupational Mayor\'s Permit is issued by the City Government to all workers or employees (temporary or permanent) employed within the territorial jurisdiction of Las Piñas, pursuant to the local Revenue Code.',
+    quickStats: [
+      { icon: 'bi-clock', label: 'Processing', value: 'Approx. 3 hours' },
+      { icon: 'bi-cash', label: 'Fee', value: 'Varies by Assessment' },
+      {
+        icon: 'bi-person-check',
+        label: 'Who Can Apply',
+        value: 'Workers & Employees',
+      },
+      { icon: 'bi-calendar-check', label: 'Appointment', value: 'Walk-in' },
+    ],
+    processSteps: [
+      {
+        title: 'Secure Application Form',
+        description: 'Secure and fill out the application form at the Business Permit and Licensing Office (BPLO).',
+      },
+      {
+        title: 'Submit Requirements',
+        description: 'Submit the application form along with the required documents such as Cedula and NBI/Police Clearance for evaluation.',
+      },
+      {
+        title: 'Assessment and Payment',
+        description: 'Proceed through the assessment and pay the assessed fees as directed by the BPLO personnel.',
+      },
+      {
+        title: 'Claim Permit',
+        description: 'Claim the Occupational Mayor\'s Permit once processed and approved.',
+        isFinal: true,
+      },
+    ],
+    requirements: [
+      {
+        title: 'Documentary Requirements',
+        icon: 'bi-file-text',
+        items: [
+          'Application Form (2 copies - secured from BPLO)',
+          'Community Tax Certificate (Cedula)',
+          'NBI Clearance or Police Clearance',
+        ],
+      },
+      {
+        title: 'For First-Time Jobseekers (R.A. 11261)',
+        icon: 'bi-person-plus',
+        items: [
+          'Barangay Certificate with an undertaking stating you are a first-time job seeker to avail the assistance.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'What is the processing time for the permit?',
+        answer: 'The BPLO classifies the issuance of the Occupational Mayor\'s Permit as a simple transaction, typically taking around 3 hours depending on the volume of applicants.',
+      },
+      {
+        question: 'Do I need to apply in person?',
+        answer: 'While in-person application is standard, the city has been integrating services online. Please check the official Las Piñas City website for recent updates.',
+      },
+    ],
+    office: {
+      name: 'Business Permits & Licensing Office',
+      location: 'City Hall, Ground Floor',
+      phone: '(02) 8551-5930',
+      hours: 'Mon-Thu: 8AM - 7PM',
+    },
+    relatedServices: [
+      {
+        title: 'Occupational Mayor\'s Permit (First Time Job Seeker)',
+        link: '/service-details/occupational-permit-jobseeker',
+      },
+      {
+        title: 'Business Permit (New)',
+        link: '/service-details/business-permit-new',
+      },
+      {
+        title: 'Special Permit',
+        link: '/service-details/special-permit',
+      },
+    ],
+    sourceUrl: 'https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf',
+    sourceName: 'Citizen\'s Charter 2022 (1st Edition)',
+  },
+  {
+    id: 'occupational-permit-jobseeker',
+    title: 'Occupational Mayor\'s Permit (First Time Job Seeker)',
+    fullTitle: 'Occupational Mayor\'s Permit (First Time Job Seeker)',
+    category: 'Business',
+    categoryLink: '/services/business',
+    badgeText: 'Business',
+    badgeIcon: 'bi-person-check',
+    description: 'The City Government of Las Piñas provides assistance to "First Time Job Seekers" regarding the issuance of an Occupational Mayor\'s Permit, in compliance with Republic Act No. 11261, the "First Time Jobseekers Assistance Act" of 2019.',
+    quickStats: [
+      { icon: 'bi-clock', label: 'Processing', value: 'Approx. 3 hours' },
+      { icon: 'bi-cash', label: 'Fee', value: 'Free' },
+      {
+        icon: 'bi-person-check',
+        label: 'Who Can Apply',
+        value: 'First-time Job Seekers',
+      },
+      { icon: 'bi-calendar-check', label: 'Appointment', value: 'Walk-in' },
+    ],
+    processSteps: [
+      {
+        title: 'Secure Application Form',
+        description: 'Secure and fill out the application form at the Business Permit and Licensing Office (BPLO).',
+      },
+      {
+        title: 'Submit Requirements',
+        description: 'Submit the application form along with the required documents such as Cedula, NBI/Police Clearance, and your Barangay Certificate with First-time job seeker undertaking.',
+      },
+      {
+        title: 'Assessment and Evaluation',
+        description: 'Proceed through the assessment where personnel will evaluate your requirements and check your Barangay Certificate to waive local fees.',
+      },
+      {
+        title: 'Claim Permit',
+        description: 'Claim the Occupational Mayor\'s Permit once processed and approved.',
+        isFinal: true,
+      },
+    ],
+    requirements: [
+      {
+        title: 'Documentary Requirements',
+        icon: 'bi-file-text',
+        items: [
+          'Barangay Certificate with an undertaking stating you are a first-time job seeker (RA 11261)',
+          'Application Form (2 copies - secured from BPLO)',
+          'Community Tax Certificate (Cedula)',
+          'NBI Clearance or Police Clearance',
+        ],
+      },
+      {
+        title: 'Additional Medical Requirements',
+        icon: 'bi-heart-pulse',
+        items: [
+          'Medical Results (X-Ray Result)',
+          'Urine and Stool test results (specifically required for food handlers)',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'Who is considered a First Time Job Seeker?',
+        answer: 'A First Time Job Seeker is defined as a Filipino citizen looking for work for the first time, who is between 15 to 30 years old, and not currently receiving benefits from other government job programs.',
+      },
+      {
+        question: 'Are all fees waived under RA 11261?',
+        answer: 'Yes, government regulatory fees for standard documents such as the Occupational Permit, Barangay Clearance, and NBI Clearance are free of charge for valid first-time job seekers.',
+      },
+      {
+        question: 'What if I am a food handler?',
+        answer: 'If you are applying as a food handler, you will be required to submit specific test results (Urine and Stool) and also undergo a seminar at the Sanitation Office.',
+      },
+    ],
+    office: {
+      name: 'Business Permits & Licensing Office',
+      location: 'City Hall, Ground Floor',
+      phone: '(02) 8551-5930',
+      hours: 'Mon-Thu: 8AM - 7PM',
+    },
+    relatedServices: [
+      {
+        title: 'Occupational Mayor\'s Permit (Regular)',
+        link: '/service-details/occupational-permit',
+      },
+      {
+        title: 'Sanitary Permit',
+        link: '/services/business',
+      },
+    ],
+    sourceUrl: 'https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf',
+    sourceName: 'Citizen\'s Charter 2022 (1st Edition)',
+  },
+  {
+    id: 'safety-seal',
+    title: 'Safety Seal Certificate',
+    fullTitle: 'Issuance of Safety Seal Certificate',
+    category: 'Business',
+    categoryLink: '/services/business',
+    badgeText: 'Business',
+    badgeIcon: 'bi-shield-check',
+    description: 'Certification issued by the City Government to ensure that all business establishments follow Minimum Public Health Standards (MPHS) and promote business without compromising public health.',
+    quickStats: [
+      { icon: 'bi-clock', label: 'Processing', value: '7 Working Days' },
+      { icon: 'bi-cash', label: 'Fee', value: 'Free' },
+      {
+        icon: 'bi-person-check',
+        label: 'Who Can Apply',
+        value: 'Selected Business Establishments',
+      },
+      { icon: 'bi-calendar-check', label: 'Appointment', value: 'Walk-in' },
+    ],
+    processSteps: [
+      {
+        title: 'Submit Application',
+        description: 'Submit the duly accomplished Safety Seal Certification Form along with attached eligibility requirements to the BPLO.',
+      },
+      {
+        title: 'Review & Scheduling',
+        description: 'BPLO personnel will review and validate the requirements submitted and schedule the date of inspection.',
+      },
+      {
+        title: 'Field Inspection',
+        description: 'Inspectors from the BPLO and related divisions will inspect the business establishment to validate compliance with health standards.',
+      },
+      {
+        title: 'Database Recording',
+        description: 'The inspected establishment is encoded into the database for recording and tracking.',
+      },
+      {
+        title: 'Issuance of Certificate',
+        description: 'The Safety Seal Certificate is issued and sent to the applicant\'s registered email address.',
+        isFinal: true,
+      },
+    ],
+    requirements: [
+      {
+        title: 'Application Documents',
+        icon: 'bi-file-text',
+        items: [
+          'Duly Accomplished Safety Seal Certification Form',
+          'Valid Business License and Mayor\'s Permit',
+        ],
+      },
+      {
+        title: 'Health & Safety Protocols',
+        icon: 'bi-heart-pulse',
+        items: [
+          'Use of StaySafe.ph or integrated contact tracing tool',
+          'Availability of thermal scanners for employees and clients',
+          'Health declaration sheets for individuals entering the premises',
+          'Designated isolation area for symptomatic employees',
+          'BHERT and COVID-19 hotlines placed in conspicuous areas',
+          'Hand washing stations with soap and sanitizers',
+          'Physical barriers and floor markers for social distancing',
+          'Windows for adequate air exchange in indoor areas',
+        ],
+      },
+      {
+        title: 'Compliance & Personnel',
+        icon: 'bi-people',
+        items: [
+          'Availability of personnel-in-charge for protocol monitoring',
+          'Designated Safety Officer for contact tracing and referral',
+          'Established referral system for medical and psychosocial services',
+          'Regular disinfection protocol (at least twice a week)',
+          'Mandatory wearing of face masks and shields',
+          'Storage facility for used facemasks and infectious waste',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'Is there a fee for the Safety Seal?',
+        answer: 'No, the issuance of the Safety Seal Certificate is free of charge as part of the city\'s effort to support safe business operations.',
+      },
+      {
+        question: 'How long is the processing time?',
+        answer: 'The total processing time from submission to issuance via email is 7 working days.',
+      },
+    ],
+    office: {
+      name: 'Business Permits & Licensing Office',
+      location: 'City Hall, Ground Floor',
+      phone: '(02) 8551-5930',
+      hours: 'Mon-Thu: 8AM - 7PM',
+    },
+    relatedServices: [
+      {
+        title: 'Business Permit (New)',
+        link: '/service-details/business-permit-new',
+      },
+      {
+        title: 'Business Permit Renewal',
+        link: '/service-details/business-permit-renewal',
+      },
+      {
+        title: 'Sanitary Permit',
+        link: '/services/business',
+      },
+    ],
+    sourceUrl: 'https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf',
+    sourceName: 'Citizen\'s Charter 2022 (1st Edition)',
   },
   {
     id: 'tricycle-franchising',
+    hidden: true,
     title: 'Tricycle Franchising',
     fullTitle: 'Tricycle Franchise Application',
     category: 'Business',
@@ -652,7 +1332,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
       {
         title: 'Pay Fees',
-        description: 'Pay franchise fee at Treasurer\'s Office.',
+        description: 'Pay franchise fee at City Treasurer\'s Office.',
       },
       {
         title: 'Claim Franchise',
@@ -669,7 +1349,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
           'Valid driver\'s license',
           'Barangay clearance',
           'Police clearance',
-          'NBI clearance',
+          'TODA Endorsement/Certification',
           '2x2 ID pictures',
         ],
       },
@@ -688,8 +1368,8 @@ export const serviceDetailsContent: ServiceDetail[] = [
     },
     relatedServices: [
       {
-        title: 'Business Permits',
-        link: '/service-details/business-permits-licensing',
+        title: 'New Business Permit',
+        link: '/service-details/business-permit-new',
       },
     ],
   },
@@ -710,7 +1390,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
       { icon: 'bi-clock', label: 'Processing', value: '1-5 Days' },
       { icon: 'bi-file-text', label: 'Records', value: 'Property Info' },
       { icon: 'bi-geo-alt', label: 'Location', value: 'Ground Floor' },
-      { icon: 'bi-calendar-check', label: 'Appointment', value: 'Walk-in' },
+      { icon: 'bi-calendar-check', label: 'Appointment', value: 'Online / Walk-in' },
     ],
     processSteps: [
       {
@@ -765,17 +1445,16 @@ export const serviceDetailsContent: ServiceDetail[] = [
     },
     relatedServices: [
       {
-        title: 'City Treasurer',
-        link: '/service-details/municipal-treasurer',
-      },
-      {
         title: 'Property Declaration',
         link: '/service-details/property-declaration',
       },
+      // TODO: Uncomment when city-treasurer page is ready
+      // { title: 'City Treasurer', link: '/service-details/city-treasurer' },
     ],
   },
   {
     id: 'city-treasurer',
+    hidden: true,
     title: 'City Treasurer\'s Office',
     fullTitle: 'City Treasurer\'s Office',
     category: 'Taxation',
@@ -844,9 +1523,10 @@ export const serviceDetailsContent: ServiceDetail[] = [
       },
       {
         title: 'City Assessor',
-        link: '/service-details/municipal-assessor',
+        link: '/service-details/city-assessor',
       },
     ],
+    onlineLink: 'https://cityoflaspinas.ph/',
   },
   {
     id: 'property-declaration',
@@ -908,12 +1588,10 @@ export const serviceDetailsContent: ServiceDetail[] = [
     relatedServices: [
       {
         title: 'City Assessor',
-        link: '/service-details/municipal-assessor',
+        link: '/service-details/city-assessor',
       },
-      {
-        title: 'City Treasurer',
-        link: '/service-details/municipal-treasurer',
-      },
+      // TODO: Uncomment when city-treasurer page is ready
+      // { title: 'City Treasurer', link: '/service-details/city-treasurer' },
     ],
   },
 
@@ -1228,7 +1906,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
     relatedServices: [
       {
         title: 'City Planning',
-        link: '/service-details/municipal-planning',
+        link: '/service-details/city-planning',
       },
       { title: 'Fire Safety Certificate', link: '/services/infrastructure' },
     ],
@@ -1296,7 +1974,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
     relatedServices: [
       {
         title: 'City Engineering',
-        link: '/service-details/municipal-engineering',
+        link: '/service-details/city-engineering',
       },
     ],
   },
@@ -1418,7 +2096,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
     relatedServices: [
       {
         title: 'City Accounting',
-        link: '/service-details/municipal-accounting',
+        link: '/service-details/city-accounting',
       },
       { title: 'Budget Transparency', link: '/budget' },
     ],
@@ -1478,149 +2156,9 @@ export const serviceDetailsContent: ServiceDetail[] = [
       hours: 'Mon-Thu: 8AM - 7PM',
     },
     relatedServices: [
-      { title: 'City Budget', link: '/service-details/municipal-budget' },
-      {
-        title: 'City Treasurer',
-        link: '/service-details/municipal-treasurer',
-      },
-    ],
-  },
-
-  /**
-   * Economy
-   */
-  {
-    id: 'seedo-public-market',
-    title: 'SEEDO Public Market',
-    fullTitle: 'SEEDO Public Market Services',
-    category: 'Economy',
-    categoryLink: '/services/business',
-    badgeText: 'Economy',
-    badgeIcon: 'bi-shop',
-    description: 'Market stall rentals and public market services',
-    quickStats: [
-      { icon: 'bi-clock', label: 'Market Hours', value: '5AM-6PM' },
-      { icon: 'bi-telephone', label: 'Contact', value: '(078) 326-5001' },
-      { icon: 'bi-geo-alt', label: 'Location', value: 'Public Market' },
-      { icon: 'bi-cash', label: 'Stall Rental', value: 'Varies' },
-    ],
-    processSteps: [
-      {
-        title: 'Inquire Availability',
-        description: 'Check available market stalls at SEEDO office.',
-      },
-      {
-        title: 'Submit Application',
-        description: 'File stall rental application.',
-      },
-      {
-        title: 'Pay Rental',
-        description: 'Pay rental fees at Treasurer\'s Office.',
-      },
-      {
-        title: 'Claim Contract',
-        description: 'Receive stall assignment and contract.',
-        isFinal: true,
-      },
-    ],
-    requirements: [
-      {
-        title: 'Stall Application',
-        icon: 'bi-file-text',
-        items: [
-          'Valid ID',
-          'Barangay clearance',
-          'Business name (if applicable)',
-          'Payment of rental fees',
-        ],
-      },
-    ],
-    faqs: [
-      {
-        question: 'How are stalls assigned?',
-        answer: 'Based on availability and first-come-first-served basis.',
-      },
-    ],
-    office: {
-      name: 'SEEDO Office',
-      location: 'Public Market',
-      phone: '',
-      hours: 'Mon-Thu: 8AM - 7PM',
-    },
-    relatedServices: [
-      {
-        title: 'Business Permits',
-        link: '/service-details/business-permits-licensing',
-      },
-    ],
-  },
-  {
-    id: 'seedo-slaughterhouse',
-    title: 'SEEDO Slaughterhouse',
-    fullTitle: 'SEEDO Slaughterhouse Services',
-    category: 'Economy',
-    categoryLink: '/services/business',
-    badgeText: 'Economy',
-    badgeIcon: 'bi-building',
-    description: 'Livestock slaughtering and meat inspection services',
-    quickStats: [
-      { icon: 'bi-clock', label: 'Hours', value: '4AM-8AM' },
-      { icon: 'bi-telephone', label: 'Contact', value: '(078) 326-5001' },
-      {
-        icon: 'bi-geo-alt',
-        label: 'Location',
-        value: 'City Slaughterhouse',
-      },
-      { icon: 'bi-cash', label: 'Fee', value: 'Per head' },
-    ],
-    processSteps: [
-      {
-        title: 'Bring Livestock',
-        description: 'Transport livestock to the slaughterhouse.',
-      },
-      {
-        title: 'Ante-mortem Inspection',
-        description: 'Veterinarian inspects animals before slaughter.',
-      },
-      {
-        title: 'Slaughter Process',
-        description: 'Animals are slaughtered following proper procedures.',
-      },
-      {
-        title: 'Post-mortem Inspection',
-        description: 'Meat is inspected and stamped for safety.',
-      },
-      {
-        title: 'Claim Meat',
-        description: 'Collect inspected and stamped meat products.',
-        isFinal: true,
-      },
-    ],
-    requirements: [
-      {
-        title: 'For Slaughter',
-        icon: 'bi-file-text',
-        items: [
-          'Certificate of ownership',
-          'Transport permit (if from other city)',
-          'Payment of slaughter fee',
-        ],
-      },
-    ],
-    faqs: [
-      {
-        question: 'What time should I bring livestock?',
-        answer: 'Animals should arrive between 4AM-6AM for morning slaughter.',
-      },
-    ],
-    office: {
-      name: 'SEEDO - Slaughterhouse',
-      location: 'City Slaughterhouse',
-      phone: '',
-      hours: '4AM - 8AM',
-    },
-    relatedServices: [
-      { title: 'Veterinary Services', link: '/services/agriculture' },
+      { title: 'City Budget', link: '/service-details/city-budget' },
+      // TODO: Uncomment when city-treasurer page is ready
+      // { title: 'City Treasurer', link: '/service-details/city-treasurer' },
     ],
   },
 
@@ -1694,7 +2232,7 @@ export const serviceDetailsContent: ServiceDetail[] = [
     description: 'Public health services, vaccination, and medical assistance',
     quickStats: [
       { icon: 'bi-clock', label: 'Office Hours', value: 'Mon-Fri 8AM-5PM' },
-      { icon: 'bi-telephone', label: 'Contact', value: '(02) 8776-7268' },
+      { icon: 'bi-telephone', label: 'Contact', value: '(02) 8367-3406' },
       { icon: 'bi-geo-alt', label: 'Location', value: 'City Hall Compound' },
       { icon: 'bi-heart', label: 'Services', value: 'Public Health' },
     ],
@@ -1729,7 +2267,9 @@ export const serviceDetailsContent: ServiceDetail[] = [
     office: {
       name: 'City Health Office',
       location: 'City Hall Compound',
-      phone: '(02) 8776-7268',
+      phone: '(02) 8367-3406',
+      mobile: '0998 977 8597',
+      facebook: 'https://www.facebook.com/LPCityhealth',
       hours: 'Mon-Fri: 8AM - 5PM',
     },
     relatedServices: [
@@ -1782,7 +2322,9 @@ export const serviceDetailsContent: ServiceDetail[] = [
     office: {
       name: 'City Health Office',
       location: 'City Hall Compound',
-      phone: '(02) 8776-7268',
+      phone: '(02) 8367-3406',
+      mobile: '0998 977 8597',
+      facebook: 'https://www.facebook.com/LPCityhealth',
       hours: 'Mon-Fri: 8AM - 5PM',
     },
     relatedServices: [
@@ -1893,5 +2435,10 @@ export const serviceDetailsContent: ServiceDetail[] = [
 ]
 
 export function getServiceDetail(slug: string): ServiceDetail | undefined {
-  return serviceDetailsContent.find(service => service.id === slug)
+  const service = serviceDetailsContent.find(service => service.id === slug)
+
+  if (!service || service.hidden)
+    return undefined
+
+  return service
 }

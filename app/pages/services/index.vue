@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useLanguage } from '@/composables/useLanguage'
 
+usePageOgImage()
+
 const { translate } = useLanguage()
 const route = useRoute()
 const initialQuery = computed(() => (route.query.q as string) || '')
@@ -17,7 +19,6 @@ const categories = [
     icon: 'bi-shop',
     titleKey: 'cat-business',
     descKey: 'cat-business-desc',
-    hidden: true,
   },
   {
     href: '/services/social-services',
@@ -82,7 +83,6 @@ const lifeEvents = [
     href: '/services/business',
     icon: 'bi-shop',
     labelKey: 'life-starting-business',
-    hidden: true,
   },
   {
     href: '/services/certificates',

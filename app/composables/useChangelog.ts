@@ -139,24 +139,29 @@ export function useChangelog() {
       }
     }
 
-    // Assign parsed links to entries and sort sections
-    for (const entry of result) {
-      entry.githubUrl = linkMap.get(entry.version) || ''
-
-      // Sort sections according to SECTION_ORDER
-      entry.sections.sort((a, b) => {
-        const indexA = SECTION_ORDER.indexOf(a.title.toLowerCase())
-        const indexB = SECTION_ORDER.indexOf(b.title.toLowerCase())
-
-        // If title not in SECTION_ORDER, put it after Security (index 5) but before Infrastructure (6)
-        const orderA = indexA === -1 ? 5.5 : indexA
-        const orderB = indexB === -1 ? 5.5 : indexB
-
-        return orderA - orderB
-      })
-    }
-
+    // Assign parsed links to entries, filter empty ones, and sort sections
     return result
+      .map((entry) => {
+        entry.githubUrl = linkMap.get(entry.version) || ''
+
+        // Filter out empty sections (those with no items)
+        entry.sections = entry.sections.filter(section => section.items.length > 0)
+
+        // Sort sections according to SECTION_ORDER
+        entry.sections.sort((a, b) => {
+          const indexA = SECTION_ORDER.indexOf(a.title.toLowerCase())
+          const indexB = SECTION_ORDER.indexOf(b.title.toLowerCase())
+
+          // If title not in SECTION_ORDER, put it after Security (index 5) but before Infrastructure (6)
+          const orderA = indexA === -1 ? 5.5 : indexA
+          const orderB = indexB === -1 ? 5.5 : indexB
+
+          return orderA - orderB
+        })
+
+        return entry
+      })
+      .filter(entry => entry.sections.length > 0)
   })
 
   const getSectionBadgeColor = (title: string): 'primary' | 'solid-primary' | 'white-translucent' | 'gray' | 'success' | 'warning' | 'error' => {

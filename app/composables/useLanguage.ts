@@ -75,7 +75,7 @@ const baseTranslations: Record<string, Record<string, string>> = {
     'cat-certificates': 'Certificates & Vital Records',
     'cat-certificates-desc':
       'Birth, death, marriage certificates, and other vital records.',
-    'cat-business': 'Business & Trade',
+    'cat-business': 'Business, Trade & Investment',
     'cat-business-desc':
       'Business permits, licenses, and trade registration services.',
     'cat-social': 'Social Services',

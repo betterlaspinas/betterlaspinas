@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useConfig } from '@/composables/useConfig'
 
+usePageOgImage()
+
 const { siteBrandName, lguName } = useConfig()
 </script>
 

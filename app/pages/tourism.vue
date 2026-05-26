@@ -1,4 +1,6 @@
 <script setup lang="ts">
+usePageOgImage()
+
 const { lguName, tourism, labels } = useConfig()
 
 const activeCategory = ref('all')

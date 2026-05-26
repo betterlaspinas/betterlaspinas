@@ -131,9 +131,10 @@
         "shop"
       ],
       "fee": "Varies",
-      "processingTime": "3-5 days",
+      "processingTime": "1 day",
       "office": "Business Permits & Licensing Office",
-      "url": "/services/business"
+      "url-old": "/services/business",
+      "url": "/service-details/business-permit-new"
     },
     {
       "id": "business-permit-renewal",
@@ -150,9 +151,112 @@
         "negosyo"
       ],
       "fee": "Varies",
-      "processingTime": "Same day",
+      "processingTime": "Approx. 3 hours",
       "office": "Business Permits & Licensing Office",
-      "url": "/services/business"
+      "url": "/service-details/business-permit-renewal"
+    },
+    {
+      "id": "special-permit",
+      "title": "Special Permit",
+      "category": "Business, Trade & Investment",
+      "categoryId": "business",
+      "description": "Apply for a Special Permit to operate a business",
+      "keywords": [
+        "special",
+        "permit",
+        "business",
+        "mayor",
+        "license"
+      ],
+      "fee": "Varies on Assessment",
+      "processingTime": "Approx. 2 hours 10 mins",
+      "office": "Business Permits & Licensing Office",
+      "url": "/service-details/special-permit"
+    },
+    {
+      "id": "business-status-certificate",
+      "title": "Certificates on Status of Business",
+      "category": "Business, Trade & Investment",
+      "categoryId": "business",
+      "description": "Certification on the status of business entity registered in Las Piñas",
+      "keywords": [
+        "certificate",
+        "certification",
+        "status",
+        "business",
+        "verify",
+        "BPLO",
+        "business license"
+      ],
+      "fee": "₱75 + ₱15/page",
+      "processingTime": "Approx. 1 hour",
+      "office": "Business Permits & Licensing Office",
+      "url": "/service-details/business-status-certificate"
+    },
+    {
+      "id": "ctc-business-license",
+      "title": "Certified True Copy of Business License and Mayor's Permit",
+      "category": "Business, Trade & Investment",
+      "categoryId": "business",
+      "description": "Certified Copy of Business License and Mayor's Permit for legal purposes",
+      "keywords": [
+        "certified",
+        "true",
+        "copy",
+        "business",
+        "license",
+        "mayor",
+        "permit",
+        "ctc"
+      ],
+      "fee": "₱90",
+      "processingTime": "Approx. 1 hour",
+      "office": "Business Permits & Licensing Office",
+      "url": "/service-details/ctc-business-license"
+    },
+    {
+      "id": "occupational-permit",
+      "title": "Occupational Mayor's Permit (Regular)",
+      "category": "Business, Trade & Investment",
+      "categoryId": "business",
+      "description": "Apply for an Occupational Mayor's Permit for workers or employees",
+      "keywords": [
+        "occupational",
+        "permit",
+        "mayor",
+        "worker",
+        "employee",
+        "job",
+        "work"
+      ],
+      "fee": "Varies by Assessment",
+      "processingTime": "Approx. 3 hours",
+      "office": "Business Permits & Licensing Office",
+      "url": "/service-details/occupational-permit"
+    },
+    {
+      "id": "occupational-permit-jobseeker",
+      "title": "Occupational Mayor's Permit (First Time Job Seeker)",
+      "category": "Business, Trade & Investment",
+      "categoryId": "business",
+      "description": "Free Occupational Mayor's Permit for first-time job seekers (R.A. 11261)",
+      "keywords": [
+        "occupational",
+        "permit",
+        "mayor",
+        "worker",
+        "employee",
+        "job",
+        "work",
+        "first time",
+        "job seeker",
+        "jobseeker",
+        "free"
+      ],
+      "fee": "Free",
+      "processingTime": "Approx. 3 hours",
+      "office": "Business Permits & Licensing Office",
+      "url": "/service-details/occupational-permit-jobseeker"
     },
     {
       "id": "business-closure",
@@ -170,7 +274,8 @@
       "fee": "Free",
       "processingTime": "1-2 days",
       "office": "Business Permits & Licensing Office",
-      "url": "/services/business"
+      "url": "/services/business",
+      "hidden": true
     },
     {
       "id": "sanitary-permit",
@@ -189,7 +294,8 @@
       "fee": "Varies",
       "processingTime": "1-3 days",
       "office": "City Health Office",
-      "url": "/services/business"
+      "url": "/services/business",
+      "hidden": true
     },
     {
       "id": "cedula",
@@ -207,7 +313,8 @@
       "fee": "₱5+",
       "processingTime": "Same day",
       "office": "City Treasurer's Office",
-      "url": "/services/business"
+      "url": "/services/business",
+      "hidden": true
     },
     {
       "id": "senior-citizen-id",
@@ -656,29 +763,6 @@
       "url": "/services/environment"
     },
     {
-      "id": "seedo-slaughterhouse",
-      "title": "SEEDO Slaughterhouse",
-      "category": "Business, Trade & Investment",
-      "categoryId": "business",
-      "description": "Hog, cattle, goat, and carabao slaughter with meat inspection services",
-      "keywords": [
-        "slaughterhouse",
-        "slaughter",
-        "hog",
-        "cattle",
-        "goat",
-        "carabao",
-        "meat",
-        "inspection",
-        "butcher",
-        "SEEDO"
-      ],
-      "fee": "₱40-350",
-      "processingTime": "37 min - 1.5 hrs",
-      "office": "SEEDO Slaughterhouse",
-      "url": "/service-details/seedo-slaughterhouse"
-    },
-    {
       "id": "cswdo-services",
       "title": "CSWDO Services",
       "category": "Social Services & Assistance",
@@ -721,55 +805,15 @@
       "url": "/services/environment"
     },
     {
-      "id": "seedo-public-market",
-      "title": "SEEDO Public Market",
-      "category": "Business, Trade & Investment",
-      "categoryId": "business",
-      "description": "Market clearance, entrance fees, vendor services, and CTC issuance",
-      "keywords": [
-        "public market",
-        "market",
-        "vendor",
-        "stall",
-        "clearance",
-        "entrance",
-        "SEEDO",
-        "palengke"
-      ],
-      "fee": "₱5-50",
-      "processingTime": "Same day",
-      "office": "SEEDO Public Market",
-      "url": "/service-details/seedo-public-market"
-    },
-    {
-      "id": "business-permits-licensing",
-      "title": "Business Permits & Licensing Office",
-      "category": "Business, Trade & Investment",
-      "categoryId": "business",
-      "description": "New permits, renewals, Mayor's clearance, and other business permits",
-      "keywords": [
-        "BPLS",
-        "business permit",
-        "license",
-        "mayor clearance",
-        "renewal",
-        "new business"
-      ],
-      "fee": "Varies",
-      "processingTime": "1-5 days",
-      "office": "Mayor's Office - BPLS",
-      "url": "/service-details/business-permits-licensing"
-    },
-    {
       "id": "tricycle-franchising",
       "title": "Tricycle Franchising & Records",
       "category": "Business, Trade & Investment",
       "categoryId": "business",
-      "description": "Apply for tricycle franchise (MTOF) and request records",
+      "description": "Apply for tricycle franchise (CTOF) and request records",
       "keywords": [
         "tricycle",
         "franchise",
-        "MTOF",
+        "CTOF",
         "pedicab",
         "toda",
         "driver",
@@ -778,7 +822,8 @@
       "fee": "Varies",
       "processingTime": "3-5 days",
       "office": "BPLS / SBO",
-      "url": "/service-details/tricycle-franchising"
+      "url": "/service-details/tricycle-franchising",
+      "hidden": true
     },
     {
       "id": "city-treasurer",
@@ -788,7 +833,7 @@
       "description": "Tax collection, cedula, clearances, and payment services",
       "keywords": [
         "treasurer",
-        "MTO",
+        "CTO",
         "tax",
         "payment",
         "cedula",
@@ -798,7 +843,8 @@
       "fee": "Varies",
       "processingTime": "Same day",
       "office": "City Treasurer's Office",
-      "url": "/service-details/city-treasurer"
+      "url": "/service-details/city-treasurer",
+      "hidden": true
     },
     {
       "id": "city-budget",
@@ -808,7 +854,7 @@
       "description": "Obligation requests, barangay budget review, and SEF budget preparation",
       "keywords": [
         "budget",
-        "MBO",
+        "CBO",
         "obligation",
         "appropriation",
         "SEF",
@@ -827,7 +873,7 @@
       "description": "Pre-audit of disbursements, payroll, check issuance, and financial reporting",
       "keywords": [
         "accounting",
-        "MACCO",
+        "CACCO",
         "audit",
         "payroll",
         "check",
@@ -879,7 +925,7 @@
       "url": "/service-details/city-assessor"
     },
     {
-      "id": "city-civil-registrar",
+      "id": "city-civil-registry",
       "title": "Civil Registry Office",
       "category": "Certificates & Vital Records",
       "categoryId": "certificates",
@@ -897,7 +943,7 @@
       "fee": "₱150+",
       "processingTime": "15-30 minutes",
       "office": "Civil Registry Office",
-      "url": "/service-details/city-civil-registrar"
+      "url": "/service-details/city-civil-registry"
     },
     {
       "id": "city-engineering",
@@ -907,7 +953,7 @@
       "description": "Building permits, infrastructure projects, and engineering services",
       "keywords": [
         "engineering",
-        "MEO",
+        "CEO",
         "building permit",
         "construction",
         "infrastructure",
@@ -945,7 +991,7 @@
       "description": "Agricultural assistance, farm registration, and livelihood programs",
       "keywords": [
         "agriculture",
-        "MAO",
+        "CAO",
         "farmer",
         "farm",
         "livestock",
@@ -996,6 +1042,27 @@
       "processingTime": "Varies",
       "office": "Human Resource Management Office",
       "url": "/service-details/human-resource-management"
+    },
+    {
+      "id": "safety-seal",
+      "title": "Safety Seal Certificate",
+      "category": "Business, Trade & Investment",
+      "categoryId": "business",
+      "description": "Certification for business establishments following Minimum Public Health Standards (MPHS)",
+      "keywords": [
+        "safety",
+        "seal",
+        "certificate",
+        "BPLO",
+        "health standards",
+        "MPHS",
+        "StaySafe",
+        "COVID-19"
+      ],
+      "fee": "Free",
+      "processingTime": "7 working days",
+      "office": "Business Permits & Licensing Office",
+      "url": "/service-details/safety-seal"
     },
     {
       "id": "online-business-billing",
@@ -1080,14 +1147,14 @@
       "title": "Online Payment Order",
       "category": "Online Services",
       "categoryId": "online",
-      "description": "Process payment orders for various municipal fees online via Filipizen",
+      "description": "Process payment orders for various city fees online via Filipizen",
       "keywords": [
         "online",
         "payment order",
         "fees",
         "filipizen",
         "e-payment",
-        "municipal fees"
+        "city fees"
       ],
       "fee": "Varies",
       "processingTime": "Instant",
