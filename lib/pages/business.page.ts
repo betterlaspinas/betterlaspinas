@@ -17,7 +17,7 @@ export class BusinessPage {
     this.specialPermit = page.getByRole('link', { name: 'Special Permit' })
     this.certificateofStatus = page.getByRole('link', { name: 'Certificates on Status of Business ' })
     this.ctcOfBusinessLicense = page.getByRole('link', { name: 'Certified True Copy of Business License' })
-    this.occupationalPermit = page.getByRole('heading', { name: ' Occupational Mayor\'s Permit' })
+    this.occupationalPermit = page.getByRole('link', { name: ' Occupational Mayor\'s Permit' }).first()
     this.firstTimeJobSeeker = page.getByRole('link', { name: 'Occupational Permit (First Time Job Seeker)' })
     this.safetySealCertificate = page.getByRole('link', { name: 'Safety Seal Certificate' })
   }

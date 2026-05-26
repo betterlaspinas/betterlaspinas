@@ -145,7 +145,7 @@ test.describe('Services Page', () => {
       await expect(page.getByRole('heading', { name: 'Claim Permit', level: 4 })).toBeVisible()
     })
 
-    await test.step('Navigate to Occupational Mayor\s Permit (First Time Job Seeker) page', async () => {
+    await test.step('Navigate toIssuance of Safety Seal Certificate page', async () => {
       await businessPage.navigate()
       await businessPage.navigateToSafetySealCertificate()
       await expect(page).toHaveURL('https://betterlaspinas.org/service-details/safety-seal')
