@@ -30,6 +30,6 @@ export function usePageOgImage({ isHomePage = false }: { isHomePage?: boolean } 
         title: ogImageData.title,
       }),
       description: ogImageData.description,
-   })
+    })
   }
 }

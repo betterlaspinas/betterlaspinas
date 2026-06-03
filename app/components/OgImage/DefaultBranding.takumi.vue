@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // These props are automatically passed by nuxt-og-image
-const props = defineProps<{ 
+const props = defineProps<{
   description?: string
 }>()
 
