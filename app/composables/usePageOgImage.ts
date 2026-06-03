@@ -26,8 +26,10 @@ export function usePageOgImage({ isHomePage = false }: { isHomePage?: boolean } 
 
   if (ogImageData) {
     defineOgImage(brandingTemplate, {
-      title: ogImageData.title,
+      ...(!isHomePage && {
+        title: ogImageData.title,
+      }),
       description: ogImageData.description,
-    })
+   })
   }
 }
