@@ -8,7 +8,7 @@
   },
   "about": {
     "titleFragment": "About",
-    "description": "Learn about Better {{lguName}} â€” our mission, history, and how {{siteBrandName}} promotes transparency and accessibility in local governance.",
+    "description": "Learn about Better {{lguName}} — our mission, history, and how {{siteBrandName}} promotes transparency and accessibility in local governance.",
     "ogType": "website",
     "twitterCard": "summary",
     "hidden": false
