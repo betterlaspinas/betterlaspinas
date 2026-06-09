@@ -3,6 +3,8 @@ import { expect, test } from '../../lib/fixtures/base.fixture'
 test.describe('Home Page/Landing Page', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/')
+    await page.waitForLoadState('networkidle')
+    await page.waitForTimeout(1000)
   })
 
   // Check the Landing Page Main Elements

@@ -18,7 +18,7 @@ test.describe('Services Page', () => {
 
     await test.step('Navigate to Birth Certificate page', async () => {
       await certificatesPage.navigateToBirthCertificate()
-      await expect(page).toHaveURL('https://betterlaspinas.org/service-details/birth-certificate')
+      await expect(page).toHaveURL(/\/service-details\/birth-certificate/i)
       await expect(page.getByRole('heading', { name: 'Step-by-Step Process', level: 2 })).toBeVisible()
       await expect(page.getByRole('heading', { name: 'Check Eligibility', level: 4 })).toBeVisible()
       await expect(page.getByRole('heading', { name: 'Prepare Documents', level: 4 })).toBeVisible()
@@ -31,7 +31,7 @@ test.describe('Services Page', () => {
     await test.step('Navigate to Marriage Certificate page', async () => {
       await certificatesPage.navigate()
       await certificatesPage.navigateToMarriageCertificate()
-      await expect(page).toHaveURL('https://betterlaspinas.org/service-details/marriage-certificate')
+      await expect(page).toHaveURL(/\/service-details\/marriage-certificate/i)
       await expect(page.getByRole('heading', { name: 'Step-by-Step Process', level: 2 })).toBeVisible()
       await expect(page.getByRole('heading', { name: 'Gather Documents', level: 4 })).toBeVisible()
       await expect(page.getByRole('heading', { name: 'Visit Civil Registry', level: 4 })).toBeVisible()
@@ -44,7 +44,7 @@ test.describe('Services Page', () => {
     await test.step('Navigate to Death Certificate page', async () => {
       await certificatesPage.navigate()
       await certificatesPage.navigateToDeathCertificate()
-      await expect(page).toHaveURL('https://betterlaspinas.org/service-details/death-certificate')
+      await expect(page).toHaveURL(/\/service-details\/death-certificate/i)
       await expect(page.getByRole('heading', { name: 'Step-by-Step Process', level: 2 })).toBeVisible()
       await expect(page.getByRole('heading', { name: 'Obtain Medical Certificate', level: 4 })).toBeVisible()
       await expect(page.getByRole('heading', { name: 'Visit Civil Registry', level: 4 })).toBeVisible()
@@ -70,7 +70,7 @@ test.describe('Services Page', () => {
 
     await test.step('Navigate to Business Permit (New) page', async () => {
       await businessPage.navigateToBusiness()
-      await expect(page).toHaveURL('https://betterlaspinas.org/service-details/business-permit-new')
+      await expect(page).toHaveURL(/\/service-details\/business-permit-new/i)
       await expect(page.getByRole('heading', { name: 'In-Person Application Method', level: 2 })).toBeVisible()
       await expect(page.getByRole('heading', { name: 'Submit Application', level: 4 })).toBeVisible()
       await expect(page.getByRole('heading', { name: 'Planning & Engineering Evaluation', level: 4 })).toBeVisible()
@@ -84,7 +84,7 @@ test.describe('Services Page', () => {
     await test.step('Navigate to Business Permit (Renewal) page', async () => {
       await businessPage.navigate()
       await businessPage.navigateToBusinessPermitRenewal()
-      await expect(page).toHaveURL('https://betterlaspinas.org/service-details/business-permit-renewal')
+      await expect(page).toHaveURL(/\/service-details\/business-permit-renewal/i)
       await expect(page.getByRole('heading', { name: 'In-Person Application Method', level: 2 })).toBeVisible()
       await expect(page.getByRole('heading', { name: 'Submit Application', level: 4 })).toBeVisible()
       await expect(page.getByRole('heading', { name: 'Evaluation & Approval', level: 4 })).toBeVisible()
@@ -96,7 +96,7 @@ test.describe('Services Page', () => {
     await test.step('Navigate to Special Permit page', async () => {
       await businessPage.navigate()
       await businessPage.navigateToSpecialPermit()
-      await expect(page).toHaveURL('https://betterlaspinas.org/service-details/special-permit')
+      await expect(page).toHaveURL(/\/service-details\/special-permit/i)
       await expect(page.getByRole('heading', { name: 'Step-by-Step Process', level: 2 })).toBeVisible()
       await expect(page.getByRole('heading', { name: 'Submit Application & Verification', level: 4 })).toBeVisible()
       await expect(page.getByRole('heading', { name: 'Pay Taxes and Fees', level: 4 })).toBeVisible()
@@ -106,7 +106,7 @@ test.describe('Services Page', () => {
     await test.step('Navigate to Issuance of Certificates on Status of Business page', async () => {
       await businessPage.navigate()
       await businessPage.navigateToCertificateOfStatus()
-      await expect(page).toHaveURL('https://betterlaspinas.org/service-details/business-status-certificate')
+      await expect(page).toHaveURL(/\/service-details\/business-status-certificate/i)
       await expect(page.getByRole('heading', { name: 'Step-by-Step Process', level: 2 })).toBeVisible()
       await expect(page.getByRole('heading', { name: 'Submit Application & Requirements', level: 4 })).toBeVisible()
       await expect(page.getByRole('heading', { name: 'Pay the Fee', level: 4 })).toBeVisible()
@@ -116,7 +116,7 @@ test.describe('Services Page', () => {
     await test.step('Navigate  to Issuance of Certified True Copy of Business License and Mayor\s Permit page', async () => {
       await businessPage.navigate()
       await businessPage.navigateToCTCOfBusinessLicense()
-      await expect(page).toHaveURL('https://betterlaspinas.org/service-details/ctc-business-license')
+      await expect(page).toHaveURL(/\/service-details\/ctc-business-license/i)
       await expect(page.getByRole('heading', { name: 'Step-by-Step Process', level: 2 })).toBeVisible()
       await expect(page.getByRole('heading', { name: 'Submit Requirements', level: 4 })).toBeVisible()
       await expect(page.getByRole('heading', { name: 'Pay the Fee', level: 4 })).toBeVisible()
@@ -126,7 +126,7 @@ test.describe('Services Page', () => {
     await test.step('Navigate to Occupational Mayor\s Permit (Regular) page', async () => {
       await businessPage.navigate()
       await businessPage.navigateToOccupationalPermit()
-      await expect(page).toHaveURL('https://betterlaspinas.org/service-details/occupational-permit')
+      await expect(page).toHaveURL(/\/service-details\/occupational-permit/i)
       await expect(page.getByRole('heading', { name: 'Step-by-Step Process', level: 2 })).toBeVisible()
       await expect(page.getByRole('heading', { name: 'Secure Application Form', level: 4 })).toBeVisible()
       await expect(page.getByRole('heading', { name: 'Submit Requirements', level: 4 })).toBeVisible()
@@ -137,7 +137,7 @@ test.describe('Services Page', () => {
     await test.step('Navigate to Occupational Mayor\s Permit (First Time Job Seeker) page', async () => {
       await businessPage.navigate()
       await businessPage.navigateToFirstTimeJob()
-      await expect(page).toHaveURL('https://betterlaspinas.org/service-details/occupational-permit-jobseeker')
+      await expect(page).toHaveURL(/\/service-details\/occupational-permit-jobseeker/i)
       await expect(page.getByRole('heading', { name: 'Step-by-Step Process', level: 2 })).toBeVisible()
       await expect(page.getByRole('heading', { name: 'Secure Application Form', level: 4 })).toBeVisible()
       await expect(page.getByRole('heading', { name: 'Submit Requirements', level: 4 })).toBeVisible()
@@ -145,10 +145,10 @@ test.describe('Services Page', () => {
       await expect(page.getByRole('heading', { name: 'Claim Permit', level: 4 })).toBeVisible()
     })
 
-    await test.step('Navigate toIssuance of Safety Seal Certificate page', async () => {
+    await test.step('Navigate to Issuance of Safety Seal Certificate page', async () => {
       await businessPage.navigate()
       await businessPage.navigateToSafetySealCertificate()
-      await expect(page).toHaveURL('https://betterlaspinas.org/service-details/safety-seal')
+      await expect(page).toHaveURL(/\/service-details\/safety-seal/i)
       await expect(page.getByRole('heading', { name: 'Step-by-Step Process', level: 2 })).toBeVisible()
       await expect(page.getByRole('heading', { name: 'Submit Application', level: 4 })).toBeVisible()
       await expect(page.getByRole('heading', { name: 'Review & Scheduling', level: 4 })).toBeVisible()
