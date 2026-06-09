@@ -1,4 +1,4 @@
-import { expect, test } from '../../lib/fixtures/search.fixture'
+import { expect, test } from '../../lib/fixtures/base.fixture'
 
 test.describe('Home Page/Landing Page', () => {
   test.beforeEach(async ({ page }) => {
@@ -21,7 +21,7 @@ test.describe('Home Page/Landing Page', () => {
 
     await test.step('Check the Logo and Title', async () => {
       await expect(page.getByAltText(/Las Piñas Logo/i)).toBeVisible()
-      await expect(page.getByText(/ BetterLasPiñas/i)).toBeVisible()
+      await expect(page.getByText(/BetterLasPiñas/i)).toBeVisible()
     })
 
     await test.step('Check the Navigation Links', async () => {
@@ -53,9 +53,9 @@ test.describe('Home Page/Landing Page', () => {
       await expect(page.getByText('Land Area', { exact: true })).toBeVisible()
     })
     await test.step('Check Weather and Maps Section', async () => {
-      await expect(page.getByText('Wind', { exact: true })).toBeVisible()
-      await expect(page.getByText('High', { exact: true })).toBeVisible()
-      await expect(page.getByText('Low', { exact: true })).toBeVisible()
+      await expect.soft(page.getByText('Wind', { exact: true })).toBeVisible()
+      await expect.soft(page.getByText('High', { exact: true })).toBeVisible()
+      await expect.soft(page.getByText('Low', { exact: true })).toBeVisible()
       await expect(page.getByText('City Hall, Las Piñas, Metro Manila', { exact: true })).toBeVisible()
     })
 
@@ -88,19 +88,18 @@ test.describe('Home Page/Landing Page', () => {
   })
 
   test('should have working search functionality ', async ({ page, searchFunctionality }) => {
-    // Use page object model for search functionality
     await expect(searchFunctionality.searchInput).toBeVisible()
     await searchFunctionality.search('birth certificate')
     await searchFunctionality.clickResult('Birth Certificate')
-    await expect(page.getByRole('heading', { name: 'Birth Certificate (Local Copy)', level: 1, exact: true })).toBeVisible()
     await expect(page).toHaveURL(/\/birth-certificate/i)
+    await expect(page.getByRole('heading', { name: 'Birth Certificate (Local Copy)', level: 1, exact: true })).toBeVisible()
   })
 
   test('should have working search functionality cycle 2', async ({ page, searchFunctionality }) => {
     await expect(searchFunctionality.searchInput).toBeVisible()
     await searchFunctionality.search('marriage certificate')
     await searchFunctionality.clickResult('Marriage Certificate')
-    await expect(page.getByRole('heading', { name: 'Marriage Certificate Registration & Copy', level: 1, exact: true })).toBeVisible()
     await expect(page).toHaveURL(/\/marriage-certificate/i)
+    await expect(page.getByRole('heading', { name: 'Marriage Certificate Registration & Copy', level: 1, exact: true })).toBeVisible()
   })
 })

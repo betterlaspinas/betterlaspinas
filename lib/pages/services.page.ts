@@ -17,7 +17,7 @@ export class ServicesPage {
 
   async navigateToCertificates() {
     await this.servicesLink.hover()
-    await this.certificatesMenuItem.waitFor({ state: 'visible' })
+    await this.certificatesMenuItem.waitFor({ state: 'visible', timeout: 3000 })
     await this.certificatesMenuItem.click()
     // Return the CertificatesPage instance to allow chaining of actions on that page
     return new CertificatesPage(this.page)
@@ -25,7 +25,7 @@ export class ServicesPage {
 
   async navigateToBusiness() {
     await this.servicesLink.hover()
-    await this.businessMenuItem.waitFor({ state: 'visible' })
+    await this.businessMenuItem.waitFor({ state: 'visible', timeout: 3000 })
     await this.businessMenuItem.click()
     return new BusinessPage(this.page)
   }

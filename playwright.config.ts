@@ -41,11 +41,12 @@ export default defineConfig({
     /* Base URL to use in actions like `await page.goto('')`. */
     baseURL: 'https://betterlaspinas.org/',
     testIdAttribute: 'data-test',
+    actionTimeout: 10_000, // 10 seconds
+    navigationTimeout: 30_000, // 30 seconds
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
     /* Timeout for each action like click(), fill() etc. */
-    actionTimeout: 0,
   },
 
   /* Configure projects for major browsers */

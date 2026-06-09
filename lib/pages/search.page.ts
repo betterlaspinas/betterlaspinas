@@ -12,7 +12,6 @@ export class SearchFunctionality {
   // One method for any search term
   async search(term: string) {
     await this.searchInput.fill(term)
-    await this.page.waitForLoadState('networkidle')
   }
 
   // One method to click any result

@@ -1,6 +1,6 @@
 import type { BusinessPage } from '../pages/business.page'
 import type { CertificatesPage } from '../pages/certificates.page'
-import { test as baseTest, expect } from '@playwright/test'
+import { test as baseTest } from '@playwright/test'
 import { ServicesPage } from '../pages/services.page'
 
 // Step 1 — Tell TypeScript what fixtures we're adding
@@ -35,5 +35,4 @@ export const test = baseTest.extend<ServiceFixtures>({
   },
 
 })
-
-export { expect }
+export { expect } from '@playwright/test'
