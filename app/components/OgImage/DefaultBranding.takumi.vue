@@ -1,14 +1,13 @@
 <script setup lang="ts">
 // These props are automatically passed by nuxt-og-image
 const props = defineProps<{
+  title: string
   description?: string
 }>()
 
 const { site } = useConfig()
 
 const logoPath = computed(() => site.value.logo?.whitePng || '/logos/svg/BetterGov_Icon-White.png')
-
-const decodedDescription = computed(() => props.description ? decodeURIComponent(props.description) : '')
 </script>
 
 <template>
@@ -18,10 +17,10 @@ const decodedDescription = computed(() => props.description ? decodeURIComponent
     <div class="flex flex-col gap-6 w-full mt-16 items-center">
       <img :src="logoPath" alt="Logo" class="object-contain" width="160" height="160">
       <h1 class="text-7xl font-bold leading-tight tracking-tight text-white">
-        BetterLasPinas.org
+        {{ props.title }}
       </h1>
       <h1 class="text-3xl leading-tight tracking-tight text-white">
-        {{ decodedDescription }}
+        {{ props.description }}
       </h1>
     </div>
   </div>
