@@ -266,12 +266,21 @@ export function getCategoriesConfig(): CategoriesConfig {
  * Get the services config with proper typing.
  * Filters out hidden Services; no category coupling.
  */
+// Soft-launch gate (introduced in 0a6176c "scope site content to certificates
+// category for soft launch"): only live categories are exposed through the
+// shared services config, which backs the global search index and the canonical
+// accessors. Non-live category PAGES still render via categoriesContent.ts.
+// Widen / remove this as the remaining categories go live (see #186).
+const LIVE_CATEGORY_IDS = new Set(['certificates', 'business'])
+
 export function getServicesConfig(): ServicesConfig {
   const config = servicesConfig as ServicesConfig
   return {
     ...config,
     services: config.services
-      ? config.services.filter((service: ServiceItem) => !service.hidden)
+      ? config.services
+          .filter(service => LIVE_CATEGORY_IDS.has(service.categoryId ?? ''))
+          .filter((service: ServiceItem) => !service.hidden)
       : [],
   }
 }
