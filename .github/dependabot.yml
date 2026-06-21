@@ -1,6 +1,6 @@
 version: 2
 updates:
-  - package-ecosystem: npm        # reads pnpm-lock.yaml
+  - package-ecosystem: npm # reads pnpm-lock.yaml
     directory: /
     schedule:
       interval: monthly
