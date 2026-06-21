@@ -3,7 +3,15 @@ usePageOgImage()
 
 const route = useRoute()
 const categorySlug = route.params.category as string
-const category = getCategoryBySlug(categorySlug)
+
+// `certificates` is sourced canonically (categories.json + services.json) via
+// the accessor. Every other Category still comes from categoriesContent.ts
+// until it is ported in #186 and the module is removed in #189.
+const canonical = isCanonicalCategory(categorySlug)
+  ? getCategoryBySlug(categorySlug)
+  : undefined
+const legacy = canonical ? undefined : getCategoryContent(categorySlug)
+const category = canonical ?? legacy
 
 if (!category) {
   throw createError({
@@ -18,11 +26,28 @@ if (!category) {
 // non-interactive, matching the original behavior. Only a real destination
 // (e.g. /service-details/<id>) makes the card a link.
 const categoryHref = `/services/${categorySlug}`
-const services = getServicesByCategory(categorySlug).map(service => ({
-  ...service,
-  link: service.url && service.url !== categoryHref ? service.url : undefined,
-}))
-const offices = (category.offices ?? []).filter(office => !office.hidden)
+const services = canonical
+  ? getServicesByCategory(categorySlug).map(service => ({
+      id: service.id,
+      icon: service.icon,
+      title: service.title,
+      description: service.description,
+      fee: service.fee,
+      time: service.processingTime,
+      link: service.url && service.url !== categoryHref ? service.url : undefined,
+    }))
+  : legacy!.services.map(service => ({
+      id: service.id,
+      icon: service.icon,
+      title: service.title,
+      description: service.description,
+      fee: service.fee,
+      time: service.time,
+      link: service.link,
+    }))
+const offices = (canonical?.offices ?? legacy?.offices ?? []).filter(
+  office => !office.hidden,
+)
 </script>
 
 <template>
@@ -66,7 +91,7 @@ const offices = (category.offices ?? []).filter(office => !office.hidden)
                 <strong>Fee:</strong> {{ service.fee }}
               </span>
               <span>
-                <strong>Time:</strong> {{ service.processingTime }}
+                <strong>Time:</strong> {{ service.time }}
               </span>
             </div>
           </UiCard>

@@ -30,7 +30,9 @@ export interface CategoryContent {
 
 // NOTE: the `certificates` category is now sourced canonically from
 // app/config/categories.json + services.json via the configHelper accessor
-// (see #184). The remaining categories below migrate in #189.
+// (see #184). The categories below are still the live source for their pages
+// (gated by `isCanonicalCategory`); they are ported to the canonical source in
+// #186 and this module is removed in #189.
 export const categoriesContent: CategoryContent[] = [
   {
     id: 'business',

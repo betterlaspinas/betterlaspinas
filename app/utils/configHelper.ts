@@ -323,6 +323,19 @@ export function getServicesByCategory(slug: string): ServiceItem[] {
 }
 
 /**
+ * Service Categories whose page is sourced canonically (categories.json +
+ * services.json) through these accessors. Every other Category still renders
+ * from `categoriesContent.ts`; its catalog is ported here in #186 and the
+ * legacy module is removed in #189. Until then this gate keeps #184 scoped to
+ * Certificates so the other categories' visible cards do not silently change.
+ */
+const CANONICAL_CATEGORY_SLUGS = new Set(['certificates'])
+
+export function isCanonicalCategory(slug: string): boolean {
+  return CANONICAL_CATEGORY_SLUGS.has(slug)
+}
+
+/**
  * Get the detailed statistics config with proper typing
  */
 export function getStatisticsDetailedConfig(): StatisticsDetailedConfig {
