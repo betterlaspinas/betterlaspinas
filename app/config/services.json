@@ -1,4 +1,5 @@
 {
+  "$schema": "./schema/services.schema.json",
   "services": [
     {
       "id": "birth-certificate",
@@ -18,7 +19,70 @@
       "fee": "₱75",
       "processingTime": "15-30 minutes",
       "office": "Civil Registry Office",
-      "url": "/service-details/birth-certificate"
+      "icon": "bi-file-earmark-text",
+      "url": "/service-details/birth-certificate",
+      "detail": {
+        "fullTitle": "Birth Certificate (Local Copy)",
+        "category": "Certificates",
+        "categoryLink": "/services/certificates",
+        "badgeText": "Certificates",
+        "badgeIcon": "bi-file-earmark-text",
+        "description": "Official certified copy of birth certificate registered in your city",
+        "quickStats": [
+          { "icon": "bi-clock", "label": "Processing", "value": "15-30 Minutes" },
+          { "icon": "bi-cash", "label": "Fee", "value": "₱75/copy" },
+          { "icon": "bi-person-check", "label": "Who Can Apply", "value": "Owner/Representative" },
+          { "icon": "bi-calendar-check", "label": "Appointment", "value": "Walk-in" }
+        ],
+        "processSteps": [
+          { "title": "Check Eligibility", "description": "You can request if you are the owner, parent/guardian, or authorized representative with proper authorization letter." },
+          { "title": "Prepare Documents", "description": "Bring valid government-issued ID. If representative: authorization letter and IDs of both owner and representative." },
+          { "title": "Visit Civil Registry", "description": "Go to the City Civil Registry Office - Window 4 at 1st Floor, Administrative Building. Office hours: Mon-Fri, 8AM-5PM." },
+          { "title": "Fill Out Request Form", "description": "Complete the request form / verification slip with full name, date of birth, place of birth, parents' names, and purpose." },
+          { "title": "Pay the Fee", "description": "Pay ₱75 per certified copy at Window 2 or 3 of the Civil Registry or at the City Treasurer's Office (same building)." },
+          { "title": "Claim Certificate", "description": "Return to Civil Registry Window 4 with official receipt. Certificate released within 15-30 minutes if record is available.", "isFinal": true }
+        ],
+        "requirements": [
+          {
+            "title": "If You Are the Owner",
+            "icon": "bi-person",
+            "items": [
+              "Valid government-issued ID (original + photocopy)",
+              "Payment: ₱75 cash per copy"
+            ]
+          },
+          {
+            "title": "If You Are a Representative",
+            "icon": "bi-people",
+            "items": [
+              "Authorization letter signed by the owner",
+              "Valid ID of the owner (photocopy)",
+              "Valid ID of the representative (original + photocopy)",
+              "Payment: ₱75 cash per copy"
+            ]
+          }
+        ],
+        "faqs": [
+          { "question": "Can I get a birth certificate registered in another city?", "answer": "No. The City Civil Registry only has records for births registered in this city. For other cities, request from that city's Civil Registry or from PSA." },
+          { "question": "What if I don't know the exact date of birth?", "answer": "Provide an approximate year and month. The staff will help search the records, but this may take longer." },
+          { "question": "Can I request through email or online?", "answer": "Currently, requests must be made in person. Online services are being planned for the future." },
+          { "question": "What's the difference between local copy and PSA copy?", "answer": "Both are certified true copies. PSA copies are nationally-recognized and required for passport/visa applications. Local copies are accepted for most local transactions and school enrollment." }
+        ],
+        "office": {
+          "name": "City Civil Registry",
+          "location": "1st Floor, Administrative Building, Las Piñas City Hall Compound",
+          "phone": "(02) 8253-4370",
+          "mobile": "0998 587 9659",
+          "email": "lpcivilreg@gmail.com",
+          "facebook": "https://www.facebook.com/civilreglaspinas",
+          "hours": "Mon-Thu: 8AM - 7PM"
+        },
+        "relatedServices": [
+          { "title": "Marriage Certificate", "link": "/service-details/marriage-certificate" },
+          { "title": "Death Certificate", "link": "/service-details/death-certificate" },
+          { "title": "Barangay Clearance", "link": "/services/certificates" }
+        ]
+      }
     },
     {
       "id": "marriage-certificate",
@@ -39,7 +103,78 @@
       "fee": "₱150 (Registration)",
       "processingTime": "3-10 days",
       "office": "Civil Registry Office",
-      "url": "/service-details/marriage-certificate"
+      "icon": "bi-heart",
+      "url": "/service-details/marriage-certificate",
+      "detail": {
+        "fullTitle": "Marriage Certificate Registration & Copy",
+        "category": "Certificates",
+        "categoryLink": "/services/certificates",
+        "badgeText": "Certificates",
+        "badgeIcon": "bi-heart",
+        "description": "Register or request certified true copy of marriage certificate",
+        "quickStats": [
+          { "icon": "bi-clock", "label": "Processing", "value": "3-10 Days" },
+          { "icon": "bi-cash", "label": "Fee", "value": "₱150 (Registration)" },
+          { "icon": "bi-person-check", "label": "Who Can Apply", "value": "Spouses/Representative" },
+          { "icon": "bi-calendar-check", "label": "Appointment", "value": "Walk-in" }
+        ],
+        "processSteps": [
+          { "title": "Gather Documents", "description": "Prepare marriage certificate from solemnizing officer and valid IDs." },
+          { "title": "Visit Civil Registry", "description": "Go to the Civil Registry Office, 1st Floor, Administrative Building." },
+          { "title": "Submit Documents & Verification", "description": "Submit marriage certificate and supporting documents for registration at Window 5. Staff verifies document authenticity and completeness." },
+          { "title": "Payment", "description": "Pay the Solemnization Fee of ₱150 at Window 2 or 3 in the Civil Registry Office." },
+          { "title": "Registration", "description": "Marriage is officially registered in the Civil Registry." },
+          { "title": "Claim Certificate", "description": "Receive certified copy of registered marriage certificate.", "isFinal": true }
+        ],
+        "requirements": [
+          {
+            "title": "For Timely Registration",
+            "icon": "bi-file-text",
+            "items": [
+              "Duly accomplished Certificate of Marriage - 4 copies",
+              "Marriage solemnized outside Churches or Municipal Court must submit a Request address to solemnizing officer for celebration of Marriage in a place other than those authorized by law",
+              "Valid IDs of both spouses",
+              "Marriage license (if applicable)"
+            ]
+          },
+          {
+            "title": "For Late Registration",
+            "icon": "bi-file-text",
+            "items": [
+              "Duly accomplished Certificate of Marriage - 4 copies",
+              "Certificate of Marriage of contracting parties",
+              "Valid IDs of both spouses",
+              "Marriage license (if applicable)"
+            ]
+          },
+          {
+            "title": "For Copy Request",
+            "icon": "bi-files",
+            "items": [
+              "Valid ID of spouse or authorized representative",
+              "Authorization letter (if representative)",
+              "Payment: ₱75 per copy"
+            ]
+          }
+        ],
+        "faqs": [
+          { "question": "How soon after the wedding should I register?", "answer": "Within 30 days of the marriage ceremony. Late registration may require additional documents." },
+          { "question": "Can I get a copy if I was married elsewhere?", "answer": "Only marriages registered in this city are available. Request from the city where you were married or from PSA." }
+        ],
+        "office": {
+          "name": "City Civil Registry",
+          "location": "1st Floor, Administrative Building, Las Piñas City Hall Compound",
+          "phone": "(02) 8253-4370",
+          "mobile": "0998 587 9659",
+          "email": "lpcivilreg@gmail.com",
+          "facebook": "https://www.facebook.com/civilreglaspinas",
+          "hours": "Mon-Thu: 8AM - 7PM"
+        },
+        "relatedServices": [
+          { "title": "Birth Certificate", "link": "/service-details/birth-certificate" },
+          { "title": "CENOMAR", "link": "/services/certificates" }
+        ]
+      }
     },
     {
       "id": "death-certificate",
@@ -59,7 +194,69 @@
       "fee": "₱75-150",
       "processingTime": "~1 hour 35 minutes",
       "office": "Civil Registry Office",
-      "url": "/service-details/death-certificate"
+      "icon": "bi-file-earmark-x",
+      "url": "/service-details/death-certificate",
+      "detail": {
+        "fullTitle": "Death Certificate Registration & Burial Permit",
+        "category": "Certificates",
+        "categoryLink": "/services/certificates",
+        "badgeText": "Certificates",
+        "badgeIcon": "bi-file-earmark-x",
+        "description": "Register death certificate and obtain burial/transfer permit",
+        "quickStats": [
+          { "icon": "bi-clock", "label": "Processing", "value": "~1.5 Hours" },
+          { "icon": "bi-cash", "label": "Fee", "value": "₱75-150" },
+          { "icon": "bi-person-check", "label": "Who Can Apply", "value": "Immediate Family" },
+          { "icon": "bi-calendar-check", "label": "Appointment", "value": "Walk-in" }
+        ],
+        "processSteps": [
+          { "title": "Obtain Medical Certificate", "description": "Get certificate of death from attending physician or hospital." },
+          { "title": "Visit Civil Registry", "description": "Go to Civil Registry at Window 5 with death certificate within 48 hours." },
+          { "title": "Complete Registry", "description": "Staff registers death in civil registry." },
+          { "title": "Pay Fees", "description": "Pay registration of ₱75, ₱150 if late, and burial permit fees at Window 2 or 3 in the Civil Registry Office or at the City Treasurer's Office." },
+          { "title": "Claim Permits", "description": "Receive burial permit and certified death certificate at Window 5.", "isFinal": true }
+        ],
+        "requirements": [
+          {
+            "title": "For Timely Registration",
+            "icon": "bi-file-text",
+            "items": [
+              "Certificate of Death - 4 copies",
+              "Valid ID of informant",
+              "Valid ID of deceased (if available)"
+            ]
+          },
+          {
+            "title": "For Late Registration",
+            "icon": "bi-file-text",
+            "items": [
+              "Negative Certification from Philippine Statistics Authority",
+              "Duly accomplished Certificate of Death or Certificate of Fetal Death",
+              "Certification from the Cemetery",
+              "Valid ID of informant",
+              "Valid ID of deceased (if available)"
+            ]
+          }
+        ],
+        "faqs": [
+          { "question": "How soon must death be registered?", "answer": "Within 48 hours of death. Late registration requires additional documents and fees." },
+          { "question": "Do I need a burial permit?", "answer": "Yes, burial permit is required before interment in any cemetery." },
+          { "question": "How long is the posting period for Late Registration?", "answer": "Evaluator shall prepare documents for posting within 10 days, and the release of Certified True Copy is expiration of 10 days posting period." }
+        ],
+        "office": {
+          "name": "City Civil Registry",
+          "location": "1st Floor, Administrative Building, Las Piñas City Hall Compound",
+          "phone": "(02) 8253-4370",
+          "mobile": "0998 587 9659",
+          "email": "lpcivilreg@gmail.com",
+          "facebook": "https://www.facebook.com/civilreglaspinas",
+          "hours": "Mon-Thu: 8AM - 7PM"
+        },
+        "relatedServices": [
+          { "title": "Birth Certificate", "link": "/service-details/birth-certificate" },
+          { "title": "CSWDO Services", "link": "/service-details/cswdo-services" }
+        ]
+      }
     },
     {
       "id": "barangay-clearance",
@@ -77,6 +274,7 @@
       "fee": "₱50-100",
       "processingTime": "Same day",
       "office": "Barangay Hall",
+      "icon": "bi-house-check",
       "url": "/services/certificates"
     },
     {
@@ -94,6 +292,7 @@
       "fee": "Free",
       "processingTime": "1-2 days",
       "office": "Barangay Hall",
+      "icon": "bi-person-badge",
       "url": "/services/certificates"
     },
     {
@@ -112,6 +311,7 @@
       "fee": "Varies",
       "processingTime": "3-5 days",
       "office": "PNP Station",
+      "icon": "bi-shield-check",
       "url": "/services/certificates"
     },
     {
@@ -923,27 +1123,6 @@
       "processingTime": "3-5 days",
       "office": "City Assessor's Office",
       "url": "/service-details/city-assessor"
-    },
-    {
-      "id": "city-civil-registry",
-      "title": "Civil Registry Office",
-      "category": "Certificates & Vital Records",
-      "categoryId": "certificates",
-      "description": "Birth, marriage, death certificates and civil registry services",
-      "keywords": [
-        "civil registrar",
-        "LCR",
-        "birth",
-        "marriage",
-        "death",
-        "certificate",
-        "vital records",
-        "CENOMAR"
-      ],
-      "fee": "₱150+",
-      "processingTime": "15-30 minutes",
-      "office": "Civil Registry Office",
-      "url": "/service-details/city-civil-registry"
     },
     {
       "id": "city-engineering",

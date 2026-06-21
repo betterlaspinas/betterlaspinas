@@ -2,16 +2,52 @@
 usePageOgImage()
 
 const route = useRoute()
-const category = route.params.category as string
-const categoryContent = getCategoryContent(category)
+const categorySlug = route.params.category as string
 
-if (!categoryContent) {
+// `certificates` is sourced canonically (categories.json + services.json) via
+// the accessor. Every other Category still comes from categoriesContent.ts
+// until it is ported in #186 and the module is removed in #189.
+const canonical = isCanonicalCategory(categorySlug)
+  ? getCategoryBySlug(categorySlug)
+  : undefined
+const legacy = canonical ? undefined : getCategoryContent(categorySlug)
+const category = canonical ?? legacy
+
+if (!category) {
   throw createError({
     statusCode: 404,
     statusMessage: 'Category not found',
     fatal: true,
   })
 }
+
+// A catalog-only Service points back at its own category page (e.g.
+// /services/certificates). Treat that as "no dedicated page" so the card stays
+// non-interactive, matching the original behavior. Only a real destination
+// (e.g. /service-details/<id>) makes the card a link.
+const categoryHref = `/services/${categorySlug}`
+const services = canonical
+  ? getServicesByCategory(categorySlug).map(service => ({
+      id: service.id,
+      icon: service.icon,
+      title: service.title,
+      description: service.description,
+      fee: service.fee,
+      time: service.processingTime,
+      link: service.url && service.url !== categoryHref ? service.url : undefined,
+    }))
+  : legacy!.services.map(service => ({
+      id: service.id,
+      icon: service.icon,
+      title: service.title,
+      description: service.description,
+      fee: service.fee,
+      time: service.time,
+      link: service.link,
+    }))
+const offices = (canonical?.offices ?? legacy?.offices ?? []).filter(
+  office => !office.hidden,
+)
 </script>
 
 <template>
@@ -19,15 +55,15 @@ if (!categoryContent) {
     <UiBreadcrumbs
       :items="[
         { label: 'Services', href: '/services' },
-        { label: categoryContent.name },
+        { label: category.name },
       ]"
     />
 
     <UiSectionHeader
-      :badge-icon="categoryContent.icon"
-      :badge-text="categoryContent.badgeText"
-      :title="categoryContent.name"
-      :description="categoryContent.description"
+      :badge-icon="category.icon"
+      :badge-text="category.badgeText"
+      :title="category.name"
+      :description="category.description"
     />
 
     <!-- Services Grid -->
@@ -35,7 +71,7 @@ if (!categoryContent) {
       <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <UiCard
-            v-for="service in categoryContent.services"
+            v-for="service in services"
             :key="service.id"
             :to="service.link"
             :interactive="!!service.link"
@@ -65,7 +101,7 @@ if (!categoryContent) {
 
     <!-- Responsible Offices -->
     <section
-      v-if="categoryContent.offices.length > 0"
+      v-if="offices.length > 0"
       class="py-12 bg-gray-50"
     >
       <div class="container mx-auto px-4">
@@ -74,7 +110,7 @@ if (!categoryContent) {
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <UiCard
-            v-for="office in categoryContent.offices.filter(office => office.hidden !== true)"
+            v-for="office in offices"
             :key="office.title"
             :to="office.link"
             padding="p-4"

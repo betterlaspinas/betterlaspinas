@@ -330,6 +330,70 @@ export interface TourismConfig {
   [key: string]: unknown
 }
 
+/**
+ * Canonical Service Detail sub-types.
+ *
+ * These mirror the optional `detail` block on a canonical Service record in
+ * services.json. They describe the rich service-details page content (process,
+ * requirements, FAQs, office contact info). A Service WITHOUT a `detail` is a
+ * catalog-only card (e.g. Barangay Clearance) and links to its category page.
+ */
+export interface ServiceDetailQuickStat {
+  icon: string
+  label: string
+  value: string
+}
+
+export interface ProcessStep {
+  title: string
+  description: string
+  isFinal?: boolean
+}
+
+export interface RequirementGroup {
+  title: string
+  icon: string
+  items: string[]
+}
+
+export interface Faq {
+  question: string
+  answer: string
+}
+
+export interface Office {
+  name: string
+  location: string
+  phone?: string
+  mobile?: string
+  email?: string
+  facebook?: string
+  hours: string
+}
+
+export interface RelatedService {
+  title: string
+  link: string
+}
+
+export interface ServiceDetail {
+  fullTitle: string
+  category: string
+  categoryLink: string
+  badgeText: string
+  badgeIcon: string
+  description: string
+  quickStats: ServiceDetailQuickStat[]
+  processSteps: ProcessStep[]
+  requirements: RequirementGroup[]
+  faqs: Faq[]
+  office: Office
+  relatedServices: RelatedService[]
+  onlineLink?: string
+  sourceUrl?: string
+  sourceName?: string
+}
+
 export interface ServiceItem {
   id: string
   title: string
@@ -341,7 +405,13 @@ export interface ServiceItem {
   fee?: string
   processingTime?: string
   url: string
+  icon?: string
   hidden?: boolean
+  /**
+   * Optional rich service-details content. Present only for Services that have
+   * a dedicated `/service-details/<id>` page. Absent for catalog-only Services.
+   */
+  detail?: ServiceDetail
 }
 
 export interface ServicesConfig {
@@ -367,7 +437,30 @@ export interface NavigationConfig {
   }
 }
 
+/**
+ * A responsible office shown on a category page ("Responsible Offices").
+ * This is a lightweight catalog card, NOT the full Office entity (see #185).
+ */
+export interface CategoryOffice {
+  title: string
+  icon: string
+  description: string
+  link: string
+  hidden?: boolean
+}
+
+export interface Category {
+  id: string
+  name: string
+  icon: string
+  badgeText: string
+  description: string
+  hidden?: boolean
+  offices?: CategoryOffice[]
+}
+
 export interface CategoriesConfig {
+  categories: Category[]
   [key: string]: unknown
 }
 

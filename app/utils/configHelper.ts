@@ -1,6 +1,7 @@
 import type {
   BudgetConfig,
   CategoriesConfig,
+  Category,
   FAQConfig,
   HistoryConfig,
   HotlinesConfig,
@@ -262,20 +263,85 @@ export function getCategoriesConfig(): CategoriesConfig {
 }
 
 /**
- * Get the services config with proper typing
+ * Get the services config with proper typing.
+ * Filters out hidden Services; no category coupling.
  */
+// Soft-launch gate (introduced in 0a6176c "scope site content to certificates
+// category for soft launch"): only live categories are exposed through the
+// shared services config, which backs the global search index and the canonical
+// accessors. Non-live category PAGES still render via categoriesContent.ts.
+// Widen / remove this as the remaining categories go live (see #186).
+const LIVE_CATEGORY_IDS = new Set(['certificates', 'business'])
+
 export function getServicesConfig(): ServicesConfig {
-  // return servicesConfig as ServicesConfig
-  // TODO: Remove this and uncomment above to restore all services globally
   const config = servicesConfig as ServicesConfig
   return {
     ...config,
     services: config.services
       ? config.services
-          .filter((service: ServiceItem) => service.categoryId === 'certificates' || service.categoryId === 'business')
+          .filter(service => LIVE_CATEGORY_IDS.has(service.categoryId ?? ''))
           .filter((service: ServiceItem) => !service.hidden)
       : [],
   }
+}
+
+// ---------------------------------------------------------------------------
+// Canonical Service accessor (HITL review surface).
+//
+// This small, stable interface is the single read path every later config
+// slice copies. Pages and composables MUST go through these accessors rather
+// than importing services.json / categories.json directly.
+// ---------------------------------------------------------------------------
+
+/**
+ * Get every visible Service record (hidden Services excluded).
+ */
+export function getAllServices(): ServiceItem[] {
+  return getServicesConfig().services
+}
+
+/**
+ * Get a single Service by its canonical id/slug.
+ * Returns undefined for unknown or hidden Services. Covers both detail-bearing
+ * Services and catalog-only (no `detail`) Services.
+ */
+export function getServiceBySlug(slug: string): ServiceItem | undefined {
+  return getAllServices().find(service => service.id === slug)
+}
+
+/**
+ * Get every visible service Category (hidden Categories excluded).
+ */
+export function getServiceCategories(): Category[] {
+  const config = getCategoriesConfig()
+  return (config.categories ?? []).filter(category => !category.hidden)
+}
+
+/**
+ * Get a single Category by its slug. Returns undefined for unknown/hidden.
+ */
+export function getCategoryBySlug(slug: string): Category | undefined {
+  return getServiceCategories().find(category => category.id === slug)
+}
+
+/**
+ * Get all visible Services belonging to a given category slug.
+ */
+export function getServicesByCategory(slug: string): ServiceItem[] {
+  return getAllServices().filter(service => service.categoryId === slug)
+}
+
+/**
+ * Service Categories whose page is sourced canonically (categories.json +
+ * services.json) through these accessors. Every other Category still renders
+ * from `categoriesContent.ts`; its catalog is ported here in #186 and the
+ * legacy module is removed in #189. Until then this gate keeps #184 scoped to
+ * Certificates so the other categories' visible cards do not silently change.
+ */
+const CANONICAL_CATEGORY_SLUGS = new Set(['certificates'])
+
+export function isCanonicalCategory(slug: string): boolean {
+  return CANONICAL_CATEGORY_SLUGS.has(slug)
 }
 
 /**
