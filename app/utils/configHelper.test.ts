@@ -4,6 +4,13 @@ import {
   getAllServices,
   getCategoryBySlug,
   getMergedSiteConfig,
+  getOfficeBySlug,
+  getOfficeForService,
+  getOfficeGroupBySlug,
+  getOfficeGroups,
+  getOffices,
+  getOfficesByGroup,
+  getOfficesForCategory,
   getOgImageConfig,
   getOgImageRouteConfig,
   getServiceBySlug,
@@ -109,12 +116,13 @@ describe('configHelper', () => {
       expect(categories.every(c => !c.hidden)).toBe(true)
     })
 
-    it('getCategoryBySlug returns a category with offices', () => {
+    it('getCategoryBySlug returns the certificates category (no inline offices)', () => {
       const cert = getCategoryBySlug('certificates')
       expect(cert).toBeDefined()
       expect(cert!.name).toBe('Certificates & Vital Records')
-      const visibleOffices = (cert!.offices ?? []).filter(o => !o.hidden)
-      expect(visibleOffices.find(o => o.title === 'City Civil Registry')).toBeDefined()
+      // Offices are a first-class entity now (#185); Category no longer carries
+      // an inline `offices` array.
+      expect('offices' in cert!).toBe(false)
     })
 
     it('getCategoryBySlug returns undefined for unknown slug', () => {
@@ -146,6 +154,81 @@ describe('configHelper', () => {
 
     it('getServiceBySlug returns undefined for unknown slug', () => {
       expect(getServiceBySlug('not-a-real-service')).toBeUndefined()
+    })
+  })
+
+  describe('canonical Office accessor', () => {
+    it('getOffices returns visible Offices only', () => {
+      const offices = getOffices()
+      expect(offices.length).toBeGreaterThan(0)
+      expect(offices.every(o => !o.hidden)).toBe(true)
+      // The hidden Human Resource Management office is excluded.
+      expect(offices.find(o => o.id === 'human-resource-management')).toBeUndefined()
+    })
+
+    it('each Office belongs to exactly one (known) Office Group', () => {
+      const groupIds = new Set(getOfficeGroups().map(g => g.id))
+      // Every visible office resolves to a single, known group via groupId.
+      for (const office of getOffices()) {
+        expect(typeof office.groupId).toBe('string')
+        expect(groupIds.has(office.groupId)).toBe(true)
+      }
+    })
+
+    it('getOfficeBySlug resolves a known Office', () => {
+      const civil = getOfficeBySlug('civil-registry')
+      expect(civil).toBeDefined()
+      expect(civil!.name).toBe('City Civil Registry')
+      expect(civil!.groupId).toBe('frontline-services')
+    })
+
+    it('getOfficeBySlug returns undefined for unknown or hidden Offices', () => {
+      expect(getOfficeBySlug('not-a-real-office')).toBeUndefined()
+      expect(getOfficeBySlug('human-resource-management')).toBeUndefined()
+    })
+
+    it('getOfficeGroups returns visible Office Groups', () => {
+      const groups = getOfficeGroups()
+      expect(groups.length).toBeGreaterThan(0)
+      expect(groups.every(g => !g.hidden)).toBe(true)
+      expect(groups.find(g => g.id === 'frontline-services')).toBeDefined()
+    })
+
+    it('getOfficeGroupBySlug returns undefined for unknown slug', () => {
+      expect(getOfficeGroupBySlug('does-not-exist')).toBeUndefined()
+    })
+
+    it('getOfficesByGroup renders one Office Group\'s Offices from the accessor alone', () => {
+      const frontline = getOfficesByGroup('frontline-services')
+      expect(frontline.length).toBeGreaterThan(0)
+      expect(frontline.every(o => o.groupId === 'frontline-services')).toBe(true)
+      expect(frontline.find(o => o.id === 'civil-registry')).toBeDefined()
+    })
+
+    it('getOfficesByGroup returns empty for an unknown group', () => {
+      expect(getOfficesByGroup('ghost-group')).toEqual([])
+    })
+
+    it('getOfficeForService resolves a Certificates Service to its providedBy Office', () => {
+      const birth = getServiceBySlug('birth-certificate')
+      const office = getOfficeForService(birth!)
+      expect(office).toBeDefined()
+      expect(office!.id).toBe('civil-registry')
+    })
+
+    it('getOfficeForService returns undefined when a Service has no providedBy', () => {
+      expect(getOfficeForService({ providedBy: undefined } as never)).toBeUndefined()
+    })
+
+    it('getOfficesForCategory dedupes Offices across a Category\'s Services', () => {
+      const offices = getOfficesForCategory('certificates')
+      expect(offices.length).toBeGreaterThan(0)
+      // Three certificates Services share civil-registry; it appears once.
+      const ids = offices.map(o => o.id)
+      expect(new Set(ids).size).toBe(ids.length)
+      expect(ids).toContain('civil-registry')
+      expect(ids).toContain('barangay-hall')
+      expect(ids).toContain('police-station')
     })
   })
 
@@ -223,6 +306,148 @@ describe('configHelper', () => {
       }
       const categories = { categories: [{ id: 'certificates' }] }
       expect(validateConsistency(services, categories)).toBe(false)
+    })
+  })
+
+  describe('offices config validator', () => {
+    const minimalOfficesSchema = {
+      type: 'object',
+      required: ['officeGroups', 'offices'],
+      properties: {
+        officeGroups: {
+          type: 'array',
+          items: {
+            type: 'object',
+            additionalProperties: false,
+            required: ['id', 'name', 'description'],
+            properties: {
+              id: { type: 'string' },
+              name: { type: 'string' },
+              description: { type: 'string' },
+              icon: { type: 'string' },
+              hidden: { type: 'boolean' },
+            },
+          },
+        },
+        offices: {
+          type: 'array',
+          items: {
+            type: 'object',
+            additionalProperties: false,
+            required: ['id', 'name', 'groupId', 'icon', 'description', 'link'],
+            properties: {
+              id: { type: 'string' },
+              name: { type: 'string' },
+              groupId: { type: 'string' },
+              icon: { type: 'string' },
+              description: { type: 'string' },
+              link: { type: 'string' },
+              hidden: { type: 'boolean' },
+            },
+          },
+        },
+      },
+    }
+
+    function makeService(over = {}) {
+      return {
+        id: 'sample',
+        title: 'Sample',
+        description: 'A sample service',
+        category: 'Certificates & Vital Records',
+        categoryId: 'certificates',
+        keywords: ['sample'],
+        url: '/services/certificates',
+        ...over,
+      }
+    }
+
+    function makeOffices(over = {}) {
+      return {
+        officeGroups: [{ id: 'frontline-services', name: 'Frontline Services', description: 'd' }],
+        offices: [{
+          id: 'civil-registry',
+          name: 'City Civil Registry',
+          groupId: 'frontline-services',
+          icon: 'bi-building',
+          description: 'd',
+          link: '/services/certificates',
+        }],
+        ...over,
+      }
+    }
+
+    it('accepts well-formed offices data', () => {
+      const offices = makeOffices()
+      expect(validateAgainstSchema(offices, minimalOfficesSchema, 'offices')).toBe(true)
+    })
+
+    it('rejects an office missing a required field (groupId)', () => {
+      const bad = {
+        officeGroups: [{ id: 'frontline-services', name: 'F', description: 'd' }],
+        offices: [{ id: 'x', name: 'X', icon: 'bi', description: 'd', link: '/x' }],
+      }
+      expect(validateAgainstSchema(bad, minimalOfficesSchema, 'offices')).toBe(false)
+    })
+
+    it('rejects an office with an unexpected property (additionalProperties: false)', () => {
+      const bad = makeOffices({
+        offices: [{
+          id: 'civil-registry',
+          name: 'City Civil Registry',
+          groupId: 'frontline-services',
+          icon: 'bi-building',
+          description: 'd',
+          link: '/x',
+          bogus: true,
+        }],
+      })
+      expect(validateAgainstSchema(bad, minimalOfficesSchema, 'offices')).toBe(false)
+    })
+
+    it('rejects an office whose groupId references an unknown Office Group', () => {
+      const services = { services: [makeService()] }
+      const categories = { categories: [{ id: 'certificates' }] }
+      const offices = makeOffices({
+        offices: [{
+          id: 'civil-registry',
+          name: 'City Civil Registry',
+          groupId: 'ghost-group',
+          icon: 'bi-building',
+          description: 'd',
+          link: '/x',
+        }],
+      })
+      expect(validateConsistency(services, categories, offices)).toBe(false)
+    })
+
+    it('rejects duplicate office ids', () => {
+      const services = { services: [makeService()] }
+      const categories = { categories: [{ id: 'certificates' }] }
+      const office = {
+        id: 'civil-registry',
+        name: 'City Civil Registry',
+        groupId: 'frontline-services',
+        icon: 'bi-building',
+        description: 'd',
+        link: '/x',
+      }
+      const offices = makeOffices({ offices: [office, office] })
+      expect(validateConsistency(services, categories, offices)).toBe(false)
+    })
+
+    it('rejects a Service whose providedBy references an unknown Office', () => {
+      const services = { services: [makeService({ providedBy: 'ghost-office' })] }
+      const categories = { categories: [{ id: 'certificates' }] }
+      const offices = makeOffices()
+      expect(validateConsistency(services, categories, offices)).toBe(false)
+    })
+
+    it('accepts a Service whose providedBy resolves to a known Office', () => {
+      const services = { services: [makeService({ providedBy: 'civil-registry' })] }
+      const categories = { categories: [{ id: 'certificates' }] }
+      const offices = makeOffices()
+      expect(validateConsistency(services, categories, offices)).toBe(true)
     })
   })
 })

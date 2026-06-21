@@ -12,6 +12,9 @@ import type {
   NavigationConfig,
   NavigationItem,
   NewsConfig,
+  Office,
+  OfficeGroup,
+  OfficesConfig,
   OfficialsConfig,
   OgImageRouteConfig,
   SeoRouteConfig,
@@ -39,6 +42,7 @@ import hotlinesConfig from '../config/hotlines.json'
 import legislativeConfig from '../config/legislative.json'
 import navigationConfig from '../config/navigation.json'
 import newsConfig from '../config/news.json'
+import officesConfig from '../config/offices.json'
 import officialsConfig from '../config/officials.json'
 import ogImageConfig from '../config/og-image.json'
 // Import JSON config files
@@ -342,6 +346,86 @@ const CANONICAL_CATEGORY_SLUGS = new Set(['certificates'])
 
 export function isCanonicalCategory(slug: string): boolean {
   return CANONICAL_CATEGORY_SLUGS.has(slug)
+}
+
+// ---------------------------------------------------------------------------
+// Canonical Office accessor (#185).
+//
+// Office is a first-class entity that provides Services, grouped by government
+// function via Office Group. Office -> OfficeGroup is one-to-one (groupId);
+// Office <-> Category is many-to-many, mediated by the Services an Office
+// provides. Pages MUST resolve Offices through these accessors rather than
+// reading offices.json or Category.offices (which no longer exists).
+// ---------------------------------------------------------------------------
+
+/**
+ * Get the offices config with proper typing.
+ */
+export function getOfficesConfig(): OfficesConfig {
+  return officesConfig as OfficesConfig
+}
+
+/**
+ * Get every visible Office record (hidden Offices excluded).
+ */
+export function getOffices(): Office[] {
+  return (getOfficesConfig().offices ?? []).filter(office => !office.hidden)
+}
+
+/**
+ * Get a single Office by its canonical id/slug.
+ * Returns undefined for unknown or hidden Offices.
+ */
+export function getOfficeBySlug(slug: string): Office | undefined {
+  return getOffices().find(office => office.id === slug)
+}
+
+/**
+ * Get every visible Office Group (hidden Groups excluded).
+ */
+export function getOfficeGroups(): OfficeGroup[] {
+  return (getOfficesConfig().officeGroups ?? []).filter(group => !group.hidden)
+}
+
+/**
+ * Get a single Office Group by its slug. Returns undefined for unknown/hidden.
+ */
+export function getOfficeGroupBySlug(slug: string): OfficeGroup | undefined {
+  return getOfficeGroups().find(group => group.id === slug)
+}
+
+/**
+ * Get all visible Offices belonging to a given Office Group slug.
+ */
+export function getOfficesByGroup(slug: string): Office[] {
+  return getOffices().filter(office => office.groupId === slug)
+}
+
+/**
+ * Resolve the Office that provides a given Service via its `providedBy` ref.
+ * Returns undefined when the Service has no `providedBy` or the Office is
+ * unknown/hidden.
+ */
+export function getOfficeForService(service: ServiceItem): Office | undefined {
+  return service.providedBy ? getOfficeBySlug(service.providedBy) : undefined
+}
+
+/**
+ * Get the distinct visible Offices that provide the Services in a Category.
+ * Backs the "Responsible Offices" section: Office <-> Category is many-to-many
+ * through the Services, so this dedupes Offices across the Category's Services.
+ */
+export function getOfficesForCategory(slug: string): Office[] {
+  const seen = new Set<string>()
+  const result: Office[] = []
+  for (const service of getServicesByCategory(slug)) {
+    const office = getOfficeForService(service)
+    if (office && !seen.has(office.id)) {
+      seen.add(office.id)
+      result.push(office)
+    }
+  }
+  return result
 }
 
 /**

@@ -42,6 +42,10 @@
           "description": "Search terms for the fuzzy search composable"
         },
         "office": { "type": "string" },
+        "providedBy": {
+          "type": "string",
+          "description": "Slug of the Office that provides this Service (must match an offices.json id). The first-class Service -> providedBy -> Office reference."
+        },
         "fee": { "type": "string" },
         "processingTime": { "type": "string" },
         "url": {

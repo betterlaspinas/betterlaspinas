@@ -6,22 +6,7 @@
       "name": "Certificates & Vital Records",
       "icon": "bi-file-earmark-text-fill",
       "badgeText": "Certificates",
-      "description": "Official documents for birth, death, marriage, and other vital records",
-      "offices": [
-        {
-          "title": "City Civil Registry",
-          "icon": "bi-building",
-          "description": "Birth, death, marriage registration, corrections, and certified copies",
-          "link": "/service-details/city-civil-registry"
-        },
-        {
-          "title": "Human Resource Management",
-          "icon": "bi-people",
-          "description": "Service records, employment certificates, leave credits for LGU employees",
-          "link": "/service-details/human-resource-management",
-          "hidden": true
-        }
-      ]
+      "description": "Official documents for birth, death, marriage, and other vital records"
     },
     {
       "id": "business",
