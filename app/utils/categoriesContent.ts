@@ -28,88 +28,10 @@ export interface CategoryContent {
   hidden?: boolean
 }
 
+// NOTE: the `certificates` category is now sourced canonically from
+// app/config/categories.json + services.json via the configHelper accessor
+// (see #184). The remaining categories below migrate in #189.
 export const categoriesContent: CategoryContent[] = [
-  {
-    id: 'certificates',
-    name: 'Certificates & Vital Records',
-    icon: 'bi-file-earmark-text-fill',
-    badgeText: 'Certificates',
-    description:
-      'Official documents for birth, death, marriage, and other vital records',
-    services: [
-      {
-        id: 'birth-cert',
-        title: 'Birth Certificate',
-        icon: 'bi-file-earmark-text',
-        description:
-          'Get a certified copy of birth certificate registered in your municipality',
-        fee: '₱75',
-        time: '15-30 mins',
-        link: '/service-details/birth-certificate',
-      },
-      {
-        id: 'marriage-cert',
-        title: 'Marriage Certificate',
-        icon: 'bi-heart',
-        description:
-          'Register or request certified true copy of marriage certificate',
-        fee: '₱150 (Registration)',
-        time: '5 mins',
-        link: '/service-details/marriage-certificate',
-      },
-      {
-        id: 'death-cert',
-        title: 'Death Certificate',
-        icon: 'bi-file-earmark-x',
-        description:
-          'Register death certificate and obtain burial/transfer permit',
-        fee: '₱75-150',
-        time: '~1.5 hrs',
-        link: '/service-details/death-certificate',
-      },
-      {
-        id: 'brgy-clearance',
-        title: 'Barangay Clearance',
-        icon: 'bi-house-check',
-        description: 'Certificate of residence from your barangay',
-        fee: '₱50-100',
-        time: 'Same day',
-      },
-      {
-        id: 'brgy-id',
-        title: 'Barangay ID',
-        icon: 'bi-person-badge',
-        description: 'Official barangay identification card',
-        fee: 'Free',
-        time: '1-2 days',
-      },
-      {
-        id: 'police-clearance',
-        title: 'Police Clearance',
-        icon: 'bi-shield-check',
-        description: 'Police clearance coordination through municipal office',
-        fee: 'Varies',
-        time: '3-5 days',
-      },
-    ],
-    offices: [
-      {
-        title: 'City Civil Registry',
-        icon: 'bi-building',
-        description:
-          'Birth, death, marriage registration, corrections, and certified copies',
-        link: '/service-details/city-civil-registry',
-      },
-      {
-        title: 'Human Resource Management',
-        icon: 'bi-people',
-        description:
-          'Service records, employment certificates, leave credits for LGU employees',
-        link: '/service-details/human-resource-management',
-        hidden: true,
-      },
-    ],
-  },
   {
     id: 'business',
     name: 'Business, Trade & Investment',

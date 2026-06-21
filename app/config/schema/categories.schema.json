@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "categories.schema.json",
+  "title": "Categories Configuration",
+  "description": "Service categories. Each category may carry a list of responsible offices (lightweight catalog cards, not the full Office entity).",
+  "type": "object",
+  "required": ["categories"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "JSON Schema reference"
+    },
+    "categories": {
+      "type": "array",
+      "description": "All service categories",
+      "items": { "$ref": "#/definitions/category" }
+    }
+  },
+  "definitions": {
+    "category": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "icon", "badgeText", "description"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique category slug (matches services.json categoryId)"
+        },
+        "name": { "type": "string" },
+        "icon": {
+          "type": "string",
+          "description": "Bootstrap icon class"
+        },
+        "badgeText": { "type": "string" },
+        "description": { "type": "string" },
+        "hidden": { "type": "boolean" },
+        "offices": {
+          "type": "array",
+          "description": "Responsible offices shown on the category page",
+          "items": { "$ref": "#/definitions/categoryOffice" }
+        }
+      }
+    },
+    "categoryOffice": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "icon", "description", "link"],
+      "properties": {
+        "title": { "type": "string" },
+        "icon": { "type": "string" },
+        "description": { "type": "string" },
+        "link": { "type": "string" },
+        "hidden": { "type": "boolean" }
+      }
+    }
+  }
+}

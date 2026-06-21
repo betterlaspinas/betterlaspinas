@@ -18,6 +18,7 @@
     "lint:fix": "eslint . --fix",
     "test": "vitest",
     "typecheck": "nuxi typecheck",
+    "validate": "node scripts/validate-config.mjs",
     "prepare": "husky"
   },
   "dependencies": {
