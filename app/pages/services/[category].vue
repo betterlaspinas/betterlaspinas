@@ -45,9 +45,25 @@ const services = canonical
       time: service.time,
       link: service.link,
     }))
-const offices = (canonical?.offices ?? legacy?.offices ?? []).filter(
-  office => !office.hidden,
-)
+// Responsible Offices. For a canonical Category, Offices are first-class
+// entities (#185) resolved from the Category's Services via providedBy —
+// Office <-> Category is many-to-many through the Services. Legacy categories
+// still carry inline office cards from categoriesContent.ts until ported.
+const offices = canonical
+  ? getOfficesForCategory(categorySlug).map(office => ({
+      title: office.name,
+      icon: office.icon,
+      description: office.description,
+      link: office.link,
+    }))
+  : (legacy?.offices ?? [])
+      .filter(office => !office.hidden)
+      .map(office => ({
+        title: office.title,
+        icon: office.icon,
+        description: office.description,
+        link: office.link,
+      }))
 </script>
 
 <template>

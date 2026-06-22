@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 // Zero-dependency config validator for the canonical Service spine (#184).
 //
-// Validates app/config/services.json and app/config/categories.json against
-// their JSON Schemas (app/config/schema/*.schema.json) using a hand-rolled,
-// minimal draft-07 subset, then runs cross-file consistency assertions that a
-// pure schema cannot express (unknown categoryId, duplicate ids, url/detail
-// coherence).
+// Validates app/config/services.json, app/config/categories.json, and
+// app/config/offices.json against their JSON Schemas (app/config/schema/*.schema.json)
+// using a hand-rolled, minimal draft-07 subset, then runs cross-file consistency
+// assertions that a pure schema cannot express (unknown categoryId/groupId,
+// duplicate ids, url/detail coherence, Service -> providedBy -> Office).
 //
 // Exit code 0 = valid; 1 = one or more violations. No runtime deps by design
 // (ADR-0001 Phase 1 stays on JSON + schema; Jan's no-new-deps guardrail).
@@ -117,12 +117,39 @@ export function validateAgainstSchema(data, schema, label) {
 // ---------------------------------------------------------------------------
 // Cross-file / semantic assertions.
 // ---------------------------------------------------------------------------
-export function validateConsistency(services, categories) {
+export function validateConsistency(services, categories, offices) {
   const before = errors.length
   const serviceList = services?.services ?? []
   const categoryList = categories?.categories ?? []
+  const officeGroupList = offices?.officeGroups ?? []
+  const officeList = offices?.offices ?? []
 
   const categoryIds = new Set(categoryList.map(c => c.id))
+  const officeGroupIds = new Set(officeGroupList.map(g => g.id))
+  // Includes hidden Offices on purpose: a Service may reference an Office that
+  // is intentionally not yet rendered (hidden: true). The reference stays valid;
+  // getOfficeForService just resolves it to undefined so no card shows.
+  const officeIds = new Set(officeList.map(o => o.id))
+
+  // Duplicate office group ids
+  const seenGroup = new Set()
+  for (const g of officeGroupList) {
+    if (seenGroup.has(g.id))
+      errors.push(`offices.json: duplicate office group id "${g.id}"`)
+    seenGroup.add(g.id)
+  }
+
+  // Duplicate office ids
+  const seenOffice = new Set()
+  for (const o of officeList) {
+    if (seenOffice.has(o.id))
+      errors.push(`offices.json: duplicate office id "${o.id}"`)
+    seenOffice.add(o.id)
+
+    // Every Office belongs to exactly one (known) Office Group.
+    if (!officeGroupIds.has(o.groupId))
+      errors.push(`offices.json: office "${o.id}" references unknown groupId "${o.groupId}"`)
+  }
 
   // Duplicate category ids
   const seenCat = new Set()
@@ -145,6 +172,10 @@ export function validateConsistency(services, categories) {
     if (s.categoryId && !categoryIds.has(s.categoryId))
       errors.push(`services.json: service "${s.id}" references unknown categoryId "${s.categoryId}"`)
 
+    // A providedBy ref must resolve to a known Office (Service -> Office).
+    if (s.providedBy && !officeIds.has(s.providedBy))
+      errors.push(`services.json: service "${s.id}" references unknown providedBy office "${s.providedBy}"`)
+
     // A detail-bearing Service must resolve to its own /service-details/<id>.
     // (The inverse — a no-detail Service pointing at /service-details/ — is NOT
     // an error during the transition: some details still live in TS and migrate
@@ -162,15 +193,19 @@ export function validateConsistency(services, categories) {
 function main() {
   const services = readJson(resolve(configDir, 'services.json'))
   const categories = readJson(resolve(configDir, 'categories.json'))
+  const offices = readJson(resolve(configDir, 'offices.json'))
   const servicesSchema = readJson(resolve(schemaDir, 'services.schema.json'))
   const categoriesSchema = readJson(resolve(schemaDir, 'categories.schema.json'))
+  const officesSchema = readJson(resolve(schemaDir, 'offices.schema.json'))
 
   if (services && servicesSchema)
     validateAgainstSchema(services, servicesSchema, 'services.json')
   if (categories && categoriesSchema)
     validateAgainstSchema(categories, categoriesSchema, 'categories.json')
+  if (offices && officesSchema)
+    validateAgainstSchema(offices, officesSchema, 'offices.json')
   if (services && categories)
-    validateConsistency(services, categories)
+    validateConsistency(services, categories, offices)
 
   if (errors.length > 0) {
     console.error(`\n✖ Config validation failed with ${errors.length} error(s):\n`)
@@ -180,7 +215,7 @@ function main() {
     process.exit(1)
   }
 
-  console.log('✔ Config validation passed (services.json, categories.json)')
+  console.log('✔ Config validation passed (services.json, categories.json, offices.json)')
 }
 
 // Run only when executed directly (allows importing the pure functions in tests).

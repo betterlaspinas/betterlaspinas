@@ -42,6 +42,10 @@
           "description": "Search terms for the fuzzy search composable"
         },
         "office": { "type": "string" },
+        "providedBy": {
+          "type": "string",
+          "description": "Slug of the Office that provides this Service (must match an offices.json id). The first-class Service -> providedBy -> Office reference."
+        },
         "fee": { "type": "string" },
         "processingTime": { "type": "string" },
         "url": {
@@ -101,7 +105,7 @@
           "type": "array",
           "items": { "$ref": "#/definitions/faq" }
         },
-        "office": { "$ref": "#/definitions/office" },
+        "office": { "$ref": "#/definitions/serviceDetailOffice" },
         "relatedServices": {
           "type": "array",
           "items": { "$ref": "#/definitions/relatedService" }
@@ -153,7 +157,7 @@
         "answer": { "type": "string" }
       }
     },
-    "office": {
+    "serviceDetailOffice": {
       "type": "object",
       "additionalProperties": false,
       "required": ["name", "location", "hours"],

@@ -1,0 +1,60 @@
+{
+  "$schema": "./schema/offices.schema.json",
+  "officeGroups": [
+    {
+      "id": "frontline-services",
+      "name": "Frontline Services",
+      "description": "Resident-facing offices that issue documents and handle day-to-day transactions",
+      "icon": "bi-people"
+    },
+    {
+      "id": "administration",
+      "name": "Administration",
+      "description": "Internal governance, personnel, and records offices of the LGU",
+      "icon": "bi-building-gear"
+    }
+  ],
+  "offices": [
+    {
+      "id": "civil-registry",
+      "name": "City Civil Registry",
+      "groupId": "frontline-services",
+      "icon": "bi-building",
+      "description": "Birth, death, marriage registration, corrections, and certified copies",
+      "link": "/service-details/birth-certificate",
+      "location": "1st Floor, Administrative Building, Las Piñas City Hall Compound",
+      "phone": "(02) 8253-4370",
+      "mobile": "0998 587 9659",
+      "email": "lpcivilreg@gmail.com",
+      "facebook": "https://www.facebook.com/civilreglaspinas",
+      "hours": "Mon-Thu: 8AM - 7PM"
+    },
+    {
+      "id": "barangay-hall",
+      "name": "Barangay Hall",
+      "groupId": "frontline-services",
+      "icon": "bi-house",
+      "description": "Barangay clearances, IDs, and certificates of residency",
+      "link": "/services/certificates",
+      "hidden": true
+    },
+    {
+      "id": "police-station",
+      "name": "PNP Station",
+      "groupId": "frontline-services",
+      "icon": "bi-shield",
+      "description": "Police clearances and community safety coordination",
+      "link": "/services/certificates",
+      "hidden": true
+    },
+    {
+      "id": "human-resource-management",
+      "name": "Human Resource Management",
+      "groupId": "administration",
+      "icon": "bi-people",
+      "description": "Service records, employment certificates, leave credits for LGU employees",
+      "link": "/service-details/human-resource-management",
+      "hidden": true
+    }
+  ]
+}

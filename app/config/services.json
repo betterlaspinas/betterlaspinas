@@ -19,6 +19,7 @@
       "fee": "₱75",
       "processingTime": "15-30 minutes",
       "office": "Civil Registry Office",
+      "providedBy": "civil-registry",
       "icon": "bi-file-earmark-text",
       "url": "/service-details/birth-certificate",
       "detail": {
@@ -103,6 +104,7 @@
       "fee": "₱150 (Registration)",
       "processingTime": "3-10 days",
       "office": "Civil Registry Office",
+      "providedBy": "civil-registry",
       "icon": "bi-heart",
       "url": "/service-details/marriage-certificate",
       "detail": {
@@ -194,6 +196,7 @@
       "fee": "₱75-150",
       "processingTime": "~1 hour 35 minutes",
       "office": "Civil Registry Office",
+      "providedBy": "civil-registry",
       "icon": "bi-file-earmark-x",
       "url": "/service-details/death-certificate",
       "detail": {
@@ -274,6 +277,7 @@
       "fee": "₱50-100",
       "processingTime": "Same day",
       "office": "Barangay Hall",
+      "providedBy": "barangay-hall",
       "icon": "bi-house-check",
       "url": "/services/certificates"
     },
@@ -292,6 +296,7 @@
       "fee": "Free",
       "processingTime": "1-2 days",
       "office": "Barangay Hall",
+      "providedBy": "barangay-hall",
       "icon": "bi-person-badge",
       "url": "/services/certificates"
     },
@@ -311,6 +316,7 @@
       "fee": "Varies",
       "processingTime": "3-5 days",
       "office": "PNP Station",
+      "providedBy": "police-station",
       "icon": "bi-shield-check",
       "url": "/services/certificates"
     },

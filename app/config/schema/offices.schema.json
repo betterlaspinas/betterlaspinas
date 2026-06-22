@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "offices.schema.json",
+  "title": "Offices Configuration",
+  "description": "First-class Office entity. An Office is a government body that provides Services, grouped by government function via an Office Group. An Office belongs to exactly one Office Group, even when its Services span multiple Categories.",
+  "type": "object",
+  "required": ["officeGroups", "offices"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "JSON Schema reference"
+    },
+    "officeGroups": {
+      "type": "array",
+      "description": "Office Groups: groupings of Offices by government function (who runs this)",
+      "items": { "$ref": "#/definitions/officeGroup" }
+    },
+    "offices": {
+      "type": "array",
+      "description": "All Office records, each belonging to exactly one Office Group",
+      "items": { "$ref": "#/definitions/office" }
+    }
+  },
+  "definitions": {
+    "officeGroup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "description"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique Office Group slug (matches offices[].groupId)"
+        },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "icon": {
+          "type": "string",
+          "description": "Bootstrap icon class"
+        },
+        "hidden": { "type": "boolean" }
+      }
+    },
+    "office": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "groupId", "icon", "description", "link"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique, URL-friendly Office identifier (referenced by services[].providedBy)"
+        },
+        "name": { "type": "string" },
+        "groupId": {
+          "type": "string",
+          "description": "Slug of the parent Office Group (must match an officeGroups id). Exactly one."
+        },
+        "icon": {
+          "type": "string",
+          "description": "Bootstrap icon class"
+        },
+        "description": { "type": "string" },
+        "link": {
+          "type": "string",
+          "description": "Destination route for the Office card"
+        },
+        "location": { "type": "string" },
+        "phone": { "type": "string" },
+        "mobile": { "type": "string" },
+        "email": { "type": "string" },
+        "facebook": { "type": "string" },
+        "hours": { "type": "string" },
+        "hidden": { "type": "boolean" }
+      }
+    }
+  }
+}

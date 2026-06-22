@@ -361,7 +361,12 @@ export interface Faq {
   answer: string
 }
 
-export interface Office {
+/**
+ * Office-contact block embedded in a Service's `detail` (the "Office
+ * Information" card on a /service-details page). This is NOT the first-class
+ * Office entity — see `Office` / `OfficeGroup` below and offices.json.
+ */
+export interface ServiceDetailOffice {
   name: string
   location: string
   phone?: string
@@ -387,7 +392,7 @@ export interface ServiceDetail {
   processSteps: ProcessStep[]
   requirements: RequirementGroup[]
   faqs: Faq[]
-  office: Office
+  office: ServiceDetailOffice
   relatedServices: RelatedService[]
   onlineLink?: string
   sourceUrl?: string
@@ -402,6 +407,11 @@ export interface ServiceItem {
   categoryId?: string
   keywords: string[]
   office?: string
+  /**
+   * Slug of the first-class Office that provides this Service (matches an
+   * offices.json id). Resolve through `getOfficeBySlug`. See `Office` below.
+   */
+  providedBy?: string
   fee?: string
   processingTime?: string
   url: string
@@ -437,18 +447,6 @@ export interface NavigationConfig {
   }
 }
 
-/**
- * A responsible office shown on a category page ("Responsible Offices").
- * This is a lightweight catalog card, NOT the full Office entity (see #185).
- */
-export interface CategoryOffice {
-  title: string
-  icon: string
-  description: string
-  link: string
-  hidden?: boolean
-}
-
 export interface Category {
   id: string
   name: string
@@ -456,11 +454,50 @@ export interface Category {
   badgeText: string
   description: string
   hidden?: boolean
-  offices?: CategoryOffice[]
 }
 
 export interface CategoriesConfig {
   categories: Category[]
+  [key: string]: unknown
+}
+
+/**
+ * Office Group: a grouping of Offices by government function (answers "who runs
+ * this", e.g. "Frontline Services", "Finance"). Distinct from Category, which
+ * groups Services by task. Groups Offices one-to-many.
+ */
+export interface OfficeGroup {
+  id: string
+  name: string
+  description: string
+  icon?: string
+  hidden?: boolean
+}
+
+/**
+ * First-class Office entity: a government body that provides Services. Belongs
+ * to exactly one Office Group via `groupId`, even when its Services span
+ * multiple Categories. Referenced by ServiceItem.providedBy.
+ */
+export interface Office {
+  id: string
+  name: string
+  groupId: string
+  icon: string
+  description: string
+  link: string
+  location?: string
+  phone?: string
+  mobile?: string
+  email?: string
+  facebook?: string
+  hours?: string
+  hidden?: boolean
+}
+
+export interface OfficesConfig {
+  officeGroups: OfficeGroup[]
+  offices: Office[]
   [key: string]: unknown
 }
 
