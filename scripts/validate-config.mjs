@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 // Zero-dependency config validator for the canonical Service spine (#184).
 //
-// Validates app/config/services.json and app/config/categories.json against
-// their JSON Schemas (app/config/schema/*.schema.json) using a hand-rolled,
-// minimal draft-07 subset, then runs cross-file consistency assertions that a
-// pure schema cannot express (unknown categoryId, duplicate ids, url/detail
-// coherence).
+// Validates app/config/services.json, app/config/categories.json, and
+// app/config/offices.json against their JSON Schemas (app/config/schema/*.schema.json)
+// using a hand-rolled, minimal draft-07 subset, then runs cross-file consistency
+// assertions that a pure schema cannot express (unknown categoryId/groupId,
+// duplicate ids, url/detail coherence, Service -> providedBy -> Office).
 //
 // Exit code 0 = valid; 1 = one or more violations. No runtime deps by design
 // (ADR-0001 Phase 1 stays on JSON + schema; Jan's no-new-deps guardrail).
@@ -126,6 +126,9 @@ export function validateConsistency(services, categories, offices) {
 
   const categoryIds = new Set(categoryList.map(c => c.id))
   const officeGroupIds = new Set(officeGroupList.map(g => g.id))
+  // Includes hidden Offices on purpose: a Service may reference an Office that
+  // is intentionally not yet rendered (hidden: true). The reference stays valid;
+  // getOfficeForService just resolves it to undefined so no card shows.
   const officeIds = new Set(officeList.map(o => o.id))
 
   // Duplicate office group ids

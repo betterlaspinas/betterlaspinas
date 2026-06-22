@@ -185,6 +185,9 @@ describe('configHelper', () => {
     it('getOfficeBySlug returns undefined for unknown or hidden Offices', () => {
       expect(getOfficeBySlug('not-a-real-office')).toBeUndefined()
       expect(getOfficeBySlug('human-resource-management')).toBeUndefined()
+      // barangay-hall and police-station are hidden pending scoping (see #198).
+      expect(getOfficeBySlug('barangay-hall')).toBeUndefined()
+      expect(getOfficeBySlug('police-station')).toBeUndefined()
     })
 
     it('getOfficeGroups returns visible Office Groups', () => {
@@ -227,8 +230,10 @@ describe('configHelper', () => {
       const ids = offices.map(o => o.id)
       expect(new Set(ids).size).toBe(ids.length)
       expect(ids).toContain('civil-registry')
-      expect(ids).toContain('barangay-hall')
-      expect(ids).toContain('police-station')
+      // barangay-hall and police-station back Services via providedBy but are
+      // hidden pending scoping (#198), so they resolve to no card.
+      expect(ids).not.toContain('barangay-hall')
+      expect(ids).not.toContain('police-station')
     })
   })
 

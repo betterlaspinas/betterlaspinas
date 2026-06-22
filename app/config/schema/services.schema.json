@@ -105,7 +105,7 @@
           "type": "array",
           "items": { "$ref": "#/definitions/faq" }
         },
-        "office": { "$ref": "#/definitions/office" },
+        "office": { "$ref": "#/definitions/serviceDetailOffice" },
         "relatedServices": {
           "type": "array",
           "items": { "$ref": "#/definitions/relatedService" }
@@ -157,7 +157,7 @@
         "answer": { "type": "string" }
       }
     },
-    "office": {
+    "serviceDetailOffice": {
       "type": "object",
       "additionalProperties": false,
       "required": ["name", "location", "hours"],

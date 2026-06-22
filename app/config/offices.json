@@ -35,7 +35,8 @@
       "groupId": "frontline-services",
       "icon": "bi-house",
       "description": "Barangay clearances, IDs, and certificates of residency",
-      "link": "/services/certificates"
+      "link": "/services/certificates",
+      "hidden": true
     },
     {
       "id": "police-station",
@@ -43,7 +44,8 @@
       "groupId": "frontline-services",
       "icon": "bi-shield",
       "description": "Police clearances and community safety coordination",
-      "link": "/services/certificates"
+      "link": "/services/certificates",
+      "hidden": true
     },
     {
       "id": "human-resource-management",

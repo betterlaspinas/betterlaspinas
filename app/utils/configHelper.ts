@@ -396,8 +396,12 @@ export function getOfficeGroupBySlug(slug: string): OfficeGroup | undefined {
 
 /**
  * Get all visible Offices belonging to a given Office Group slug.
+ * Returns an empty array when the Group is unknown or hidden, matching
+ * getOfficeGroupBySlug so a hidden Group never leaks its Offices.
  */
 export function getOfficesByGroup(slug: string): Office[] {
+  if (!getOfficeGroupBySlug(slug))
+    return []
   return getOffices().filter(office => office.groupId === slug)
 }
 
