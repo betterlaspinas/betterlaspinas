@@ -418,6 +418,15 @@ export interface ServiceItem {
   icon?: string
   hidden?: boolean
   /**
+   * Optional SEO meta-description template for this Service's
+   * `/service-details/<id>` page. Supports `{{lguName}}` (and other middleware
+   * template vars) interpolation. Lives on the canonical Service record so the
+   * meta description can no longer drift from the catalog; the SEO middleware
+   * reads it via `getServiceSeoDescription`. Absent Services fall back to the
+   * route-level `seo.json` description.
+   */
+  seo?: string
+  /**
    * Optional rich service-details content. Present only for Services that have
    * a dedicated `/service-details/<id>` page. Absent for catalog-only Services.
    */
@@ -453,6 +462,13 @@ export interface Category {
   icon: string
   badgeText: string
   description: string
+  /**
+   * Optional SEO meta-description template for this Category's
+   * `/services/<id>` page. Supports `{{lguName}}` interpolation. Lives on the
+   * canonical Category record so the meta description can no longer drift from
+   * the catalog; the SEO middleware reads it via `getCategorySeoDescription`.
+   */
+  seo?: string
   hidden?: boolean
 }
 

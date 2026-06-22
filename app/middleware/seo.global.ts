@@ -1,6 +1,3 @@
-import seoServiceDetailsSlug from '@/config/seo-service-details-slug.json'
-import seoServicesCategory from '@/config/seo-services-category.json'
-
 import { TRAILING_SLASH_REGEX } from '@/utils/regexConstants'
 import { interpolateString, slugToTitleCase } from '@/utils/stringHelpers'
 
@@ -36,16 +33,19 @@ export default defineNuxtRouteMiddleware((to) => {
 
     let descriptionTemplate = routeConfig.description
 
+    // Per-Service / per-Category SEO is derived from the canonical Service
+    // source via configHelper accessors (no direct config-JSON imports), so the
+    // meta description cannot drift from the catalog.
     if (routeName === 'services-category' && to.params.category) {
       const categorySlug = (Array.isArray(to.params.category) ? to.params.category[0] : to.params.category) as string
-      const customDesc = (seoServicesCategory as Record<string, string>)[categorySlug]
+      const customDesc = getCategorySeoDescription(categorySlug)
       if (customDesc) {
         descriptionTemplate = customDesc
       }
     }
     else if (routeName === 'service-details-slug' && to.params.slug) {
       const serviceSlug = (Array.isArray(to.params.slug) ? to.params.slug[0] : to.params.slug) as string
-      const customDesc = (seoServiceDetailsSlug as Record<string, string>)[serviceSlug]
+      const customDesc = getServiceSeoDescription(serviceSlug)
       if (customDesc) {
         descriptionTemplate = customDesc
       }

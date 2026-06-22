@@ -61,6 +61,10 @@
           "description": "Bootstrap icon class (e.g. bi-file-earmark-text)"
         },
         "hidden": { "type": "boolean" },
+        "seo": {
+          "type": "string",
+          "description": "SEO meta-description template for the /service-details/<id> page. Supports {{lguName}} interpolation. Read by the SEO middleware via getServiceSeoDescription."
+        },
         "detail": { "$ref": "#/definitions/serviceDetail" }
       }
     },

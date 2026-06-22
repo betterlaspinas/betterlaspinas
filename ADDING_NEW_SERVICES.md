@@ -111,12 +111,24 @@ every PR.
 
 ### 5. SEO (optional)
 
-For a new `/service-details/<id>` page, add a localized meta description in
-`app/config/seo-service-details-slug.json` keyed by the Service `id`:
+For a new `/service-details/<id>` page, add a localized meta description right
+on the canonical Service record in `app/config/services.json` via the optional
+`seo` field (read by the SEO middleware through `getServiceSeoDescription`):
 
-```text
-"my-service": "Apply for My Service in {{lguName}}."
+```jsonc
+{
+  "id": "my-service",
+  "description": "Short catalog blurb.",
+  "seo": "Apply for My Service in {{lguName}}."
+  // ...
+}
 ```
+
+Category pages work the same way: add an optional `seo` field to the Category
+record in `app/config/categories.json` (read via `getCategorySeoDescription`).
+Both support `{{lguName}}` interpolation. Keeping the SEO copy on the canonical
+record means it can never drift from the catalog. When omitted, the route-level
+description in `app/config/seo.json` is used.
 
 ### 6. Changelog
 

@@ -371,6 +371,34 @@ export function isCanonicalCategory(slug: string): boolean {
   return CANONICAL_CATEGORY_SLUGS.has(slug)
 }
 
+/**
+ * Derive the SEO meta-description template for a Service's
+ * `/service-details/<slug>` page from the canonical Service record.
+ *
+ * Replaces the legacy `seo-service-details-slug.json` lookup: the per-Service
+ * SEO copy now lives on the Service itself (`ServiceItem.seo`), so it cannot
+ * drift from the catalog. Returns undefined when the Service is unknown/hidden
+ * or carries no `seo` template, letting the SEO middleware fall back to the
+ * route-level `seo.json` description. The returned string is a raw template
+ * (e.g. contains `{{lguName}}`); the middleware interpolates it.
+ */
+export function getServiceSeoDescription(slug: string): string | undefined {
+  return getServiceBySlug(slug)?.seo
+}
+
+/**
+ * Derive the SEO meta-description template for a Category's `/services/<slug>`
+ * page from the canonical Category record.
+ *
+ * Replaces the legacy `seo-services-category.json` lookup: the per-Category SEO
+ * copy now lives on the Category itself (`Category.seo`). Returns undefined when
+ * the Category is unknown/hidden or carries no `seo` template, letting the SEO
+ * middleware fall back to the route-level `seo.json` description.
+ */
+export function getCategorySeoDescription(slug: string): string | undefined {
+  return getCategoryBySlug(slug)?.seo
+}
+
 // ---------------------------------------------------------------------------
 // Canonical Office accessor (#185).
 //
