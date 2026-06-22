@@ -273,9 +273,21 @@ export function getCategoriesConfig(): CategoriesConfig {
 // Soft-launch gate (introduced in 0a6176c "scope site content to certificates
 // category for soft launch"): only live categories are exposed through the
 // shared services config, which backs the global search index and the canonical
-// accessors. Non-live category PAGES still render via categoriesContent.ts.
-// Widen / remove this as the remaining categories go live (see #186).
-const LIVE_CATEGORY_IDS = new Set(['certificates', 'business'])
+// accessors. #186 ports the remaining Service Categories to the canonical
+// source, so they all go live here. The two non-resident categories
+// (`government`, `online`) stay gated until their own slices.
+const LIVE_CATEGORY_IDS = new Set([
+  'certificates',
+  'business',
+  'tax-payments',
+  'social-services',
+  'health',
+  'agriculture',
+  'infrastructure',
+  'education',
+  'public-safety',
+  'environment',
+])
 
 export function getServicesConfig(): ServicesConfig {
   const config = servicesConfig as ServicesConfig
@@ -337,12 +349,23 @@ export function getServicesByCategory(slug: string): ServiceItem[] {
 
 /**
  * Service Categories whose page is sourced canonically (categories.json +
- * services.json) through these accessors. Every other Category still renders
- * from `categoriesContent.ts`; its catalog is ported here in #186 and the
- * legacy module is removed in #189. Until then this gate keeps #184 scoped to
- * Certificates so the other categories' visible cards do not silently change.
+ * services.json) through these accessors. #186 ported every resident-facing
+ * Service Category here; the legacy `categoriesContent.ts` module is removed in
+ * the #183 closer (#189). The two remaining hidden Categories (`government`,
+ * `online`) are not resident Service Categories and migrate in their own slices.
  */
-const CANONICAL_CATEGORY_SLUGS = new Set(['certificates'])
+const CANONICAL_CATEGORY_SLUGS = new Set([
+  'certificates',
+  'business',
+  'tax-payments',
+  'social-services',
+  'health',
+  'agriculture',
+  'infrastructure',
+  'education',
+  'public-safety',
+  'environment',
+])
 
 export function isCanonicalCategory(slug: string): boolean {
   return CANONICAL_CATEGORY_SLUGS.has(slug)

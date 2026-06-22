@@ -17,6 +17,7 @@ import {
   getServiceCategories,
   getServicesByCategory,
   getSiteConfig,
+  isCanonicalCategory,
 } from './configHelper'
 
 describe('configHelper', () => {
@@ -154,6 +155,75 @@ describe('configHelper', () => {
 
     it('getServiceBySlug returns undefined for unknown slug', () => {
       expect(getServiceBySlug('not-a-real-service')).toBeUndefined()
+    })
+  })
+
+  // #186: every resident-facing Service Category is now sourced canonically and
+  // renders via the accessor (no categoriesContent.ts fallback).
+  describe('migrated Service Categories (#186)', () => {
+    const MIGRATED = [
+      'business',
+      'tax-payments',
+      'social-services',
+      'health',
+      'agriculture',
+      'infrastructure',
+      'education',
+      'public-safety',
+      'environment',
+    ] as const
+
+    it.each(MIGRATED)('%s is a canonical Category resolved by slug', (slug) => {
+      expect(isCanonicalCategory(slug)).toBe(true)
+      const category = getCategoryBySlug(slug)
+      expect(category).toBeDefined()
+      // Canonical Categories no longer carry an inline `offices` array.
+      expect('offices' in category!).toBe(false)
+    })
+
+    it.each(MIGRATED)('%s exposes only its own visible Services via the accessor', (slug) => {
+      const services = getServicesByCategory(slug)
+      expect(services.length).toBeGreaterThan(0)
+      expect(services.every(s => s.categoryId === slug)).toBe(true)
+      expect(services.every(s => !s.hidden)).toBe(true)
+    })
+
+    it('a detail-bearing migrated Service resolves its detail from services.json', () => {
+      const permit = getServiceBySlug('business-permit-new')
+      expect(permit).toBeDefined()
+      expect(permit!.detail).toBeDefined()
+      expect(permit!.detail!.fullTitle).toContain('Business License')
+      expect(permit!.url).toBe('/service-details/business-permit-new')
+    })
+
+    it('property-declaration and cswdo-services carry their canonical detail block', () => {
+      for (const id of ['property-declaration', 'cswdo-services']) {
+        const svc = getServiceBySlug(id)
+        expect(svc, id).toBeDefined()
+        expect(svc!.detail, id).toBeDefined()
+        expect(svc!.url, id).toBe(`/service-details/${id}`)
+      }
+    })
+
+    it('a catalog-only migrated Service points back at its Category page', () => {
+      const vaccination = getServiceBySlug('vaccination')
+      expect(vaccination).toBeDefined()
+      expect(vaccination!.detail).toBeUndefined()
+      expect(vaccination!.url).toBe('/services/health')
+    })
+
+    it('office-as-Service rows do not pollute a migrated Category grid', () => {
+      const taxIds = getServicesByCategory('tax-payments').map(s => s.id)
+      // City Budget/Accounting/Assessor are Offices (#185/#198), hidden so they
+      // never render as Service cards on the canonical Taxation page.
+      expect(taxIds).not.toContain('city-budget')
+      expect(taxIds).not.toContain('city-accounting')
+      expect(taxIds).not.toContain('city-assessor')
+      const infraIds = getServicesByCategory('infrastructure').map(s => s.id)
+      expect(infraIds).not.toContain('city-engineering')
+      expect(infraIds).not.toContain('city-planning')
+      const agriIds = getServicesByCategory('agriculture').map(s => s.id)
+      expect(agriIds).not.toContain('city-agriculture')
     })
   })
 
