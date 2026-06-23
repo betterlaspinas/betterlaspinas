@@ -521,10 +521,9 @@ export interface Office {
   /**
    * Optional rich detail-page content, mirroring the canonical
    * `ServiceItem.detail` block (#184). Present only for Offices with a dedicated
-   * `/service-details/<slug>` page; rendered canonical-first by the detail route
-   * via `getOfficeDetailBySlug`. Absent Offices fall back to the TS module during
-   * the transition. The contact card is synthesised from this Office's own
-   * fields, so the block omits a redundant `office` sub-block (see OfficeDetail).
+   * `/offices/<id>` page (#207); its presence gates that route (404 otherwise).
+   * The contact card is synthesised from this Office's own fields, so the block
+   * omits a redundant `office` sub-block (see OfficeDetail).
    */
   detail?: OfficeDetail
 }
