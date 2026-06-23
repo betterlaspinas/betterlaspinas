@@ -3,6 +3,7 @@ import { validateAgainstSchema, validateConsistency } from '../../scripts/valida
 import {
   getAllServices,
   getCategoryBySlug,
+  getCategorySeoDescription,
   getMergedSiteConfig,
   getOfficeBySlug,
   getOfficeForService,
@@ -16,9 +17,92 @@ import {
   getServiceBySlug,
   getServiceCategories,
   getServicesByCategory,
+  getServiceSeoDescription,
   getSiteConfig,
   isCanonicalCategory,
 } from './configHelper'
+
+// Frozen snapshot of the legacy SEO config JSON (the now-removed
+// app/config/seo-service-details-slug.json and seo-services-category.json).
+// The accessors must return byte-equal templates so migrated Service/Category
+// routes produce behavior-equivalent SEO output. If a description is
+// intentionally reworded, update this snapshot in the same change.
+const LEGACY_SEO_SERVICE_DETAILS: Record<string, string> = {
+  'birth-certificate': 'Get a certified copy of birth certificate registered in {{lguName}}.',
+  'marriage-certificate': 'Register or request certified true copy of marriage certificate in {{lguName}}.',
+  'death-certificate': 'Register death certificate and obtain burial or transfer permit in {{lguName}}.',
+  'business-permit-new': 'Apply for a new Business License and Mayor\'s Permit in {{lguName}}.',
+  'business-permit-renewal': 'Renew your annual Business License and Mayor\'s Permit in {{lguName}}.',
+  'special-permit': 'Apply for a Special Permit to operate your business establishment in {{lguName}}.',
+  'occupational-permit': 'Secure an Occupational Mayor\'s Permit for workers or employees in {{lguName}}.',
+  'occupational-permit-jobseeker': 'Avail the free Occupational Mayor\'s Permit for First Time Job Seekers in {{lguName}} under RA 11261.',
+  'business-status-certificate': 'Verify the status of a business entity registered with the BPLO in {{lguName}}.',
+  'ctc-business-license': 'Request a Certified True Copy of Business License and Mayor\'s Permit in {{lguName}}.',
+  'safety-seal': 'Apply for a Safety Seal Certificate to certify your business establishment\'s compliance with health standards in {{lguName}}.',
+}
+
+const LEGACY_SEO_SERVICES_CATEGORY: Record<string, string> = {
+  'certificates': 'Official documents for birth, death, marriage, and other vital records in {{lguName}}.',
+  'business': 'Business permits, licenses, and trade registration services in {{lguName}}.',
+  'tax-payments': 'Property tax, business tax, payments, and tax clearance in {{lguName}}.',
+  'social-services': 'Welfare programs, senior citizen services, PWD benefits, and financial aid in {{lguName}}.',
+  'health': 'Vaccination programs, health certificates, and medical assistance in {{lguName}}.',
+  'agriculture': 'Agricultural loans, crop insurance, fertilizer assistance, and training in {{lguName}}.',
+  'infrastructure': 'Construction permits, road maintenance requests, and public facilities in {{lguName}}.',
+  'education': 'Scholarship programs, student assistance, and educational grants in {{lguName}}.',
+  'public-safety': 'Emergency services, disaster preparedness, and community safety programs in {{lguName}}.',
+  'environment': 'Environmental permits, waste management, and conservation programs in {{lguName}}.',
+}
+
+describe('derived SEO accessors', () => {
+  describe('getServiceSeoDescription', () => {
+    it('returns the SEO template carried on the canonical Service record', () => {
+      expect(getServiceSeoDescription('birth-certificate')).toBe(
+        'Get a certified copy of birth certificate registered in {{lguName}}.',
+      )
+    })
+
+    it('returns undefined for an unknown Service slug', () => {
+      expect(getServiceSeoDescription('does-not-exist')).toBeUndefined()
+    })
+
+    it('is behavior-equivalent to the legacy seo-service-details-slug.json for every migrated slug', () => {
+      for (const [slug, legacy] of Object.entries(LEGACY_SEO_SERVICE_DETAILS)) {
+        expect(getServiceSeoDescription(slug)).toBe(legacy)
+      }
+    })
+
+    it('exposes the seoDescription template via the canonical Service accessor too', () => {
+      expect(getServiceBySlug('birth-certificate')?.seoDescription).toBe(
+        getServiceSeoDescription('birth-certificate'),
+      )
+    })
+  })
+
+  describe('getCategorySeoDescription', () => {
+    it('returns the SEO template carried on the canonical Category record', () => {
+      expect(getCategorySeoDescription('certificates')).toBe(
+        'Official documents for birth, death, marriage, and other vital records in {{lguName}}.',
+      )
+    })
+
+    it('returns undefined for an unknown Category slug', () => {
+      expect(getCategorySeoDescription('does-not-exist')).toBeUndefined()
+    })
+
+    it('is behavior-equivalent to the legacy seo-services-category.json for every migrated category', () => {
+      for (const [slug, legacy] of Object.entries(LEGACY_SEO_SERVICES_CATEGORY)) {
+        expect(getCategorySeoDescription(slug)).toBe(legacy)
+      }
+    })
+
+    it('exposes the seoDescription template via the canonical Category accessor too', () => {
+      expect(getCategoryBySlug('certificates')?.seoDescription).toBe(
+        getCategorySeoDescription('certificates'),
+      )
+    })
+  })
+})
 
 describe('configHelper', () => {
   it('getSiteConfig should return site config', () => {

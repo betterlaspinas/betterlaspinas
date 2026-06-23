@@ -7,6 +7,7 @@
       "category": "Certificates & Vital Records",
       "categoryId": "certificates",
       "description": "Get a certified copy of birth certificate registered in your city",
+      "seoDescription": "Get a certified copy of birth certificate registered in {{lguName}}.",
       "keywords": [
         "birth",
         "certificate",
@@ -147,6 +148,7 @@
       "category": "Certificates & Vital Records",
       "categoryId": "certificates",
       "description": "Register or request certified true copy of marriage certificate",
+      "seoDescription": "Register or request certified true copy of marriage certificate in {{lguName}}.",
       "keywords": [
         "marriage",
         "wedding",
@@ -287,6 +289,7 @@
       "category": "Certificates & Vital Records",
       "categoryId": "certificates",
       "description": "Register death certificate and obtain burial or transfer permit",
+      "seoDescription": "Register death certificate and obtain burial or transfer permit in {{lguName}}.",
       "keywords": [
         "death",
         "died",
@@ -476,6 +479,7 @@
       "category": "Business, Trade & Investment",
       "categoryId": "business",
       "description": "Apply for a new mayor's permit to operate a business",
+      "seoDescription": "Apply for a new Business License and Mayor's Permit in {{lguName}}.",
       "keywords": [
         "business",
         "permit",
@@ -608,6 +612,7 @@
       "category": "Business, Trade & Investment",
       "categoryId": "business",
       "description": "Renew your annual business permit",
+      "seoDescription": "Renew your annual Business License and Mayor's Permit in {{lguName}}.",
       "keywords": [
         "business",
         "permit",
@@ -726,6 +731,7 @@
       "category": "Business, Trade & Investment",
       "categoryId": "business",
       "description": "Apply for a Special Permit to operate a business",
+      "seoDescription": "Apply for a Special Permit to operate your business establishment in {{lguName}}.",
       "keywords": [
         "special",
         "permit",
@@ -839,6 +845,7 @@
       "category": "Business, Trade & Investment",
       "categoryId": "business",
       "description": "Certification on the status of business entity registered in Las Piñas",
+      "seoDescription": "Verify the status of a business entity registered with the BPLO in {{lguName}}.",
       "keywords": [
         "certificate",
         "certification",
@@ -957,6 +964,7 @@
       "category": "Business, Trade & Investment",
       "categoryId": "business",
       "description": "Certified Copy of Business License and Mayor's Permit for legal purposes",
+      "seoDescription": "Request a Certified True Copy of Business License and Mayor's Permit in {{lguName}}.",
       "keywords": [
         "certified",
         "true",
@@ -1068,6 +1076,7 @@
       "category": "Business, Trade & Investment",
       "categoryId": "business",
       "description": "Apply for an Occupational Mayor's Permit for workers or employees",
+      "seoDescription": "Secure an Occupational Mayor's Permit for workers or employees in {{lguName}}.",
       "keywords": [
         "occupational",
         "permit",
@@ -1187,6 +1196,7 @@
       "category": "Business, Trade & Investment",
       "categoryId": "business",
       "description": "Free Occupational Mayor's Permit for first-time job seekers (R.A. 11261)",
+      "seoDescription": "Avail the free Occupational Mayor's Permit for First Time Job Seekers in {{lguName}} under RA 11261.",
       "keywords": [
         "occupational",
         "permit",
@@ -2354,6 +2364,7 @@
       "category": "Business, Trade & Investment",
       "categoryId": "business",
       "description": "Certification for business establishments following Minimum Public Health Standards (MPHS)",
+      "seoDescription": "Apply for a Safety Seal Certificate to certify your business establishment's compliance with health standards in {{lguName}}.",
       "keywords": [
         "safety",
         "seal",
