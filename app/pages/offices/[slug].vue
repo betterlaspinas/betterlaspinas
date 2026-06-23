@@ -4,14 +4,13 @@ usePageOgImage()
 const route = useRoute()
 const slug = route.params.slug as string
 
-// Canonical Office detail: resolved by Office id directly (no slug alias needed
-// now that Offices have their own /offices/<id> route namespace — #207).
+// Canonical Office detail: resolved by Office id directly (own /offices/<id>
+// route namespace, #207). An Office is a place + contact + the Services it
+// provides — NOT a Service-shaped transaction page, so this renders a
+// directory-record layout (identity, contact, visit, services) rather than the
+// process/requirements/FAQ shape used by /service-details.
 const office = getOfficeBySlug(slug)
-const service = office?.detail
-  ? getOfficeDetailBySlug(slug)
-  : undefined
-
-if (!service) {
+if (!office?.detail) {
   throw createError({
     statusCode: 404,
     statusMessage: 'Office not found',
@@ -19,308 +18,152 @@ if (!service) {
   })
 }
 
-const openFaq = ref<number | null>(null)
+const groupName = computed(() => getOfficeGroupBySlug(office.groupId)?.name ?? '')
 
-const { lguName } = useConfig()
+// Services this Office provides (via `providedBy`). Each links to its own
+// /service-details page ONLY when that Service has a `detail` block; catalog-
+// only Services have no page and render as a plain, non-clickable card.
+const services = computed(() =>
+  getAllServices()
+    .filter(s => s.providedBy === office.id && !s.hidden)
+    .map(s => ({ name: s.title, link: s.detail ? `/service-details/${s.id}` : undefined })),
+)
 
-function toggleFaq(index: number) {
-  openFaq.value = openFaq.value === index ? null : index
-}
+// No geo data on the Office schema — link to Google Maps by address.
+const mapsUrl = computed(
+  () => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(office.location ?? office.name)}`,
+)
 </script>
 
 <template>
-  <div v-if="service">
+  <div>
     <UiBreadcrumbs
       :items="[
         { label: 'Government', href: '/government' },
-        { label: service.title },
+        { label: office.name },
       ]"
     />
 
-    <UiPageHero
-      :badge-icon="service.badgeIcon"
-      :badge-text="service.badgeText"
-      :title="service.fullTitle"
-      :description="service.description"
-    >
-      <div class="max-w-xl mx-auto mt-8">
-        <div class="relative flex items-center">
-          <i class="bi bi-search absolute left-4 text-gray-400 z-10 pointer-events-none" />
-          <ServicesSearch
-            placeholder="Search services (e.g., birth certificate, marriage certificate)"
-            class="w-full [&_input]:pl-12 [&_input]:pr-4 [&_input]:py-4 [&_input]:rounded-xl [&_input]:text-base [&_input]:border-0 [&_input]:shadow-lg"
-          />
-        </div>
-      </div>
-    </UiPageHero>
-
-    <!-- Quick Stats -->
-    <section class="py-8 bg-gray-50">
-      <div class="container mx-auto px-4">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <UiCard
-            v-for="stat in service.quickStats"
-            :key="stat.label"
-            padding="p-4"
-            class="text-center"
-          >
-            <i
-              :class="`bi ${stat.icon} text-2xl text-primary-600 mb-2 block`"
-            />
-            <h4 class="text-xs text-gray-500 uppercase tracking-wide mb-1">
-              {{ stat.label }}
-            </h4>
-            <p class="font-semibold text-gray-900">
-              {{ stat.value }}
-            </p>
-          </UiCard>
-        </div>
-      </div>
-    </section>
-
-    <!-- Application Methods (Online) -->
-    <section v-if="service.onlineLink" class="py-12 border-b border-gray-100">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-8">
-          <h2 class="text-xl font-bold text-gray-900 flex items-center justify-center gap-2">
-            <i class="bi bi-laptop text-primary-600" /> Choose Application Method
-          </h2>
-          <p class="text-gray-500">
-            Apply online for faster processing or visit our office in person
-          </p>
-        </div>
-
-        <div class="max-w-4xl mx-auto">
-          <UiCard class="border-primary-200 bg-primary-50 px-6 py-8 md:px-10 md:py-12 overflow-hidden">
-            <div class="md:flex items-center gap-10">
-              <div class="flex-1">
-                <div class="flex items-center gap-2 mb-4">
-                  <span class="bg-primary-600 text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">Highly Recommended</span>
-                  <h3 class="text-2xl font-bold text-gray-900">
-                    Online Application
-                  </h3>
-                </div>
-                <p class="text-gray-700 text-lg mb-8 leading-relaxed">
-                  Avoid queues and process your {{ service.title }} through the official {{ lguName }} eBPLS portal. This digital service is available 24/7 for your convenience.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                  <UiButton
-                    :href="service.onlineLink"
-                    variant="solid"
-                    color="primary"
-                    size="lg"
-                    class="flex items-center justify-center gap-2 px-10"
-                    external
-                    target="_blank"
-                  >
-                    Start Online Application <i class="bi bi-box-arrow-up-right" />
-                  </UiButton>
-                </div>
-              </div>
-              <div class="hidden md:flex items-center justify-center w-48 h-48 bg-primary-100 rounded-2xl">
-                <i class="bi bi-laptop-fill text-7xl text-primary-600" />
-              </div>
-            </div>
-          </UiCard>
-        </div>
-      </div>
-    </section>
-
-    <!-- Step-by-Step Process (In-Person) -->
-    <section class="py-12" :class="[service.onlineLink ? 'bg-gray-50/50' : '']">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-8">
-          <div v-if="service.onlineLink" class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-200 text-gray-600 text-xs font-bold uppercase tracking-wider mb-4">
-            Alternative Method
+    <div class="container mx-auto px-4 pb-12 max-w-5xl">
+      <!-- identity header + quick actions -->
+      <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-5 py-6">
+        <div class="flex items-center gap-4">
+          <div class="flex-none w-14 h-14 rounded-xl bg-primary-100 text-primary-600 grid place-items-center text-2xl">
+            <i :class="`bi ${office.icon || 'bi-building'}`" />
           </div>
-          <h2 class="text-xl font-bold text-gray-900 flex items-center justify-center gap-2">
-            <i :class="service.onlineLink ? 'bi bi-person-walking' : 'bi bi-list-ol'" class="text-primary-600" />
-            {{ service.onlineLink ? 'In-Person Application Method' : 'Step-by-Step Process' }}
-          </h2>
-          <p class="text-gray-500">
-            {{ service.onlineLink ? 'If you prefer to apply at the City Hall, follow these steps:' : 'Follow these steps to complete this service' }}
-          </p>
+          <div>
+            <UiBadge v-if="groupName" :text="groupName" icon="bi-people" variant="primary" size="sm" class="mb-2" />
+            <h1 class="text-2xl font-bold text-gray-900 leading-tight">
+              {{ office.name }}
+            </h1>
+            <p class="text-gray-500 mt-1 max-w-xl">
+              {{ office.description }}
+            </p>
+          </div>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
-          <UiCard
-            v-for="(step, stepIndex) in service.processSteps"
-            :key="step.title"
-            class="relative" :class="[
-              step.isFinal ? 'border-green-300 bg-green-50' : 'bg-white',
-            ]"
+        <div class="flex flex-wrap gap-2 md:flex-col md:items-stretch">
+          <UiButton v-if="office.phone" :href="`tel:${office.phone}`" size="sm" class="md:w-44">
+            <i class="bi bi-telephone-fill" /> Call office
+          </UiButton>
+          <UiButton :href="mapsUrl" variant="outline" size="sm" class="md:w-44" target="_blank">
+            <i class="bi bi-geo-alt-fill" /> Get directions
+          </UiButton>
+          <UiButton v-if="office.email" :href="`mailto:${office.email}`" variant="soft" size="sm" class="md:w-44">
+            <i class="bi bi-envelope-fill" /> Send email
+          </UiButton>
+        </div>
+      </div>
+
+      <!-- split: contact + visit -->
+      <div class="grid md:grid-cols-2 gap-6">
+        <UiCard>
+          <h2 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+            <i class="bi bi-person-rolodex text-primary-600" /> Contact details
+          </h2>
+          <dl class="divide-y divide-gray-200">
+            <div v-if="office.phone" class="grid grid-cols-[110px_1fr] gap-3 py-3 text-sm first:pt-0">
+              <dt class="text-gray-500 font-medium">
+                Phone
+              </dt>
+              <dd class="text-gray-900">
+                {{ office.phone }}
+              </dd>
+            </div>
+            <div v-if="office.mobile" class="grid grid-cols-[110px_1fr] gap-3 py-3 text-sm first:pt-0">
+              <dt class="text-gray-500 font-medium">
+                Mobile
+              </dt>
+              <dd class="text-gray-900">
+                {{ office.mobile }}
+              </dd>
+            </div>
+            <div v-if="office.email" class="grid grid-cols-[110px_1fr] gap-3 py-3 text-sm first:pt-0">
+              <dt class="text-gray-500 font-medium">
+                Email
+              </dt>
+              <dd><a :href="`mailto:${office.email}`" class="text-primary-600 hover:underline">{{ office.email }}</a></dd>
+            </div>
+            <div v-if="office.facebook" class="grid grid-cols-[110px_1fr] gap-3 py-3 text-sm first:pt-0 last:pb-0">
+              <dt class="text-gray-500 font-medium">
+                Facebook
+              </dt>
+              <dd><a :href="office.facebook" target="_blank" rel="noopener noreferrer" class="text-primary-600 hover:underline">Facebook Page</a></dd>
+            </div>
+          </dl>
+        </UiCard>
+
+        <UiCard>
+          <h2 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+            <i class="bi bi-geo-alt text-primary-600" /> Visit us
+          </h2>
+          <dl class="divide-y divide-gray-200">
+            <div v-if="office.location" class="grid grid-cols-[110px_1fr] gap-3 py-3 text-sm first:pt-0">
+              <dt class="text-gray-500 font-medium">
+                Address
+              </dt>
+              <dd class="text-gray-900">
+                {{ office.location }}
+              </dd>
+            </div>
+            <div v-if="office.hours" class="grid grid-cols-[110px_1fr] gap-3 py-3 text-sm first:pt-0 last:pb-0">
+              <dt class="text-gray-500 font-medium">
+                Office hours
+              </dt>
+              <dd class="text-gray-900">
+                {{ office.hours }}
+              </dd>
+            </div>
+          </dl>
+        </UiCard>
+      </div>
+
+      <!-- services at this office -->
+      <section v-if="services.length > 0" class="mt-8">
+        <div class="flex items-baseline justify-between mb-4">
+          <h2 class="font-semibold text-gray-900">
+            Services at this office
+          </h2>
+          <span class="text-sm text-gray-500">{{ services.length }} {{ services.length === 1 ? 'service' : 'services' }}</span>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-3">
+          <component
+            :is="s.link ? 'NuxtLink' : 'div'"
+            v-for="s in services" :key="s.name" :to="s.link"
+            class="group flex items-center justify-between gap-2 bg-white border border-gray-200 rounded-xl px-4 py-3 transition"
+            :class="s.link ? 'hover:border-primary-300 hover:bg-primary-50' : 'cursor-default'"
           >
-            <span
-              class="absolute -top-3 -left-3 w-8 h-8 flex items-center justify-center rounded-full text-sm font-bold" :class="[
-                step.isFinal ? 'bg-green-600 text-white' : 'bg-primary-600 text-white',
-              ]"
-            >
-              {{ stepIndex + 1 }}
+            <span class="flex items-center gap-3 text-sm font-medium text-gray-900">
+              <i class="bi bi-file-earmark-text text-primary-600" /> {{ s.name }}
             </span>
-            <h4 class="font-semibold text-gray-900 mb-2">
-              {{ step.title }}
-            </h4>
-            <p class="text-sm text-gray-800">
-              {{ step.description }}
-            </p>
-          </UiCard>
+            <i v-if="s.link" class="bi bi-arrow-right text-gray-400 group-hover:text-primary-600 transition" />
+          </component>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Requirements & Info -->
-    <section class="py-12 bg-gray-50">
-      <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          <div class="lg:col-span-2 space-y-6">
-            <!-- Requirements -->
-            <div>
-              <h2 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <i class="bi bi-clipboard-check text-primary-600" /> Requirements
-              </h2>
-              <UiCard
-                v-for="requirement in service.requirements"
-                :key="requirement.title"
-                padding="p-4"
-                class="mb-4"
-              >
-                <h4 class="font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                  <i :class="`bi ${requirement.icon} text-primary-600`" /> {{ requirement.title }}
-                </h4>
-                <ul class="space-y-2">
-                  <li
-                    v-for="item in requirement.items"
-                    :key="item"
-                    class="flex items-start gap-2 text-sm text-gray-900"
-                  >
-                    <i class="bi bi-check-circle-fill text-primary-600 mt-0.5" />
-                    {{ item }}
-                  </li>
-                </ul>
-              </UiCard>
-            </div>
-
-            <!-- FAQs -->
-            <div v-if="service.faqs.length > 0">
-              <h2 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <i class="bi bi-question-circle text-primary-600" /> Frequently Asked Questions
-              </h2>
-              <div class="space-y-2">
-                <UiCard
-                  v-for="(faq, faqIndex) in service.faqs"
-                  :key="faq.question"
-                  padding="p-0"
-                  class="overflow-hidden"
-                >
-                  <button
-                    type="button"
-                    class="w-full p-4 text-left font-medium text-gray-900 flex items-center justify-between hover:bg-gray-50"
-                    @click="toggleFaq(faqIndex)"
-                  >
-                    <span>{{ faq.question }}</span>
-                    <i
-                      class="bi bi-chevron-down transition-transform" :class="[
-                        openFaq === faqIndex ? 'rotate-180' : '',
-                      ]"
-                    />
-                  </button>
-                  <div
-                    v-if="openFaq === faqIndex"
-                    class="px-4 pb-4 text-sm text-gray-900"
-                  >
-                    {{ faq.answer }}
-                  </div>
-                </UiCard>
-              </div>
-            </div>
-          </div>
-
-          <!-- Sidebar -->
-          <div class="space-y-4">
-            <UiCard>
-              <h4 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                <i class="bi bi-building text-primary-600" /> Office Information
-              </h4>
-              <p class="font-medium text-gray-900">
-                {{ service.office.name }}
-              </p>
-              <p class="text-sm text-gray-600 mt-2">
-                {{ service.office.location }}
-              </p>
-              <p v-if="service.office.phone" class="text-sm text-gray-600 mt-1 flex items-center gap-2">
-                <i class="bi bi-telephone" /> {{ service.office.phone }}
-              </p>
-              <p v-if="service.office.mobile" class="text-sm text-gray-600 mt-1 flex items-center gap-2">
-                <i class="bi bi-phone" /> {{ service.office.mobile }}
-              </p>
-              <p v-if="service.office.email" class="text-sm text-gray-600 mt-1 flex items-center gap-2">
-                <i class="bi bi-envelope" /> <a :href="`mailto:${service.office.email}`" class="hover:underline text-primary-600">{{ service.office.email }}</a>
-              </p>
-              <p v-if="service.office.facebook" class="text-sm text-gray-600 mt-1 flex items-center gap-2">
-                <i class="bi bi-facebook" /> <a :href="service.office.facebook" target="_blank" rel="noopener noreferrer" class="hover:underline text-primary-600">Facebook Page</a>
-              </p>
-              <p class="text-sm text-gray-600 mt-1 flex items-center gap-2">
-                <i class="bi bi-clock" /> {{ service.office.hours }}
-              </p>
-            </UiCard>
-
-            <UiCard
-              v-if="service.relatedServices.length > 0"
-            >
-              <h4 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                <i class="bi bi-link-45deg text-primary-600" /> Related Services
-              </h4>
-              <ul class="space-y-2">
-                <li v-for="related in service.relatedServices" :key="related.title">
-                  <NuxtLink
-                    :to="related.link"
-                    class="text-primary-600 hover:underline text-sm"
-                  >
-                    {{ related.title }}
-                  </NuxtLink>
-                </li>
-              </ul>
-            </UiCard>
-
-            <UiCard>
-              <h4 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                <i class="bi bi-info-circle text-primary-600" /> Need Help?
-              </h4>
-              <p class="text-sm text-gray-600 mb-4">
-                Contact us for assistance with this office.
-              </p>
-              <UiButton
-                to="/contact"
-                variant="solid"
-                color="primary"
-                class="w-full"
-                no-prefetch
-              >
-                Contact Us
-              </UiButton>
-            </UiCard>
-
-            <UiCard
-              v-if="service.sourceUrl"
-            >
-              <h4 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                <i class="bi bi-patch-check text-primary-600" /> Verified Source
-              </h4>
-              <p class="text-sm text-gray-600 mb-4">
-                This information is sourced directly from the official city documentation.
-              </p>
-              <a
-                :href="service.sourceUrl"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 text-sm font-medium text-primary-600 hover:text-primary-700 transition-colors"
-              >
-                {{ service.sourceName || 'Citizen\'s Charter' }}
-                <i class="bi bi-box-arrow-up-right text-xs" />
-              </a>
-            </UiCard>
-          </div>
-        </div>
-      </div>
-    </section>
+      <!-- back link -->
+      <NuxtLink to="/government" class="mt-8 inline-flex items-center gap-2 text-sm text-gray-500 hover:text-primary-600">
+        <i class="bi bi-arrow-left" /> All government offices
+      </NuxtLink>
+    </div>
   </div>
 </template>
