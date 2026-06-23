@@ -63,13 +63,118 @@
           "type": "string",
           "description": "Destination route for the Office card"
         },
+        "slug": {
+          "type": "string",
+          "description": "Optional URL slug for the Office's /service-details/<slug> page when it differs from id (transitional alias preserving a legacy URL). Defaults to id."
+        },
         "location": { "type": "string" },
         "phone": { "type": "string" },
         "mobile": { "type": "string" },
         "email": { "type": "string" },
         "facebook": { "type": "string" },
         "hours": { "type": "string" },
-        "hidden": { "type": "boolean" }
+        "hidden": { "type": "boolean" },
+        "detail": { "$ref": "#/definitions/officeDetail" }
+      }
+    },
+    "officeDetail": {
+      "type": "object",
+      "description": "Optional rich content for the Office's dedicated service-details page. Mirrors the canonical services.json `detail` block (#184), minus its `office` contact sub-block: the Office is its own contact source, so getOfficeDetailBySlug synthesises the contact card from the Office's top-level fields (single source of truth).",
+      "additionalProperties": false,
+      "required": [
+        "fullTitle",
+        "category",
+        "categoryLink",
+        "badgeText",
+        "badgeIcon",
+        "description",
+        "quickStats",
+        "processSteps",
+        "requirements",
+        "faqs",
+        "relatedServices"
+      ],
+      "properties": {
+        "fullTitle": { "type": "string" },
+        "category": { "type": "string" },
+        "categoryLink": { "type": "string" },
+        "badgeText": { "type": "string" },
+        "badgeIcon": { "type": "string" },
+        "description": { "type": "string" },
+        "quickStats": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/quickStat" }
+        },
+        "processSteps": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/processStep" }
+        },
+        "requirements": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/requirementGroup" }
+        },
+        "faqs": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/faq" }
+        },
+        "relatedServices": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/relatedService" }
+        },
+        "onlineLink": { "type": "string" },
+        "sourceUrl": { "type": "string" },
+        "sourceName": { "type": "string" }
+      }
+    },
+    "quickStat": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["icon", "label", "value"],
+      "properties": {
+        "icon": { "type": "string" },
+        "label": { "type": "string" },
+        "value": { "type": "string" }
+      }
+    },
+    "processStep": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "description"],
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "isFinal": { "type": "boolean" }
+      }
+    },
+    "requirementGroup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "icon", "items"],
+      "properties": {
+        "title": { "type": "string" },
+        "icon": { "type": "string" },
+        "items": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "faq": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["question", "answer"],
+      "properties": {
+        "question": { "type": "string" },
+        "answer": { "type": "string" }
+      }
+    },
+    "relatedService": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "link"],
+      "properties": {
+        "title": { "type": "string" },
+        "link": { "type": "string" }
       }
     }
   }
