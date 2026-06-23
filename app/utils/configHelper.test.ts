@@ -6,6 +6,7 @@ import {
   getCategorySeoDescription,
   getMergedSiteConfig,
   getOfficeBySlug,
+  getOfficeDetailBySlug,
   getOfficeForService,
   getOfficeGroupBySlug,
   getOfficeGroups,
@@ -388,6 +389,39 @@ describe('configHelper', () => {
       // hidden pending scoping (#198), so they resolve to no card.
       expect(ids).not.toContain('barangay-hall')
       expect(ids).not.toContain('police-station')
+    })
+  })
+
+  describe('getOfficeDetailBySlug (#201)', () => {
+    it('resolves the migrated civil-registry Office via its slug alias', () => {
+      // The detail page lives at the legacy URL /service-details/city-civil-registry,
+      // exposed by the Office `slug` alias while id stays canonical (civil-registry).
+      const detail = getOfficeDetailBySlug('city-civil-registry')
+      expect(detail).toBeDefined()
+      expect(detail!.fullTitle).toBe('City Civil Registry Office')
+      expect(detail!.category).toBe('Certificates')
+      expect(detail!.processSteps.length).toBeGreaterThan(0)
+      expect(detail!.relatedServices.map(r => r.link)).toContain(
+        '/service-details/birth-certificate',
+      )
+    })
+
+    it('merges the Office name as `title` for the existing detail template', () => {
+      // Mirrors the canonical Service read path: { ...detail, title }.
+      const detail = getOfficeDetailBySlug('city-civil-registry')
+      expect(detail!.title).toBe('City Civil Registry')
+    })
+
+    it('returns undefined for the canonical id when a slug alias is set', () => {
+      // The slug alias (city-civil-registry) is the page key, not the id.
+      expect(getOfficeDetailBySlug('civil-registry')).toBeUndefined()
+    })
+
+    it('returns undefined for unknown or hidden Offices', () => {
+      expect(getOfficeDetailBySlug('not-a-real-office')).toBeUndefined()
+      // Hidden Offices are excluded via getOffices, so their detail never leaks.
+      expect(getOfficeDetailBySlug('human-resource-management')).toBeUndefined()
+      expect(getOfficeDetailBySlug('barangay-hall')).toBeUndefined()
     })
   })
 

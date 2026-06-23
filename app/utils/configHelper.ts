@@ -18,6 +18,7 @@ import type {
   OfficialsConfig,
   OgImageRouteConfig,
   SeoRouteConfig,
+  ServiceDetail,
   ServiceItem,
   ServicesConfig,
   SiteConfig,
@@ -432,6 +433,24 @@ export function getOffices(): Office[] {
  */
 export function getOfficeBySlug(slug: string): Office | undefined {
   return getOffices().find(office => office.id === slug)
+}
+
+/**
+ * Resolve an Office's rich detail-page content for the
+ * `/service-details/<slug>` route, merged with the Office `name` as `title` so
+ * the existing detail template renders unchanged (mirrors the canonical Service
+ * read path). Matches on the Office `slug` alias when present, else its `id`.
+ * Returns undefined for unknown/hidden Offices or Offices without a `detail`
+ * block, letting the route fall back to the legacy TS module during the
+ * transition. Hidden Offices are excluded via `getOffices`.
+ */
+export function getOfficeDetailBySlug(
+  slug: string,
+): (ServiceDetail & { title: string }) | undefined {
+  const office = getOffices().find(o => (o.slug ?? o.id) === slug)
+  if (!office?.detail)
+    return undefined
+  return { ...office.detail, title: office.name }
 }
 
 /**

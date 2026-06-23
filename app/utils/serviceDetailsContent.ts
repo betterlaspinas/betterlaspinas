@@ -63,95 +63,11 @@ export const serviceDetailsContent: ServiceDetail[] = [
    *
    * NOTE: birth-certificate, marriage-certificate, and death-certificate
    * service details now live canonically in app/config/services.json under
-   * each Service's optional `detail` block (see #184). The Office records below
-   * (City Civil Registry, Human Resource Management) remain here until the
-   * Office-entity slice (#185).
+   * each Service's optional `detail` block (see #184). The City Civil Registry
+   * Office detail migrated to the canonical Office `detail` block in
+   * app/config/offices.json (#201). Human Resource Management remains here until
+   * its own Office migration slice.
    */
-  {
-    id: 'city-civil-registry',
-    title: 'City Civil Registry',
-    fullTitle: 'City Civil Registry Office',
-    category: 'Certificates',
-    categoryLink: '/services/certificates',
-    badgeText: 'Office',
-    badgeIcon: 'bi-building',
-    description:
-      'Birth, death, marriage registration, corrections, and certified copies',
-    quickStats: [
-      { icon: 'bi-clock', label: 'Office Hours', value: 'Mon-Fri 8AM-5PM' },
-      { icon: 'bi-telephone', label: 'Contact', value: '(02) 8253-4370 / 0998 587 9659' },
-      {
-        icon: 'bi-geo-alt',
-        label: 'Location',
-        value: '1st Floor, Admin Bldg',
-      },
-      { icon: 'bi-calendar-check', label: 'Appointment', value: 'Walk-in' },
-    ],
-    processSteps: [
-      {
-        title: 'Identify Service',
-        description: 'Determine what civil registry service you need.',
-      },
-      {
-        title: 'Prepare Documents',
-        description: 'Gather all required documents for your transaction.',
-      },
-      {
-        title: 'Visit Office',
-        description: 'Go to Civil Registry, 1st Floor, Administrative Building.',
-      },
-      {
-        title: 'Submit Application',
-        description: 'Submit documents and pay applicable fees.',
-      },
-      {
-        title: 'Claim Documents',
-        description: 'Return to claim processed documents.',
-        isFinal: true,
-      },
-    ],
-    requirements: [
-      {
-        title: 'General Requirements',
-        icon: 'bi-file-text',
-        items: [
-          'Valid government-issued ID',
-          'Accomplished request form',
-          'Payment of applicable fees',
-        ],
-      },
-    ],
-    faqs: [
-      {
-        question: 'What services are offered?',
-        answer:
-          'Birth, death, marriage registration; certified copies; corrections; late registration; legitimation; and other civil registry services.',
-      },
-    ],
-    office: {
-      name: 'City Civil Registry',
-      location: '1st Floor, Administrative Building, Las Piñas City Hall Compound',
-      phone: '(02) 8253-4370',
-      mobile: '0998 587 9659',
-      email: 'lpcivilreg@gmail.com',
-      facebook: 'https://www.facebook.com/civilreglaspinas',
-      hours: 'Mon-Thu: 8AM - 7PM',
-    },
-    relatedServices: [
-      {
-        title: 'Birth Certificate',
-        link: '/service-details/birth-certificate',
-      },
-      {
-        title: 'Marriage Certificate',
-        link: '/service-details/marriage-certificate',
-      },
-      {
-        title: 'Death Certificate',
-        link: '/service-details/death-certificate',
-      },
-    ],
-  },
   {
     id: 'human-resource-management',
     title: 'Human Resource Management',

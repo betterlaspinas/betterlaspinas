@@ -502,6 +502,13 @@ export interface Office {
   icon: string
   description: string
   link: string
+  /**
+   * Optional URL slug for the Office's `/service-details/<slug>` page when it
+   * differs from `id` (transitional alias preserving a legacy URL — e.g. the
+   * `civil-registry` Office serves at `/service-details/city-civil-registry`).
+   * Defaults to `id`. Resolved by `getOfficeDetailBySlug`.
+   */
+  slug?: string
   location?: string
   phone?: string
   mobile?: string
@@ -509,6 +516,14 @@ export interface Office {
   facebook?: string
   hours?: string
   hidden?: boolean
+  /**
+   * Optional rich detail-page content, mirroring the canonical
+   * `ServiceItem.detail` block (#184). Present only for Offices with a dedicated
+   * `/service-details/<slug>` page; rendered canonical-first by the detail route
+   * via `getOfficeDetailBySlug`. Absent Offices fall back to the TS module during
+   * the transition.
+   */
+  detail?: ServiceDetail
 }
 
 export interface OfficesConfig {

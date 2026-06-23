@@ -4,17 +4,18 @@ usePageOgImage()
 const route = useRoute()
 const slug = route.params.slug as string
 
-// Canonical read path: a Service in services.json may carry an optional `detail`
-// block. We merge in the Service `title` so the existing template renders
-// unchanged.
+// Canonical read path: a Service in services.json (or a first-class Office in
+// offices.json, #201) may carry an optional `detail` block. We merge in the
+// `title` so the existing template renders unchanged.
 const canonical = getServiceBySlug(slug)
 
-// Transitional fallback: non-Certificates service-details still live in the TS
-// module and migrate in their own slices (see #189). Once every detail is in
-// services.json this fallback (and getServiceDetail) is removed.
+// Transitional fallback: not-yet-migrated service-details still live in the TS
+// module and migrate in their own slices (see #189). Once every detail is
+// canonical this fallback (and getServiceDetail) is removed. Resolution order:
+// canonical Service detail → canonical Office detail → legacy TS module.
 const service = canonical?.detail
   ? { ...canonical.detail, title: canonical.title }
-  : getServiceDetail(slug)
+  : (getOfficeDetailBySlug(slug) ?? getServiceDetail(slug))
 
 if (!service) {
   throw createError({
