@@ -1,4 +1,4 @@
-import { describe, expect, it, vi, beforeEach } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { nextTick } from 'vue'
 import { useSearch } from './useSearch'
 
@@ -50,15 +50,16 @@ describe('useSearch', () => {
         throw new Error('localStorage not working')
       }
       localStorage.removeItem('test')
-    } catch {
+    }
+    catch {
       Object.defineProperty(window, 'localStorage', {
         value: {
           getItem: (key: string) => store[key] || null,
           setItem: (key: string, value: string) => { store[key] = value },
           removeItem: (key: string) => { delete store[key] },
-          clear: () => { for (const key in store) delete store[key] }
+          clear: () => { for (const key in store) delete store[key] },
         },
-        writable: true
+        writable: true,
       })
     }
   })
@@ -78,7 +79,7 @@ describe('useSearch', () => {
     const { search, results } = useSearch()
     search('certificate')
     expect(results.value.length).toBeGreaterThan(0)
-    expect(results.value[0].title).toBe('Birth Certificate')
+    expect(results.value[0]?.title).toBe('Birth Certificate')
   })
 
   it('should perform fuzzy search', () => {
@@ -105,25 +106,26 @@ describe('useSearch', () => {
     })
   })
 
-  it('should provide popular searches in suggestions', () => {
+  it('should provide popular searches when query returns to empty', async () => {
     const { suggestions, setQuery } = useSearch()
+    // Drive the query through a real transition back to empty — the suggestion
+    // panel is populated reactively on query change, not on first read.
+    setQuery('birth')
+    await nextTick()
     setQuery('')
+    await nextTick()
     expect(suggestions.value.popular).toBeDefined()
     expect(suggestions.value.popular.length).toBeGreaterThan(0)
   })
 
-  it('should track recent searches', async () => {
-    const { search, suggestions, addRecentSearch, setQuery } = useSearch()
+  it('should surface recent searches in the empty-query suggestions', async () => {
+    const { suggestions, addRecentSearch, setQuery } = useSearch()
     const testQuery = 'birth certificate'
-    setQuery(testQuery)
     addRecentSearch(testQuery)
-    setQuery('')
+    setQuery('birth')
     await nextTick()
     setQuery('')
     await nextTick()
-    console.log('Recent searches from suggestions:', JSON.stringify(suggestions.value.recent))
-    const item = localStorage.getItem('betterlgu_recent_searches')
-    console.log('Recent searches from storage (raw):', String(item))
     expect(suggestions.value.recent).toContain(testQuery)
   })
 
@@ -131,6 +133,8 @@ describe('useSearch', () => {
     const { addRecentSearch, clearRecentSearches, suggestions, setQuery } = useSearch()
     addRecentSearch('test query')
     clearRecentSearches()
+    setQuery('birth')
+    await nextTick()
     setQuery('')
     await nextTick()
     expect(suggestions.value.recent.length).toBe(0)
