@@ -130,6 +130,11 @@ Both support `{{lguName}}` interpolation. Keeping the SEO copy on the canonical
 record means it can never drift from the catalog. When omitted, the route-level
 description in `app/config/seo.json` is used.
 
+The Service `seo` field only resolves once its `categoryId` is live (in
+`LIVE_CATEGORY_IDS` in `app/utils/configHelper.ts`). A Service in a not-yet-live
+category is gated out of the catalog, search, and SEO together, so its `seo`
+falls back to the route-level description until the category goes live.
+
 ### 6. Changelog
 
 Add a bullet under `[Unreleased]` → `### Added` in `CHANGELOG.md`, following
