@@ -66,15 +66,6 @@
             "answer": "Birth, death, marriage registration; certified copies; corrections; late registration; legitimation; and other civil registry services."
           }
         ],
-        "office": {
-          "name": "City Civil Registry",
-          "location": "1st Floor, Administrative Building, Las Piñas City Hall Compound",
-          "phone": "(02) 8253-4370",
-          "mobile": "0998 587 9659",
-          "email": "lpcivilreg@gmail.com",
-          "facebook": "https://www.facebook.com/civilreglaspinas",
-          "hours": "Mon-Thu: 8AM - 7PM"
-        },
         "relatedServices": [
           { "title": "Birth Certificate", "link": "/service-details/birth-certificate" },
           { "title": "Marriage Certificate", "link": "/service-details/marriage-certificate" },

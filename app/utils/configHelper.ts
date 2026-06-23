@@ -450,7 +450,22 @@ export function getOfficeDetailBySlug(
   const office = getOffices().find(o => (o.slug ?? o.id) === slug)
   if (!office?.detail)
     return undefined
-  return { ...office.detail, title: office.name }
+  // The Office is its own contact source: synthesise the detail-template's
+  // `office` card from the Office's top-level fields rather than re-storing it
+  // in the `detail` block (single source of truth).
+  return {
+    ...office.detail,
+    title: office.name,
+    office: {
+      name: office.name,
+      location: office.location ?? '',
+      phone: office.phone,
+      mobile: office.mobile,
+      email: office.email,
+      facebook: office.facebook,
+      hours: office.hours ?? '',
+    },
+  }
 }
 
 /**

@@ -412,6 +412,23 @@ describe('configHelper', () => {
       expect(detail!.title).toBe('City Civil Registry')
     })
 
+    it('synthesises the office contact card from the Office\'s own fields', () => {
+      // The `detail` block does NOT re-store contact info; the accessor derives
+      // the template's `office` card from the Office entity (single source of
+      // truth). Mutating offices.json contact would flow through here.
+      const office = getOfficeBySlug('civil-registry')!
+      const detail = getOfficeDetailBySlug('city-civil-registry')!
+      expect(detail.office).toEqual({
+        name: office.name,
+        location: office.location ?? '',
+        phone: office.phone,
+        mobile: office.mobile,
+        email: office.email,
+        facebook: office.facebook,
+        hours: office.hours ?? '',
+      })
+    })
+
     it('returns undefined for the canonical id when a slug alias is set', () => {
       // The slug alias (city-civil-registry) is the page key, not the id.
       expect(getOfficeDetailBySlug('civil-registry')).toBeUndefined()

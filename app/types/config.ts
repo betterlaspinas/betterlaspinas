@@ -399,6 +399,15 @@ export interface ServiceDetail {
   sourceName?: string
 }
 
+/**
+ * Rich detail-page content for a first-class Office (#201). Reuses the canonical
+ * Service `detail` shape but OMITS its `office` contact sub-block: an Office is
+ * its own contact source, so `getOfficeDetailBySlug` synthesises the contact
+ * card from the Office's own top-level fields rather than re-storing it here
+ * (single source of truth, no drift).
+ */
+export type OfficeDetail = Omit<ServiceDetail, 'office'>
+
 export interface ServiceItem {
   id: string
   title: string
@@ -521,9 +530,10 @@ export interface Office {
    * `ServiceItem.detail` block (#184). Present only for Offices with a dedicated
    * `/service-details/<slug>` page; rendered canonical-first by the detail route
    * via `getOfficeDetailBySlug`. Absent Offices fall back to the TS module during
-   * the transition.
+   * the transition. The contact card is synthesised from this Office's own
+   * fields, so the block omits a redundant `office` sub-block (see OfficeDetail).
    */
-  detail?: ServiceDetail
+  detail?: OfficeDetail
 }
 
 export interface OfficesConfig {

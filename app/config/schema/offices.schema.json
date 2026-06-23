@@ -79,7 +79,7 @@
     },
     "officeDetail": {
       "type": "object",
-      "description": "Optional rich content for the Office's dedicated service-details page. Mirrors the canonical services.json `detail` block (#184).",
+      "description": "Optional rich content for the Office's dedicated service-details page. Mirrors the canonical services.json `detail` block (#184), minus its `office` contact sub-block: the Office is its own contact source, so getOfficeDetailBySlug synthesises the contact card from the Office's top-level fields (single source of truth).",
       "additionalProperties": false,
       "required": [
         "fullTitle",
@@ -92,7 +92,6 @@
         "processSteps",
         "requirements",
         "faqs",
-        "office",
         "relatedServices"
       ],
       "properties": {
@@ -118,7 +117,6 @@
           "type": "array",
           "items": { "$ref": "#/definitions/faq" }
         },
-        "office": { "$ref": "#/definitions/serviceDetailOffice" },
         "relatedServices": {
           "type": "array",
           "items": { "$ref": "#/definitions/relatedService" }
@@ -168,20 +166,6 @@
       "properties": {
         "question": { "type": "string" },
         "answer": { "type": "string" }
-      }
-    },
-    "serviceDetailOffice": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["name", "location", "hours"],
-      "properties": {
-        "name": { "type": "string" },
-        "location": { "type": "string" },
-        "phone": { "type": "string" },
-        "mobile": { "type": "string" },
-        "email": { "type": "string" },
-        "facebook": { "type": "string" },
-        "hours": { "type": "string" }
       }
     },
     "relatedService": {
