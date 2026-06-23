@@ -511,13 +511,6 @@ export interface Office {
   icon: string
   description: string
   link: string
-  /**
-   * Optional URL slug for the Office's `/service-details/<slug>` page when it
-   * differs from `id` (transitional alias preserving a legacy URL — e.g. the
-   * `civil-registry` Office serves at `/service-details/city-civil-registry`).
-   * Defaults to `id`. Resolved by `getOfficeDetailBySlug`.
-   */
-  slug?: string
   location?: string
   phone?: string
   mobile?: string

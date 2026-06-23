@@ -60,6 +60,11 @@ export default defineNuxtConfig({
         'Cache-Control': 'no-cache, must-revalidate',
       },
     },
+    // 301: legacy Office URL → canonical Office namespace (#207).
+    // Pattern covers all migrated Office slugs; currently only city-civil-registry.
+    '/service-details/city-civil-registry': {
+      redirect: { to: '/offices/civil-registry', statusCode: 301 },
+    },
   },
   security: {
     headers: {

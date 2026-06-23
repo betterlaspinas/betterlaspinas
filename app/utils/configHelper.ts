@@ -436,18 +436,19 @@ export function getOfficeBySlug(slug: string): Office | undefined {
 }
 
 /**
- * Resolve an Office's rich detail-page content for the
- * `/service-details/<slug>` route, merged with the Office `name` as `title` so
- * the existing detail template renders unchanged (mirrors the canonical Service
- * read path). Matches on the Office `slug` alias when present, else its `id`.
- * Returns undefined for unknown/hidden Offices or Offices without a `detail`
- * block, letting the route fall back to the legacy TS module during the
- * transition. Hidden Offices are excluded via `getOffices`.
+ * Resolve an Office's rich detail-page content for the `/offices/<slug>` route
+ * (#207), merged with the Office `name` as `title` so the detail template
+ * renders unchanged (mirrors the canonical Service read path). Matches on the
+ * Office `id` directly — the `slug` alias introduced in #201 for the legacy
+ * `/service-details/city-civil-registry` URL is no longer needed now that
+ * Offices have their own `/offices/<id>` namespace with a 301 from the legacy
+ * URL. Returns undefined for unknown/hidden Offices or Offices without a
+ * `detail` block. Hidden Offices are excluded via `getOffices`.
  */
 export function getOfficeDetailBySlug(
   slug: string,
 ): (ServiceDetail & { title: string }) | undefined {
-  const office = getOffices().find(o => (o.slug ?? o.id) === slug)
+  const office = getOffices().find(o => o.id === slug)
   if (!office?.detail)
     return undefined
   // The Office is its own contact source: synthesise the detail-template's
