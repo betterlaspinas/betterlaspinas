@@ -7,7 +7,7 @@
       "icon": "bi-file-earmark-text-fill",
       "badgeText": "Certificates",
       "description": "Official documents for birth, death, marriage, and other vital records",
-      "seo": "Official documents for birth, death, marriage, and other vital records in {{lguName}}."
+      "seoDescription": "Official documents for birth, death, marriage, and other vital records in {{lguName}}."
     },
     {
       "id": "business",
@@ -15,7 +15,7 @@
       "icon": "bi-shop",
       "badgeText": "Business",
       "description": "Business permits, licenses, and trade registration services",
-      "seo": "Business permits, licenses, and trade registration services in {{lguName}}."
+      "seoDescription": "Business permits, licenses, and trade registration services in {{lguName}}."
     },
     {
       "id": "tax-payments",
@@ -23,7 +23,7 @@
       "icon": "bi-cash-coin",
       "badgeText": "Taxation",
       "description": "Property tax, business tax, payments, and tax clearance",
-      "seo": "Property tax, business tax, payments, and tax clearance in {{lguName}}."
+      "seoDescription": "Property tax, business tax, payments, and tax clearance in {{lguName}}."
     },
     {
       "id": "social-services",
@@ -31,7 +31,7 @@
       "icon": "bi-people-fill",
       "badgeText": "Social Services",
       "description": "Welfare programs, senior citizen services, PWD benefits, and financial aid",
-      "seo": "Welfare programs, senior citizen services, PWD benefits, and financial aid in {{lguName}}."
+      "seoDescription": "Welfare programs, senior citizen services, PWD benefits, and financial aid in {{lguName}}."
     },
     {
       "id": "health",
@@ -39,7 +39,7 @@
       "icon": "bi-heart-pulse-fill",
       "badgeText": "Health",
       "description": "Vaccination programs, health certificates, and medical assistance",
-      "seo": "Vaccination programs, health certificates, and medical assistance in {{lguName}}."
+      "seoDescription": "Vaccination programs, health certificates, and medical assistance in {{lguName}}."
     },
     {
       "id": "agriculture",
@@ -47,7 +47,7 @@
       "icon": "bi-tree-fill",
       "badgeText": "Agriculture",
       "description": "Agricultural loans, crop insurance, fertilizer assistance, and training",
-      "seo": "Agricultural loans, crop insurance, fertilizer assistance, and training in {{lguName}}."
+      "seoDescription": "Agricultural loans, crop insurance, fertilizer assistance, and training in {{lguName}}."
     },
     {
       "id": "infrastructure",
@@ -55,7 +55,7 @@
       "icon": "bi-building-fill-gear",
       "badgeText": "Infrastructure",
       "description": "Construction permits, road maintenance requests, and public facilities",
-      "seo": "Construction permits, road maintenance requests, and public facilities in {{lguName}}."
+      "seoDescription": "Construction permits, road maintenance requests, and public facilities in {{lguName}}."
     },
     {
       "id": "education",
@@ -63,7 +63,7 @@
       "icon": "bi-mortarboard-fill",
       "badgeText": "Education",
       "description": "Scholarship programs, student assistance, and educational grants",
-      "seo": "Scholarship programs, student assistance, and educational grants in {{lguName}}."
+      "seoDescription": "Scholarship programs, student assistance, and educational grants in {{lguName}}."
     },
     {
       "id": "public-safety",
@@ -71,7 +71,7 @@
       "icon": "bi-shield-fill-check",
       "badgeText": "Public Safety",
       "description": "Emergency services, disaster preparedness, and community safety programs",
-      "seo": "Emergency services, disaster preparedness, and community safety programs in {{lguName}}."
+      "seoDescription": "Emergency services, disaster preparedness, and community safety programs in {{lguName}}."
     },
     {
       "id": "environment",
@@ -79,7 +79,7 @@
       "icon": "bi-globe-americas",
       "badgeText": "Environment",
       "description": "Environmental permits, waste management, and conservation programs",
-      "seo": "Environmental permits, waste management, and conservation programs in {{lguName}}."
+      "seoDescription": "Environmental permits, waste management, and conservation programs in {{lguName}}."
     },
     {
       "id": "government",

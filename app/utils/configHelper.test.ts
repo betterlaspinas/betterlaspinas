@@ -72,8 +72,8 @@ describe('derived SEO accessors', () => {
       }
     })
 
-    it('exposes the seo template via the canonical Service accessor too', () => {
-      expect(getServiceBySlug('birth-certificate')?.seo).toBe(
+    it('exposes the seoDescription template via the canonical Service accessor too', () => {
+      expect(getServiceBySlug('birth-certificate')?.seoDescription).toBe(
         getServiceSeoDescription('birth-certificate'),
       )
     })
@@ -96,8 +96,8 @@ describe('derived SEO accessors', () => {
       }
     })
 
-    it('exposes the seo template via the canonical Category accessor too', () => {
-      expect(getCategoryBySlug('certificates')?.seo).toBe(
+    it('exposes the seoDescription template via the canonical Category accessor too', () => {
+      expect(getCategoryBySlug('certificates')?.seoDescription).toBe(
         getCategorySeoDescription('certificates'),
       )
     })

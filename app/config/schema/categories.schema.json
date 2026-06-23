@@ -33,7 +33,7 @@
         },
         "badgeText": { "type": "string" },
         "description": { "type": "string" },
-        "seo": {
+        "seoDescription": {
           "type": "string",
           "description": "SEO meta-description template for the /services/<id> page. Supports {{lguName}} interpolation. Read by the SEO middleware via getCategorySeoDescription."
         },

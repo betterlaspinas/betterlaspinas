@@ -425,7 +425,7 @@ export interface ServiceItem {
    * reads it via `getServiceSeoDescription`. Absent Services fall back to the
    * route-level `seo.json` description.
    */
-  seo?: string
+  seoDescription?: string
   /**
    * Optional rich service-details content. Present only for Services that have
    * a dedicated `/service-details/<id>` page. Absent for catalog-only Services.
@@ -468,7 +468,7 @@ export interface Category {
    * canonical Category record so the meta description can no longer drift from
    * the catalog; the SEO middleware reads it via `getCategorySeoDescription`.
    */
-  seo?: string
+  seoDescription?: string
   hidden?: boolean
 }
 
