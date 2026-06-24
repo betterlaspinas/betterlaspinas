@@ -462,15 +462,17 @@ export function useLanguage() {
   }
 
   // Initialize from storage
-  onMounted(() => {
-    if (import.meta.client) {
-      const storageKey = `better${lguNameDomain.value.toLowerCase()}_lang`
-      const savedLang = localStorage.getItem(storageKey) as Language
-      if (savedLang && ['en', 'fil', 'ilo'].includes(savedLang)) {
-        language.value = savedLang
+  if (getCurrentInstance()) {
+    onMounted(() => {
+      if (import.meta.client) {
+        const storageKey = `better${lguNameDomain.value.toLowerCase()}_lang`
+        const savedLang = localStorage.getItem(storageKey) as Language
+        if (savedLang && ['en', 'fil', 'ilo'].includes(savedLang)) {
+          language.value = savedLang
+        }
       }
-    }
-  })
+    })
+  }
 
   const translate = (key: string, vars?: Record<string, string>): string => {
     const template = translations.value[language.value]?.[key] || translations.value.en?.[key] || key

@@ -25,7 +25,10 @@ vi.mock('./useConfig', () => ({
       legislativeBody: 'City Council',
     }),
     fullLocation: ref('Las Piñas, Metro Manila'),
+    siteBrandName: ref('Better Las Piñas'),
     translations: {},
+    getFullSiteTitle: (title?: string) => title || 'Better Las Piñas',
+    getOpenGraphUrl: () => 'https://betterlaspinas.org',
   }),
 }))
 
