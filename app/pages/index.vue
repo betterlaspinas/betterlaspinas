@@ -5,6 +5,7 @@ import History from '@/components/home/History.vue'
 import Leadership from '@/components/home/Leadership.vue'
 import PopularServices from '@/components/home/PopularServices.vue'
 import QuickStats from '@/components/home/QuickStats.vue'
+import Tourism from '@/components/home/Tourism.vue'
 import WeatherMap from '@/components/home/WeatherMap.vue'
 
 usePageOgImage({
@@ -16,6 +17,7 @@ usePageOgImage({
   <div>
     <Hero />
     <PopularServices />
+    <Tourism />
     <QuickStats />
     <WeatherMap />
     <History />

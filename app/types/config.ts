@@ -316,6 +316,7 @@ export interface TourismEvent {
   date: string
   description: string
   location: string
+  image?: string
 }
 
 export interface TourismConfig {
