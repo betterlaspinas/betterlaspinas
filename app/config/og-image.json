@@ -87,6 +87,10 @@
     "title": "Service Details",
     "description": "Detailed information about this service in {{lguName}}"
   },
+  "offices-slug": {
+    "title": "{{slug}} Office",
+    "description": "Government office of {{lguName}}"
+  },
   "changelog": {
     "title": "Changelog",
     "description": "Site updates and new features for {{siteBrandName}}"

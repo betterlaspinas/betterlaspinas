@@ -63,10 +63,6 @@
           "type": "string",
           "description": "Destination route for the Office card"
         },
-        "slug": {
-          "type": "string",
-          "description": "Optional URL slug for the Office's /service-details/<slug> page when it differs from id (transitional alias preserving a legacy URL). Defaults to id."
-        },
         "location": { "type": "string" },
         "phone": { "type": "string" },
         "mobile": { "type": "string" },

@@ -392,11 +392,11 @@ describe('configHelper', () => {
     })
   })
 
-  describe('getOfficeDetailBySlug (#201)', () => {
-    it('resolves the migrated civil-registry Office via its slug alias', () => {
-      // The detail page lives at the legacy URL /service-details/city-civil-registry,
-      // exposed by the Office `slug` alias while id stays canonical (civil-registry).
-      const detail = getOfficeDetailBySlug('city-civil-registry')
+  describe('getOfficeDetailBySlug (#207)', () => {
+    it('resolves civil-registry Office by canonical id', () => {
+      // #207: Office has its own /offices/<id> namespace; resolved by id only.
+      // The slug alias (city-civil-registry) introduced in #201 is removed.
+      const detail = getOfficeDetailBySlug('civil-registry')
       expect(detail).toBeDefined()
       expect(detail!.fullTitle).toBe('City Civil Registry Office')
       expect(detail!.category).toBe('Certificates')
@@ -408,7 +408,7 @@ describe('configHelper', () => {
 
     it('merges the Office name as `title` for the existing detail template', () => {
       // Mirrors the canonical Service read path: { ...detail, title }.
-      const detail = getOfficeDetailBySlug('city-civil-registry')
+      const detail = getOfficeDetailBySlug('civil-registry')
       expect(detail!.title).toBe('City Civil Registry')
     })
 
@@ -417,7 +417,7 @@ describe('configHelper', () => {
       // the template's `office` card from the Office entity (single source of
       // truth). Mutating offices.json contact would flow through here.
       const office = getOfficeBySlug('civil-registry')!
-      const detail = getOfficeDetailBySlug('city-civil-registry')!
+      const detail = getOfficeDetailBySlug('civil-registry')!
       expect(detail.office).toEqual({
         name: office.name,
         location: office.location ?? '',
@@ -429,9 +429,9 @@ describe('configHelper', () => {
       })
     })
 
-    it('returns undefined for the canonical id when a slug alias is set', () => {
-      // The slug alias (city-civil-registry) is the page key, not the id.
-      expect(getOfficeDetailBySlug('civil-registry')).toBeUndefined()
+    it('returns undefined for the removed slug alias city-civil-registry', () => {
+      // Slug alias dropped in #207; 301 in nuxt.config handles SEO continuity.
+      expect(getOfficeDetailBySlug('city-civil-registry')).toBeUndefined()
     })
 
     it('returns undefined for unknown or hidden Offices', () => {
@@ -439,6 +439,33 @@ describe('configHelper', () => {
       // Hidden Offices are excluded via getOffices, so their detail never leaks.
       expect(getOfficeDetailBySlug('human-resource-management')).toBeUndefined()
       expect(getOfficeDetailBySlug('barangay-hall')).toBeUndefined()
+    })
+  })
+
+  describe('office route namespace (#207)', () => {
+    it('civil-registry Office link points at /offices/civil-registry', () => {
+      const civil = getOfficeBySlug('civil-registry')
+      expect(civil).toBeDefined()
+      expect(civil!.link).toBe('/offices/civil-registry')
+    })
+
+    it('civil-registry Office has no slug alias field', () => {
+      const civil = getOfficeBySlug('civil-registry')
+      expect(civil).toBeDefined()
+      expect('slug' in civil!).toBe(false)
+    })
+
+    it('getOfficeDetailBySlug resolves by id on the /offices/<id> route', () => {
+      // The /offices/[slug].vue page passes route.params.slug (= office.id).
+      const detail = getOfficeDetailBySlug('civil-registry')
+      expect(detail).toBeDefined()
+      expect(detail!.title).toBe('City Civil Registry')
+    })
+
+    it('legacy slug city-civil-registry no longer resolves via getOfficeDetailBySlug', () => {
+      // 301 redirect in nuxt.config handles the URL continuity;
+      // the accessor must NOT match legacy slugs after #207.
+      expect(getOfficeDetailBySlug('city-civil-registry')).toBeUndefined()
     })
   })
 
