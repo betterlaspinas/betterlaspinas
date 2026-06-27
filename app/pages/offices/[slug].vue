@@ -10,7 +10,7 @@ const slug = route.params.slug as string
 // directory-record layout (identity, contact, visit, services) rather than the
 // process/requirements/FAQ shape used by /service-details.
 const office = getOfficeBySlug(slug)
-if (!office?.detail) {
+if (!office) {
   throw createError({
     statusCode: 404,
     statusMessage: 'Office not found',

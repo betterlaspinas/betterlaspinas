@@ -96,8 +96,131 @@
       "groupId": "administration",
       "icon": "bi-people",
       "description": "Service records, employment certificates, leave credits for LGU employees",
-      "link": "/service-details/human-resource-management",
+      "link": "/offices/human-resource-management",
       "hidden": true
+    },
+    {
+      "id": "city-treasurer",
+      "name": "City Treasurer's Office",
+      "groupId": "frontline-services",
+      "icon": "bi-cash-coin",
+      "description": "Tax collection, payment of local fees and charges, cedula, and revenue management",
+      "link": "/offices/city-treasurer",
+      "location": "City Hall, Ground Floor, Las Piñas City Hall Compound",
+      "phone": "(078) 326-5001",
+      "hours": "Mon-Thu: 8AM - 7PM"
+    },
+    {
+      "id": "city-assessor",
+      "name": "City Assessor's Office",
+      "groupId": "frontline-services",
+      "icon": "bi-house-door",
+      "description": "Property assessment, tax declarations, land records, and real property appraisal",
+      "link": "/offices/city-assessor",
+      "location": "City Hall, Ground Floor, Las Piñas City Hall Compound",
+      "phone": "(078) 326-5001",
+      "email": "cityassessor.lc@gmail.com",
+      "hours": "Mon-Thu: 8AM - 7PM"
+    },
+    {
+      "id": "cswdo",
+      "name": "City Social Welfare & Development Office",
+      "groupId": "frontline-services",
+      "icon": "bi-people",
+      "description": "Social welfare programs, indigency certificates, AICS, PWD and senior citizen assistance",
+      "link": "/offices/cswdo",
+      "location": "City Hall, Ground Floor, Las Piñas City Hall Compound",
+      "phone": "0916 284 0885",
+      "hours": "Mon-Thu: 8AM - 7PM"
+    },
+    {
+      "id": "city-agriculture",
+      "name": "City Agriculture Office",
+      "groupId": "frontline-services",
+      "icon": "bi-tree",
+      "description": "Agricultural programs, farmer registration, subsidized inputs, and livelihood assistance",
+      "link": "/offices/city-agriculture",
+      "location": "City Hall, Las Piñas City Hall Compound",
+      "phone": "(078) 326-5001",
+      "hours": "Mon-Thu: 8AM - 7PM"
+    },
+    {
+      "id": "city-engineering",
+      "name": "City Engineering Office",
+      "groupId": "frontline-services",
+      "icon": "bi-building-gear",
+      "description": "Building permits, construction inspection, infrastructure projects, and road maintenance",
+      "link": "/offices/city-engineering",
+      "location": "City Hall, Las Piñas City Hall Compound",
+      "phone": "8873-3004",
+      "hours": "Mon-Fri: 8AM - 5PM"
+    },
+    {
+      "id": "city-planning",
+      "name": "City Planning & Development Office",
+      "groupId": "frontline-services",
+      "icon": "bi-clipboard-data",
+      "description": "Zoning certificates, locational clearances, land use planning, and development permits",
+      "link": "/offices/city-planning",
+      "location": "City Hall, Las Piñas City Hall Compound",
+      "hours": "Mon-Thu: 8AM - 7PM"
+    },
+    {
+      "id": "city-health",
+      "name": "City Health Office",
+      "groupId": "frontline-services",
+      "icon": "bi-heart-pulse",
+      "description": "Public health services, vaccination programs, health certificates, and medical assistance",
+      "link": "/offices/city-health",
+      "location": "City Hall Compound, Las Piñas City",
+      "phone": "(02) 8367-3406",
+      "mobile": "0998 977 8597",
+      "facebook": "https://www.facebook.com/LPCityhealth",
+      "hours": "Mon-Fri: 8AM - 5PM"
+    },
+    {
+      "id": "cdrrmo",
+      "name": "City Disaster Risk Reduction & Management Office",
+      "groupId": "frontline-services",
+      "icon": "bi-shield-exclamation",
+      "description": "24/7 emergency response, rescue operations, and disaster preparedness programs",
+      "link": "/offices/cdrrmo",
+      "location": "Command Center, Las Piñas City",
+      "phone": "(02) 8290-6500",
+      "hours": "24/7 Operations"
+    },
+    {
+      "id": "city-budget",
+      "name": "City Budget Office",
+      "groupId": "administration",
+      "icon": "bi-wallet2",
+      "description": "Budget preparation, appropriation management, obligation requests, and barangay budget review",
+      "link": "/offices/city-budget",
+      "location": "City Hall, Las Piñas City Hall Compound",
+      "phone": "(078) 326-5001",
+      "hours": "Mon-Thu: 8AM - 7PM"
+    },
+    {
+      "id": "city-accounting",
+      "name": "City Accounting Office",
+      "groupId": "administration",
+      "icon": "bi-calculator",
+      "description": "Pre-audit of disbursements, payroll processing, check issuance, and financial reporting",
+      "link": "/offices/city-accounting",
+      "location": "City Hall, Las Piñas City Hall Compound",
+      "phone": "(078) 326-5001",
+      "hours": "Mon-Thu: 8AM - 7PM"
+    },
+    {
+      "id": "city-general-services",
+      "name": "City General Services Office",
+      "groupId": "administration",
+      "icon": "bi-tools",
+      "description": "Property management, vehicle maintenance, equipment rental, and general city services",
+      "link": "/offices/city-general-services",
+      "location": "City Hall, Las Piñas City Hall Compound",
+      "phone": "(078) 326-5001",
+      "hours": "Mon-Thu: 8AM - 7PM"
     }
   ]
 }

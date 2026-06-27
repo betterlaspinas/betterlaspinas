@@ -1392,6 +1392,7 @@
       "fee": "Free",
       "processingTime": "1-2 weeks",
       "office": "CSWDO / OSCA",
+      "providedBy": "cswdo",
       "url": "/services/social-services"
     },
     {
@@ -1411,6 +1412,7 @@
       "fee": "Free",
       "processingTime": "1-2 weeks",
       "office": "CSWDO",
+      "providedBy": "cswdo",
       "url": "/services/social-services"
     },
     {
@@ -1431,6 +1433,7 @@
       "fee": "Free",
       "processingTime": "Varies",
       "office": "CSWDO",
+      "providedBy": "cswdo",
       "url": "/services/social-services"
     },
     {
@@ -1449,6 +1452,7 @@
       "fee": "Free",
       "processingTime": "1-3 days",
       "office": "CSWDO",
+      "providedBy": "cswdo",
       "url": "/services/social-services"
     },
     {
@@ -1467,6 +1471,7 @@
       "fee": "Free",
       "processingTime": "1-2 weeks",
       "office": "CSWDO",
+      "providedBy": "cswdo",
       "url": "/services/social-services"
     },
     {
@@ -1486,7 +1491,51 @@
       "fee": "Free",
       "processingTime": "Same day",
       "office": "City Health Office",
-      "url": "/services/health"
+      "providedBy": "city-health",
+      "url": "/service-details/vaccination",
+      "detail": {
+        "fullTitle": "Immunization & Vaccination Services",
+        "category": "Health",
+        "categoryLink": "/services/health",
+        "badgeText": "Health",
+        "badgeIcon": "bi-shield-plus",
+        "description": "Free immunization for children, adults, and senior citizens",
+        "quickStats": [
+          { "icon": "bi-clock", "label": "Schedule", "value": "Mon-Fri" },
+          { "icon": "bi-cash", "label": "Fee", "value": "Free" },
+          { "icon": "bi-geo-alt", "label": "Location", "value": "Health Centers" },
+          { "icon": "bi-calendar-check", "label": "Appointment", "value": "Walk-in" }
+        ],
+        "processSteps": [
+          { "title": "Registration", "description": "Register at the health center." },
+          { "title": "Screening", "description": "Health screening and vital signs check." },
+          { "title": "Vaccination", "description": "Administration of vaccine.", "isFinal": true }
+        ],
+        "requirements": [
+          {
+            "title": "For Children",
+            "icon": "bi-person",
+            "items": ["Baby book / Immunization card"]
+          }
+        ],
+        "faqs": [
+          {
+            "question": "Are vaccines safe?",
+            "answer": "Yes, all vaccines provided are DOH-approved and safe."
+          }
+        ],
+        "office": {
+          "name": "City Health Office",
+          "location": "City Hall Compound",
+          "phone": "(02) 8367-3406",
+          "mobile": "0998 977 8597",
+          "facebook": "https://www.facebook.com/LPCityhealth",
+          "hours": "Mon-Fri: 8AM - 5PM"
+        },
+        "relatedServices": [
+          { "title": "City Health Office", "link": "/offices/city-health" }
+        ]
+      }
     },
     {
       "id": "health-certificate",
@@ -1504,6 +1553,7 @@
       "fee": "₱100-200",
       "processingTime": "Same day",
       "office": "City Health Office",
+      "providedBy": "city-health",
       "url": "/services/health"
     },
     {
@@ -1523,6 +1573,7 @@
       "fee": "Free",
       "processingTime": "1-3 days",
       "office": "City Health Office / CSWDO",
+      "providedBy": "city-health",
       "url": "/services/health"
     },
     {
@@ -1542,6 +1593,7 @@
       "fee": "Free",
       "processingTime": "Same day",
       "office": "City Health Office",
+      "providedBy": "city-health",
       "url": "/services/health"
     },
     {
@@ -1562,6 +1614,7 @@
       "fee": "Varies",
       "processingTime": "Same day",
       "office": "City Treasurer's Office",
+      "providedBy": "city-treasurer",
       "url": "/services/tax-payments"
     },
     {
@@ -1580,6 +1633,7 @@
       "fee": "Varies",
       "processingTime": "Same day",
       "office": "City Treasurer's Office",
+      "providedBy": "city-treasurer",
       "url": "/services/tax-payments"
     },
     {
@@ -1597,6 +1651,7 @@
       "fee": "₱50-100",
       "processingTime": "Same day",
       "office": "City Treasurer's Office",
+      "providedBy": "city-treasurer",
       "url": "/services/tax-payments"
     },
     {
@@ -1616,6 +1671,7 @@
       "fee": "Varies",
       "processingTime": "1-2 weeks",
       "office": "City Agriculture Office",
+      "providedBy": "city-agriculture",
       "url": "/services/agriculture"
     },
     {
@@ -1634,6 +1690,7 @@
       "fee": "Subsidized",
       "processingTime": "Varies",
       "office": "City Agriculture Office",
+      "providedBy": "city-agriculture",
       "url": "/services/agriculture"
     },
     {
@@ -1652,6 +1709,7 @@
       "fee": "Free/Subsidized",
       "processingTime": "Varies",
       "office": "City Agriculture Office",
+      "providedBy": "city-agriculture",
       "url": "/services/agriculture"
     },
     {
@@ -1671,6 +1729,7 @@
       "fee": "Varies",
       "processingTime": "5-10 days",
       "office": "City Engineering Office",
+      "providedBy": "city-engineering",
       "url": "/services/infrastructure"
     },
     {
@@ -1689,6 +1748,7 @@
       "fee": "Varies",
       "processingTime": "3-5 days",
       "office": "City Engineering Office",
+      "providedBy": "city-engineering",
       "url": "/services/infrastructure"
     },
     {
@@ -1708,6 +1768,7 @@
       "fee": "Free",
       "processingTime": "Varies",
       "office": "City Engineering Office",
+      "providedBy": "city-engineering",
       "url": "/services/infrastructure"
     },
     {
@@ -1745,6 +1806,7 @@
       "fee": "Free",
       "processingTime": "Varies",
       "office": "CSWDO",
+      "providedBy": "cswdo",
       "url": "/services/education"
     },
     {
@@ -1764,7 +1826,43 @@
       "fee": "Free",
       "processingTime": "Immediate",
       "office": "CDRRMO",
-      "url": "/services/public-safety"
+      "providedBy": "cdrrmo",
+      "url": "/service-details/emergency-response",
+      "detail": {
+        "fullTitle": "Emergency Rescue & Response",
+        "category": "Public Safety",
+        "categoryLink": "/services/public-safety",
+        "badgeText": "Safety",
+        "badgeIcon": "bi-ambulance",
+        "description": "24/7 ambulance and rescue assistance",
+        "quickStats": [
+          { "icon": "bi-clock", "label": "Response", "value": "Immediate" },
+          { "icon": "bi-telephone", "label": "Hotline", "value": "(02) 8290-6500" },
+          { "icon": "bi-geo-alt", "label": "Coverage", "value": "Citywide" },
+          { "icon": "bi-cash", "label": "Fee", "value": "Free" }
+        ],
+        "processSteps": [
+          { "title": "Call Hotline", "description": "Call (02) 8290-6500 immediately." },
+          { "title": "Provide Info", "description": "State nature of emergency and exact location." },
+          { "title": "Wait for Help", "description": "Stay on the line if instructed. Responders are on the way.", "isFinal": true }
+        ],
+        "requirements": [],
+        "faqs": [
+          {
+            "question": "Is ambulance service free?",
+            "answer": "Yes, for emergency cases within the city."
+          }
+        ],
+        "office": {
+          "name": "CDRRMO",
+          "location": "Command Center",
+          "phone": "(02) 8290-6500",
+          "hours": "24/7 Operations"
+        },
+        "relatedServices": [
+          { "title": "CDRRMO", "link": "/offices/cdrrmo" }
+        ]
+      }
     },
     {
       "id": "disaster-preparedness",
@@ -1782,6 +1880,7 @@
       "fee": "Free",
       "processingTime": "Varies",
       "office": "CDRRMO",
+      "providedBy": "cdrrmo",
       "url": "/services/public-safety"
     },
     {
@@ -1841,6 +1940,7 @@
       "fee": "Free",
       "processingTime": "28 min - 1.5 hrs",
       "office": "CSWDO",
+      "providedBy": "cswdo",
       "url": "/service-details/cswdo-services",
       "detail": {
         "fullTitle": "City Social Welfare & Development Office",
@@ -2077,68 +2177,6 @@
       }
     },
     {
-      "id": "city-treasurer",
-      "title": "City Treasurer's Office",
-      "category": "Taxation & Payments",
-      "categoryId": "tax-payments",
-      "description": "Tax collection, cedula, clearances, and payment services",
-      "keywords": [
-        "treasurer",
-        "CTO",
-        "tax",
-        "payment",
-        "cedula",
-        "clearance",
-        "collection"
-      ],
-      "fee": "Varies",
-      "processingTime": "Same day",
-      "office": "City Treasurer's Office",
-      "url": "/service-details/city-treasurer",
-      "hidden": true
-    },
-    {
-      "id": "city-budget",
-      "title": "City Budget Office",
-      "category": "Taxation & Payments",
-      "categoryId": "tax-payments",
-      "description": "Obligation requests, barangay budget review, and SEF budget preparation",
-      "keywords": [
-        "budget",
-        "CBO",
-        "obligation",
-        "appropriation",
-        "SEF",
-        "barangay budget"
-      ],
-      "fee": "Free",
-      "processingTime": "15 min - 1 day",
-      "office": "City Budget Office",
-      "url": "/service-details/city-budget",
-      "hidden": true
-    },
-    {
-      "id": "city-accounting",
-      "title": "City Accounting Office",
-      "category": "Taxation & Payments",
-      "categoryId": "tax-payments",
-      "description": "Pre-audit of disbursements, payroll, check issuance, and financial reporting",
-      "keywords": [
-        "accounting",
-        "CACCO",
-        "audit",
-        "payroll",
-        "check",
-        "disbursement",
-        "voucher"
-      ],
-      "fee": "Free",
-      "processingTime": "Varies",
-      "office": "City Accounting Office",
-      "url": "/service-details/city-accounting",
-      "hidden": true
-    },
-    {
       "id": "property-declaration",
       "title": "Property Declaration",
       "category": "Taxation & Payments",
@@ -2156,6 +2194,7 @@
       "fee": "Varies",
       "processingTime": "3-5 days",
       "office": "City Assessor's Office",
+      "providedBy": "city-assessor",
       "url": "/service-details/property-declaration",
       "detail": {
         "fullTitle": "Tax Declaration & Property Records",
@@ -2231,132 +2270,11 @@
         },
         "relatedServices": [
           {
-            "title": "City Assessor",
-            "link": "/service-details/city-assessor"
+            "title": "City Assessor's Office",
+            "link": "/offices/city-assessor"
           }
         ]
       }
-    },
-    {
-      "id": "city-assessor",
-      "title": "City Assessor's Office",
-      "category": "Taxation & Payments",
-      "categoryId": "tax-payments",
-      "description": "Property assessment, tax declaration, and land records",
-      "keywords": [
-        "assessor",
-        "property",
-        "assessment",
-        "tax declaration",
-        "land",
-        "appraisal"
-      ],
-      "fee": "Varies",
-      "processingTime": "3-5 days",
-      "office": "City Assessor's Office",
-      "url": "/service-details/city-assessor",
-      "hidden": true
-    },
-    {
-      "id": "city-engineering",
-      "title": "City Engineering Office",
-      "category": "Infrastructure & Public Works",
-      "categoryId": "infrastructure",
-      "description": "Building permits, infrastructure projects, and engineering services",
-      "keywords": [
-        "engineering",
-        "CEO",
-        "building permit",
-        "construction",
-        "infrastructure",
-        "road"
-      ],
-      "fee": "Varies",
-      "processingTime": "5-10 days",
-      "office": "City Engineering Office",
-      "url": "/service-details/city-engineering",
-      "hidden": true
-    },
-    {
-      "id": "city-planning",
-      "title": "City Planning & Development Office",
-      "category": "Infrastructure & Public Works",
-      "categoryId": "infrastructure",
-      "description": "Zoning, land use, development permits, and planning services",
-      "keywords": [
-        "planning",
-        "MPDO",
-        "zoning",
-        "land use",
-        "development",
-        "locational clearance"
-      ],
-      "fee": "Varies",
-      "processingTime": "3-7 days",
-      "office": "City Planning Office",
-      "url": "/service-details/city-planning",
-      "hidden": true
-    },
-    {
-      "id": "city-agriculture",
-      "title": "City Agriculture Office",
-      "category": "Agriculture & Economic Development",
-      "categoryId": "agriculture",
-      "description": "Agricultural assistance, farm registration, and livelihood programs",
-      "keywords": [
-        "agriculture",
-        "CAO",
-        "farmer",
-        "farm",
-        "livestock",
-        "crops",
-        "RSBSA",
-        "livelihood"
-      ],
-      "fee": "Free/Varies",
-      "processingTime": "Varies",
-      "office": "City Agriculture Office",
-      "url": "/service-details/city-agriculture",
-      "hidden": true
-    },
-    {
-      "id": "city-general-services",
-      "title": "General Services Office",
-      "category": "Government Services",
-      "categoryId": "government",
-      "description": "Property management, vehicle maintenance, and general city services",
-      "keywords": [
-        "general services",
-        "MGSO",
-        "property",
-        "vehicle",
-        "maintenance",
-        "supplies"
-      ],
-      "fee": "Free",
-      "processingTime": "Varies",
-      "office": "General Services Office",
-      "url": "/service-details/city-general-services"
-    },
-    {
-      "id": "human-resource",
-      "title": "Human Resource Management Office",
-      "category": "Government Services",
-      "categoryId": "government",
-      "description": "Employment, personnel records, and HR services",
-      "keywords": [
-        "human resource",
-        "HRMO",
-        "employment",
-        "job",
-        "personnel",
-        "hiring",
-        "application"
-      ],
-      "fee": "Free",
-      "processingTime": "Varies",
-      "office": "Human Resource Management Office",
-      "url": "/service-details/human-resource-management"
     },
     {
       "id": "safety-seal",

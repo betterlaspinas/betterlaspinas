@@ -290,20 +290,45 @@ describe('configHelper', () => {
       }
     })
 
-    it('a catalog-only migrated Service points back at its Category page', () => {
+    it('vaccination is a detail-bearing Service linking to its own page (#202)', () => {
       const vaccination = getServiceBySlug('vaccination')
       expect(vaccination).toBeDefined()
-      expect(vaccination!.detail).toBeUndefined()
-      expect(vaccination!.url).toBe('/services/health')
+      expect(vaccination!.detail).toBeDefined()
+      expect(vaccination!.url).toBe('/service-details/vaccination')
+      expect(vaccination!.providedBy).toBe('city-health')
     })
 
-    it('office-as-Service rows do not pollute a migrated Category grid', () => {
+    it('emergency-response is a detail-bearing Service linking to its own page (#202)', () => {
+      const er = getServiceBySlug('emergency-response')
+      expect(er).toBeDefined()
+      expect(er!.detail).toBeDefined()
+      expect(er!.url).toBe('/service-details/emergency-response')
+      expect(er!.providedBy).toBe('cdrrmo')
+    })
+
+    it('shadow office-as-Service rows deleted — do not resolve via getServiceBySlug (#202)', () => {
+      // These rows were removed in #202; 301 redirects handle URL continuity.
+      for (const id of [
+        'city-treasurer',
+        'city-budget',
+        'city-accounting',
+        'city-assessor',
+        'city-engineering',
+        'city-planning',
+        'city-agriculture',
+        'city-general-services',
+        'human-resource',
+      ]) {
+        expect(getServiceBySlug(id), id).toBeUndefined()
+      }
+    })
+
+    it('shadow rows no longer pollute migrated Category grids (#202)', () => {
       const taxIds = getServicesByCategory('tax-payments').map(s => s.id)
-      // City Budget/Accounting/Assessor are Offices (#185/#198), hidden so they
-      // never render as Service cards on the canonical Taxation page.
       expect(taxIds).not.toContain('city-budget')
       expect(taxIds).not.toContain('city-accounting')
       expect(taxIds).not.toContain('city-assessor')
+      expect(taxIds).not.toContain('city-treasurer')
       const infraIds = getServicesByCategory('infrastructure').map(s => s.id)
       expect(infraIds).not.toContain('city-engineering')
       expect(infraIds).not.toContain('city-planning')
@@ -389,6 +414,138 @@ describe('configHelper', () => {
       // hidden pending scoping (#198), so they resolve to no card.
       expect(ids).not.toContain('barangay-hall')
       expect(ids).not.toContain('police-station')
+    })
+  })
+
+  describe('migrated Offices (#202)', () => {
+    const MIGRATED_FRONTLINE = [
+      'city-treasurer',
+      'city-assessor',
+      'cswdo',
+      'city-agriculture',
+      'city-engineering',
+      'city-planning',
+      'city-health',
+      'cdrrmo',
+    ] as const
+
+    const MIGRATED_ADMIN = [
+      'city-budget',
+      'city-accounting',
+      'city-general-services',
+    ] as const
+
+    it.each(MIGRATED_FRONTLINE)(
+      '%s resolves via getOfficeBySlug and belongs to frontline-services group',
+      (id) => {
+        const office = getOfficeBySlug(id)
+        expect(office, id).toBeDefined()
+        expect(office!.groupId, id).toBe('frontline-services')
+        expect(office!.link, id).toBe(`/offices/${id}`)
+      },
+    )
+
+    it.each(MIGRATED_ADMIN)(
+      '%s resolves via getOfficeBySlug and belongs to administration group',
+      (id) => {
+        const office = getOfficeBySlug(id)
+        expect(office, id).toBeDefined()
+        expect(office!.groupId, id).toBe('administration')
+        expect(office!.link, id).toBe(`/offices/${id}`)
+      },
+    )
+
+    it('migrated Offices have NO detail block (directory-record only)', () => {
+      for (const id of [...MIGRATED_FRONTLINE, ...MIGRATED_ADMIN]) {
+        const office = getOfficeBySlug(id)
+        expect(office, id).toBeDefined()
+        expect(office!.detail, `${id} must not have a detail block`).toBeUndefined()
+      }
+    })
+
+    it('city-treasurer lists its providedBy services', () => {
+      const services = getAllServices().filter(s => s.providedBy === 'city-treasurer')
+      expect(services.length).toBeGreaterThan(0)
+      const ids = services.map(s => s.id)
+      expect(ids).toContain('real-property-tax')
+      expect(ids).toContain('business-tax')
+      expect(ids).toContain('tax-clearance')
+    })
+
+    it('city-assessor lists property-declaration as a providedBy service', () => {
+      const services = getAllServices().filter(s => s.providedBy === 'city-assessor')
+      expect(services.map(s => s.id)).toContain('property-declaration')
+    })
+
+    it('cswdo lists its providedBy services', () => {
+      const services = getAllServices().filter(s => s.providedBy === 'cswdo')
+      expect(services.length).toBeGreaterThan(0)
+      const ids = services.map(s => s.id)
+      expect(ids).toContain('senior-citizen-id')
+      expect(ids).toContain('pwd-id')
+      expect(ids).toContain('cswdo-services')
+    })
+
+    it('city-agriculture lists its providedBy services', () => {
+      const services = getAllServices().filter(s => s.providedBy === 'city-agriculture')
+      const ids = services.map(s => s.id)
+      expect(ids).toContain('agricultural-loan')
+      expect(ids).toContain('crop-insurance')
+      expect(ids).toContain('fertilizer-assistance')
+    })
+
+    it('city-engineering lists its providedBy services', () => {
+      const services = getAllServices().filter(s => s.providedBy === 'city-engineering')
+      const ids = services.map(s => s.id)
+      expect(ids).toContain('building-permit')
+      expect(ids).toContain('occupancy-permit')
+      expect(ids).toContain('road-maintenance')
+    })
+
+    it('city-health lists its providedBy services including vaccination', () => {
+      const services = getAllServices().filter(s => s.providedBy === 'city-health')
+      const ids = services.map(s => s.id)
+      expect(ids).toContain('vaccination')
+      expect(ids).toContain('health-certificate')
+      expect(ids).toContain('prenatal-checkup')
+    })
+
+    it('cdrrmo lists emergency-response as a providedBy service', () => {
+      const services = getAllServices().filter(s => s.providedBy === 'cdrrmo')
+      const ids = services.map(s => s.id)
+      expect(ids).toContain('emergency-response')
+      expect(ids).toContain('disaster-preparedness')
+    })
+
+    it('vaccination detail links to /offices/city-health as related service', () => {
+      const vaccination = getServiceBySlug('vaccination')
+      const relatedLinks = vaccination!.detail!.relatedServices.map(r => r.link)
+      expect(relatedLinks).toContain('/offices/city-health')
+      expect(relatedLinks).not.toContain('/service-details/city-health')
+    })
+
+    it('emergency-response detail links to /offices/cdrrmo as related service', () => {
+      const er = getServiceBySlug('emergency-response')
+      const relatedLinks = er!.detail!.relatedServices.map(r => r.link)
+      expect(relatedLinks).toContain('/offices/cdrrmo')
+      expect(relatedLinks).not.toContain('/service-details/cdrrmo')
+    })
+
+    it('getOfficesByGroup frontline-services contains all 9 frontline offices', () => {
+      const ids = getOfficesByGroup('frontline-services').map(o => o.id)
+      // civil-registry + 8 migrated frontline
+      expect(ids).toContain('civil-registry')
+      for (const id of MIGRATED_FRONTLINE) {
+        expect(ids, id).toContain(id)
+      }
+    })
+
+    it('getOfficesByGroup administration contains all 4 admin offices', () => {
+      const ids = getOfficesByGroup('administration').map(o => o.id)
+      // human-resource-management is hidden; only the 3 migrated visible ones
+      for (const id of MIGRATED_ADMIN) {
+        expect(ids, id).toContain(id)
+      }
     })
   })
 
