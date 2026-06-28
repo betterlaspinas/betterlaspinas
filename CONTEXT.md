@@ -24,9 +24,14 @@ _Avoid_: Section, type
 A grouping of **Offices** by government function — answers "who runs this" (e.g. "Finance", "Frontline Services"). Distinct from **Category**. An Office belongs to one Office Group even when its Services span multiple Categories (e.g. City Treasurer's Office sits in "Finance" but provides Services in both Tax and Business Categories).
 _Avoid_: Office category, department, sector
 
+**View**:
+A render-ready projection of canonical **Service** / **Office** / **Category** records, shaped for exactly one route's template. Built by a resolver in `app/utils/pageViews.ts` (`categoryView`, `serviceDetailView`, `officeView`), which reads through the `configHelper` accessors and returns a `View` or `undefined`. A page's `<script setup>` calls one resolver and renders the result; it holds no resolution or mapping logic. A **View** is never a domain entity — it carries no identity and is not persisted.
+_Avoid_: DTO, model, ViewModel, page
+
 ## Relationships
 
 - **Service → providedBy → Office** (many-to-one)
 - **Category groups Services** (one-to-many) — by task
 - **Office Group groups Offices** (one-to-many) — by function
 - A Service's Category is independent of its Office's Office Group
+- **A View projects canonical records for one route** — built by a resolver, consumed by exactly one page
