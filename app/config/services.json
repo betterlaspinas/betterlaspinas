@@ -1526,15 +1526,13 @@
         ],
         "office": {
           "name": "City Health Office",
-          "location": "City Hall Compound",
+          "location": "City Hall Compound, Las Piñas City",
           "phone": "(02) 8367-3406",
           "mobile": "0998 977 8597",
           "facebook": "https://www.facebook.com/LPCityhealth",
           "hours": "Mon-Fri: 8AM - 5PM"
         },
-        "relatedServices": [
-          { "title": "City Health Office", "link": "/offices/city-health" }
-        ]
+        "relatedServices": []
       }
     },
     {
@@ -1855,13 +1853,11 @@
         ],
         "office": {
           "name": "CDRRMO",
-          "location": "Command Center",
+          "location": "Command Center, Las Piñas City",
           "phone": "(02) 8290-6500",
           "hours": "24/7 Operations"
         },
-        "relatedServices": [
-          { "title": "CDRRMO", "link": "/offices/cdrrmo" }
-        ]
+        "relatedServices": []
       }
     },
     {
@@ -2268,12 +2264,7 @@
           "phone": "(078) 326-5001",
           "hours": "Mon-Thu: 8AM - 7PM"
         },
-        "relatedServices": [
-          {
-            "title": "City Assessor's Office",
-            "link": "/offices/city-assessor"
-          }
-        ]
+        "relatedServices": []
       }
     },
     {

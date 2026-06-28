@@ -517,18 +517,31 @@ describe('configHelper', () => {
       expect(ids).toContain('disaster-preparedness')
     })
 
-    it('vaccination detail links to /offices/city-health as related service', () => {
+    it('vaccination surfaces its Office via providedBy, not relatedServices', () => {
+      // An Office is not a Service: it is surfaced from `providedBy` (the
+      // "Office Information" card), never recycled into `relatedServices` (which
+      // renders under a "Related Services" heading and holds sibling Services).
       const vaccination = getServiceBySlug('vaccination')
+      expect(vaccination!.providedBy).toBe('city-health')
       const relatedLinks = vaccination!.detail!.relatedServices.map(r => r.link)
-      expect(relatedLinks).toContain('/offices/city-health')
-      expect(relatedLinks).not.toContain('/service-details/city-health')
+      expect(relatedLinks.some(l => l.startsWith('/offices/'))).toBe(false)
     })
 
-    it('emergency-response detail links to /offices/cdrrmo as related service', () => {
+    it('emergency-response surfaces its Office via providedBy, not relatedServices', () => {
       const er = getServiceBySlug('emergency-response')
+      expect(er!.providedBy).toBe('cdrrmo')
       const relatedLinks = er!.detail!.relatedServices.map(r => r.link)
-      expect(relatedLinks).toContain('/offices/cdrrmo')
-      expect(relatedLinks).not.toContain('/service-details/cdrrmo')
+      expect(relatedLinks.some(l => l.startsWith('/offices/'))).toBe(false)
+    })
+
+    it('detail.office.location matches the canonical Office (no drift)', () => {
+      // The inline detail.office copy must not diverge from the providing Office.
+      const vaccination = getServiceBySlug('vaccination')!
+      expect(vaccination.detail!.office.location).toBe(
+        getOfficeBySlug('city-health')!.location,
+      )
+      const er = getServiceBySlug('emergency-response')!
+      expect(er.detail!.office.location).toBe(getOfficeBySlug('cdrrmo')!.location)
     })
 
     it('getOfficesByGroup frontline-services contains all 9 frontline offices', () => {
