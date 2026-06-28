@@ -245,8 +245,8 @@ describe('configHelper', () => {
     })
   })
 
-  // #186: every resident-facing Service Category is now sourced canonically and
-  // renders via the accessor (no categoriesContent.ts fallback).
+  // #186: every resident-facing Service Category is sourced canonically and
+  // renders via the accessor — the canonical source is the only source (#189).
   describe('migrated Service Categories (#186)', () => {
     const MIGRATED = [
       'business',
@@ -933,6 +933,54 @@ describe('configHelper', () => {
       const categories = { categories: [{ id: 'certificates' }] }
       const offices = makeOffices()
       expect(validateConsistency(services, categories, offices)).toBe(true)
+    })
+  })
+
+  // #189 closer: categoriesContent.ts and serviceDetailsContent.ts are deleted.
+  // These tests pin the contract the pages now rely on — every page resolves
+  // purely through the canonical configHelper accessors, with no TS-module
+  // fallback. They mirror the exact resolution paths in `[category].vue` and
+  // `[slug].vue`.
+  describe('canonical-only resolution (#189)', () => {
+    it('every visible Category resolves through getCategoryBySlug (category page path)', () => {
+      const categories = getServiceCategories()
+      expect(categories.length).toBeGreaterThan(0)
+      for (const category of categories) {
+        // `[category].vue` gates on isCanonicalCategory then reads the accessor.
+        expect(isCanonicalCategory(category.id), category.id).toBe(true)
+        expect(getCategoryBySlug(category.id), category.id).toBeDefined()
+      }
+    })
+
+    it('every detail-bearing Service resolves its detail via getServiceBySlug (detail page path)', () => {
+      const detailServices = getAllServices().filter(s => s.detail)
+      expect(detailServices.length).toBeGreaterThan(0)
+      for (const service of detailServices) {
+        // `[slug].vue`: canonical Service detail is the first resolution branch.
+        const resolved = getServiceBySlug(service.id)
+        expect(resolved?.detail, service.id).toBeDefined()
+        expect(service.url, service.id).toBe(`/service-details/${service.id}`)
+      }
+    })
+
+    it('every /service-details slug resolves from one of the two canonical sources only', () => {
+      // The page resolves: canonical Service detail -> canonical Office detail.
+      // No third (TS-module) source exists anymore.
+      const detailSlugs = getAllServices()
+        .filter(s => s.detail)
+        .map(s => s.id)
+      for (const slug of detailSlugs) {
+        const fromService = getServiceBySlug(slug)?.detail
+        const fromOffice = getOfficeDetailBySlug(slug)
+        expect(Boolean(fromService) || Boolean(fromOffice), slug).toBe(true)
+      }
+    })
+
+    it('a first-class Office detail still resolves via getOfficeDetailBySlug', () => {
+      const detail = getOfficeDetailBySlug('civil-registry')
+      expect(detail).toBeDefined()
+      expect(detail!.title).toBeTruthy()
+      expect(detail!.office).toBeDefined()
     })
   })
 })

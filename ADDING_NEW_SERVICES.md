@@ -4,11 +4,11 @@ Services now live in **one place**: `app/config/services.json`. You do **not** n
 to touch any TypeScript to add a Service. A non-developer can add or edit a
 Service by editing JSON, validated by a schema and a `pnpm validate` check.
 
-> Status: this single-source workflow is live for the **Certificates** category
-> (the tracer-bullet slice, #184). Other categories are mid-migration (#189) and
-> some of their detail pages still live in `app/utils/serviceDetailsContent.ts`.
-> When adding to those, follow the same JSON-first steps below — the
-> configHelper accessor reads `services.json` for every category.
+> Status: this single-source workflow is live for **every** Service Category.
+> The legacy `app/utils/categoriesContent.ts` and
+> `app/utils/serviceDetailsContent.ts` modules have been removed (#189) — the
+> configHelper accessor reads `categories.json` / `services.json` for every
+> category, and that is the only source.
 
 ## The single source: `app/config/services.json`
 
@@ -94,8 +94,11 @@ must be exactly `/service-details/<id>`.**
 
 If you introduce a new `categoryId`, add a matching category record to
 `app/config/categories.json` (schema:
-`app/config/schema/categories.schema.json`). A category may also list
-`offices` (the "Responsible Offices" cards on the category page).
+`app/config/schema/categories.schema.json`). Categories no longer carry an
+inline `offices` array — the "Responsible Offices" cards on the category page
+are derived from the Offices that provide the category's Services (via each
+Service's `providedBy` ref). To make an Office appear there, set `providedBy`
+on the Service and add the Office to `app/config/offices.json`.
 
 ### 4. Validate
 
