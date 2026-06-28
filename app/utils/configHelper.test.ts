@@ -6,6 +6,7 @@ import {
   getCategorySeoDescription,
   getMergedSiteConfig,
   getOfficeBySlug,
+  getOfficeContactCard,
   getOfficeDetailBySlug,
   getOfficeForService,
   getOfficeGroupBySlug,
@@ -17,6 +18,7 @@ import {
   getOgImageRouteConfig,
   getServiceBySlug,
   getServiceCategories,
+  getServiceOfficeCard,
   getServicesByCategory,
   getServiceSeoDescription,
   getSiteConfig,
@@ -534,16 +536,13 @@ describe('configHelper', () => {
       expect(relatedLinks.some(l => l.startsWith('/offices/'))).toBe(false)
     })
 
-    it('every detail.office.location matches its providedBy Office (no drift)', () => {
-      // The inline detail.office copy must not diverge from the canonical Office
-      // it is providedBy. Guards the whole class, not just the migrated Services.
+    it('no providedBy-backed Service carries an inline detail.office (#212)', () => {
+      // The inline copy is gone: a Service with a first-class providing Office
+      // single-sources its contact card off that Office, never a stored copy.
       for (const service of getAllServices()) {
-        if (!service.detail?.office || !service.providedBy)
+        if (!service.providedBy || !getOfficeBySlug(service.providedBy))
           continue
-        const office = getOfficeBySlug(service.providedBy)
-        if (!office)
-          continue
-        expect(service.detail.office.location, service.id).toBe(office.location)
+        expect(service.detail?.office, service.id).toBeUndefined()
       }
     })
 
@@ -583,6 +582,61 @@ describe('configHelper', () => {
       for (const id of MIGRATED_ADMIN) {
         expect(ids, id).toContain(id)
       }
+    })
+  })
+
+  describe('service-details Office card derivation (#212)', () => {
+    it('getOfficeContactCard synthesises the card from the Office\'s own fields', () => {
+      const office = getOfficeBySlug('civil-registry')!
+      const card = getOfficeContactCard(office)
+      expect(card).toEqual({
+        name: office.name,
+        location: office.location ?? '',
+        phone: office.phone,
+        mobile: office.mobile,
+        email: office.email,
+        facebook: office.facebook,
+        hours: office.hours ?? '',
+      })
+    })
+
+    it('getServiceOfficeCard derives a providedBy Service\'s card straight from its Office (no drift possible)', () => {
+      // The card is read from the canonical Office entity, NOT from any inline
+      // copy on the Service. By construction it cannot diverge from the Office
+      // page, which renders the same getOfficeContactCard output.
+      for (const service of getAllServices()) {
+        const office = getOfficeForService(service)
+        if (!office)
+          continue
+        const card = getServiceOfficeCard(service)
+        expect(card, service.id).toEqual(getOfficeContactCard(office))
+        // And it reflects the live Office fields, not a stored value.
+        expect(card!.name, service.id).toBe(office.name)
+        expect(card!.location, service.id).toBe(office.location ?? '')
+        expect(card!.hours, service.id).toBe(office.hours ?? '')
+      }
+    })
+
+    it('birth-certificate renders the civil-registry Office card via providedBy', () => {
+      const birth = getServiceBySlug('birth-certificate')!
+      expect(birth.detail?.office).toBeUndefined()
+      const office = getOfficeBySlug('civil-registry')!
+      expect(getServiceOfficeCard(birth)).toEqual(getOfficeContactCard(office))
+    })
+
+    it('falls back to the inline free-text office for a providerless Service', () => {
+      // BPLO business services have no first-class Office yet: the card comes
+      // from the Service's inline detail.office.
+      const biz = getServiceBySlug('business-permit-new')!
+      expect(biz.providedBy).toBeUndefined()
+      expect(getOfficeForService(biz)).toBeUndefined()
+      const card = getServiceOfficeCard(biz)
+      expect(card).toBeDefined()
+      expect(card).toEqual(biz.detail?.office)
+    })
+
+    it('returns undefined when a Service has neither a providing Office nor an inline office', () => {
+      expect(getServiceOfficeCard({ providedBy: undefined } as never)).toBeUndefined()
     })
   })
 

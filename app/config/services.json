@@ -117,15 +117,6 @@
             "answer": "Both are certified true copies. PSA copies are nationally-recognized and required for passport/visa applications. Local copies are accepted for most local transactions and school enrollment."
           }
         ],
-        "office": {
-          "name": "City Civil Registry",
-          "location": "1st Floor, Administrative Building, Las Piñas City Hall Compound",
-          "phone": "(02) 8253-4370",
-          "mobile": "0998 587 9659",
-          "email": "lpcivilreg@gmail.com",
-          "facebook": "https://www.facebook.com/civilreglaspinas",
-          "hours": "Mon-Thu: 8AM - 7PM"
-        },
         "relatedServices": [
           {
             "title": "Marriage Certificate",
@@ -262,15 +253,6 @@
             "answer": "Only marriages registered in this city are available. Request from the city where you were married or from PSA."
           }
         ],
-        "office": {
-          "name": "City Civil Registry",
-          "location": "1st Floor, Administrative Building, Las Piñas City Hall Compound",
-          "phone": "(02) 8253-4370",
-          "mobile": "0998 587 9659",
-          "email": "lpcivilreg@gmail.com",
-          "facebook": "https://www.facebook.com/civilreglaspinas",
-          "hours": "Mon-Thu: 8AM - 7PM"
-        },
         "relatedServices": [
           {
             "title": "Birth Certificate",
@@ -393,15 +375,6 @@
             "answer": "Evaluator shall prepare documents for posting within 10 days, and the release of Certified True Copy is expiration of 10 days posting period."
           }
         ],
-        "office": {
-          "name": "City Civil Registry",
-          "location": "1st Floor, Administrative Building, Las Piñas City Hall Compound",
-          "phone": "(02) 8253-4370",
-          "mobile": "0998 587 9659",
-          "email": "lpcivilreg@gmail.com",
-          "facebook": "https://www.facebook.com/civilreglaspinas",
-          "hours": "Mon-Thu: 8AM - 7PM"
-        },
         "relatedServices": [
           {
             "title": "Birth Certificate",
@@ -1524,14 +1497,6 @@
             "answer": "Yes, all vaccines provided are DOH-approved and safe."
           }
         ],
-        "office": {
-          "name": "City Health Office",
-          "location": "City Hall Compound, Las Piñas City",
-          "phone": "(02) 8367-3406",
-          "mobile": "0998 977 8597",
-          "facebook": "https://www.facebook.com/LPCityhealth",
-          "hours": "Mon-Fri: 8AM - 5PM"
-        },
         "relatedServices": []
       }
     },
@@ -1851,12 +1816,6 @@
             "answer": "Yes, for emergency cases within the city."
           }
         ],
-        "office": {
-          "name": "CDRRMO",
-          "location": "Command Center, Las Piñas City",
-          "phone": "(02) 8290-6500",
-          "hours": "24/7 Operations"
-        },
         "relatedServices": []
       }
     },
@@ -2029,12 +1988,6 @@
             "answer": "Indigent families and individuals in crisis situations."
           }
         ],
-        "office": {
-          "name": "CSWDO",
-          "location": "City Hall, Ground Floor, Las Piñas City Hall Compound",
-          "phone": "0916 284 0885",
-          "hours": "Mon-Thu: 8AM - 7PM"
-        },
         "relatedServices": [
           {
             "title": "Senior Citizen Services",
@@ -2258,12 +2211,6 @@
             "answer": "Usually 0.5% to 0.75% of the selling price or zonal value, whichever is higher."
           }
         ],
-        "office": {
-          "name": "City Assessor's Office",
-          "location": "City Hall, Ground Floor, Las Piñas City Hall Compound",
-          "phone": "(078) 326-5001",
-          "hours": "Mon-Thu: 8AM - 7PM"
-        },
         "relatedServices": []
       }
     },
