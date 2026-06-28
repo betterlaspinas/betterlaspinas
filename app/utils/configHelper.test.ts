@@ -559,6 +559,15 @@ describe('configHelper', () => {
         expect(providedTitles.has(name), name).toBe(false)
     })
 
+    it('charter-backed Offices cite the Citizen\'s Charter as their data source', () => {
+      const charterUrl = 'https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf'
+      for (const id of ['civil-registry', 'city-treasurer', 'city-assessor', 'cswdo', 'city-engineering', 'city-planning', 'city-health']) {
+        const office = getOfficeBySlug(id)
+        expect(office?.sourceUrl, id).toBe(charterUrl)
+        expect(office?.sourceName, id).toContain('Citizen')
+      }
+    })
+
     it('getOfficesByGroup frontline-services contains all 9 frontline offices', () => {
       const ids = getOfficesByGroup('frontline-services').map(o => o.id)
       // civil-registry + 8 migrated frontline

@@ -529,6 +529,14 @@ export interface Office {
    */
   additionalServices?: string[]
   /**
+   * Official source for this Office's directory data — e.g. the Las Piñas
+   * Citizen's Charter PDF. Rendered as a "Data source" card on the Office page
+   * so the information is auditable. `sourceUrl` is the link, `sourceName` its
+   * human label. Mirrors `ServiceDetail.sourceUrl` / `sourceName`.
+   */
+  sourceUrl?: string
+  sourceName?: string
+  /**
    * Optional rich detail-page content, mirroring the canonical
    * `ServiceItem.detail` block (#184). Present only for Offices with a dedicated
    * `/offices/<id>` page (#207); its presence gates that route (404 otherwise).

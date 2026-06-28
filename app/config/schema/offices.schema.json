@@ -75,6 +75,14 @@
           "description": "Office-only service names rendered as plain, non-clickable cards on the Office page. NOT Service records (absent from search and Category grids); deduped against the Services this Office providedBy. A service graduates into services.json with providedBy once it has a detail page.",
           "items": { "type": "string" }
         },
+        "sourceUrl": {
+          "type": "string",
+          "description": "Official source link for this Office's data (e.g. the Citizen's Charter PDF). Rendered as a Data source card on the Office page."
+        },
+        "sourceName": {
+          "type": "string",
+          "description": "Human label for sourceUrl (e.g. 'Citizen's Charter 2022 (1st Edition)')."
+        },
         "detail": { "$ref": "#/definitions/officeDetail" }
       }
     },

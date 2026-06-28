@@ -170,6 +170,25 @@ const mapsUrl = computed(
         </div>
       </section>
 
+      <!-- data source / verification -->
+      <UiCard v-if="office.sourceUrl" class="mt-8 bg-gray-50">
+        <h2 class="font-semibold text-gray-900 mb-2 flex items-center gap-2">
+          <i class="bi bi-patch-check text-primary-600" /> Data source
+        </h2>
+        <p class="text-sm text-gray-600 mb-4">
+          This office's details are transcribed from official Las Piñas City documentation. Verify against the original source before relying on them.
+        </p>
+        <a
+          :href="office.sourceUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-sm font-medium text-primary-600 hover:text-primary-700 transition-colors"
+        >
+          {{ office.sourceName || 'Citizen\'s Charter' }}
+          <i class="bi bi-box-arrow-up-right text-xs" />
+        </a>
+      </UiCard>
+
       <!-- back link -->
       <NuxtLink to="/government" class="mt-8 inline-flex items-center gap-2 text-sm text-gray-500 hover:text-primary-600">
         <i class="bi bi-arrow-left" /> All government offices
