@@ -30,7 +30,8 @@ if (!service) {
 // canonical Office. getServiceOfficeCard falls back to the Service's inline
 // free-text `detail.office` for providers not yet first-class Offices (e.g.
 // BPLO business services). The office-detail / legacy-module paths already
-// synthesise/carry their own `office`, so reuse it directly.
+// synthesise/carry their own `office`, so reuse it directly. `detail.office` is
+// now optional, so officeInfo may be undefined — the card is `v-if`-guarded.
 const officeInfo = canonical?.detail
   ? getServiceOfficeCard(canonical)
   : service.office
@@ -275,7 +276,7 @@ function toggleFaq(index: number) {
               <p v-if="officeInfo.facebook" class="text-sm text-gray-600 mt-1 flex items-center gap-2">
                 <i class="bi bi-facebook" /> <a :href="officeInfo.facebook" target="_blank" rel="noopener noreferrer" class="hover:underline text-primary-600">Facebook Page</a>
               </p>
-              <p class="text-sm text-gray-600 mt-1 flex items-center gap-2">
+              <p v-if="officeInfo.hours" class="text-sm text-gray-600 mt-1 flex items-center gap-2">
                 <i class="bi bi-clock" /> {{ officeInfo.hours }}
               </p>
             </UiCard>
