@@ -936,11 +936,9 @@ describe('configHelper', () => {
     })
   })
 
-  // #189 closer: categoriesContent.ts and serviceDetailsContent.ts are deleted.
-  // These tests pin the contract the pages now rely on — every page resolves
-  // purely through the canonical configHelper accessors, with no TS-module
-  // fallback. They mirror the exact resolution paths in `[category].vue` and
-  // `[slug].vue`.
+  // Pin the contract the pages rely on — every page resolves purely through the
+  // canonical configHelper accessors. Mirrors the exact resolution paths in
+  // `[category].vue` and `[slug].vue`.
   describe('canonical-only resolution (#189)', () => {
     it('every visible Category resolves through getCategoryBySlug (category page path)', () => {
       const categories = getServiceCategories()

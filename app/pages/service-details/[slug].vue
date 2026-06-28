@@ -26,9 +26,9 @@ if (!service) {
 // `providedBy` (mirrors getOfficeForService) so it can never drift from the
 // canonical Office. getServiceOfficeCard falls back to the Service's inline
 // free-text `detail.office` for providers not yet first-class Offices (e.g.
-// BPLO business services). The office-detail / legacy-module paths already
-// synthesise/carry their own `office`, so reuse it directly. `detail.office` is
-// now optional, so officeInfo may be undefined — the card is `v-if`-guarded.
+// BPLO business services). The office-detail path (getOfficeDetailBySlug)
+// already synthesises its own `office`, so reuse it directly. officeInfo may be
+// undefined when neither source resolves — the card is `v-if`-guarded.
 const officeInfo = canonical?.detail
   ? getServiceOfficeCard(canonical)
   : service.office

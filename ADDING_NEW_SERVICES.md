@@ -5,9 +5,7 @@ to touch any TypeScript to add a Service. A non-developer can add or edit a
 Service by editing JSON, validated by a schema and a `pnpm validate` check.
 
 > Status: this single-source workflow is live for **every** Service Category.
-> The legacy `app/utils/categoriesContent.ts` and
-> `app/utils/serviceDetailsContent.ts` modules have been removed (#189) — the
-> configHelper accessor reads `categories.json` / `services.json` for every
+> The configHelper accessor reads `categories.json` / `services.json` for every
 > category, and that is the only source.
 
 ## The single source: `app/config/services.json`
