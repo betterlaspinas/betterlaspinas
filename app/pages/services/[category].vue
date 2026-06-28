@@ -4,14 +4,13 @@ usePageOgImage()
 const route = useRoute()
 const categorySlug = route.params.category as string
 
-// `certificates` is sourced canonically (categories.json + services.json) via
-// the accessor. Every other Category still comes from categoriesContent.ts
-// until it is ported in #186 and the module is removed in #189.
-const canonical = isCanonicalCategory(categorySlug)
+// Service Categories are sourced canonically (categories.json + services.json)
+// through the configHelper accessors — there is no other source. The
+// `isCanonicalCategory` gate keeps non-resident Categories (`government`,
+// `online`, which migrate in their own slices) off this route.
+const category = isCanonicalCategory(categorySlug)
   ? getCategoryBySlug(categorySlug)
   : undefined
-const legacy = canonical ? undefined : getCategoryContent(categorySlug)
-const category = canonical ?? legacy
 
 if (!category) {
   throw createError({
@@ -26,44 +25,25 @@ if (!category) {
 // non-interactive, matching the original behavior. Only a real destination
 // (e.g. /service-details/<id>) makes the card a link.
 const categoryHref = `/services/${categorySlug}`
-const services = canonical
-  ? getServicesByCategory(categorySlug).map(service => ({
-      id: service.id,
-      icon: service.icon,
-      title: service.title,
-      description: service.description,
-      fee: service.fee,
-      time: service.processingTime,
-      link: service.url && service.url !== categoryHref ? service.url : undefined,
-    }))
-  : legacy!.services.map(service => ({
-      id: service.id,
-      icon: service.icon,
-      title: service.title,
-      description: service.description,
-      fee: service.fee,
-      time: service.time,
-      link: service.link,
-    }))
-// Responsible Offices. For a canonical Category, Offices are first-class
-// entities (#185) resolved from the Category's Services via providedBy —
-// Office <-> Category is many-to-many through the Services. Legacy categories
-// still carry inline office cards from categoriesContent.ts until ported.
-const offices = canonical
-  ? getOfficesForCategory(categorySlug).map(office => ({
-      title: office.name,
-      icon: office.icon,
-      description: office.description,
-      link: office.link,
-    }))
-  : (legacy?.offices ?? [])
-      .filter(office => !office.hidden)
-      .map(office => ({
-        title: office.title,
-        icon: office.icon,
-        description: office.description,
-        link: office.link,
-      }))
+const services = getServicesByCategory(categorySlug).map(service => ({
+  id: service.id,
+  icon: service.icon,
+  title: service.title,
+  description: service.description,
+  fee: service.fee,
+  time: service.processingTime,
+  link: service.url && service.url !== categoryHref ? service.url : undefined,
+}))
+
+// Responsible Offices are first-class entities (#185) resolved from the
+// Category's Services via `providedBy` — Office <-> Category is many-to-many
+// through the Services.
+const offices = getOfficesForCategory(categorySlug).map(office => ({
+  title: office.name,
+  icon: office.icon,
+  description: office.description,
+  link: office.link,
+}))
 </script>
 
 <template>

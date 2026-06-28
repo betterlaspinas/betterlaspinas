@@ -6,16 +6,13 @@ const slug = route.params.slug as string
 
 // Canonical read path: a Service in services.json (or a first-class Office in
 // offices.json, #201) may carry an optional `detail` block. We merge in the
-// `title` so the existing template renders unchanged.
+// `title` so the existing template renders unchanged. Resolution order:
+// canonical Service detail → canonical Office detail. There is no other source.
 const canonical = getServiceBySlug(slug)
 
-// Transitional fallback: not-yet-migrated service-details still live in the TS
-// module and migrate in their own slices (see #189). Once every detail is
-// canonical this fallback (and getServiceDetail) is removed. Resolution order:
-// canonical Service detail → canonical Office detail → legacy TS module.
 const service = canonical?.detail
   ? { ...canonical.detail, title: canonical.title }
-  : (getOfficeDetailBySlug(slug) ?? getServiceDetail(slug))
+  : getOfficeDetailBySlug(slug)
 
 if (!service) {
   throw createError({
@@ -29,9 +26,9 @@ if (!service) {
 // `providedBy` (mirrors getOfficeForService) so it can never drift from the
 // canonical Office. getServiceOfficeCard falls back to the Service's inline
 // free-text `detail.office` for providers not yet first-class Offices (e.g.
-// BPLO business services). The office-detail / legacy-module paths already
-// synthesise/carry their own `office`, so reuse it directly. `detail.office` is
-// now optional, so officeInfo may be undefined — the card is `v-if`-guarded.
+// BPLO business services). The office-detail path (getOfficeDetailBySlug)
+// already synthesises its own `office`, so reuse it directly. officeInfo may be
+// undefined when neither source resolves — the card is `v-if`-guarded.
 const officeInfo = canonical?.detail
   ? getServiceOfficeCard(canonical)
   : service.office

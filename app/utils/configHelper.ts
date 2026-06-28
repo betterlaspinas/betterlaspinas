@@ -351,10 +351,9 @@ export function getServicesByCategory(slug: string): ServiceItem[] {
 
 /**
  * Service Categories whose page is sourced canonically (categories.json +
- * services.json) through these accessors. #186 ported every resident-facing
- * Service Category here; the legacy `categoriesContent.ts` module is removed in
- * the #183 closer (#189). The two remaining hidden Categories (`government`,
- * `online`) are not resident Service Categories and migrate in their own slices.
+ * services.json) through these accessors. The two remaining hidden Categories
+ * (`government`, `online`) are not resident Service Categories and migrate in
+ * their own slices.
  */
 const CANONICAL_CATEGORY_SLUGS = new Set([
   'certificates',
