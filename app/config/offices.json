@@ -140,7 +140,7 @@
     },
     {
       "id": "cswdo",
-      "name": "City Social Welfare & Development Office",
+      "name": "City Social Welfare & Development Office (CSWDO)",
       "groupId": "frontline-services",
       "icon": "bi-people",
       "description": "Social welfare programs, indigency certificates, AICS, PWD and senior citizen assistance",
@@ -204,7 +204,7 @@
     },
     {
       "id": "cdrrmo",
-      "name": "City Disaster Risk Reduction & Management Office",
+      "name": "City Disaster Risk Reduction & Management Office (CDRRMO)",
       "groupId": "frontline-services",
       "icon": "bi-shield-exclamation",
       "description": "24/7 emergency response, rescue operations, and disaster preparedness programs",
