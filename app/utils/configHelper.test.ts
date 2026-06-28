@@ -534,14 +534,17 @@ describe('configHelper', () => {
       expect(relatedLinks.some(l => l.startsWith('/offices/'))).toBe(false)
     })
 
-    it('detail.office.location matches the canonical Office (no drift)', () => {
-      // The inline detail.office copy must not diverge from the providing Office.
-      const vaccination = getServiceBySlug('vaccination')!
-      expect(vaccination.detail!.office.location).toBe(
-        getOfficeBySlug('city-health')!.location,
-      )
-      const er = getServiceBySlug('emergency-response')!
-      expect(er.detail!.office.location).toBe(getOfficeBySlug('cdrrmo')!.location)
+    it('every detail.office.location matches its providedBy Office (no drift)', () => {
+      // The inline detail.office copy must not diverge from the canonical Office
+      // it is providedBy. Guards the whole class, not just the migrated Services.
+      for (const service of getAllServices()) {
+        if (!service.detail?.office || !service.providedBy)
+          continue
+        const office = getOfficeBySlug(service.providedBy)
+        if (!office)
+          continue
+        expect(service.detail.office.location, service.id).toBe(office.location)
+      }
     })
 
     it('getOfficesByGroup frontline-services contains all 9 frontline offices', () => {
