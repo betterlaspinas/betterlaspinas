@@ -365,6 +365,11 @@ export interface Faq {
  * Office-contact block embedded in a Service's `detail` (the "Office
  * Information" card on a /service-details page). This is NOT the first-class
  * Office entity — see `Office` / `OfficeGroup` below and offices.json.
+ *
+ * Only present (as free text) for Services whose provider is NOT yet a
+ * first-class Office (e.g. BPLO business services with no `providedBy`).
+ * providedBy-backed Services derive the card from their canonical Office via
+ * `getServiceOfficeCard`, so they carry no inline copy (#212, single source).
  */
 export interface ServiceDetailOffice {
   name: string
@@ -392,7 +397,7 @@ export interface ServiceDetail {
   processSteps: ProcessStep[]
   requirements: RequirementGroup[]
   faqs: Faq[]
-  office: ServiceDetailOffice
+  office?: ServiceDetailOffice
   relatedServices: RelatedService[]
   onlineLink?: string
   sourceUrl?: string

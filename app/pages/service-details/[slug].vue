@@ -25,6 +25,16 @@ if (!service) {
   })
 }
 
+// Single-source the "Office Information" card off the providing Office via
+// `providedBy` (mirrors getOfficeForService) so it can never drift from the
+// canonical Office. getServiceOfficeCard falls back to the Service's inline
+// free-text `detail.office` for providers not yet first-class Offices (e.g.
+// BPLO business services). The office-detail / legacy-module paths already
+// synthesise/carry their own `office`, so reuse it directly.
+const officeInfo = canonical?.detail
+  ? getServiceOfficeCard(canonical)
+  : service.office
+
 const openFaq = ref<number | null>(null)
 
 const { lguName } = useConfig()
@@ -243,30 +253,30 @@ function toggleFaq(index: number) {
 
           <!-- Sidebar -->
           <div class="space-y-4">
-            <UiCard>
+            <UiCard v-if="officeInfo">
               <h4 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
                 <i class="bi bi-building text-primary-600" /> Office Information
               </h4>
               <p class="font-medium text-gray-900">
-                {{ service.office.name }}
+                {{ officeInfo.name }}
               </p>
               <p class="text-sm text-gray-600 mt-2">
-                {{ service.office.location }}
+                {{ officeInfo.location }}
               </p>
-              <p v-if="service.office.phone" class="text-sm text-gray-600 mt-1 flex items-center gap-2">
-                <i class="bi bi-telephone" /> {{ service.office.phone }}
+              <p v-if="officeInfo.phone" class="text-sm text-gray-600 mt-1 flex items-center gap-2">
+                <i class="bi bi-telephone" /> {{ officeInfo.phone }}
               </p>
-              <p v-if="service.office.mobile" class="text-sm text-gray-600 mt-1 flex items-center gap-2">
-                <i class="bi bi-phone" /> {{ service.office.mobile }}
+              <p v-if="officeInfo.mobile" class="text-sm text-gray-600 mt-1 flex items-center gap-2">
+                <i class="bi bi-phone" /> {{ officeInfo.mobile }}
               </p>
-              <p v-if="service.office.email" class="text-sm text-gray-600 mt-1 flex items-center gap-2">
-                <i class="bi bi-envelope" /> <a :href="`mailto:${service.office.email}`" class="hover:underline text-primary-600">{{ service.office.email }}</a>
+              <p v-if="officeInfo.email" class="text-sm text-gray-600 mt-1 flex items-center gap-2">
+                <i class="bi bi-envelope" /> <a :href="`mailto:${officeInfo.email}`" class="hover:underline text-primary-600">{{ officeInfo.email }}</a>
               </p>
-              <p v-if="service.office.facebook" class="text-sm text-gray-600 mt-1 flex items-center gap-2">
-                <i class="bi bi-facebook" /> <a :href="service.office.facebook" target="_blank" rel="noopener noreferrer" class="hover:underline text-primary-600">Facebook Page</a>
+              <p v-if="officeInfo.facebook" class="text-sm text-gray-600 mt-1 flex items-center gap-2">
+                <i class="bi bi-facebook" /> <a :href="officeInfo.facebook" target="_blank" rel="noopener noreferrer" class="hover:underline text-primary-600">Facebook Page</a>
               </p>
               <p class="text-sm text-gray-600 mt-1 flex items-center gap-2">
-                <i class="bi bi-clock" /> {{ service.office.hours }}
+                <i class="bi bi-clock" /> {{ officeInfo.hours }}
               </p>
             </UiCard>
 

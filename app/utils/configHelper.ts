@@ -19,6 +19,7 @@ import type {
   OgImageRouteConfig,
   SeoRouteConfig,
   ServiceDetail,
+  ServiceDetailOffice,
   ServiceItem,
   ServicesConfig,
   SiteConfig,
@@ -457,16 +458,42 @@ export function getOfficeDetailBySlug(
   return {
     ...office.detail,
     title: office.name,
-    office: {
-      name: office.name,
-      location: office.location ?? '',
-      phone: office.phone,
-      mobile: office.mobile,
-      email: office.email,
-      facebook: office.facebook,
-      hours: office.hours ?? '',
-    },
+    office: getOfficeContactCard(office),
   }
+}
+
+/**
+ * Synthesise the detail-page "Office Information" card from a first-class
+ * Office's own top-level fields. The Office entity is the single source of
+ * truth for contact data — this never reads an inline `detail.office` copy, so
+ * no drift between a Service/Office page and its canonical Office is possible.
+ */
+export function getOfficeContactCard(office: Office): ServiceDetailOffice {
+  return {
+    name: office.name,
+    location: office.location ?? '',
+    phone: office.phone,
+    mobile: office.mobile,
+    email: office.email,
+    facebook: office.facebook,
+    hours: office.hours ?? '',
+  }
+}
+
+/**
+ * Resolve the "Office Information" card for a /service-details/<slug> page.
+ * Single-sources off the providing Office when the Service has `providedBy`
+ * (mirrors getOfficeForService); otherwise falls back to the Service's inline
+ * free-text `detail.office` for providers not yet first-class Offices (e.g.
+ * BPLO business services). Returns undefined when neither resolves.
+ */
+export function getServiceOfficeCard(
+  service: ServiceItem,
+): ServiceDetailOffice | undefined {
+  const office = getOfficeForService(service)
+  if (office)
+    return getOfficeContactCard(office)
+  return service.detail?.office
 }
 
 /**
