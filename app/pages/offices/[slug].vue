@@ -10,7 +10,7 @@ const slug = route.params.slug as string
 // directory-record layout (identity, contact, visit, services) rather than the
 // process/requirements/FAQ shape used by /service-details.
 const office = getOfficeBySlug(slug)
-if (!office?.detail) {
+if (!office) {
   throw createError({
     statusCode: 404,
     statusMessage: 'Office not found',
@@ -23,11 +23,19 @@ const groupName = computed(() => getOfficeGroupBySlug(office.groupId)?.name ?? '
 // Services this Office provides (via `providedBy`). Each links to its own
 // /service-details page ONLY when that Service has a `detail` block; catalog-
 // only Services have no page and render as a plain, non-clickable card.
-const services = computed(() =>
-  getAllServices()
+// `office.additionalServices` are office-only offerings that are not Service
+// records yet (no page, absent from search): appended as plain cards, deduped
+// by name so a graduated service never appears twice.
+const services = computed(() => {
+  const provided = getAllServices()
     .filter(s => s.providedBy === office.id && !s.hidden)
-    .map(s => ({ name: s.title, link: s.detail ? `/service-details/${s.id}` : undefined })),
-)
+    .map(s => ({ name: s.title, link: s.detail ? `/service-details/${s.id}` : undefined }))
+  const providedNames = new Set(provided.map(s => s.name))
+  const extra = (office.additionalServices ?? [])
+    .filter(name => !providedNames.has(name))
+    .map(name => ({ name, link: undefined as string | undefined }))
+  return [...provided, ...extra]
+})
 
 // No geo data on the Office schema — link to Google Maps by address.
 const mapsUrl = computed(
@@ -47,18 +55,20 @@ const mapsUrl = computed(
     <div class="container mx-auto px-4 pb-12 max-w-5xl">
       <!-- identity header + quick actions -->
       <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-5 py-6">
-        <div class="flex items-center gap-4">
-          <div class="flex-none w-14 h-14 rounded-xl bg-primary-100 text-primary-600 grid place-items-center text-2xl">
-            <i :class="`bi ${office.icon || 'bi-building'}`" />
-          </div>
-          <div>
-            <UiBadge v-if="groupName" :text="groupName" icon="bi-people" variant="primary" size="sm" class="mb-2" />
-            <h1 class="text-2xl font-bold text-gray-900 leading-tight">
-              {{ office.name }}
-            </h1>
-            <p class="text-gray-500 mt-1 max-w-xl">
-              {{ office.description }}
-            </p>
+        <div>
+          <UiBadge v-if="groupName" :text="groupName" icon="bi-people" variant="primary" size="sm" class="mb-2" />
+          <div class="flex items-center gap-4">
+            <div class="flex-none w-14 h-14 rounded-xl bg-primary-100 text-primary-600 grid place-items-center text-2xl">
+              <i :class="`bi ${office.icon || 'bi-building'}`" />
+            </div>
+            <div>
+              <h1 class="text-2xl font-bold text-gray-900 leading-tight">
+                {{ office.name }}
+              </h1>
+              <p class="text-gray-500 mt-1 max-w-xl">
+                {{ office.description }}
+              </p>
+            </div>
           </div>
         </div>
         <div class="flex flex-wrap gap-2 md:flex-col md:items-stretch">
@@ -159,6 +169,25 @@ const mapsUrl = computed(
           </component>
         </div>
       </section>
+
+      <!-- data source / verification -->
+      <UiCard v-if="office.sourceUrl" class="mt-8 bg-gray-50">
+        <h2 class="font-semibold text-gray-900 mb-2 flex items-center gap-2">
+          <i class="bi bi-patch-check text-primary-600" /> Data source
+        </h2>
+        <p class="text-sm text-gray-600 mb-4">
+          This office's details are transcribed from official Las Piñas City documentation. Verify against the original source before relying on them.
+        </p>
+        <a
+          :href="office.sourceUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-sm font-medium text-primary-600 hover:text-primary-700 transition-colors"
+        >
+          {{ office.sourceName || 'Citizen\'s Charter' }}
+          <i class="bi bi-box-arrow-up-right text-xs" />
+        </a>
+      </UiCard>
 
       <!-- back link -->
       <NuxtLink to="/government" class="mt-8 inline-flex items-center gap-2 text-sm text-gray-500 hover:text-primary-600">

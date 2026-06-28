@@ -519,6 +519,24 @@ export interface Office {
   hours?: string
   hidden?: boolean
   /**
+   * Office-only services offered here that are NOT canonical Service records:
+   * no `/service-details` page, absent from search and every Category grid
+   * (which is why they can't live in services.json yet — `useSearch` reads all
+   * of it). Rendered as plain, non-clickable cards on the Office page, deduped
+   * against the Services this Office `providedBy`. When a real detail page is
+   * authored the service graduates into services.json with `providedBy` and
+   * drops off this list. Names only.
+   */
+  additionalServices?: string[]
+  /**
+   * Official source for this Office's directory data — e.g. the Las Piñas
+   * Citizen's Charter PDF. Rendered as a "Data source" card on the Office page
+   * so the information is auditable. `sourceUrl` is the link, `sourceName` its
+   * human label. Mirrors `ServiceDetail.sourceUrl` / `sourceName`.
+   */
+  sourceUrl?: string
+  sourceName?: string
+  /**
    * Optional rich detail-page content, mirroring the canonical
    * `ServiceItem.detail` block (#184). Present only for Offices with a dedicated
    * `/offices/<id>` page (#207); its presence gates that route (404 otherwise).

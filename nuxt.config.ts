@@ -60,10 +60,33 @@ export default defineNuxtConfig({
         'Cache-Control': 'no-cache, must-revalidate',
       },
     },
-    // 301: legacy Office URL → canonical Office namespace (#207).
-    // Pattern covers all migrated Office slugs; currently only city-civil-registry.
+    // 301: legacy Office URLs → canonical Office namespace (#207, #202).
     '/service-details/city-civil-registry': {
       redirect: { to: '/offices/civil-registry', statusCode: 301 },
+    },
+    '/service-details/city-treasurer': {
+      redirect: { to: '/offices/city-treasurer', statusCode: 301 },
+    },
+    '/service-details/city-assessor': {
+      redirect: { to: '/offices/city-assessor', statusCode: 301 },
+    },
+    '/service-details/city-engineering': {
+      redirect: { to: '/offices/city-engineering', statusCode: 301 },
+    },
+    '/service-details/city-planning': {
+      redirect: { to: '/offices/city-planning', statusCode: 301 },
+    },
+    '/service-details/city-agriculture': {
+      redirect: { to: '/offices/city-agriculture', statusCode: 301 },
+    },
+    '/service-details/city-budget': {
+      redirect: { to: '/offices/city-budget', statusCode: 301 },
+    },
+    '/service-details/city-accounting': {
+      redirect: { to: '/offices/city-accounting', statusCode: 301 },
+    },
+    '/service-details/city-general-services': {
+      redirect: { to: '/offices/city-general-services', statusCode: 301 },
     },
   },
   security: {
