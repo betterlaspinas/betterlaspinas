@@ -23,11 +23,19 @@ const groupName = computed(() => getOfficeGroupBySlug(office.groupId)?.name ?? '
 // Services this Office provides (via `providedBy`). Each links to its own
 // /service-details page ONLY when that Service has a `detail` block; catalog-
 // only Services have no page and render as a plain, non-clickable card.
-const services = computed(() =>
-  getAllServices()
+// `office.additionalServices` are office-only offerings that are not Service
+// records yet (no page, absent from search): appended as plain cards, deduped
+// by name so a graduated service never appears twice.
+const services = computed(() => {
+  const provided = getAllServices()
     .filter(s => s.providedBy === office.id && !s.hidden)
-    .map(s => ({ name: s.title, link: s.detail ? `/service-details/${s.id}` : undefined })),
-)
+    .map(s => ({ name: s.title, link: s.detail ? `/service-details/${s.id}` : undefined }))
+  const providedNames = new Set(provided.map(s => s.name))
+  const extra = (office.additionalServices ?? [])
+    .filter(name => !providedNames.has(name))
+    .map(name => ({ name, link: undefined as string | undefined }))
+  return [...provided, ...extra]
+})
 
 // No geo data on the Office schema — link to Google Maps by address.
 const mapsUrl = computed(
@@ -47,18 +55,20 @@ const mapsUrl = computed(
     <div class="container mx-auto px-4 pb-12 max-w-5xl">
       <!-- identity header + quick actions -->
       <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-5 py-6">
-        <div class="flex items-center gap-4">
-          <div class="flex-none w-14 h-14 rounded-xl bg-primary-100 text-primary-600 grid place-items-center text-2xl">
-            <i :class="`bi ${office.icon || 'bi-building'}`" />
-          </div>
-          <div>
-            <UiBadge v-if="groupName" :text="groupName" icon="bi-people" variant="primary" size="sm" class="mb-2" />
-            <h1 class="text-2xl font-bold text-gray-900 leading-tight">
-              {{ office.name }}
-            </h1>
-            <p class="text-gray-500 mt-1 max-w-xl">
-              {{ office.description }}
-            </p>
+        <div>
+          <UiBadge v-if="groupName" :text="groupName" icon="bi-people" variant="primary" size="sm" class="mb-2" />
+          <div class="flex items-center gap-4">
+            <div class="flex-none w-14 h-14 rounded-xl bg-primary-100 text-primary-600 grid place-items-center text-2xl">
+              <i :class="`bi ${office.icon || 'bi-building'}`" />
+            </div>
+            <div>
+              <h1 class="text-2xl font-bold text-gray-900 leading-tight">
+                {{ office.name }}
+              </h1>
+              <p class="text-gray-500 mt-1 max-w-xl">
+                {{ office.description }}
+              </p>
+            </div>
           </div>
         </div>
         <div class="flex flex-wrap gap-2 md:flex-col md:items-stretch">

@@ -547,6 +547,18 @@ describe('configHelper', () => {
       }
     })
 
+    it('civil-registry lists off-catalog offerings via additionalServices, none duplicating a providedBy Service', () => {
+      const office = getOfficeBySlug('civil-registry')!
+      expect(office.additionalServices?.length).toBeGreaterThan(0)
+      // additionalServices are office-only (not Service records) and must not
+      // duplicate a real providedBy Service by name — the page dedupes on this.
+      const providedTitles = new Set(
+        getAllServices().filter(s => s.providedBy === 'civil-registry').map(s => s.title),
+      )
+      for (const name of office.additionalServices!)
+        expect(providedTitles.has(name), name).toBe(false)
+    })
+
     it('getOfficesByGroup frontline-services contains all 9 frontline offices', () => {
       const ids = getOfficesByGroup('frontline-services').map(o => o.id)
       // civil-registry + 8 migrated frontline

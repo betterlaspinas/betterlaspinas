@@ -70,6 +70,11 @@
         "facebook": { "type": "string" },
         "hours": { "type": "string" },
         "hidden": { "type": "boolean" },
+        "additionalServices": {
+          "type": "array",
+          "description": "Office-only service names rendered as plain, non-clickable cards on the Office page. NOT Service records (absent from search and Category grids); deduped against the Services this Office providedBy. A service graduates into services.json with providedBy once it has a detail page.",
+          "items": { "type": "string" }
+        },
         "detail": { "$ref": "#/definitions/officeDetail" }
       }
     },

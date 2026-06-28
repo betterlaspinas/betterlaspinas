@@ -28,6 +28,16 @@
       "email": "lpcivilreg@gmail.com",
       "facebook": "https://www.facebook.com/civilreglaspinas",
       "hours": "Mon-Thu: 8AM - 7PM",
+      "additionalServices": [
+        "Certified True Copy of Civil Documents",
+        "Out-of-Town Birth Registration",
+        "Marriage License Application",
+        "Court Decision Annotation / Registration",
+        "Correction of Clerical Error / Change of First Name (RA 9048)",
+        "Correction of Birth Date or Sex (RA 10172)",
+        "Legitimation & Legal Instruments (RA 9255)",
+        "Advance Endorsement to PSA"
+      ],
       "detail": {
         "fullTitle": "City Civil Registry Office",
         "category": "Certificates",
