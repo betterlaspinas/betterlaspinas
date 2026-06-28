@@ -1,7 +1,7 @@
 # City Engineer's Office — Services
 
 > Source: **Las Piñas Citizen's Charter 2022**, pp. 44–49 (_Frontline Services_).
-> Canonical Office id: `city-engineer`. Transcribed from the rendered PDF pages (the PDF's embedded text is column-scrambled and was NOT trusted). **Verify against the PDF before this becomes canonical data.** Items marked _(verify)_ were partially legible.
+> Canonical Office id: `city-engineering`. Transcribed from the rendered PDF pages (the PDF's embedded text is column-scrambled and was NOT trusted). **Verify against the PDF before this becomes canonical data.** Items marked _(verify)_ were partially legible.
 
 1 service.
 

@@ -1,7 +1,7 @@
 # City Social Welfare and Development Office — Services
 
 > Source: **Las Piñas Citizen's Charter 2022**, pp. 170–177.
-> Canonical Office id: `city-social-welfare`. Transcribed from rendered PDF pages (the PDF's embedded text is column-scrambled and was NOT trusted). **Verify against the PDF before this becomes canonical data.** Items marked _(verify)_ were partially legible.
+> Canonical Office id: `cswdo`. Transcribed from rendered PDF pages (the PDF's embedded text is column-scrambled and was NOT trusted). **Verify against the PDF before this becomes canonical data.** Items marked _(verify)_ were partially legible.
 
 5 services.
 

@@ -1,7 +1,7 @@
 # Human Resources Management Office — Services
 
 > Source: **Las Piñas Citizen's Charter 2022**, pp. 187–201.
-> Canonical Office id: `hr-management`. Transcribed from rendered PDF pages (the PDF's embedded text is column-scrambled and was NOT trusted). **Verify against the PDF before this becomes canonical data.** Items marked _(verify)_ were partially legible.
+> Canonical Office id: `human-resource-management`. Transcribed from rendered PDF pages (the PDF's embedded text is column-scrambled and was NOT trusted). **Verify against the PDF before this becomes canonical data.** Items marked _(verify)_ were partially legible.
 
 12 services.
 
