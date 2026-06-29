@@ -21,7 +21,7 @@
 4. Affidavit of Kinship (for CTC of Death Certificate) → Client / Notary Public
 
 **Fee:** ₱75.00 per page (per copy)
-**Processing time (total):** 3 working days, 3 hours, 50 minutes _(verify)_
+**Processing time (total):** 3 working days, 3 hours, 50 minutes
 
 ---
 
@@ -34,7 +34,7 @@
 Covers **A. Timely Registration** and **B. Late Registration**, with separate requirement sets for legitimate / illegitimate child, and additional affidavits for children born on/after 19 March 2004 (Affidavit to Use the Surname of the Father / AUSF, when applicable).
 
 **Fee:** Timely — none; Late Registration Fee — ₱150.00
-**Processing time:** Timely ~50 minutes; Late Registration ~12 days _(verify)_
+**Processing time:** Timely ~50 minutes; Late Registration ~12 days
 
 ---
 
@@ -46,8 +46,8 @@ Covers **A. Timely Registration** and **B. Late Registration**, with separate re
 
 Out-of-town registration; requirements vary by child's birth year cohort (pre-19 March 2004 vs on/after) and legitimacy, including AUSF where applicable. Endorsed to the LCR/PSA of the place where the subject was born.
 
-**Fee:** ~₱150.00 _(verify)_
-**Processing time:** 1–3 months _(verify)_
+**Fee:** Depends upon the verification to other cities/municipalities
+**Processing time:** 1–3 months
 
 ---
 
@@ -60,8 +60,8 @@ Out-of-town registration; requirements vary by child's birth year cohort (pre-19
 Separate requirement sets for **Filipino citizens** and **foreign nationals** (Embassy legal capacity to marry / certificate, divorce decree or nullity for previously married, death certificate if widowed). Includes Pre-Marriage Counseling & Family Planning certificate (CSWDO and/or City Health Office), and parental consent/advice by age band (18–20 consent; 21–24 parental advice).
 **Reminder:** 10-day posting period; one or both contracting parties must be a resident of Las Piñas City.
 
-**Fee:** ₱275.00 _(verify)_
-**Processing time:** ~12 days (incl. 10-day posting) _(verify)_
+**Fee:** ₱275.00
+**Processing time:** ~12 days
 
 ---
 
@@ -73,8 +73,8 @@ Separate requirement sets for **Filipino citizens** and **foreign nationals** (E
 
 Covers **A. Timely Registration** and **B. Late Registration**; for Muslim couples, Islam Attachment required.
 
-**Fee:** Timely — none; Late Registration Fee — ₱150.00 _(verify)_
-**Processing time:** Timely ~30 minutes; Late ~12 days _(verify)_
+**Fee:** Timely — none; Late Registration Fee — ₱150.00; Solemnizing Fee — ₱150.00 (if solemnized by Judge, Mayor, or Reverend)
+**Processing time:** Timely — 3 days (Certified True Copy available within 3 days of filing); Late — 12 days (CTC available upon expiration of the 10-day posting period)
 
 ---
 
@@ -86,8 +86,8 @@ Covers **A. Timely Registration** and **B. Late Registration**; for Muslim coupl
 
 Covers **A. Timely Registration** and **B. Late Registration**; requirements include Certificate of Death (4 copies), hospital/funeral parlor where decedent died, and Cemetery certification.
 
-**Fee:** Timely — ₱75.00; Late Registration Fee — ₱150.00 _(verify)_
-**Processing time:** Timely ~30 minutes; Late ~12 days _(verify)_
+**Fee:** Timely — ₱75.00; Late Registration Fee — ₱150.00
+**Processing time:** Timely — 2 hours and 30 minutes (Certified True Copy available within 45 minutes); Late — 12 days (CTC available upon expiration of the 10-day posting period)
 
 ---
 
@@ -99,8 +99,8 @@ Covers **A. Timely Registration** and **B. Late Registration**; requirements inc
 
 Requirements include Certificate of Authenticity / Finality of Court Decision (certified copies), and PSA copy + certified copy of the document affected by the court decision.
 
-**Fee:** Registration Fee ₱150.00 + supporting documents (CTC, Birth/Marriage Certificate ~₱75.00/page) _(verify)_
-**Processing time:** 1–3 months _(verify)_
+**Fee:** Registration Fee — ₱150.00; Supporting Documents — ₱75.00 per page; Birth/Marriage Certificate — ₱75.00 per page
+**Processing time:** 1–3 months
 
 ---
 
@@ -115,8 +115,8 @@ Two petition types:
 - **A. Petition for Correction of Clerical Error (CCE)**
 - **B. Petition for Change of First Name (CFN)** — adds newspaper publication (general circulation) and NBI/PNP/employer clearances.
 
-**Fee:** CCE — ₱1,000.00 (+ migrant petition ₱500.00); CFN — ₱3,000.00 (+ migrant petition ₱1,000.00) _(verify)_
-**Processing time:** 2 weeks – 1 month _(verify)_
+**Fee:** CCE — ₱1,000.00 (+ migrant petition ₱500.00); CFN — ₱3,000.00 (+ migrant petition ₱1,000.00)
+**Processing time:** 1–3 months
 
 ---
 
@@ -128,8 +128,8 @@ Two petition types:
 
 Requirements include earliest school/medical/baptismal records, newspaper publication (2× general circulation), and for correction of sex an accredited government physician's certification.
 
-**Fee:** Filing/Processing Fee ₱3,000.00 (+ migrant petition ₱1,000.00) _(verify)_
-**Processing time:** 1–3 months _(verify)_
+**Fee:** Filing/Processing Fee ₱3,000.00 (+ migrant petition ₱1,000.00)
+**Processing time:** 1–3 months
 
 ---
 
@@ -147,8 +147,8 @@ Umbrella service covering:
 - **Marriage Settlement**
 - **Foundling**
 
-**Fee:** Legitimation ₱150.00; CTC ₱75.00; Certificate of Registration ₱500.00; CTC of Acknowledgement ₱75.00; Registration Fee ₱150.00; Supplemental Report ₱75.00; (RA 9255 / Marriage Settlement / Foundling fees per page) _(verify — many line items)_
-**Processing time:** 1–3 months _(verify)_
+**Fee:** Certificate of Registration — ₱100.00; Supporting Documents — ₱75.00 per page; Supplemental Report — ₱150.00; CTC of Birth — ₱75.00; Acknowledgement Fee — ₱150.00; CTC of AUSF — ₱75.00; Marriage Settlement — ₱150.00; Foundling — ₱150.00; Foundling Certificate — ₱75.00
+**Processing time:** 1–3 months
 
 ---
 
@@ -160,5 +160,5 @@ Umbrella service covering:
 
 Requirements: request for advance endorsement; certified true copy of civil documents.
 
-**Fee:** _(verify)_
-**Processing time:** ~2 hours per step _(verify)_
+**Fee:** _(not specified in the charter — no value in source PDF)_
+**Processing time (total):** 1 hour and 20 minutes
