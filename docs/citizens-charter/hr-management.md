@@ -61,7 +61,7 @@ _Processing & Approval of Leave Application:_
 ## 3. Application for Terminal Pay
 
 - **Classification:** Highly Technical
-- **Type of transaction:** G2G, G2G
+- **Type of transaction:** G2G, G2G _(verify — duplicated code, likely 'G2G, G2C')_
 - **Who may avail:** City Employees
 
 **Requirements → where to secure**

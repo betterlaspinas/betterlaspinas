@@ -31,7 +31,7 @@ The Zoning Certificate is issued by the City Planning and Development Office cit
 **Client steps / agency actions:**
 
 1. Submit Letter of Request together with the checklist of requirements → Receiving Officer checks; if complete, submits to City Planning and Development Office for approval (5 minutes)
-2. City Planning and Development Office checks/evaluates the request together with documents and either approves/approves request (5 minutes) — _Engr. Leonida A. Lagrisola, City Planning and Development Officer_
+2. City Planning and Development Office checks/evaluates the request together with documents and either approves/approves request _(verify — redundant; likely 'approves/disapproves')_ (5 minutes) — _Engr. Leonida A. Lagrisola, City Planning and Development Officer_
 3. Processing of the Certification — Zoning Officer does research/verification, prepares the Zoning Certificate and the Order of Payment (2 hours) — _Engr. Armando Aguilar, Project Development Officer III_
 4. Signing of the Zoning Certificate and Order of Payment — City Planning and Development Officer reviews and signs (5 minutes) — _Engr. Leonida A. Lagrisola, City Planning and Development Officer_
 5. Releasing of Order of Payment — taxpayer makes the necessary payment at the Treasury Office and submits a photocopy of the Official Receipt to the releasing officer (5 minutes) — _Maril Adocal, Clerk III / Receiving Officer_

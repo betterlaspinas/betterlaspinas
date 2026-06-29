@@ -20,7 +20,7 @@ _For New and/or Renewal of Business Permit:_
 1. Latest copy of the License Tax Official Receipt with duly accomplished Application Form for the Issuance of Business Tax Order of Payment (BTOP) → Business Permit Licensing Office (BPLO), Counters 22 to 28 for NEW and RENEWAL of Business Permit
 
 **Fee:** See fee schedules below (Business Tax, Regulatory Fees, Fire Fee, Barangay Clearance, etc.)
-**Processing time (total):** 12 minutes _(verify)_
+**Processing time (total):** 12 minutes
 
 ### Process Flow
 
@@ -253,14 +253,14 @@ _A special levy for winning bets:_
 
 **Other Fixed Taxes:**
 
-| Business                                                                                                                                                                                | Fee                            |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
-| Owners or operators of theater and cinema per annum                                                                                                                                     | ₱5,500.00                      |
-| Pre-need companies including insurance companies, educational and/or memorial plan establishment and other similar establishments                                                       | ₱2,000.00 per annum _(verify)_ |
-| Establishment: 1% of gross receipt of preceding years                                                                                                                                   | _(see schedule)_               |
-| Lumber yards per annum                                                                                                                                                                  | _(see schedule)_               |
-| Car Exchange and Buying/Selling of Second Hand Cars, Trucks, Motorcycles and any motorized vehicle including electronic vehicle: at the rate prescribed under Sec. 32 (b), Article VIII | _(per Sec. 32 rate)_           |
-| School Not Regulated by Department of Education: at the rate prescribed by Sec. 32, Article VIII                                                                                        | _(per Sec. 32 rate)_           |
+| Business                                                                                                                                                                                | Fee                  |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- |
+| Owners or operators of theater and cinema per annum                                                                                                                                     | ₱5,500.00            |
+| Pre-need companies including insurance companies, educational and/or memorial plan establishment and other similar establishments                                                       | ₱2,000.00 per annum  |
+| Establishment: 1% of gross receipt of preceding years                                                                                                                                   | _(see schedule)_     |
+| Lumber yards per annum                                                                                                                                                                  | _(see schedule)_     |
+| Car Exchange and Buying/Selling of Second Hand Cars, Trucks, Motorcycles and any motorized vehicle including electronic vehicle: at the rate prescribed under Sec. 32 (b), Article VIII | _(per Sec. 32 rate)_ |
+| School Not Regulated by Department of Education: at the rate prescribed by Sec. 32, Article VIII                                                                                        | _(per Sec. 32 rate)_ |
 
 **Special Permit Fees:**
 
@@ -280,93 +280,93 @@ _A special levy for winning bets:_
 
 _(City Ordinance No. 1373-16 Series of 2016, Article I, Sec. 41-42, pp. 41–45)_
 
-| Business Category                                                                                                                                                                                                                                                                                                                                 | Fee        |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
-| Owner/operator of amusement places/devices (nightclub and bars, disco houses, beer gardens, cabarets, dance halls, KTV Bars)                                                                                                                                                                                                                      | ₱25,000.00 |
-| Social club/voluntary associations or organization                                                                                                                                                                                                                                                                                                | ₱5,000.00  |
-| Skating rinks                                                                                                                                                                                                                                                                                                                                     | ₱10,000.00 |
-| Bath houses, steam baths, massage clinic, SPA Wellness Center, sauna baths, and the like                                                                                                                                                                                                                                                          | ₱15,000.00 |
-| Billiard/pool per table                                                                                                                                                                                                                                                                                                                           | ₱300.00    |
-| Bowling establishments                                                                                                                                                                                                                                                                                                                            | ₱15,000.00 |
-| Circuses, carnival per houses                                                                                                                                                                                                                                                                                                                     | ₱7,500.00  |
-| Merry go rounds, roller coasters, ferries wheels, swing, shooting galleries or similar machineries per unit                                                                                                                                                                                                                                       | ₱1,000.00  |
-| Theaters and Cinema / Per Cinema                                                                                                                                                                                                                                                                                                                  | ₱10,000.00 |
-| Race tracks, Jai-alai fronton, coliseum or similar establishments                                                                                                                                                                                                                                                                                 | ₱15,000.00 |
-| For every off-track and/or off-fronton betting centers                                                                                                                                                                                                                                                                                            | ₱15,000.00 |
-| Resorts or other similar establishments                                                                                                                                                                                                                                                                                                           | ₱10,000.00 |
-| Sauna baths and massage clinics, per cubicle                                                                                                                                                                                                                                                                                                      | ₱1,000.00  |
-| Skating ring                                                                                                                                                                                                                                                                                                                                      | ₱1,650.00  |
-| Stadia, sports complexes                                                                                                                                                                                                                                                                                                                          | ₱10,000.00 |
-| Theaters or cinema houses, per theater                                                                                                                                                                                                                                                                                                            | ₱5,000.00  |
-| Pelota courts, tennis courts and other of similar nature/court                                                                                                                                                                                                                                                                                    | ₱800.00    |
-| Institution of learning regulated by Department of Education Commission on Higher Education:                                                                                                                                                                                                                                                      |            |
-| — Pre-School                                                                                                                                                                                                                                                                                                                                      | ₱3,000.00  |
-| — Pre-School up to Elementary                                                                                                                                                                                                                                                                                                                     | ₱5,000.00  |
-| — Junior and Senior High School                                                                                                                                                                                                                                                                                                                   | ₱7,500.00  |
-| — College, University and Post Graduate                                                                                                                                                                                                                                                                                                           | ₱10,000.00 |
-| Golf courses, polo grounds and the likes                                                                                                                                                                                                                                                                                                          | ₱15,000.00 |
-| Driving Range / Ramps                                                                                                                                                                                                                                                                                                                             | ₱7,500.00  |
-| Private detective/security agencies — Principal Office                                                                                                                                                                                                                                                                                            | ₱7,500.00  |
-| Private detective/security agencies — Posting of security agencies                                                                                                                                                                                                                                                                                | ₱1,500.00  |
-| Delivery trucks/vans/motorcycles, electronic vehicles or any motorized vehicles per unit — Vans/Truck                                                                                                                                                                                                                                             | ₱300.00    |
-| Delivery trucks/vans/motorcycles, electronic vehicles or any motorized vehicles per unit — Motorcycles                                                                                                                                                                                                                                            | ₱100.00    |
-| Display Office/Showroom                                                                                                                                                                                                                                                                                                                           | ₱5,000.00  |
-| Promoters, event organizer, escort services tourist guide                                                                                                                                                                                                                                                                                         | ₱5,000.00  |
-| Maintaining an office (liaison office, administration office of professionals or similar) with area 400 sq.m. or more                                                                                                                                                                                                                             | ₱5,000.00  |
-| Maintaining an office: 300 sq.m. or more but less than 400 sq.m.                                                                                                                                                                                                                                                                                  | ₱4,000.00  |
-| Maintaining an office: 200 sq.m. or more but less than 300 sq.m.                                                                                                                                                                                                                                                                                  | ₱3,000.00  |
-| Maintaining an office: 200 sq.m. or less                                                                                                                                                                                                                                                                                                          | ₱2,000.00  |
-| Operating warehouses: 400 sq.m. and above                                                                                                                                                                                                                                                                                                         | ₱15,000.00 |
-| Operating warehouses: less than 400 sq.m.                                                                                                                                                                                                                                                                                                         | ₱10,000.00 |
-| Cold storages — Ice Plant                                                                                                                                                                                                                                                                                                                         | ₱7,500.00  |
-| Cold storages — Supermarket, Hotels and likes                                                                                                                                                                                                                                                                                                     | ₱5,000.00  |
-| Cold storages — Convenience Store, Restaurant, Meat Shop and the likes                                                                                                                                                                                                                                                                            | ₱2,000.00  |
-| Lumber Yards                                                                                                                                                                                                                                                                                                                                      | ₱20,000.00 |
-| Car Exchanges                                                                                                                                                                                                                                                                                                                                     | ₱7,500.00  |
-| Storage and selling of flammable substances                                                                                                                                                                                                                                                                                                       | ₱10,000.00 |
-| Business classified under Art. VIII, Sec. 32 paragraphs (a) (Manufacturers etc.) & (b) (Wholesalers, distributors, commissaries etc.) except for business classified by proper government agencies such as small scale industries (bakeries, ready to wear clothes, delicacies, picture frames etc.)                                              | ₱10,000.00 |
-| Business classified under Article VIII, Sec. 32 paragraph (c) (Exporters, etc.)                                                                                                                                                                                                                                                                   | ₱7,500.00  |
-| Business classified under Article VIII, Sec. 32 paragraph (d) (Retailers) — Retailers                                                                                                                                                                                                                                                             | ₱4,500.00  |
-| Sari-Sari Stores along main thoroughfares with cigarettes and liquor                                                                                                                                                                                                                                                                              | ₱1,500.00  |
-| Sari-Sari Stores with cigarettes & liquor                                                                                                                                                                                                                                                                                                         | ₱1,000.00  |
-| Sari-Sari Stores without cigarettes & liquor                                                                                                                                                                                                                                                                                                      | ₱500.00    |
-| Business classified under Article VIII, Sec. 32, paragraph (e) (contractors, service establishments, etc.) — General building contractors, specialty contractor's proprietors/operators of heavy equipment for rent or lease, garbage disposal contractors, laundry contractors, sawmills, smelting plants, etc.                                  | ₱15,000.00 |
-| Advertising agencies, booking offices for Film exchange and for transportation, business management service, stock brokers, Laundering services, towing services, janitorial services manpower services, interior decorators, insurance agencies, towing services, stevedoring services (office only), steam laundry, trucking/transport services | ₱10,000.00 |
-| Gasoline and Petroleum, filling stations and other like businesses                                                                                                                                                                                                                                                                                | ₱15,000.00 |
-| Laundry Shop                                                                                                                                                                                                                                                                                                                                      | ₱4,000.00  |
-| Video Services: Coverage/Rental                                                                                                                                                                                                                                                                                                                   | ₱3,000.00  |
-| Watch repair and Locksmith — Inside Mall                                                                                                                                                                                                                                                                                                          | ₱2,000.00  |
-| Watch repair and Locksmith — Outside Mall                                                                                                                                                                                                                                                                                                         | ₱500.00    |
-| Rent-a-Car                                                                                                                                                                                                                                                                                                                                        | ₱6,000.00  |
-| Barbershops, beauty parlor, etc. — 5 or more chairs                                                                                                                                                                                                                                                                                               | ₱3,000.00  |
-| Barbershops, beauty parlor, etc. — 3 to 4 chairs                                                                                                                                                                                                                                                                                                  | ₱2,000.00  |
-| Barbershops, beauty parlor, etc. — 1 to 2 chairs                                                                                                                                                                                                                                                                                                  | ₱1,000.00  |
-| Medical/Dental laboratories, Diagnostic Center / Dialysis Center                                                                                                                                                                                                                                                                                  | ₱7,500.00  |
-| Others not specifically mentioned above and other service provider                                                                                                                                                                                                                                                                                | ₱3,000.00  |
-| Café, restaurants, refreshments, Parlor, Fast foods and the likes                                                                                                                                                                                                                                                                                 | ₱7,500.00  |
-| Carinderia, snack counter                                                                                                                                                                                                                                                                                                                         | ₱2,500.00  |
-| Lessors/sub lessors, real estate dealers                                                                                                                                                                                                                                                                                                          | ₱12,000.00 |
-| Dealers of alcoholic and non-alcoholic beverages, cigar & cigarette                                                                                                                                                                                                                                                                               | ₱12,000.00 |
-| Retailer of Liquor, Alcoholic and Non-Alcoholic beverages, cigar & cigarettes                                                                                                                                                                                                                                                                     | ₱4,000.00  |
-| Operators of privately owned shopping mall/center                                                                                                                                                                                                                                                                                                 | ₱22,500.00 |
-| Public/Private Market Operators — Talipapas and flea markets                                                                                                                                                                                                                                                                                      | ₱5,000.00  |
-| Public/Private Market Operators — Public Markets/Private Market                                                                                                                                                                                                                                                                                   | ₱10,000.00 |
-| Occupational Mayor's Permit for all employees in the exercise of their occupation or calling (whether working or contractual, casual, temporary, probationary or permanent basis, regardless of his/her position, with the exception of those individuals who are subject to the Professional Tax imposed by this Code)                           | ₱200.00    |
-| Motels, Hotels, Resorts, Inn, Condotel and the like                                                                                                                                                                                                                                                                                               | ₱35,000.00 |
-| Pay parking lot/building, Event place, Venue rentals                                                                                                                                                                                                                                                                                              | ₱8,000.00  |
-| Funeral Homes/Chapels                                                                                                                                                                                                                                                                                                                             | ₱8,000.00  |
-| Funeral Parlors                                                                                                                                                                                                                                                                                                                                   | ₱10,000.00 |
-| Peddlers                                                                                                                                                                                                                                                                                                                                          | ₱250.00    |
-| Seasonal Business — Tiangge Operator                                                                                                                                                                                                                                                                                                              | ₱8,000.00  |
-| Seasonal Business — Tiangge Tenant                                                                                                                                                                                                                                                                                                                | ₱3,000.00  |
-| Seasonal Business — Firecracker Retailer                                                                                                                                                                                                                                                                                                          | ₱1,000.00  |
-| Seasonal Business — Lantern Maker and others                                                                                                                                                                                                                                                                                                      | ₱500.00    |
-| Private Hospitals                                                                                                                                                                                                                                                                                                                                 | ₱10,000.00 |
-| Non-stock, Non-profit, Hospitals, Educational and Charitable institutions                                                                                                                                                                                                                                                                         | ₱10,000.00 |
-| Advance Screening (Film Showing), stage play Exhibits, film shooting, etc.                                                                                                                                                                                                                                                                        | ₱3,000.00  |
-| Importer                                                                                                                                                                                                                                                                                                                                          | ₱10,000.00 |
-| Representative Office                                                                                                                                                                                                                                                                                                                             | ₱10,000.00 |
-| Other business not specifically provided                                                                                                                                                                                                                                                                                                          | ₱5,000.00  |
+| Business Category                                                                                                                                                                                                                                                                                                                                 | Fee                                                                                                             |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| Owner/operator of amusement places/devices (nightclub and bars, disco houses, beer gardens, cabarets, dance halls, KTV Bars)                                                                                                                                                                                                                      | ₱25,000.00                                                                                                      |
+| Social club/voluntary associations or organization                                                                                                                                                                                                                                                                                                | ₱5,000.00                                                                                                       |
+| Skating rinks                                                                                                                                                                                                                                                                                                                                     | ₱10,000.00                                                                                                      |
+| Bath houses, steam baths, massage clinic, SPA Wellness Center, sauna baths, and the like                                                                                                                                                                                                                                                          | ₱15,000.00                                                                                                      |
+| Billiard/pool per table                                                                                                                                                                                                                                                                                                                           | ₱300.00                                                                                                         |
+| Bowling establishments                                                                                                                                                                                                                                                                                                                            | ₱15,000.00                                                                                                      |
+| Circuses, carnival per houses                                                                                                                                                                                                                                                                                                                     | ₱7,500.00                                                                                                       |
+| Merry go rounds, roller coasters, ferries wheels, swing, shooting galleries or similar machineries per unit                                                                                                                                                                                                                                       | ₱1,000.00                                                                                                       |
+| Theaters and Cinema / Per Cinema                                                                                                                                                                                                                                                                                                                  | ₱10,000.00                                                                                                      |
+| Race tracks, Jai-alai fronton, coliseum or similar establishments                                                                                                                                                                                                                                                                                 | ₱15,000.00                                                                                                      |
+| For every off-track and/or off-fronton betting centers                                                                                                                                                                                                                                                                                            | ₱15,000.00                                                                                                      |
+| Resorts or other similar establishments                                                                                                                                                                                                                                                                                                           | ₱10,000.00                                                                                                      |
+| Sauna baths and massage clinics, per cubicle                                                                                                                                                                                                                                                                                                      | ₱1,000.00                                                                                                       |
+| Skating ring                                                                                                                                                                                                                                                                                                                                      | ₱1,650.00 _(verify — dup/spurious; cf. identical row in Regulatory Fees table & "Skating rinks" ₱10,000 above)_ |
+| Stadia, sports complexes                                                                                                                                                                                                                                                                                                                          | ₱10,000.00                                                                                                      |
+| Theaters or cinema houses, per theater                                                                                                                                                                                                                                                                                                            | ₱5,000.00                                                                                                       |
+| Pelota courts, tennis courts and other of similar nature/court                                                                                                                                                                                                                                                                                    | ₱800.00                                                                                                         |
+| Institution of learning regulated by Department of Education Commission on Higher Education:                                                                                                                                                                                                                                                      |                                                                                                                 |
+| — Pre-School                                                                                                                                                                                                                                                                                                                                      | ₱3,000.00                                                                                                       |
+| — Pre-School up to Elementary                                                                                                                                                                                                                                                                                                                     | ₱5,000.00                                                                                                       |
+| — Junior and Senior High School                                                                                                                                                                                                                                                                                                                   | ₱7,500.00                                                                                                       |
+| — College, University and Post Graduate                                                                                                                                                                                                                                                                                                           | ₱10,000.00                                                                                                      |
+| Golf courses, polo grounds and the likes                                                                                                                                                                                                                                                                                                          | ₱15,000.00                                                                                                      |
+| Driving Range / Ramps                                                                                                                                                                                                                                                                                                                             | ₱7,500.00                                                                                                       |
+| Private detective/security agencies — Principal Office                                                                                                                                                                                                                                                                                            | ₱7,500.00                                                                                                       |
+| Private detective/security agencies — Posting of security agencies                                                                                                                                                                                                                                                                                | ₱1,500.00                                                                                                       |
+| Delivery trucks/vans/motorcycles, electronic vehicles or any motorized vehicles per unit — Vans/Truck                                                                                                                                                                                                                                             | ₱300.00                                                                                                         |
+| Delivery trucks/vans/motorcycles, electronic vehicles or any motorized vehicles per unit — Motorcycles                                                                                                                                                                                                                                            | ₱100.00                                                                                                         |
+| Display Office/Showroom                                                                                                                                                                                                                                                                                                                           | ₱5,000.00                                                                                                       |
+| Promoters, event organizer, escort services tourist guide                                                                                                                                                                                                                                                                                         | ₱5,000.00                                                                                                       |
+| Maintaining an office (liaison office, administration office of professionals or similar) with area 400 sq.m. or more                                                                                                                                                                                                                             | ₱5,000.00                                                                                                       |
+| Maintaining an office: 300 sq.m. or more but less than 400 sq.m.                                                                                                                                                                                                                                                                                  | ₱4,000.00                                                                                                       |
+| Maintaining an office: 200 sq.m. or more but less than 300 sq.m.                                                                                                                                                                                                                                                                                  | ₱3,000.00                                                                                                       |
+| Maintaining an office: 200 sq.m. or less                                                                                                                                                                                                                                                                                                          | ₱2,000.00                                                                                                       |
+| Operating warehouses: 400 sq.m. and above                                                                                                                                                                                                                                                                                                         | ₱15,000.00                                                                                                      |
+| Operating warehouses: less than 400 sq.m.                                                                                                                                                                                                                                                                                                         | ₱10,000.00                                                                                                      |
+| Cold storages — Ice Plant                                                                                                                                                                                                                                                                                                                         | ₱7,500.00                                                                                                       |
+| Cold storages — Supermarket, Hotels and likes                                                                                                                                                                                                                                                                                                     | ₱5,000.00                                                                                                       |
+| Cold storages — Convenience Store, Restaurant, Meat Shop and the likes                                                                                                                                                                                                                                                                            | ₱2,000.00                                                                                                       |
+| Lumber Yards                                                                                                                                                                                                                                                                                                                                      | ₱20,000.00                                                                                                      |
+| Car Exchanges                                                                                                                                                                                                                                                                                                                                     | ₱7,500.00                                                                                                       |
+| Storage and selling of flammable substances                                                                                                                                                                                                                                                                                                       | ₱10,000.00                                                                                                      |
+| Business classified under Art. VIII, Sec. 32 paragraphs (a) (Manufacturers etc.) & (b) (Wholesalers, distributors, commissaries etc.) except for business classified by proper government agencies such as small scale industries (bakeries, ready to wear clothes, delicacies, picture frames etc.)                                              | ₱10,000.00                                                                                                      |
+| Business classified under Article VIII, Sec. 32 paragraph (c) (Exporters, etc.)                                                                                                                                                                                                                                                                   | ₱7,500.00                                                                                                       |
+| Business classified under Article VIII, Sec. 32 paragraph (d) (Retailers) — Retailers                                                                                                                                                                                                                                                             | ₱4,500.00                                                                                                       |
+| Sari-Sari Stores along main thoroughfares with cigarettes and liquor                                                                                                                                                                                                                                                                              | ₱1,500.00                                                                                                       |
+| Sari-Sari Stores with cigarettes & liquor                                                                                                                                                                                                                                                                                                         | ₱1,000.00                                                                                                       |
+| Sari-Sari Stores without cigarettes & liquor                                                                                                                                                                                                                                                                                                      | ₱500.00                                                                                                         |
+| Business classified under Article VIII, Sec. 32, paragraph (e) (contractors, service establishments, etc.) — General building contractors, specialty contractor's proprietors/operators of heavy equipment for rent or lease, garbage disposal contractors, laundry contractors, sawmills, smelting plants, etc.                                  | ₱15,000.00                                                                                                      |
+| Advertising agencies, booking offices for Film exchange and for transportation, business management service, stock brokers, Laundering services, towing services, janitorial services manpower services, interior decorators, insurance agencies, towing services, stevedoring services (office only), steam laundry, trucking/transport services | ₱10,000.00                                                                                                      |
+| Gasoline and Petroleum, filling stations and other like businesses                                                                                                                                                                                                                                                                                | ₱15,000.00                                                                                                      |
+| Laundry Shop                                                                                                                                                                                                                                                                                                                                      | ₱4,000.00                                                                                                       |
+| Video Services: Coverage/Rental                                                                                                                                                                                                                                                                                                                   | ₱3,000.00                                                                                                       |
+| Watch repair and Locksmith — Inside Mall                                                                                                                                                                                                                                                                                                          | ₱2,000.00                                                                                                       |
+| Watch repair and Locksmith — Outside Mall                                                                                                                                                                                                                                                                                                         | ₱500.00                                                                                                         |
+| Rent-a-Car                                                                                                                                                                                                                                                                                                                                        | ₱6,000.00                                                                                                       |
+| Barbershops, beauty parlor, etc. — 5 or more chairs                                                                                                                                                                                                                                                                                               | ₱3,000.00                                                                                                       |
+| Barbershops, beauty parlor, etc. — 3 to 4 chairs                                                                                                                                                                                                                                                                                                  | ₱2,000.00                                                                                                       |
+| Barbershops, beauty parlor, etc. — 1 to 2 chairs                                                                                                                                                                                                                                                                                                  | ₱1,000.00                                                                                                       |
+| Medical/Dental laboratories, Diagnostic Center / Dialysis Center                                                                                                                                                                                                                                                                                  | ₱7,500.00                                                                                                       |
+| Others not specifically mentioned above and other service provider                                                                                                                                                                                                                                                                                | ₱3,000.00                                                                                                       |
+| Café, restaurants, refreshments, Parlor, Fast foods and the likes                                                                                                                                                                                                                                                                                 | ₱7,500.00                                                                                                       |
+| Carinderia, snack counter                                                                                                                                                                                                                                                                                                                         | ₱2,500.00                                                                                                       |
+| Lessors/sub lessors, real estate dealers                                                                                                                                                                                                                                                                                                          | ₱12,000.00                                                                                                      |
+| Dealers of alcoholic and non-alcoholic beverages, cigar & cigarette                                                                                                                                                                                                                                                                               | ₱12,000.00                                                                                                      |
+| Retailer of Liquor, Alcoholic and Non-Alcoholic beverages, cigar & cigarettes                                                                                                                                                                                                                                                                     | ₱4,000.00                                                                                                       |
+| Operators of privately owned shopping mall/center                                                                                                                                                                                                                                                                                                 | ₱22,500.00                                                                                                      |
+| Public/Private Market Operators — Talipapas and flea markets                                                                                                                                                                                                                                                                                      | ₱5,000.00                                                                                                       |
+| Public/Private Market Operators — Public Markets/Private Market                                                                                                                                                                                                                                                                                   | ₱10,000.00                                                                                                      |
+| Occupational Mayor's Permit for all employees in the exercise of their occupation or calling (whether working or contractual, casual, temporary, probationary or permanent basis, regardless of his/her position, with the exception of those individuals who are subject to the Professional Tax imposed by this Code)                           | ₱200.00                                                                                                         |
+| Motels, Hotels, Resorts, Inn, Condotel and the like                                                                                                                                                                                                                                                                                               | ₱35,000.00                                                                                                      |
+| Pay parking lot/building, Event place, Venue rentals                                                                                                                                                                                                                                                                                              | ₱8,000.00                                                                                                       |
+| Funeral Homes/Chapels                                                                                                                                                                                                                                                                                                                             | ₱8,000.00                                                                                                       |
+| Funeral Parlors                                                                                                                                                                                                                                                                                                                                   | ₱10,000.00                                                                                                      |
+| Peddlers                                                                                                                                                                                                                                                                                                                                          | ₱250.00                                                                                                         |
+| Seasonal Business — Tiangge Operator                                                                                                                                                                                                                                                                                                              | ₱8,000.00                                                                                                       |
+| Seasonal Business — Tiangge Tenant                                                                                                                                                                                                                                                                                                                | ₱3,000.00                                                                                                       |
+| Seasonal Business — Firecracker Retailer                                                                                                                                                                                                                                                                                                          | ₱1,000.00                                                                                                       |
+| Seasonal Business — Lantern Maker and others                                                                                                                                                                                                                                                                                                      | ₱500.00                                                                                                         |
+| Private Hospitals                                                                                                                                                                                                                                                                                                                                 | ₱10,000.00                                                                                                      |
+| Non-stock, Non-profit, Hospitals, Educational and Charitable institutions                                                                                                                                                                                                                                                                         | ₱10,000.00                                                                                                      |
+| Advance Screening (Film Showing), stage play Exhibits, film shooting, etc.                                                                                                                                                                                                                                                                        | ₱3,000.00                                                                                                       |
+| Importer                                                                                                                                                                                                                                                                                                                                          | ₱10,000.00                                                                                                      |
+| Representative Office                                                                                                                                                                                                                                                                                                                             | ₱10,000.00                                                                                                      |
+| Other business not specifically provided                                                                                                                                                                                                                                                                                                          | ₱5,000.00                                                                                                       |
 
 _(City Ordinance No. 1373-16 Series of 2016, Article I, Sec. 41-42, pp. 41–45 continued)_
 
@@ -429,28 +429,28 @@ _(City Ordinance No. 1373-16 Series of 2016, Article I, Sec. 83 & 84, pp. 65–7
 
 **Schedule B — Amusement Places:**
 
-| Category                                                                                                                                                                                                    | Annual Rate          |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- |
-| Amusement centers and establishments with coin-operated machines, appliances, amusement rides and shooting galleries, side show booths and other similar establishments — computer games/entertainment/unit | ₱500.00              |
-| — billiard and/or pool halls, per table                                                                                                                                                                     | ₱250.00              |
-| — other contrivances for the amusement of customers, per contrivance                                                                                                                                        | ₱400.00              |
-| Bowling establishment: a. Automatic, per lane                                                                                                                                                               | ₱400.00              |
-| Bowling establishment: b. Non-automatic, per lane                                                                                                                                                           | _(verify)_           |
-| Casino's — a. On-line Casinos                                                                                                                                                                               | ₱25,000.00           |
-| Cockpits                                                                                                                                                                                                    | ₱10,000.00           |
-| Golf Course/Driving range                                                                                                                                                                                   | ₱10,000.00           |
-| Gymnasium                                                                                                                                                                                                   | ₱6,000.00            |
-| Membership clubs, Associations or organizations — serving foods, drinks and lodging facilities                                                                                                              | ₱8,000.00            |
-| Membership clubs — without lodging facilities                                                                                                                                                               | ₱6,000.00            |
-| Night/Day clubs, discos, cocktail lounges, cabarets and other similar establishment                                                                                                                         | ₱10,000.00           |
-| Race tracks, Jai-alai fronton, coliseum or similar establishments                                                                                                                                           | ₱8,000.00            |
-| For every off-track and/or off-fronton betting centers                                                                                                                                                      | ₱6,000.00            |
-| Resorts or other similar establishments                                                                                                                                                                     | ₱10,000.00           |
-| Sauna baths and massage clinics, per cubicle                                                                                                                                                                | ₱1,000.00            |
-| Skating ring                                                                                                                                                                                                | ₱1,650.00 _(verify)_ |
-| Stadia, sports complexes                                                                                                                                                                                    | ₱10,000.00           |
-| Theaters or cinema houses, per theater                                                                                                                                                                      | ₱5,000.00            |
-| Pelota courts, tennis courts and other of similar nature/court                                                                                                                                              | ₱800.00              |
+| Category                                                                                                                                                                                                    | Annual Rate                                                                                              |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| Amusement centers and establishments with coin-operated machines, appliances, amusement rides and shooting galleries, side show booths and other similar establishments — computer games/entertainment/unit | ₱500.00                                                                                                  |
+| — billiard and/or pool halls, per table                                                                                                                                                                     | ₱250.00                                                                                                  |
+| — other contrivances for the amusement of customers, per contrivance                                                                                                                                        | ₱400.00                                                                                                  |
+| Bowling establishment: a. Automatic, per lane                                                                                                                                                               | ₱900.00                                                                                                  |
+| Bowling establishment: b. Non-automatic, per lane                                                                                                                                                           | ₱400.00                                                                                                  |
+| Casino's — a. On-line Casinos                                                                                                                                                                               | ₱25,000.00                                                                                               |
+| Cockpits                                                                                                                                                                                                    | ₱10,000.00                                                                                               |
+| Golf Course/Driving range                                                                                                                                                                                   | ₱10,000.00                                                                                               |
+| Gymnasium                                                                                                                                                                                                   | ₱6,000.00                                                                                                |
+| Membership clubs, Associations or organizations — serving foods, drinks and lodging facilities                                                                                                              | ₱8,000.00                                                                                                |
+| Membership clubs — without lodging facilities                                                                                                                                                               | ₱6,000.00                                                                                                |
+| Night/Day clubs, discos, cocktail lounges, cabarets and other similar establishment                                                                                                                         | ₱10,000.00                                                                                               |
+| Race tracks, Jai-alai fronton, coliseum or similar establishments                                                                                                                                           | ₱8,000.00                                                                                                |
+| For every off-track and/or off-fronton betting centers                                                                                                                                                      | ₱6,000.00                                                                                                |
+| Resorts or other similar establishments                                                                                                                                                                     | ₱10,000.00                                                                                               |
+| Sauna baths and massage clinics, per cubicle                                                                                                                                                                | ₱1,000.00                                                                                                |
+| Skating ring                                                                                                                                                                                                | ₱1,650.00 _(verify — reported NOT in the charter; retained pending confirmation, candidate for removal)_ |
+| Stadia, sports complexes                                                                                                                                                                                    | ₱10,000.00                                                                                               |
+| Theaters or cinema houses, per theater                                                                                                                                                                      | ₱5,000.00                                                                                                |
+| Pelota courts, tennis courts and other of similar nature/court                                                                                                                                              | ₱800.00                                                                                                  |
 
 **Schedule C — Electric and Power Companies:**
 
@@ -476,12 +476,12 @@ _(City Ordinance No. 1373-16 Series of 2016, Article I, Sec. 83 & 84, pp. 65–7
 
 **Schedule E — Gasoline Service/Filling Station:**
 
-| Category                                                                   | Annual Rate |
-| -------------------------------------------------------------------------- | ----------- |
-| Having an area of 1,500 sq.m. or more                                      | ₱10,000.00  |
-| Having an area of 700 sq.m. or more but less than 1,500 sq.m.              | ₱8,000.00   |
-| Having an area of 1,000 sq.m. or more but less than 1,500 sq.m. _(verify)_ | ₱6,000.00   |
-| Curb pumps and filling stations                                            | ₱4,000.00   |
+| Category                                                     | Annual Rate |
+| ------------------------------------------------------------ | ----------- |
+| Having an area of 1,500 sq.m. or more                        | ₱10,000.00  |
+| Having an area of more than 1,000 but less than 1,500 sq. m. | ₱8,000.00   |
+| Having an area of 1,000 sq. m. or less                       | ₱6,000.00   |
+| Curb pumps and filling stations                              | ₱4,000.00   |
 
 **Schedule F — Private Hospitals and Medical Clinics with Bed Capacity:**
 
@@ -548,7 +548,7 @@ _(City Ordinance No. 1373-16 Series of 2016, Article I, Sec. 83 & 84, pp. 65–7
 | With an area of 1,000 sq.m. or more                         | ₱25,000.00  |
 | With an area of 700 sq.m. or more but less than 1,000 sq.m. | ₱15,000.00  |
 | With an area of 500 sq.m. or more but less than 700 sq.m.   | ₱10,000.00  |
-| With an area of 300 sq.m. or more but less than 500 sq.m.   | _(verify)_  |
+| With an area of 300 sq.m. or more but less than 500 sq.m.   | ₱8,000.00   |
 | With an area less than 300 sq.m.                            | ₱6,000.00   |
 
 **Schedule N — Peddlers, Ambulant Vendors, Except Delivery Vans or Trucks:**
@@ -612,16 +612,16 @@ _II. Exporters/Importers:_
 
 _III. Brewers, Distillers, Compounder and Public Eating Places with an aggregate area of:_
 
-| Area                                  | Annual Rate                    |
-| ------------------------------------- | ------------------------------ |
-| 1,000 sq.m. or more                   | _(verify — partially cut off)_ |
-| 500 or more but less than 1,000 sq.m. | ₱15,000.00                     |
-| 200 or more but less than 500 sq.m.   | ₱12,000.00                     |
-| 100 or more but less than 200 sq.m.   | ₱10,000.00                     |
-| 50 or more but less than 100 sq.m.    | ₱8,000.00                      |
-| 25 or more but less than 50 sq.m.     | ₱5,000.00                      |
-| Less than 25 sq.m.                    | ₱3,000.00                      |
-| Carinderia                            | ₱2,000.00                      |
+| Area                                  | Annual Rate |
+| ------------------------------------- | ----------- |
+| 1,000 sq.m. or more                   | ₱20,000.00  |
+| 500 or more but less than 1,000 sq.m. | ₱15,000.00  |
+| 200 or more but less than 500 sq.m.   | ₱12,000.00  |
+| 100 or more but less than 200 sq.m.   | ₱10,000.00  |
+| 50 or more but less than 100 sq.m.    | ₱8,000.00   |
+| 25 or more but less than 50 sq.m.     | ₱5,000.00   |
+| Less than 25 sq.m.                    | ₱3,000.00   |
+| Carinderia                            | ₱2,000.00   |
 
 _IV. Owners or Operators of Business Establishment Rendering Services:_
 
@@ -650,14 +650,22 @@ _B. Other contractors/business establishments in rendering services, printers an
 
 _V. Independent Wholesalers, Distributors, Commissaries, Dealers, Repackers and Retailers with an aggregate area of:_
 
-| Area                                  | Annual Rate                  |
-| ------------------------------------- | ---------------------------- |
-| 1,000 sq.m. or more                   | ₱12,000.00                   |
-| 500 or more but less than 1,000 sq.m. | ₱10,000.00                   |
-| 200 or more but less than 500 sq.m.   | ₱8,000.00                    |
-| 100 or more but less than 200 sq.m.   | ₱6,000.00                    |
-| 50 or more but less than 100 sq.m.    | ₱4,600.00 _(verify)_         |
-| 25 or more but less than 50 sq.m.     | _(verify — cut off at p.84)_ |
+| Area                                  | Annual Rate |
+| ------------------------------------- | ----------- |
+| 1,000 sq.m. or more                   | ₱12,000.00  |
+| 500 or more but less than 1,000 sq.m. | ₱10,000.00  |
+| 200 or more but less than 500 sq.m.   | ₱8,000.00   |
+| 100 or more but less than 200 sq.m.   | ₱6,000.00   |
+| 50 or more but less than 100 sq.m.    | ₱4,600.00   |
+| 25 or more but less than 50 sq.m.     | ₱3,000.00   |
+
+_VI. Seasonal Business such as Tiangge Operator, Tiangge Tenant, Firecracker retailer, Lantern maker and others:_
+
+_(verify — fee table missing from transcription; transcribe from source PDF)_
+
+_VII. Special Permit such as advance screening, Stage play, exhibits and the …:_
+
+_(verify — section header cut off and fee table missing from transcription; transcribe from source PDF)_
 
 ---
 
@@ -735,8 +743,8 @@ _V. Independent Wholesalers, Distributors, Commissaries, Dealers, Repackers and 
 7. Photo Copy of Owner's & Authorized Personnel's I.D. → Client's Document Files
 8. Sketch map → Client's Document Files
 
-**Fee:** ₱75.00 (Deficiency Tax) _(verify)_
-**Processing time (total):** 35 minutes and ½ day _(verify)_
+**Fee:** ₱75.00 (Deficiency Tax)
+**Processing time (total):** ½ day, 35 minutes
 
 ---
 
@@ -761,8 +769,8 @@ _V. Independent Wholesalers, Distributors, Commissaries, Dealers, Repackers and 
 11. Submit marriage certificate, birth / death certificate if change of ownership to spouse or children on legal heir → Client's document files
 12. For representative: authorization letter from the owner with photocopy of both I.D.'s → Client's document files
 
-**Fee:** ₱5,000.00 (in case of transfer of ownership); ₱75.00 (other amendments) _(verify)_
-**Processing time (total):** 35 minutes and ½ day _(verify)_
+**Fee:** ₱5,000.00 (in case of transfer of ownership) + ₱75.00 = ₱5,075.00 (total)
+**Processing time (total):** ½ day, 35 minutes
 
 ---
 
@@ -801,7 +809,7 @@ _For renewal:_
 11. Picture of owner / president (3pcs. Passport size) → Client's Document Files
 
 **Fee:** ₱1,000.00
-**Processing time (total):** 20 minutes and 3 days _(verify — waiting time for City Mayor's signature)_
+**Processing time (total):** 20 minutes and 3 days (waiting time for City Mayor's signature)
 
 ---
 
@@ -821,7 +829,7 @@ _(No documentary requirement listed; taxpayer secures a queue number at receptio
 
 For properties with no record of payment: proceed to Counter 1 (Assessor's Office) for tax effectivity.
 
-**Fee:** Depends upon the Statement of Account (SOA) _(verify)_
+**Fee:** Depends upon the Statement of Account (SOA)
 **Processing time (total):** 12 minutes
 
 ---
@@ -836,7 +844,7 @@ For properties with no record of payment: proceed to Counter 1 (Assessor's Offic
 
 1. Order of Payment → City Treasurer's Office – Real Property Tax Division
 
-**Fee:** ₱75.00 per tax declaration _(verify)_
+**Fee:** ₱75.00 per tax declaration
 **Processing time (total):** 7 minutes
 
 ---
@@ -857,7 +865,7 @@ _(City Ordinance No. 1373-16 Series of 2016, Chapter V, Article X, pp. 62-63)_
 
 1. Latest Community Tax Certificate (CEDULA) → Community Tax Certificate (CEDULA) Collectors
 
-**Fee:** Local — ₱120.00; Abroad — ₱170.00; Firearms — ₱270.00; Change of name — ₱270.00 _(verify)_
+**Fee:** Local — ₱120.00; Abroad — ₱170.00; Firearms — ₱270.00; Change of name — ₱270.00
 **Processing time (total):** 6 minutes
 
 ---
@@ -874,7 +882,7 @@ _(City Ordinance No. 1373-16 Series of 2016, Chapter V, Article XII, Section 81-
 
 1. Order of Payment → City Prosecutor's Office
 
-**Fee:** As stated in the order of payment _(verify)_
+**Fee:** As stated in the order of payment
 **Processing time (total):** 6 minutes
 
 ---
@@ -908,7 +916,7 @@ _(City Ordinance No. 1373-16 Series of 2016, Chapter V, Article page 50)_
 
 1. Order of Payment → City Health Office
 
-**Fee:** As stated in the order of payment _(verify)_
+**Fee:** As stated in the order of payment
 **Processing time (total):** 6 minutes
 
 ---
@@ -925,7 +933,7 @@ _(City Ordinance No. 1373-16 Series of 2016, Chapter V, Article VI, p. 55)_
 
 1. Order of Payment → City Planning Office
 
-**Fee:** As stated in the order of payment _(verify)_
+**Fee:** As stated in the order of payment
 **Processing time (total):** 6 minutes
 
 ---
@@ -942,7 +950,7 @@ _(City Ordinance No. 1373-16 Series of 2016, Chapter V, Article VII, pp. 57-59)_
 
 1. Order of Payment → Office of the City Engineer
 
-**Fee:** As stated in the order of payment _(verify)_
+**Fee:** As stated in the order of payment
 **Processing time (total):** 6 minutes
 
 ---
@@ -976,7 +984,7 @@ _(City Ordinance No. 1373-16 Series of 2016, Chapter IV, Article V)_
 
 1. Order of Payment → Business License Division
 
-**Fee:** As stated in the order of payment _(verify)_
+**Fee:** As stated in the order of payment
 **Processing time (total):** 6 minutes
 
 ---
@@ -993,7 +1001,7 @@ _(City Ordinance No. 1373-16 Series of 2016, Chapter V, Article XI, p. 63)_
 
 1. Order of Payment → TRU Office
 
-**Fee:** As stated in the order of payment _(verify)_
+**Fee:** As stated in the order of payment
 **Processing time (total):** 6 minutes
 
 ---
@@ -1010,7 +1018,7 @@ _(City Ordinance No. 1373-16 Series of 2016, Chapter V, Article XII, pp. 64-65)_
 
 1. Order of Payment → City Assessor's Office
 
-**Fee:** As stated in the order of payment _(verify)_
+**Fee:** As stated in the order of payment
 **Processing time (total):** 6 minutes
 
 ## Miscellaneous Division
@@ -1029,7 +1037,7 @@ City Ordinance #1373-16 series of 2016 Chapter V Article VIII page 60-61
 
 1. Order of Payment → Office of the Civil Registry
 
-**Fee:** To be determined by the Office of the Civil Registry _(verify)_
+**Fee:** To be determined by the Office of the Civil Registry
 **Processing time (total):** 5 Minutes
 
 | Client Steps                                     | Agency Action             | Fees to Be Paid                                     | Processing Time | Person Responsible |
@@ -1059,7 +1067,7 @@ City Ordinance #1373-16 series of 2016 Chapter IV Article IV page 19-20
 - Architect, engineer, doctor, CPA, lawyer, surveyor — ₱275.00
 - All other professionals not mentioned above — ₱200.00
 
-Note: Non-interest payment is until the last day of January each year. Starting February plus 25% surcharge and 2% interest per month is added until paid. _(verify)_
+Note: Non-interest payment for renewal is until the last day of January each year. Starting February plus 25% surcharge and 2% interest per month is added until paid.
 
 **Processing time (total):** 6 Minutes
 
@@ -1084,7 +1092,7 @@ City Ordinance #1373-16 series of 2016 Chapter IV Article IV section 16-B page 2
 
 1. Identification / Name of person in need of OTR → Client
 
-**Fee:** ₱200.00 _(verify)_
+**Fee:** ₱200.00
 **Processing time (total):** 6 Minutes
 
 | Client Steps                                                                           | Agency Action                                                                           | Fees to Be Paid | Processing Time | Person Responsible                                                  |
@@ -1108,7 +1116,7 @@ City Ordinance #1373-16 series of 2016 Chapter V Article XII section 67-68 page 
 
 1. Order of Payment → Concerned Agencies / Offices
 
-**Fee:** As stated in the order of payment. _(verify)_
+**Fee:** As stated in the order of payment.
 **Processing time (total):** 11 Minutes
 
 | Client Steps                                                                           | Agency Action                                                                                                                | Fees to Be Paid                    | Processing Time | Person Responsible                                                  |
@@ -1139,7 +1147,7 @@ City Ordinance #1373-16 series of 2016 Chapter V Article VII page 22-24
 - Basic tax: ₱5.00
 - Additional tax: ₱1.00 for every 1,000 of gross receipts or earnings derived during previous year
 
-Note: Non-interest payment is until the last day of February of each year, plus 2% interest per month is added starting January until paid. _(verify)_
+Note: Non-interest payment is until the last day of February of each year, plus 2% interest per month is added starting January until paid.
 
 **Processing time (total):** 5 Minutes
 
@@ -1168,7 +1176,7 @@ City Ordinance #1373-16 series of 2016 Chapter V Article VII page 22-24
 
 - Basic tax: ₱500.00 + Additional tax — Php 2.00 for every 5,000 of gross receipts or earnings derived during previous year but not to exceed Php 10,000
 
-Note: Non-interest payment is until the last day of February of each year, plus 2% interest per month is added starting January until paid. _(verify)_
+Note: Non-interest payment is until the last day of February of each year, plus 2% interest per month is added starting January until paid.
 
 **Processing time (total):** 10 Minutes
 
@@ -1198,7 +1206,7 @@ City Ordinance #1373-16 series of 2016 Chapter V Article VII page 22-24
 - Basic tax: ₱5.00
 - Additional tax: ₱1.00 for every 1,000 of gross receipts or earnings derived during previous year
 
-Note: Non-interest payment is until the last day of February of each year, plus 2% interest per month is added starting January until paid. _(verify)_
+Note: Non-interest payment is until the last day of February of each year, plus 2% interest per month is added starting January until paid.
 
 **Processing time (total):** 6 Minutes
 
@@ -1226,7 +1234,7 @@ City Ordinance #1373-16 series of 2016 Chapter IV Article I page 18
 3. Certificate of No Improvement → Counter 1 of the City Assessor's Office
 4. Realty Tax Clearance (Current) → Counter 8 of the City Assessor's Office
 5. TCT / CCT (Title) → Registry of Deeds
-6. Business Tax (Tax on Sale) → _(verify)_
+6. Business Tax (Tax on Sale) → City Treasurer's Office – Business License Division
 
 **Fee:** As per Order of Payment _(verify)_
 **Processing time (total):** 26 Minutes
@@ -1248,7 +1256,7 @@ City Ordinance #1373-16 series of 2016 Chapter V Article IV page 51-54
 
 - **Classification:** Simple
 - **Type of transaction:** G2C
-- **Who may avail:** All Las Piñas City marker vendors or sellers that uses weighing scale or instruments in their business
+- **Who may avail:** All Las Piñas City marker _(verify — likely 'market')_ vendors or sellers that uses weighing scale or instruments in their business
 
 **Requirements → where to secure**
 

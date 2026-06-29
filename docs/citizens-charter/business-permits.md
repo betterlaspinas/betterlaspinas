@@ -228,6 +228,6 @@ Issued by the City Government in line with the recent Joint Memorandum Circular 
 
 ## Feedback and Complaints Mechanism
 
-- **Send feedback:** Thru email and writing a response letter; answer client feedback form and drop it at the designated drop box in front of each counter as City Social Welfare & Development Office.
+- **Send feedback:** Thru email and writing a response letter; answer client feedback form and drop it at the designated drop box in front of each counter as City Social Welfare & Development Office _(verify — wrong office; should be BPLO)_.
 - **Complaints:** File through letters of complaint addressed to the Head of BPLO. Complaints are being processed based on existing office procedures and laws. Based on the merit of the complaint, it may be referred to the right forum for appropriate action. Issued Notices and serve Closure Order if no compliance have been made within the 3 days period after inspection.
 - **Contact (ARTA / CCB / PCC):** ARTA — complaints@arta.gov.ph; Contact Center ng Bayan (CCB) — email@contactcenternbayan.gov.ph; Presidential Complaint Center (PCC) — pcc@malacanang.gov.ph _(verify all contacts)_.
