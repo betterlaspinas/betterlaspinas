@@ -2,17 +2,11 @@
 usePageOgImage()
 
 const route = useRoute()
-const categorySlug = route.params.category as string
 
-// Service Categories are sourced canonically (categories.json + services.json)
-// through the configHelper accessors — there is no other source. The
-// `isCanonicalCategory` gate keeps non-resident Categories (`government`,
-// `online`, which migrate in their own slices) off this route.
-const category = isCanonicalCategory(categorySlug)
-  ? getCategoryBySlug(categorySlug)
-  : undefined
-
-if (!category) {
+// Page resolution lives behind the View resolver seam (ADR-0002): the facade
+// does the configHelper lookups and shaping; the page only renders and guards.
+const view = categoryView(route.params.category as string)
+if (!view) {
   throw createError({
     statusCode: 404,
     statusMessage: 'Category not found',
@@ -20,30 +14,7 @@ if (!category) {
   })
 }
 
-// A catalog-only Service points back at its own category page (e.g.
-// /services/certificates). Treat that as "no dedicated page" so the card stays
-// non-interactive, matching the original behavior. Only a real destination
-// (e.g. /service-details/<id>) makes the card a link.
-const categoryHref = `/services/${categorySlug}`
-const services = getServicesByCategory(categorySlug).map(service => ({
-  id: service.id,
-  icon: service.icon,
-  title: service.title,
-  description: service.description,
-  fee: service.fee,
-  time: service.processingTime,
-  link: service.url && service.url !== categoryHref ? service.url : undefined,
-}))
-
-// Responsible Offices are first-class entities (#185) resolved from the
-// Category's Services via `providedBy` — Office <-> Category is many-to-many
-// through the Services.
-const offices = getOfficesForCategory(categorySlug).map(office => ({
-  title: office.name,
-  icon: office.icon,
-  description: office.description,
-  link: office.link,
-}))
+const { category, services, offices } = view
 </script>
 
 <template>

@@ -2,15 +2,14 @@
 usePageOgImage()
 
 const route = useRoute()
-const slug = route.params.slug as string
 
-// Canonical Office detail: resolved by Office id directly (own /offices/<id>
-// route namespace, #207). An Office is a place + contact + the Services it
-// provides — NOT a Service-shaped transaction page, so this renders a
-// directory-record layout (identity, contact, visit, services) rather than the
-// process/requirements/FAQ shape used by /service-details.
-const office = getOfficeBySlug(slug)
-if (!office) {
+// Page resolution lives behind the View resolver seam (ADR-0002): the facade
+// resolves the Office, its group name, the Services it provides and the maps
+// link; the page only renders and guards. An Office is a place + contact + the
+// Services it provides — NOT a Service-shaped transaction page, so this renders
+// a directory-record layout (identity, contact, visit, services).
+const view = officeView(route.params.slug as string)
+if (!view) {
   throw createError({
     statusCode: 404,
     statusMessage: 'Office not found',
@@ -18,29 +17,7 @@ if (!office) {
   })
 }
 
-const groupName = computed(() => getOfficeGroupBySlug(office.groupId)?.name ?? '')
-
-// Services this Office provides (via `providedBy`). Each links to its own
-// /service-details page ONLY when that Service has a `detail` block; catalog-
-// only Services have no page and render as a plain, non-clickable card.
-// `office.additionalServices` are office-only offerings that are not Service
-// records yet (no page, absent from search): appended as plain cards, deduped
-// by name so a graduated service never appears twice.
-const services = computed(() => {
-  const provided = getAllServices()
-    .filter(s => s.providedBy === office.id && !s.hidden)
-    .map(s => ({ name: s.title, link: s.detail ? `/service-details/${s.id}` : undefined }))
-  const providedNames = new Set(provided.map(s => s.name))
-  const extra = (office.additionalServices ?? [])
-    .filter(name => !providedNames.has(name))
-    .map(name => ({ name, link: undefined as string | undefined }))
-  return [...provided, ...extra]
-})
-
-// No geo data on the Office schema — link to Google Maps by address.
-const mapsUrl = computed(
-  () => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(office.location ?? office.name)}`,
-)
+const { office, groupName, services, mapsUrl } = view
 </script>
 
 <template>
