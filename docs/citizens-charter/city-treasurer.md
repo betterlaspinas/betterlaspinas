@@ -1236,7 +1236,7 @@ City Ordinance #1373-16 series of 2016 Chapter IV Article I page 18
 5. TCT / CCT (Title) → Registry of Deeds
 6. Business Tax (Tax on Sale) → City Treasurer's Office – Business License Division
 
-**Fee:** As per Order of Payment _(verify)_
+**Fee:** As per Order of Payment
 **Processing time (total):** 26 Minutes
 
 | Client Steps                                                                          | Agency Action                                              | Fees to Be Paid         | Processing Time | Person Responsible                                                  |
@@ -1267,7 +1267,7 @@ City Ordinance #1373-16 series of 2016 Chapter V Article IV page 51-54
 - Mechanical 30 kg. Below — ₱30.00
 - Digital — ₱300.00
 - Per pump / nozzle — ₱240.00
-- Service Charge — ₱100.00 _(verify)_
+- Service Charge — ₱100.00
 
 **Processing time (total):** 4 hours 30 minutes
 
@@ -1330,7 +1330,7 @@ City Ordinance #1373-16 series of 2016 Chapter V Article IV page 51-54
 6. VAT Returns 2550Q / Percentage Tax 2551Q → BIR
 7. Letter of Authority → City Treasurer
 
-**Fee:** None _(verify)_
+**Fee:** None
 **Processing time (total):** 10 days & 28 minutes
 
 | Client Steps                                                                                                                                       | Agency Action                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Fees to Be Paid | Processing Time | Person Responsible                     |
@@ -1418,7 +1418,7 @@ City Ordinance #1373-16 series of 2016 Chapter V Article IV page 51-54
 
 1. Copy of paid Receipts → Miscellaneous Division
 
-**Fee:** ₱75.00 per receipt _(verify)_
+**Fee:** ₱75.00 per receipt
 **Processing time (total):** 6 minutes
 
 | Client Steps                                          | Agency Action                                                                                                                                                                                                                                                                                      | Fees to Be Paid       | Processing Time           | Person Responsible                         |
