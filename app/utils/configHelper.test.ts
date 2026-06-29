@@ -715,6 +715,17 @@ describe('configHelper', () => {
       // the accessor must NOT match legacy slugs after #207.
       expect(getOfficeDetailBySlug('city-civil-registry')).toBeUndefined()
     })
+
+    it('civil-registry is the only Office carrying a detail block (#216)', () => {
+      // The /service-details/<id> office fallback only ever resolved an Office
+      // that has a detail block. Guards the #216 invariant: a single 301
+      // (/service-details/civil-registry → /offices/civil-registry) is
+      // sufficient for NO /service-details/* URL to resolve an Office.
+      const officesWithDetail = getOffices()
+        .filter(office => office.detail)
+        .map(office => office.id)
+      expect(officesWithDetail).toEqual(['civil-registry'])
+    })
   })
 
   describe('config validator', () => {

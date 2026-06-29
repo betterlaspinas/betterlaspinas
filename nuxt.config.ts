@@ -64,6 +64,12 @@ export default defineNuxtConfig({
     '/service-details/city-civil-registry': {
       redirect: { to: '/offices/civil-registry', statusCode: 301 },
     },
+    // 301: Office id slug resolved by the /service-details fallback (#216).
+    // civil-registry is the only Office with a detail block, so after this no
+    // /service-details/* URL resolves an Office.
+    '/service-details/civil-registry': {
+      redirect: { to: '/offices/civil-registry', statusCode: 301 },
+    },
     '/service-details/city-treasurer': {
       redirect: { to: '/offices/city-treasurer', statusCode: 301 },
     },
