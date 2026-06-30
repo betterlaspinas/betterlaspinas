@@ -1,4 +1,4 @@
-import { test as baseTest, expect } from '@playwright/test'
+import { test as baseTest } from '@playwright/test'
 import { TermsOfUsePage } from '../pages/terms.page'
 
 interface TermsOfUseFixture {
