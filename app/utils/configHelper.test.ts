@@ -6,8 +6,6 @@ import {
   getCategorySeoDescription,
   getMergedSiteConfig,
   getOfficeBySlug,
-  getOfficeContactCard,
-  getOfficeDetailBySlug,
   getOfficeForService,
   getOfficeGroupBySlug,
   getOfficeGroups,
@@ -18,7 +16,6 @@ import {
   getOgImageRouteConfig,
   getServiceBySlug,
   getServiceCategories,
-  getServiceOfficeCard,
   getServicesByCategory,
   getServiceSeoDescription,
   getSiteConfig,
@@ -585,111 +582,6 @@ describe('configHelper', () => {
     })
   })
 
-  describe('service-details Office card derivation (#212)', () => {
-    it('getOfficeContactCard synthesises the card from the Office\'s own fields', () => {
-      const office = getOfficeBySlug('civil-registry')!
-      const card = getOfficeContactCard(office)
-      expect(card).toEqual({
-        name: office.name,
-        location: office.location ?? '',
-        phone: office.phone,
-        mobile: office.mobile,
-        email: office.email,
-        facebook: office.facebook,
-        hours: office.hours ?? '',
-      })
-    })
-
-    it('getServiceOfficeCard derives a providedBy Service\'s card straight from its Office (no drift possible)', () => {
-      // The card is read from the canonical Office entity, NOT from any inline
-      // copy on the Service. By construction it cannot diverge from the Office
-      // page, which renders the same getOfficeContactCard output.
-      for (const service of getAllServices()) {
-        const office = getOfficeForService(service)
-        if (!office)
-          continue
-        const card = getServiceOfficeCard(service)
-        expect(card, service.id).toEqual(getOfficeContactCard(office))
-        // And it reflects the live Office fields, not a stored value.
-        expect(card!.name, service.id).toBe(office.name)
-        expect(card!.location, service.id).toBe(office.location ?? '')
-        expect(card!.hours, service.id).toBe(office.hours ?? '')
-      }
-    })
-
-    it('birth-certificate renders the civil-registry Office card via providedBy', () => {
-      const birth = getServiceBySlug('birth-certificate')!
-      expect(birth.detail?.office).toBeUndefined()
-      const office = getOfficeBySlug('civil-registry')!
-      expect(getServiceOfficeCard(birth)).toEqual(getOfficeContactCard(office))
-    })
-
-    it('falls back to the inline free-text office for a providerless Service', () => {
-      // BPLO business services have no first-class Office yet: the card comes
-      // from the Service's inline detail.office.
-      const biz = getServiceBySlug('business-permit-new')!
-      expect(biz.providedBy).toBeUndefined()
-      expect(getOfficeForService(biz)).toBeUndefined()
-      const card = getServiceOfficeCard(biz)
-      expect(card).toBeDefined()
-      expect(card).toEqual(biz.detail?.office)
-    })
-
-    it('returns undefined when a Service has neither a providing Office nor an inline office', () => {
-      expect(getServiceOfficeCard({ providedBy: undefined } as never)).toBeUndefined()
-    })
-  })
-
-  describe('getOfficeDetailBySlug (#207)', () => {
-    it('resolves civil-registry Office by canonical id', () => {
-      // #207: Office has its own /offices/<id> namespace; resolved by id only.
-      // The slug alias (city-civil-registry) introduced in #201 is removed.
-      const detail = getOfficeDetailBySlug('civil-registry')
-      expect(detail).toBeDefined()
-      expect(detail!.fullTitle).toBe('City Civil Registry Office')
-      expect(detail!.category).toBe('Certificates')
-      expect(detail!.processSteps.length).toBeGreaterThan(0)
-      expect(detail!.relatedServices.map(r => r.link)).toContain(
-        '/service-details/birth-certificate',
-      )
-    })
-
-    it('merges the Office name as `title` for the existing detail template', () => {
-      // Mirrors the canonical Service read path: { ...detail, title }.
-      const detail = getOfficeDetailBySlug('civil-registry')
-      expect(detail!.title).toBe('City Civil Registry')
-    })
-
-    it('synthesises the office contact card from the Office\'s own fields', () => {
-      // The `detail` block does NOT re-store contact info; the accessor derives
-      // the template's `office` card from the Office entity (single source of
-      // truth). Mutating offices.json contact would flow through here.
-      const office = getOfficeBySlug('civil-registry')!
-      const detail = getOfficeDetailBySlug('civil-registry')!
-      expect(detail.office).toEqual({
-        name: office.name,
-        location: office.location ?? '',
-        phone: office.phone,
-        mobile: office.mobile,
-        email: office.email,
-        facebook: office.facebook,
-        hours: office.hours ?? '',
-      })
-    })
-
-    it('returns undefined for the removed slug alias city-civil-registry', () => {
-      // Slug alias dropped in #207; 301 in nuxt.config handles SEO continuity.
-      expect(getOfficeDetailBySlug('city-civil-registry')).toBeUndefined()
-    })
-
-    it('returns undefined for unknown or hidden Offices', () => {
-      expect(getOfficeDetailBySlug('not-a-real-office')).toBeUndefined()
-      // Hidden Offices are excluded via getOffices, so their detail never leaks.
-      expect(getOfficeDetailBySlug('human-resource-management')).toBeUndefined()
-      expect(getOfficeDetailBySlug('barangay-hall')).toBeUndefined()
-    })
-  })
-
   describe('office route namespace (#207)', () => {
     it('civil-registry Office link points at /offices/civil-registry', () => {
       const civil = getOfficeBySlug('civil-registry')
@@ -703,17 +595,17 @@ describe('configHelper', () => {
       expect('slug' in civil!).toBe(false)
     })
 
-    it('getOfficeDetailBySlug resolves by id on the /offices/<id> route', () => {
+    it('getOfficeBySlug resolves by id on the /offices/<id> route', () => {
       // The /offices/[slug].vue page passes route.params.slug (= office.id).
-      const detail = getOfficeDetailBySlug('civil-registry')
-      expect(detail).toBeDefined()
-      expect(detail!.title).toBe('City Civil Registry')
+      const office = getOfficeBySlug('civil-registry')
+      expect(office).toBeDefined()
+      expect(office!.name).toBe('City Civil Registry')
     })
 
-    it('legacy slug city-civil-registry no longer resolves via getOfficeDetailBySlug', () => {
+    it('legacy slug city-civil-registry no longer resolves to an Office', () => {
       // 301 redirect in nuxt.config handles the URL continuity;
       // the accessor must NOT match legacy slugs after #207.
-      expect(getOfficeDetailBySlug('city-civil-registry')).toBeUndefined()
+      expect(getOfficeBySlug('city-civil-registry')).toBeUndefined()
     })
 
     it('civil-registry is the only Office carrying a detail block (#216)', () => {
@@ -972,24 +864,15 @@ describe('configHelper', () => {
       }
     })
 
-    it('every /service-details slug resolves from one of the two canonical sources only', () => {
-      // The page resolves: canonical Service detail -> canonical Office detail.
-      // No third (TS-module) source exists anymore.
+    it('every /service-details slug resolves from the canonical Service source only', () => {
+      // After ADR-0002 the page resolves Service detail only — the office
+      // fallback is dropped (the legacy office URL is redirected by a 301).
       const detailSlugs = getAllServices()
         .filter(s => s.detail)
         .map(s => s.id)
       for (const slug of detailSlugs) {
-        const fromService = getServiceBySlug(slug)?.detail
-        const fromOffice = getOfficeDetailBySlug(slug)
-        expect(Boolean(fromService) || Boolean(fromOffice), slug).toBe(true)
+        expect(Boolean(getServiceBySlug(slug)?.detail), slug).toBe(true)
       }
-    })
-
-    it('a first-class Office detail still resolves via getOfficeDetailBySlug', () => {
-      const detail = getOfficeDetailBySlug('civil-registry')
-      expect(detail).toBeDefined()
-      expect(detail!.title).toBeTruthy()
-      expect(detail!.office).toBeDefined()
     })
   })
 })

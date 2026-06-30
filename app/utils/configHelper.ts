@@ -18,8 +18,6 @@ import type {
   OfficialsConfig,
   OgImageRouteConfig,
   SeoRouteConfig,
-  ServiceDetail,
-  ServiceDetailOffice,
   ServiceItem,
   ServicesConfig,
   SiteConfig,
@@ -435,65 +433,12 @@ export function getOfficeBySlug(slug: string): Office | undefined {
   return getOffices().find(office => office.id === slug)
 }
 
-/**
- * Resolve an Office's rich detail-page content for the `/offices/<slug>` route
- * (#207), merged with the Office `name` as `title` so the detail template
- * renders unchanged (mirrors the canonical Service read path). Matches on the
- * Office `id` directly — the `slug` alias introduced in #201 for the legacy
- * `/service-details/city-civil-registry` URL is no longer needed now that
- * Offices have their own `/offices/<id>` namespace with a 301 from the legacy
- * URL. Returns undefined for unknown/hidden Offices or Offices without a
- * `detail` block. Hidden Offices are excluded via `getOffices`.
- */
-export function getOfficeDetailBySlug(
-  slug: string,
-): (ServiceDetail & { title: string }) | undefined {
-  const office = getOffices().find(o => o.id === slug)
-  if (!office?.detail)
-    return undefined
-  // The Office is its own contact source: synthesise the detail-template's
-  // `office` card from the Office's top-level fields rather than re-storing it
-  // in the `detail` block (single source of truth).
-  return {
-    ...office.detail,
-    title: office.name,
-    office: getOfficeContactCard(office),
-  }
-}
-
-/**
- * Synthesise the detail-page "Office Information" card from a first-class
- * Office's own top-level fields. The Office entity is the single source of
- * truth for contact data — this never reads an inline `detail.office` copy, so
- * no drift between a Service/Office page and its canonical Office is possible.
- */
-export function getOfficeContactCard(office: Office): ServiceDetailOffice {
-  return {
-    name: office.name,
-    location: office.location ?? '',
-    phone: office.phone,
-    mobile: office.mobile,
-    email: office.email,
-    facebook: office.facebook,
-    hours: office.hours ?? '',
-  }
-}
-
-/**
- * Resolve the "Office Information" card for a /service-details/<slug> page.
- * Single-sources off the providing Office when the Service has `providedBy`
- * (mirrors getOfficeForService); otherwise falls back to the Service's inline
- * free-text `detail.office` for providers not yet first-class Offices (e.g.
- * BPLO business services). Returns undefined when neither resolves.
- */
-export function getServiceOfficeCard(
-  service: ServiceItem,
-): ServiceDetailOffice | undefined {
-  const office = getOfficeForService(service)
-  if (office)
-    return getOfficeContactCard(office)
-  return service.detail?.office
-}
+// Office-card synthesis (`getServiceOfficeCard`) and the /service-details Office
+// card moved to the View resolver seam (`app/utils/pageViews.ts`, ADR-0002):
+// `officeContactCard` and `toServiceDetailView`. The office-detail fallback for
+// /service-details (`getOfficeDetailBySlug`) is dropped — the legacy office URL
+// is redirected by a 301 (#207/#216), so /offices/<id> is resolved by
+// `officeView` instead.
 
 /**
  * Get every visible Office Group (hidden Groups excluded).

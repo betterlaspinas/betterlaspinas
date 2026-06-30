@@ -2,19 +2,13 @@
 usePageOgImage()
 
 const route = useRoute()
-const slug = route.params.slug as string
 
-// Canonical read path: a Service in services.json (or a first-class Office in
-// offices.json, #201) may carry an optional `detail` block. We merge in the
-// `title` so the existing template renders unchanged. Resolution order:
-// canonical Service detail → canonical Office detail. There is no other source.
-const canonical = getServiceBySlug(slug)
-
-const service = canonical?.detail
-  ? { ...canonical.detail, title: canonical.title }
-  : getOfficeDetailBySlug(slug)
-
-if (!service) {
+// Page resolution lives behind the View resolver seam (ADR-0002): the facade
+// resolves the canonical Service detail and shapes the Office card; the page
+// only renders and guards. Service-detail only — the legacy office URL is
+// handled by a 301 (#207/#216), so there is no office fallback here.
+const view = serviceDetailView(route.params.slug as string)
+if (!view) {
   throw createError({
     statusCode: 404,
     statusMessage: 'Service not found',
@@ -22,16 +16,7 @@ if (!service) {
   })
 }
 
-// Single-source the "Office Information" card off the providing Office via
-// `providedBy` (mirrors getOfficeForService) so it can never drift from the
-// canonical Office. getServiceOfficeCard falls back to the Service's inline
-// free-text `detail.office` for providers not yet first-class Offices (e.g.
-// BPLO business services). The office-detail path (getOfficeDetailBySlug)
-// already synthesises its own `office`, so reuse it directly. officeInfo may be
-// undefined when neither source resolves — the card is `v-if`-guarded.
-const officeInfo = canonical?.detail
-  ? getServiceOfficeCard(canonical)
-  : service.office
+const { service, officeInfo } = view
 
 const openFaq = ref<number | null>(null)
 

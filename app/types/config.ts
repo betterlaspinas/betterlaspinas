@@ -369,7 +369,8 @@ export interface Faq {
  * Only present (as free text) for Services whose provider is NOT yet a
  * first-class Office (e.g. BPLO business services with no `providedBy`).
  * providedBy-backed Services derive the card from their canonical Office via
- * `getServiceOfficeCard`, so they carry no inline copy (#212, single source).
+ * `officeContactCard` (pageViews.ts), so they carry no inline copy (#212,
+ * single source).
  */
 export interface ServiceDetailOffice {
   name: string
@@ -407,8 +408,8 @@ export interface ServiceDetail {
 /**
  * Rich detail-page content for a first-class Office (#201). Reuses the canonical
  * Service `detail` shape but OMITS its `office` contact sub-block: an Office is
- * its own contact source, so `getOfficeDetailBySlug` synthesises the contact
- * card from the Office's own top-level fields rather than re-storing it here
+ * its own contact source, so its page (`officeView`, pageViews.ts) reads contact
+ * data from the Office's own top-level fields rather than re-storing it here
  * (single source of truth, no drift).
  */
 export type OfficeDetail = Omit<ServiceDetail, 'office'>
