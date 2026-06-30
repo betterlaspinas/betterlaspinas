@@ -13,8 +13,16 @@ The rich content of a Service — requirements, process steps, FAQs, fees, offic
 _Avoid_: Service page, detail entity
 
 **Office**:
-A government body that provides Services (e.g. Civil Registry Office). A first-class entity, **not** a kind of Service. A Service is delivered by exactly one Office; an Office provides many Services.
-_Avoid_: Department (unless distinct), bureau
+An independent, top-level LGU organization that delivers Services (e.g. City Civil Registry, City Treasurer's Office). A first-class entity, **not** a kind of Service. A Service is delivered by exactly one Office; an Office provides many Services. "Office" here is the **institutional** sense from RA 7160 — the bureau and the charge it exercises, named in statute as "the Office of the City \_\_\_" — **synonymous with Department**. It is **not** the physical room the org occupies (that is the `location` attribute). Headed by an **Official** (its Department Head).
+_Avoid_: Department (the synonym — pick one canonical term), bureau, "office" meaning a place
+
+**Official**:
+A person in government, held in `officials.json`. Three roles: **executive** (Mayor, Vice Mayor), **legislative** (Councilors, Liga/SK presidents), and **Department Head** — an Official who heads exactly one **Office** (references it by id). An Official is a person, **never** an organization; a Department Head's office identity, contact, and description live on the **Office**, not duplicated on the person.
+_Avoid_: department (the org), modeling a head as a name string on the Office
+
+**Division** _(future — no data yet)_:
+A subordinate subunit **within** an Office/Department (e.g. the Appraisal Division under the City Assessor), headed by a **Division Chief** (an Official). Strictly below an Office, never a synonym for it. Not modeled today; an Office carries an optional `parentId` so Divisions can attach later without rework.
+_Avoid_: Office, Department (a Division is neither — it is contained by one)
 
 **Category**:
 A grouping used to organize **Services** for browsing by task — answers "what do I want to do" (e.g. "Certificates", "Business"). Applies to Services only, never Offices.
@@ -31,7 +39,10 @@ _Avoid_: DTO, model, ViewModel, page
 ## Relationships
 
 - **Service → providedBy → Office** (many-to-one)
+- **Official → heads → Office** (a Department Head heads one Office; an Office has at most one head)
 - **Category groups Services** (one-to-many) — by task
 - **Office Group groups Offices** (one-to-many) — by function
+- **Office → parentId → Office** (future: a Division references its parent Office; unused today)
 - A Service's Category is independent of its Office's Office Group
+- An Official is a person; an Office is an organization — the head relationship links the two, never merges them
 - **A View projects canonical records for one route** — built by a resolver, consumed by exactly one page
