@@ -185,6 +185,25 @@ describe('toOfficeView', () => {
     expect(named).toHaveLength(1)
   })
 
+  it('prefers the detail-bearing duplicate regardless of order', () => {
+    const detailFirst = toOfficeView({
+      office: makeOffice({ id: 'civil-registry' }),
+      services: [
+        makeService({ id: 'a', title: 'Birth Certificate', providedBy: 'civil-registry', detail: makeDetail() }),
+        makeService({ id: 'b', title: 'Birth Certificate', providedBy: 'civil-registry', detail: undefined }),
+      ],
+    })
+    const detailLast = toOfficeView({
+      office: makeOffice({ id: 'civil-registry' }),
+      services: [
+        makeService({ id: 'b', title: 'Birth Certificate', providedBy: 'civil-registry', detail: undefined }),
+        makeService({ id: 'a', title: 'Birth Certificate', providedBy: 'civil-registry', detail: makeDetail() }),
+      ],
+    })
+    expect(detailFirst.services[0]!.link).toBe('/service-details/a')
+    expect(detailLast.services[0]!.link).toBe('/service-details/a')
+  })
+
   it('gives a catalog-only provided Service no link', () => {
     const view = toOfficeView({
       office: makeOffice({ id: 'civil-registry' }),

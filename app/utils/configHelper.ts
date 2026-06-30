@@ -433,13 +433,12 @@ export function getOfficeBySlug(slug: string): Office | undefined {
   return getOffices().find(office => office.id === slug)
 }
 
-/**
- * Office-card synthesis and the /service-details Office card moved to the View
- * resolver seam (`app/utils/pageViews.ts`, ADR-0002): `officeContactCard` and
- * `toServiceDetailView`. The office-detail fallback for /service-details
- * (`getOfficeDetailBySlug`) is dropped — the legacy office URL is redirected by
- * a 301 (#207/#216), so /offices/<id> is resolved by `officeView` instead.
- */
+// Office-card synthesis (`getServiceOfficeCard`) and the /service-details Office
+// card moved to the View resolver seam (`app/utils/pageViews.ts`, ADR-0002):
+// `officeContactCard` and `toServiceDetailView`. The office-detail fallback for
+// /service-details (`getOfficeDetailBySlug`) is dropped — the legacy office URL
+// is redirected by a 301 (#207/#216), so /offices/<id> is resolved by
+// `officeView` instead.
 
 /**
  * Get every visible Office Group (hidden Groups excluded).

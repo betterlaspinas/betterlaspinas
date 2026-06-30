@@ -150,7 +150,7 @@ export function officeContactCard(office: Office): ServiceDetailOffice {
 }
 
 /**
- * Pure shaper for the /service-details/<slug> page. Resolves Service detail
+ * Pure shaper for the /service-details/<slug> page. Shapes Service detail
  * only (the office fallback is dropped — the legacy office URL is redirected by
  * the blocker, #207/#216).
  *
@@ -212,30 +212,36 @@ export interface OfficeRecords {
  * Services render as a plain, non-clickable card. `office.additionalServices`
  * are office-only offerings (not Service records yet, no page) appended as plain
  * cards. The whole list is deduped by name, so a graduated service never appears
- * twice and two provided Services with the same title collapse to one.
+ * twice and two provided Services with the same title collapse to one —
+ * order-independently preferring the one with a `detail` page so a detail-less
+ * duplicate never suppresses a real link.
  */
 export function toOfficeView(records: OfficeRecords): OfficeView {
   const { office, group, services } = records
-  const seen = new Set<string>()
+  const seen = new Map<string, OfficeServiceCard>()
   const cards: OfficeServiceCard[] = []
 
   for (const service of services) {
     if (service.providedBy !== office.id || service.hidden)
       continue
-    if (seen.has(service.title))
+    const link = service.detail ? `/service-details/${service.id}` : undefined
+    const existing = seen.get(service.title)
+    if (existing) {
+      if (!existing.link && link)
+        existing.link = link
       continue
-    seen.add(service.title)
-    cards.push({
-      name: service.title,
-      link: service.detail ? `/service-details/${service.id}` : undefined,
-    })
+    }
+    const card: OfficeServiceCard = { name: service.title, link }
+    seen.set(service.title, card)
+    cards.push(card)
   }
 
   for (const name of office.additionalServices ?? []) {
     if (seen.has(name))
       continue
-    seen.add(name)
-    cards.push({ name, link: undefined })
+    const card: OfficeServiceCard = { name, link: undefined }
+    seen.set(name, card)
+    cards.push(card)
   }
 
   return {
