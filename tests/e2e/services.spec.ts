@@ -54,7 +54,7 @@ test.describe('Services Page', () => {
     })
   })
 
-  test('should navigate to Business page via Menu', async ({ page, businessPage }) => {
+  test('Should navigate to Business page via Menu', async ({ page, businessPage }) => {
     await expect(page).toHaveURL(/\/services\/business/i)
     await expect(page.getByRole('heading', { name: 'Business, Trade & Investment', level: 2, exact: true })).toBeVisible()
 
@@ -113,7 +113,7 @@ test.describe('Services Page', () => {
       await expect(page.getByRole('heading', { name: 'Claim the Certification', level: 4 })).toBeVisible()
     })
 
-    await test.step('Navigate  to Issuance of Certified True Copy of Business License and Mayor\s Permit page', async () => {
+    await test.step('Navigate to Issuance of Certified True Copy of Business License and Mayor\s Permit page', async () => {
       await businessPage.navigate()
       await businessPage.navigateToCTCOfBusinessLicense()
       await expect(page).toHaveURL(/\/service-details\/ctc-business-license/i)

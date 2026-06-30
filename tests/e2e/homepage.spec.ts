@@ -1,107 +1,120 @@
 import { expect, test } from '../../lib/fixtures/base.fixture'
 
 test.describe('Home Page/Landing Page', () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto('/')
-    await page.waitForLoadState('networkidle')
-    await page.waitForTimeout(1000)
-  })
-
   // Check the Landing Page Main Elements
-  test('should load and display main elements', async ({ page }) => {
-    // Check the title of the page
-    await expect(page).toHaveTitle(/Home | BetterLasPinas.org/i)
-    // Check the Hotline Numbers
-    await test.step('Check Hotline Numbers', async () => {
-      await expect(page.getByRole('link', { name: /Command Center/i })).toBeVisible()
-      await expect(page.getByRole('link', { name: /Police Station/i })).toBeVisible()
-      await expect(page.getByRole('link', { name: /Fire Station/i })).toBeVisible()
-      await expect(page.getByRole('link', { name: /CDRRMO/i })).toBeVisible()
-      await expect(page.getByRole('link', { name: /City Health Office/i })).toBeVisible()
-      await expect(page.getByRole('link', { name: /Mayor's Office/i })).toBeVisible()
+  test('Verify Hero Section, Main Navigation and Critical Actions to Load correctly', async ({ homePage }) => {
+    // Checking Page Title
+    await expect(homePage.page).toHaveTitle('Home | BetterLasPinas.org')
+    // Checking Hotline Numbers
+    await test.step('Check Hotline Numbers Section Visibility', async () => {
+      await expect(homePage.commandCenterHotline).toBeVisible()
+      await expect(homePage.policeStationHotline).toBeVisible()
+      await expect(homePage.fireStationHotline).toBeVisible()
+      await expect(homePage.cdrrmoHotline).toBeVisible()
+      await expect(homePage.cityHealthOfficeHotline).toBeVisible()
+      await expect(homePage.mayorOfficeHotline).toBeVisible()
+    })
+    // Checking Page Logo and Text Title
+    await test.step('Check the Logo and Title Visibility', async () => {
+      await expect(homePage.betterLasPinasLogo).toBeVisible()
+      await expect(homePage.betterLasPinasTitle).toBeVisible()
     })
 
-    await test.step('Check the Logo and Title', async () => {
-      await expect(page.getByAltText(/Las Piñas Logo/i)).toBeVisible()
-      await expect(page.getByText(/BetterLasPiñas/i)).toBeVisible()
+    // Checking Navigation Menu Links
+    await test.step('Checking the Navigation Menu Links Visibility', async () => {
+      await expect(homePage.homeMenu).toBeVisible()
+      await expect(homePage.serviceMenu).toBeVisible()
+      await homePage.hoverToServicesMenu()
+      await expect(homePage.certificateMenuItem).toBeVisible()
+      await expect(homePage.businessMenuItem).toBeVisible()
+      await expect(homePage.governmentMenu).toBeVisible()
+      await expect(homePage.statisticsMenu).toBeVisible()
+      await expect(homePage.contactMenu).toBeVisible()
+    })
+    // Checking Hero Section
+    await test.step('Checking Hero Section Visibility', async () => {
+      await expect(homePage.betterLasPinasMainHeading).toBeVisible()
+      await expect(homePage.betterLasPinasMainDescription).toBeVisible()
+      await expect(homePage.findServiceSearchBox).toBeVisible()
     })
 
-    await test.step('Check the Navigation Links', async () => {
-      await expect(page.getByRole('link', { name: 'Home', exact: true })).toBeVisible()
-      await expect(page.getByRole('link', { name: 'Services', exact: true })).toBeVisible()
-      await page.getByRole('link', { name: 'Services', exact: true }).hover()
-      await expect(page.getByRole('menuitem', { name: 'Certificates', exact: true })).toBeVisible()
-      await expect(page.getByRole('menuitem', { name: 'Business', exact: true })).toBeVisible()
-      await expect(page.getByRole('link', { name: 'Government', exact: true })).toBeVisible()
-      await expect(page.getByRole('link', { name: 'Statistics', exact: true })).toBeVisible()
-      await expect(page.getByRole('link', { name: 'Contact', exact: true })).toBeVisible()
+    // Checking Popular Services
+    await test.step('Check the Popular Services Section Visibility', async () => {
+      await expect(homePage.popularServicesCertificates).toBeVisible()
+      await expect(homePage.popularServicesBusiness).toBeVisible()
+      await expect(homePage.viewAllServices).toBeVisible()
     })
 
-    await test.step('Check hero section', async () => {
-      await expect(page.getByRole('heading', { name: 'Welcome to BetterLasPinas.org', level: 1, exact: true })).toBeVisible()
-      await expect(page.getByRole('searchbox', { name: /Search services/i })).toBeVisible()
+    // Checking Las Piñas at a Glance
+    await test.step('Check the Population, Barangays, City and Land Area Section Visibility', async () => {
+      await expect(homePage.lasPinasGlanceHeading).toBeVisible()
+      const demographics = [
+        { label: 'Population', value: '615,549' },
+        { label: 'Barangays', value: '20' },
+        { label: 'City', value: '1st Class' },
+        { label: 'Land Area', value: '32.69 km²' },
+      ]
+
+      for (const contents of demographics) {
+        await expect(homePage.getDemographicsLabel(contents.label)).toBeVisible()
+        await expect (homePage.getDemographicsValue(contents.value)).toBeVisible()
+      }
     })
 
-    await test.step('Check the Popular Services Section', async () => {
-      await expect(page.getByRole('heading', { name: 'Popular Services', level: 2, exact: true })).toBeVisible()
-      await expect(page.getByRole('heading', { name: 'Certificates', level: 3, exact: true })).toBeVisible()
-      await expect(page.getByRole('heading', { name: 'View All Services', level: 3, exact: true })).toBeVisible()
+    // Check Weather and Maps Section
+    await test.step('Check Weather and Maps Section Visibility', async () => {
+      await expect(homePage.weatherAndMapHeading).toBeVisible()
+      await expect(homePage.windLabel).toBeVisible()
+      await expect(homePage.highTemperatureLabel).toBeVisible()
+      await expect(homePage.lowTemperatureLabel).toBeVisible()
+      await expect(homePage.mapContainer).toBeVisible()
     })
 
-    await test.step('Check the Population, Barangays, City and Land Area Section', async () => {
-      await expect(page.getByText('Population', { exact: true })).toBeVisible()
-      await expect(page.getByText('Barangays', { exact: true })).toBeVisible()
-      await expect(page.getByText('City', { exact: true })).toBeVisible()
-      await expect(page.getByText('Land Area', { exact: true })).toBeVisible()
-    })
-    await test.step('Check Weather and Maps Section', async () => {
-      await expect.soft(page.getByText('Wind', { exact: true })).toBeVisible()
-      await expect.soft(page.getByText('High', { exact: true })).toBeVisible()
-      await expect.soft(page.getByText('Low', { exact: true })).toBeVisible()
-      await expect(page.getByText('City Hall, Las Piñas, Metro Manila', { exact: true })).toBeVisible()
+    // Check City Leadership Section
+    await test.step('Check the City Leadership Section Visibility', async () => {
+      await expect(homePage.cityMayorLabel).toBeVisible()
+      await expect(homePage.cityMayorName).toBeVisible()
+      await expect(homePage.cityViceMayorLabel).toBeVisible()
+      await expect(homePage.cityViceMayorName).toBeVisible()
     })
 
-    await test.step('Check the City Leadership Section', async () => {
-      await expect(page.getByText('Hon. April Aguilar-Nery', { exact: true })).toBeVisible()
-      await expect(page.getByText('Hon. Imelda Aguilar', { exact: true })).toBeVisible()
-    })
-
+    // Check Contact Information Section
     await test.step('Check the Contact Section', async () => {
-      await expect(page.getByText('Contact Information', { exact: true })).toBeVisible()
-      await expect(page.getByText('Phone', { exact: true })).toBeVisible()
-      await expect(page.getByText('Email', { exact: true })).toBeVisible()
-      await expect(page.getByText('Address', { exact: true })).toBeVisible()
+      await expect(homePage.phoneHeader).toBeVisible()
+      await expect(homePage.lasPinasPhoneNumber).toBeVisible()
+      await expect(homePage.emailHeader).toBeVisible()
+      await expect(homePage.lasPinasEmail).toBeVisible()
+      await expect(homePage.addressHeader).toBeVisible()
+      await expect(homePage.lasPinasAddress).toBeVisible()
     })
-
-    await test.step('Check the Footer Section', async () => {
-      await expect(page.getByText('Quick Links', { exact: true })).toBeVisible()
-      await expect(page.locator('a').filter({ hasText: /^Sitemap$/ })).toBeVisible()
-      await expect(page.locator('a').filter({ hasText: /^Terms of Use$/ })).toBeVisible()
-      await expect(page.locator('a').filter({ hasText: /^Privacy Policy$/ })).toBeVisible()
-      await expect(page.locator('a').filter({ hasText: /^Accessibility$/ })).toBeVisible()
-      await expect(page.locator('a').filter({ hasText: /^FAQ$/ })).toBeVisible()
-      await expect(page.getByText('Resources', { exact: true })).toBeVisible()
-      await expect(page.locator('a').filter({ hasText: /^Open Data Philippines$/ })).toBeVisible()
-      await expect(page.locator('a').filter({ hasText: /^Freedom of Information$/ })).toBeVisible()
-      await expect(page.locator('a').filter({ hasText: /^BLGF Portal$/ })).toBeVisible()
-      await expect(page.locator('a').filter({ hasText: /^CMCI DTI Portal$/ })).toBeVisible()
-      await expect(page.getByText('Get Involved', { exact: true })).toBeVisible()
+    // Check Footer Section
+    await test.step('Check the Footer Section Visibility', async () => {
+      await expect(homePage.quickLinksHeading).toBeVisible()
+      await expect(homePage.sitemapLink).toBeVisible()
+      await expect(homePage.termsOfUseLink).toBeVisible()
+      await expect(homePage.privacyPolicyLink).toBeVisible()
+      await expect(homePage.accessibilityLink).toBeVisible()
+      await expect(homePage.faqLink).toBeVisible()
+      await expect(homePage.resourcesHeading).toBeVisible()
+      await expect(homePage.openDataPhilippinesLink).toBeVisible()
+      await expect(homePage.freedomOfInformationLink).toBeVisible()
+      await expect(homePage.blgfPortalLink).toBeVisible()
+      await expect(homePage.cmciDtiPortalLink).toBeVisible()
+      await expect(homePage.getInvolvedHeading).toBeVisible()
     })
   })
 
-  test('should have working search functionality ', async ({ page, searchFunctionality }) => {
-    await expect(searchFunctionality.searchInput).toBeVisible()
-    await searchFunctionality.search('birth certificate')
-    await searchFunctionality.clickResult('Birth Certificate')
-    await expect(page).toHaveURL(/\/birth-certificate/i)
-    await expect(page.getByRole('heading', { name: 'Birth Certificate (Local Copy)', level: 1, exact: true })).toBeVisible()
+  test('should have working search functionality ', async ({ homePage }) => {
+    await expect(homePage.findServiceSearchBox).toBeVisible()
+    await homePage.searchForService('birth certificate')
+    await homePage.clickResult('Birth Certificate')
+    await expect(homePage.birthCertificateMainHeading).toBeVisible()
   })
 
-  test('should have working search functionality cycle 2', async ({ page, searchFunctionality }) => {
-    await expect(searchFunctionality.searchInput).toBeVisible()
-    await searchFunctionality.search('marriage certificate')
-    await searchFunctionality.clickResult('Marriage Certificate')
-    await expect(page).toHaveURL(/\/marriage-certificate/i)
-    await expect(page.getByRole('heading', { name: 'Marriage Certificate Registration & Copy', level: 1, exact: true })).toBeVisible()
+  test('should have working search functionality cycle 2', async ({ homePage }) => {
+    await expect(homePage.findServiceSearchBox).toBeVisible()
+    await homePage.searchForService('marriage certificate')
+    await homePage.clickResult('Marriage Certificate')
+    await expect(homePage.marriageCertificateMainHeading).toBeVisible()
   })
 })

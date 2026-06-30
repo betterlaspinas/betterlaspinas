@@ -1,13 +1,11 @@
 import { test as baseTest } from '@playwright/test'
 import { GovernmentPage } from '../pages/government.page'
 
-interface GovernmentFixtures {
+interface GovernmentFixture {
   governmentPage: GovernmentPage
-  // Define any fixtures related to the Government page here
 }
 
-export const test = baseTest.extend<GovernmentFixtures>({
-  // Define your fixtures here
+export const test = baseTest.extend<GovernmentFixture>({
   governmentPage: async ({ page }, use) => {
     const governmentPage = new GovernmentPage(page)
     await page.goto('/government')

@@ -19,7 +19,6 @@ export class ServicesPage {
     await this.servicesLink.hover()
     await this.certificatesMenuItem.waitFor({ state: 'visible', timeout: 3000 })
     await this.certificatesMenuItem.click()
-    // Return the CertificatesPage instance to allow chaining of actions on that page
     return new CertificatesPage(this.page)
   }
 

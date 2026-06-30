@@ -5,7 +5,7 @@ export class BusinessPage {
   readonly businessPermit: Locator
   readonly businessPermitRenewal: Locator
   readonly specialPermit: Locator
-  readonly certificateofStatus: Locator
+  readonly certificateOfStatus: Locator
   readonly ctcOfBusinessLicense: Locator
   readonly occupationalPermit: Locator
   readonly firstTimeJobSeeker: Locator
@@ -15,9 +15,9 @@ export class BusinessPage {
     this.businessPermit = page.getByRole('link', { name: 'Business Permit (New)' })
     this.businessPermitRenewal = page.getByRole('link', { name: 'Business Permit (Renewal)' })
     this.specialPermit = page.getByRole('link', { name: 'Special Permit' })
-    this.certificateofStatus = page.getByRole('link', { name: 'Certificates on Status of Business ' })
+    this.certificateOfStatus = page.getByRole('link', { name: 'Certificates on Status of Business' })
     this.ctcOfBusinessLicense = page.getByRole('link', { name: 'Certified True Copy of Business License' })
-    this.occupationalPermit = page.getByRole('link', { name: ' Occupational Mayor\'s Permit' }).first()
+    this.occupationalPermit = page.getByRole('link', { name: 'Occupational Mayor\'s Permit' }).first()
     this.firstTimeJobSeeker = page.getByRole('link', { name: 'Occupational Permit (First Time Job Seeker)' })
     this.safetySealCertificate = page.getByRole('link', { name: 'Safety Seal Certificate' })
   }
@@ -39,7 +39,7 @@ export class BusinessPage {
   }
 
   async navigateToCertificateOfStatus() {
-    await this.certificateofStatus.click()
+    await this.certificateOfStatus.click()
   }
 
   async navigateToCTCOfBusinessLicense() {
