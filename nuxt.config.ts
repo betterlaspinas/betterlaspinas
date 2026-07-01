@@ -17,6 +17,9 @@ const version = getVersion()
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
+  site: {
+    url: process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000',
+  },
   future: {
     compatibilityVersion: 4,
   },
