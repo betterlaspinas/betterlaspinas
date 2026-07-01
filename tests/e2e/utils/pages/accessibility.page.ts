@@ -47,7 +47,7 @@ export class AccessibilityPage {
   constructor(page: Page) {
     this.page = page
     this.quickLinksHeader = page.getByRole('heading', { name: 'Quick Links', level: 3, exact: true })
-    this.accessibilityLink = page.locator('a').filter({ hasText: /^Accessibility$/ })
+    this.accessibilityLink = page.getByRole('link', { name: 'Accessibility', exact: true })
 
     // Accessibility Main Page Locators
     this.accessibilityPageMainHeading = page.getByRole('heading', { name: 'Accessibility Statement', level: 1, exact: true })
@@ -90,7 +90,7 @@ export class AccessibilityPage {
   }
 
   async navigateToAccessibility() {
-    this.accessibilityLink.click()
+    await this.accessibilityLink.click()
     await this.page.waitForLoadState('networkidle')
   }
 }

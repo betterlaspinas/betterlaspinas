@@ -48,7 +48,7 @@ export class FrequentlyAskedQuestions {
   constructor(page: Page) {
     this.page = page
     this.quickLinksLabel = page.getByRole('heading', { name: 'Quick Links', level: 3, exact: true })
-    this.faqLink = page.locator('a').filter({ hasText: /^FAQ$/ })
+    this.faqLink = page.getByRole('link', { name: 'FAQ', exact: true })
 
     // Main Heading Locators
     this.faqMainHeading = page.getByRole('heading', { name: 'Frequently Asked Questions', level: 1, exact: true })

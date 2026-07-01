@@ -56,10 +56,12 @@ export default defineConfig({
   },
 
   webServer: {
-    command: 'pnpm dev',
+    command: process.env.CI
+      ? 'pnpm build && node .output/server/index.mjs'
+      : 'pnpm dev',
     url: 'http://localhost:3000',
     reuseExistingServer: !process.env.CI,
-    timeout: 120_000,
+    timeout: process.env.CI ? 180_000 : 120_000,
     stdout: 'pipe', //  NORMAL messages from your server (startup logs, ready messages)
     stderr: 'pipe', // ERROR messages from your server (crashes, missing modules, port conflicts)
   },

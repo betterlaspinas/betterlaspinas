@@ -8,8 +8,8 @@ interface FAQFixture {
 export const test = baseTest.extend<FAQFixture>({
   frequentlyAskedQuestions: async ({ page }, use) => {
     const frequentlyAskedQuestions = new FrequentlyAskedQuestions(page)
-    await page.goto('/faq')
-    await page.waitForLoadState('domcontentloaded')
+    await page.goto('/')
+    await page.waitForLoadState('networkidle')
     await use(frequentlyAskedQuestions)
   },
 })
