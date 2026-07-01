@@ -9,7 +9,7 @@ export const test = baseTest.extend<ContactUsFixture>({
   contactUsPage: async ({ page }, use) => {
     const contactUsPage = new ContactUsPage(page)
     await page.goto('/')
-    await page.waitForLoadState('networkidle')
+    await page.waitForLoadState('domcontentloaded')
     await use(contactUsPage)
   },
 })

@@ -9,7 +9,7 @@ export const test = baseTest.extend<TermsOfUseFixture>({
   termsOfUsePage: async ({ page }, use) => {
     const termsOfUsePage = new TermsOfUsePage(page)
     await page.goto('/')
-    await page.waitForLoadState('networkidle')
+    await page.waitForLoadState('domcontentloaded')
     await use(termsOfUsePage)
   },
 })

@@ -9,7 +9,7 @@ export const test = baseTest.extend<QuickLinkFixture>({
   quickLinks: async ({ page }, use) => {
     const quickLinks = new QuickLinks(page)
     await page.goto('/')
-    await page.waitForLoadState('networkidle')
+    await page.waitForLoadState('domcontentloaded')
     await use(quickLinks)
   },
 })

@@ -9,7 +9,7 @@ export const test = baseTest.extend<StatisticsFixture>({
   statisticsPage: async ({ page }, use) => {
     const statisticsPage = new StatisticsPage (page)
     await page.goto('/')
-    await page.waitForLoadState('networkidle')
+    await page.waitForLoadState('domcontentloaded')
     await use(statisticsPage)
   },
 

@@ -9,7 +9,7 @@ export const test = baseTest.extend<PrivacyPolicyFixture>({
   privacyPolicyPage: async ({ page }, use) => {
     const privacyPolicyPage = new PrivacyPolicyPage(page)
     await page.goto('/')
-    await page.waitForLoadState('networkidle')
+    await page.waitForLoadState('domcontentloaded')
     await use(privacyPolicyPage)
   },
 })

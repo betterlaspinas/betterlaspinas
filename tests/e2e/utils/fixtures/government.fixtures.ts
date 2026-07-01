@@ -9,6 +9,7 @@ export const test = baseTest.extend<GovernmentFixture>({
   governmentPage: async ({ page }, use) => {
     const governmentPage = new GovernmentPage(page)
     await page.goto('/government')
+    await page.waitForLoadState('domcontentloaded')
     await use(governmentPage)
   },
 })
