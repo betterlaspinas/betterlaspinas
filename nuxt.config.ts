@@ -27,12 +27,15 @@ export default defineNuxtConfig({
   vite: {
     optimizeDeps: {
       include: [
+        '@unhead/schema-org/vue',
         'chart.js',
+        'lucide-vue-next',
         'tailwind-variants',
         '@vue-leaflet/vue-leaflet',
         'fuse.js',
         'clsx',
         'tailwind-merge',
+        'vue-chartjs',
       ],
     },
   },

@@ -10,8 +10,9 @@ export const test = baseTest.extend<HomePageFixture>({
   homePage: async ({ page }, use) => {
     const homePage = new HomePage(page)
     await page.goto('/')
-    await page.waitForLoadState('networkidle')
-    await page.waitForTimeout(2000)
+    await page.locator('[aria-label="Search services"][data-hydrated="true"]').waitFor({
+      state: 'visible',
+    })
     await use(homePage)
   },
 
