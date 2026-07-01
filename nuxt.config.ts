@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { execSync } from 'node:child_process'
+import process from 'node:process'
 import pkg from './package.json'
 
 function getVersion() {
@@ -16,6 +17,9 @@ const version = getVersion()
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
+  site: {
+    url: process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000',
+  },
   future: {
     compatibilityVersion: 4,
   },
@@ -23,12 +27,15 @@ export default defineNuxtConfig({
   vite: {
     optimizeDeps: {
       include: [
+        '@unhead/schema-org/vue',
         'chart.js',
+        'lucide-vue-next',
         'tailwind-variants',
         '@vue-leaflet/vue-leaflet',
         'fuse.js',
         'clsx',
         'tailwind-merge',
+        'vue-chartjs',
       ],
     },
   },
@@ -132,7 +139,12 @@ export default defineNuxtConfig({
     enabled: true,
   },
   css: ['~/assets/css/main.css'],
-  modules: ['@pinia/nuxt', '@nuxtjs/seo', 'nuxt-og-image', 'nuxt-security'],
+  // happy-dom unit tests do not use application modules. In particular, the
+  // SEO module decorates runtimeConfig with values that structuredClone cannot
+  // serialize when @nuxt/test-utils builds its Vitest configuration.
+  modules: process.env.VITEST
+    ? []
+    : ['@pinia/nuxt', '@nuxtjs/seo', 'nuxt-og-image', 'nuxt-security'],
   runtimeConfig: {
     public: {
       site: {

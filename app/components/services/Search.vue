@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { useClickOutside } from '@/composables/useClickOutside'
 import { highlightMatch, useSearch } from '@/composables/useSearch'
@@ -17,6 +17,11 @@ const emit = defineEmits<{
 const router = useRouter()
 const inputRef = ref<HTMLInputElement | null>(null)
 const dropdownRef = ref<HTMLDivElement | null>(null)
+const isHydrated = ref(false)
+
+onMounted(() => {
+  isHydrated.value = true
+})
 
 const {
   query,
@@ -92,6 +97,7 @@ function onFocus() {
       class="w-full px-5 py-4 pl-12 border-2 border-transparent rounded-full text-base bg-white shadow-lg transition-all duration-200 focus:outline-none focus:border-blue-700 focus:shadow-xl placeholder:text-gray-400"
       :placeholder="placeholder || 'Search services (e.g., birth certificate, business permit)'"
       aria-label="Search services"
+      :data-hydrated="isHydrated"
       autocomplete="off"
       :value="query"
       @input="onInput"

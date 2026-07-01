@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 // Zero-dependency config validator for the canonical Service spine (#184).
 //
 // Validates app/config/services.json, app/config/categories.json, and
