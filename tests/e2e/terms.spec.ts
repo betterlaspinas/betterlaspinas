@@ -1,4 +1,4 @@
-import { expect, test } from '../../lib/fixtures/terms.fixture'
+import { expect, test } from './utils/fixtures/terms.fixture'
 
 test.describe('Terms of Use Page', () => {
   test('Check Terms of Use Link Visibility ', async ({ termsOfUsePage }) => {

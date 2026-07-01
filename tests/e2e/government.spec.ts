@@ -1,4 +1,4 @@
-import { expect, test } from '../../lib/fixtures/base.fixture'
+import { expect, test } from './utils/fixtures/base.fixture'
 
 test.describe('Government Structure and Officials', () => {
   test('should navigate to Government Structure and Officials page', async ({ page, governmentPage }) => {

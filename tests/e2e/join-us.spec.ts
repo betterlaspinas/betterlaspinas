@@ -1,4 +1,4 @@
-import { expect, test } from '../../lib/fixtures/join-us.fixture'
+import { expect, test } from './utils/fixtures/join-us.fixture'
 
 test.describe('Join Us Page', () => {
   test('Check Join Us Link Visibility', async ({ joinUsPage }) => {

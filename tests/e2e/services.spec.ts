@@ -1,4 +1,4 @@
-import { expect, test } from '../../lib/fixtures/base.fixture'
+import { expect, test } from './utils/fixtures/base.fixture'
 
 test.describe('Services Page', () => {
   // Navigate to Certificates and Business pages via Menu

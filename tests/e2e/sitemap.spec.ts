@@ -1,4 +1,4 @@
-import { expect, test } from '../../lib/fixtures/base.fixture'
+import { expect, test } from './utils/fixtures/base.fixture'
 
 test.describe('Navigate to Quick Links', () => {
   test('Check for SiteMap Link visibility', async ({ quickLinks }) => {

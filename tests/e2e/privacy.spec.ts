@@ -1,4 +1,4 @@
-import { expect, test } from '../../lib/fixtures/base.fixture'
+import { expect, test } from './utils/fixtures/base.fixture'
 
 test.describe('Privacy Policy page', () => {
   test('Check for Privacy Policy Link Visibility', async ({ privacyPolicyPage }) => {

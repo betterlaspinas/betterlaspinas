@@ -1,4 +1,4 @@
-import { expect, test } from '../../lib/fixtures/base.fixture'
+import { expect, test } from './utils/fixtures/base.fixture'
 
 test.describe('Frequently Asked Question Page', () => {
   test('Check Frequently Asked Question Link Visibility', async ({ frequentlyAskedQuestions }) => {

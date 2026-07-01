@@ -1,4 +1,4 @@
-import { expect, test } from '../../lib/fixtures/base.fixture'
+import { expect, test } from './utils/fixtures/base.fixture'
 
 test.describe('Accessibility Page', () => {
   test('Check Accessibility page Link Visibility', async ({ accessibilityPage }) => {

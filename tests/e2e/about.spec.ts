@@ -1,4 +1,4 @@
-import { expect, test } from '../../lib/fixtures/base.fixture'
+import { expect, test } from './utils/fixtures/base.fixture'
 
 test.describe('About Page', () => {
   test('Check About Page Link Visibility', async ({ aboutPage }) => {
