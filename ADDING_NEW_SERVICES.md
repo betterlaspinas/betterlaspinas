@@ -1,76 +1,155 @@
 # Adding New Services Guide
 
-This guide details the standard checklist and considerations when adding a new service to the local government unit directory.
+Services now live in **one place**: `app/config/services.json`. You do **not** need
+to touch any TypeScript to add a Service. A non-developer can add or edit a
+Service by editing JSON, validated by a schema and a `pnpm validate` check.
 
-## Checklist for Adding a New Service
+> Status: this single-source workflow is live for **every** Service Category.
+> The configHelper accessor reads `categories.json` / `services.json` for every
+> category, and that is the only source.
 
-### 1. Update `services.json`
+## The single source: `app/config/services.json`
 
-- **File**: `app/config/services.json`
-- **Action**: Add a new JSON object to the `"services"` array.
-- **Fields Required**:
-  - `id`: A unique, URL-friendly string (e.g., `special-permit`).
-  - `title`: The display title of the service.
-  - `category`: The main category it belongs to (e.g., `Business, Trade & Investment`).
-  - `categoryId`: The slug of the category.
-  - `description`: A brief 1-sentence explanation of what the service is.
-  - `keywords`: Array of search terms for the fuzzy search composable.
-  - `fee`: The expected cost.
-  - `processingTime`: Approximated time for the whole transaction.
-  - `office`: The assigned office or department handling it.
-  - `url`: The destination route (typically `/service-details/<id>`).
+Each entry in the `"services"` array is a canonical Service record. The file is
+schema-backed: `app/config/schema/services.schema.json` (referenced via the
+`"$schema"` key at the top of the JSON). Most editors will autocomplete and
+flag mistakes inline.
 
-### 2. Update `categoriesContent.ts`
+### 1. Add the Service record
 
-- **File**: `app/utils/categoriesContent.ts`
-- **Action**: Add a new `ServiceItem` object to the corresponding `services` array within the `CategoryContent` object.
-- **Fields Required**:
-  - `id`: A unique string.
-  - `title`: The display title of the service in the category page.
-  - `icon`: Bootstrap internal icon (e.g., `bi-shop`).
-  - `description`: A brief description for the category card.
-  - `fee`: The expected cost.
-  - `time`: Approximated processing time.
-  - `link`: The destination route (typically `/service-details/<id>`).
+Add a new object to the `"services"` array:
 
-### 3. Add Detailed Content in `serviceDetailsContent.ts`
+```json5
+{
+  "id": "my-service", // unique, URL-friendly slug
+  "title": "My Service", // display title
+  "category": "Certificates & Vital Records", // human-readable category name
+  "categoryId": "certificates", // MUST match an id in categories.json
+  "description": "One-sentence summary of the service.",
+  "keywords": ["my", "service", "search", "terms"],
+  "fee": "₱75", // optional
+  "processingTime": "15-30 minutes", // optional
+  "office": "Civil Registry Office", // optional
+  "icon": "bi-file-earmark-text", // optional Bootstrap icon
+  "url": "/services/certificates" // see "Catalog vs. detail" below
+}
+```
 
-- **File**: `app/utils/serviceDetailsContent.ts`
-- **Action**: Append a new `ServiceDetail` object. Group it logically under the corresponding section (e.g., `/** Business, Trade & Investment */`).
-- **Fields Required**:
-  - `id`: Must EXACTLY match the ID from `services.json`.
-  - `title`: Short title (used in breadcrumbs/headers).
-  - `fullTitle`: Formal/Official title.
-  - `category` & `categoryLink`: The parent category name and its route (`/services/business`).
-  - `badgeText` & `badgeIcon`: UI badge text and Bootstrap internal icon (e.g., `bi-shop`).
-  - `description`: A comprehensive description.
-  - `quickStats`: Array of 4 items (`Processing`, `Fee`, `Who Can Apply`, `Appointment`).
-  - `processSteps`: Sequential procedure. Mark the last item with `isFinal: true`.
-  - `requirements`: Grouped lists with titles and icons (`bi-file-text`, `bi-people`, etc.).
-  - `faqs`: Array of FAQs (`question`/`answer`). **Note**: Do not fabricate FAQs; only add them if verified by a valid source document.
-  - `office`: Contact and location information.
-  - `relatedServices`: Links to 2-3 similar internal pages.
-  - `sourceUrl` & `sourceName`: Link to Citizen's Charter and official name context, if applicable.
+### 2. Catalog vs. detail — does it get its own page?
 
-### 4. Setup SEO
+A Service is one of two things:
 
-- **File**: `app/config/seo-service-details-slug.json`
-- **Action**: Add a localized mapping using the newly created `id` as the key.
-- **Example**: `"special-permit": "Apply for a Special Permit to operate your business establishment in {{lguName}}."`
-- **Consideration**: The `seo.global.ts` middleware injects `{{lguName}}`. Try to make the meta description actionable and descriptive.
+- **Catalog-only card.** No dedicated page. Set
+  `"url": "/services/<categoryId>"` and **omit** the `detail` block.
+  (e.g. _Barangay Clearance_.)
 
-### 5. Provide a Changelog Status
+- **Detail-bearing Service.** Has a full `/service-details/<id>` page. Set
+  `"url": "/service-details/<id>"` and add an optional `"detail"` object with
+  the page content:
 
-- **File**: `CHANGELOG.md`
-- **Action**: Add a bullet under the currently `[Unreleased]` -> `### Added` section.
-- **Reference**: Always follow `CHANGELOG_STRATEGY.md` format (delineating user-facing vs. infrastructure features).
+```text
+"url": "/service-details/my-service",
+"detail": {
+  "fullTitle": "My Service (Official Title)",
+  "category": "Certificates",
+  "categoryLink": "/services/certificates",
+  "badgeText": "Certificates",
+  "badgeIcon": "bi-file-earmark-text",
+  "description": "Comprehensive description shown on the page.",
+  "quickStats": [
+    { "icon": "bi-clock", "label": "Processing", "value": "15-30 Minutes" }
+  ],
+  "processSteps": [
+    { "title": "Step One", "description": "...", "isFinal": false }
+    // mark the last step with "isFinal": true
+  ],
+  "requirements": [
+    { "title": "Documentary Requirements", "icon": "bi-file-text", "items": ["..."] }
+  ],
+  "faqs": [
+    { "question": "...", "answer": "..." }
+    // Do NOT fabricate FAQs — only add verified ones.
+  ],
+  "office": {
+    "name": "City Civil Registry",
+    "location": "1st Floor, Administrative Building",
+    "phone": "(02) 8253-4370",
+    "hours": "Mon-Thu: 8AM - 7PM"
+  },
+  "relatedServices": [
+    { "title": "Birth Certificate", "link": "/service-details/birth-certificate" }
+  ],
+  "onlineLink": "https://...",              // optional
+  "sourceUrl": "https://...",               // optional — link to source document
+  "sourceName": "Citizen's Charter 2022"    // optional
+}
+```
 
-### 6. Validating Using the UI
+The rule the validator enforces: **if a Service has a `detail` block, its `url`
+must be exactly `/service-details/<id>`.**
 
-- **Action**: Spin up the development server locally (`pnpm run dev`).
-- **Checklist**:
-  - Does the new service appear in the global site search popup?
-  - Does the specific category list the new service properly?
-  - Does clicking the service route to the correct Dynamic Slug page (`/service-details/[id]`) without a 404 error?
-  - Are Hydration Mismatches avoided? (Ensure semantic HTML arrays are strictly matched without arbitrary unclosed elements).
-  - Does the meta description appear in the DOM head?
+### 3. Categories live in `app/config/categories.json`
+
+If you introduce a new `categoryId`, add a matching category record to
+`app/config/categories.json` (schema:
+`app/config/schema/categories.schema.json`). Categories no longer carry an
+inline `offices` array — the "Responsible Offices" cards on the category page
+are derived from the Offices that provide the category's Services (via each
+Service's `providedBy` ref). To make an Office appear there, set `providedBy`
+on the Service and add the Office to `app/config/offices.json`.
+
+### 4. Validate
+
+Run the zero-dependency validator before committing:
+
+```bash
+pnpm validate
+```
+
+It checks both JSON files against their schemas and asserts consistency
+(unknown `categoryId`, duplicate ids, `detail`/`url` coherence). CI runs this on
+every PR.
+
+### 5. SEO (optional)
+
+For a new `/service-details/<id>` page, add a localized meta description right
+on the canonical Service record in `app/config/services.json` via the optional
+`seoDescription` field (read by the SEO middleware through
+`getServiceSeoDescription`):
+
+```jsonc
+{
+  "id": "my-service",
+  "description": "Short catalog blurb.",
+  "seoDescription": "Apply for My Service in {{lguName}}."
+  // ...
+}
+```
+
+Category pages work the same way: add an optional `seoDescription` field to the
+Category record in `app/config/categories.json` (read via
+`getCategorySeoDescription`). Both support `{{lguName}}` interpolation. Keeping
+the SEO copy on the canonical record means it can never drift from the catalog.
+When omitted, the route-level description in `app/config/seo.json` is used.
+
+The Service `seoDescription` field only resolves once its `categoryId` is live (in
+`LIVE_CATEGORY_IDS` in `app/utils/configHelper.ts`). A Service in a not-yet-live
+category is gated out of the catalog, search, and SEO together, so its
+`seoDescription` falls back to the route-level description until the category
+goes live.
+
+### 6. Changelog
+
+Add a bullet under `[Unreleased]` → `### Added` in `CHANGELOG.md`, following
+`CHANGELOG_STRATEGY.md`.
+
+### 7. Verify in the UI
+
+```bash
+pnpm dev
+```
+
+- Does the Service appear in the global search popup?
+- Does the category page list it?
+- Does a detail-bearing Service route to `/service-details/<id>` without a 404?
+- Does the meta description render in the document head?

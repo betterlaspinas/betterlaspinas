@@ -1,0 +1,190 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "offices.schema.json",
+  "title": "Offices Configuration",
+  "description": "First-class Office entity. An Office is a government body that provides Services, grouped by government function via an Office Group. An Office belongs to exactly one Office Group, even when its Services span multiple Categories.",
+  "type": "object",
+  "required": ["officeGroups", "offices"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "JSON Schema reference"
+    },
+    "officeGroups": {
+      "type": "array",
+      "description": "Office Groups: groupings of Offices by government function (who runs this)",
+      "items": { "$ref": "#/definitions/officeGroup" }
+    },
+    "offices": {
+      "type": "array",
+      "description": "All Office records, each belonging to exactly one Office Group",
+      "items": { "$ref": "#/definitions/office" }
+    }
+  },
+  "definitions": {
+    "officeGroup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "description"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique Office Group slug (matches offices[].groupId)"
+        },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "icon": {
+          "type": "string",
+          "description": "Bootstrap icon class"
+        },
+        "hidden": { "type": "boolean" }
+      }
+    },
+    "office": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "groupId", "icon", "description", "link"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique, URL-friendly Office identifier (referenced by services[].providedBy)"
+        },
+        "name": { "type": "string" },
+        "groupId": {
+          "type": "string",
+          "description": "Slug of the parent Office Group (must match an officeGroups id). Exactly one."
+        },
+        "icon": {
+          "type": "string",
+          "description": "Bootstrap icon class"
+        },
+        "description": { "type": "string" },
+        "link": {
+          "type": "string",
+          "description": "Destination route for the Office card"
+        },
+        "location": { "type": "string" },
+        "phone": { "type": "string" },
+        "mobile": { "type": "string" },
+        "email": { "type": "string" },
+        "facebook": { "type": "string" },
+        "hours": { "type": "string" },
+        "hidden": { "type": "boolean" },
+        "additionalServices": {
+          "type": "array",
+          "description": "Office-only service names rendered as plain, non-clickable cards on the Office page. NOT Service records (absent from search and Category grids); deduped against the Services this Office providedBy. A service graduates into services.json with providedBy once it has a detail page.",
+          "items": { "type": "string" }
+        },
+        "sourceUrl": {
+          "type": "string",
+          "description": "Official source link for this Office's data (e.g. the Citizen's Charter PDF). Rendered as a Data source card on the Office page."
+        },
+        "sourceName": {
+          "type": "string",
+          "description": "Human label for sourceUrl (e.g. 'Citizen's Charter 2022 (1st Edition)')."
+        },
+        "detail": { "$ref": "#/definitions/officeDetail" }
+      }
+    },
+    "officeDetail": {
+      "type": "object",
+      "description": "Optional rich content for the Office's dedicated service-details page. Mirrors the canonical services.json `detail` block (#184), minus its `office` contact sub-block: the Office is its own contact source, so getOfficeDetailBySlug synthesises the contact card from the Office's top-level fields (single source of truth).",
+      "additionalProperties": false,
+      "required": [
+        "fullTitle",
+        "category",
+        "categoryLink",
+        "badgeText",
+        "badgeIcon",
+        "description",
+        "quickStats",
+        "processSteps",
+        "requirements",
+        "faqs",
+        "relatedServices"
+      ],
+      "properties": {
+        "fullTitle": { "type": "string" },
+        "category": { "type": "string" },
+        "categoryLink": { "type": "string" },
+        "badgeText": { "type": "string" },
+        "badgeIcon": { "type": "string" },
+        "description": { "type": "string" },
+        "quickStats": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/quickStat" }
+        },
+        "processSteps": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/processStep" }
+        },
+        "requirements": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/requirementGroup" }
+        },
+        "faqs": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/faq" }
+        },
+        "relatedServices": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/relatedService" }
+        },
+        "onlineLink": { "type": "string" },
+        "sourceUrl": { "type": "string" },
+        "sourceName": { "type": "string" }
+      }
+    },
+    "quickStat": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["icon", "label", "value"],
+      "properties": {
+        "icon": { "type": "string" },
+        "label": { "type": "string" },
+        "value": { "type": "string" }
+      }
+    },
+    "processStep": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "description"],
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "isFinal": { "type": "boolean" }
+      }
+    },
+    "requirementGroup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "icon", "items"],
+      "properties": {
+        "title": { "type": "string" },
+        "icon": { "type": "string" },
+        "items": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "faq": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["question", "answer"],
+      "properties": {
+        "question": { "type": "string" },
+        "answer": { "type": "string" }
+      }
+    },
+    "relatedService": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "link"],
+      "properties": {
+        "title": { "type": "string" },
+        "link": { "type": "string" }
+      }
+    }
+  }
+}

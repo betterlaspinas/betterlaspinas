@@ -1,6 +1,7 @@
 import type {
   BudgetConfig,
   CategoriesConfig,
+  Category,
   FAQConfig,
   HistoryConfig,
   HotlinesConfig,
@@ -11,6 +12,9 @@ import type {
   NavigationConfig,
   NavigationItem,
   NewsConfig,
+  Office,
+  OfficeGroup,
+  OfficesConfig,
   OfficialsConfig,
   OgImageRouteConfig,
   SeoRouteConfig,
@@ -38,6 +42,7 @@ import hotlinesConfig from '../config/hotlines.json'
 import legislativeConfig from '../config/legislative.json'
 import navigationConfig from '../config/navigation.json'
 import newsConfig from '../config/news.json'
+import officesConfig from '../config/offices.json'
 import officialsConfig from '../config/officials.json'
 import ogImageConfig from '../config/og-image.json'
 // Import JSON config files
@@ -262,20 +267,229 @@ export function getCategoriesConfig(): CategoriesConfig {
 }
 
 /**
- * Get the services config with proper typing
+ * Get the services config with proper typing.
+ * Filters out hidden Services; no category coupling.
  */
+// Soft-launch gate (introduced in 0a6176c "scope site content to certificates
+// category for soft launch"): only live categories are exposed through the
+// shared services config, which backs the global search index and the canonical
+// accessors. #186 ports the remaining Service Categories to the canonical
+// source, so they all go live here. The two non-resident categories
+// (`government`, `online`) stay gated until their own slices.
+const LIVE_CATEGORY_IDS = new Set([
+  'certificates',
+  'business',
+  'tax-payments',
+  'social-services',
+  'health',
+  'agriculture',
+  'infrastructure',
+  'education',
+  'public-safety',
+  'environment',
+])
+
 export function getServicesConfig(): ServicesConfig {
-  // return servicesConfig as ServicesConfig
-  // TODO: Remove this and uncomment above to restore all services globally
   const config = servicesConfig as ServicesConfig
   return {
     ...config,
     services: config.services
       ? config.services
-          .filter((service: ServiceItem) => service.categoryId === 'certificates' || service.categoryId === 'business')
+          .filter(service => LIVE_CATEGORY_IDS.has(service.categoryId ?? ''))
           .filter((service: ServiceItem) => !service.hidden)
       : [],
   }
+}
+
+// ---------------------------------------------------------------------------
+// Canonical Service accessor (HITL review surface).
+//
+// This small, stable interface is the single read path every later config
+// slice copies. Pages and composables MUST go through these accessors rather
+// than importing services.json / categories.json directly.
+// ---------------------------------------------------------------------------
+
+/**
+ * Get every visible Service record (hidden Services excluded).
+ */
+export function getAllServices(): ServiceItem[] {
+  return getServicesConfig().services
+}
+
+/**
+ * Get a single Service by its canonical id/slug.
+ * Returns undefined for unknown or hidden Services. Covers both detail-bearing
+ * Services and catalog-only (no `detail`) Services.
+ */
+export function getServiceBySlug(slug: string): ServiceItem | undefined {
+  return getAllServices().find(service => service.id === slug)
+}
+
+/**
+ * Get every visible service Category (hidden Categories excluded).
+ */
+export function getServiceCategories(): Category[] {
+  const config = getCategoriesConfig()
+  return (config.categories ?? []).filter(category => !category.hidden)
+}
+
+/**
+ * Get a single Category by its slug. Returns undefined for unknown/hidden.
+ */
+export function getCategoryBySlug(slug: string): Category | undefined {
+  return getServiceCategories().find(category => category.id === slug)
+}
+
+/**
+ * Get all visible Services belonging to a given category slug.
+ */
+export function getServicesByCategory(slug: string): ServiceItem[] {
+  return getAllServices().filter(service => service.categoryId === slug)
+}
+
+/**
+ * Service Categories whose page is sourced canonically (categories.json +
+ * services.json) through these accessors. The two remaining hidden Categories
+ * (`government`, `online`) are not resident Service Categories and migrate in
+ * their own slices.
+ */
+const CANONICAL_CATEGORY_SLUGS = new Set([
+  'certificates',
+  'business',
+  'tax-payments',
+  'social-services',
+  'health',
+  'agriculture',
+  'infrastructure',
+  'education',
+  'public-safety',
+  'environment',
+])
+
+export function isCanonicalCategory(slug: string): boolean {
+  return CANONICAL_CATEGORY_SLUGS.has(slug)
+}
+
+/**
+ * Derive the SEO meta-description template for a Service's
+ * `/service-details/<slug>` page from the canonical Service record.
+ *
+ * Replaces the legacy `seo-service-details-slug.json` lookup: the per-Service
+ * SEO copy now lives on the Service itself (`ServiceItem.seoDescription`), so it
+ * cannot drift from the catalog. Returns undefined when the Service is unknown,
+ * hidden, gated out by the `LIVE_CATEGORY_IDS` soft-launch filter (its
+ * `categoryId` is not yet live), or carries no `seoDescription` template,
+ * letting the SEO middleware fall back to the route-level `seo.json`
+ * description. The returned string is a raw template (e.g. contains
+ * `{{lguName}}`); the middleware interpolates it.
+ */
+export function getServiceSeoDescription(slug: string): string | undefined {
+  return getServiceBySlug(slug)?.seoDescription
+}
+
+/**
+ * Derive the SEO meta-description template for a Category's `/services/<slug>`
+ * page from the canonical Category record.
+ *
+ * Replaces the legacy `seo-services-category.json` lookup: the per-Category SEO
+ * copy now lives on the Category itself (`Category.seoDescription`). Returns
+ * undefined when the Category is unknown/hidden or carries no `seoDescription`
+ * template, letting the SEO middleware fall back to the route-level `seo.json`
+ * description.
+ */
+export function getCategorySeoDescription(slug: string): string | undefined {
+  return getCategoryBySlug(slug)?.seoDescription
+}
+
+// ---------------------------------------------------------------------------
+// Canonical Office accessor (#185).
+//
+// Office is a first-class entity that provides Services, grouped by government
+// function via Office Group. Office -> OfficeGroup is one-to-one (groupId);
+// Office <-> Category is many-to-many, mediated by the Services an Office
+// provides. Pages MUST resolve Offices through these accessors rather than
+// reading offices.json or Category.offices (which no longer exists).
+// ---------------------------------------------------------------------------
+
+/**
+ * Get the offices config with proper typing.
+ */
+export function getOfficesConfig(): OfficesConfig {
+  return officesConfig as OfficesConfig
+}
+
+/**
+ * Get every visible Office record (hidden Offices excluded).
+ */
+export function getOffices(): Office[] {
+  return (getOfficesConfig().offices ?? []).filter(office => !office.hidden)
+}
+
+/**
+ * Get a single Office by its canonical id/slug.
+ * Returns undefined for unknown or hidden Offices.
+ */
+export function getOfficeBySlug(slug: string): Office | undefined {
+  return getOffices().find(office => office.id === slug)
+}
+
+// Office-card synthesis (`getServiceOfficeCard`) and the /service-details Office
+// card moved to the View resolver seam (`app/utils/pageViews.ts`, ADR-0002):
+// `officeContactCard` and `toServiceDetailView`. The office-detail fallback for
+// /service-details (`getOfficeDetailBySlug`) is dropped — the legacy office URL
+// is redirected by a 301 (#207/#216), so /offices/<id> is resolved by
+// `officeView` instead.
+
+/**
+ * Get every visible Office Group (hidden Groups excluded).
+ */
+export function getOfficeGroups(): OfficeGroup[] {
+  return (getOfficesConfig().officeGroups ?? []).filter(group => !group.hidden)
+}
+
+/**
+ * Get a single Office Group by its slug. Returns undefined for unknown/hidden.
+ */
+export function getOfficeGroupBySlug(slug: string): OfficeGroup | undefined {
+  return getOfficeGroups().find(group => group.id === slug)
+}
+
+/**
+ * Get all visible Offices belonging to a given Office Group slug.
+ * Returns an empty array when the Group is unknown or hidden, matching
+ * getOfficeGroupBySlug so a hidden Group never leaks its Offices.
+ */
+export function getOfficesByGroup(slug: string): Office[] {
+  if (!getOfficeGroupBySlug(slug))
+    return []
+  return getOffices().filter(office => office.groupId === slug)
+}
+
+/**
+ * Resolve the Office that provides a given Service via its `providedBy` ref.
+ * Returns undefined when the Service has no `providedBy` or the Office is
+ * unknown/hidden.
+ */
+export function getOfficeForService(service: ServiceItem): Office | undefined {
+  return service.providedBy ? getOfficeBySlug(service.providedBy) : undefined
+}
+
+/**
+ * Get the distinct visible Offices that provide the Services in a Category.
+ * Backs the "Responsible Offices" section: Office <-> Category is many-to-many
+ * through the Services, so this dedupes Offices across the Category's Services.
+ */
+export function getOfficesForCategory(slug: string): Office[] {
+  const seen = new Set<string>()
+  const result: Office[] = []
+  for (const service of getServicesByCategory(slug)) {
+    const office = getOfficeForService(service)
+    if (office && !seen.has(office.id)) {
+      seen.add(office.id)
+      result.push(office)
+    }
+  }
+  return result
 }
 
 /**

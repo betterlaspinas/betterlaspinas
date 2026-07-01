@@ -1,4 +1,5 @@
 {
+  "$schema": "./schema/services.schema.json",
   "services": [
     {
       "id": "birth-certificate",
@@ -6,6 +7,7 @@
       "category": "Certificates & Vital Records",
       "categoryId": "certificates",
       "description": "Get a certified copy of birth certificate registered in your city",
+      "seoDescription": "Get a certified copy of birth certificate registered in {{lguName}}.",
       "keywords": [
         "birth",
         "certificate",
@@ -18,7 +20,118 @@
       "fee": "₱75",
       "processingTime": "15-30 minutes",
       "office": "Civil Registry Office",
-      "url": "/service-details/birth-certificate"
+      "providedBy": "civil-registry",
+      "icon": "bi-file-earmark-text",
+      "url": "/service-details/birth-certificate",
+      "detail": {
+        "fullTitle": "Birth Certificate (Local Copy)",
+        "category": "Certificates",
+        "categoryLink": "/services/certificates",
+        "badgeText": "Certificates",
+        "badgeIcon": "bi-file-earmark-text",
+        "description": "Official certified copy of birth certificate registered in your city",
+        "quickStats": [
+          {
+            "icon": "bi-clock",
+            "label": "Processing",
+            "value": "15-30 Minutes"
+          },
+          {
+            "icon": "bi-cash",
+            "label": "Fee",
+            "value": "₱75/copy"
+          },
+          {
+            "icon": "bi-person-check",
+            "label": "Who Can Apply",
+            "value": "Owner/Representative"
+          },
+          {
+            "icon": "bi-calendar-check",
+            "label": "Appointment",
+            "value": "Walk-in"
+          }
+        ],
+        "processSteps": [
+          {
+            "title": "Check Eligibility",
+            "description": "You can request if you are the owner, parent/guardian, or authorized representative with proper authorization letter."
+          },
+          {
+            "title": "Prepare Documents",
+            "description": "Bring valid government-issued ID. If representative: authorization letter and IDs of both owner and representative."
+          },
+          {
+            "title": "Visit Civil Registry",
+            "description": "Go to the City Civil Registry Office - Window 4 at 1st Floor, Administrative Building. Office hours: Mon-Fri, 8AM-5PM."
+          },
+          {
+            "title": "Fill Out Request Form",
+            "description": "Complete the request form / verification slip with full name, date of birth, place of birth, parents' names, and purpose."
+          },
+          {
+            "title": "Pay the Fee",
+            "description": "Pay ₱75 per certified copy at Window 2 or 3 of the Civil Registry or at the City Treasurer's Office (same building)."
+          },
+          {
+            "title": "Claim Certificate",
+            "description": "Return to Civil Registry Window 4 with official receipt. Certificate released within 15-30 minutes if record is available.",
+            "isFinal": true
+          }
+        ],
+        "requirements": [
+          {
+            "title": "If You Are the Owner",
+            "icon": "bi-person",
+            "items": [
+              "Valid government-issued ID (original + photocopy)",
+              "Payment: ₱75 cash per copy"
+            ]
+          },
+          {
+            "title": "If You Are a Representative",
+            "icon": "bi-people",
+            "items": [
+              "Authorization letter signed by the owner",
+              "Valid ID of the owner (photocopy)",
+              "Valid ID of the representative (original + photocopy)",
+              "Payment: ₱75 cash per copy"
+            ]
+          }
+        ],
+        "faqs": [
+          {
+            "question": "Can I get a birth certificate registered in another city?",
+            "answer": "No. The City Civil Registry only has records for births registered in this city. For other cities, request from that city's Civil Registry or from PSA."
+          },
+          {
+            "question": "What if I don't know the exact date of birth?",
+            "answer": "Provide an approximate year and month. The staff will help search the records, but this may take longer."
+          },
+          {
+            "question": "Can I request through email or online?",
+            "answer": "Currently, requests must be made in person. Online services are being planned for the future."
+          },
+          {
+            "question": "What's the difference between local copy and PSA copy?",
+            "answer": "Both are certified true copies. PSA copies are nationally-recognized and required for passport/visa applications. Local copies are accepted for most local transactions and school enrollment."
+          }
+        ],
+        "relatedServices": [
+          {
+            "title": "Marriage Certificate",
+            "link": "/service-details/marriage-certificate"
+          },
+          {
+            "title": "Death Certificate",
+            "link": "/service-details/death-certificate"
+          },
+          {
+            "title": "Barangay Clearance",
+            "link": "/services/certificates"
+          }
+        ]
+      }
     },
     {
       "id": "marriage-certificate",
@@ -26,6 +139,7 @@
       "category": "Certificates & Vital Records",
       "categoryId": "certificates",
       "description": "Register or request certified true copy of marriage certificate",
+      "seoDescription": "Register or request certified true copy of marriage certificate in {{lguName}}.",
       "keywords": [
         "marriage",
         "wedding",
@@ -39,7 +153,117 @@
       "fee": "₱150 (Registration)",
       "processingTime": "3-10 days",
       "office": "Civil Registry Office",
-      "url": "/service-details/marriage-certificate"
+      "providedBy": "civil-registry",
+      "icon": "bi-heart",
+      "url": "/service-details/marriage-certificate",
+      "detail": {
+        "fullTitle": "Marriage Certificate Registration & Copy",
+        "category": "Certificates",
+        "categoryLink": "/services/certificates",
+        "badgeText": "Certificates",
+        "badgeIcon": "bi-heart",
+        "description": "Register or request certified true copy of marriage certificate",
+        "quickStats": [
+          {
+            "icon": "bi-clock",
+            "label": "Processing",
+            "value": "3-10 Days"
+          },
+          {
+            "icon": "bi-cash",
+            "label": "Fee",
+            "value": "₱150 (Registration)"
+          },
+          {
+            "icon": "bi-person-check",
+            "label": "Who Can Apply",
+            "value": "Spouses/Representative"
+          },
+          {
+            "icon": "bi-calendar-check",
+            "label": "Appointment",
+            "value": "Walk-in"
+          }
+        ],
+        "processSteps": [
+          {
+            "title": "Gather Documents",
+            "description": "Prepare marriage certificate from solemnizing officer and valid IDs."
+          },
+          {
+            "title": "Visit Civil Registry",
+            "description": "Go to the Civil Registry Office, 1st Floor, Administrative Building."
+          },
+          {
+            "title": "Submit Documents & Verification",
+            "description": "Submit marriage certificate and supporting documents for registration at Window 5. Staff verifies document authenticity and completeness."
+          },
+          {
+            "title": "Payment",
+            "description": "Pay the Solemnization Fee of ₱150 at Window 2 or 3 in the Civil Registry Office."
+          },
+          {
+            "title": "Registration",
+            "description": "Marriage is officially registered in the Civil Registry."
+          },
+          {
+            "title": "Claim Certificate",
+            "description": "Receive certified copy of registered marriage certificate.",
+            "isFinal": true
+          }
+        ],
+        "requirements": [
+          {
+            "title": "For Timely Registration",
+            "icon": "bi-file-text",
+            "items": [
+              "Duly accomplished Certificate of Marriage - 4 copies",
+              "Marriage solemnized outside Churches or Municipal Court must submit a Request address to solemnizing officer for celebration of Marriage in a place other than those authorized by law",
+              "Valid IDs of both spouses",
+              "Marriage license (if applicable)"
+            ]
+          },
+          {
+            "title": "For Late Registration",
+            "icon": "bi-file-text",
+            "items": [
+              "Duly accomplished Certificate of Marriage - 4 copies",
+              "Certificate of Marriage of contracting parties",
+              "Valid IDs of both spouses",
+              "Marriage license (if applicable)"
+            ]
+          },
+          {
+            "title": "For Copy Request",
+            "icon": "bi-files",
+            "items": [
+              "Valid ID of spouse or authorized representative",
+              "Authorization letter (if representative)",
+              "Payment: ₱75 per copy"
+            ]
+          }
+        ],
+        "faqs": [
+          {
+            "question": "How soon after the wedding should I register?",
+            "answer": "Within 30 days of the marriage ceremony. Late registration may require additional documents."
+          },
+          {
+            "question": "Can I get a copy if I was married elsewhere?",
+            "answer": "Only marriages registered in this city are available. Request from the city where you were married or from PSA."
+          }
+        ],
+        "relatedServices": [
+          {
+            "title": "Birth Certificate",
+            "link": "/service-details/birth-certificate"
+          },
+          {
+            "title": "CENOMAR",
+            "link": "/services/certificates"
+          }
+        ]
+      }
     },
     {
       "id": "death-certificate",
@@ -47,6 +271,7 @@
       "category": "Certificates & Vital Records",
       "categoryId": "certificates",
       "description": "Register death certificate and obtain burial or transfer permit",
+      "seoDescription": "Register death certificate and obtain burial or transfer permit in {{lguName}}.",
       "keywords": [
         "death",
         "died",
@@ -59,7 +284,108 @@
       "fee": "₱75-150",
       "processingTime": "~1 hour 35 minutes",
       "office": "Civil Registry Office",
-      "url": "/service-details/death-certificate"
+      "providedBy": "civil-registry",
+      "icon": "bi-file-earmark-x",
+      "url": "/service-details/death-certificate",
+      "detail": {
+        "fullTitle": "Death Certificate Registration & Burial Permit",
+        "category": "Certificates",
+        "categoryLink": "/services/certificates",
+        "badgeText": "Certificates",
+        "badgeIcon": "bi-file-earmark-x",
+        "description": "Register death certificate and obtain burial/transfer permit",
+        "quickStats": [
+          {
+            "icon": "bi-clock",
+            "label": "Processing",
+            "value": "~1.5 Hours"
+          },
+          {
+            "icon": "bi-cash",
+            "label": "Fee",
+            "value": "₱75-150"
+          },
+          {
+            "icon": "bi-person-check",
+            "label": "Who Can Apply",
+            "value": "Immediate Family"
+          },
+          {
+            "icon": "bi-calendar-check",
+            "label": "Appointment",
+            "value": "Walk-in"
+          }
+        ],
+        "processSteps": [
+          {
+            "title": "Obtain Medical Certificate",
+            "description": "Get certificate of death from attending physician or hospital."
+          },
+          {
+            "title": "Visit Civil Registry",
+            "description": "Go to Civil Registry at Window 5 with death certificate within 48 hours."
+          },
+          {
+            "title": "Complete Registry",
+            "description": "Staff registers death in civil registry."
+          },
+          {
+            "title": "Pay Fees",
+            "description": "Pay registration of ₱75, ₱150 if late, and burial permit fees at Window 2 or 3 in the Civil Registry Office or at the City Treasurer's Office."
+          },
+          {
+            "title": "Claim Permits",
+            "description": "Receive burial permit and certified death certificate at Window 5.",
+            "isFinal": true
+          }
+        ],
+        "requirements": [
+          {
+            "title": "For Timely Registration",
+            "icon": "bi-file-text",
+            "items": [
+              "Certificate of Death - 4 copies",
+              "Valid ID of informant",
+              "Valid ID of deceased (if available)"
+            ]
+          },
+          {
+            "title": "For Late Registration",
+            "icon": "bi-file-text",
+            "items": [
+              "Negative Certification from Philippine Statistics Authority",
+              "Duly accomplished Certificate of Death or Certificate of Fetal Death",
+              "Certification from the Cemetery",
+              "Valid ID of informant",
+              "Valid ID of deceased (if available)"
+            ]
+          }
+        ],
+        "faqs": [
+          {
+            "question": "How soon must death be registered?",
+            "answer": "Within 48 hours of death. Late registration requires additional documents and fees."
+          },
+          {
+            "question": "Do I need a burial permit?",
+            "answer": "Yes, burial permit is required before interment in any cemetery."
+          },
+          {
+            "question": "How long is the posting period for Late Registration?",
+            "answer": "Evaluator shall prepare documents for posting within 10 days, and the release of Certified True Copy is expiration of 10 days posting period."
+          }
+        ],
+        "relatedServices": [
+          {
+            "title": "Birth Certificate",
+            "link": "/service-details/birth-certificate"
+          },
+          {
+            "title": "CSWDO Services",
+            "link": "/service-details/cswdo-services"
+          }
+        ]
+      }
     },
     {
       "id": "barangay-clearance",
@@ -77,6 +403,8 @@
       "fee": "₱50-100",
       "processingTime": "Same day",
       "office": "Barangay Hall",
+      "providedBy": "barangay-hall",
+      "icon": "bi-house-check",
       "url": "/services/certificates"
     },
     {
@@ -94,6 +422,8 @@
       "fee": "Free",
       "processingTime": "1-2 days",
       "office": "Barangay Hall",
+      "providedBy": "barangay-hall",
+      "icon": "bi-person-badge",
       "url": "/services/certificates"
     },
     {
@@ -112,6 +442,8 @@
       "fee": "Varies",
       "processingTime": "3-5 days",
       "office": "PNP Station",
+      "providedBy": "police-station",
+      "icon": "bi-shield-check",
       "url": "/services/certificates"
     },
     {
@@ -120,6 +452,7 @@
       "category": "Business, Trade & Investment",
       "categoryId": "business",
       "description": "Apply for a new mayor's permit to operate a business",
+      "seoDescription": "Apply for a new Business License and Mayor's Permit in {{lguName}}.",
       "keywords": [
         "business",
         "permit",
@@ -134,7 +467,117 @@
       "processingTime": "1 day",
       "office": "Business Permits & Licensing Office",
       "url-old": "/services/business",
-      "url": "/service-details/business-permit-new"
+      "url": "/service-details/business-permit-new",
+      "detail": {
+        "fullTitle": "Issuance of New Business License and Mayor's Permit",
+        "category": "Business",
+        "categoryLink": "/services/business",
+        "badgeText": "Business",
+        "badgeIcon": "bi-shop",
+        "description": "Apply for a new mayor's permit to operate a business within the city as per City Ordinance No: 1373-16",
+        "quickStats": [
+          {
+            "icon": "bi-clock",
+            "label": "Processing",
+            "value": "1 Day"
+          },
+          {
+            "icon": "bi-cash",
+            "label": "Fee",
+            "value": "Varies on Assessment"
+          },
+          {
+            "icon": "bi-person-check",
+            "label": "Who Can Apply",
+            "value": "Stakeholders and Business Owners"
+          },
+          {
+            "icon": "bi-calendar-check",
+            "label": "Appointment",
+            "value": "Online / Walk-in"
+          }
+        ],
+        "processSteps": [
+          {
+            "title": "Submit Application",
+            "description": "Submit duly accomplished Unified Application Form together with complete requirements to BPLO."
+          },
+          {
+            "title": "Planning & Engineering Evaluation",
+            "description": "Personnel from Planning (Zoning/Locational Clearance) and Engineering (Occupancy) evaluate the application at the BPLO office."
+          },
+          {
+            "title": "Data Verification",
+            "description": "Verification of accounts and issuance of a Business Account Number at the Electronic Data Processing (EDP) division."
+          },
+          {
+            "title": "Approval",
+            "description": "The application is forwarded for approval by the Chief of BPLO or their authorized representative."
+          },
+          {
+            "title": "Generate Payment Order",
+            "description": "Release of the signed Tax Order of Payment (TOP) covering consolidated taxes, fees, and regulatory charges."
+          },
+          {
+            "title": "Pay Taxes and Fees",
+            "description": "Present TOP to the Business License Tax Division, Treasury Department and pay assessed fees. An Official Receipt and Cedula will be issued."
+          },
+          {
+            "title": "Claim Permit & Clearances",
+            "description": "Claim your Business License, Mayor's Permit, Sanitary Permit, and other clearances at BPLO.",
+            "isFinal": true
+          }
+        ],
+        "requirements": [
+          {
+            "title": "Documentary Requirements",
+            "icon": "bi-file-text",
+            "items": [
+              "Unified Application Form",
+              "Business Name Registration (DTI / SEC / CDA)",
+              "Proof of Legal Ownership (Tax Dec, TCT) or Notarized Contract of Lease",
+              "Picture of Business Establishment (3R Size Colored, 1pc)",
+              "Picture of Owner/President/Treasurer (2x2 Size, 1pc)",
+              "Homeowners/Subdivision/Villages Clearance or Condominium Approval",
+              "Undertaking (BPLO)",
+              "Special Requirements based on line of business (if applicable)"
+            ]
+          },
+          {
+            "title": "If Applied Through Representative",
+            "icon": "bi-people",
+            "items": [
+              "Letter of Authority / Special Power of Attorney / Secretary Certificate",
+              "Valid ID of owner and representative"
+            ]
+          }
+        ],
+        "faqs": [
+          {
+            "question": "How long does the processing take?",
+            "answer": "As prescribed by R.A. 11032 (Ease of Doing Business Law), government transactions follow a 3-7-20 day rule. While typical applications are processed within 1 Day, official timelines are: Up to 3 days for Simple, 7 days for Complex, and 20 days for Highly Technical transactions. If City Council approval is required, it may take 45 working days (extendable by 20 days)."
+          },
+          {
+            "question": "What if that location had a previous tenant?",
+            "answer": "The previous tenant must have filed a formal Closure/Retirement of business to the City Treasurer's Office. Otherwise, the building owner must submit a Termination of Lease Contract and an Affidavit of No Relation so the new applicant can secure an account number."
+          }
+        ],
+        "office": {
+          "name": "Business Permits & Licensing Office",
+          "location": "City Hall, Ground Floor",
+          "phone": "(02) 8551-5930",
+          "hours": "Mon-Thu: 8AM - 7PM"
+        },
+        "relatedServices": [
+          {
+            "title": "Business Permit Renewal",
+            "link": "/service-details/business-permit-renewal"
+          }
+        ],
+        "onlineLink": "https://cityoflaspinas.ph/",
+        "sourceUrl": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
+        "sourceName": "Citizen's Charter 2022 (1st Edition)"
+      }
     },
     {
       "id": "business-permit-renewal",
@@ -142,6 +585,7 @@
       "category": "Business, Trade & Investment",
       "categoryId": "business",
       "description": "Renew your annual business permit",
+      "seoDescription": "Renew your annual Business License and Mayor's Permit in {{lguName}}.",
       "keywords": [
         "business",
         "permit",
@@ -153,7 +597,106 @@
       "fee": "Varies",
       "processingTime": "Approx. 3 hours",
       "office": "Business Permits & Licensing Office",
-      "url": "/service-details/business-permit-renewal"
+      "url": "/service-details/business-permit-renewal",
+      "detail": {
+        "fullTitle": "Renewal of Business License and Mayor's Permit",
+        "category": "Business",
+        "categoryLink": "/services/business",
+        "badgeText": "Business",
+        "badgeIcon": "bi-shop",
+        "description": "Renew your annual business permit, Mayor's clearance, and licensing services as per City Ordinance No: 1373-16",
+        "quickStats": [
+          {
+            "icon": "bi-clock",
+            "label": "Processing",
+            "value": "Approx. 3 Hours"
+          },
+          {
+            "icon": "bi-cash",
+            "label": "Fee",
+            "value": "Varies by Assessment"
+          },
+          {
+            "icon": "bi-person-check",
+            "label": "Who Can Apply",
+            "value": "Registered Business Owner"
+          },
+          {
+            "icon": "bi-calendar-check",
+            "label": "Appointment",
+            "value": "Online / Walk-in"
+          }
+        ],
+        "processSteps": [
+          {
+            "title": "Submit Application",
+            "description": "Submit duly accomplished application form indicating gross sale/receipt together with complete requirements to BPLO."
+          },
+          {
+            "title": "Evaluation & Approval",
+            "description": "BPLO personnel reviews requirements. The application is then forwarded for approval by the BPLO Chief or authorized representative."
+          },
+          {
+            "title": "Generate Payment Order",
+            "description": "Once approved, a computer-generated Tax Order of Payment (TOP) is released, covering consolidated taxes and fees."
+          },
+          {
+            "title": "Pay Taxes and Fees",
+            "description": "Present TOP and pay at the Business License Division, Treasury Department. Receive Official Receipt and Cedula."
+          },
+          {
+            "title": "Claim Permit & Clearances",
+            "description": "Return to BPLO to claim your Business License, Mayor's Permit, Sanitary Permit, and other regulatory clearances.",
+            "isFinal": true
+          }
+        ],
+        "requirements": [
+          {
+            "title": "Documentary Requirements",
+            "icon": "bi-arrow-repeat",
+            "items": [
+              "Unified Application Form",
+              "Prior Year Audited Financial Statement / ITR (Last 2 years)",
+              "Monthly/Quarterly VAT Returns / Percentage Tax Returns of previous years",
+              "Homeowners/Subdivision/Condominium Clearance to conduct business",
+              "Undertaking (BPLO)",
+              "Special Requirements based on line of business (if applicable)"
+            ]
+          },
+          {
+            "title": "If Applied Through Representative",
+            "icon": "bi-people",
+            "items": [
+              "Letter of Authority / Special Power of Attorney / Secretary Certificate",
+              "Valid ID of owner and representative"
+            ]
+          }
+        ],
+        "faqs": [
+          {
+            "question": "When should I renew my business permit?",
+            "answer": "Before January 20 of each year to avoid penalties."
+          },
+          {
+            "question": "How long does the processing take?",
+            "answer": "According to the Citizen's Charter 2022, the total processing time for a simple renewal is approximately 3 hours and 10 minutes."
+          },
+          {
+            "question": "What happens if I renew late?",
+            "answer": "Renewals after the January 20 deadline are subject to surcharges and monthly interest as prescribed by the City's Revenue Code (Ordinance 1373-16)."
+          }
+        ],
+        "office": {
+          "name": "Business Permits & Licensing Office",
+          "location": "City Hall, Ground Floor",
+          "phone": "(02) 8551-5930",
+          "hours": "Mon-Thu: 8AM - 7PM"
+        },
+        "relatedServices": [],
+        "onlineLink": "https://cityoflaspinas.ph/",
+        "sourceUrl": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
+        "sourceName": "Citizen's Charter 2022 (1st Edition)"
+      }
     },
     {
       "id": "special-permit",
@@ -161,6 +704,7 @@
       "category": "Business, Trade & Investment",
       "categoryId": "business",
       "description": "Apply for a Special Permit to operate a business",
+      "seoDescription": "Apply for a Special Permit to operate your business establishment in {{lguName}}.",
       "keywords": [
         "special",
         "permit",
@@ -171,7 +715,102 @@
       "fee": "Varies on Assessment",
       "processingTime": "Approx. 2 hours 10 mins",
       "office": "Business Permits & Licensing Office",
-      "url": "/service-details/special-permit"
+      "url": "/service-details/special-permit",
+      "detail": {
+        "fullTitle": "Issuance of Special Permit",
+        "category": "Business",
+        "categoryLink": "/services/business",
+        "badgeText": "Business",
+        "badgeIcon": "bi-shop",
+        "description": "Special Permit issued by the City Government to all business establishment that operates within its territorial jurisdiction pursuant to City Ordinance No: 1373 - 16.",
+        "quickStats": [
+          {
+            "icon": "bi-clock",
+            "label": "Processing",
+            "value": "2 Hours 10 Mins"
+          },
+          {
+            "icon": "bi-cash",
+            "label": "Fee",
+            "value": "Varies on Assessment"
+          },
+          {
+            "icon": "bi-person-check",
+            "label": "Who Can Apply",
+            "value": "Registered Business Owner"
+          },
+          {
+            "icon": "bi-calendar-check",
+            "label": "Appointment",
+            "value": "Walk-in"
+          }
+        ],
+        "processSteps": [
+          {
+            "title": "Submit Application & Verification",
+            "description": "Submit accomplished application form and complete requirements to the BPLO front liners for receiving, reviewing, and validating. Evaluated by Planning Department for Zoning Fees. Passed for approval of the Chief of BPLO, who issues a Tax Order Payment (TOP) routing you to the City Treasurer's."
+          },
+          {
+            "title": "Pay Taxes and Fees",
+            "description": "Present the TOP to the Business License Tax Miscellaneous Division. Taxes are calculated based on the Revenue Code. Payment is accepted and Official Receipt is printed/issued."
+          },
+          {
+            "title": "Claim Special Permit",
+            "description": "Return to Business Permit & Licensing Office (BPLO) for the processing, printing, signing, and releasing of the Special Permit.",
+            "isFinal": true
+          }
+        ],
+        "requirements": [
+          {
+            "title": "Documentary Requirements",
+            "icon": "bi-file-text",
+            "items": [
+              "Unified Application Form",
+              "Business Name Registration (1 Copy: DTI Registration or SEC Registration & Articles of Incorporation)",
+              "Proof of Legal Ownership: Tax Declaration/TCT, Notarized Contract of Lease, or Letter of Authority to use property",
+              "Picture of Business Establishment",
+              "Picture of Owner / President or Treasurer",
+              "Homeowners / Subdivision / Villages Clearance or Condominium Approval to conduct business",
+              "Undertaking (BPLO)"
+            ]
+          },
+          {
+            "title": "If Applied Through Representative",
+            "icon": "bi-people",
+            "items": [
+              "Letter of Authority / Special Power of Attorney / Secretary Certificate"
+            ]
+          }
+        ],
+        "faqs": [
+          {
+            "question": "How long does the processing take?",
+            "answer": "According to the Citizen's Charter, the total processing time for a Special Permit is approximately 2 hours and 10 minutes."
+          },
+          {
+            "question": "What if that location had a previous tenant?",
+            "answer": "The previous tenant must have filed a formal Closure/Retirement of business to the City Treasurer's Office. Otherwise, the building owner must submit a Termination of Lease Contract and an Affidavit of No Relation so the new applicant can secure an account number."
+          }
+        ],
+        "office": {
+          "name": "Business Permits & Licensing Office",
+          "location": "City Hall, Ground Floor",
+          "phone": "(02) 8551-5930",
+          "hours": "Mon-Thu: 8AM - 7PM"
+        },
+        "relatedServices": [
+          {
+            "title": "Business Permit (New)",
+            "link": "/service-details/business-permit-new"
+          },
+          {
+            "title": "Business Permit Renewal",
+            "link": "/service-details/business-permit-renewal"
+          }
+        ],
+        "sourceUrl": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
+        "sourceName": "Citizen's Charter 2022 (1st Edition)"
+      }
     },
     {
       "id": "business-status-certificate",
@@ -179,6 +818,7 @@
       "category": "Business, Trade & Investment",
       "categoryId": "business",
       "description": "Certification on the status of business entity registered in Las Piñas",
+      "seoDescription": "Verify the status of a business entity registered with the BPLO in {{lguName}}.",
       "keywords": [
         "certificate",
         "certification",
@@ -191,7 +831,105 @@
       "fee": "₱75 + ₱15/page",
       "processingTime": "Approx. 1 hour",
       "office": "Business Permits & Licensing Office",
-      "url": "/service-details/business-status-certificate"
+      "url": "/service-details/business-status-certificate",
+      "detail": {
+        "fullTitle": "Issuance of Certificates on Status of Business",
+        "category": "Business",
+        "categoryLink": "/services/business",
+        "badgeText": "Business",
+        "badgeIcon": "bi-file-earmark-check",
+        "description": "Certification issued by the City Government to all who want to verify the status of a business entity registered with the Business Permit and Licensing Office (BPLO). Information access is limited pursuant to the Data Privacy Act of 2012 to maintain record integrity.",
+        "quickStats": [
+          {
+            "icon": "bi-clock",
+            "label": "Processing",
+            "value": "Approx. 1 hour"
+          },
+          {
+            "icon": "bi-cash",
+            "label": "Fee",
+            "value": "₱75 + ₱15/page"
+          },
+          {
+            "icon": "bi-person-check",
+            "label": "Who Can Apply",
+            "value": "Government & Private Sector"
+          },
+          {
+            "icon": "bi-calendar-check",
+            "label": "Appointment",
+            "value": "Walk-in"
+          }
+        ],
+        "processSteps": [
+          {
+            "title": "Submit Application & Requirements",
+            "description": "Fill out the application form and submit the request letter together with other required documents to the BPLO frontliners for review and validation. The BPLO will verify records and issue an Order of Payment."
+          },
+          {
+            "title": "Pay the Fee",
+            "description": "Proceed to the Office of the City Treasurer's – Miscellaneous Division and pay ₱75, plus ₱15 per additional page. An Official Receipt will be issued."
+          },
+          {
+            "title": "Claim the Certification",
+            "description": "Return to the BPLO for the processing and printing of the Certification, signing by the Chief of BPLO, and release to the applicant.",
+            "isFinal": true
+          }
+        ],
+        "requirements": [
+          {
+            "title": "Documentary Requirements",
+            "icon": "bi-file-text",
+            "items": [
+              "Request Letter indicating the name of requestor and purpose of certification",
+              "Identification Card",
+              "Barangay Clearance",
+              "Assessor's Certificate",
+              "Referral letter from Hospital/DSWD/PAO or other government agencies (if applicable)"
+            ]
+          },
+          {
+            "title": "If Applying Through a Representative",
+            "icon": "bi-people",
+            "items": [
+              "Letter of Authority, Special Power of Attorney, or Secretary Certificate",
+              "Valid ID of both the owner and representative"
+            ]
+          }
+        ],
+        "faqs": [
+          {
+            "question": "What is the purpose of this certification?",
+            "answer": "This certification is used to verify the legal status of a business entity registered in Las Piñas City. It is accepted for legal, government, and private transactions."
+          },
+          {
+            "question": "Why is access to business records limited?",
+            "answer": "Pursuant to the Data Privacy Act of 2012 (RA 10173), the BPLO limits the data that can be accessed to protect the integrity and privacy of the information in its records."
+          }
+        ],
+        "office": {
+          "name": "Business Permits & Licensing Office",
+          "location": "City Hall, Ground Floor",
+          "phone": "(02) 8551-5930",
+          "hours": "Mon-Thu: 8AM - 7PM"
+        },
+        "relatedServices": [
+          {
+            "title": "Business Permit (New)",
+            "link": "/service-details/business-permit-new"
+          },
+          {
+            "title": "Business Permit Renewal",
+            "link": "/service-details/business-permit-renewal"
+          },
+          {
+            "title": "Special Permit",
+            "link": "/service-details/special-permit"
+          }
+        ],
+        "sourceUrl": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
+        "sourceName": "Citizen's Charter 2022 (1st Edition)"
+      }
     },
     {
       "id": "ctc-business-license",
@@ -199,6 +937,7 @@
       "category": "Business, Trade & Investment",
       "categoryId": "business",
       "description": "Certified Copy of Business License and Mayor's Permit for legal purposes",
+      "seoDescription": "Request a Certified True Copy of Business License and Mayor's Permit in {{lguName}}.",
       "keywords": [
         "certified",
         "true",
@@ -212,7 +951,97 @@
       "fee": "₱90",
       "processingTime": "Approx. 1 hour",
       "office": "Business Permits & Licensing Office",
-      "url": "/service-details/ctc-business-license"
+      "url": "/service-details/ctc-business-license",
+      "detail": {
+        "fullTitle": "Issuance of Certified True Copy of Business License and Mayor's Permit",
+        "category": "Business",
+        "categoryLink": "/services/business",
+        "badgeText": "Business",
+        "badgeIcon": "bi-files",
+        "description": "Certified Copy of Business License and Mayor's Permit issued by the City Government to Business Owners who request it in whatever legal purposes it may serve.",
+        "quickStats": [
+          {
+            "icon": "bi-clock",
+            "label": "Processing",
+            "value": "Approx. 1 hour"
+          },
+          {
+            "icon": "bi-cash",
+            "label": "Fee",
+            "value": "₱90"
+          },
+          {
+            "icon": "bi-person-check",
+            "label": "Who Can Apply",
+            "value": "Government & Private Sector"
+          },
+          {
+            "icon": "bi-calendar-check",
+            "label": "Appointment",
+            "value": "Walk-in"
+          }
+        ],
+        "processSteps": [
+          {
+            "title": "Submit Requirements",
+            "description": "Submit the requirements to the BPLO frontliners for review, validation, and verification of records. An Order of Payment will be issued."
+          },
+          {
+            "title": "Pay the Fee",
+            "description": "Upon receiving the Order of Payment, pay ₱90 at the Office of the City Treasurer's – Miscellaneous Division. An Official Receipt will be issued."
+          },
+          {
+            "title": "Claim the Document",
+            "description": "Return to the BPLO for the stamping, signing, and releasing of the Certified True Copy of Business License and Mayor's Permit.",
+            "isFinal": true
+          }
+        ],
+        "requirements": [
+          {
+            "title": "Documentary Requirements",
+            "icon": "bi-file-text",
+            "items": [
+              "Photocopy of Business License and Mayor's Permit",
+              "Identification Card"
+            ]
+          },
+          {
+            "title": "If Applying Through a Representative",
+            "icon": "bi-people",
+            "items": [
+              "Letter of Authority, Special Power of Attorney, or Secretary Certificate"
+            ]
+          }
+        ],
+        "faqs": [
+          {
+            "question": "What is the purpose of this certified true copy?",
+            "answer": "It is issued by the City Government to Business Owners who request it for whatever legal purposes it may serve."
+          }
+        ],
+        "office": {
+          "name": "Business Permits & Licensing Office",
+          "location": "City Hall, Ground Floor",
+          "phone": "(02) 8551-5930",
+          "hours": "Mon-Thu: 8AM - 7PM"
+        },
+        "relatedServices": [
+          {
+            "title": "Business Permit (New)",
+            "link": "/service-details/business-permit-new"
+          },
+          {
+            "title": "Business Permit Renewal",
+            "link": "/service-details/business-permit-renewal"
+          },
+          {
+            "title": "Certificates on Status of Business",
+            "link": "/service-details/business-status-certificate"
+          }
+        ],
+        "sourceUrl": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
+        "sourceName": "Citizen's Charter 2022 (1st Edition)"
+      }
     },
     {
       "id": "occupational-permit",
@@ -220,6 +1049,7 @@
       "category": "Business, Trade & Investment",
       "categoryId": "business",
       "description": "Apply for an Occupational Mayor's Permit for workers or employees",
+      "seoDescription": "Secure an Occupational Mayor's Permit for workers or employees in {{lguName}}.",
       "keywords": [
         "occupational",
         "permit",
@@ -232,7 +1062,106 @@
       "fee": "Varies by Assessment",
       "processingTime": "Approx. 3 hours",
       "office": "Business Permits & Licensing Office",
-      "url": "/service-details/occupational-permit"
+      "url": "/service-details/occupational-permit",
+      "detail": {
+        "fullTitle": "Occupational Mayor's Permit (Regular)",
+        "category": "Business",
+        "categoryLink": "/services/business",
+        "badgeText": "Business",
+        "badgeIcon": "bi-person-vcard",
+        "description": "The Occupational Mayor's Permit is issued by the City Government to all workers or employees (temporary or permanent) employed within the territorial jurisdiction of Las Piñas, pursuant to the local Revenue Code.",
+        "quickStats": [
+          {
+            "icon": "bi-clock",
+            "label": "Processing",
+            "value": "Approx. 3 hours"
+          },
+          {
+            "icon": "bi-cash",
+            "label": "Fee",
+            "value": "Varies by Assessment"
+          },
+          {
+            "icon": "bi-person-check",
+            "label": "Who Can Apply",
+            "value": "Workers & Employees"
+          },
+          {
+            "icon": "bi-calendar-check",
+            "label": "Appointment",
+            "value": "Walk-in"
+          }
+        ],
+        "processSteps": [
+          {
+            "title": "Secure Application Form",
+            "description": "Secure and fill out the application form at the Business Permit and Licensing Office (BPLO)."
+          },
+          {
+            "title": "Submit Requirements",
+            "description": "Submit the application form along with the required documents such as Cedula and NBI/Police Clearance for evaluation."
+          },
+          {
+            "title": "Assessment and Payment",
+            "description": "Proceed through the assessment and pay the assessed fees as directed by the BPLO personnel."
+          },
+          {
+            "title": "Claim Permit",
+            "description": "Claim the Occupational Mayor's Permit once processed and approved.",
+            "isFinal": true
+          }
+        ],
+        "requirements": [
+          {
+            "title": "Documentary Requirements",
+            "icon": "bi-file-text",
+            "items": [
+              "Application Form (2 copies - secured from BPLO)",
+              "Community Tax Certificate (Cedula)",
+              "NBI Clearance or Police Clearance"
+            ]
+          },
+          {
+            "title": "For First-Time Jobseekers (R.A. 11261)",
+            "icon": "bi-person-plus",
+            "items": [
+              "Barangay Certificate with an undertaking stating you are a first-time job seeker to avail the assistance."
+            ]
+          }
+        ],
+        "faqs": [
+          {
+            "question": "What is the processing time for the permit?",
+            "answer": "The BPLO classifies the issuance of the Occupational Mayor's Permit as a simple transaction, typically taking around 3 hours depending on the volume of applicants."
+          },
+          {
+            "question": "Do I need to apply in person?",
+            "answer": "While in-person application is standard, the city has been integrating services online. Please check the official Las Piñas City website for recent updates."
+          }
+        ],
+        "office": {
+          "name": "Business Permits & Licensing Office",
+          "location": "City Hall, Ground Floor",
+          "phone": "(02) 8551-5930",
+          "hours": "Mon-Thu: 8AM - 7PM"
+        },
+        "relatedServices": [
+          {
+            "title": "Occupational Mayor's Permit (First Time Job Seeker)",
+            "link": "/service-details/occupational-permit-jobseeker"
+          },
+          {
+            "title": "Business Permit (New)",
+            "link": "/service-details/business-permit-new"
+          },
+          {
+            "title": "Special Permit",
+            "link": "/service-details/special-permit"
+          }
+        ],
+        "sourceUrl": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
+        "sourceName": "Citizen's Charter 2022 (1st Edition)"
+      }
     },
     {
       "id": "occupational-permit-jobseeker",
@@ -240,6 +1169,7 @@
       "category": "Business, Trade & Investment",
       "categoryId": "business",
       "description": "Free Occupational Mayor's Permit for first-time job seekers (R.A. 11261)",
+      "seoDescription": "Avail the free Occupational Mayor's Permit for First Time Job Seekers in {{lguName}} under RA 11261.",
       "keywords": [
         "occupational",
         "permit",
@@ -256,7 +1186,108 @@
       "fee": "Free",
       "processingTime": "Approx. 3 hours",
       "office": "Business Permits & Licensing Office",
-      "url": "/service-details/occupational-permit-jobseeker"
+      "url": "/service-details/occupational-permit-jobseeker",
+      "detail": {
+        "fullTitle": "Occupational Mayor's Permit (First Time Job Seeker)",
+        "category": "Business",
+        "categoryLink": "/services/business",
+        "badgeText": "Business",
+        "badgeIcon": "bi-person-check",
+        "description": "The City Government of Las Piñas provides assistance to \"First Time Job Seekers\" regarding the issuance of an Occupational Mayor's Permit, in compliance with Republic Act No. 11261, the \"First Time Jobseekers Assistance Act\" of 2019.",
+        "quickStats": [
+          {
+            "icon": "bi-clock",
+            "label": "Processing",
+            "value": "Approx. 3 hours"
+          },
+          {
+            "icon": "bi-cash",
+            "label": "Fee",
+            "value": "Free"
+          },
+          {
+            "icon": "bi-person-check",
+            "label": "Who Can Apply",
+            "value": "First-time Job Seekers"
+          },
+          {
+            "icon": "bi-calendar-check",
+            "label": "Appointment",
+            "value": "Walk-in"
+          }
+        ],
+        "processSteps": [
+          {
+            "title": "Secure Application Form",
+            "description": "Secure and fill out the application form at the Business Permit and Licensing Office (BPLO)."
+          },
+          {
+            "title": "Submit Requirements",
+            "description": "Submit the application form along with the required documents such as Cedula, NBI/Police Clearance, and your Barangay Certificate with First-time job seeker undertaking."
+          },
+          {
+            "title": "Assessment and Evaluation",
+            "description": "Proceed through the assessment where personnel will evaluate your requirements and check your Barangay Certificate to waive local fees."
+          },
+          {
+            "title": "Claim Permit",
+            "description": "Claim the Occupational Mayor's Permit once processed and approved.",
+            "isFinal": true
+          }
+        ],
+        "requirements": [
+          {
+            "title": "Documentary Requirements",
+            "icon": "bi-file-text",
+            "items": [
+              "Barangay Certificate with an undertaking stating you are a first-time job seeker (RA 11261)",
+              "Application Form (2 copies - secured from BPLO)",
+              "Community Tax Certificate (Cedula)",
+              "NBI Clearance or Police Clearance"
+            ]
+          },
+          {
+            "title": "Additional Medical Requirements",
+            "icon": "bi-heart-pulse",
+            "items": [
+              "Medical Results (X-Ray Result)",
+              "Urine and Stool test results (specifically required for food handlers)"
+            ]
+          }
+        ],
+        "faqs": [
+          {
+            "question": "Who is considered a First Time Job Seeker?",
+            "answer": "A First Time Job Seeker is defined as a Filipino citizen looking for work for the first time, who is between 15 to 30 years old, and not currently receiving benefits from other government job programs."
+          },
+          {
+            "question": "Are all fees waived under RA 11261?",
+            "answer": "Yes, government regulatory fees for standard documents such as the Occupational Permit, Barangay Clearance, and NBI Clearance are free of charge for valid first-time job seekers."
+          },
+          {
+            "question": "What if I am a food handler?",
+            "answer": "If you are applying as a food handler, you will be required to submit specific test results (Urine and Stool) and also undergo a seminar at the Sanitation Office."
+          }
+        ],
+        "office": {
+          "name": "Business Permits & Licensing Office",
+          "location": "City Hall, Ground Floor",
+          "phone": "(02) 8551-5930",
+          "hours": "Mon-Thu: 8AM - 7PM"
+        },
+        "relatedServices": [
+          {
+            "title": "Occupational Mayor's Permit (Regular)",
+            "link": "/service-details/occupational-permit"
+          },
+          {
+            "title": "Sanitary Permit",
+            "link": "/services/business"
+          }
+        ],
+        "sourceUrl": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
+        "sourceName": "Citizen's Charter 2022 (1st Edition)"
+      }
     },
     {
       "id": "business-closure",
@@ -334,6 +1365,7 @@
       "fee": "Free",
       "processingTime": "1-2 weeks",
       "office": "CSWDO / OSCA",
+      "providedBy": "cswdo",
       "url": "/services/social-services"
     },
     {
@@ -353,6 +1385,7 @@
       "fee": "Free",
       "processingTime": "1-2 weeks",
       "office": "CSWDO",
+      "providedBy": "cswdo",
       "url": "/services/social-services"
     },
     {
@@ -373,6 +1406,7 @@
       "fee": "Free",
       "processingTime": "Varies",
       "office": "CSWDO",
+      "providedBy": "cswdo",
       "url": "/services/social-services"
     },
     {
@@ -391,6 +1425,7 @@
       "fee": "Free",
       "processingTime": "1-3 days",
       "office": "CSWDO",
+      "providedBy": "cswdo",
       "url": "/services/social-services"
     },
     {
@@ -409,6 +1444,7 @@
       "fee": "Free",
       "processingTime": "1-2 weeks",
       "office": "CSWDO",
+      "providedBy": "cswdo",
       "url": "/services/social-services"
     },
     {
@@ -428,7 +1464,41 @@
       "fee": "Free",
       "processingTime": "Same day",
       "office": "City Health Office",
-      "url": "/services/health"
+      "providedBy": "city-health",
+      "url": "/service-details/vaccination",
+      "detail": {
+        "fullTitle": "Immunization & Vaccination Services",
+        "category": "Health",
+        "categoryLink": "/services/health",
+        "badgeText": "Health",
+        "badgeIcon": "bi-shield-plus",
+        "description": "Free immunization for children, adults, and senior citizens",
+        "quickStats": [
+          { "icon": "bi-clock", "label": "Schedule", "value": "Mon-Fri" },
+          { "icon": "bi-cash", "label": "Fee", "value": "Free" },
+          { "icon": "bi-geo-alt", "label": "Location", "value": "Health Centers" },
+          { "icon": "bi-calendar-check", "label": "Appointment", "value": "Walk-in" }
+        ],
+        "processSteps": [
+          { "title": "Registration", "description": "Register at the health center." },
+          { "title": "Screening", "description": "Health screening and vital signs check." },
+          { "title": "Vaccination", "description": "Administration of vaccine.", "isFinal": true }
+        ],
+        "requirements": [
+          {
+            "title": "For Children",
+            "icon": "bi-person",
+            "items": ["Baby book / Immunization card"]
+          }
+        ],
+        "faqs": [
+          {
+            "question": "Are vaccines safe?",
+            "answer": "Yes, all vaccines provided are DOH-approved and safe."
+          }
+        ],
+        "relatedServices": []
+      }
     },
     {
       "id": "health-certificate",
@@ -446,6 +1516,7 @@
       "fee": "₱100-200",
       "processingTime": "Same day",
       "office": "City Health Office",
+      "providedBy": "city-health",
       "url": "/services/health"
     },
     {
@@ -465,6 +1536,7 @@
       "fee": "Free",
       "processingTime": "1-3 days",
       "office": "City Health Office / CSWDO",
+      "providedBy": "city-health",
       "url": "/services/health"
     },
     {
@@ -484,6 +1556,7 @@
       "fee": "Free",
       "processingTime": "Same day",
       "office": "City Health Office",
+      "providedBy": "city-health",
       "url": "/services/health"
     },
     {
@@ -504,6 +1577,7 @@
       "fee": "Varies",
       "processingTime": "Same day",
       "office": "City Treasurer's Office",
+      "providedBy": "city-treasurer",
       "url": "/services/tax-payments"
     },
     {
@@ -522,6 +1596,7 @@
       "fee": "Varies",
       "processingTime": "Same day",
       "office": "City Treasurer's Office",
+      "providedBy": "city-treasurer",
       "url": "/services/tax-payments"
     },
     {
@@ -539,6 +1614,7 @@
       "fee": "₱50-100",
       "processingTime": "Same day",
       "office": "City Treasurer's Office",
+      "providedBy": "city-treasurer",
       "url": "/services/tax-payments"
     },
     {
@@ -558,6 +1634,7 @@
       "fee": "Varies",
       "processingTime": "1-2 weeks",
       "office": "City Agriculture Office",
+      "providedBy": "city-agriculture",
       "url": "/services/agriculture"
     },
     {
@@ -576,6 +1653,7 @@
       "fee": "Subsidized",
       "processingTime": "Varies",
       "office": "City Agriculture Office",
+      "providedBy": "city-agriculture",
       "url": "/services/agriculture"
     },
     {
@@ -594,6 +1672,7 @@
       "fee": "Free/Subsidized",
       "processingTime": "Varies",
       "office": "City Agriculture Office",
+      "providedBy": "city-agriculture",
       "url": "/services/agriculture"
     },
     {
@@ -613,6 +1692,7 @@
       "fee": "Varies",
       "processingTime": "5-10 days",
       "office": "City Engineering Office",
+      "providedBy": "city-engineering",
       "url": "/services/infrastructure"
     },
     {
@@ -631,6 +1711,7 @@
       "fee": "Varies",
       "processingTime": "3-5 days",
       "office": "City Engineering Office",
+      "providedBy": "city-engineering",
       "url": "/services/infrastructure"
     },
     {
@@ -650,6 +1731,7 @@
       "fee": "Free",
       "processingTime": "Varies",
       "office": "City Engineering Office",
+      "providedBy": "city-engineering",
       "url": "/services/infrastructure"
     },
     {
@@ -687,6 +1769,7 @@
       "fee": "Free",
       "processingTime": "Varies",
       "office": "CSWDO",
+      "providedBy": "cswdo",
       "url": "/services/education"
     },
     {
@@ -706,7 +1789,35 @@
       "fee": "Free",
       "processingTime": "Immediate",
       "office": "CDRRMO",
-      "url": "/services/public-safety"
+      "providedBy": "cdrrmo",
+      "url": "/service-details/emergency-response",
+      "detail": {
+        "fullTitle": "Emergency Rescue & Response",
+        "category": "Public Safety",
+        "categoryLink": "/services/public-safety",
+        "badgeText": "Safety",
+        "badgeIcon": "bi-ambulance",
+        "description": "24/7 ambulance and rescue assistance",
+        "quickStats": [
+          { "icon": "bi-clock", "label": "Response", "value": "Immediate" },
+          { "icon": "bi-telephone", "label": "Hotline", "value": "(02) 8290-6500" },
+          { "icon": "bi-geo-alt", "label": "Coverage", "value": "Citywide" },
+          { "icon": "bi-cash", "label": "Fee", "value": "Free" }
+        ],
+        "processSteps": [
+          { "title": "Call Hotline", "description": "Call (02) 8290-6500 immediately." },
+          { "title": "Provide Info", "description": "State nature of emergency and exact location." },
+          { "title": "Wait for Help", "description": "Stay on the line if instructed. Responders are on the way.", "isFinal": true }
+        ],
+        "requirements": [],
+        "faqs": [
+          {
+            "question": "Is ambulance service free?",
+            "answer": "Yes, for emergency cases within the city."
+          }
+        ],
+        "relatedServices": []
+      }
     },
     {
       "id": "disaster-preparedness",
@@ -724,6 +1835,7 @@
       "fee": "Free",
       "processingTime": "Varies",
       "office": "CDRRMO",
+      "providedBy": "cdrrmo",
       "url": "/services/public-safety"
     },
     {
@@ -783,7 +1895,110 @@
       "fee": "Free",
       "processingTime": "28 min - 1.5 hrs",
       "office": "CSWDO",
-      "url": "/service-details/cswdo-services"
+      "providedBy": "cswdo",
+      "url": "/service-details/cswdo-services",
+      "detail": {
+        "fullTitle": "City Social Welfare & Development Office",
+        "category": "Social Services",
+        "categoryLink": "/services/social-services",
+        "badgeText": "Social Services",
+        "badgeIcon": "bi-people",
+        "description": "Social welfare programs, IDs, and financial assistance",
+        "quickStats": [
+          {
+            "icon": "bi-clock",
+            "label": "Processing",
+            "value": "Varies"
+          },
+          {
+            "icon": "bi-cash",
+            "label": "Fee",
+            "value": "Free"
+          },
+          {
+            "icon": "bi-telephone",
+            "label": "Hotline",
+            "value": "0916 284 0885"
+          },
+          {
+            "icon": "bi-calendar-check",
+            "label": "Appointment",
+            "value": "Walk-in"
+          }
+        ],
+        "processSteps": [
+          {
+            "title": "Identify Program",
+            "description": "Determine which social welfare program you need."
+          },
+          {
+            "title": "Prepare Documents",
+            "description": "Gather required documents for the specific program."
+          },
+          {
+            "title": "Visit CSWDO",
+            "description": "Go to CSWDO office at the City Hall."
+          },
+          {
+            "title": "Submit Application",
+            "description": "Submit application and documents for assessment."
+          },
+          {
+            "title": "Receive Assistance",
+            "description": "If approved, receive the corresponding benefit or service.",
+            "isFinal": true
+          }
+        ],
+        "requirements": [
+          {
+            "title": "For Senior Citizen ID",
+            "icon": "bi-person-vcard",
+            "items": [
+              "Proof of age (birth certificate or valid ID)",
+              "Barangay certification",
+              "1x1 ID picture"
+            ]
+          },
+          {
+            "title": "For PWD ID",
+            "icon": "bi-universal-access",
+            "items": [
+              "Medical certificate of disability",
+              "Barangay certification",
+              "1x1 ID picture"
+            ]
+          },
+          {
+            "title": "For Financial Assistance",
+            "icon": "bi-wallet2",
+            "items": [
+              "Barangay certification of indigency",
+              "Valid ID",
+              "Case study/assessment by CSWDO"
+            ]
+          }
+        ],
+        "faqs": [
+          {
+            "question": "What assistance programs are available?",
+            "answer": "Senior Citizen ID, PWD ID, Solo Parent ID, financial assistance, burial assistance, medical assistance, educational assistance, and various social welfare programs."
+          },
+          {
+            "question": "Who can apply for financial assistance?",
+            "answer": "Indigent families and individuals in crisis situations."
+          }
+        ],
+        "relatedServices": [
+          {
+            "title": "Senior Citizen Services",
+            "link": "/services/social-services"
+          },
+          {
+            "title": "PWD Services",
+            "link": "/services/social-services"
+          }
+        ]
+      }
     },
     {
       "id": "waste-management",
@@ -823,67 +2038,92 @@
       "processingTime": "3-5 days",
       "office": "BPLS / SBO",
       "url": "/service-details/tricycle-franchising",
-      "hidden": true
-    },
-    {
-      "id": "city-treasurer",
-      "title": "City Treasurer's Office",
-      "category": "Taxation & Payments",
-      "categoryId": "tax-payments",
-      "description": "Tax collection, cedula, clearances, and payment services",
-      "keywords": [
-        "treasurer",
-        "CTO",
-        "tax",
-        "payment",
-        "cedula",
-        "clearance",
-        "collection"
-      ],
-      "fee": "Varies",
-      "processingTime": "Same day",
-      "office": "City Treasurer's Office",
-      "url": "/service-details/city-treasurer",
-      "hidden": true
-    },
-    {
-      "id": "city-budget",
-      "title": "City Budget Office",
-      "category": "Taxation & Payments",
-      "categoryId": "tax-payments",
-      "description": "Obligation requests, barangay budget review, and SEF budget preparation",
-      "keywords": [
-        "budget",
-        "CBO",
-        "obligation",
-        "appropriation",
-        "SEF",
-        "barangay budget"
-      ],
-      "fee": "Free",
-      "processingTime": "15 min - 1 day",
-      "office": "City Budget Office",
-      "url": "/service-details/city-budget"
-    },
-    {
-      "id": "city-accounting",
-      "title": "City Accounting Office",
-      "category": "Taxation & Payments",
-      "categoryId": "tax-payments",
-      "description": "Pre-audit of disbursements, payroll, check issuance, and financial reporting",
-      "keywords": [
-        "accounting",
-        "CACCO",
-        "audit",
-        "payroll",
-        "check",
-        "disbursement",
-        "voucher"
-      ],
-      "fee": "Free",
-      "processingTime": "Varies",
-      "office": "City Accounting Office",
-      "url": "/service-details/city-accounting"
+      "hidden": true,
+      "detail": {
+        "fullTitle": "Tricycle Franchise Application",
+        "category": "Business",
+        "categoryLink": "/services/business",
+        "badgeText": "Business",
+        "badgeIcon": "bi-bicycle",
+        "description": "Application for tricycle-for-hire franchise",
+        "quickStats": [
+          {
+            "icon": "bi-clock",
+            "label": "Processing",
+            "value": "3-5 Days"
+          },
+          {
+            "icon": "bi-cash",
+            "label": "Fee",
+            "value": "₱500"
+          },
+          {
+            "icon": "bi-person-check",
+            "label": "Who Can Apply",
+            "value": "Owner/Operator"
+          },
+          {
+            "icon": "bi-calendar-check",
+            "label": "Appointment",
+            "value": "Walk-in"
+          }
+        ],
+        "processSteps": [
+          {
+            "title": "Prepare Requirements",
+            "description": "Gather vehicle registration, driver's license, and barangay clearance."
+          },
+          {
+            "title": "Submit Application",
+            "description": "File application at the City Traffic Office."
+          },
+          {
+            "title": "Vehicle Inspection",
+            "description": "Have your tricycle inspected for safety compliance."
+          },
+          {
+            "title": "Pay Fees",
+            "description": "Pay franchise fee at City Treasurer's Office."
+          },
+          {
+            "title": "Claim Franchise",
+            "description": "Return to claim franchise certificate.",
+            "isFinal": true
+          }
+        ],
+        "requirements": [
+          {
+            "title": "Required Documents",
+            "icon": "bi-file-text",
+            "items": [
+              "OR/CR of tricycle motorcycle",
+              "Valid driver's license",
+              "Barangay clearance",
+              "Police clearance",
+              "TODA Endorsement/Certification",
+              "2x2 ID pictures"
+            ]
+          }
+        ],
+        "faqs": [
+          {
+            "question": "How long is the franchise valid?",
+            "answer": "Usually 3 years, subject to annual renewal of registration."
+          }
+        ],
+        "office": {
+          "name": "City Traffic Office",
+          "location": "City Hall",
+          "phone": "(078) 326-5001",
+          "hours": "Mon-Fri: 8AM - 5PM"
+        },
+        "relatedServices": [
+          {
+            "title": "New Business Permit",
+            "link": "/service-details/business-permit-new"
+          }
+        ]
+      }
     },
     {
       "id": "property-declaration",
@@ -903,145 +2143,76 @@
       "fee": "Varies",
       "processingTime": "3-5 days",
       "office": "City Assessor's Office",
-      "url": "/service-details/property-declaration"
-    },
-    {
-      "id": "city-assessor",
-      "title": "City Assessor's Office",
-      "category": "Taxation & Payments",
-      "categoryId": "tax-payments",
-      "description": "Property assessment, tax declaration, and land records",
-      "keywords": [
-        "assessor",
-        "property",
-        "assessment",
-        "tax declaration",
-        "land",
-        "appraisal"
-      ],
-      "fee": "Varies",
-      "processingTime": "3-5 days",
-      "office": "City Assessor's Office",
-      "url": "/service-details/city-assessor"
-    },
-    {
-      "id": "city-civil-registry",
-      "title": "Civil Registry Office",
-      "category": "Certificates & Vital Records",
-      "categoryId": "certificates",
-      "description": "Birth, marriage, death certificates and civil registry services",
-      "keywords": [
-        "civil registrar",
-        "LCR",
-        "birth",
-        "marriage",
-        "death",
-        "certificate",
-        "vital records",
-        "CENOMAR"
-      ],
-      "fee": "₱150+",
-      "processingTime": "15-30 minutes",
-      "office": "Civil Registry Office",
-      "url": "/service-details/city-civil-registry"
-    },
-    {
-      "id": "city-engineering",
-      "title": "City Engineering Office",
-      "category": "Infrastructure & Public Works",
-      "categoryId": "infrastructure",
-      "description": "Building permits, infrastructure projects, and engineering services",
-      "keywords": [
-        "engineering",
-        "CEO",
-        "building permit",
-        "construction",
-        "infrastructure",
-        "road"
-      ],
-      "fee": "Varies",
-      "processingTime": "5-10 days",
-      "office": "City Engineering Office",
-      "url": "/service-details/city-engineering"
-    },
-    {
-      "id": "city-planning",
-      "title": "City Planning & Development Office",
-      "category": "Infrastructure & Public Works",
-      "categoryId": "infrastructure",
-      "description": "Zoning, land use, development permits, and planning services",
-      "keywords": [
-        "planning",
-        "MPDO",
-        "zoning",
-        "land use",
-        "development",
-        "locational clearance"
-      ],
-      "fee": "Varies",
-      "processingTime": "3-7 days",
-      "office": "City Planning Office",
-      "url": "/service-details/city-planning"
-    },
-    {
-      "id": "city-agriculture",
-      "title": "City Agriculture Office",
-      "category": "Agriculture & Economic Development",
-      "categoryId": "agriculture",
-      "description": "Agricultural assistance, farm registration, and livelihood programs",
-      "keywords": [
-        "agriculture",
-        "CAO",
-        "farmer",
-        "farm",
-        "livestock",
-        "crops",
-        "RSBSA",
-        "livelihood"
-      ],
-      "fee": "Free/Varies",
-      "processingTime": "Varies",
-      "office": "City Agriculture Office",
-      "url": "/service-details/city-agriculture"
-    },
-    {
-      "id": "city-general-services",
-      "title": "General Services Office",
-      "category": "Government Services",
-      "categoryId": "government",
-      "description": "Property management, vehicle maintenance, and general city services",
-      "keywords": [
-        "general services",
-        "MGSO",
-        "property",
-        "vehicle",
-        "maintenance",
-        "supplies"
-      ],
-      "fee": "Free",
-      "processingTime": "Varies",
-      "office": "General Services Office",
-      "url": "/service-details/city-general-services"
-    },
-    {
-      "id": "human-resource",
-      "title": "Human Resource Management Office",
-      "category": "Government Services",
-      "categoryId": "government",
-      "description": "Employment, personnel records, and HR services",
-      "keywords": [
-        "human resource",
-        "HRMO",
-        "employment",
-        "job",
-        "personnel",
-        "hiring",
-        "application"
-      ],
-      "fee": "Free",
-      "processingTime": "Varies",
-      "office": "Human Resource Management Office",
-      "url": "/service-details/human-resource-management"
+      "providedBy": "city-assessor",
+      "url": "/service-details/property-declaration",
+      "detail": {
+        "fullTitle": "Tax Declaration & Property Records",
+        "category": "Taxation",
+        "categoryLink": "/services/tax-payments",
+        "badgeText": "Taxation",
+        "badgeIcon": "bi-file-text",
+        "description": "Transfer or update of property tax declaration",
+        "quickStats": [
+          {
+            "icon": "bi-clock",
+            "label": "Processing",
+            "value": "1-3 Days"
+          },
+          {
+            "icon": "bi-cash",
+            "label": "Fee",
+            "value": "₱50-100"
+          },
+          {
+            "icon": "bi-geo-alt",
+            "label": "Location",
+            "value": "Assessor's Office"
+          },
+          {
+            "icon": "bi-calendar-check",
+            "label": "Appointment",
+            "value": "Walk-in"
+          }
+        ],
+        "processSteps": [
+          {
+            "title": "Gather Documents",
+            "description": "Prepare deed of sale, title, and previous tax declaration."
+          },
+          {
+            "title": "Submit to Assessor",
+            "description": "Submit documents at the City Assessor's Office."
+          },
+          {
+            "title": "Pay Transfer Tax",
+            "description": "Pay at Treasurer's Office."
+          },
+          {
+            "title": "Claim New Declaration",
+            "description": "Return to claim updated tax declaration.",
+            "isFinal": true
+          }
+        ],
+        "requirements": [
+          {
+            "title": "Required Documents",
+            "icon": "bi-file-text",
+            "items": [
+              "Notarized Deed of Sale",
+              "Transfer Certificate of Title",
+              "Tax Clearance",
+              "Valid IDs of buyer and seller"
+            ]
+          }
+        ],
+        "faqs": [
+          {
+            "question": "What is the transfer tax rate?",
+            "answer": "Usually 0.5% to 0.75% of the selling price or zonal value, whichever is higher."
+          }
+        ],
+        "relatedServices": []
+      }
     },
     {
       "id": "safety-seal",
@@ -1049,6 +2220,7 @@
       "category": "Business, Trade & Investment",
       "categoryId": "business",
       "description": "Certification for business establishments following Minimum Public Health Standards (MPHS)",
+      "seoDescription": "Apply for a Safety Seal Certificate to certify your business establishment's compliance with health standards in {{lguName}}.",
       "keywords": [
         "safety",
         "seal",
@@ -1062,7 +2234,128 @@
       "fee": "Free",
       "processingTime": "7 working days",
       "office": "Business Permits & Licensing Office",
-      "url": "/service-details/safety-seal"
+      "url": "/service-details/safety-seal",
+      "detail": {
+        "fullTitle": "Issuance of Safety Seal Certificate",
+        "category": "Business",
+        "categoryLink": "/services/business",
+        "badgeText": "Business",
+        "badgeIcon": "bi-shield-check",
+        "description": "Certification issued by the City Government to ensure that all business establishments follow Minimum Public Health Standards (MPHS) and promote business without compromising public health.",
+        "quickStats": [
+          {
+            "icon": "bi-clock",
+            "label": "Processing",
+            "value": "7 Working Days"
+          },
+          {
+            "icon": "bi-cash",
+            "label": "Fee",
+            "value": "Free"
+          },
+          {
+            "icon": "bi-person-check",
+            "label": "Who Can Apply",
+            "value": "Selected Business Establishments"
+          },
+          {
+            "icon": "bi-calendar-check",
+            "label": "Appointment",
+            "value": "Walk-in"
+          }
+        ],
+        "processSteps": [
+          {
+            "title": "Submit Application",
+            "description": "Submit the duly accomplished Safety Seal Certification Form along with attached eligibility requirements to the BPLO."
+          },
+          {
+            "title": "Review & Scheduling",
+            "description": "BPLO personnel will review and validate the requirements submitted and schedule the date of inspection."
+          },
+          {
+            "title": "Field Inspection",
+            "description": "Inspectors from the BPLO and related divisions will inspect the business establishment to validate compliance with health standards."
+          },
+          {
+            "title": "Database Recording",
+            "description": "The inspected establishment is encoded into the database for recording and tracking."
+          },
+          {
+            "title": "Issuance of Certificate",
+            "description": "The Safety Seal Certificate is issued and sent to the applicant's registered email address.",
+            "isFinal": true
+          }
+        ],
+        "requirements": [
+          {
+            "title": "Application Documents",
+            "icon": "bi-file-text",
+            "items": [
+              "Duly Accomplished Safety Seal Certification Form",
+              "Valid Business License and Mayor's Permit"
+            ]
+          },
+          {
+            "title": "Health & Safety Protocols",
+            "icon": "bi-heart-pulse",
+            "items": [
+              "Use of StaySafe.ph or integrated contact tracing tool",
+              "Availability of thermal scanners for employees and clients",
+              "Health declaration sheets for individuals entering the premises",
+              "Designated isolation area for symptomatic employees",
+              "BHERT and COVID-19 hotlines placed in conspicuous areas",
+              "Hand washing stations with soap and sanitizers",
+              "Physical barriers and floor markers for social distancing",
+              "Windows for adequate air exchange in indoor areas"
+            ]
+          },
+          {
+            "title": "Compliance & Personnel",
+            "icon": "bi-people",
+            "items": [
+              "Availability of personnel-in-charge for protocol monitoring",
+              "Designated Safety Officer for contact tracing and referral",
+              "Established referral system for medical and psychosocial services",
+              "Regular disinfection protocol (at least twice a week)",
+              "Mandatory wearing of face masks and shields",
+              "Storage facility for used facemasks and infectious waste"
+            ]
+          }
+        ],
+        "faqs": [
+          {
+            "question": "Is there a fee for the Safety Seal?",
+            "answer": "No, the issuance of the Safety Seal Certificate is free of charge as part of the city's effort to support safe business operations."
+          },
+          {
+            "question": "How long is the processing time?",
+            "answer": "The total processing time from submission to issuance via email is 7 working days."
+          }
+        ],
+        "office": {
+          "name": "Business Permits & Licensing Office",
+          "location": "City Hall, Ground Floor",
+          "phone": "(02) 8551-5930",
+          "hours": "Mon-Thu: 8AM - 7PM"
+        },
+        "relatedServices": [
+          {
+            "title": "Business Permit (New)",
+            "link": "/service-details/business-permit-new"
+          },
+          {
+            "title": "Business Permit Renewal",
+            "link": "/service-details/business-permit-renewal"
+          },
+          {
+            "title": "Sanitary Permit",
+            "link": "/services/business"
+          }
+        ],
+        "sourceUrl": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
+        "sourceName": "Citizen's Charter 2022 (1st Edition)"
+      }
     },
     {
       "id": "online-business-billing",

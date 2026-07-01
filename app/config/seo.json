@@ -8,7 +8,7 @@
   },
   "about": {
     "titleFragment": "About",
-    "description": "Learn about Better {{lguName}} â€” our mission, history, and how {{siteBrandName}} promotes transparency and accessibility in local governance.",
+    "description": "Learn about Better {{lguName}} — our mission, history, and how {{siteBrandName}} promotes transparency and accessibility in local governance.",
     "ogType": "website",
     "twitterCard": "summary",
     "hidden": false
@@ -149,6 +149,13 @@
   "service-details-slug": {
     "titleFragment": "{{slug}} | Service Details",
     "description": "Detailed information about {{slug}} local government services in {{lguName}}.",
+    "ogType": "website",
+    "twitterCard": "summary",
+    "hidden": false
+  },
+  "offices-slug": {
+    "titleFragment": "{{slug}} | Government Office",
+    "description": "{{slug}} — government office of {{lguName}}. Find location, hours, contact, and services.",
     "ogType": "website",
     "twitterCard": "summary",
     "hidden": false

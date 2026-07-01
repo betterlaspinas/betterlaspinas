@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "categories.schema.json",
+  "title": "Categories Configuration",
+  "description": "Service categories: groupings used to organize Services for browsing by task. Categories apply to Services only, never Offices (Offices are a first-class entity in offices.json, grouped by Office Group).",
+  "type": "object",
+  "required": ["categories"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "JSON Schema reference"
+    },
+    "categories": {
+      "type": "array",
+      "description": "All service categories",
+      "items": { "$ref": "#/definitions/category" }
+    }
+  },
+  "definitions": {
+    "category": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "icon", "badgeText", "description"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique category slug (matches services.json categoryId)"
+        },
+        "name": { "type": "string" },
+        "icon": {
+          "type": "string",
+          "description": "Bootstrap icon class"
+        },
+        "badgeText": { "type": "string" },
+        "description": { "type": "string" },
+        "seoDescription": {
+          "type": "string",
+          "description": "SEO meta-description template for the /services/<id> page. Supports {{lguName}} interpolation. Read by the SEO middleware via getCategorySeoDescription."
+        },
+        "hidden": { "type": "boolean" }
+      }
+    }
+  }
+}

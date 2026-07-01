@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { execSync } from 'node:child_process'
+import process from 'node:process'
 import pkg from './package.json'
 
 function getVersion() {
@@ -60,6 +61,40 @@ export default defineNuxtConfig({
         'Cache-Control': 'no-cache, must-revalidate',
       },
     },
+    // 301: legacy Office URLs → canonical Office namespace (#207, #202).
+    '/service-details/city-civil-registry': {
+      redirect: { to: '/offices/civil-registry', statusCode: 301 },
+    },
+    '/service-details/city-treasurer': {
+      redirect: { to: '/offices/city-treasurer', statusCode: 301 },
+    },
+    '/service-details/city-assessor': {
+      redirect: { to: '/offices/city-assessor', statusCode: 301 },
+    },
+    '/service-details/city-engineering': {
+      redirect: { to: '/offices/city-engineering', statusCode: 301 },
+    },
+    '/service-details/city-planning': {
+      redirect: { to: '/offices/city-planning', statusCode: 301 },
+    },
+    '/service-details/city-agriculture': {
+      redirect: { to: '/offices/city-agriculture', statusCode: 301 },
+    },
+    '/service-details/city-budget': {
+      redirect: { to: '/offices/city-budget', statusCode: 301 },
+    },
+    '/service-details/city-accounting': {
+      redirect: { to: '/offices/city-accounting', statusCode: 301 },
+    },
+    '/service-details/city-general-services': {
+      redirect: { to: '/offices/city-general-services', statusCode: 301 },
+    },
+    // 301: Office id slug resolved by the /service-details fallback (#216).
+    // civil-registry is the only Office with a detail block, so after this no
+    // /service-details/* URL resolves an Office.
+    '/service-details/civil-registry': {
+      redirect: { to: '/offices/civil-registry', statusCode: 301 },
+    },
   },
   security: {
     headers: {
@@ -98,7 +133,12 @@ export default defineNuxtConfig({
     enabled: true,
   },
   css: ['~/assets/css/main.css'],
-  modules: ['@pinia/nuxt', '@nuxtjs/seo', 'nuxt-og-image', 'nuxt-security'],
+  // happy-dom unit tests do not use application modules. In particular, the
+  // SEO module decorates runtimeConfig with values that structuredClone cannot
+  // serialize when @nuxt/test-utils builds its Vitest configuration.
+  modules: process.env.VITEST
+    ? []
+    : ['@pinia/nuxt', '@nuxtjs/seo', 'nuxt-og-image', 'nuxt-security'],
   runtimeConfig: {
     public: {
       site: {

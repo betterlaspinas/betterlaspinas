@@ -13,12 +13,12 @@ export class BusinessPage {
   constructor(page: Page) {
     this.page = page
     this.businessPermit = page.getByRole('link', { name: 'Business Permit (New)' })
-    this.businessPermitRenewal = page.getByRole('link', { name: 'Business Permit (Renewal)' })
+    this.businessPermitRenewal = page.getByRole('link', { name: 'Business Permit Renewal' })
     this.specialPermit = page.getByRole('link', { name: 'Special Permit' })
     this.certificateOfStatus = page.getByRole('link', { name: 'Certificates on Status of Business' })
-    this.ctcOfBusinessLicense = page.getByRole('link', { name: 'Certified True Copy of Business License' })
-    this.occupationalPermit = page.getByRole('link', { name: 'Occupational Mayor\'s Permit' }).first()
-    this.firstTimeJobSeeker = page.getByRole('link', { name: 'Occupational Permit (First Time Job Seeker)' })
+    this.ctcOfBusinessLicense = page.getByRole('link', { name: 'Certified True Copy of Business License and Mayor\'s Permit' })
+    this.occupationalPermit = page.getByRole('link', { name: 'Occupational Mayor\'s Permit (Regular)' }).first()
+    this.firstTimeJobSeeker = page.getByRole('link', { name: 'Occupational Mayor\'s Permit (First Time Job Seeker)' })
     this.safetySealCertificate = page.getByRole('link', { name: 'Safety Seal Certificate' })
   }
 

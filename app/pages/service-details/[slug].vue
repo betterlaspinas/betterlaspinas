@@ -2,16 +2,21 @@
 usePageOgImage()
 
 const route = useRoute()
-const slug = route.params.slug as string
-const service = getServiceDetail(slug)
 
-if (!service) {
+// Page resolution lives behind the View resolver seam (ADR-0002): the facade
+// resolves the canonical Service detail and shapes the Office card; the page
+// only renders and guards. Service-detail only — the legacy office URL is
+// handled by a 301 (#207/#216), so there is no office fallback here.
+const view = serviceDetailView(route.params.slug as string)
+if (!view) {
   throw createError({
     statusCode: 404,
     statusMessage: 'Service not found',
     fatal: true,
   })
 }
+
+const { service, officeInfo } = view
 
 const openFaq = ref<number | null>(null)
 
@@ -231,30 +236,30 @@ function toggleFaq(index: number) {
 
           <!-- Sidebar -->
           <div class="space-y-4">
-            <UiCard>
+            <UiCard v-if="officeInfo">
               <h4 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
                 <i class="bi bi-building text-primary-600" /> Office Information
               </h4>
               <p class="font-medium text-gray-900">
-                {{ service.office.name }}
+                {{ officeInfo.name }}
               </p>
               <p class="text-sm text-gray-600 mt-2">
-                {{ service.office.location }}
+                {{ officeInfo.location }}
               </p>
-              <p v-if="service.office.phone" class="text-sm text-gray-600 mt-1 flex items-center gap-2">
-                <i class="bi bi-telephone" /> {{ service.office.phone }}
+              <p v-if="officeInfo.phone" class="text-sm text-gray-600 mt-1 flex items-center gap-2">
+                <i class="bi bi-telephone" /> {{ officeInfo.phone }}
               </p>
-              <p v-if="service.office.mobile" class="text-sm text-gray-600 mt-1 flex items-center gap-2">
-                <i class="bi bi-phone" /> {{ service.office.mobile }}
+              <p v-if="officeInfo.mobile" class="text-sm text-gray-600 mt-1 flex items-center gap-2">
+                <i class="bi bi-phone" /> {{ officeInfo.mobile }}
               </p>
-              <p v-if="service.office.email" class="text-sm text-gray-600 mt-1 flex items-center gap-2">
-                <i class="bi bi-envelope" /> <a :href="`mailto:${service.office.email}`" class="hover:underline text-primary-600">{{ service.office.email }}</a>
+              <p v-if="officeInfo.email" class="text-sm text-gray-600 mt-1 flex items-center gap-2">
+                <i class="bi bi-envelope" /> <a :href="`mailto:${officeInfo.email}`" class="hover:underline text-primary-600">{{ officeInfo.email }}</a>
               </p>
-              <p v-if="service.office.facebook" class="text-sm text-gray-600 mt-1 flex items-center gap-2">
-                <i class="bi bi-facebook" /> <a :href="service.office.facebook" target="_blank" rel="noopener noreferrer" class="hover:underline text-primary-600">Facebook Page</a>
+              <p v-if="officeInfo.facebook" class="text-sm text-gray-600 mt-1 flex items-center gap-2">
+                <i class="bi bi-facebook" /> <a :href="officeInfo.facebook" target="_blank" rel="noopener noreferrer" class="hover:underline text-primary-600">Facebook Page</a>
               </p>
-              <p class="text-sm text-gray-600 mt-1 flex items-center gap-2">
-                <i class="bi bi-clock" /> {{ service.office.hours }}
+              <p v-if="officeInfo.hours" class="text-sm text-gray-600 mt-1 flex items-center gap-2">
+                <i class="bi bi-clock" /> {{ officeInfo.hours }}
               </p>
             </UiCard>
 

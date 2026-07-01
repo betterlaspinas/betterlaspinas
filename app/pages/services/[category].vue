@@ -2,16 +2,19 @@
 usePageOgImage()
 
 const route = useRoute()
-const category = route.params.category as string
-const categoryContent = getCategoryContent(category)
 
-if (!categoryContent) {
+// Page resolution lives behind the View resolver seam (ADR-0002): the facade
+// does the configHelper lookups and shaping; the page only renders and guards.
+const view = categoryView(route.params.category as string)
+if (!view) {
   throw createError({
     statusCode: 404,
     statusMessage: 'Category not found',
     fatal: true,
   })
 }
+
+const { category, services, offices } = view
 </script>
 
 <template>
@@ -19,15 +22,15 @@ if (!categoryContent) {
     <UiBreadcrumbs
       :items="[
         { label: 'Services', href: '/services' },
-        { label: categoryContent.name },
+        { label: category.name },
       ]"
     />
 
     <UiSectionHeader
-      :badge-icon="categoryContent.icon"
-      :badge-text="categoryContent.badgeText"
-      :title="categoryContent.name"
-      :description="categoryContent.description"
+      :badge-icon="category.icon"
+      :badge-text="category.badgeText"
+      :title="category.name"
+      :description="category.description"
     />
 
     <!-- Services Grid -->
@@ -35,7 +38,7 @@ if (!categoryContent) {
       <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <UiCard
-            v-for="service in categoryContent.services"
+            v-for="service in services"
             :key="service.id"
             :to="service.link"
             :interactive="!!service.link"
@@ -65,7 +68,7 @@ if (!categoryContent) {
 
     <!-- Responsible Offices -->
     <section
-      v-if="categoryContent.offices.length > 0"
+      v-if="offices.length > 0"
       class="py-12 bg-gray-50"
     >
       <div class="container mx-auto px-4">
@@ -74,7 +77,7 @@ if (!categoryContent) {
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <UiCard
-            v-for="office in categoryContent.offices.filter(office => office.hidden !== true)"
+            v-for="office in offices"
             :key="office.title"
             :to="office.link"
             padding="p-4"

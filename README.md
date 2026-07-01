@@ -61,7 +61,7 @@ Edit the static configuration files in `app/config/`:
 
 - `site.json` - Basic site information
 - `officials.json` - Government officials
-- `services.json` - Available services
+- `services.json` - Available services (single source of truth; schema-backed and validated by `pnpm validate`). See [ADDING_NEW_SERVICES.md](./ADDING_NEW_SERVICES.md) — no TypeScript required.
 - `tourism.json` - Tourist attractions
 - `subdivisions.json` - Barangays/districts
 - `history.json` - LGU milestones

@@ -330,6 +330,90 @@ export interface TourismConfig {
   [key: string]: unknown
 }
 
+/**
+ * Canonical Service Detail sub-types.
+ *
+ * These mirror the optional `detail` block on a canonical Service record in
+ * services.json. They describe the rich service-details page content (process,
+ * requirements, FAQs, office contact info). A Service WITHOUT a `detail` is a
+ * catalog-only card (e.g. Barangay Clearance) and links to its category page.
+ */
+export interface ServiceDetailQuickStat {
+  icon: string
+  label: string
+  value: string
+}
+
+export interface ProcessStep {
+  title: string
+  description: string
+  isFinal?: boolean
+}
+
+export interface RequirementGroup {
+  title: string
+  icon: string
+  items: string[]
+}
+
+export interface Faq {
+  question: string
+  answer: string
+}
+
+/**
+ * Office-contact block embedded in a Service's `detail` (the "Office
+ * Information" card on a /service-details page). This is NOT the first-class
+ * Office entity — see `Office` / `OfficeGroup` below and offices.json.
+ *
+ * Only present (as free text) for Services whose provider is NOT yet a
+ * first-class Office (e.g. BPLO business services with no `providedBy`).
+ * providedBy-backed Services derive the card from their canonical Office via
+ * `officeContactCard` (pageViews.ts), so they carry no inline copy (#212,
+ * single source).
+ */
+export interface ServiceDetailOffice {
+  name: string
+  location: string
+  phone?: string
+  mobile?: string
+  email?: string
+  facebook?: string
+  hours: string
+}
+
+export interface RelatedService {
+  title: string
+  link: string
+}
+
+export interface ServiceDetail {
+  fullTitle: string
+  category: string
+  categoryLink: string
+  badgeText: string
+  badgeIcon: string
+  description: string
+  quickStats: ServiceDetailQuickStat[]
+  processSteps: ProcessStep[]
+  requirements: RequirementGroup[]
+  faqs: Faq[]
+  office?: ServiceDetailOffice
+  relatedServices: RelatedService[]
+  onlineLink?: string
+  sourceUrl?: string
+  sourceName?: string
+}
+
+/**
+ * Rich detail-page content for a first-class Office (#201). Reuses the canonical
+ * Service `detail` shape but OMITS its `office` contact sub-block: an Office is
+ * its own contact source, so its page (`officeView`, pageViews.ts) reads contact
+ * data from the Office's own top-level fields rather than re-storing it here
+ * (single source of truth, no drift).
+ */
+export type OfficeDetail = Omit<ServiceDetail, 'office'>
+
 export interface ServiceItem {
   id: string
   title: string
@@ -338,10 +422,30 @@ export interface ServiceItem {
   categoryId?: string
   keywords: string[]
   office?: string
+  /**
+   * Slug of the first-class Office that provides this Service (matches an
+   * offices.json id). Resolve through `getOfficeBySlug`. See `Office` below.
+   */
+  providedBy?: string
   fee?: string
   processingTime?: string
   url: string
+  icon?: string
   hidden?: boolean
+  /**
+   * Optional SEO meta-description template for this Service's
+   * `/service-details/<id>` page. Supports `{{lguName}}` (and other middleware
+   * template vars) interpolation. Lives on the canonical Service record so the
+   * meta description can no longer drift from the catalog; the SEO middleware
+   * reads it via `getServiceSeoDescription`. Absent Services fall back to the
+   * route-level `seo.json` description.
+   */
+  seoDescription?: string
+  /**
+   * Optional rich service-details content. Present only for Services that have
+   * a dedicated `/service-details/<id>` page. Absent for catalog-only Services.
+   */
+  detail?: ServiceDetail
 }
 
 export interface ServicesConfig {
@@ -367,7 +471,90 @@ export interface NavigationConfig {
   }
 }
 
+export interface Category {
+  id: string
+  name: string
+  icon: string
+  badgeText: string
+  description: string
+  /**
+   * Optional SEO meta-description template for this Category's
+   * `/services/<id>` page. Supports `{{lguName}}` interpolation. Lives on the
+   * canonical Category record so the meta description can no longer drift from
+   * the catalog; the SEO middleware reads it via `getCategorySeoDescription`.
+   */
+  seoDescription?: string
+  hidden?: boolean
+}
+
 export interface CategoriesConfig {
+  categories: Category[]
+  [key: string]: unknown
+}
+
+/**
+ * Office Group: a grouping of Offices by government function (answers "who runs
+ * this", e.g. "Frontline Services", "Finance"). Distinct from Category, which
+ * groups Services by task. Groups Offices one-to-many.
+ */
+export interface OfficeGroup {
+  id: string
+  name: string
+  description: string
+  icon?: string
+  hidden?: boolean
+}
+
+/**
+ * First-class Office entity: a government body that provides Services. Belongs
+ * to exactly one Office Group via `groupId`, even when its Services span
+ * multiple Categories. Referenced by ServiceItem.providedBy.
+ */
+export interface Office {
+  id: string
+  name: string
+  groupId: string
+  icon: string
+  description: string
+  link: string
+  location?: string
+  phone?: string
+  mobile?: string
+  email?: string
+  facebook?: string
+  hours?: string
+  hidden?: boolean
+  /**
+   * Office-only services offered here that are NOT canonical Service records:
+   * no `/service-details` page, absent from search and every Category grid
+   * (which is why they can't live in services.json yet — `useSearch` reads all
+   * of it). Rendered as plain, non-clickable cards on the Office page, deduped
+   * against the Services this Office `providedBy`. When a real detail page is
+   * authored the service graduates into services.json with `providedBy` and
+   * drops off this list. Names only.
+   */
+  additionalServices?: string[]
+  /**
+   * Official source for this Office's directory data — e.g. the Las Piñas
+   * Citizen's Charter PDF. Rendered as a "Data source" card on the Office page
+   * so the information is auditable. `sourceUrl` is the link, `sourceName` its
+   * human label. Mirrors `ServiceDetail.sourceUrl` / `sourceName`.
+   */
+  sourceUrl?: string
+  sourceName?: string
+  /**
+   * Optional rich detail-page content, mirroring the canonical
+   * `ServiceItem.detail` block (#184). Present only for Offices with a dedicated
+   * `/offices/<id>` page (#207); its presence gates that route (404 otherwise).
+   * The contact card is synthesised from this Office's own fields, so the block
+   * omits a redundant `office` sub-block (see OfficeDetail).
+   */
+  detail?: OfficeDetail
+}
+
+export interface OfficesConfig {
+  officeGroups: OfficeGroup[]
+  offices: Office[]
   [key: string]: unknown
 }
 

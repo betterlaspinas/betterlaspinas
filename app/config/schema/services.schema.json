@@ -1,0 +1,187 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "services.schema.json",
+  "title": "Services Configuration",
+  "description": "Canonical catalog of LGU Services. Each Service is a single source of truth: a catalog card, optionally carrying a rich `detail` block for its /service-details/<id> page.",
+  "type": "object",
+  "required": ["services"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "JSON Schema reference"
+    },
+    "services": {
+      "type": "array",
+      "description": "All Service records across every category",
+      "items": { "$ref": "#/definitions/service" }
+    }
+  },
+  "definitions": {
+    "service": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "description", "category", "keywords", "url"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique, URL-friendly identifier"
+        },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "category": {
+          "type": "string",
+          "description": "Human-readable category name"
+        },
+        "categoryId": {
+          "type": "string",
+          "description": "Slug of the parent category (must match a categories.json id)"
+        },
+        "keywords": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Search terms for the fuzzy search composable"
+        },
+        "office": { "type": "string" },
+        "providedBy": {
+          "type": "string",
+          "description": "Slug of the Office that provides this Service (must match an offices.json id). The first-class Service -> providedBy -> Office reference."
+        },
+        "fee": { "type": "string" },
+        "processingTime": { "type": "string" },
+        "url": {
+          "type": "string",
+          "description": "Destination route. `/service-details/<id>` when a `detail` block is present; otherwise the category page (e.g. `/services/certificates`)."
+        },
+        "url-old": {
+          "type": "string",
+          "description": "Deprecated/previous route, kept for reference"
+        },
+        "icon": {
+          "type": "string",
+          "description": "Bootstrap icon class (e.g. bi-file-earmark-text)"
+        },
+        "hidden": { "type": "boolean" },
+        "seoDescription": {
+          "type": "string",
+          "description": "SEO meta-description template for the /service-details/<id> page. Supports {{lguName}} interpolation. Read by the SEO middleware via getServiceSeoDescription."
+        },
+        "detail": { "$ref": "#/definitions/serviceDetail" }
+      }
+    },
+    "serviceDetail": {
+      "type": "object",
+      "description": "Optional rich content for the dedicated service-details page.",
+      "additionalProperties": false,
+      "required": [
+        "fullTitle",
+        "category",
+        "categoryLink",
+        "badgeText",
+        "badgeIcon",
+        "description",
+        "quickStats",
+        "processSteps",
+        "requirements",
+        "faqs",
+        "relatedServices"
+      ],
+      "properties": {
+        "fullTitle": { "type": "string" },
+        "category": { "type": "string" },
+        "categoryLink": { "type": "string" },
+        "badgeText": { "type": "string" },
+        "badgeIcon": { "type": "string" },
+        "description": { "type": "string" },
+        "quickStats": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/quickStat" }
+        },
+        "processSteps": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/processStep" }
+        },
+        "requirements": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/requirementGroup" }
+        },
+        "faqs": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/faq" }
+        },
+        "office": { "$ref": "#/definitions/serviceDetailOffice" },
+        "relatedServices": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/relatedService" }
+        },
+        "onlineLink": { "type": "string" },
+        "sourceUrl": { "type": "string" },
+        "sourceName": { "type": "string" }
+      }
+    },
+    "quickStat": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["icon", "label", "value"],
+      "properties": {
+        "icon": { "type": "string" },
+        "label": { "type": "string" },
+        "value": { "type": "string" }
+      }
+    },
+    "processStep": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "description"],
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "isFinal": { "type": "boolean" }
+      }
+    },
+    "requirementGroup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "icon", "items"],
+      "properties": {
+        "title": { "type": "string" },
+        "icon": { "type": "string" },
+        "items": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "faq": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["question", "answer"],
+      "properties": {
+        "question": { "type": "string" },
+        "answer": { "type": "string" }
+      }
+    },
+    "serviceDetailOffice": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "location", "hours"],
+      "properties": {
+        "name": { "type": "string" },
+        "location": { "type": "string" },
+        "phone": { "type": "string" },
+        "mobile": { "type": "string" },
+        "email": { "type": "string" },
+        "facebook": { "type": "string" },
+        "hours": { "type": "string" }
+      }
+    },
+    "relatedService": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "link"],
+      "properties": {
+        "title": { "type": "string" },
+        "link": { "type": "string" }
+      }
+    }
+  }
+}
