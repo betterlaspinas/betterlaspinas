@@ -11,6 +11,7 @@ export const test = baseTest.extend<HomePageFixture>({
     const homePage = new HomePage(page)
     await page.goto('/')
     await page.waitForLoadState('networkidle')
+    await page.waitForTimeout(2000)
     await use(homePage)
   },
 

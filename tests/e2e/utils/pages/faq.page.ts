@@ -92,6 +92,7 @@ export class FrequentlyAskedQuestions {
 
   async navigateToFaq() {
     await this.faqLink.click()
-    await this.page.waitForLoadState('networkidle')
+    await this.page.waitForLoadState('domcontentloaded')
+    await this.page.waitForTimeout(2000)
   }
 }

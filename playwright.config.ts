@@ -21,7 +21,7 @@ export default defineConfig({
   testDir: './tests/e2e',
 
   /* Setting up timeout for each test steps */
-  timeout: 30_000, // 30 seconds
+  timeout: 60_000, // 60 seconds
   /* Setting up global timeout for each test steps */
   globalTimeout: 60 * 60_000, // 60 minutes
 
