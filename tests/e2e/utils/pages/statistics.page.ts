@@ -69,7 +69,8 @@ export class StatisticsPage {
 
   async navigateToStatisticsPage() {
     await this.statisticsLink.click()
-    await this.page.waitForLoadState('networkidle')
+    await this.page.waitForURL(url => url.pathname === '/statistics')
+    await this.cityStatisticsMainHeader.waitFor({ state: 'visible' })
   }
 
   getStatCard(label: string): Locator {
