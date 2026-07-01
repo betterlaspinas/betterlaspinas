@@ -57,7 +57,7 @@ export class FrequentlyAskedQuestions {
     // General Questions Locators
     this.generalQuestionsHeader = page.getByRole('heading', { name: 'General Questions', level: 2 })
     this.generalSampleQuestion = page.getByRole('button', { name: /What are the office hours of the City Hall/i })
-    this.generalSampleAnswer = page.getByText(/City Hall is generally open Monday to Thursday,/i)
+    this.generalSampleAnswer = page.getByText(/The City Hall is generally open Monday to Thursday, 8:00 AM to 7:00 PM/i)
 
     // Certificates & Documents Locators
     this.certificatesAndDocumentsHeader = page.getByRole('heading', { name: 'Certificates & Documents', level: 2 })
@@ -92,7 +92,6 @@ export class FrequentlyAskedQuestions {
 
   async navigateToFaq() {
     await this.faqLink.click()
-    await this.page.waitForLoadState('domcontentloaded')
-    await this.page.waitForTimeout(2000)
+    await this.page.waitForLoadState('networkidle')
   }
 }

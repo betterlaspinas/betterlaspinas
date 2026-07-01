@@ -123,7 +123,7 @@ export class TermsOfUsePage {
 
   async navigateToTermsOfUse() {
     await this.termsOfUseLink.click()
-    await this.page.waitForLoadState('networkidle')
+    await this.page.waitForLoadState('domcontentloaded')
     await this.termsOfUseMainHeading.waitFor({ state: 'visible', timeout: 10000 })
   }
 
