@@ -92,6 +92,10 @@ export class FrequentlyAskedQuestions {
 
   async navigateToFaq() {
     await this.faqLink.click()
-    await this.page.waitForLoadState('networkidle')
+    await this.page.waitForURL(url => url.pathname === '/faq')
+    await this.faqMainHeading.waitFor({ state: 'visible' })
+    await this.page.locator('[data-accordion-hydrated="true"]').first().waitFor({
+      state: 'visible',
+    })
   }
 }

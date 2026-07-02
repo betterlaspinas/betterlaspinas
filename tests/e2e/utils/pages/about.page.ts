@@ -65,6 +65,7 @@ export class AboutPage {
 
   async navigateToAboutPage() {
     await this.aboutPageLink.click()
-    await this.page.waitForLoadState('networkidle')
+    await this.page.waitForURL(url => url.pathname === '/about')
+    await this.aboutPageMainHeading.waitFor({ state: 'visible' })
   }
 }

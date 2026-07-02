@@ -9,7 +9,6 @@ export const test = baseTest.extend<AccessibilityPageFixture>({
   accessibilityPage: async ({ page }, use) => {
     const accessibilityPage = new AccessibilityPage(page)
     await page.goto('/')
-    await page.waitForLoadState('networkidle')
     await use(accessibilityPage)
   },
 })

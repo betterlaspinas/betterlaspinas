@@ -61,9 +61,8 @@ export class QuickLinks {
 
   async navigateToSitemap() {
     await this.siteMap.click()
-    await this.page.waitForURL(/\/sitemap/i)
-    await this.page.waitForLoadState('domcontentloaded')
-    await this.page.waitForTimeout(2000)
+    await this.page.waitForURL(url => url.pathname === '/sitemap')
+    await this.sitemapLabel.waitFor({ state: 'visible' })
   }
 
   getMainNavLink(name: string): Locator {
