@@ -46,6 +46,12 @@ Note this takes the blocker's **`.id`**, not its issue number (`gh api repos/{ow
 
 Priority answers "which of these takeable issues first". Blocking answers "is this takeable at all". A high-priority blocked issue is not takeable — read both.
 
+### `Status` is not authoritative
+
+`Status` is automated and mostly correct, but it can regress: opening a PR that references an **already-closed** issue flips that issue from `Done` back to `In Progress`, and nothing moves it back. Observed on #72 and #250, both corrected by hand.
+
+Treat `Status` as a hint and the issue's own open/closed state as the truth. Ranking never depends on `Status` — it lives in `Priority`.
+
 ### Quick wins
 
 Use the board's `Effort` field (`XS (Quick Fix)`, `S (Few hours)`, `M (1-2 days)`, `L (Feature)`). `XS` **is** the quick-win marker — no `quick-win` label.
@@ -56,10 +62,11 @@ Use the board's `Effort` field (`XS (Quick Fix)`, `S (Few hours)`, `M (1-2 days)
 
 The maintainer sets bands; contributors propose changes by commenting on the issue rather than editing the field.
 
-Re-rank on either trigger:
+Re-rank on **one** trigger: **a decision changes the order** — e.g. a [wayfinder map](https://github.com/betterlaspinas/betterlaspinas/issues/235) resolution re-sequences work. Update the bands in the same session that makes the decision, or it will not happen later.
 
-- **🔴 Must-Have empties** — promote from 🟡 Should-Have.
-- **A decision changes the order** — e.g. a [wayfinder map](https://github.com/betterlaspinas/betterlaspinas/issues/235) resolution re-sequences work. Update the bands in the same session that makes the decision, or it will not happen later.
+**An empty band is not a trigger.** When 🔴 Must-Have empties, do not promote 🟡 Should-Have into it — just take from Should-Have, which the "highest non-empty band" rule already covers.
+
+Bands are absolute claims about necessity, not queue positions. Promoting on emptiness would make 🔴 Must-Have mean "whatever is currently on top" instead of "required", and would erase the difference between work that is genuinely required and work that merely floated up — so a real Must-Have filed later could no longer outrank it.
 
 Do not re-rank issue by issue as they are filed. New issues arrive unranked and are banded in batches.
 
