@@ -1,0 +1,2190 @@
+<!doctype html>
+<!--
+  PROTOTYPE — THROWAWAY. Not production code. Do not import from this file.
+
+  Question: what should the BetterLasPiñas home page look like as a modern
+  government portal, keeping existing branding (primary #0066eb, secondary
+  #ff4d00, accent #f58900, gray ramp, Figtree)?
+
+  Three variants of the home page, switchable via ?variant=A|B|C, on a
+  standalone HTML file. Open directly with file:// — no build, no network.
+
+  A — Task-first      : GOV.UK/USWDS lineage. Search dominates, text-link task
+                        lists, life-event grouping, near-zero chrome.
+  B — Service bento   : no hero at all. Header-embedded search + dense tile
+                        mosaic dashboard (services, status, hotlines, stats).
+  C — Civic editorial : full-bleed dark hero, scroll narrative in bands,
+                        leadership/city story forward, sticky action dock.
+
+  Data is the real config (app/config/*.json) as of 2026-07-31, hardcoded.
+  Figtree is not loaded (offline) — system-ui stands in.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BetterLasPiñas — home redesign prototype</title>
+    <style>
+      /* ── brand tokens (from app/assets/css/main.css) ─────────────────────── */
+      :root {
+        --p50: #e6f0fd;
+        --p100: #cce0fb;
+        --p200: #99c2f7;
+        --p300: #66a3f3;
+        --p400: #3385ef;
+        --p500: #0066eb;
+        --p600: #0052bc;
+        --p700: #003d8d;
+        --p800: #00295e;
+        --p900: #00142f;
+        --s50: #ffede6;
+        --s100: #ffdbcc;
+        --s400: #ff7033;
+        --s500: #ff4d00;
+        --s600: #cc3e00;
+        --s700: #992e00;
+        --a50: #fef3e6;
+        --a400: #f7a133;
+        --a500: #f58900;
+        --a600: #c46e00;
+        --su500: #00af5f;
+        --su600: #008c4c;
+        --su50: #e6f7ef;
+        --e50: #fceaea;
+        --e500: #e12e2e;
+        --e600: #b42525;
+        --e700: #871c1c;
+        --g50: #f8f9fa;
+        --g100: #f1f3f5;
+        --g200: #e9ecef;
+        --g300: #dee2e6;
+        --g400: #ced4da;
+        --g500: #adb5bd;
+        --g600: #868e96;
+        --g700: #495057;
+        --g800: #343a40;
+        --g900: #212529;
+        --font: 'Figtree', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: var(--font);
+        color: var(--g900);
+        background: #fff;
+        -webkit-font-smoothing: antialiased;
+        line-height: 1.5;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      a {
+        color: inherit;
+      }
+      button {
+        font: inherit;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      p,
+      ul,
+      ol,
+      figure {
+        margin: 0;
+      }
+      ul {
+        padding: 0;
+        list-style: none;
+      }
+      :focus-visible {
+        outline: 3px solid var(--a500);
+        outline-offset: 2px;
+      }
+      .wrap {
+        width: 100%;
+        max-width: 1232px;
+        margin-inline: auto;
+        padding-inline: 24px;
+      }
+      .sr {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+      }
+
+      /* ── prototype switcher (deliberately NOT part of any design) ────────── */
+      #switcher {
+        position: fixed;
+        left: 50%;
+        bottom: 20px;
+        transform: translateX(-50%);
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        background: #0b0b0c;
+        color: #fff;
+        border-radius: 999px;
+        padding: 6px;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+        font:
+          600 13px/1 ui-monospace,
+          SFMono-Regular,
+          Menlo,
+          monospace;
+      }
+      #switcher button {
+        background: #26262a;
+        color: #fff;
+        border: 0;
+        width: 32px;
+        height: 32px;
+        border-radius: 999px;
+        cursor: pointer;
+        font-size: 15px;
+      }
+      #switcher button:hover {
+        background: #3b3b42;
+      }
+      #switcher .lbl {
+        padding: 0 14px;
+        white-space: nowrap;
+      }
+      #switcher .lbl b {
+        color: var(--a400);
+      }
+      @media print {
+        #switcher {
+          display: none;
+        }
+      }
+
+      /* ═══════════════════════════════════════════════════════════════════════
+   VARIANT A — TASK-FIRST
+   Hierarchy: search > task links > everything else. No cards. Text is the UI.
+   ═══════════════════════════════════════════════════════════════════════ */
+      .vA {
+        background: #fff;
+      }
+      .vA .util {
+        background: var(--g900);
+        color: #fff;
+        font-size: 13px;
+      }
+      .vA .util .wrap {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        align-items: center;
+        min-height: 36px;
+        flex-wrap: wrap;
+      }
+      .vA .util a {
+        color: #fff;
+        text-underline-offset: 3px;
+      }
+      .vA .util .tag {
+        background: var(--a500);
+        color: #20130a;
+        font-weight: 700;
+        padding: 2px 8px;
+        border-radius: 3px;
+        text-transform: uppercase;
+        font-size: 11px;
+        letter-spacing: 0.06em;
+      }
+      .vA .mast {
+        border-bottom: 1px solid var(--g300);
+      }
+      .vA .mast .wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding-block: 16px;
+      }
+      .vA .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+      }
+      .vA .brand img {
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+      }
+      .vA .brand .n {
+        font-weight: 800;
+        font-size: 18px;
+        letter-spacing: -0.02em;
+      }
+      .vA .brand .t {
+        font-size: 12px;
+        color: var(--g700);
+      }
+      .vA nav.main {
+        border-bottom: 3px solid var(--p500);
+      }
+      .vA nav.main ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0;
+      }
+      .vA nav.main a {
+        display: block;
+        padding: 12px 16px;
+        font-weight: 600;
+        font-size: 15px;
+        text-decoration: none;
+        color: var(--g800);
+      }
+      .vA nav.main a:hover {
+        background: var(--p50);
+        color: var(--p600);
+      }
+      .vA nav.main a[aria-current] {
+        background: var(--p500);
+        color: #fff;
+      }
+
+      .vA .searchband {
+        background: var(--p700);
+        color: #fff;
+        padding-block: 56px 48px;
+      }
+      .vA .searchband h1 {
+        font-size: clamp(30px, 4.4vw, 46px);
+        line-height: 1.1;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        max-width: 16ch;
+      }
+      .vA .searchband p.sub {
+        margin-top: 14px;
+        font-size: 18px;
+        color: #cfe0fb;
+        max-width: 52ch;
+      }
+      .vA .sform {
+        margin-top: 28px;
+        display: flex;
+        max-width: 720px;
+        border: 2px solid #fff;
+        border-radius: 6px;
+        overflow: hidden;
+        background: #fff;
+      }
+      .vA .sform input {
+        flex: 1;
+        border: 0;
+        padding: 16px 18px;
+        font-size: 18px;
+        min-width: 0;
+        color: var(--g900);
+      }
+      .vA .sform input:focus {
+        outline: 0;
+      }
+      .vA .sform button {
+        background: var(--s500);
+        color: #fff;
+        border: 0;
+        padding: 0 26px;
+        font-weight: 700;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      .vA .sform button:hover {
+        background: var(--s600);
+      }
+      .vA .pop {
+        margin-top: 14px;
+        font-size: 15px;
+        color: #cfe0fb;
+      }
+      .vA .pop a {
+        color: #fff;
+        text-underline-offset: 3px;
+      }
+      .vA .pop a + a {
+        margin-left: 14px;
+      }
+
+      .vA .cols {
+        display: grid;
+        grid-template-columns: 1.6fr 1fr;
+        gap: 56px;
+        padding-block: 52px;
+      }
+      .vA h2.sec {
+        font-size: 13px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--g700);
+        padding-bottom: 10px;
+        border-bottom: 2px solid var(--g900);
+        margin-bottom: 4px;
+      }
+      .vA .tasks {
+        columns: 2;
+        column-gap: 40px;
+      }
+      .vA .tasks li {
+        break-inside: avoid;
+        border-bottom: 1px solid var(--g200);
+      }
+      .vA .tasks a {
+        display: block;
+        padding: 13px 0;
+        text-decoration: none;
+        font-size: 17px;
+        font-weight: 600;
+        color: var(--p600);
+      }
+      .vA .tasks a span {
+        display: block;
+        font-weight: 400;
+        font-size: 14px;
+        color: var(--g700);
+        margin-top: 2px;
+      }
+      .vA .tasks a:hover {
+        color: var(--s600);
+      }
+      .vA .tasks a:hover span {
+        color: var(--g800);
+      }
+      .vA .more {
+        display: inline-block;
+        margin-top: 22px;
+        font-weight: 700;
+        color: var(--p600);
+        font-size: 16px;
+        text-underline-offset: 4px;
+      }
+
+      .vA .life {
+        margin-top: 44px;
+      }
+      .vA .lifegrid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2px;
+        background: var(--g300);
+        border: 1px solid var(--g300);
+        margin-top: 16px;
+      }
+      .vA .lifegrid > div {
+        background: #fff;
+        padding: 20px;
+      }
+      .vA .lifegrid h3 {
+        font-size: 17px;
+        font-weight: 800;
+        margin-bottom: 8px;
+      }
+      .vA .lifegrid a {
+        display: block;
+        font-size: 15px;
+        color: var(--p600);
+        padding: 3px 0;
+        text-underline-offset: 3px;
+      }
+
+      .vA aside .box {
+        border: 1px solid var(--g300);
+        padding: 20px;
+        margin-bottom: 24px;
+      }
+      .vA aside .box.alert {
+        border: 2px solid var(--e500);
+        background: var(--e50);
+      }
+      .vA aside .box.alert h2 {
+        color: var(--e700);
+        border-color: var(--e700);
+      }
+      .vA .hot li {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 9px 0;
+        border-bottom: 1px dotted var(--g400);
+        font-size: 15px;
+      }
+      .vA .hot li:last-child {
+        border: 0;
+      }
+      .vA .hot a {
+        font-weight: 800;
+        color: var(--e700);
+        text-decoration: none;
+        font-variant-numeric: tabular-nums;
+      }
+      .vA .glance li {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 12px;
+        padding: 11px 0;
+        border-bottom: 1px solid var(--g200);
+      }
+      .vA .glance .v {
+        font-size: 22px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        font-variant-numeric: tabular-nums;
+      }
+      .vA .glance .k {
+        font-size: 14px;
+        color: var(--g700);
+      }
+      .vA .glance .src {
+        display: block;
+        font-size: 11px;
+        color: var(--g600);
+      }
+      .vA .lead p {
+        font-size: 15px;
+        padding: 7px 0;
+        border-bottom: 1px solid var(--g200);
+      }
+      .vA .lead b {
+        display: block;
+        font-size: 16px;
+      }
+      .vA .lead span {
+        color: var(--g700);
+        font-size: 13px;
+      }
+
+      .vA .notice {
+        background: var(--a50);
+        border-top: 1px solid var(--a400);
+        border-bottom: 1px solid var(--a400);
+        padding-block: 20px;
+        font-size: 15px;
+      }
+      .vA .notice .wrap {
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+      }
+      .vA .notice b {
+        color: var(--a600);
+      }
+
+      .vA footer {
+        background: var(--g900);
+        color: var(--g300);
+        padding-block: 44px 28px;
+        margin-top: 0;
+      }
+      .vA footer .fcols {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 32px;
+      }
+      .vA footer h3 {
+        color: #fff;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 12px;
+      }
+      .vA footer a {
+        display: block;
+        padding: 4px 0;
+        font-size: 15px;
+        color: var(--g300);
+        text-decoration: none;
+      }
+      .vA footer a:hover {
+        color: #fff;
+        text-decoration: underline;
+      }
+      .vA footer .legal {
+        border-top: 1px solid var(--g700);
+        margin-top: 32px;
+        padding-top: 20px;
+        font-size: 13px;
+        color: var(--g500);
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      @media (max-width: 900px) {
+        .vA .cols {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+        .vA .tasks {
+          columns: 1;
+        }
+        .vA .lifegrid,
+        .vA footer .fcols {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ═══════════════════════════════════════════════════════════════════════
+   VARIANT B — SERVICE BENTO DASHBOARD
+   No hero. Search lives in the header. Page = tile mosaic, scannable.
+   ═══════════════════════════════════════════════════════════════════════ */
+      .vB {
+        background: var(--g100);
+        min-height: 100vh;
+      }
+      .vB .top {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: #fff;
+        border-bottom: 1px solid var(--g200);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+      }
+      .vB .top .wrap {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding-block: 12px;
+      }
+      .vB .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        flex: none;
+      }
+      .vB .brand img {
+        width: 36px;
+        height: 36px;
+        object-fit: contain;
+      }
+      .vB .brand b {
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        font-size: 17px;
+      }
+      .vB .hsearch {
+        flex: 1;
+        position: relative;
+        max-width: 560px;
+      }
+      .vB .hsearch input {
+        width: 100%;
+        border: 1.5px solid var(--g300);
+        background: var(--g50);
+        border-radius: 10px;
+        padding: 11px 14px 11px 40px;
+        font-size: 15px;
+      }
+      .vB .hsearch input:focus {
+        outline: 0;
+        border-color: var(--p500);
+        background: #fff;
+        box-shadow: 0 0 0 4px rgba(0, 102, 235, 0.12);
+      }
+      .vB .hsearch svg {
+        position: absolute;
+        left: 13px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 17px;
+        height: 17px;
+        color: var(--g600);
+      }
+      .vB .top nav {
+        display: flex;
+        gap: 6px;
+        margin-left: auto;
+      }
+      .vB .top nav a {
+        padding: 8px 12px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--g700);
+        text-decoration: none;
+      }
+      .vB .top nav a:hover {
+        background: var(--g100);
+        color: var(--p600);
+      }
+      .vB .top nav a.on {
+        background: var(--p50);
+        color: var(--p600);
+      }
+      .vB .rail {
+        background: var(--g900);
+        color: #fff;
+        font-size: 13px;
+      }
+      .vB .rail .wrap {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        min-height: 38px;
+        overflow-x: auto;
+      }
+      .vB .rail .pill {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 999px;
+        padding: 4px 11px;
+        white-space: nowrap;
+      }
+      .vB .rail .pill.live {
+        background: var(--su600);
+      }
+      .vB .rail .pill.warn {
+        background: var(--s600);
+      }
+
+      .vB main {
+        padding-block: 24px 56px;
+      }
+      .vB .bento {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+      }
+      .vB .t {
+        background: #fff;
+        border: 1px solid var(--g200);
+        border-radius: 16px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+      }
+      .vB a.t {
+        text-decoration: none;
+        color: inherit;
+        transition:
+          transform 0.15s,
+          box-shadow 0.15s,
+          border-color 0.15s;
+      }
+      .vB a.t:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(16, 24, 40, 0.09);
+        border-color: var(--p300);
+      }
+      .vB .t h2 {
+        font-size: 12px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--g600);
+        margin-bottom: 12px;
+      }
+      .vB .span2 {
+        grid-column: span 2;
+      }
+      .vB .span3 {
+        grid-column: span 3;
+      }
+      .vB .row2 {
+        grid-row: span 2;
+      }
+
+      .vB .t.find {
+        background: linear-gradient(150deg, var(--p600), var(--p800));
+        border: 0;
+        color: #fff;
+      }
+      .vB .t.find h2 {
+        color: #a9c9f7;
+      }
+      .vB .t.find .big {
+        font-size: clamp(22px, 2.4vw, 30px);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        line-height: 1.15;
+        margin-bottom: 6px;
+      }
+      .vB .t.find p {
+        color: #cfe0fb;
+        font-size: 15px;
+        margin-bottom: 16px;
+      }
+      .vB .cats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: auto;
+      }
+      .vB .cats a {
+        background: rgba(255, 255, 255, 0.14);
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        color: #fff;
+        border-radius: 10px;
+        padding: 9px 13px;
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+      }
+      .vB .cats a:hover {
+        background: #fff;
+        color: var(--p700);
+      }
+
+      .vB .t.sos {
+        background: var(--e50);
+        border-color: #f3abab;
+      }
+      .vB .t.sos h2 {
+        color: var(--e700);
+      }
+      .vB .t.sos li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 0;
+        border-bottom: 1px solid #f3abab;
+      }
+      .vB .t.sos li:last-child {
+        border: 0;
+      }
+      .vB .t.sos .nm {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--g800);
+      }
+      .vB .t.sos a {
+        font-weight: 800;
+        color: var(--e700);
+        text-decoration: none;
+        font-variant-numeric: tabular-nums;
+        font-size: 15px;
+      }
+      .vB .t.sos .all {
+        margin-top: 12px;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--e700);
+      }
+
+      .vB .t.stat .v {
+        font-size: clamp(26px, 3vw, 36px);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        line-height: 1;
+        font-variant-numeric: tabular-nums;
+      }
+      .vB .t.stat .k {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--g800);
+        margin-top: 6px;
+      }
+      .vB .t.stat .src {
+        font-size: 12px;
+        color: var(--g600);
+        margin-top: 2px;
+      }
+      .vB .t.stat .spark {
+        margin-top: auto;
+        padding-top: 14px;
+        display: flex;
+        gap: 3px;
+        align-items: flex-end;
+        height: 34px;
+      }
+      .vB .t.stat .spark i {
+        flex: 1;
+        background: var(--p200);
+        border-radius: 2px;
+      }
+
+      .vB .t.status {
+        background: var(--su50);
+        border-color: #99dfbf;
+      }
+      .vB .t.status .dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 99px;
+        background: var(--su500);
+        display: inline-block;
+        margin-right: 8px;
+      }
+      .vB .t.status .now {
+        font-size: 18px;
+        font-weight: 800;
+        color: var(--su600);
+      }
+      .vB .t.status .hrs {
+        font-size: 14px;
+        color: var(--g700);
+        margin-top: 8px;
+      }
+      .vB .t.status .hrs b {
+        color: var(--g900);
+      }
+
+      .vB .t.mayor {
+        background: var(--g900);
+        color: #fff;
+        border: 0;
+      }
+      .vB .t.mayor h2 {
+        color: var(--g500);
+      }
+      .vB .t.mayor .who {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+      }
+      .vB .t.mayor .av {
+        width: 52px;
+        height: 52px;
+        border-radius: 999px;
+        flex: none;
+        background: linear-gradient(140deg, var(--a500), var(--s500));
+        display: grid;
+        place-items: center;
+        font-weight: 800;
+        font-size: 17px;
+        color: #2a1500;
+      }
+      .vB .t.mayor .nm {
+        font-weight: 700;
+        font-size: 16px;
+      }
+      .vB .t.mayor .ro {
+        font-size: 13px;
+        color: var(--g400);
+      }
+      .vB .t.mayor .who + .who {
+        margin-top: 14px;
+        padding-top: 14px;
+        border-top: 1px solid #343a40;
+      }
+
+      .vB .t.map {
+        padding: 0;
+        overflow: hidden;
+        position: relative;
+        min-height: 220px;
+        background: linear-gradient(160deg, var(--p100), var(--p50));
+      }
+      .vB .t.map .mgrid {
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(0, 82, 188, 0.13) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0, 82, 188, 0.13) 1px, transparent 1px);
+        background-size: 34px 34px;
+      }
+      .vB .t.map .pin {
+        position: absolute;
+        left: 50%;
+        top: 47%;
+        transform: translate(-50%, -50%);
+        width: 20px;
+        height: 20px;
+        border-radius: 999px;
+        background: var(--s500);
+        border: 4px solid #fff;
+        box-shadow: 0 0 0 8px rgba(255, 77, 0, 0.22);
+      }
+      .vB .t.map .cap {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 16px 20px;
+        background: linear-gradient(transparent, rgba(255, 255, 255, 0.96) 45%);
+      }
+      .vB .t.map .cap b {
+        display: block;
+        font-size: 15px;
+      }
+      .vB .t.map .cap span {
+        font-size: 13px;
+        color: var(--g700);
+      }
+
+      .vB .t.updates li {
+        padding: 11px 0;
+        border-bottom: 1px solid var(--g200);
+        font-size: 14px;
+      }
+      .vB .t.updates li:last-child {
+        border: 0;
+      }
+      .vB .t.updates time {
+        display: block;
+        font-size: 12px;
+        color: var(--g600);
+        margin-bottom: 2px;
+      }
+      .vB .t.updates b {
+        font-weight: 600;
+      }
+
+      .vB .t.pop .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .vB .t.pop .chips a {
+        border: 1px solid var(--g300);
+        border-radius: 999px;
+        padding: 8px 13px;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--p600);
+        text-decoration: none;
+        background: var(--g50);
+      }
+      .vB .t.pop .chips a:hover {
+        background: var(--p50);
+        border-color: var(--p300);
+      }
+      @media (max-width: 1080px) {
+        .vB .bento {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .vB .span3 {
+          grid-column: span 2;
+        }
+        .vB .top nav {
+          display: none;
+        }
+      }
+      @media (max-width: 680px) {
+        .vB .bento {
+          grid-template-columns: 1fr;
+        }
+        .vB .span2,
+        .vB .span3 {
+          grid-column: span 1;
+        }
+        .vB .row2 {
+          grid-row: auto;
+        }
+      }
+
+      /* ═══════════════════════════════════════════════════════════════════════
+   VARIANT C — CIVIC EDITORIAL
+   Full-bleed dark hero, scroll narrative in alternating bands, sticky dock.
+   ═══════════════════════════════════════════════════════════════════════ */
+      .vC {
+        background: #fff;
+        padding-bottom: 76px;
+      }
+      .vC .chead {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+      }
+      .vC .chead .wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding-block: 22px;
+      }
+      .vC .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        color: #fff;
+      }
+      .vC .brand img {
+        width: 42px;
+        height: 42px;
+        object-fit: contain;
+        filter: brightness(0) invert(1);
+      }
+      .vC .brand b {
+        font-size: 19px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+      }
+      .vC .chead nav {
+        display: flex;
+        gap: 26px;
+      }
+      .vC .chead nav a {
+        color: rgba(255, 255, 255, 0.86);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 15px;
+      }
+      .vC .chead nav a:hover {
+        color: #fff;
+        text-decoration: underline;
+        text-underline-offset: 6px;
+      }
+      .vC .chead .cta {
+        background: var(--s500);
+        color: #fff;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 14px;
+        padding: 10px 18px;
+        border-radius: 999px;
+      }
+
+      .vC .hero {
+        position: relative;
+        background: var(--p900);
+        color: #fff;
+        overflow: hidden;
+        min-height: min(88vh, 780px);
+        display: flex;
+        align-items: flex-end;
+      }
+      .vC .hero .bg {
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(120% 90% at 78% 8%, rgba(245, 137, 0, 0.42), transparent 55%),
+          radial-gradient(100% 80% at 8% 92%, rgba(0, 102, 235, 0.75), transparent 60%),
+          linear-gradient(160deg, #00142f, #00295e 55%, #003d8d);
+      }
+      .vC .hero .lines {
+        position: absolute;
+        inset: 0;
+        opacity: 0.16;
+        background-image: repeating-linear-gradient(115deg, #fff 0 1px, transparent 1px 46px);
+      }
+      .vC .hero .wrap {
+        position: relative;
+        padding-block: 150px 64px;
+      }
+      .vC .kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--a400);
+        margin-bottom: 22px;
+      }
+      .vC .kicker::before {
+        content: '';
+        width: 34px;
+        height: 2px;
+        background: var(--s500);
+      }
+      .vC .hero h1 {
+        font-size: clamp(40px, 7.4vw, 88px);
+        line-height: 0.98;
+        font-weight: 800;
+        letter-spacing: -0.045em;
+        max-width: 14ch;
+      }
+      .vC .hero h1 em {
+        font-style: normal;
+        color: var(--a400);
+      }
+      .vC .hero p.lede {
+        margin-top: 22px;
+        font-size: clamp(17px, 1.7vw, 21px);
+        color: #c9dcfa;
+        max-width: 46ch;
+      }
+      .vC .heroact {
+        margin-top: 34px;
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .vC .pillsearch {
+        display: flex;
+        align-items: center;
+        background: #fff;
+        border-radius: 999px;
+        padding: 6px 6px 6px 20px;
+        min-width: min(440px, 100%);
+      }
+      .vC .pillsearch input {
+        border: 0;
+        flex: 1;
+        font-size: 16px;
+        padding: 10px 0;
+        min-width: 0;
+        color: var(--g900);
+      }
+      .vC .pillsearch input:focus {
+        outline: 0;
+      }
+      .vC .pillsearch button {
+        border: 0;
+        background: var(--p600);
+        color: #fff;
+        font-weight: 700;
+        border-radius: 999px;
+        padding: 12px 22px;
+        cursor: pointer;
+      }
+      .vC .heroact .ghost {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 700;
+        border: 2px solid rgba(255, 255, 255, 0.5);
+        border-radius: 999px;
+        padding: 12px 22px;
+      }
+      .vC .heroact .ghost:hover {
+        background: #fff;
+        color: var(--p700);
+        border-color: #fff;
+      }
+      .vC .heroStrip {
+        position: relative;
+        border-top: 1px solid rgba(255, 255, 255, 0.18);
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+      }
+      .vC .heroStrip div {
+        padding: 22px 0;
+      }
+      .vC .heroStrip .v {
+        font-size: 26px;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        font-variant-numeric: tabular-nums;
+      }
+      .vC .heroStrip .k {
+        font-size: 13px;
+        color: #a9c1e6;
+      }
+
+      .vC section {
+        padding-block: 84px;
+      }
+      .vC .lbl {
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--s600);
+        margin-bottom: 14px;
+      }
+      .vC h2.big {
+        font-size: clamp(28px, 3.6vw, 44px);
+        font-weight: 800;
+        letter-spacing: -0.035em;
+        line-height: 1.08;
+      }
+      .vC .headrow {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+      .vC .headrow a.lnk {
+        font-weight: 700;
+        color: var(--p600);
+        text-decoration: none;
+        border-bottom: 2px solid var(--p200);
+        padding-bottom: 2px;
+        white-space: nowrap;
+      }
+
+      .vC .svc {
+        margin-top: 44px;
+        border-top: 1px solid var(--g300);
+      }
+      .vC .svc a {
+        display: grid;
+        grid-template-columns: 64px 1fr auto;
+        gap: 24px;
+        align-items: center;
+        padding: 26px 8px;
+        border-bottom: 1px solid var(--g300);
+        text-decoration: none;
+        color: inherit;
+        transition:
+          background 0.15s,
+          padding 0.15s;
+      }
+      .vC .svc a:hover {
+        background: var(--g50);
+        padding-inline: 20px 8px;
+      }
+      .vC .svc .no {
+        font-size: 14px;
+        font-weight: 800;
+        color: var(--g500);
+        font-variant-numeric: tabular-nums;
+      }
+      .vC .svc h3 {
+        font-size: clamp(20px, 2.2vw, 26px);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+      .vC .svc p {
+        color: var(--g700);
+        font-size: 15px;
+        margin-top: 4px;
+        max-width: 62ch;
+      }
+      .vC .svc .arw {
+        font-size: 22px;
+        color: var(--g400);
+      }
+      .vC .svc a:hover .arw {
+        color: var(--s500);
+      }
+
+      .vC .story {
+        background: var(--g900);
+        color: #fff;
+      }
+      .vC .story .grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 64px;
+        align-items: center;
+      }
+      .vC .story h2.big {
+        max-width: 15ch;
+      }
+      .vC .story p {
+        color: var(--g400);
+        font-size: 17px;
+        margin-top: 20px;
+        max-width: 56ch;
+      }
+      .vC .story .lbl {
+        color: var(--a400);
+      }
+      .vC .story .facts {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2px;
+        background: #343a40;
+        border: 1px solid #343a40;
+      }
+      .vC .story .facts div {
+        background: var(--g900);
+        padding: 26px;
+      }
+      .vC .story .facts .v {
+        font-size: 34px;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        color: var(--a400);
+        font-variant-numeric: tabular-nums;
+      }
+      .vC .story .facts .k {
+        font-size: 14px;
+        color: var(--g400);
+        margin-top: 4px;
+      }
+      .vC .story a.lnk {
+        color: #fff;
+        border-color: var(--s500);
+      }
+
+      .vC .lead .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        margin-top: 40px;
+      }
+      .vC .lead .card {
+        border: 1px solid var(--g300);
+        border-radius: 20px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+      .vC .lead .band {
+        height: 96px;
+        background: linear-gradient(120deg, var(--p600), var(--p800));
+      }
+      .vC .lead .card:nth-child(2) .band {
+        background: linear-gradient(120deg, var(--s500), var(--a500));
+      }
+      .vC .lead .body {
+        padding: 0 26px 26px;
+        margin-top: -34px;
+      }
+      .vC .lead .av {
+        width: 68px;
+        height: 68px;
+        border-radius: 999px;
+        background: #fff;
+        border: 4px solid #fff;
+        display: grid;
+        place-items: center;
+        font-weight: 800;
+        font-size: 22px;
+        color: var(--p700);
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.14);
+      }
+      .vC .lead .card:nth-child(2) .av {
+        color: var(--s600);
+      }
+      .vC .lead .ro {
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--g600);
+        margin-top: 16px;
+      }
+      .vC .lead h3 {
+        font-size: 24px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        margin-top: 4px;
+      }
+      .vC .lead .contact {
+        margin-top: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .vC .lead .contact a {
+        font-size: 15px;
+        color: var(--p600);
+        text-decoration: none;
+        background: var(--g50);
+        border-radius: 10px;
+        padding: 11px 14px;
+      }
+      .vC .lead .contact a:hover {
+        background: var(--p50);
+      }
+
+      .vC .cband {
+        background: var(--s500);
+        color: #fff;
+      }
+      .vC .cband .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 24px;
+        margin-top: 36px;
+      }
+      .vC .cband .lbl {
+        color: #ffdbcc;
+      }
+      .vC .cband .box {
+        background: rgba(0, 0, 0, 0.16);
+        border-radius: 18px;
+        padding: 24px;
+      }
+      .vC .cband .box .k {
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #ffdbcc;
+      }
+      .vC .cband .box .v {
+        font-size: 19px;
+        font-weight: 700;
+        margin-top: 8px;
+        word-break: break-word;
+      }
+      .vC .cband .box .s {
+        font-size: 14px;
+        color: #ffdbcc;
+        margin-top: 6px;
+      }
+
+      .vC footer {
+        background: #fff;
+        border-top: 1px solid var(--g300);
+        padding-block: 44px;
+        font-size: 14px;
+        color: var(--g700);
+      }
+      .vC footer .wrap {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      .vC footer a {
+        color: var(--g700);
+        text-decoration: none;
+        margin-right: 18px;
+      }
+      .vC footer a:hover {
+        color: var(--p600);
+        text-decoration: underline;
+      }
+
+      .vC .dock {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 30;
+        background: rgba(255, 255, 255, 0.94);
+        backdrop-filter: blur(10px);
+        border-top: 1px solid var(--g300);
+      }
+      .vC .dock .wrap {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+        padding-block: 10px;
+      }
+      .vC .dock a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        text-decoration: none;
+        color: var(--g700);
+        font-size: 12px;
+        font-weight: 700;
+        padding: 6px 0;
+        border-radius: 10px;
+      }
+      .vC .dock a .ic {
+        font-size: 17px;
+      }
+      .vC .dock a:hover {
+        background: var(--g100);
+        color: var(--p600);
+      }
+      .vC .dock a.sos {
+        color: var(--e600);
+      }
+      @media (max-width: 900px) {
+        .vC .chead nav,
+        .vC .chead .cta {
+          display: none;
+        }
+        .vC .story .grid,
+        .vC .lead .grid,
+        .vC .cband .grid {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+        .vC .heroStrip {
+          grid-template-columns: 1fr 1fr;
+        }
+        .vC .svc a {
+          grid-template-columns: 1fr auto;
+          gap: 14px;
+        }
+        .vC .svc .no {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ══════════════════════════ VARIANT A ══════════════════════════ -->
+    <div class="vA" data-variant="A" hidden>
+      <a class="sr" href="#mainA">Skip to main content</a>
+
+      <div class="util">
+        <div class="wrap">
+          <span><span class="tag">Unofficial</span> Community-run portal. Not operated by the city government.</span>
+          <span><a href="#">Official site: laspinascity.gov.ph</a> &nbsp;·&nbsp; <a href="#">Filipino</a></span>
+        </div>
+      </div>
+
+      <header class="mast">
+        <div class="wrap">
+          <a class="brand" href="#">
+            <img src="../public/assets/images/logo/better-laspinas-logo.svg" alt="" />
+            <span
+              ><span class="n">BetterLasPiñas</span><br /><span class="t"
+                >A community-run portal for Las Piñas City</span
+              ></span
+            >
+          </a>
+          <a href="#" style="font-weight: 700; color: var(--p600); text-underline-offset: 4px">🚀 Join us</a>
+        </div>
+      </header>
+
+      <nav class="main" aria-label="Primary">
+        <div class="wrap">
+          <ul>
+            <li><a href="#" aria-current="page">Home</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Government</a></li>
+            <li><a href="#">Statistics</a></li>
+            <li><a href="#">Budget</a></li>
+            <li><a href="#">Tourism</a></li>
+            <li><a href="#">Hotlines</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <main id="mainA">
+        <div class="searchband">
+          <div class="wrap">
+            <h1>What do you need from the city today?</h1>
+            <p class="sub">
+              Search 50 documented Las Piñas City services — requirements, fees, processing times and where to go.
+            </p>
+            <form class="sform" onsubmit="return false">
+              <label class="sr" for="qA">Search services</label>
+              <input id="qA" type="search" placeholder="e.g. birth certificate, business permit, cedula" />
+              <button type="submit">Search</button>
+            </form>
+            <p class="pop">
+              Popular: <a href="#">Birth certificate</a><a href="#">Business permit (new)</a
+              ><a href="#">Business permit (renewal)</a>
+            </p>
+          </div>
+        </div>
+
+        <div class="wrap cols">
+          <div>
+            <h2 class="sec">Top tasks</h2>
+            <ul class="tasks">
+              <li>
+                <a href="#">Request a birth certificate<span>Civil Registry Office · ₱75 · 15–30 minutes</span></a>
+              </li>
+              <li>
+                <a href="#"
+                  >Apply for a new business permit<span>Business Permits &amp; Licensing Office · 1 day</span></a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  >Renew a business permit<span>Business Permits &amp; Licensing Office · approx. 3 hours</span></a
+                >
+              </li>
+              <li>
+                <a href="#">Request a marriage certificate<span>Civil Registry Office · ₱150 · 3–10 days</span></a>
+              </li>
+              <li>
+                <a href="#">Get a barangay clearance<span>Barangay hall · ₱50–100 · same day</span></a>
+              </li>
+              <li>
+                <a href="#">Request a death certificate<span>Civil Registry Office · ₱75–150</span></a>
+              </li>
+              <li>
+                <a href="#">Pay real property tax<span>City Treasurer's Office</span></a>
+              </li>
+              <li>
+                <a href="#">Apply for a building permit<span>City Engineering Office</span></a>
+              </li>
+            </ul>
+            <a class="more" href="#">Browse all services by category →</a>
+
+            <div class="life">
+              <h2 class="sec">Start from what's happening in your life</h2>
+              <div class="lifegrid">
+                <div>
+                  <h3>New baby</h3>
+                  <a href="#">Register a birth</a><a href="#">Get a birth certificate</a
+                  ><a href="#">City health services</a>
+                </div>
+                <div>
+                  <h3>Starting a business</h3>
+                  <a href="#">New business permit</a><a href="#">Sanitary permit</a
+                  ><a href="#">Fire safety clearance</a>
+                </div>
+                <div>
+                  <h3>Home &amp; property</h3>
+                  <a href="#">Real property tax</a><a href="#">Building permit</a><a href="#">Occupancy permit</a>
+                </div>
+                <div>
+                  <h3>Marriage &amp; family</h3>
+                  <a href="#">Marriage licence</a><a href="#">Marriage certificate</a><a href="#">Social services</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <aside>
+            <div class="box alert">
+              <h2 class="sec">Emergency hotlines</h2>
+              <ul class="hot">
+                <li><span>Command Center</span><a href="tel:82906500">8290-6500</a></li>
+                <li><span>Police Station</span><a href="tel:85516401">8551-6401</a></li>
+                <li><span>Fire Station</span><a href="tel:88746177">8874-6177</a></li>
+                <li><span>CDRRMO</span><a href="tel:82906500">8290-6500</a></li>
+              </ul>
+            </div>
+
+            <div class="box">
+              <h2 class="sec">Las Piñas at a glance</h2>
+              <ul class="glance">
+                <li>
+                  <span class="k">Population<span class="src">2024 Census</span></span
+                  ><span class="v">615,549</span>
+                </li>
+                <li>
+                  <span class="k">Barangays<span class="src">Administrative units</span></span
+                  ><span class="v">20</span>
+                </li>
+                <li>
+                  <span class="k">Land area<span class="src">Total city area</span></span
+                  ><span class="v">32.69 km²</span>
+                </li>
+                <li>
+                  <span class="k">Class<span class="src">Highly urbanised city</span></span
+                  ><span class="v">1st</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="box lead">
+              <h2 class="sec">City leadership</h2>
+              <p><b>Hon. April Aguilar-Nery</b><span>City Mayor</span></p>
+              <p><b>Hon. Imelda Aguilar</b><span>City Vice Mayor</span></p>
+              <p style="border: 0">
+                <a href="#" style="color: var(--p600); font-weight: 700; text-underline-offset: 4px">All officials →</a>
+              </p>
+            </div>
+
+            <div class="box">
+              <h2 class="sec">Contact the city</h2>
+              <p style="font-size: 15px; margin-bottom: 8px">
+                <b>(02) 8871-4343</b><br />
+                <span style="color: var(--g700)">Mon–Fri, 8:00 AM – 5:00 PM</span>
+              </p>
+              <p style="font-size: 15px; color: var(--g700)">Las Piñas City Hall,<br />Alabang–Zapote Road, 1740</p>
+            </div>
+          </aside>
+        </div>
+
+        <div class="notice">
+          <div class="wrap">
+            <span aria-hidden="true">ℹ️</span>
+            <p>
+              <b>Data accuracy:</b> service details are compiled from published citizen's charters and may lag official
+              issuances. Always confirm with the responsible office before travelling.
+              <a href="#">How we source data</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer>
+        <div class="wrap">
+          <div class="fcols">
+            <div>
+              <h3>Services</h3>
+              <a href="#">Certificates</a><a href="#">Business</a><a href="#">All services</a>
+            </div>
+            <div>
+              <h3>Government</h3>
+              <a href="#">Officials</a><a href="#">Offices</a><a href="#">Legislative</a>
+            </div>
+            <div>
+              <h3>City</h3>
+              <a href="#">Statistics</a><a href="#">Budget</a><a href="#">History</a><a href="#">Tourism</a>
+            </div>
+            <div>
+              <h3>This site</h3>
+              <a href="#">About</a><a href="#">Join us</a><a href="#">Accessibility</a><a href="#">Privacy</a>
+            </div>
+          </div>
+          <div class="legal">
+            <span>An independent, volunteer-run project. Not an official government website.</span>
+            <span>Open source on GitHub</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- ══════════════════════════ VARIANT B ══════════════════════════ -->
+    <div class="vB" data-variant="B" hidden>
+      <header class="top">
+        <div class="wrap">
+          <a class="brand" href="#">
+            <img src="../public/assets/images/logo/better-laspinas-logo.svg" alt="" />
+            <b>BetterLasPiñas</b>
+          </a>
+          <div class="hsearch">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="7" />
+              <path d="m20 20-3.5-3.5" />
+            </svg>
+            <label class="sr" for="qB">Search services</label>
+            <input id="qB" type="search" placeholder="Search services, offices, hotlines…" />
+          </div>
+          <nav>
+            <a class="on" href="#">Home</a><a href="#">Services</a><a href="#">Government</a> <a href="#">Statistics</a
+            ><a href="#">Budget</a><a href="#">About</a>
+          </nav>
+        </div>
+      </header>
+
+      <div class="rail">
+        <div class="wrap">
+          <span class="pill live">● City Hall open — until 5:00 PM</span>
+          <span class="pill warn">50 services documented from the citizen's charter</span>
+          <span class="pill">Unofficial community portal</span>
+          <span class="pill">Official: laspinascity.gov.ph</span>
+        </div>
+      </div>
+
+      <main class="wrap">
+        <div class="bento">
+          <a class="t find span2 row2" href="#">
+            <h2>Start here</h2>
+            <div class="big">Find a city service</div>
+            <p>50 services with requirements, fees and processing times — sourced from the citizen's charter.</p>
+            <div class="cats">
+              <a href="#">Certificates</a><a href="#">Business</a><a href="#">Tax payments</a> <a href="#">Health</a
+              ><a href="#">Social services</a><a href="#">All →</a>
+            </div>
+          </a>
+
+          <div class="t sos row2">
+            <h2>Emergency</h2>
+            <ul>
+              <li><span class="nm">Command Center</span><a href="tel:82906500">8290-6500</a></li>
+              <li><span class="nm">Police Station</span><a href="tel:85516401">8551-6401</a></li>
+              <li><span class="nm">Fire Station</span><a href="tel:88746177">8874-6177</a></li>
+              <li><span class="nm">CDRRMO</span><a href="tel:82906500">8290-6500</a></li>
+            </ul>
+            <div class="all"><a href="#" style="color: inherit; text-decoration: none">All hotlines →</a></div>
+          </div>
+
+          <div class="t status">
+            <h2>City Hall</h2>
+            <div class="now"><span class="dot"></span>Open now</div>
+            <div class="hrs">Mon–Fri <b>8:00 AM – 5:00 PM</b><br />Alabang–Zapote Road, 1740</div>
+          </div>
+
+          <a class="t stat" href="#">
+            <h2>Population</h2>
+            <div class="v">615,549</div>
+            <div class="k">Residents</div>
+            <div class="src">2024 Census</div>
+            <div class="spark">
+              <i style="height: 42%"></i><i style="height: 55%"></i><i style="height: 61%"></i
+              ><i style="height: 74%"></i><i style="height: 88%; background: var(--p500)"></i>
+            </div>
+          </a>
+
+          <a class="t stat" href="#">
+            <h2>Barangays</h2>
+            <div class="v">20</div>
+            <div class="k">Administrative units</div>
+            <div class="src">Directory &amp; officials</div>
+          </a>
+
+          <a class="t stat" href="#">
+            <h2>Land area</h2>
+            <div class="v">32.69</div>
+            <div class="k">km² total city area</div>
+            <div class="src">Highly urbanised city</div>
+          </a>
+
+          <a class="t stat" href="#">
+            <h2>Income class</h2>
+            <div class="v">1st</div>
+            <div class="k">Class city</div>
+            <div class="src">Income classification</div>
+          </a>
+
+          <div class="t mayor span2">
+            <h2>City leadership</h2>
+            <div class="who">
+              <div class="av">AN</div>
+              <div>
+                <div class="nm">Hon. April Aguilar-Nery</div>
+                <div class="ro">City Mayor</div>
+              </div>
+            </div>
+            <div class="who">
+              <div class="av">IA</div>
+              <div>
+                <div class="nm">Hon. Imelda Aguilar</div>
+                <div class="ro">City Vice Mayor</div>
+              </div>
+            </div>
+            <div style="margin-top: auto; padding-top: 16px">
+              <a href="#" style="color: var(--a400); font-weight: 700; font-size: 14px; text-decoration: none"
+                >All officials &amp; offices →</a
+              >
+            </div>
+          </div>
+
+          <a class="t map span2" href="#">
+            <div class="mgrid"></div>
+            <div class="pin"></div>
+            <div class="cap"><b>Las Piñas City Hall</b><span>Alabang–Zapote Road · get directions</span></div>
+          </a>
+
+          <div class="t pop span2">
+            <h2>Most requested</h2>
+            <div class="chips">
+              <a href="#">Birth certificate</a><a href="#">Business permit (new)</a>
+              <a href="#">Business permit (renewal)</a><a href="#">Marriage certificate</a>
+              <a href="#">Barangay clearance</a><a href="#">Real property tax</a>
+            </div>
+          </div>
+
+          <div class="t updates span2">
+            <h2>Latest from the city</h2>
+            <ul>
+              <li>
+                <time>31 Jul 2026</time><b>Citizen's charter verification</b> — Civil Registry service details
+                re-checked against the published charter.
+              </li>
+              <li>
+                <time>24 Jul 2026</time><b>Office directory expanded</b> — contact details added for 7 city departments.
+              </li>
+              <li>
+                <time>12 Jul 2026</time><b>Budget page</b> — 2026 appropriations and infrastructure projects published.
+              </li>
+            </ul>
+          </div>
+
+          <div class="t span2">
+            <h2>About this portal</h2>
+            <p style="font-size: 15px; color: var(--g700)">
+              BetterLasPiñas is an independent, volunteer-run portal. Information is compiled from public documents and
+              is <b>not</b> an official government service.
+            </p>
+            <div style="margin-top: auto; padding-top: 16px; display: flex; gap: 10px; flex-wrap: wrap">
+              <a
+                href="#"
+                style="
+                  background: var(--p600);
+                  color: #fff;
+                  text-decoration: none;
+                  font-weight: 700;
+                  font-size: 14px;
+                  padding: 10px 16px;
+                  border-radius: 10px;
+                "
+                >🚀 Join us</a
+              >
+              <a
+                href="#"
+                style="
+                  border: 1px solid var(--g300);
+                  color: var(--g800);
+                  text-decoration: none;
+                  font-weight: 700;
+                  font-size: 14px;
+                  padding: 10px 16px;
+                  border-radius: 10px;
+                "
+                >How we source data</a
+              >
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- ══════════════════════════ VARIANT C ══════════════════════════ -->
+    <div class="vC" data-variant="C" hidden>
+      <header class="chead">
+        <div class="wrap">
+          <a class="brand" href="#">
+            <img src="../public/assets/images/logo/better-laspinas-logo.svg" alt="" />
+            <b>BetterLasPiñas</b>
+          </a>
+          <nav>
+            <a href="#">Services</a><a href="#">Government</a><a href="#">The City</a><a href="#">Budget</a
+            ><a href="#">About</a>
+          </nav>
+          <a class="cta" href="#">Emergency hotlines</a>
+        </div>
+      </header>
+
+      <section class="hero">
+        <div class="bg"></div>
+        <div class="lines"></div>
+        <div class="wrap">
+          <span class="kicker">Las Piñas City · Metro Manila</span>
+          <h1>City services, <em>finally</em> easy to find.</h1>
+          <p class="lede">
+            A community-run portal for the 615,549 residents of Las Piñas — requirements, fees and offices, in plain
+            language.
+          </p>
+          <div class="heroact">
+            <form class="pillsearch" onsubmit="return false">
+              <label class="sr" for="qC">Search services</label>
+              <input id="qC" type="search" placeholder="What do you need? e.g. birth certificate" />
+              <button type="submit">Search</button>
+            </form>
+            <a class="ghost" href="#">Browse all services</a>
+          </div>
+          <div class="heroStrip">
+            <div>
+              <div class="v">615,549</div>
+              <div class="k">Residents (2024)</div>
+            </div>
+            <div>
+              <div class="v">20</div>
+              <div class="k">Barangays</div>
+            </div>
+            <div>
+              <div class="v">32.69 km²</div>
+              <div class="k">Land area</div>
+            </div>
+            <div>
+              <div class="v">1st class</div>
+              <div class="k">Highly urbanised</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="wrap">
+          <div class="headrow">
+            <div>
+              <div class="lbl">Most requested</div>
+              <h2 class="big">The six things people come here for</h2>
+            </div>
+            <a class="lnk" href="#">All services →</a>
+          </div>
+          <ul class="svc">
+            <li>
+              <a href="#"
+                ><span class="no">01</span
+                ><span
+                  ><h3>Birth certificate</h3>
+                  <p>Civil Registry Office · ₱75 · 15–30 minutes</p></span
+                ><span class="arw">→</span></a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><span class="no">02</span
+                ><span
+                  ><h3>Business permit — new</h3>
+                  <p>Business Permits &amp; Licensing Office · 1 day</p></span
+                ><span class="arw">→</span></a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><span class="no">03</span
+                ><span
+                  ><h3>Business permit — renewal</h3>
+                  <p>Business Permits &amp; Licensing Office · approx. 3 hours</p></span
+                ><span class="arw">→</span></a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><span class="no">04</span
+                ><span
+                  ><h3>Marriage certificate</h3>
+                  <p>Civil Registry Office · ₱150 · 3–10 days</p></span
+                ><span class="arw">→</span></a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><span class="no">05</span
+                ><span
+                  ><h3>Real property tax</h3>
+                  <p>City Treasurer's Office · assessment and payment</p></span
+                ><span class="arw">→</span></a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><span class="no">06</span
+                ><span
+                  ><h3>Barangay clearance</h3>
+                  <p>Barangay hall · ₱50–100 · same day · 20 barangays listed</p></span
+                ><span class="arw">→</span></a
+              >
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="story">
+        <div class="wrap">
+          <div class="grid">
+            <div>
+              <div class="lbl">The city</div>
+              <h2 class="big">A 32-square-kilometre city of 615,549 people.</h2>
+              <p>
+                Las Piñas is a first-class highly urbanised city in Metro Manila, home to the Bamboo Organ and 20
+                barangays. This portal publishes its budget, statistics and service charters in a form you can actually
+                read.
+              </p>
+              <p style="margin-top: 26px"><a class="lnk" href="#">City statistics &amp; budget →</a></p>
+            </div>
+            <div class="facts">
+              <div>
+                <div class="v">50</div>
+                <div class="k">Services documented</div>
+              </div>
+              <div>
+                <div class="v">20</div>
+                <div class="k">Barangays</div>
+              </div>
+              <div>
+                <div class="v">32.69</div>
+                <div class="k">km² land area</div>
+              </div>
+              <div>
+                <div class="v">1st</div>
+                <div class="k">Income class</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="lead">
+        <div class="wrap">
+          <div class="headrow">
+            <div>
+              <div class="lbl">Leadership</div>
+              <h2 class="big">Who runs the city</h2>
+            </div>
+            <a class="lnk" href="#">All officials →</a>
+          </div>
+          <div class="grid">
+            <div class="card">
+              <div class="band"></div>
+              <div class="body">
+                <div class="av">AN</div>
+                <div class="ro">City Mayor</div>
+                <h3>Hon. April Aguilar-Nery</h3>
+                <div class="contact">
+                  <a href="tel:0288714343">📞 (02) 8871-4343</a>
+                  <a href="mailto:laspinascitygov@yahoo.com">✉️ laspinascitygov@yahoo.com</a>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="band"></div>
+              <div class="body">
+                <div class="av">IA</div>
+                <div class="ro">City Vice Mayor</div>
+                <h3>Hon. Imelda Aguilar</h3>
+                <div class="contact">
+                  <a href="tel:0285110779">📞 (02) 8511-0779</a>
+                  <a href="mailto:laspinascitygov@yahoo.com">✉️ laspinascitygov@yahoo.com</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cband">
+        <div class="wrap">
+          <div class="lbl">Get in touch</div>
+          <h2 class="big">City Hall, and who to call</h2>
+          <div class="grid">
+            <div class="box">
+              <div class="k">Trunkline</div>
+              <div class="v">(02) 8871-4343</div>
+              <div class="s">Mon–Fri, 8:00 AM – 5:00 PM</div>
+            </div>
+            <div class="box">
+              <div class="k">Email</div>
+              <div class="v">laspinascitygov@yahoo.com</div>
+              <div class="s">Official city address</div>
+            </div>
+            <div class="box">
+              <div class="k">Emergency</div>
+              <div class="v">8290-6500</div>
+              <div class="s">Command Center · Police 8551-6401 · Fire 8874-6177</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div class="wrap">
+          <div>
+            <a href="#">About</a><a href="#">Join us</a><a href="#">Accessibility</a><a href="#">Privacy</a
+            ><a href="#">Sitemap</a>
+          </div>
+          <div>Independent, volunteer-run. Not an official government website. Official site: laspinascity.gov.ph</div>
+        </div>
+      </footer>
+
+      <div class="dock">
+        <div class="wrap">
+          <a href="#"><span class="ic" aria-hidden="true">🔍</span>Search</a>
+          <a href="#"><span class="ic" aria-hidden="true">📄</span>Services</a>
+          <a href="#"><span class="ic" aria-hidden="true">🏛️</span>Government</a>
+          <a class="sos" href="#"><span class="ic" aria-hidden="true">🚨</span>Hotlines</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════ prototype switcher ══════════════════════ -->
+    <div id="switcher" role="group" aria-label="Prototype variant switcher">
+      <button type="button" id="prev" aria-label="Previous variant">‹</button>
+      <span class="lbl"><b id="vkey">A</b> — <span id="vname"></span></span>
+      <button type="button" id="next" aria-label="Next variant">›</button>
+    </div>
+
+    <script>
+      const VARIANTS = [
+        ['A', 'Task-first'],
+        ['B', 'Service bento'],
+        ['C', 'Civic editorial'],
+      ]
+      function current() {
+        const k = (new URLSearchParams(location.search).get('variant') || 'A').toUpperCase()
+        return VARIANTS.some((v) => v[0] === k) ? k : 'A'
+      }
+      function render() {
+        const k = current()
+        document.querySelectorAll('[data-variant]').forEach((el) => {
+          el.hidden = el.dataset.variant !== k
+        })
+        document.getElementById('vkey').textContent = k
+        document.getElementById('vname').textContent = VARIANTS.find((v) => v[0] === k)[1]
+        document.title = `BetterLasPiñas — variant ${k} (${VARIANTS.find((v) => v[0] === k)[1]})`
+      }
+      function go(step) {
+        const i = VARIANTS.findIndex((v) => v[0] === current())
+        const k = VARIANTS[(i + step + VARIANTS.length) % VARIANTS.length][0]
+        const url = new URL(location.href)
+        url.searchParams.set('variant', k)
+        history.replaceState(null, '', url)
+        render()
+        window.scrollTo({ top: 0 })
+      }
+      document.getElementById('prev').onclick = () => go(-1)
+      document.getElementById('next').onclick = () => go(1)
+      addEventListener('keydown', (e) => {
+        const t = e.target
+        if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return
+        if (e.key === 'ArrowLeft') go(-1)
+        if (e.key === 'ArrowRight') go(1)
+      })
+      addEventListener('popstate', render)
+      render()
+    </script>
+  </body>
+</html>
