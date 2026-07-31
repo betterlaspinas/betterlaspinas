@@ -35,28 +35,28 @@
     "pinia": "^3.0.4",
     "tailwind-merge": "^3.6.0",
     "tailwind-variants": "^3.2.2",
-    "vue": "^3.5.38",
+    "vue": "^3.5.39",
     "vue-chartjs": "^5.3.3",
     "vue-router": "^5.1.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^9.0.0",
+    "@antfu/eslint-config": "^9.1.0",
     "@nuxt/test-utils": "^4.0.3",
-    "@nuxtjs/seo": "^5.3.0",
-    "@tailwindcss/postcss": "^4.3.1",
+    "@nuxtjs/seo": "^5.3.1",
+    "@tailwindcss/postcss": "^4.3.2",
     "@takumi-rs/core": "^1.8.7",
     "@vitest/coverage-v8": "^4.1.9",
     "@vue/test-utils": "^2.4.11",
-    "autoprefixer": "^10.5.0",
+    "autoprefixer": "^10.5.2",
     "commander": "^13.1.0",
-    "eslint": "^10.5.0",
+    "eslint": "^10.6.0",
     "eslint-plugin-format": "^2.0.1",
     "happy-dom": "^20.10.6",
     "husky": "^9.1.7",
-    "postcss": "^8.5.15",
-    "tailwindcss": "^4.3.1",
+    "postcss": "^8.5.16",
+    "tailwindcss": "^4.3.2",
     "typescript": "5.9.3",
     "vitest": "^4.1.9",
-    "vue-tsc": "^3.3.5"
+    "vue-tsc": "^3.3.6"
   }
 }
