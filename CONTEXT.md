@@ -13,7 +13,7 @@ The rich content of a Service — requirements, process steps, FAQs, fees, offic
 _Avoid_: Service page, detail entity
 
 **Office**:
-An independent, top-level LGU organization that delivers Services (e.g. City Civil Registry, City Treasurer's Office). A first-class entity, **not** a kind of Service. A Service is delivered by exactly one Office; an Office provides many Services. "Office" here is the **institutional** sense from RA 7160 — the bureau and the charge it exercises, named in statute as "the Office of the City \_\_\_" — **synonymous with Department**. It is **not** the physical room the org occupies (that is the `location` attribute). Headed by an **Official** (its Department Head). A **city department only** — a **Barangay** (lower LGU tier) and an **Agency** (national office in the city) are *not* Offices, even though residents transact at them.
+An independent, top-level LGU organization that delivers Services (e.g. City Civil Registry, City Treasurer's Office). A first-class entity, **not** a kind of Service. A Service delivered by an Office is delivered by exactly one; an Office provides many Services. "Office" here is the **institutional** sense from RA 7160 — the bureau and the charge it exercises, named in statute as "the Office of the City \_\_\_" — **synonymous with Department**. It is **not** the physical room the org occupies (that is the `location` attribute). Headed by an **Official** (its Department Head). A **city department only** — a **Barangay** (lower LGU tier) and an **Agency** (national office in the city) are _not_ Offices, even though residents transact at them.
 _Avoid_: Department (the synonym — pick one canonical term), bureau, "office" meaning a place, applying it to a Barangay or national Agency
 
 **Official**:
@@ -25,7 +25,7 @@ A subordinate subunit **within** an Office/Department (e.g. the Appraisal Divisi
 _Avoid_: Office, Department (a Division is neither — it is contained by one)
 
 **Barangay**:
-The smallest LGU tier — a local district that is its **own** local government, headed by a **Punong Barangay** (Barangay Captain, "Kap."). Las Piñas has 20, held in `subdivisions.json` (each `{ name, leader, phone }`). A Barangay is **not** a city **Office**, so Services delivered "at your Barangay" (e.g. Barangay Clearance, Barangay ID) point at the **Barangay directory**, never at a single Office. `subdivision` is the template-generic config key/label for this concept; the canonical Las Piñas term is **Barangay**.
+The smallest LGU tier — a local district that is its **own** local government, headed by a **Punong Barangay** (Barangay Captain, "Kap."). Las Piñas has 20, held in `subdivisions.json` (each `{ id, name, leader, phone }` — `id` is the slug a `/barangays` route keys on). A Barangay is **not** a city **Office**, so Services delivered "at your Barangay" (e.g. Barangay Clearance, Barangay ID) point at the **Barangay directory**, never at a single Office. `subdivision` is the template-generic config key/label for this concept; the canonical Las Piñas term is **Barangay**.
 _Avoid_: subdivision (in PH means a private housing development — actively misleading; keep it only as the template config label), district, village
 
 **Agency**:
@@ -49,7 +49,7 @@ _Avoid_: DTO, model, ViewModel, page
 - **Service → providedBy → Office** (city department; many-to-one)
 - **Service → providedByAgency → Agency** (national office; optional, single ref)
 - **Service → providedByBarangay → Barangay directory** (the resident's own Barangay; a directory pointer, not a single ref)
-- A Service's **responsible body** is exactly one tier: a city **Office**, an **Agency**, or the **Barangay** directory
+- A Service has **at most one** responsible body — a city **Office**, an **Agency**, or the **Barangay** directory, never two. Having **none** is valid and common: a Service with no first-class provider (e.g. the BPLO business permits) simply sets no tier
 - **Official → heads → Office** (a Department Head heads one Office; an Office has at most one head)
 - **Category groups Services** (one-to-many) — by task
 - **Office Group groups Offices** (one-to-many) — by function
