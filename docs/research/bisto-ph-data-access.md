@@ -23,6 +23,24 @@ This API is itself open source: [`bettergovph/api.dpwh`](https://github.com/bett
 
 There is **no repository for bisto itself** in the `bettergovph` org (36 public repos checked) — only the API proxy. The frontend is closed; the data is not.
 
+### Can we skip the proxy and hit DPWH directly? No.
+
+Worth asking, since going to the government source directly would dissolve the licensing question entirely. It does not work.
+
+The proxy is a **pure pass-through** — `index.js` forwards to `` `${TARGET}${req.url}` `` with no path rewriting, so the same paths should in principle work upstream. They do not:
+
+| Request                                                          | Result  |
+| ---------------------------------------------------------------- | ------- |
+| `GET civic.transparency.dpwh.gov.ph/projects?search=LAS PIÑAS`   | **403** |
+| Same, with a browser `User-Agent` and `Accept: application/json` | **403** |
+| `GET civic.transparency.dpwh.gov.ph/` (site root, browser UA)    | **403** |
+
+The 403 comes from Cloudflare with an empty body and no challenge page — a WAF block rule, not a bot challenge we are failing to solve, and not an authentication prompt. It blocks the site root too, so this is not about the API surface specifically.
+
+**Implication, and it is the important one:** `api.dpwh.bettergov.ph` is not a convenience layer we could route around — it is doing real work, reaching an origin that refuses us. Any integration therefore takes a **hard dependency on BetterGov.PH's infrastructure**, not merely on their data. Note this also applies to a build-time snapshot: Cloudflare Pages CI would be making that request from the same kind of non-allowlisted origin, so it would get the same 403 from DPWH.
+
+That raises the value of the ecosystem conversation from "settle the licence" to "confirm this proxy is something we can depend on" — its uptime, its refresh cadence against DPWH, and whether they mind us pulling from it on a schedule.
+
 ### Access properties
 
 | Property       | Value                                                                                                                       |
@@ -123,7 +141,7 @@ The feasibility risk that made #107 unrankable is gone: the data is open, unauth
 
 **Suggested follow-ups to file when #107 is picked up:**
 
-- Settle licence and attribution for `api.dpwh.bettergov.ph` data with BetterGov.PH — blocks option 1, not option 3.
+- Settle licence and attribution for `api.dpwh.bettergov.ph` data with BetterGov.PH — blocks option 1, not option 3. Cover the **dependency** question in the same conversation: DPWH's own origin 403s us, so their proxy is the only path, and we would be depending on their infrastructure's uptime and refresh cadence, not just their data.
 - Decide the Las Piñas precision bar: region-filtered free-text union (~99.4%, free) versus adding a boundary-polygon check (higher, needs a polygon and still leaves 274 coordinate-less records).
 - Report the broken `province` filter upstream to `bettergovph/api.dpwh` — it returns 0 for values the API emits, which is a plain bug and fixing it would simplify any downstream consumer.
 
