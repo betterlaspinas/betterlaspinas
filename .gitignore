@@ -31,3 +31,14 @@ lerna-debug.log*
 # Test coverage
 coverage
 coverage/
+
+# Agent worktrees + tool state (machine-local; not part of the repo)
+.claude/
+
+# Agent scratch documents (never meant to be committed — see CONTRIBUTING.md)
+.scratch/
+research.md
+architecture-review.html
+HANDOFF-*.md
+handoff-*.md
+.antigravitycli/

@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Fixed page content touching the screen edges at certain viewport widths by setting the container's max-width below each breakpoint
+- Fixed pre-commit going red on any checkout with agent worktrees or root scratch files present: `vitest.config.ts` now excludes `.claude/**`, and `.gitignore` now excludes `.claude/` and common scratch-file patterns so repo-wide `eslint .` no longer trips on them (#230, #231, #232)
+
+### Documentation
+- Documented agent worktree pruning and the scratch-file convention in `CONTRIBUTING.md` (#231)
 
 ## [1.2.0] - 2026-05-10
 
