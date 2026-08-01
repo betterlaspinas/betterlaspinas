@@ -120,6 +120,12 @@ pnpm test
 pnpm lint && pnpm typecheck && pnpm test --run
 ```
 
+### Agent Worktrees & Scratch Files
+
+- `.claude/` (agent worktrees, tool state) is gitignored — never commit it, and never rely on a machine-local global gitignore to hide it from another contributor's checkout.
+- **Prune your worktree once its PR merges**: `git worktree remove .claude/worktrees/<branch>` (add `--force` only if you're sure there's nothing uncommitted in it), then delete the now-unused local branch. A stale worktree left behind after merge is just disk clutter — remove it as part of closing out the PR, not later.
+- Agent-generated scratch documents (research notes, handoff notes, one-off HTML reports) do not belong at the repo root — they get picked up by repo-wide tooling (`eslint .`, `vitest`) and fail checks unrelated to your change. Put them in a gitignored `.scratch/` directory, or delete them before committing.
+
 ## 📝 Coding Standards
 
 ### TypeScript
