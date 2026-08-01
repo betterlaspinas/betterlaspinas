@@ -1,3 +1,7 @@
+// Open design question on this file: splitting it into `serviceCatalog` (deep) +
+// `configRegistry` (thin cast-getters). Not yet sharp enough to ticket — see
+// `docs/agents/backlog-fog.md` before growing the interface further.
+
 import type {
   BudgetConfig,
   CategoriesConfig,

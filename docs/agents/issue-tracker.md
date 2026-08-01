@@ -88,6 +88,14 @@ Bands are absolute claims about necessity, not queue positions. Promoting on emp
 
 Do not re-rank issue by issue as they are filed. New issues arrive unranked and are banded in batches.
 
+### Work that is not yet a ticket
+
+Work known to be coming but not yet sharp enough to ticket lives in [`backlog-fog.md`](./backlog-fog.md), not on the board — the board holds claimable issues, and an issue nobody can claim rots there.
+
+That file is a reference, not a queue: each entry names how a reader arrives at it on their own, so nothing in it depends on someone remembering to check. Scanning it when a decision re-ranks the backlog is a backstop, not the mechanism.
+
+**Anything that blocks other work is not fog.** It is a real issue with a native blocking edge, however unsharp it feels.
+
 ## When a skill says "publish to the issue tracker"
 
 Create a GitHub issue.
