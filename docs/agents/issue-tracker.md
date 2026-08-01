@@ -44,7 +44,7 @@ Both contributor-facing views — **📋 Triage** (everything) and **🌟 Start 
 
 A bug may still sit 🟢 Nice-to-Have or lower — but only if it is not user-facing (internal tooling, test infrastructure) or not yet confirmed. Someone has to say which; "low traffic" is not enough on its own.
 
-The floor exists because banding by "what unblocks the current milestone" quietly inverts the site's purpose. Ranking work that blocks *contributors* above work that fixes what *residents* hit is easy to arrive at without anyone deciding it — #230, #245 and #233 are 🔴 because they block us, while the two bugs a resident actually encounters sat below them. On a site whose value is residents finding correct information, that ordering has to be argued for, not defaulted into.
+The floor exists because banding by "what unblocks the current milestone" quietly inverts the site's purpose. Ranking work that blocks _contributors_ above work that fixes what _residents_ hit is easy to arrive at without anyone deciding it — #230, #245 and #233 are 🔴 because they block us, while the two bugs a resident actually encounters sat below them. On a site whose value is residents finding correct information, that ordering has to be argued for, not defaulted into.
 
 It also compensates for a property of the bands themselves: with "take from the highest non-empty band" as the rule, 🟢 is unreachable while 🟡 holds long-running epics. Deferring a live bug to 🟢 is closer to shelving it than to scheduling it.
 
