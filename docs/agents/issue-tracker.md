@@ -36,6 +36,20 @@ Bands over a strict 1..N order for two reasons: a numbered list goes stale on ev
 
 Both contributor-facing views — **📋 Triage** (everything) and **🌟 Start Here** (`good first issue` / `help wanted`, where outside contributors land) — are grouped into `Priority` swimlanes, so "take from the highest non-empty band" is the same instruction in either. Keep them that way: a Start Here that is not swimlaned by priority sends first-time contributors in without a ranking.
 
+### Bugs: the severity floor
+
+`bug` is a work type, not a rank — bugs appear in every band. But one floor overrides milestone fit:
+
+> **A confirmed defect on a live, user-facing page is at minimum 🟡 Should-Have.**
+
+A bug may still sit 🟢 Nice-to-Have or lower — but only if it is not user-facing (internal tooling, test infrastructure) or not yet confirmed. Someone has to say which; "low traffic" is not enough on its own.
+
+The floor exists because banding by "what unblocks the current milestone" quietly inverts the site's purpose. Ranking work that blocks *contributors* above work that fixes what *residents* hit is easy to arrive at without anyone deciding it — #230, #245 and #233 are 🔴 because they block us, while the two bugs a resident actually encounters sat below them. On a site whose value is residents finding correct information, that ordering has to be argued for, not defaulted into.
+
+It also compensates for a property of the bands themselves: with "take from the highest non-empty band" as the rule, 🟢 is unreachable while 🟡 holds long-running epics. Deferring a live bug to 🟢 is closer to shelving it than to scheduling it.
+
+Adopted 2026-08-01 amending #239's deferral of #204 (Terms/Privacy table-of-contents rendering the wrong section), which was banded on traffic alone.
+
 ### Blocking is separate from priority
 
 Hard dependencies use native GitHub issue dependencies, not priority:
