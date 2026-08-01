@@ -93,7 +93,7 @@ const sampleResolutions = computed(() =>
             :key="type.id"
             class="flex items-center gap-2 px-5 py-3 bg-white border border-gray-200 rounded-full"
           >
-            <i :class="`bi ${type.icon} text-primary-600`" />
+            <i class="bi text-primary-600" :class="type.icon" />
             <span class="text-sm font-medium text-gray-700">
               {{ type.label }}
             </span>

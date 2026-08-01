@@ -302,7 +302,7 @@ const steps = computed(() =>
                   : 'bg-primary-50 text-primary-600'
               "
             >
-              <i :class="`bi ${step.icon}`" />
+              <i class="bi" :class="step.icon" />
             </div>
             <h4 class="font-semibold text-gray-900 mb-1">
               {{ step.title }}
@@ -337,7 +337,7 @@ const steps = computed(() =>
             <div
               class="w-12 h-12 flex items-center justify-center bg-primary-50 rounded-xl text-primary-600 text-xl mx-auto mb-4"
             >
-              <i :class="`bi ${card.icon}`" />
+              <i class="bi" :class="card.icon" />
             </div>
             <h3 class="font-semibold text-gray-900 mb-2">
               {{ card.title }}

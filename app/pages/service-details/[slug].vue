@@ -65,7 +65,8 @@ function toggleFaq(index: number) {
             class="text-center"
           >
             <i
-              :class="`bi ${stat.icon} text-2xl text-primary-600 mb-2 block`"
+              class="bi text-2xl text-primary-600 mb-2 block"
+              :class="stat.icon"
             />
             <h4 class="text-xs text-gray-500 uppercase tracking-wide mb-1">
               {{ stat.label }}
@@ -184,7 +185,7 @@ function toggleFaq(index: number) {
                 class="mb-4"
               >
                 <h4 class="font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                  <i :class="`bi ${requirement.icon} text-primary-600`" /> {{ requirement.title }}
+                  <i class="bi text-primary-600" :class="requirement.icon" /> {{ requirement.title }}
                 </h4>
                 <ul class="space-y-2">
                   <li

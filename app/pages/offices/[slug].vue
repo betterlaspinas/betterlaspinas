@@ -36,7 +36,7 @@ const { office, groupName, services, mapsUrl } = view
           <UiBadge v-if="groupName" :text="groupName" icon="bi-people" variant="primary" size="sm" class="mb-2" />
           <div class="flex items-center gap-4">
             <div class="flex-none w-14 h-14 rounded-xl bg-primary-100 text-primary-600 grid place-items-center text-2xl">
-              <i :class="`bi ${office.icon || 'bi-building'}`" />
+              <i class="bi" :class="office.icon || 'bi-building'" />
             </div>
             <div>
               <h1 class="text-2xl font-bold text-gray-900 leading-tight">

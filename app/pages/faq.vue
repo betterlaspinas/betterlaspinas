@@ -80,7 +80,8 @@ const faqCategories = computed(() =>
               class="flex items-center gap-3 p-6 border-b border-gray-200 bg-gray-50"
             >
               <i
-                :class="`bi ${category.icon} text-2xl text-primary-600`"
+                class="bi text-2xl text-primary-600"
+                :class="category.icon"
               />
               <h2 class="text-xl font-bold text-gray-900 m-0">
                 {{ category.title }}

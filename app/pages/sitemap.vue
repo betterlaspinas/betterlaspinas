@@ -190,7 +190,7 @@ const sections = computed<SitemapSection[]>(() => [
               <span
                 class="w-10 h-10 flex items-center justify-center bg-primary-100 text-primary-600 rounded-lg"
               >
-                <i :class="`bi ${section.icon} text-lg`" />
+                <i class="bi text-lg" :class="section.icon" />
               </span>
               <h2 class="text-lg font-bold text-gray-900 m-0">
                 {{ section.title }}

@@ -141,7 +141,7 @@ onMounted(() => {
                       {{ fullLocation }}
                     </p>
                     <div class="flex items-center justify-center gap-4 mb-2">
-                      <i :class="`bi ${weatherIcon} text-6xl text-primary-600 leading-none opacity-90`" />
+                      <i class="bi text-6xl text-primary-600 leading-none opacity-90" :class="weatherIcon" />
                       <Transition
                         mode="out-in"
                         enter-active-class="transition-opacity duration-300"
@@ -204,7 +204,7 @@ onMounted(() => {
                     <div class="flex justify-between overflow-x-auto pb-2 px-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                       <div v-for="(hour, index) in hourlyForecast" :key="index" class="flex flex-col items-center min-w-[3rem]">
                         <span class="text-[0.7rem] font-medium text-gray-500 mb-2 whitespace-nowrap">{{ index === 0 ? 'Now' : hour.time }}</span>
-                        <i :class="`bi ${hour.icon} text-xl text-primary-600 mb-2`" />
+                        <i class="bi text-xl text-primary-600 mb-2" :class="hour.icon" />
                         <span class="text-sm font-bold text-gray-900">{{ hour.temp }}°</span>
                       </div>
                     </div>

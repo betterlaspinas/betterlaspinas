@@ -42,7 +42,7 @@ const badge = tv({
 
 <template>
   <span :class="badge({ variant, size, class: props.class })">
-    <i v-if="icon" :class="`bi ${icon}`" />
+    <i v-if="icon" class="bi" :class="icon" />
     <slot>{{ text }}</slot>
   </span>
 </template>
