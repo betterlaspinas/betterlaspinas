@@ -22,18 +22,31 @@ This project adheres to the [Contributor Covenant Code of Conduct](CODE_OF_CONDU
 
 ### 🔍 Finding Tasks
 
-We use a [GitHub Project Board](https://github.com/orgs/betterlaspinas/projects/3) to manage and track all active tasks. This is the best place to find something to work on.
+The [GitHub Project Board](https://github.com/orgs/betterlaspinas/projects/3) is the entry point — **not** the issue list. Priority lives in the board's `Priority` field, and that field does not render on `/issues`, so an issue browsed from the issue list carries no ranking.
 
-- **🌟 Start Here**: If you're new to the project, check this tab. It contains issues labeled `good first issue` or `help wanted`.
-- **📋 Triage**: A complete list of all active tasks, grouped by priority.
-- **⚡ Active Sprint**: See what's currently being worked on for the current development cycle.
+**New here? Start with 🌟 Start Here.** It filters the board to issues labeled `good first issue` or `help wanted` — the ones that do not assume deep repo context.
+
+**Finding the next thing to work on — one rule, and it is the same in either view:**
+
+> Take any open issue in the **highest non-empty `Priority` band** — 🌟 Start Here and 📋 Triage are both grouped into priority swimlanes — that has **no open blockers**.
+
+Use **🌟 Start Here** if you are an outside or first-time contributor; use **📋 Triage** for the complete backlog. Same bands, same rule; Start Here is just the narrower slice.
+
+- `Priority` is a **band**, not a position: 🔴 Must-Have → 🟡 Should-Have → 🟢 Nice-to-Have → ❄️ Icebox. Everything inside a band is equally takeable — pick any of them. An empty `Priority` means unranked, not lowest.
+- **Blocked is separate from ranked.** GitHub shows an issue's blockers at the top of its page; a 🔴 Must-Have with an open blocker is not takeable. Read both fields.
+- `Effort` sizes the work: **`XS (Quick Fix)` is the quick-win marker** — start there if you want something small.
+- `good first issue` is about how much repo context is needed, which is a different question from `Effort`. A two-line fix can still need deep context, which is why 🌟 Start Here filters on the label and not on `Effort`.
+
+The other two views are read-only context: **⚡ Active Sprint** shows what is in flight, **🗓️ Roadmap** shows dated work.
 
 **How to claim a task:**
 
-1.  Browse the **Todo** column in the **🌟 Start Here** or **⚡ Active Sprint** tabs.
-2.  Open the issue you're interested in and read the description.
-3.  **Comment on the issue** stating you'd like to work on it.
+1.  Pick an unblocked issue from the highest non-empty band, as above — 🌟 Start Here if you are new.
+2.  Open the issue and read the description.
+3.  **Comment on the issue** stating you'd like to work on it. Epics (`Epic: Services > …`) are not claimed whole — comment naming the one Service you want, and a child issue is cut for it.
 4.  Once a maintainer assigns it to you (or gives a thumbs up), you can start!
+
+Maintainers set the bands; propose a change by commenting on the issue rather than editing the field. The full convention, including when re-ranking happens, is in [`docs/agents/issue-tracker.md`](docs/agents/issue-tracker.md).
 
 ### Reporting Bugs
 
