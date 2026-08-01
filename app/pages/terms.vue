@@ -8,7 +8,7 @@ const volunteerEmail = computed(() => getVolunteerEmail())
 const sections = [
   { id: 'introduction', title: 'Introduction' },
   { id: 'acceptance', title: 'Acceptance of Terms' },
-  { id: 'public-domain', title: 'Public Domain Content' },
+  { id: 'public-domain', title: 'Content Licensing' },
   { id: 'disclaimer', title: '"As Is" Disclaimer' },
   { id: 'limitation', title: 'Limitation of Liability' },
   { id: 'responsibilities', title: 'User Responsibilities' },
@@ -110,14 +110,46 @@ const sections = [
 
               <UiCard id="public-domain" padding="p-8">
                 <h2 class="text-xl font-bold text-gray-900 mb-4">
-                  Public Domain Content and Volunteer Operation
+                  Content Licensing and Volunteer Operation
                 </h2>
                 <p class="text-gray-600 mb-4">
-                  This website and its content are provided as a public
-                  domain resource and are operated entirely by volunteers.
-                  All information, data, documents, and materials on this
-                  website are in the public domain unless otherwise stated.
+                  This website is operated entirely by volunteers. Content
+                  on this site falls into categories, licensed
+                  differently, per this project's
+                  <a
+                    href="https://github.com/betterlaspinas/betterlaspinas/blob/main/LICENSE"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-primary-600 hover:underline"
+                  >LICENSE</a>:
                 </p>
+                <ul class="list-disc list-inside space-y-2 text-gray-600 mb-4">
+                  <li>
+                    <strong>Government and source data</strong> —
+                    fees, requirements, processing times, and other
+                    information drawn from citizen's charters, ordinances,
+                    and other official issuances — is official text of an
+                    administrative nature and falls outside the scope of
+                    copyright protection under Section 175 of the
+                    Intellectual Property Code of the Philippines
+                    (Republic Act No. 8293).
+                  </li>
+                  <li>
+                    <strong>The presentation layer</strong> — how that
+                    information is categorized, rewritten in plain
+                    language, translated into Filipino, and designed — is
+                    original volunteer work, licensed under the
+                    <strong>Creative Commons Attribution 4.0
+                      International License (CC BY 4.0)</strong>.
+                    Reuse of this layer requires attribution to
+                    BetterLasPiñas.org.
+                  </li>
+                  <li>
+                    <strong>The website's source code</strong> is licensed
+                    separately under the <strong>MIT License</strong>, per
+                    the same LICENSE file.
+                  </li>
+                </ul>
                 <div
                   class="flex items-start gap-3 p-4 bg-blue-50 border border-blue-200 rounded-lg"
                 >
@@ -241,11 +273,15 @@ const sections = [
                   <span>{{ volunteerEmail }}</span>
                 </a>
                 <p class="text-sm text-gray-500 mt-8">
-                  {{ siteTitle }} provides public domain information to
-                  support civic engagement, transparency, and informed
-                  participation in local governance.
+                  {{ siteTitle }} exists to support civic engagement,
+                  transparency, and informed participation in local
+                  governance.
                 </p>
               </UiCard>
+
+              <p class="text-sm text-gray-400">
+                Last Updated: August 1, 2026
+              </p>
             </div>
           </article>
         </div>
