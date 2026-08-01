@@ -47,7 +47,7 @@ const { category, services, offices } = view
             <h3
               class="text-lg font-semibold text-gray-900 mb-2 flex items-center gap-2"
             >
-              <i :class="`bi ${service.icon} text-primary-600`" />
+              <i class="bi text-primary-600" :class="service.icon" />
               {{ service.title }}
             </h3>
             <p class="text-sm text-gray-500 mb-4">
@@ -87,7 +87,7 @@ const { category, services, offices } = view
             <div
               class="w-12 h-12 flex items-center justify-center bg-primary-50 rounded-xl text-primary-600 text-xl shrink-0"
             >
-              <i :class="`bi ${office.icon}`" />
+              <i class="bi" :class="office.icon" />
             </div>
             <div class="flex-1 min-w-0">
               <h3 class="font-semibold text-gray-900">

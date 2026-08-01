@@ -187,7 +187,7 @@ onUnmounted(() => {
         >
           <ClientOnly>
             <div class="flex items-center gap-1.5">
-              <i :class="`bi ${weatherIcon} text-xs text-yellow-400`" />
+              <i class="bi text-xs text-yellow-400" :class="weatherIcon" />
               <span class="font-normal text-white">{{ lguName }}</span>
               <Transition
                 mode="out-in"
