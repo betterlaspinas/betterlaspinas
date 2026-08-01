@@ -218,6 +218,8 @@ See [Nuxt Deployment Docs](https://nuxt.com/docs/getting-started/deployment) for
 
 Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
+Looking for something to work on? The [project board](https://github.com/orgs/betterlaspinas/projects/3) is the ranked backlog — take any open issue in the highest non-empty `Priority` band that has no open blockers. The issue list is not ranked; `Priority` only renders on the board. See [Finding Tasks](CONTRIBUTING.md#-finding-tasks).
+
 ## 📄 License
 
 [MIT License](LICENSE) - See LICENSE file for details.

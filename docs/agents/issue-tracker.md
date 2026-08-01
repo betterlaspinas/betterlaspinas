@@ -52,6 +52,8 @@ Priority answers "which of these takeable issues first". Blocking answers "is th
 
 Treat `Status` as a hint and the issue's own open/closed state as the truth. Ranking never depends on `Status` — it lives in `Priority`.
 
+**A stale `Done` will close a reopened issue when you touch any other field.** The board runs an auto-close workflow on `Status = Done`. Editing `Priority` or `Effort` re-fires it, so an issue that was reopened while its card still said `Done` gets closed again by an unrelated field edit — observed on #62 during #242. Before a batch field edit, fix any `Done` card whose issue is open; if one closes anyway, `gh issue reopen` it and set `Status` afterwards.
+
 ### Quick wins
 
 Use the board's `Effort` field (`XS (Quick Fix)`, `S (Few hours)`, `M (1-2 days)`, `L (Feature)`). `XS` **is** the quick-win marker — no `quick-win` label.
