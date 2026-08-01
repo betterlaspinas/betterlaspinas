@@ -34,6 +34,8 @@ Bands over a strict 1..N order for two reasons: a numbered list goes stale on ev
 
 **Empty `Priority` means unranked, not lowest.** Most issues are unranked; that is honest rather than a gap to backfill.
 
+Both contributor-facing views — **📋 Triage** (everything) and **🌟 Start Here** (`good first issue` / `help wanted`, where outside contributors land) — are grouped into `Priority` swimlanes, so "take from the highest non-empty band" is the same instruction in either. Keep them that way: a Start Here that is not swimlaned by priority sends first-time contributors in without a ranking.
+
 ### Blocking is separate from priority
 
 Hard dependencies use native GitHub issue dependencies, not priority:
