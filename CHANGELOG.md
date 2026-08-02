@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Fixed
+- Fixed the production build failing on `[postcss] ENOENT ... open '<root>/tailwindcss'` after Nuxt 4.5.1 (#266) pulled in Vite 8: `app/assets/css/main.css` now imports `tailwindcss/index.css` instead of the bare `tailwindcss` specifier, which Vite 8's bundled postcss-import cannot resolve
 - Fixed page content touching the screen edges at certain viewport widths by setting the container's max-width below each breakpoint
 - Fixed pre-commit going red on any checkout with agent worktrees or root scratch files present: `vitest.config.ts` now excludes `.claude/**`, and `.gitignore` now excludes `.claude/` and common scratch-file patterns so repo-wide `eslint .` no longer trips on them (#230, #231, #232)
 - Anchored the agent scratch-file `.gitignore` patterns (`.scratch/`, `research.md`, `architecture-review.html`, `HANDOFF-*.md`, `handoff-*.md`, `.antigravitycli/`) to the repo root with a leading `/`, so they no longer match at any depth — aligning with `CONTRIBUTING.md`'s stated root-only intent (#231, follow-up to #259)
