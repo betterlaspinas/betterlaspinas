@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Added the Agency responsible-body tier (`agencies.json` + `Agency` type + `configHelper`/View-resolver accessors) for national government offices in the city, starting with `pnp-laspinas` (Las Piñas City Police Station); its location is unverified pending confirmation against an official source (#198, ADR-0004)
-- Added a `/barangays` page rendering the Barangay directory (the 20 `subdivisions.json` records), reading through the same accessor as `government/index.vue`'s Subdivisions section (#198)
+- Added a `/barangays` page rendering the Barangay directory (the 20 `subdivisions.json` records), reading through the same accessor as `government/index.vue`'s Subdivisions section, and linked it from the main nav between Government and Statistics (#198)
 - Added the Barangay responsible-body tier (`Service.providedByBarangay`): Barangay-level Services now link to the `/barangays` directory instead of a stand-in Office record (#198, ADR-0004)
 
 ### Changed
