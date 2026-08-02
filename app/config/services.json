@@ -403,7 +403,7 @@
       "fee": "₱50-100",
       "processingTime": "Same day",
       "office": "Barangay Hall",
-      "providedBy": "barangay-hall",
+      "providedByBarangay": true,
       "icon": "bi-house-check",
       "url": "/services/certificates"
     },
@@ -422,7 +422,7 @@
       "fee": "Free",
       "processingTime": "1-2 days",
       "office": "Barangay Hall",
-      "providedBy": "barangay-hall",
+      "providedByBarangay": true,
       "icon": "bi-person-badge",
       "url": "/services/certificates"
     },
@@ -442,7 +442,7 @@
       "fee": "Varies",
       "processingTime": "3-5 days",
       "office": "PNP Station",
-      "providedBy": "police-station",
+      "providedByAgency": "pnp-laspinas",
       "icon": "bi-shield-check",
       "url": "/services/certificates"
     },

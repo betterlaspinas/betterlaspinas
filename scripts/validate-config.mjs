@@ -1,11 +1,14 @@
 #!/usr/bin/env node
 // Zero-dependency config validator for the canonical Service spine (#184).
 //
-// Validates app/config/services.json, app/config/categories.json, and
-// app/config/offices.json against their JSON Schemas (app/config/schema/*.schema.json)
-// using a hand-rolled, minimal draft-07 subset, then runs cross-file consistency
-// assertions that a pure schema cannot express (unknown categoryId/groupId,
-// duplicate ids, url/detail coherence, Service -> providedBy -> Office).
+// Validates app/config/services.json, app/config/categories.json,
+// app/config/offices.json, and app/config/agencies.json against their JSON
+// Schemas (app/config/schema/*.schema.json) using a hand-rolled, minimal
+// draft-07 subset, then runs cross-file consistency assertions that a pure
+// schema cannot express (unknown categoryId/groupId, duplicate ids,
+// url/detail coherence, Service -> providedBy -> Office, Service ->
+// providedByAgency -> Agency, and the at-most-one responsible-body-tier rule,
+// ADR-0004).
 //
 // Exit code 0 = valid; 1 = one or more violations. No runtime deps by design
 // (ADR-0001 Phase 1 stays on JSON + schema; Jan's no-new-deps guardrail).
@@ -117,12 +120,13 @@ export function validateAgainstSchema(data, schema, label) {
 // ---------------------------------------------------------------------------
 // Cross-file / semantic assertions.
 // ---------------------------------------------------------------------------
-export function validateConsistency(services, categories, offices) {
+export function validateConsistency(services, categories, offices, agencies) {
   const before = errors.length
   const serviceList = services?.services ?? []
   const categoryList = categories?.categories ?? []
   const officeGroupList = offices?.officeGroups ?? []
   const officeList = offices?.offices ?? []
+  const agencyList = agencies?.agencies ?? []
 
   const categoryIds = new Set(categoryList.map(c => c.id))
   const officeGroupIds = new Set(officeGroupList.map(g => g.id))
@@ -130,6 +134,15 @@ export function validateConsistency(services, categories, offices) {
   // is intentionally not yet rendered (hidden: true). The reference stays valid;
   // getOfficeForService just resolves it to undefined so no card shows.
   const officeIds = new Set(officeList.map(o => o.id))
+  const agencyIds = new Set(agencyList.map(a => a.id))
+
+  // Duplicate agency ids
+  const seenAgency = new Set()
+  for (const a of agencyList) {
+    if (seenAgency.has(a.id))
+      errors.push(`agencies.json: duplicate agency id "${a.id}"`)
+    seenAgency.add(a.id)
+  }
 
   // Duplicate office group ids
   const seenGroup = new Set()
@@ -176,6 +189,21 @@ export function validateConsistency(services, categories, offices) {
     if (s.providedBy && !officeIds.has(s.providedBy))
       errors.push(`services.json: service "${s.id}" references unknown providedBy office "${s.providedBy}"`)
 
+    // A providedByAgency ref must resolve to a known Agency (Service -> Agency, ADR-0004).
+    if (s.providedByAgency && !agencyIds.has(s.providedByAgency))
+      errors.push(`services.json: service "${s.id}" references unknown providedByAgency agency "${s.providedByAgency}"`)
+
+    // A Service has at most one responsible-body tier (Office / Agency / Barangay).
+    // Zero is valid — the rule is "at most one", never "exactly one" (ADR-0004).
+    const tierCount = [s.providedBy, s.providedByAgency, s.providedByBarangay]
+      .filter(v => v !== undefined && v !== false)
+      .length
+    if (tierCount > 1) {
+      errors.push(
+        `services.json: service "${s.id}" sets more than one responsible-body tier (providedBy / providedByAgency / providedByBarangay must be mutually exclusive)`,
+      )
+    }
+
     // A detail-bearing Service must resolve to its own /service-details/<id>.
     // (The inverse — a no-detail Service pointing at /service-details/ — is NOT
     // an error during the transition: some details still live in TS and migrate
@@ -194,9 +222,11 @@ function main() {
   const services = readJson(resolve(configDir, 'services.json'))
   const categories = readJson(resolve(configDir, 'categories.json'))
   const offices = readJson(resolve(configDir, 'offices.json'))
+  const agencies = readJson(resolve(configDir, 'agencies.json'))
   const servicesSchema = readJson(resolve(schemaDir, 'services.schema.json'))
   const categoriesSchema = readJson(resolve(schemaDir, 'categories.schema.json'))
   const officesSchema = readJson(resolve(schemaDir, 'offices.schema.json'))
+  const agenciesSchema = readJson(resolve(schemaDir, 'agencies.schema.json'))
 
   if (services && servicesSchema)
     validateAgainstSchema(services, servicesSchema, 'services.json')
@@ -204,8 +234,10 @@ function main() {
     validateAgainstSchema(categories, categoriesSchema, 'categories.json')
   if (offices && officesSchema)
     validateAgainstSchema(offices, officesSchema, 'offices.json')
+  if (agencies && agenciesSchema)
+    validateAgainstSchema(agencies, agenciesSchema, 'agencies.json')
   if (services && categories)
-    validateConsistency(services, categories, offices)
+    validateConsistency(services, categories, offices, agencies)
 
   if (errors.length > 0) {
     console.error(`\n✖ Config validation failed with ${errors.length} error(s):\n`)
@@ -215,7 +247,7 @@ function main() {
     process.exit(1)
   }
 
-  console.log('✔ Config validation passed (services.json, categories.json, offices.json)')
+  console.log('✔ Config validation passed (services.json, categories.json, offices.json, agencies.json)')
 }
 
 // Run only when executed directly (allows importing the pure functions in tests).

@@ -1,0 +1,16 @@
+{
+  "$schema": "./schema/agencies.schema.json",
+  "agencies": [
+    {
+      "id": "pnp-laspinas",
+      "name": "Las Piñas City Police Station",
+      "icon": "bi-shield-check",
+      "description": "Philippine National Police station serving Las Piñas City — police clearances, blotter reports, and community safety coordination",
+      "location": "Las Piñas City Hall Compound, Alabang-Zapote Road corner F. De Ocampo Avenue, Pamplona, Las Piñas City",
+      "phone": "8551-6401",
+      "dataStatus": "unverified",
+      "sourceUrl": "https://spd.ncrpo.pnp.gov.ph/wp-content/uploads/2024/04/Las-Pinas-CPS-Citizens-Charter.pdf",
+      "sourceName": "Las Piñas City Police Station Citizen's Charter 2024 (1st Edition)"
+    }
+  ]
+}
