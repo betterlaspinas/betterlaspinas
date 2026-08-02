@@ -114,7 +114,7 @@ const sections = [
                 </h2>
                 <p class="text-gray-600 mb-4">
                   This website is operated entirely by volunteers. Content
-                  on this site falls into categories, licensed
+                  on this site falls into three categories, each licensed
                   differently, per this project's
                   <a
                     href="https://github.com/betterlaspinas/betterlaspinas/blob/main/LICENSE"
