@@ -10,7 +10,7 @@ const sections = [
   { id: 'legal-basis', title: 'Legal Basis' },
   { id: 'information-collected', title: 'Information We Collect' },
   { id: 'how-we-use', title: 'How We Use Information' },
-  { id: 'cookies', title: 'Cookies & Analytics' },
+  { id: 'local-storage', title: 'Local Storage' },
   { id: 'data-sharing', title: 'Data Sharing' },
   { id: 'data-security', title: 'Data Security' },
   { id: 'data-retention', title: 'Data Retention' },
@@ -156,12 +156,17 @@ const sections = [
                 <h3 class="font-semibold text-gray-800 mt-4 mb-2">
                   Information Collected Automatically
                 </h3>
-                <ul class="list-disc list-inside space-y-1 text-gray-600">
-                  <li>IP address (anonymized where possible)</li>
-                  <li>Browser type and version</li>
-                  <li>Device type and operating system</li>
-                  <li>Pages visited and time spent on pages</li>
-                </ul>
+                <p class="text-gray-600">
+                  None. This is a static website with no analytics, no
+                  tracking scripts, and no server-side code of our own. We
+                  do not collect your IP address, browser, device, or
+                  which pages you visit. See
+                  <a href="#local-storage" class="text-primary-600 hover:underline">Local Storage</a>
+                  below for the small amount of data your browser keeps on
+                  your own device, and
+                  <a href="#data-retention" class="text-primary-600 hover:underline">Data Retention</a>
+                  for what our hosting provider logs on its own.
+                </p>
               </UiCard>
 
               <UiCard id="how-we-use" padding="p-8">
@@ -173,20 +178,26 @@ const sections = [
                   <li>
                     To improve website functionality and user experience
                   </li>
-                  <li>To analyze website traffic and usage patterns</li>
                   <li>To ensure website security and prevent abuse</li>
                   <li>To comply with legal obligations</li>
                 </ul>
               </UiCard>
 
-              <UiCard id="cookies" padding="p-8">
+              <UiCard id="local-storage" padding="p-8">
                 <h2 class="text-xl font-bold text-gray-900 mb-4">
-                  Cookies and Analytics
+                  Local Storage
                 </h2>
                 <p class="text-gray-600 mb-4">
-                  We use cookies and similar technologies to enhance your
-                  browsing experience. We use Google Analytics to collect
-                  anonymized data about website usage.
+                  We do not use cookies, and we do not use Google Analytics
+                  or any other analytics or tracking service. This site
+                  uses your browser's local storage to remember a small
+                  set of preferences: your chosen language and your
+                  recent searches.
+                </p>
+                <p class="text-gray-600">
+                  This data stays on your device. It is never transmitted
+                  to us or to any third party, and it is cleared whenever
+                  you clear your browser's site data.
                 </p>
               </UiCard>
 
@@ -209,8 +220,7 @@ const sections = [
                 <p class="text-gray-600">
                   We implement appropriate technical and organizational
                   measures to protect your personal information, including
-                  SSL/TLS encryption, secure hosting infrastructure, and
-                  regular security assessments.
+                  SSL/TLS encryption and secure hosting infrastructure.
                 </p>
               </UiCard>
 
@@ -218,11 +228,21 @@ const sections = [
                 <h2 class="text-xl font-bold text-gray-900 mb-4">
                   Data Retention
                 </h2>
-                <p class="text-gray-600">
+                <p class="text-gray-600 mb-4">
                   We retain personal information only for as long as
-                  necessary. Contact information is deleted within 1 year of
-                  last contact. Server logs are automatically deleted after
-                  90 days.
+                  necessary. Contact information (emails and messages sent
+                  to us) is deleted within 1 year of last contact.
+                </p>
+                <p class="text-gray-600">
+                  We do not operate our own servers or logs. This site is
+                  hosted on Cloudflare Pages, which retains its own edge
+                  and access logs under its own retention schedule — see
+                  <a
+                    href="https://www.cloudflare.com/privacypolicy/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-primary-600 hover:underline"
+                  >Cloudflare's Privacy Policy</a>.
                 </p>
               </UiCard>
 
@@ -317,7 +337,7 @@ const sections = [
               </UiCard>
 
               <p class="text-sm text-gray-400">
-                Last Updated: February 19, 2026
+                Last Updated: August 1, 2026
               </p>
             </div>
           </article>

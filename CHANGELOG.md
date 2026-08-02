@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Fixed the production build failing on `[postcss] ENOENT ... open '<root>/tailwindcss'` after Nuxt 4.5.1 (#266) pulled in Vite 8: `app/assets/css/main.css` now imports `tailwindcss/index.css` instead of the bare `tailwindcss` specifier, which Vite 8's bundled postcss-import cannot resolve
+- Fixed the Privacy Policy describing analytics, cookies, and automatic data collection this static site doesn't do; it now states plainly what the site actually stores (language and recent searches, kept on-device) and what its host (Cloudflare Pages) logs on its own (#258)
+- Fixed Terms of Use asserting a blanket public-domain grant that contradicted `LICENSE`; it now states the two/three-way split that `LICENSE` actually grants — official government source data outside copyright, presentation content under CC BY 4.0, source code under MIT (#258); its section anchor is renamed `#public-domain` → `#content-licensing` to match (#258)
 - Fixed page content touching the screen edges at certain viewport widths by setting the container's max-width below each breakpoint
 - Fixed pre-commit going red on any checkout with agent worktrees or root scratch files present: `vitest.config.ts` now excludes `.claude/**`, and `.gitignore` now excludes `.claude/` and common scratch-file patterns so repo-wide `eslint .` no longer trips on them (#230, #231, #232)
 - Anchored the agent scratch-file `.gitignore` patterns (`.scratch/`, `research.md`, `architecture-review.html`, `HANDOFF-*.md`, `handoff-*.md`, `.antigravitycli/`) to the repo root with a leading `/`, so they no longer match at any depth — aligning with `CONTRIBUTING.md`'s stated root-only intent (#231, follow-up to #259)
