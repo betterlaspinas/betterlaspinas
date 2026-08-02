@@ -3,6 +3,7 @@ import { ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { useClickOutside } from '@/composables/useClickOutside'
 import { highlightMatch, useSearch } from '@/composables/useSearch'
+import { getServiceCategories, getServicesByCategory } from '@/utils/configHelper'
 
 const props = defineProps<{
   placeholder?: string
@@ -36,15 +37,25 @@ const {
   clearPendingNavigation,
 } = useSearch(props.initialQuery)
 
-const CATEGORIES = [
-  // TODO: Uncomment the hidden categories to restore all service categories
-  // { id: '', label: 'All' },
-  { id: 'certificates', label: 'Certificates' },
-  // { id: 'business', label: 'Business' },
-  // { id: 'social-services', label: 'Social' },
-  // { id: 'health', label: 'Health' },
-  // { id: 'tax-payments', label: 'Taxation' },
-] as const
+interface CategoryChip {
+  id: string
+  label: string
+}
+
+// `getServiceCategories()` only excludes categories flagged `hidden` in
+// categories.json — it does not know whether a category currently holds any
+// live (non-hidden, non-gated) services. A category can therefore be
+// "visible" at the config level while resolving to zero results in the
+// search index. Skipping empty categories here keeps the chip list in sync
+// with what search can actually return, without coupling this component to
+// `configHelper`'s internal `LIVE_CATEGORY_IDS` soft-launch set (which isn't
+// exported and is meant to be a temporary gate).
+const CATEGORIES: CategoryChip[] = [
+  { id: '', label: 'All' },
+  ...getServiceCategories()
+    .filter(cat => getServicesByCategory(cat.id).length > 0)
+    .map(cat => ({ id: cat.id, label: cat.badgeText || cat.name })),
+]
 
 const showDropdown = computed(() =>
   isOpen.value
@@ -107,11 +118,17 @@ function onFocus() {
       aria-label="Search suggestions"
     >
       <!-- Category Filter Tabs -->
-      <div class="flex gap-1.5 px-3 py-3 pb-2.5 border-b border-blue-50 flex-nowrap justify-start bg-gradient-to-b from-gray-50 to-white rounded-t-2xl overflow-x-auto">
+      <div
+        class="flex gap-1.5 px-3 py-3 pb-2.5 border-b border-blue-50 flex-nowrap justify-start bg-gradient-to-b from-gray-50 to-white rounded-t-2xl overflow-x-auto"
+        role="tablist"
+        aria-label="Filter by category"
+      >
         <button
           v-for="cat in CATEGORIES"
           :key="cat.id"
           type="button"
+          role="tab"
+          :aria-selected="category === cat.id"
           class="px-3 py-1.5 border-2 rounded-full text-xs font-medium cursor-pointer whitespace-nowrap flex-shrink-0 transition-all"
           :class="category === cat.id
             ? 'border-blue-700 bg-blue-700 text-white shadow-md'

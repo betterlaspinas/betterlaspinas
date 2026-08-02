@@ -136,6 +136,20 @@ describe('useSearch', () => {
     expect(suggestions.value.recent).toContain(testQuery)
   })
 
+  it('should surface a recent search verbatim even when it matches no service title or curated popular term', async () => {
+    // Regression guard for the removed whitelist filter: a genuine search
+    // that doesn't fuzzy-match a service title or CURATED_POPULAR must not
+    // be silently dropped from "Recent".
+    const { suggestions, addRecentSearch, setQuery } = useSearch()
+    const obscureQuery = 'zzz totally unrelated query'
+    addRecentSearch(obscureQuery)
+    setQuery('birth')
+    await nextTick()
+    setQuery('')
+    await nextTick()
+    expect(suggestions.value.recent).toContain(obscureQuery)
+  })
+
   it('should clear recent searches', async () => {
     const { addRecentSearch, clearRecentSearches, suggestions, setQuery } = useSearch()
     addRecentSearch('test query')
