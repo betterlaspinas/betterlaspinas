@@ -51,7 +51,7 @@ function getTrendIcon(trendType: string): string {
           class="text-center"
         >
           <div class="w-12 h-12 flex items-center justify-center bg-primary-50 text-primary-600 rounded-xl text-xl mx-auto mb-3">
-            <i :class="`bi ${pillar.icon}`" />
+            <i class="bi" :class="pillar.icon" />
           </div>
           <h4 class="text-sm font-medium text-gray-700 mb-2">
             {{ pillar.title }}
@@ -63,7 +63,7 @@ function getTrendIcon(trendType: string): string {
             class="text-sm font-medium flex items-center justify-center gap-1"
             :class="getTrendColor(pillar.trendType)"
           >
-            <i :class="`bi ${getTrendIcon(pillar.trendType)}`" />
+            <i class="bi" :class="getTrendIcon(pillar.trendType)" />
             {{ pillar.trend }}
           </div>
         </UiCard>

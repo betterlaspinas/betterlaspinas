@@ -80,7 +80,7 @@ const parsedVersion = computed(() => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <i :class="`bi ${link.icon}`" class="text-xl" />
+              <i class="bi text-xl" :class="link.icon" />
             </a>
           </div>
         </div>

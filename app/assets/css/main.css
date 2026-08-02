@@ -1,4 +1,9 @@
-@import 'tailwindcss';
+/* Import the explicit `index.css` subpath rather than the bare `tailwindcss`
+   specifier. Vite 8 runs its bundled postcss-import over CSS @import, and that
+   resolver does not honour the "style" export condition — which is the only way
+   Tailwind v4's "." export exposes CSS. The bare specifier therefore falls back
+   to a path lookup and fails with ENOENT on <root>/tailwindcss. */
+@import 'tailwindcss/index.css';
 
 @theme {
   /* Fonts */

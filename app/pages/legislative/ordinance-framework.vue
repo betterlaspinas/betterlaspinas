@@ -98,7 +98,7 @@ const sampleOrdinances = computed(() =>
             padding="p-4"
             class="flex items-center gap-2 text-center justify-center"
           >
-            <i :class="`bi ${cat.icon} text-primary-600`" />
+            <i class="bi text-primary-600" :class="cat.icon" />
             <span class="text-sm font-medium text-gray-700">
               {{ cat.label }}
             </span>
