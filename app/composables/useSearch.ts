@@ -2,7 +2,7 @@ import type { IFuseOptions } from 'fuse.js'
 import type { ServiceItem } from '@/types/config'
 import Fuse from 'fuse.js'
 
-import { getServiceCategoryName, getServicesConfig } from '@/utils/configHelper'
+import { getServiceCategories, getServiceCategoryName, getServicesByCategory, getServicesConfig } from '@/utils/configHelper'
 import { ESCAPE_REGEX, SPLIT_WHITESPACE_REGEX } from '@/utils/regexConstants'
 
 /**
@@ -23,6 +23,11 @@ interface SearchSuggestions {
   popular: string[]
   recent: string[]
   suggestions: string[]
+}
+
+export interface CategoryChip {
+  id: string
+  label: string
 }
 
 const RECENT_SEARCHES_KEY = 'betterlgu_recent_searches'
@@ -125,6 +130,22 @@ export function useSearch(initialQuery = '') {
       categoryName: getServiceCategoryName(service),
     })),
   )
+
+  // Category filter chips, always led by an "All" entry (clears the filter).
+  // `getServiceCategories()` only excludes categories flagged `hidden` in
+  // categories.json — it doesn't know whether a category currently holds any
+  // live (non-hidden, non-gated) services. A category can therefore be
+  // "visible" at the config level while resolving to zero results in the
+  // search index. Skipping empty categories here keeps the chip list in sync
+  // with what search can actually return, without coupling to configHelper's
+  // internal `LIVE_CATEGORY_IDS` soft-launch set (which isn't exported and is
+  // meant to be a temporary gate).
+  const categories = computed<CategoryChip[]>(() => [
+    { id: '', label: 'All' },
+    ...getServiceCategories()
+      .filter(cat => getServicesByCategory(cat.id).length > 0)
+      .map(cat => ({ id: cat.id, label: cat.badgeText || cat.name })),
+  ])
 
   // Curated popular terms, re-validated against the live catalog on every
   // access so a term that stops resolving to a service (category regated,
@@ -318,6 +339,7 @@ export function useSearch(initialQuery = '') {
     setQuery: handleQueryChange,
     category,
     setCategory: handleCategoryChange,
+    categories,
     results,
     suggestions,
     isOpen,

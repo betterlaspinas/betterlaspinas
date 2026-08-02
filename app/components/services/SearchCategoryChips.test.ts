@@ -6,24 +6,20 @@ import Search from './Search.vue'
 
 const setCategory = vi.fn()
 
-// Isolate the chip-derivation logic from the rest of the search composable:
-// stub useSearch entirely and control configHelper's category/service data
-// directly, so these tests exercise exactly how Search.vue turns
-// getServiceCategories()/getServicesByCategory() into chips.
-vi.mock('@/utils/configHelper', () => ({
-  getServiceCategories: () => [
-    { id: 'certificates', name: 'Certificates & Vital Records', badgeText: 'Certificates', hidden: false },
-    { id: 'empty-category', name: 'Empty Category', badgeText: 'Empty', hidden: false },
-  ],
-  getServicesByCategory: (slug: string) => (slug === 'certificates' ? [{ id: 'cert-1' }] : []),
-}))
-
+// Chip derivation itself lives in useSearch.ts (see useSearch.test.ts for
+// those cases). This file isolates Search.vue's own responsibility: render
+// whatever `categories` the composable hands back, wire clicks to
+// `setCategory`, and expose the toggle-button a11y pattern correctly.
 vi.mock('@/composables/useSearch', () => ({
   useSearch: () => ({
     query: ref(''),
     setQuery: vi.fn(),
     category: ref(''),
     setCategory,
+    categories: ref([
+      { id: '', label: 'All' },
+      { id: 'certificates', label: 'Certificates' },
+    ]),
     results: ref([]),
     // Non-empty popular list forces the dropdown open so the chip row renders.
     suggestions: ref({ popular: ['dummy'], recent: [], suggestions: [] }),
@@ -57,18 +53,12 @@ function mountSearch() {
 }
 
 describe('search category chips', () => {
-  it('renders an All chip plus only categories that have live services', () => {
+  it('renders a chip for every category the composable provides, led by All', () => {
     const wrapper = mountSearch()
     const chips = wrapper.find('[aria-label="Filter by category"]').findAll('button')
     const labels = chips.map(chip => chip.text())
 
     expect(labels).toEqual(['All', 'Certificates'])
-  })
-
-  it('does not render a chip for a category with zero live services', () => {
-    const wrapper = mountSearch()
-    const chips = wrapper.find('[aria-label="Filter by category"]').findAll('button')
-    expect(chips.some(chip => chip.text() === 'Empty')).toBe(false)
   })
 
   it('clears the category filter when the All chip is clicked', async () => {
@@ -89,5 +79,21 @@ describe('search category chips', () => {
     await certChip.trigger('click')
 
     expect(setCategory).toHaveBeenCalledWith('certificates')
+  })
+
+  it('uses aria-pressed toggle-button semantics, not an unfinished tab widget', () => {
+    const wrapper = mountSearch()
+    const chipRow = wrapper.find('[aria-label="Filter by category"]')
+
+    // No tab-pattern roles that would promise arrow-key navigation / linked
+    // panels this control doesn't implement.
+    expect(chipRow.attributes('role')).toBeUndefined()
+    const chips = chipRow.findAll('button')
+    chips.forEach(chip => expect(chip.attributes('role')).toBeUndefined())
+
+    const allChip = chips.find(chip => chip.text() === 'All')!
+    expect(allChip.attributes('aria-pressed')).toBe('true')
+    const certChip = chips.find(chip => chip.text() === 'Certificates')!
+    expect(certChip.attributes('aria-pressed')).toBe('false')
   })
 })

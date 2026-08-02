@@ -3,7 +3,6 @@ import { ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { useClickOutside } from '@/composables/useClickOutside'
 import { highlightMatch, useSearch } from '@/composables/useSearch'
-import { getServiceCategories, getServicesByCategory } from '@/utils/configHelper'
 
 const props = defineProps<{
   placeholder?: string
@@ -24,6 +23,7 @@ const {
   setQuery, // Use this for updates
   category,
   setCategory,
+  categories,
   results,
   suggestions,
   isOpen,
@@ -36,26 +36,6 @@ const {
   pendingNavigation,
   clearPendingNavigation,
 } = useSearch(props.initialQuery)
-
-interface CategoryChip {
-  id: string
-  label: string
-}
-
-// `getServiceCategories()` only excludes categories flagged `hidden` in
-// categories.json — it does not know whether a category currently holds any
-// live (non-hidden, non-gated) services. A category can therefore be
-// "visible" at the config level while resolving to zero results in the
-// search index. Skipping empty categories here keeps the chip list in sync
-// with what search can actually return, without coupling this component to
-// `configHelper`'s internal `LIVE_CATEGORY_IDS` soft-launch set (which isn't
-// exported and is meant to be a temporary gate).
-const CATEGORIES: CategoryChip[] = [
-  { id: '', label: 'All' },
-  ...getServiceCategories()
-    .filter(cat => getServicesByCategory(cat.id).length > 0)
-    .map(cat => ({ id: cat.id, label: cat.badgeText || cat.name })),
-]
 
 const showDropdown = computed(() =>
   isOpen.value
@@ -117,18 +97,23 @@ function onFocus() {
       class="absolute top-full left-0 right-0 bg-white border border-blue-100 rounded-2xl shadow-2xl max-h-[480px] overflow-y-auto z-50 mt-2 animate-in fade-in slide-in-from-top-2 duration-200"
       aria-label="Search suggestions"
     >
-      <!-- Category Filter Tabs -->
+      <!-- Category Filter Chips -->
+      <!--
+        These are toggle filters, not tabs over separate panels — there is no
+        associated panel for `aria-controls` to point at and no reason to
+        hijack arrow keys with tab-widget navigation. `aria-pressed` on plain
+        buttons (native tab order, native activation) matches that semantics
+        without promising a tab pattern this control doesn't implement.
+      -->
       <div
         class="flex gap-1.5 px-3 py-3 pb-2.5 border-b border-blue-50 flex-nowrap justify-start bg-gradient-to-b from-gray-50 to-white rounded-t-2xl overflow-x-auto"
-        role="tablist"
         aria-label="Filter by category"
       >
         <button
-          v-for="cat in CATEGORIES"
+          v-for="cat in categories"
           :key="cat.id"
           type="button"
-          role="tab"
-          :aria-selected="category === cat.id"
+          :aria-pressed="category === cat.id"
           class="px-3 py-1.5 border-2 rounded-full text-xs font-medium cursor-pointer whitespace-nowrap flex-shrink-0 transition-all"
           :class="category === cat.id
             ? 'border-blue-700 bg-blue-700 text-white shadow-md'
