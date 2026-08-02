@@ -8,7 +8,7 @@ const volunteerEmail = computed(() => getVolunteerEmail())
 const sections = [
   { id: 'introduction', title: 'Introduction' },
   { id: 'acceptance', title: 'Acceptance of Terms' },
-  { id: 'public-domain', title: 'Content Licensing' },
+  { id: 'content-licensing', title: 'Content Licensing' },
   { id: 'disclaimer', title: '"As Is" Disclaimer' },
   { id: 'limitation', title: 'Limitation of Liability' },
   { id: 'responsibilities', title: 'User Responsibilities' },
@@ -108,7 +108,7 @@ const sections = [
                 </p>
               </UiCard>
 
-              <UiCard id="public-domain" padding="p-8">
+              <UiCard id="content-licensing" padding="p-8">
                 <h2 class="text-xl font-bold text-gray-900 mb-4">
                   Content Licensing and Volunteer Operation
                 </h2>
