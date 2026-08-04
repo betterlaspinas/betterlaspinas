@@ -1,7 +1,7 @@
 # Business Permits and Licensing Office — Services
 
 > Source: **Las Piñas Citizen's Charter 2022**, pp. 13–36 (_Frontline Services_).
-> Canonical Office id: `business-permits`. Transcribed from rendered PDF pages (the PDF's embedded text is column-scrambled and was NOT trusted). **Verify against the PDF before this becomes canonical data.** Items marked _(verify)_ were partially legible.
+> Canonical Office id: `business-permits`. Transcribed from rendered PDF pages (the PDF's embedded text is column-scrambled and was NOT trusted), then **verified line by line against the source PDF** — all `_(verify)_` markers resolved.
 
 9 services.
 
@@ -32,8 +32,10 @@
    - National Government Offices and Government Owned and Control Corporation
 9. Letter of Authority, Special Power of Attorney or Secretary Certificate (if applying thru Representative) → Owner or President / Treasurer of Business Establishment
 
-**Fee:** Tax Due is based on the Revenue Code of the City of Las Piñas _(verify — see attached fee schedule)_
-**Processing time:** Up to 1 day (Simple); Up to 3 days for Complex; Up to 7 working days for Highly Technical; Up to 24 working days for Highly Technical requiring City Council approval; if extended, additional 20 working days _(verify)_
+**Fee:** Tax Due is based on the Revenue Code of the City of Las Piñas
+**Processing time:** 1 day
+
+> As prescribed by R.A. 11032 (Ease of Doing Business and Efficient Delivery of Government Service Act of 2018): up to 3 days for Simple Transactions, up to 7 working days for Complex Transactions, up to 20 working days for Highly Technical Transactions. If the transaction requires the approval of the City Council, it shall be given 45 working days to act upon the application or request, extendible by another 20 working days.
 
 ---
 
@@ -53,8 +55,8 @@
 6. Letter of Authority, Special Power of Attorney or Secretary Certificate (if applying thru Representative) → Owner or President / Treasurer of Business Establishment
 7. Special Requirements (some specific types of business depending on line of business applied which is required by the National Agencies and its controlled and owned corporation must be complied) → National Government Offices and Government Owned and Control Corporation
 
-**Fee:** Tax Due is based on the Revenue Code of the City of Las Piñas _(verify — see attached fee schedule)_
-**Processing time:** Approx. 2 hours _(verify)_
+**Fee:** Tax Due is based on the Revenue Code of the City of Las Piñas
+**Processing time:** 3 hours and 10 minutes
 
 ---
 
@@ -80,8 +82,8 @@
 7. Undertaking → Business Permits and Licensing Office
 8. Letter of Authority, Special Power of Attorney or Secretary Certificate (if applying thru Representative) → Owner or President of Business Establishment
 
-**Fee:** Tax Due is based on the Revenue Code of the City of Las Piñas _(verify)_
-**Processing time:** 2 hours and 10 minutes _(verify)_
+**Fee:** Tax Due is based on the Revenue Code of the City of Las Piñas
+**Processing time:** 2 hours and 10 minutes
 
 ---
 
@@ -102,8 +104,8 @@
 5. 2 pcs 1x1 Picture → Provided by Applicant
 6. Alien Employment Permit (for Foreign Workers) → Department of Labor and Employment
 
-**Fee:** None _(verify)_
-**Processing time:** Approx. 1 hour and 35 minutes _(verify)_
+**Fee:** ₱250.00
+**Processing time:** Approx. 1 hour and 35 minutes
 
 ---
 
@@ -127,7 +129,7 @@ Pursuant to R.A. 11261 "First Time Jobseekers Assistance Act" of 2019. The appli
 6. Barangay Certificate with Undertaking → Barangay Hall where the applicant resides
 
 **Fee:** None
-**Processing time:** 1 hour and 30 minutes _(verify)_
+**Processing time:** 1 hour and 30 minutes
 
 ---
 
@@ -148,8 +150,8 @@ Certification issued by the City Government to all who wants to verify the statu
 5. Assessor's Certificate → Provided by Applicant
 6. Referral letter from Hospital / DSWD-PAO & other government agencies → Provided by Applicant
 
-**Fee:** None _(verify)_
-**Processing time:** Approx. 1 hour _(verify)_
+**Fee:** ₱75.00 (plus ₱15.00 per page thereof)
+**Processing time:** 1 hour
 
 ---
 
@@ -167,8 +169,8 @@ Certified Copy of Business License and Mayor's Permit issued by the City Governm
 2. Identification Card → Provided by Applicant
 3. Letter of Authority, Special Power of Attorney or Secretary Certificate (if applying thru Representative) → Provided by Applicant
 
-**Fee:** ₱90.00 _(verify)_
-**Processing time:** 1 hour _(verify)_
+**Fee:** ₱90.00
+**Processing time:** 1 hour
 
 ---
 
@@ -186,7 +188,7 @@ Pursuant to Rule VII Section 9 of IRR of R.A. 11032 known as Ease of Doing Busin
 2. Identification Card → Provided by Applicant
 
 **Fee:** None
-**Processing time:** Up to 3 working days for Simple Complaint; Up to 7 working days for Complex Complaint; Up to 20 working days for Highly Technical Complaints _(verify)_
+**Processing time:** Up to 3 working days for Simple Complaint; Up to 7 working days for Complex Complaint; Up to 20 working days for Highly Technical Complaints
 
 ---
 
@@ -221,13 +223,13 @@ Issued by the City Government in line with the recent Joint Memorandum Circular 
     - d. implement Return to Work Policies → Provided by the Applicant
 16. Availability of storage facility for proper collection, treatment, and disposal of used materials and other infectious wastes → Provided by the Applicant
 
-**Fee:** None _(verify)_
-**Processing time:** 7 working days _(verify)_
+**Fee:** None
+**Processing time:** 7 working days
 
 ---
 
 ## Feedback and Complaints Mechanism
 
-- **Send feedback:** Thru email and writing a response letter; answer client feedback form and drop it at the designated drop box in front of each counter as City Social Welfare & Development Office _(verify — wrong office; should be BPLO)_.
+- **Send feedback:** Thru email and writing a response letter; answer client feedback form and drop it at the designated drop box in front of each counter as City Social Welfare & Development Office (as printed in the source charter).
 - **Complaints:** File through letters of complaint addressed to the Head of BPLO. Complaints are being processed based on existing office procedures and laws. Based on the merit of the complaint, it may be referred to the right forum for appropriate action. Issued Notices and serve Closure Order if no compliance have been made within the 3 days period after inspection.
-- **Contact (ARTA / CCB / PCC):** ARTA — complaints@arta.gov.ph; Contact Center ng Bayan (CCB) — email@contactcenternbayan.gov.ph; Presidential Complaint Center (PCC) — pcc@malacanang.gov.ph _(verify all contacts)_.
+- **Contact (ARTA / CCB / PCC):** ARTA — complaints@arta.gov.ph; Contact Center ng Bayan (CCB) — email@contactcenterngbayan.gov.ph; Presidential Complaint Center (PCC) — pcc@malacanang.gov.ph; Citizens' Complaint Center — 8888.

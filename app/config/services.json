@@ -595,7 +595,7 @@
         "negosyo"
       ],
       "fee": "Varies",
-      "processingTime": "Approx. 3 hours",
+      "processingTime": "3 hours 10 minutes",
       "office": "Business Permits & Licensing Office",
       "url": "/service-details/business-permit-renewal",
       "detail": {
@@ -609,7 +609,7 @@
           {
             "icon": "bi-clock",
             "label": "Processing",
-            "value": "Approx. 3 Hours"
+            "value": "3 Hours 10 Mins"
           },
           {
             "icon": "bi-cash",
@@ -829,7 +829,7 @@
         "business license"
       ],
       "fee": "₱75 + ₱15/page",
-      "processingTime": "Approx. 1 hour",
+      "processingTime": "1 hour",
       "office": "Business Permits & Licensing Office",
       "url": "/service-details/business-status-certificate",
       "detail": {
@@ -843,7 +843,7 @@
           {
             "icon": "bi-clock",
             "label": "Processing",
-            "value": "Approx. 1 hour"
+            "value": "1 hour"
           },
           {
             "icon": "bi-cash",
@@ -949,7 +949,7 @@
         "ctc"
       ],
       "fee": "₱90",
-      "processingTime": "Approx. 1 hour",
+      "processingTime": "1 hour",
       "office": "Business Permits & Licensing Office",
       "url": "/service-details/ctc-business-license",
       "detail": {
@@ -963,7 +963,7 @@
           {
             "icon": "bi-clock",
             "label": "Processing",
-            "value": "Approx. 1 hour"
+            "value": "1 hour"
           },
           {
             "icon": "bi-cash",
@@ -1059,8 +1059,8 @@
         "job",
         "work"
       ],
-      "fee": "Varies by Assessment",
-      "processingTime": "Approx. 3 hours",
+      "fee": "₱250",
+      "processingTime": "Approx. 1 hour 35 minutes",
       "office": "Business Permits & Licensing Office",
       "url": "/service-details/occupational-permit",
       "detail": {
@@ -1074,12 +1074,12 @@
           {
             "icon": "bi-clock",
             "label": "Processing",
-            "value": "Approx. 3 hours"
+            "value": "Approx. 1 Hr 35 Mins"
           },
           {
             "icon": "bi-cash",
             "label": "Fee",
-            "value": "Varies by Assessment"
+            "value": "₱250"
           },
           {
             "icon": "bi-person-check",
@@ -1132,7 +1132,7 @@
         "faqs": [
           {
             "question": "What is the processing time for the permit?",
-            "answer": "The BPLO classifies the issuance of the Occupational Mayor's Permit as a simple transaction, typically taking around 3 hours depending on the volume of applicants."
+            "answer": "The BPLO classifies the issuance of the Occupational Mayor's Permit as a simple transaction, with a total processing time of approximately 1 hour and 35 minutes per the Citizen's Charter 2022. The permit fee is ₱250."
           },
           {
             "question": "Do I need to apply in person?",
@@ -1184,7 +1184,7 @@
         "free"
       ],
       "fee": "Free",
-      "processingTime": "Approx. 3 hours",
+      "processingTime": "1 hour 30 minutes",
       "office": "Business Permits & Licensing Office",
       "url": "/service-details/occupational-permit-jobseeker",
       "detail": {
@@ -1198,7 +1198,7 @@
           {
             "icon": "bi-clock",
             "label": "Processing",
-            "value": "Approx. 3 hours"
+            "value": "1 Hr 30 Mins"
           },
           {
             "icon": "bi-cash",
