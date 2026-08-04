@@ -44,7 +44,15 @@
         "office": { "type": "string" },
         "providedBy": {
           "type": "string",
-          "description": "Slug of the Office that provides this Service (must match an offices.json id). The first-class Service -> providedBy -> Office reference."
+          "description": "Slug of the Office that provides this Service (must match an offices.json id). The first-class Service -> providedBy -> Office reference. A Service sets at most one of providedBy / providedByAgency / providedByBarangay (see ADR-0004)."
+        },
+        "providedByAgency": {
+          "type": "string",
+          "description": "Slug of the Agency that provides this Service (must match an agencies.json id) — a national government office in the city (e.g. PNP), not a city Office. See ADR-0004. Mutually exclusive with providedBy / providedByBarangay."
+        },
+        "providedByBarangay": {
+          "type": "boolean",
+          "description": "True when this Service is obtained at the resident's own Barangay (a directory marker, not a single provider ref — see ADR-0004 and the /barangays page). Mutually exclusive with providedBy / providedByAgency."
         },
         "fee": { "type": "string" },
         "processingTime": { "type": "string" },

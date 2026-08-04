@@ -1,6 +1,11 @@
 import { describe, expect, it } from 'vitest'
 import { validateAgainstSchema, validateConsistency } from '../../scripts/validate-config.mjs'
 import {
+  categoryHasBarangayProvider,
+  getAgencies,
+  getAgenciesForCategory,
+  getAgencyById,
+  getAgencyForService,
   getAllServices,
   getCategoryBySlug,
   getCategorySeoDescription,
@@ -19,6 +24,7 @@ import {
   getServicesByCategory,
   getServiceSeoDescription,
   getSiteConfig,
+  getSubdivisionsConfig,
   isCanonicalCategory,
 } from './configHelper'
 
@@ -364,7 +370,9 @@ describe('configHelper', () => {
     it('getOfficeBySlug returns undefined for unknown or hidden Offices', () => {
       expect(getOfficeBySlug('not-a-real-office')).toBeUndefined()
       expect(getOfficeBySlug('human-resource-management')).toBeUndefined()
-      // barangay-hall and police-station are hidden pending scoping (see #198).
+      // barangay-hall and police-station were removed from offices.json
+      // entirely (#198, ADR-0004) — neither is a city Office; they are now the
+      // Barangay and Agency responsible-body tiers.
       expect(getOfficeBySlug('barangay-hall')).toBeUndefined()
       expect(getOfficeBySlug('police-station')).toBeUndefined()
     })
@@ -409,10 +417,87 @@ describe('configHelper', () => {
       const ids = offices.map(o => o.id)
       expect(new Set(ids).size).toBe(ids.length)
       expect(ids).toContain('civil-registry')
-      // barangay-hall and police-station back Services via providedBy but are
-      // hidden pending scoping (#198), so they resolve to no card.
+      // barangay-hall and police-station no longer exist as Offices (#198,
+      // ADR-0004) — the certificates Services that used to providedBy them now
+      // set providedByBarangay/providedByAgency instead.
       expect(ids).not.toContain('barangay-hall')
       expect(ids).not.toContain('police-station')
+    })
+  })
+
+  describe('canonical Agency accessor (#198, ADR-0004)', () => {
+    it('getAgencies returns every Agency record', () => {
+      const agencies = getAgencies()
+      expect(agencies.length).toBeGreaterThan(0)
+      expect(agencies.find(a => a.id === 'pnp-laspinas')).toBeDefined()
+    })
+
+    it('getAgencyById resolves a known Agency', () => {
+      const pnp = getAgencyById('pnp-laspinas')
+      expect(pnp).toBeDefined()
+      expect(pnp!.name).toBe('Las Piñas City Police Station')
+    })
+
+    it('getAgencyById returns undefined for an unknown Agency', () => {
+      expect(getAgencyById('not-a-real-agency')).toBeUndefined()
+    })
+
+    it('getAgencyForService resolves police-clearance to pnp-laspinas', () => {
+      const service = getServiceBySlug('police-clearance')
+      const agency = getAgencyForService(service!)
+      expect(agency).toBeDefined()
+      expect(agency!.id).toBe('pnp-laspinas')
+    })
+
+    it('getAgencyForService returns undefined when a Service has no providedByAgency', () => {
+      expect(getAgencyForService({ providedByAgency: undefined } as never)).toBeUndefined()
+    })
+
+    it('getAgenciesForCategory resolves pnp-laspinas for certificates', () => {
+      const agencies = getAgenciesForCategory('certificates')
+      const ids = agencies.map(a => a.id)
+      expect(new Set(ids).size).toBe(ids.length)
+      expect(ids).toContain('pnp-laspinas')
+    })
+
+    it('getAgenciesForCategory returns empty for a category with no Agency provider', () => {
+      expect(getAgenciesForCategory('does-not-exist')).toEqual([])
+    })
+  })
+
+  describe('three-tier responsible-body resolution (#198, ADR-0004)', () => {
+    it('barangay-clearance and barangay-id set providedByBarangay, not providedBy/providedByAgency', () => {
+      for (const id of ['barangay-clearance', 'barangay-id']) {
+        const service = getServiceBySlug(id)
+        expect(service, id).toBeDefined()
+        expect(service!.providedByBarangay, id).toBe(true)
+        expect(service!.providedBy, id).toBeUndefined()
+        expect(service!.providedByAgency, id).toBeUndefined()
+      }
+    })
+
+    it('police-clearance sets providedByAgency, not providedBy/providedByBarangay', () => {
+      const service = getServiceBySlug('police-clearance')
+      expect(service!.providedByAgency).toBe('pnp-laspinas')
+      expect(service!.providedBy).toBeUndefined()
+      expect(service!.providedByBarangay).toBeUndefined()
+    })
+
+    it('categoryHasBarangayProvider is true for certificates (barangay-clearance/barangay-id)', () => {
+      expect(categoryHasBarangayProvider('certificates')).toBe(true)
+    })
+
+    it('categoryHasBarangayProvider is false for a category with no Barangay-tier Service', () => {
+      expect(categoryHasBarangayProvider('does-not-exist')).toBe(false)
+    })
+
+    it('no live Service sets more than one responsible-body tier', () => {
+      for (const service of getAllServices()) {
+        const tierCount = [service.providedBy, service.providedByAgency, service.providedByBarangay]
+          .filter(v => v !== undefined && v !== false)
+          .length
+        expect(tierCount, service.id).toBeLessThanOrEqual(1)
+      }
     })
   })
 
@@ -839,6 +924,90 @@ describe('configHelper', () => {
     })
   })
 
+  describe('agencies config validator (#198, ADR-0004)', () => {
+    function makeService(over = {}) {
+      return {
+        id: 'sample',
+        title: 'Sample',
+        description: 'A sample service',
+        category: 'Certificates & Vital Records',
+        categoryId: 'certificates',
+        keywords: ['sample'],
+        url: '/services/certificates',
+        ...over,
+      }
+    }
+
+    function makeAgencies(over = {}) {
+      return {
+        agencies: [{
+          id: 'pnp-laspinas',
+          name: 'Las Piñas City Police Station',
+          icon: 'bi-shield-check',
+          description: 'd',
+        }],
+        ...over,
+      }
+    }
+
+    it('rejects duplicate agency ids', () => {
+      const services = { services: [makeService()] }
+      const categories = { categories: [{ id: 'certificates' }] }
+      const agency = { id: 'pnp-laspinas', name: 'PNP', icon: 'bi', description: 'd' }
+      const agencies = makeAgencies({ agencies: [agency, agency] })
+      expect(validateConsistency(services, categories, undefined, agencies)).toBe(false)
+    })
+
+    it('rejects a Service whose providedByAgency references an unknown Agency', () => {
+      const services = { services: [makeService({ providedByAgency: 'ghost-agency' })] }
+      const categories = { categories: [{ id: 'certificates' }] }
+      const agencies = makeAgencies()
+      expect(validateConsistency(services, categories, undefined, agencies)).toBe(false)
+    })
+
+    it('accepts a Service whose providedByAgency resolves to a known Agency', () => {
+      const services = { services: [makeService({ providedByAgency: 'pnp-laspinas' })] }
+      const categories = { categories: [{ id: 'certificates' }] }
+      const agencies = makeAgencies()
+      expect(validateConsistency(services, categories, undefined, agencies)).toBe(true)
+    })
+
+    it('accepts a Service with providedByBarangay and no other tier', () => {
+      const services = { services: [makeService({ providedByBarangay: true })] }
+      const categories = { categories: [{ id: 'certificates' }] }
+      expect(validateConsistency(services, categories)).toBe(true)
+    })
+
+    it('rejects a Service that sets both providedBy and providedByAgency', () => {
+      const services = {
+        services: [makeService({ providedBy: 'civil-registry', providedByAgency: 'pnp-laspinas' })],
+      }
+      const categories = { categories: [{ id: 'certificates' }] }
+      const offices = {
+        officeGroups: [{ id: 'frontline-services', name: 'F', description: 'd' }],
+        offices: [{
+          id: 'civil-registry',
+          name: 'City Civil Registry',
+          groupId: 'frontline-services',
+          icon: 'bi',
+          description: 'd',
+          link: '/x',
+        }],
+      }
+      const agencies = makeAgencies()
+      expect(validateConsistency(services, categories, offices, agencies)).toBe(false)
+    })
+
+    it('rejects a Service that sets both providedByAgency and providedByBarangay', () => {
+      const services = {
+        services: [makeService({ providedByAgency: 'pnp-laspinas', providedByBarangay: true })],
+      }
+      const categories = { categories: [{ id: 'certificates' }] }
+      const agencies = makeAgencies()
+      expect(validateConsistency(services, categories, undefined, agencies)).toBe(false)
+    })
+  })
+
   // Pin the contract the pages rely on — every page resolves purely through the
   // canonical configHelper accessors. Mirrors the exact resolution paths in
   // `[category].vue` and `[slug].vue`.
@@ -872,6 +1041,26 @@ describe('configHelper', () => {
         .map(s => s.id)
       for (const slug of detailSlugs) {
         expect(Boolean(getServiceBySlug(slug)?.detail), slug).toBe(true)
+      }
+    })
+  })
+
+  // The /barangays page (#198, ADR-0004) and government/index.vue's
+  // Subdivisions section both read the directory through this one accessor,
+  // so they can never drift.
+  describe('barangay directory data (/barangays, #198)', () => {
+    it('getSubdivisionsConfig exposes all 20 Barangays with count in sync', () => {
+      const subdivisions = getSubdivisionsConfig()
+      expect(subdivisions.count).toBe(20)
+      expect(subdivisions.items).toHaveLength(subdivisions.count)
+    })
+
+    it('every Barangay item carries an id, name, and leader', () => {
+      const subdivisions = getSubdivisionsConfig()
+      for (const item of subdivisions.items) {
+        expect(item.id, item.id).toBeTruthy()
+        expect(item.name, item.id).toBeTruthy()
+        expect(item.leader, item.id).toBeTruthy()
       }
     })
   })

@@ -90,6 +90,12 @@
       "i18nKey": "nav-government"
     },
     {
+      "id": "barangays",
+      "label": "Barangays",
+      "href": "/barangays",
+      "i18nKey": "nav-barangays"
+    },
+    {
       "id": "statistics",
       "label": "Statistics",
       "href": "/statistics",

@@ -41,6 +41,13 @@
     "twitterCard": "summary",
     "hidden": false
   },
+  "barangays": {
+    "titleFragment": "Barangays",
+    "description": "Directory of the Barangays of {{lguName}}, with contact details and links to services provided at the barangay level.",
+    "ogType": "website",
+    "twitterCard": "summary",
+    "hidden": false
+  },
   "legislative": {
     "titleFragment": "Legislative",
     "description": "Ordinances and resolutions of the {{legislativeBody}} ng {{lguName}}.",

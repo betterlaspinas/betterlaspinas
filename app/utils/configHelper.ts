@@ -3,6 +3,8 @@
 // `docs/agents/backlog-fog.md` before growing the interface further.
 
 import type {
+  AgenciesConfig,
+  Agency,
   BudgetConfig,
   CategoriesConfig,
   Category,
@@ -38,6 +40,7 @@ import {
   WHITESPACE_REGEX,
 } from '@/utils/regexConstants'
 
+import agenciesConfig from '../config/agencies.json'
 import budgetConfig from '../config/budget.json'
 import categoriesConfig from '../config/categories.json'
 import faqConfig from '../config/faq.json'
@@ -494,6 +497,76 @@ export function getOfficesForCategory(slug: string): Office[] {
     }
   }
   return result
+}
+
+// ---------------------------------------------------------------------------
+// Canonical Agency accessor (#198, ADR-0004).
+//
+// Agency is the second responsible-body tier: a national government office
+// physically present in the city (PNP now), office-shaped but not a city
+// Office, so it lives outside offices.json/OfficeGroup. Referenced by
+// ServiceItem.providedByAgency (single ref, like Office — the asymmetry with
+// the Barangay tier below is intentional, see ADR-0004).
+// ---------------------------------------------------------------------------
+
+/**
+ * Get the agencies config with proper typing.
+ */
+export function getAgenciesConfig(): AgenciesConfig {
+  return agenciesConfig as AgenciesConfig
+}
+
+/**
+ * Get every Agency record.
+ */
+export function getAgencies(): Agency[] {
+  return getAgenciesConfig().agencies ?? []
+}
+
+/**
+ * Get a single Agency by its canonical id/slug. Returns undefined for
+ * unknown Agencies.
+ */
+export function getAgencyById(id: string): Agency | undefined {
+  return getAgencies().find(agency => agency.id === id)
+}
+
+/**
+ * Resolve the Agency that provides a given Service via its `providedByAgency`
+ * ref. Returns undefined when the Service has no `providedByAgency` or the
+ * Agency is unknown.
+ */
+export function getAgencyForService(service: ServiceItem): Agency | undefined {
+  return service.providedByAgency ? getAgencyById(service.providedByAgency) : undefined
+}
+
+/**
+ * Get the distinct Agencies that provide the Services in a Category. Mirrors
+ * `getOfficesForCategory` for the Agency tier.
+ */
+export function getAgenciesForCategory(slug: string): Agency[] {
+  const seen = new Set<string>()
+  const result: Agency[] = []
+  for (const service of getServicesByCategory(slug)) {
+    const agency = getAgencyForService(service)
+    if (agency && !seen.has(agency.id)) {
+      seen.add(agency.id)
+      result.push(agency)
+    }
+  }
+  return result
+}
+
+/**
+ * Whether any visible Service in a Category is obtained at the resident's own
+ * Barangay (`providedByBarangay: true`). The Barangay tier is a directory
+ * marker, not a single record — this backs the "get this at your Barangay
+ * Hall" card that links to `/barangays` rather than resolving to one Office
+ * or Agency. Mirrors `getOfficesForCategory` / `getAgenciesForCategory` for
+ * the third tier.
+ */
+export function categoryHasBarangayProvider(slug: string): boolean {
+  return getServicesByCategory(slug).some(service => service.providedByBarangay === true)
 }
 
 /**

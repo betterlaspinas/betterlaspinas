@@ -425,8 +425,23 @@ export interface ServiceItem {
   /**
    * Slug of the first-class Office that provides this Service (matches an
    * offices.json id). Resolve through `getOfficeBySlug`. See `Office` below.
+   * A Service sets at most one of `providedBy` / `providedByAgency` /
+   * `providedByBarangay` — the three responsible-body tiers (ADR-0004).
    */
   providedBy?: string
+  /**
+   * Slug of the Agency that provides this Service (matches an agencies.json
+   * id) — a national government office in the city (e.g. PNP), not a city
+   * Office. Resolve through `getAgencyById`. See `Agency` below and ADR-0004.
+   */
+  providedByAgency?: string
+  /**
+   * True when this Service is obtained at the resident's own Barangay. A
+   * directory marker, not a single provider ref — there are 20 Barangays, so
+   * this points at the whole `/barangays` directory rather than one record.
+   * See ADR-0004.
+   */
+  providedByBarangay?: boolean
   fee?: string
   processingTime?: string
   url: string
@@ -555,6 +570,37 @@ export interface Office {
 export interface OfficesConfig {
   officeGroups: OfficeGroup[]
   offices: Office[]
+  [key: string]: unknown
+}
+
+/**
+ * A national government office physically present in the city (e.g. PNP now;
+ * BFP, NBI, BJMP, Prosecutor later). Office-shaped (name, location, contact)
+ * but national, not a city department — deliberately kept out of
+ * `offices.json`/`OfficeGroup` (ADR-0003 narrowed `Office` to the RA 7160 city
+ * department sense). Referenced by `ServiceItem.providedByAgency`. See
+ * ADR-0004.
+ */
+export interface Agency {
+  id: string
+  name: string
+  icon: string
+  description: string
+  location?: string
+  phone?: string
+  hours?: string
+  /**
+   * Sourcing confidence for this record's contact/location data. 'unverified'
+   * until confirmed against an official source. A lightweight, Agency-scoped
+   * stand-in for the deferred generalized `dataStatus` flag (see ADR-0003).
+   */
+  dataStatus?: 'unverified' | 'verified'
+  sourceUrl?: string
+  sourceName?: string
+}
+
+export interface AgenciesConfig {
+  agencies: Agency[]
   [key: string]: unknown
 }
 
