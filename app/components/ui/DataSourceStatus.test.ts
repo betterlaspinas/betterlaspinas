@@ -17,7 +17,7 @@ describe('dataSourceStatus', () => {
     expect(text).toContain('Confirm with the office before relying on them')
     // No citation list and no verified/unverified document copy in this state.
     expect(wrapper.findAll('li').length).toBe(0)
-    expect(text).not.toContain('Transcribed from')
+    expect(text).not.toContain('Matched to')
     expect(text).not.toContain('Checked against source')
   })
 
@@ -43,8 +43,8 @@ describe('dataSourceStatus', () => {
 
     const text = wrapper.text()
     expect(text).toContain('Citizen\'s Charter 2022 (1st Edition)')
-    expect(text).toContain('Transcribed from this document')
-    expect(text).toContain('We haven\'t re-checked it against the original yet')
+    expect(text).toContain('Matched to this document after the fact')
+    expect(text).toContain('Not yet confirmed against the original')
     expect(text).not.toContain('Checked against source')
     expect(text).not.toContain('still documenting')
   })
@@ -63,8 +63,8 @@ describe('dataSourceStatus', () => {
     })
 
     const text = wrapper.text()
-    expect(text).toContain('Transcribed from these documents')
-    expect(text).toContain('We haven\'t re-checked them against the original yet')
+    expect(text).toContain('Matched to these documents after the fact')
+    expect(text).toContain('Not yet confirmed against the original')
   })
 
   it('row 3 — verifiedOn set: renders the citation and the checked-on date', () => {
@@ -80,7 +80,7 @@ describe('dataSourceStatus', () => {
     const text = wrapper.text()
     expect(text).toContain('Citizen\'s Charter 2022 (1st Edition)')
     expect(text).toContain('Checked against source 14 Jul 2026')
-    expect(text).not.toContain('Transcribed from')
+    expect(text).not.toContain('Matched to')
     expect(text).not.toContain('still documenting')
   })
 

@@ -419,9 +419,15 @@ export interface SourceRef {
    */
   published?: string
   /**
-   * ISO date we checked this record against THIS source. Asserts transcription
-   * accuracy, NOT currency: re-reading the 2022 charter today proves our record
-   * matches the charter, not that the fee is still charged.
+   * ISO date we most recently confirmed this record against THIS source.
+   * Transcribing a value out of a source IS confirming it — this is set the
+   * moment that happens, not held back for a separate "audit" pass. Re-reading
+   * the SAME source later (a second contributor, or a proofread) bumps this
+   * date in place; it does not add a second field — there is deliberately no
+   * separate audit/proofread date (#237, ADR-0005). Checking a DIFFERENT
+   * source adds another entry to `sources[]` instead. Asserts transcription
+   * accuracy, NOT currency: re-reading the 2022 charter today proves our
+   * record matches the charter, not that the fee is still charged.
    */
   verifiedOn?: string
   /**

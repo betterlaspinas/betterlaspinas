@@ -12,8 +12,10 @@ import type { SourceRef } from '~/types/config'
  *     The hedge names OUR documentation backlog, never the data's
  *     reliability: the phone number is probably fine, we just haven't
  *     written down its origin.
- *  2. `sources` present, no `verifiedOn` — the citation renders, but we
- *     state plainly that nobody has re-checked it against the original.
+ *  2. `sources` present, no `verifiedOn` — the citation renders, and states
+ *     plainly that it was matched to the record after the fact rather than
+ *     recorded by whoever transcribed it, and has not yet been confirmed
+ *     against the original.
  *  3. `sources` present with `verifiedOn` — citation plus the checked-on
  *     date.
  *
@@ -52,7 +54,7 @@ defineProps<{
       Checked against source {{ checkedOn }}.
     </p>
     <p v-else class="text-sm text-gray-600">
-      Transcribed from {{ sources.length > 1 ? 'these documents' : 'this document' }}. We haven't re-checked {{ sources.length > 1 ? 'them' : 'it' }} against the original yet.
+      Matched to {{ sources.length > 1 ? 'these documents' : 'this document' }} after the fact. Not yet confirmed against the original.
     </p>
   </template>
   <p v-else class="text-sm text-gray-600">
