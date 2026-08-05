@@ -21,6 +21,7 @@ import type {
   Office,
   OfficeGroup,
   OfficesConfig,
+  Official,
   OfficialsConfig,
   OgImageRouteConfig,
   SeoRouteConfig,
@@ -497,6 +498,68 @@ export function getOfficesForCategory(slug: string): Office[] {
     }
   }
   return result
+}
+
+// ---------------------------------------------------------------------------
+// Department Head accessors (#199, ADR-0003).
+//
+// A Department Head is an Official (person) that references the one Office it
+// heads via `officeId`; the Office (organization) owns identity, description
+// and contact. These accessors are the only supported join between
+// officials.json and offices.json — the Government page must not read either
+// JSON directly.
+// ---------------------------------------------------------------------------
+
+/**
+ * An Office paired with the Official who heads it. The Government section's
+ * unit of rendering.
+ */
+export interface OfficeWithHead {
+  office: Office
+  head: Official
+}
+
+/**
+ * Get every Department Head Official.
+ */
+export function getDepartmentHeads(): Official[] {
+  return getOfficialsConfig().departmentHeads ?? []
+}
+
+/**
+ * Resolve the Official heading a given Office id. Returns undefined when the
+ * Office has no recorded head.
+ */
+export function getOfficeHead(officeId: string): Official | undefined {
+  return getDepartmentHeads().find(head => head.officeId === officeId)
+}
+
+/**
+ * Get the visible Offices that have a head, each paired with that head.
+ *
+ * Head presence is what marks an Office as a City Hall department (ADR-0003),
+ * so this is the Government section's roster — no separate flag needed. Ordered
+ * by offices.json, and hidden Offices drop out via `getOffices()`, which also
+ * means a head whose Office is hidden or unknown is not rendered.
+ */
+export function getOfficesWithHeads(): OfficeWithHead[] {
+  const result: OfficeWithHead[] = []
+  for (const office of getOffices()) {
+    const head = getOfficeHead(office.id)
+    if (head)
+      result.push({ office, head })
+  }
+  return result
+}
+
+/**
+ * Get the headed Offices belonging to one Office Group. Returns an empty array
+ * for an unknown or hidden Group, matching `getOfficesByGroup`.
+ */
+export function getOfficesWithHeadsByGroup(slug: string): OfficeWithHead[] {
+  if (!getOfficeGroupBySlug(slug))
+    return []
+  return getOfficesWithHeads().filter(({ office }) => office.groupId === slug)
 }
 
 // ---------------------------------------------------------------------------

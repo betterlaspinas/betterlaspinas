@@ -117,174 +117,104 @@
       "committees": "Committee on Youth & Sports (Ex-Officio)"
     }
   ],
-  "departments": [
+  "departmentHeads": [
     {
-      "id": "civil-registry",
-      "slug": "city-civil-registry",
+      "id": "head-civil-registry",
       "name": "Atty. Billy James G. Ramos",
-      "department": "City Civil Registry",
-      "abbreviation": "MCR",
-      "description": "Birth, death, marriage certificates, CENOMAR",
-      "icon": "bi-file-earmark-text-fill",
-      "email": "",
-      "phone": "(02) 8253-4370",
-      "services": "certificates"
+      "position": "department_head",
+      "title": "Department Head",
+      "officeId": "civil-registry"
     },
     {
-      "id": "treasurer",
-      "slug": "city-treasurer",
+      "id": "head-city-treasurer",
       "name": "Ms. Susan M. Bombita",
-      "department": "City Treasurer's Office",
-      "abbreviation": "CTO",
-      "description": "Tax payments, real property tax, revenue collection",
-      "icon": "bi-cash-coin",
-      "email": "",
-      "phone": "(02) 8871-4339",
-      "services": "tax-payments"
+      "position": "department_head",
+      "title": "Department Head",
+      "officeId": "city-treasurer"
     },
     {
-      "id": "engineering",
-      "slug": "city-engineering",
+      "id": "head-city-engineering",
       "name": "Engr. Rosabella A. Bantog",
-      "department": "City Engineering Office",
-      "abbreviation": "CEO",
-      "description": "Building permits, construction permits, infrastructure",
-      "icon": "bi-building-fill-gear",
-      "email": "lp.bldgo@gmail.com",
-      "phone": "(02) 8256-9680",
-      "services": "infrastructure"
+      "position": "department_head",
+      "title": "Department Head",
+      "officeId": "city-engineering"
     },
     {
-      "id": "cswdo",
-      "slug": "cswdo-services",
+      "id": "head-cswdo",
       "name": "Ms. Junet M. Barilla",
-      "department": "City Social Welfare and Development Office",
-      "abbreviation": "CSWDO",
-      "description": "Social services, PWD & senior citizen IDs, financial assistance",
-      "icon": "bi-people-fill",
-      "email": "",
-      "phone": "(02) 8727-3425",
-      "services": "social-services"
+      "position": "department_head",
+      "title": "Department Head",
+      "officeId": "cswdo"
     },
     {
-      "id": "agriculture",
-      "slug": "city-agriculture",
+      "id": "head-city-agriculture",
       "name": "Ms. Leticia Dela Cruz",
-      "department": "City Agriculture Office",
-      "abbreviation": "CAO",
-      "description": "Agricultural loans, crop insurance, fertilizer assistance",
-      "icon": "bi-tree-fill",
-      "email": "",
-      "phone": "(02) 8519-5687",
-      "services": "agriculture"
+      "position": "department_head",
+      "title": "Department Head",
+      "officeId": "city-agriculture"
     },
     {
-      "id": "planning",
-      "slug": "city-planning",
+      "id": "head-city-planning",
       "name": "Engr. Leonida Lagrisola",
-      "department": "City Planning & Development Office",
-      "abbreviation": "CPDO",
-      "description": "Development planning, project monitoring, zoning",
-      "icon": "bi-clipboard-data-fill",
-      "email": "",
-      "phone": "(02) 8872-0921",
-      "services": "infrastructure"
+      "position": "department_head",
+      "title": "Department Head",
+      "officeId": "city-planning"
     },
     {
-      "id": "assessor",
-      "slug": "city-assessor",
+      "id": "head-city-assessor",
       "name": "Engr. Ramon San Pedro",
-      "department": "City Assessor's Office",
-      "abbreviation": "CAO",
-      "description": "Property assessment, tax declarations, land records",
-      "icon": "bi-house-door-fill",
-      "email": "",
-      "phone": "(02) 8874-6781",
-      "services": "tax-payments"
+      "position": "department_head",
+      "title": "Department Head",
+      "officeId": "city-assessor"
     },
     {
-      "id": "accounting",
-      "slug": "city-accounting",
+      "id": "head-city-accounting",
       "name": "Ms. April C. Lim-Torres",
-      "department": "City Accounting Office",
-      "abbreviation": "CACCO",
-      "description": "Financial records, disbursements, accounting services",
-      "icon": "bi-calculator-fill",
-      "email": "",
-      "phone": "(02) 8478-1099",
-      "services": "tax-payments"
+      "position": "department_head",
+      "title": "Department Head",
+      "officeId": "city-accounting"
     },
     {
-      "id": "budget",
-      "slug": "city-budget",
+      "id": "head-city-budget",
       "name": "Ms. Jessie I. Dela Cruz",
-      "department": "City Budget Office",
-      "abbreviation": "CBO",
-      "description": "Budget preparation, appropriations, fiscal management",
-      "icon": "bi-piggy-bank-fill",
-      "email": "",
-      "phone": "(02) 8511-0779",
-      "services": "tax-payments"
+      "position": "department_head",
+      "title": "Department Head",
+      "officeId": "city-budget"
     },
     {
-      "id": "gso",
-      "slug": "city-general-services",
+      "id": "head-city-general-services",
       "name": "Atty. Gerald Beloso",
-      "department": "City General Services Office",
-      "abbreviation": "CGSO",
-      "description": "Property management, procurement, administration",
-      "icon": "bi-gear-fill",
-      "email": "",
-      "phone": "(02) 8871-6195",
-      "services": "government"
+      "position": "department_head",
+      "title": "Department Head",
+      "officeId": "city-general-services"
     },
     {
-      "id": "health",
-      "slug": "city-health",
+      "id": "head-city-health",
       "name": "Dr. Ferdinand C. Eusebio",
-      "department": "City Health Office",
-      "abbreviation": "CHO",
-      "description": "Vaccination, health certificates, medical assistance",
-      "icon": "bi-heart-pulse-fill",
-      "email": "",
-      "phone": "(02) 8367-3406",
-      "services": "health"
+      "position": "department_head",
+      "title": "Department Head",
+      "officeId": "city-health"
     },
     {
-      "id": "bpls",
-      "slug": "business-permits-licensing",
+      "id": "head-business-permits-licensing",
       "name": "Mr. Jesus Wilfredo D. Gaerlan",
-      "department": "Business Permits & Licensing Office",
-      "abbreviation": "BPLO",
-      "description": "Business permits, Mayor's clearance, licensing",
-      "icon": "bi-shop",
-      "email": "",
-      "phone": "(02) 8551-5930",
-      "services": "business"
+      "position": "department_head",
+      "title": "Department Head",
+      "officeId": "business-permits-licensing"
     },
     {
-      "id": "hrmo",
-      "slug": "human-resource-management",
+      "id": "head-human-resource-management",
       "name": "Ms. Lea M. Rodriguez",
-      "department": "Human Resource Management Office",
-      "abbreviation": "HRMO",
-      "description": "Personnel services, recruitment, employee records",
-      "icon": "bi-person-badge-fill",
-      "email": "",
-      "phone": "(02) 8256-5198",
-      "services": "government"
+      "position": "department_head",
+      "title": "Department Head",
+      "officeId": "human-resource-management"
     },
     {
-      "id": "cdrrmo",
-      "slug": "cdrrmo",
+      "id": "head-cdrrmo",
       "name": "Mr. Alejandro Dela Merced",
-      "department": "City Disaster Risk Reduction and Management Office",
-      "abbreviation": "CDRRMO",
-      "description": "Disaster preparedness, emergency response, risk reduction",
-      "icon": "bi-exclamation-triangle-fill",
-      "email": "",
-      "phone": "(02) 8290-6500",
-      "services": "public-safety"
+      "position": "department_head",
+      "title": "Department Head",
+      "officeId": "cdrrmo"
     }
   ]
 }

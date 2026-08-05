@@ -50,6 +50,10 @@
           "description": "Unique, URL-friendly Office identifier (referenced by services[].providedBy)"
         },
         "name": { "type": "string" },
+        "abbreviation": {
+          "type": "string",
+          "description": "Short form of the Office name, e.g. \"CTO\" (absorbed from the retired officials.departments[], ADR-0003)"
+        },
         "groupId": {
           "type": "string",
           "description": "Slug of the parent Office Group (must match an officeGroups id). Exactly one."
