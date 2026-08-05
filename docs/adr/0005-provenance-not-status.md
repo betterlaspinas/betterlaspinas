@@ -42,9 +42,15 @@ Hosting our own photo of an official document and linking it as the source would
 
 ### Render
 
-Detail pages only; nothing in list or search results. The card is **asymmetric** — a verified record states a fact ("Checked against source 14 Jul 2026"), an unverified one keeps the hedge ("Not yet checked against official documentation"). Each cited title is a link when its `url` exists and plain text when it does not, so an offline-sourced record does not read as second-class. **No checkmark or badge**: a tick reads as certification this site cannot grant.
+Detail pages only; nothing in list or search results. **The citation is unconditional; `verifiedOn` governs the claim made _about_ the citation, not whether it appears.** `sources[]` (what a record was transcribed from) and `verifiedOn` (whether we went back and re-checked it) are different facts, and gating the first behind the second collapsed two distinguishable states — a record with a recorded source and a record with none at all — into identical copy. Three states follow, all rendered by the shared `UiDataSourceStatus` component:
 
-The card renders **whether or not the record has sources**. Silence would put the softest signal on the records we know least about.
+1. **No `sources`.** No citation list. The hedge names _our_ documentation backlog, not the data's reliability — "We're still documenting where this office's details came from. Confirm with the office before relying on them." The phone number is probably fine; we just haven't written down its origin.
+2. **`sources` present, no `verifiedOn`.** The citation list renders, followed by "Transcribed from this document. We haven't re-checked it against the original yet." (pluralised "these documents" / "them" for more than one source).
+3. **`sources` present with `verifiedOn`.** The citation list renders, followed by "Checked against source 14 Jul 2026."
+
+Each cited title is a link when its `url` exists and plain text when it does not, so an offline-sourced record does not read as second-class — true in both states 2 and 3. **No checkmark or badge** in any state: a tick reads as certification this site cannot grant.
+
+The card renders **whether or not the record has sources**, and now the records we know least about (state 1) are visibly distinct from the ones we've merely not re-checked (state 2) — silence used to put the same soft signal on both.
 
 `pnpm validate` deliberately enforces nothing about these fields beyond `name` being required inside a source object — no required `sources`, no `dependentRequired` (`#237`). **Render is the enforcement**: the dishonest state, claiming a check without citing what was checked, has no way to reach the page. This is about honesty, not format: a schema `pattern` requiring `verifiedOn` to be `YYYY-MM-DD` when present does not contradict it — a regex can confirm a date is well-formed, it cannot confirm the record was actually checked. That honesty gap is exactly what render, not validation, closes. `verifiedOn`'s pattern exists because `useDataSources` picks the most recent one by raw string comparison, correct only for zero-padded ISO dates; `published` gets no such constraint — nothing computes from it, so there is no comparison to protect and a bare year (its documented shape) must stay valid.
 
@@ -57,8 +63,8 @@ The card renders **whether or not the record has sources**. Silence would put th
 
 ## Consequences
 
-- `SourceRef` added to `app/types/config.ts`; `sources?: SourceRef[]` replaces `sourceUrl` / `sourceName` on `ServiceDetail`, `Office`, `OfficeDetail` and `Agency`. `Agency.dataStatus` deleted. All 16 existing records migrated to single-element `sources[]`.
-- Both detail pages (`offices/[slug].vue`, `service-details/[slug].vue`) read the gate through one composable, `useDataSources` — the honesty rule is a single implementation, not two that can drift.
-- **Invisible on merge**: no record carries a `verifiedOn` yet, so every page shows the hedge. The Service page's "Verified Source" heading is gone, which is a correction, not a regression: it was claiming what we had not done.
+- `SourceRef` added to `app/types/config.ts`; `sources?: SourceRef[]` replaces `sourceUrl` / `sourceName` on `ServiceDetail`, `Office` and `Agency`. The duplicate, dead `sources` slot on `OfficeDetail` (never typed, never rendered) is removed rather than carried over. `Agency.dataStatus` deleted. All 16 existing records migrated to single-element `sources[]`.
+- Both detail pages (`offices/[slug].vue`, `service-details/[slug].vue`) read the gate through one composable, `useDataSources`, and render it through one component, `UiDataSourceStatus` (`app/components/ui/DataSourceStatus.vue`) — the honesty rule and the three-state copy are each a single implementation, not two that can drift.
+- **Not invisible on merge, though nothing reaches a rendered state 3 yet**: 7 of 14 Offices and 8 of the 16 Services with a `detail` block have no `sources` (state 1); the remaining 7 Offices and 8 Services have `sources` but no `verifiedOn` (state 2). The one record with a stamped `verifiedOn` — `pnp-laspinas` (rule 4 above) — is an Agency, and Agencies have no detail page yet, so it is verified as data without ever reaching a rendered card. The Service page's "Verified Source" heading is gone, which is a correction, not a regression: it was claiming what we had not done.
 - Later batches (`#213`, the `#63`–`#70` content cluster) stamp `verifiedOn` per record as they verify. Stamping is the only way a page starts stating a fact.
 - `CityData.financialData.sourceUrl` (`statistics-detailed.json`) is untouched — a statistic's citation, not a directory record's provenance.

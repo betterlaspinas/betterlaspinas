@@ -313,29 +313,7 @@ function toggleFaq(index: number) {
                 <i class="bi bi-patch-check text-primary-600" />
                 {{ sources.length > 1 ? 'Data sources' : 'Data source' }}
               </h4>
-              <template v-if="verifiedOn">
-                <ul class="space-y-1 mb-3">
-                  <li v-for="(source, i) in sources" :key="`${source.name}-${i}`" class="text-sm">
-                    <a
-                      v-if="source.url"
-                      :href="source.url"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="inline-flex items-center gap-2 font-medium text-primary-600 hover:text-primary-700 transition-colors"
-                    >
-                      {{ source.name }}
-                      <i class="bi bi-box-arrow-up-right text-xs" />
-                    </a>
-                    <span v-else class="font-medium text-gray-900">{{ source.name }}</span>
-                  </li>
-                </ul>
-                <p class="text-sm text-gray-600">
-                  Checked against source {{ checkedOn }}.
-                </p>
-              </template>
-              <p v-else class="text-sm text-gray-600">
-                Not yet checked against official documentation. Verify before relying on these details.
-              </p>
+              <UiDataSourceStatus :sources="sources" :verified-on="verifiedOn" :checked-on="checkedOn" subject="service" />
             </UiCard>
           </div>
         </div>
