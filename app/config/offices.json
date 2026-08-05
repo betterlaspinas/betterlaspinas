@@ -175,6 +175,7 @@
       "location": "City Hall, Ground Floor, Las Piñas City Hall Compound",
       "phone": "(02) 8403-7045",
       "mobile": "0916 284 0885",
+      "facebook": "https://www.facebook.com/cswdolaspinascity",
       "hours": "Mon-Thu: 8AM - 7PM",
       "sourceUrl": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
       "sourceName": "Citizen's Charter 2022 (1st Edition)"
@@ -189,6 +190,7 @@
       "link": "/offices/city-agriculture",
       "phone": "(02) 8519-5687",
       "location": "City Hall, Las Piñas City Hall Compound",
+      "facebook": "https://www.facebook.com/CAO.LPCity",
       "hours": "Mon-Thu: 8AM - 7PM"
     },
     {
@@ -201,6 +203,7 @@
       "link": "/offices/city-engineering",
       "location": "City Hall, Las Piñas City Hall Compound",
       "phone": "(02) 8873-3004",
+      "facebook": "https://www.facebook.com/engineering.lp",
       "hours": "Mon-Fri: 8AM - 5PM",
       "sourceUrl": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
       "sourceName": "Citizen's Charter 2022 (1st Edition)",
@@ -216,6 +219,7 @@
       "link": "/offices/city-planning",
       "location": "City Hall, Las Piñas City Hall Compound",
       "phone": "(02) 8872-0921",
+      "facebook": "https://www.facebook.com/CPDOLasPinas",
       "hours": "Mon-Thu: 8AM - 7PM",
       "sourceUrl": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
       "sourceName": "Citizen's Charter 2022 (1st Edition)"
@@ -246,6 +250,7 @@
       "link": "/offices/cdrrmo",
       "location": "Command Center, Las Piñas City",
       "phone": "(02) 8290-6500",
+      "facebook": "https://www.facebook.com/lpdrrmo",
       "hours": "24/7 Operations"
     },
     {
