@@ -131,11 +131,7 @@
           "type": "array",
           "items": { "$ref": "#/definitions/relatedService" }
         },
-        "onlineLink": { "type": "string" },
-        "sources": {
-          "type": "array",
-          "items": { "$ref": "#/definitions/sourceRef" }
-        }
+        "onlineLink": { "type": "string" }
       }
     },
     "sourceRef": {
