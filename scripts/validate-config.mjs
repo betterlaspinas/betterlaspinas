@@ -120,13 +120,14 @@ export function validateAgainstSchema(data, schema, label) {
 // ---------------------------------------------------------------------------
 // Cross-file / semantic assertions.
 // ---------------------------------------------------------------------------
-export function validateConsistency(services, categories, offices, agencies) {
+export function validateConsistency(services, categories, offices, agencies, officials) {
   const before = errors.length
   const serviceList = services?.services ?? []
   const categoryList = categories?.categories ?? []
   const officeGroupList = offices?.officeGroups ?? []
   const officeList = offices?.offices ?? []
   const agencyList = agencies?.agencies ?? []
+  const headList = officials?.departmentHeads ?? []
 
   const categoryIds = new Set(categoryList.map(c => c.id))
   const officeGroupIds = new Set(officeGroupList.map(g => g.id))
@@ -154,14 +155,66 @@ export function validateConsistency(services, categories, offices, agencies) {
 
   // Duplicate office ids
   const seenOffice = new Set()
+  // An abbreviation is an identifier residents read on the card, so two Offices
+  // sharing one is ambiguous (City Assessor's and City Agriculture Office both
+  // carried "CAO" before #199 surfaced it by rendering the field).
+  const seenAbbreviation = new Map()
   for (const o of officeList) {
     if (seenOffice.has(o.id))
       errors.push(`offices.json: duplicate office id "${o.id}"`)
     seenOffice.add(o.id)
 
+    if (o.abbreviation) {
+      const owner = seenAbbreviation.get(o.abbreviation)
+      if (owner)
+        errors.push(`offices.json: office "${o.id}" reuses abbreviation "${o.abbreviation}" already used by "${owner}"`)
+      else
+        seenAbbreviation.set(o.abbreviation, o.id)
+    }
+
     // Every Office belongs to exactly one (known) Office Group.
     if (!officeGroupIds.has(o.groupId))
       errors.push(`offices.json: office "${o.id}" references unknown groupId "${o.groupId}"`)
+  }
+
+  // --- officials.json <-> offices.json (#199, ADR-0003) --------------------
+  // Office identity/description/contact has exactly one home (offices.json);
+  // officials.json holds people who reference an Office by id.
+  if (officials) {
+    // The retired duplicate surface must not come back.
+    if (officials.departments) {
+      errors.push(
+        'officials.json: `departments` is retired (ADR-0003) — a department head is an Official with `officeId`; office identity/contact lives in offices.json',
+      )
+    }
+
+    const allOfficials = [
+      ...(officials.executive ?? []),
+      ...(officials.legislative ?? []),
+      ...headList,
+    ]
+
+    // Duplicate official ids, across every people array.
+    const seenOfficial = new Set()
+    for (const p of allOfficials) {
+      if (seenOfficial.has(p.id))
+        errors.push(`officials.json: duplicate official id "${p.id}"`)
+      seenOfficial.add(p.id)
+    }
+
+    // An office is headed by at most one person, and that office must exist.
+    const seenHeadedOffice = new Set()
+    for (const h of headList) {
+      if (!h.officeId) {
+        errors.push(`officials.json: department head "${h.id}" is missing \`officeId\``)
+        continue
+      }
+      if (!officeIds.has(h.officeId))
+        errors.push(`officials.json: department head "${h.id}" references unknown officeId "${h.officeId}"`)
+      if (seenHeadedOffice.has(h.officeId))
+        errors.push(`officials.json: office "${h.officeId}" has more than one department head`)
+      seenHeadedOffice.add(h.officeId)
+    }
   }
 
   // Duplicate category ids
@@ -223,6 +276,7 @@ function main() {
   const categories = readJson(resolve(configDir, 'categories.json'))
   const offices = readJson(resolve(configDir, 'offices.json'))
   const agencies = readJson(resolve(configDir, 'agencies.json'))
+  const officials = readJson(resolve(configDir, 'officials.json'))
   const servicesSchema = readJson(resolve(schemaDir, 'services.schema.json'))
   const categoriesSchema = readJson(resolve(schemaDir, 'categories.schema.json'))
   const officesSchema = readJson(resolve(schemaDir, 'offices.schema.json'))
@@ -237,7 +291,7 @@ function main() {
   if (agencies && agenciesSchema)
     validateAgainstSchema(agencies, agenciesSchema, 'agencies.json')
   if (services && categories)
-    validateConsistency(services, categories, offices, agencies)
+    validateConsistency(services, categories, offices, agencies, officials)
 
   if (errors.length > 0) {
     console.error(`\n✖ Config validation failed with ${errors.length} error(s):\n`)
@@ -247,7 +301,7 @@ function main() {
     process.exit(1)
   }
 
-  console.log('✔ Config validation passed (services.json, categories.json, offices.json, agencies.json)')
+  console.log('✔ Config validation passed (services.json, categories.json, offices.json, agencies.json, officials.json)')
 }
 
 // Run only when executed directly (allows importing the pure functions in tests).

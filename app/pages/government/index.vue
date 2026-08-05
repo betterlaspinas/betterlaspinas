@@ -32,6 +32,26 @@ const ipmr = computed(() => officials.legislative.find(official => official.posi
 // same preview-card + "view all" CTA pattern as PopularServices.vue.
 const SUBDIVISIONS_PREVIEW_COUNT = 7
 const subdivisionsPreview = computed(() => subdivisions.items.slice(0, SUBDIVISIONS_PREVIEW_COUNT))
+
+// Key Offices: one entity, two views (#199, ADR-0003). The Office owns
+// identity/description/contact; the head is the Official that references it.
+// Read through the accessor layer — never off officials.json, which used to
+// carry a drifting copy of the same office fields.
+//
+// Grouped by OfficeGroup so the section mirrors /offices; a group with no
+// headed Office renders nothing. Only Offices WITH a head appear, which is what
+// marks a City Hall department.
+//
+// The head's NAME is deliberately not rendered: the incumbent names inherited
+// from the old officials.departments data are unverified, and publishing a
+// stale office-holder on a civic directory is worse than publishing none. The
+// join still drives which Offices appear here. Re-adding the names once each
+// is verified against an official source is tracked in #279.
+const officeGroupsWithHeads = computed(() =>
+  getOfficeGroups()
+    .map(group => ({ group, entries: getOfficesWithHeadsByGroup(group.id) }))
+    .filter(({ entries }) => entries.length > 0),
+)
 </script>
 
 <template>
@@ -193,81 +213,78 @@ const subdivisionsPreview = computed(() => subdivisions.items.slice(0, SUBDIVISI
       </div>
     </section>
 
-    <!-- Department Heads -->
+    <!-- Key Offices -->
     <section class="py-12 bg-gray-50">
       <div class="container mx-auto px-4">
         <UiSectionHeader
-          title="Department Heads & Key Offices"
+          title="Key Offices"
           :description="`${labels.deptPrefix} offices providing services to citizens`"
           badge-icon="bi-building-fill"
           :badge-text="`${labels.deptPrefix} Offices`"
           badge-class="bg-primary-600 text-white"
         />
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <!-- TODO: Add back when available -->
-          <!-- <NuxtLink
-            v-for="dept in officials.departments"
-            :key="dept.id"
-            :to="`/service-details/${dept.slug}`"
-            class="group bg-white border border-gray-200 rounded-xl p-6 no-underline transition-all duration-200 hover:border-primary-500 hover:shadow-lg"
-          >
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 flex items-center justify-center bg-primary-50 rounded-xl text-primary-600 text-xl shrink-0 transition-all duration-200 group-hover:bg-primary-600 group-hover:text-white">
-                <i class="bi" :class="[dept.icon]" />
-              </div>
-              <div class="flex-1 min-w-0">
-                <h4 class="text-base font-semibold text-gray-900 mb-1">
-                  {{ dept.department }}
-                </h4>
-                <p class="text-sm text-gray-500 mb-3">
-                  {{ dept.description }}
-                </p>
-                <div class="space-y-1 text-xs text-gray-500">
-                  <span v-if="dept.phone" class="flex items-center gap-1">
-                    <i class="bi bi-telephone" /> {{ dept.phone }}
-                  </span>
-                  <span v-if="dept.email" class="flex items-center gap-1">
-                    <i class="bi bi-envelope" /> {{ dept.email }}
-                  </span>
-                </div>
-                <span class="inline-flex items-center gap-1 text-primary-600 font-medium text-sm mt-3 group-hover:gap-2 transition-all">
-                  View Services <i class="bi bi-arrow-right" />
-                </span>
-              </div>
-            </div>
-          </NuxtLink> -->
+        <div v-for="{ group, entries } in officeGroupsWithHeads" :key="group.id" class="mb-10 last:mb-0">
+          <h3 class="text-lg font-semibold text-gray-900 mb-4">
+            {{ group.name }}
+          </h3>
 
-          <!-- Current active block with links temporarily removed -->
-          <UiCard
-            v-for="dept in officials.departments"
-            :key="dept.id"
-            interactive
-            class="group"
-          >
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 flex items-center justify-center bg-primary-50 rounded-xl text-primary-600 text-xl shrink-0 transition-all duration-200">
-                <i class="bi" :class="[dept.icon]" />
-              </div>
-              <div class="flex-1 min-w-0">
-                <h4 class="text-base font-semibold text-gray-900 mb-1">
-                  {{ dept.department }}
-                </h4>
-                <p class="text-sm text-gray-500 mb-3">
-                  {{ dept.description }}
-                </p>
-                <div class="space-y-1 text-xs text-gray-500">
-                  <span v-if="dept.phone" class="flex items-center gap-1">
-                    <i class="bi bi-telephone" /> {{ dept.phone }}
-                  </span>
-                  <span v-if="dept.email" class="flex items-center gap-1">
-                    <i class="bi bi-envelope" /> {{ dept.email }}
-                  </span>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Only Offices with a detail page are linkable; the rest render as
+                 plain cards so the section never points at a 404.
+                 The card is NOT the anchor: the contact rows carry their own
+                 Facebook link, and an <a> inside an <a> is invalid HTML that
+                 browsers silently un-nest. The "View office" CTA is the anchor
+                 instead, stretched over the card via after:inset-0 so the whole
+                 card still clicks through, with the Facebook link layered above
+                 it. -->
+            <UiCard
+              v-for="{ office } in entries"
+              :key="office.id"
+              interactive
+              class="group relative"
+            >
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 flex items-center justify-center bg-primary-50 rounded-xl text-primary-600 text-xl shrink-0 transition-all duration-200">
+                  <i class="bi" :class="[office.icon]" />
+                </div>
+                <div class="flex-1 min-w-0">
+                  <h4 class="text-base font-semibold text-gray-900 mb-1">
+                    {{ office.name }}
+                    <span v-if="office.abbreviation" class="text-gray-400 font-normal">({{ office.abbreviation }})</span>
+                  </h4>
+                  <p class="text-sm text-gray-500 mb-3">
+                    {{ office.description }}
+                  </p>
+                  <div class="space-y-1 text-xs text-gray-500">
+                    <span v-if="office.phone" class="flex items-center gap-1">
+                      <i class="bi bi-telephone" /> {{ office.phone }}
+                    </span>
+                    <span v-if="office.email" class="flex items-center gap-1">
+                      <i class="bi bi-envelope" /> {{ office.email }}
+                    </span>
+                    <a
+                      v-if="office.facebook"
+                      :href="office.facebook"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="relative z-10 inline-flex items-center gap-1 text-primary-600 hover:underline w-fit"
+                    >
+                      <i class="bi bi-facebook" />
+                      <span class="sr-only">{{ office.name }} on </span>Facebook Page
+                    </a>
+                  </div>
+                  <NuxtLink
+                    v-if="office.detail"
+                    :to="office.link"
+                    class="inline-flex items-center gap-1 text-primary-600 font-medium text-sm mt-3 group-hover:gap-2 transition-all no-underline after:absolute after:inset-0"
+                  >
+                    View office <i class="bi bi-arrow-right" />
+                  </NuxtLink>
                 </div>
               </div>
-            </div>
-          </UiCard>
-          <!-- End of current active block -->
+            </UiCard>
+          </div>
         </div>
       </div>
     </section>

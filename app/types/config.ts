@@ -64,25 +64,25 @@ export interface Official {
   email?: string
   phone?: string
   committees?: string
-}
-
-export interface Department {
-  id: string
-  slug: string
-  name: string
-  department: string
-  abbreviation: string
-  description: string
-  icon: string
-  email: string
-  phone: string
-  services: string
+  /**
+   * For a Department Head: the id of the one Office this person heads (matches
+   * an offices.json id). ADR-0003 — a head is an Official (person) that
+   * references an Office (organization), never an attribute of the Office. This
+   * is the only link between officials.json and offices.json; office identity,
+   * description and contact live solely in offices.json.
+   */
+  officeId?: string
 }
 
 export interface OfficialsConfig {
   executive: Official[]
   legislative: Official[]
-  departments: Department[]
+  /**
+   * Appointive heads of the city's Offices (ADR-0003). Replaces the former
+   * `departments[]`, which duplicated Office identity/description/contact and
+   * had already drifted from offices.json. Holds people only.
+   */
+  departmentHeads: Official[]
 }
 
 export interface SubdivisionsConfig {
@@ -528,6 +528,12 @@ export interface OfficeGroup {
 export interface Office {
   id: string
   name: string
+  /**
+   * Short form of the Office name (e.g. "CTO", "CSWDO"). Absorbed from the
+   * retired `officials.departments[].abbreviation` — it describes the
+   * organization, not its head (ADR-0003).
+   */
+  abbreviation?: string
   groupId: string
   icon: string
   description: string

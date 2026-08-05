@@ -9,14 +9,20 @@ import {
   getAllServices,
   getCategoryBySlug,
   getCategorySeoDescription,
+  getDepartmentHeads,
   getMergedSiteConfig,
   getOfficeBySlug,
   getOfficeForService,
   getOfficeGroupBySlug,
   getOfficeGroups,
+  getOfficeHead,
   getOffices,
   getOfficesByGroup,
+  getOfficesConfig,
   getOfficesForCategory,
+  getOfficesWithHeads,
+  getOfficesWithHeadsByGroup,
+  getOfficialsConfig,
   getOgImageConfig,
   getOgImageRouteConfig,
   getServiceBySlug,
@@ -909,6 +915,25 @@ describe('configHelper', () => {
       expect(validateConsistency(services, categories, offices)).toBe(false)
     })
 
+    it('rejects two Offices sharing an abbreviation', () => {
+      const services = { services: [makeService()] }
+      const categories = { categories: [{ id: 'certificates' }] }
+      const base = {
+        groupId: 'frontline-services',
+        icon: 'bi-building',
+        description: 'd',
+        link: '/x',
+        abbreviation: 'CAO',
+      }
+      const offices = makeOffices({
+        offices: [
+          { ...base, id: 'city-assessor', name: 'City Assessor\'s Office' },
+          { ...base, id: 'city-agriculture', name: 'City Agriculture Office' },
+        ],
+      })
+      expect(validateConsistency(services, categories, offices)).toBe(false)
+    })
+
     it('rejects a Service whose providedBy references an unknown Office', () => {
       const services = { services: [makeService({ providedBy: 'ghost-office' })] }
       const categories = { categories: [{ id: 'certificates' }] }
@@ -921,6 +946,140 @@ describe('configHelper', () => {
       const categories = { categories: [{ id: 'certificates' }] }
       const offices = makeOffices()
       expect(validateConsistency(services, categories, offices)).toBe(true)
+    })
+  })
+
+  describe('department heads (#199, ADR-0003)', () => {
+    const officials = getOfficialsConfig()
+
+    it('holds people only — the duplicated departments[] surface is gone', () => {
+      expect((officials as unknown as Record<string, unknown>).departments).toBeUndefined()
+      expect(officials.departmentHeads.length).toBeGreaterThan(0)
+    })
+
+    it('carries no copy of Office identity, description or contact', () => {
+      // The drift #199 exists to kill: these fields have exactly one home now.
+      for (const head of getDepartmentHeads()) {
+        expect(head).not.toHaveProperty('department')
+        expect(head).not.toHaveProperty('description')
+        expect(head).not.toHaveProperty('phone')
+        expect(head).not.toHaveProperty('icon')
+        expect(head).not.toHaveProperty('abbreviation')
+        // The retired Office -> one Category link (departments[].services).
+        expect(head).not.toHaveProperty('services')
+      }
+    })
+
+    it('links every head to a real Office', () => {
+      const officeIds = new Set(getOfficesConfig().offices.map(office => office.id))
+      for (const head of getDepartmentHeads()) {
+        expect(head.position).toBe('department_head')
+        expect(head.officeId).toBeDefined()
+        expect(officeIds.has(head.officeId!)).toBe(true)
+      }
+    })
+
+    it('resolves a head by Office id', () => {
+      expect(getOfficeHead('civil-registry')?.name).toBe('Atty. Billy James G. Ramos')
+      expect(getOfficeHead('ghost-office')).toBeUndefined()
+    })
+
+    it('pairs each visible headed Office with its head, hidden Offices excluded', () => {
+      const pairs = getOfficesWithHeads()
+      expect(pairs.length).toBeGreaterThan(0)
+      expect(pairs.every(({ head, office }) => head.officeId === office.id)).toBe(true)
+      // human-resource-management is hidden but still has a head recorded.
+      expect(getOfficeHead('human-resource-management')).toBeDefined()
+      expect(pairs.some(({ office }) => office.id === 'human-resource-management')).toBe(false)
+    })
+
+    it('sources the card fields from the Office, not the head', () => {
+      const entry = getOfficesWithHeads().find(({ office }) => office.id === 'civil-registry')
+      expect(entry?.office.name).toBe('City Civil Registry')
+      expect(entry?.office.abbreviation).toBe('CCR')
+      expect(entry?.office.phone).toBe('(02) 8253-4370')
+    })
+
+    it('groups headed Offices, and returns none for an unknown group', () => {
+      expect(getOfficesWithHeadsByGroup('frontline-services').length).toBeGreaterThan(0)
+      expect(getOfficesWithHeadsByGroup('ghost-group')).toEqual([])
+    })
+  })
+
+  describe('officials config validator (#199, ADR-0003)', () => {
+    function makeArgs(officials: Record<string, unknown>) {
+      const services = { services: [] }
+      const categories = { categories: [] }
+      const offices = {
+        officeGroups: [{ id: 'frontline-services', name: 'Frontline', description: 'd' }],
+        offices: [{
+          id: 'civil-registry',
+          name: 'City Civil Registry',
+          groupId: 'frontline-services',
+          icon: 'bi-building',
+          description: 'd',
+          link: '/offices/civil-registry',
+        }],
+      }
+      return [services, categories, offices, undefined, officials]
+    }
+
+    it('accepts a head that references a known Office', () => {
+      const officials = {
+        executive: [{ id: 'mayor' }],
+        legislative: [],
+        departmentHeads: [{ id: 'head-civil-registry', officeId: 'civil-registry' }],
+      }
+      expect(validateConsistency(...makeArgs(officials))).toBe(true)
+    })
+
+    it('rejects a head referencing an unknown Office', () => {
+      const officials = {
+        executive: [],
+        legislative: [],
+        departmentHeads: [{ id: 'head-ghost', officeId: 'ghost-office' }],
+      }
+      expect(validateConsistency(...makeArgs(officials))).toBe(false)
+    })
+
+    it('rejects a head with no officeId', () => {
+      const officials = {
+        executive: [],
+        legislative: [],
+        departmentHeads: [{ id: 'head-orphan' }],
+      }
+      expect(validateConsistency(...makeArgs(officials))).toBe(false)
+    })
+
+    it('rejects two heads for the same Office', () => {
+      const officials = {
+        executive: [],
+        legislative: [],
+        departmentHeads: [
+          { id: 'head-a', officeId: 'civil-registry' },
+          { id: 'head-b', officeId: 'civil-registry' },
+        ],
+      }
+      expect(validateConsistency(...makeArgs(officials))).toBe(false)
+    })
+
+    it('rejects duplicate official ids across the people arrays', () => {
+      const officials = {
+        executive: [{ id: 'mayor' }],
+        legislative: [{ id: 'mayor' }],
+        departmentHeads: [],
+      }
+      expect(validateConsistency(...makeArgs(officials))).toBe(false)
+    })
+
+    it('rejects a resurrected departments[] block', () => {
+      const officials = {
+        executive: [],
+        legislative: [],
+        departmentHeads: [],
+        departments: [{ id: 'civil-registry', department: 'City Civil Registry' }],
+      }
+      expect(validateConsistency(...makeArgs(officials))).toBe(false)
     })
   })
 
