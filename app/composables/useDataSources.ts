@@ -27,13 +27,15 @@ export function useDataSources(record: MaybeRefOrGetter<{ sources?: SourceRef[] 
     return dates.length ? dates.reduce((a, b) => (a > b ? a : b)) : null
   })
 
-  // en-GB, not en-PH: PH resolves to US month-first ordering, and the card reads
-  // "Checked against source 14 Jul 2026" — day first, as dates are written here.
-  const checkedOn = computed(() =>
-    verifiedOn.value
-      ? new Date(verifiedOn.value).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
-      : '',
-  )
+  const checkedOn = computed(() => (verifiedOn.value ? formatCheckedOn(verifiedOn.value) : ''))
 
   return { sources, verifiedOn, checkedOn }
+}
+
+// en-GB, not en-PH: PH resolves to US month-first ordering, and the card reads
+// "Checked against source 14 Jul 2026" — day first, as dates are written here.
+// Exported so DataSourceStatus.vue can format a single source's own `verifiedOn`
+// (not just the record-level aggregate) without a second date-formatting path.
+export function formatCheckedOn(date: string): string {
+  return new Date(date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
 }

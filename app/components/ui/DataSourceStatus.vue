@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { SourceRef } from '~/types/config'
+import { formatCheckedOn } from '~/composables/useDataSources'
 
 /**
  * Body of the "Data source" card shared by the Office and Service detail
@@ -12,23 +13,29 @@ import type { SourceRef } from '~/types/config'
  *     The hedge names OUR documentation backlog, never the data's
  *     reliability: the phone number is probably fine, we just haven't
  *     written down its origin.
- *  2. `sources` present, no `verifiedOn` — the citation renders, and states
- *     plainly that it was matched to the record after the fact rather than
- *     recorded by whoever transcribed it, and has not yet been confirmed
- *     against the original.
- *  3. `sources` present with `verifiedOn` — citation plus the checked-on
- *     date.
+ *  2. `sources` present, none carry `verifiedOn` — the citation renders, and
+ *     states plainly that no check is on record for it yet.
+ *  3. at least one source carries `verifiedOn` — citation plus the
+ *     checked-on date. With a single source this is a record-level
+ *     statement (`verifiedOn`/`checkedOn` props). With more than one
+ *     source, `verifiedOn` on the record is only the most recent across
+ *     them (`useDataSources`), so a per-source status is rendered inline —
+ *     otherwise one checked source next to one unchecked source would read
+ *     as both having been checked.
  *
  * No checkmark or badge in any state — a tick would read as certification
  * this site cannot grant.
  */
-defineProps<{
+const props = defineProps<{
   sources: SourceRef[]
   verifiedOn: string | null
   checkedOn: string
   /** Subject of row 1's copy — "this office's details" / "this service's details". */
   subject: 'office' | 'service'
 }>()
+
+/** True when no source in the list carries its own `verifiedOn` — the "nothing checked yet" case. */
+const allUnverified = computed(() => props.sources.every(source => !source.verifiedOn))
 </script>
 
 <template>
@@ -48,13 +55,25 @@ defineProps<{
         <!-- plain text when the city does not publish the document online; an
              absent link never downgrades a record (#238) -->
         <span v-else class="font-medium text-gray-900">{{ source.name }}</span>
+        <!-- per-source status: only needed once there's more than one source and
+             they don't all share the same (un)verified state, otherwise the
+             record-level line below already tells the whole story -->
+        <span v-if="sources.length > 1 && !allUnverified" class="block text-xs text-gray-500">
+          {{ source.verifiedOn ? `Checked ${formatCheckedOn(source.verifiedOn)}.` : 'No check recorded yet.' }}
+        </span>
       </li>
     </ul>
-    <p v-if="verifiedOn" class="text-sm text-gray-600">
+    <p v-if="sources.length === 1 && verifiedOn" class="text-sm text-gray-600">
       Checked against source {{ checkedOn }}.
     </p>
+    <p v-else-if="sources.length === 1" class="text-sm text-gray-600">
+      Sourced from this document. No check recorded yet.
+    </p>
+    <p v-else-if="allUnverified" class="text-sm text-gray-600">
+      Sourced from these documents. No check recorded yet.
+    </p>
     <p v-else class="text-sm text-gray-600">
-      Matched to {{ sources.length > 1 ? 'these documents' : 'this document' }} after the fact. Not yet confirmed against the original.
+      Sourced from these documents.
     </p>
   </template>
   <p v-else class="text-sm text-gray-600">
