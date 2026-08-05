@@ -18,7 +18,7 @@
     {
       "id": "civil-registry",
       "name": "City Civil Registry",
-      "abbreviation": "MCR",
+      "abbreviation": "CCR",
       "groupId": "frontline-services",
       "icon": "bi-building",
       "description": "Birth, death, marriage registration, corrections, and certified copies",
@@ -134,8 +134,7 @@
       "icon": "bi-people",
       "description": "Service records, employment certificates, leave credits for LGU employees",
       "link": "/offices/human-resource-management",
-      "hidden": true,
-      "phone": "(02) 8256-5198"
+      "hidden": true
     },
     {
       "id": "city-treasurer",
@@ -146,7 +145,6 @@
       "description": "Tax collection, payment of local fees and charges, cedula, and revenue management",
       "link": "/offices/city-treasurer",
       "location": "City Hall, Ground Floor, Las Piñas City Hall Compound",
-      "phone": "(02) 8871-4339",
       "hours": "Mon-Thu: 8AM - 7PM",
       "sourceUrl": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
       "sourceName": "Citizen's Charter 2022 (1st Edition)"
@@ -160,7 +158,6 @@
       "description": "Property assessment, tax declarations, land records, and real property appraisal",
       "link": "/offices/city-assessor",
       "location": "City Hall, Ground Floor, Las Piñas City Hall Compound",
-      "phone": "(02) 8874-6781",
       "email": "cityassessor.lc@gmail.com",
       "hours": "Mon-Thu: 8AM - 7PM",
       "sourceUrl": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
@@ -168,7 +165,7 @@
     },
     {
       "id": "cswdo",
-      "name": "City Social Welfare & Development Office (CSWDO)",
+      "name": "City Social Welfare & Development Office",
       "abbreviation": "CSWDO",
       "groupId": "frontline-services",
       "icon": "bi-people",
@@ -189,7 +186,6 @@
       "description": "Agricultural programs, farmer registration, subsidized inputs, and livelihood assistance",
       "link": "/offices/city-agriculture",
       "location": "City Hall, Las Piñas City Hall Compound",
-      "phone": "(02) 8519-5687",
       "hours": "Mon-Thu: 8AM - 7PM"
     },
     {
@@ -218,8 +214,7 @@
       "location": "City Hall, Las Piñas City Hall Compound",
       "hours": "Mon-Thu: 8AM - 7PM",
       "sourceUrl": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
-      "sourceName": "Citizen's Charter 2022 (1st Edition)",
-      "phone": "(02) 8872-0921"
+      "sourceName": "Citizen's Charter 2022 (1st Edition)"
     },
     {
       "id": "city-health",
@@ -239,7 +234,7 @@
     },
     {
       "id": "cdrrmo",
-      "name": "City Disaster Risk Reduction & Management Office (CDRRMO)",
+      "name": "City Disaster Risk Reduction & Management Office",
       "abbreviation": "CDRRMO",
       "groupId": "frontline-services",
       "icon": "bi-shield-exclamation",
@@ -258,7 +253,6 @@
       "description": "Budget preparation, appropriation management, obligation requests, and barangay budget review",
       "link": "/offices/city-budget",
       "location": "City Hall, Las Piñas City Hall Compound",
-      "phone": "(02) 8511-0779",
       "hours": "Mon-Thu: 8AM - 7PM"
     },
     {
@@ -270,7 +264,6 @@
       "description": "Pre-audit of disbursements, payroll processing, check issuance, and financial reporting",
       "link": "/offices/city-accounting",
       "location": "City Hall, Las Piñas City Hall Compound",
-      "phone": "(02) 8478-1099",
       "hours": "Mon-Thu: 8AM - 7PM"
     },
     {
@@ -282,7 +275,6 @@
       "description": "Property management, vehicle maintenance, equipment rental, and general city services",
       "link": "/offices/city-general-services",
       "location": "City Hall, Las Piñas City Hall Compound",
-      "phone": "(02) 8871-6195",
       "hours": "Mon-Thu: 8AM - 7PM"
     },
     {
@@ -292,8 +284,7 @@
       "groupId": "frontline-services",
       "icon": "bi-shop",
       "description": "Business permits, Mayor's clearance, licensing",
-      "link": "/offices/business-permits-licensing",
-      "phone": "(02) 8551-5930"
+      "link": "/offices/business-permits-licensing"
     }
   ]
 }

@@ -977,7 +977,7 @@ describe('configHelper', () => {
     it('sources the card fields from the Office, not the head', () => {
       const entry = getOfficesWithHeads().find(({ office }) => office.id === 'civil-registry')
       expect(entry?.office.name).toBe('City Civil Registry')
-      expect(entry?.office.abbreviation).toBe('MCR')
+      expect(entry?.office.abbreviation).toBe('CCR')
       expect(entry?.office.phone).toBe('(02) 8253-4370')
     })
 
