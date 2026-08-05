@@ -122,8 +122,40 @@
           "items": { "$ref": "#/definitions/relatedService" }
         },
         "onlineLink": { "type": "string" },
-        "sourceUrl": { "type": "string" },
-        "sourceName": { "type": "string" }
+        "sources": {
+          "type": "array",
+          "description": "Documents this Service was transcribed from, primary first (#243, ADR-0005).",
+          "items": { "$ref": "#/definitions/sourceRef" }
+        }
+      }
+    },
+    "sourceRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "One document a record was transcribed from (#243, ADR-0005). Only `name` is required: the validator deliberately enforces nothing else about provenance (#237) — render, not validation, is what makes an unsourced verification claim unreachable.",
+      "required": ["name"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Issuing authority and document, e.g. \"Las Piñas City Civil Registry Citizen's Charter, 2024 edition\". Names the city, never this site."
+        },
+        "url": {
+          "type": "string",
+          "description": "Link to the document, present only when the authority publishes it. Absent for a tarpaulin or a PDF handed over on request; its absence never makes a record unverified (#238). Never a contributor's own photo or scan."
+        },
+        "published": {
+          "type": "string",
+          "description": "Vintage of the source itself, e.g. '2022'. Kept separate from verifiedOn so a fresh check cannot present old data as current. Nothing computes from it — there is no stale threshold (#237)."
+        },
+        "verifiedOn": {
+          "type": "string",
+          "description": "ISO date this record was checked against THIS source. Asserts transcription accuracy, not currency."
+        },
+        "covers": {
+          "type": "array",
+          "description": "Field names this source backs, e.g. [\"phone\"]. Omitted for the source backing the record generally. Stored for auditability, not rendered.",
+          "items": { "type": "string" }
+        }
       }
     },
     "quickStat": {

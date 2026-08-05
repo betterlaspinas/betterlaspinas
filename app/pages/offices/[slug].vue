@@ -18,6 +18,9 @@ if (!view) {
 }
 
 const { office, groupName, services, mapsUrl } = view
+
+// Trust is derived from provenance, never asserted by a flag (#243, ADR-0005).
+const { sources, verifiedOn, checkedOn } = useDataSources(office)
 </script>
 
 <template>
@@ -147,23 +150,46 @@ const { office, groupName, services, mapsUrl } = view
         </div>
       </section>
 
-      <!-- data source / verification -->
-      <UiCard v-if="office.sourceUrl" class="mt-8 bg-gray-50">
+      <!--
+        data source / verification — always rendered. Absence of provenance is
+        itself information: silence would read as "nothing to disclose" on the
+        records we know least about (#243).
+      -->
+      <UiCard class="mt-8 bg-gray-50">
         <h2 class="font-semibold text-gray-900 mb-2 flex items-center gap-2">
-          <i class="bi bi-patch-check text-primary-600" /> Data source
+          <i class="bi bi-patch-check text-primary-600" />
+          {{ sources.length > 1 ? 'Data sources' : 'Data source' }}
         </h2>
-        <p class="text-sm text-gray-600 mb-4">
-          This office's details are transcribed from official Las Piñas City documentation. Verify against the original source before relying on them.
+        <!--
+          Asymmetric copy: a verified record states a fact, an unverified one
+          keeps the hedge. No checkmark or badge — a tick reads as certification
+          this site cannot grant.
+        -->
+        <template v-if="verifiedOn">
+          <ul class="space-y-1 mb-3">
+            <li v-for="source in sources" :key="source.name" class="text-sm">
+              <a
+                v-if="source.url"
+                :href="source.url"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 font-medium text-primary-600 hover:text-primary-700 transition-colors"
+              >
+                {{ source.name }}
+                <i class="bi bi-box-arrow-up-right text-xs" />
+              </a>
+              <!-- plain text when the city does not publish the document online; an
+                   absent link never downgrades a record to unverified (#238) -->
+              <span v-else class="font-medium text-gray-900">{{ source.name }}</span>
+            </li>
+          </ul>
+          <p class="text-sm text-gray-600">
+            Checked against source {{ checkedOn }}.
+          </p>
+        </template>
+        <p v-else class="text-sm text-gray-600">
+          Not yet checked against official documentation. Verify before relying on these details.
         </p>
-        <a
-          :href="office.sourceUrl"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 text-sm font-medium text-primary-600 hover:text-primary-700 transition-colors"
-        >
-          {{ office.sourceName || 'Citizen\'s Charter' }}
-          <i class="bi bi-box-arrow-up-right text-xs" />
-        </a>
       </UiCard>
 
       <!-- back link -->

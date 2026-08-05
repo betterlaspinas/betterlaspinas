@@ -29,8 +29,12 @@
       "email": "lpcivilreg@gmail.com",
       "facebook": "https://www.facebook.com/civilreglaspinas",
       "hours": "Mon-Thu: 8AM - 7PM",
-      "sourceUrl": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
-      "sourceName": "Citizen's Charter 2022 (1st Edition)",
+      "sources": [
+        {
+          "name": "Citizen's Charter 2022 (1st Edition)",
+          "url": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf"
+        }
+      ],
       "additionalServices": [
         "Certified True Copy of Civil Documents",
         "Out-of-Town Birth Registration",
@@ -147,8 +151,12 @@
       "phone": "(02) 8871-4339",
       "location": "City Hall, Ground Floor, Las Piñas City Hall Compound",
       "hours": "Mon-Thu: 8AM - 7PM",
-      "sourceUrl": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
-      "sourceName": "Citizen's Charter 2022 (1st Edition)"
+      "sources": [
+        {
+          "name": "Citizen's Charter 2022 (1st Edition)",
+          "url": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf"
+        }
+      ]
     },
     {
       "id": "city-assessor",
@@ -161,8 +169,12 @@
       "location": "City Hall, Ground Floor, Las Piñas City Hall Compound",
       "email": "cityassessor.lc@gmail.com",
       "hours": "Mon-Thu: 8AM - 7PM",
-      "sourceUrl": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
-      "sourceName": "Citizen's Charter 2022 (1st Edition)"
+      "sources": [
+        {
+          "name": "Citizen's Charter 2022 (1st Edition)",
+          "url": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf"
+        }
+      ]
     },
     {
       "id": "cswdo",
@@ -177,8 +189,12 @@
       "mobile": "0916 284 0885",
       "facebook": "https://www.facebook.com/cswdolaspinascity",
       "hours": "Mon-Thu: 8AM - 7PM",
-      "sourceUrl": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
-      "sourceName": "Citizen's Charter 2022 (1st Edition)"
+      "sources": [
+        {
+          "name": "Citizen's Charter 2022 (1st Edition)",
+          "url": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf"
+        }
+      ]
     },
     {
       "id": "city-agriculture",
@@ -205,8 +221,12 @@
       "phone": "(02) 8873-3004",
       "facebook": "https://www.facebook.com/engineering.lp",
       "hours": "Mon-Fri: 8AM - 5PM",
-      "sourceUrl": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
-      "sourceName": "Citizen's Charter 2022 (1st Edition)",
+      "sources": [
+        {
+          "name": "Citizen's Charter 2022 (1st Edition)",
+          "url": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf"
+        }
+      ],
       "email": "lp.bldgo@gmail.com"
     },
     {
@@ -221,8 +241,12 @@
       "phone": "(02) 8872-0921",
       "facebook": "https://www.facebook.com/CPDOLasPinas",
       "hours": "Mon-Thu: 8AM - 7PM",
-      "sourceUrl": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
-      "sourceName": "Citizen's Charter 2022 (1st Edition)"
+      "sources": [
+        {
+          "name": "Citizen's Charter 2022 (1st Edition)",
+          "url": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf"
+        }
+      ]
     },
     {
       "id": "city-health",
@@ -237,8 +261,12 @@
       "mobile": "0998 977 8597",
       "facebook": "https://www.facebook.com/LPCityhealth",
       "hours": "Mon-Fri: 8AM - 5PM",
-      "sourceUrl": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
-      "sourceName": "Citizen's Charter 2022 (1st Edition)"
+      "sources": [
+        {
+          "name": "Citizen's Charter 2022 (1st Edition)",
+          "url": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf"
+        }
+      ]
     },
     {
       "id": "cdrrmo",

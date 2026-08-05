@@ -18,6 +18,9 @@ if (!view) {
 
 const { service, officeInfo } = view
 
+// Trust is derived from provenance, never asserted by a flag (#243, ADR-0005).
+const { sources, verifiedOn, checkedOn } = useDataSources(service)
+
 const openFaq = ref<number | null>(null)
 
 const { lguName } = useConfig()
@@ -300,24 +303,39 @@ function toggleFaq(index: number) {
               </UiButton>
             </UiCard>
 
-            <UiCard
-              v-if="service.sourceUrl"
-            >
+            <!--
+              data source / verification — always rendered, same asymmetric card
+              as the Office page (#243, ADR-0005). Absence of provenance is
+              itself information, so the hedge shows even with no sources.
+            -->
+            <UiCard>
               <h4 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                <i class="bi bi-patch-check text-primary-600" /> Verified Source
+                <i class="bi bi-patch-check text-primary-600" />
+                {{ sources.length > 1 ? 'Data sources' : 'Data source' }}
               </h4>
-              <p class="text-sm text-gray-600 mb-4">
-                This information is sourced directly from the official city documentation.
+              <template v-if="verifiedOn">
+                <ul class="space-y-1 mb-3">
+                  <li v-for="source in sources" :key="source.name" class="text-sm">
+                    <a
+                      v-if="source.url"
+                      :href="source.url"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center gap-2 font-medium text-primary-600 hover:text-primary-700 transition-colors"
+                    >
+                      {{ source.name }}
+                      <i class="bi bi-box-arrow-up-right text-xs" />
+                    </a>
+                    <span v-else class="font-medium text-gray-900">{{ source.name }}</span>
+                  </li>
+                </ul>
+                <p class="text-sm text-gray-600">
+                  Checked against source {{ checkedOn }}.
+                </p>
+              </template>
+              <p v-else class="text-sm text-gray-600">
+                Not yet checked against official documentation. Verify before relying on these details.
               </p>
-              <a
-                :href="service.sourceUrl"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 text-sm font-medium text-primary-600 hover:text-primary-700 transition-colors"
-              >
-                {{ service.sourceName || 'Citizen\'s Charter' }}
-                <i class="bi bi-box-arrow-up-right text-xs" />
-              </a>
             </UiCard>
           </div>
         </div>

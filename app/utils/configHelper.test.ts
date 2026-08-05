@@ -650,8 +650,9 @@ describe('configHelper', () => {
       const charterUrl = 'https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf'
       for (const id of ['civil-registry', 'city-treasurer', 'city-assessor', 'cswdo', 'city-engineering', 'city-planning', 'city-health']) {
         const office = getOfficeBySlug(id)
-        expect(office?.sourceUrl, id).toBe(charterUrl)
-        expect(office?.sourceName, id).toContain('Citizen')
+        const charter = office?.sources?.[0]
+        expect(charter?.url, id).toBe(charterUrl)
+        expect(charter?.name, id).toContain('Citizen')
       }
     })
 

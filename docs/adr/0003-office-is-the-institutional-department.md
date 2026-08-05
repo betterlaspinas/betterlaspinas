@@ -15,7 +15,7 @@ Consequences for the model (recorded in CONTEXT.md):
 - **One relationship direction.** `Service.providedBy → Office` is canonical; `departments[].services` (Office → one Category) is dead and lossy → removed.
 - **Office (physical place)** = the `location` attribute, never promoted to an entity.
 - **Division / Division Chief** (sub-units below an Office) are out of scope — no data; an Office carries an optional `parentId` so Divisions can attach later.
-- **`officeGroups` is editorial, not source-derived.** The Las Piñas directory lists offices flat with no functional grouping; the `Frontline Services / Administration` split was authored in #185/#196 with no `sourceUrl`. Functional grouping is conventional LGU practice (cf. Quezon City's clusters), but each city defines its own and Las Piñas publishes none. The grouping is kept as a navigation aid and flagged unverified/editorial (ties to the deferred `dataStatus` flag); only `frontline-services` has an external anchor (RA 11032 "frontline service").
+- **`officeGroups` is editorial, not source-derived.** The Las Piñas directory lists offices flat with no functional grouping; the `Frontline Services / Administration` split was authored in #185/#196 with no `sourceUrl`. Functional grouping is conventional LGU practice (cf. Quezon City's clusters), but each city defines its own and Las Piñas publishes none. The grouping is kept as a navigation aid and flagged unverified/editorial (the `dataStatus` flag this deferred to was **superseded by ADR-0005**: an editorial grouping is simply one with no `sources[]`, and renders as unverified); only `frontline-services` has an external anchor (RA 11032 "frontline service").
 
 ## Considered Options
 
@@ -28,4 +28,4 @@ Consequences for the model (recorded in CONTEXT.md):
 - `officials.json` narrows to people (executive, legislative, Department Heads); office identity/contact/description has one home (`offices.json`).
 - The Government "Department Heads & Key Offices" section reads Offices (grouped by `OfficeGroup`) and joins each head Official — no duplicate JSON, drift closed.
 - A dept→Office id map is required: of 14 departments, only 3 (`civil-registry`, `cswdo`, `cdrrmo`) currently share an id with their Office. `bpls` (Business Permits & Licensing) has no Office and needs one created.
-- `dataStatus`/editorial markup on `officeGroups` is the truthful encoding of an unsourceable grouping; re-sourcing is a separate data-audit item, not part of #199.
+- `dataStatus`/editorial markup on `officeGroups` is the truthful encoding of an unsourceable grouping; re-sourcing is a separate data-audit item, not part of #199. (**Superseded by ADR-0005**: there is no `dataStatus` field — absent provenance is what marks a record unverified.)
