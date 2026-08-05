@@ -11,7 +11,13 @@
       "sources": [
         {
           "name": "Las Piñas City Government — Key Officials Contact Information and Directory",
-          "url": "https://laspinascity.gov.ph/about-us/40/key-officials-contact-information-and-directory"
+          "url": "https://laspinascity.gov.ph/about-us/40/key-officials-contact-information-and-directory",
+          "covers": ["phone"]
+        },
+        {
+          "name": "PNP Las Piñas City Police Station | Las Piñas — Official Facebook Page",
+          "url": "https://www.facebook.com/pcrstation4",
+          "covers": ["location"]
         }
       ]
     }

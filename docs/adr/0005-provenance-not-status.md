@@ -26,7 +26,7 @@ Four rules follow from it:
 1. **The render gate is `name && verifiedOn` on at least one source — never `url`.** Most Las Piñas citizen's charters are tarpaulins at the office window and PDFs handed over on request, not web pages. A URL gate would make every offline-sourced record permanently unverifiable no matter how carefully it was transcribed (`#238`).
 2. **`verifiedOn` asserts transcription accuracy, not currency.** Re-reading the 2022 charter today proves our record matches the charter, not that the fee is still charged. `published` keeps the source's own vintage as a separate fact so a fresh check cannot present four-year-old data as current.
 3. **Nothing computes from `published`.** No stale threshold, no expiry, no decay — a date arithmetic rule would turn a judgement about a document into a number the site invents (`#237`).
-4. **Provenance is per record with attribution, not one document per record.** Six Offices take location and hours from the Citizen's Charter but their phone from the city's key-officials directory, because the charter carries no contact numbers at all. `covers` names the fields a secondary source backs; it is omitted for the source backing the record generally.
+4. **Provenance is per record with attribution, not one document per record.** The field exists because a record's contact details can come from more than one document — e.g. an Office's location and hours from the Citizen's Charter but its phone from the city's key-officials directory, because the charter carries no contact numbers at all. `covers` names the fields a secondary source backs; it is omitted for the source backing the record generally. No Office record cites a second source yet — the charter is still the only citation on every one — so applying this to the Offices it motivates is follow-up work, not something this change ships. One Agency record, `pnp-laspinas`, already uses it: the key-officials directory backs `phone`, its official Facebook page backs `location`, per two independent human-reviewed sources.
 
 ### The sourcing and evidence bar
 
@@ -46,7 +46,7 @@ Detail pages only; nothing in list or search results. The card is **asymmetric**
 
 The card renders **whether or not the record has sources**. Silence would put the softest signal on the records we know least about.
 
-`pnpm validate` deliberately enforces nothing about these fields beyond `name` being required inside a source object — no required `sources`, no `dependentRequired` (`#237`). **Render is the enforcement**: the dishonest state, claiming a check without citing what was checked, has no way to reach the page.
+`pnpm validate` deliberately enforces nothing about these fields beyond `name` being required inside a source object — no required `sources`, no `dependentRequired` (`#237`). **Render is the enforcement**: the dishonest state, claiming a check without citing what was checked, has no way to reach the page. This is about honesty, not format: a schema `pattern` requiring `verifiedOn`/`published` to be `YYYY-MM-DD` when present does not contradict it — a regex can confirm a date is well-formed, it cannot confirm the record was actually checked. That honesty gap is exactly what render, not validation, closes.
 
 ## Considered Options
 

@@ -601,11 +601,15 @@ export interface Office {
    */
   additionalServices?: string[]
   /**
-   * Documents this Office's directory data was transcribed from, primary first
-   * — e.g. the Las Piñas Citizen's Charter, plus the city's key-officials
-   * directory for a phone the charter omits. Rendered as the "Data source" card
-   * on the Office page so the information is auditable; the card states a fact
-   * when any source carries `name && verifiedOn`, and hedges otherwise (#243).
+   * Documents this Office's directory data was transcribed from, primary first.
+   * The array (and `covers`) exist so a record can attribute fields to more than
+   * one document — e.g. an Office's location and hours from the Citizen's
+   * Charter, its phone from the city's key-officials directory when the charter
+   * omits contact numbers — but no Office record cites a second source yet;
+   * backfilling that per office is follow-up work. Rendered as the "Data
+   * source" card on the Office page so the information is auditable; the card
+   * states a fact when any source carries `name && verifiedOn`, and hedges
+   * otherwise (#243).
    */
   sources?: SourceRef[]
   /**

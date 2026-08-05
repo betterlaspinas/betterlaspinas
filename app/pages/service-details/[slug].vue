@@ -315,7 +315,7 @@ function toggleFaq(index: number) {
               </h4>
               <template v-if="verifiedOn">
                 <ul class="space-y-1 mb-3">
-                  <li v-for="source in sources" :key="source.name" class="text-sm">
+                  <li v-for="(source, i) in sources" :key="`${source.name}-${i}`" class="text-sm">
                     <a
                       v-if="source.url"
                       :href="source.url"
