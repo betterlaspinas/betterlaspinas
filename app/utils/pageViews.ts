@@ -1,4 +1,5 @@
 import type {
+  Agency,
   Category,
   Office,
   OfficeGroup,
@@ -8,6 +9,8 @@ import type {
 } from '@/types/config'
 
 import {
+  categoryHasBarangayProvider,
+  getAgenciesForCategory,
   getAllServices,
   getCategoryBySlug,
   getOfficeBySlug,
@@ -55,16 +58,52 @@ export interface CategoryOfficeCard {
   link: string
 }
 
+/**
+ * Agency-tier responsible-body card (ADR-0004). No dedicated detail page
+ * exists for an Agency yet, so the card surfaces contact fields directly
+ * instead of a route `link`.
+ */
+export interface CategoryAgencyCard {
+  title: string
+  icon: string
+  description: string
+  location?: string
+  phone?: string
+}
+
+/**
+ * Barangay-tier responsible-body card (ADR-0004). A directory marker, not a
+ * single provider — there are 20 Barangays, so the card always links to the
+ * `/barangays` directory rather than one record.
+ */
+export interface CategoryBarangayCard {
+  title: string
+  icon: string
+  description: string
+  link: string
+}
+
 export interface CategoryView {
   category: Category
   services: CategoryServiceCard[]
   offices: CategoryOfficeCard[]
+  agencies: CategoryAgencyCard[]
+  barangay?: CategoryBarangayCard
 }
 
 export interface CategoryRecords {
   category: Category
   services: ServiceItem[]
   offices: Office[]
+  agencies: Agency[]
+  hasBarangayProvider: boolean
+}
+
+const BARANGAY_CARD: CategoryBarangayCard = {
+  title: 'Your Barangay Hall',
+  icon: 'bi-house-heart-fill',
+  description: 'Obtained at your own Barangay — visit your Barangay Hall.',
+  link: '/barangays',
 }
 
 /**
@@ -94,6 +133,14 @@ export function toCategoryView(records: CategoryRecords): CategoryView {
       description: office.description,
       link: office.link,
     })),
+    agencies: records.agencies.map(agency => ({
+      title: agency.name,
+      icon: agency.icon,
+      description: agency.description,
+      location: agency.location,
+      phone: agency.phone,
+    })),
+    barangay: records.hasBarangayProvider ? BARANGAY_CARD : undefined,
   }
 }
 
@@ -113,6 +160,8 @@ export function categoryView(slug: string): CategoryView | undefined {
     category,
     services: getServicesByCategory(slug),
     offices: getOfficesForCategory(slug),
+    agencies: getAgenciesForCategory(slug),
+    hasBarangayProvider: categoryHasBarangayProvider(slug),
   })
 }
 

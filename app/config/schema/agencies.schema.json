@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "agencies.schema.json",
+  "title": "Agencies Configuration",
+  "description": "A national government office physically present in the city (e.g. PNP, BFP, NBI, BJMP, Prosecutor). Office-shaped (name, location, contact) but national, not a city department, so it is deliberately kept out of offices.json/OfficeGroup (see ADR-0004). Referenced by services[].providedByAgency.",
+  "type": "object",
+  "required": ["agencies"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "JSON Schema reference"
+    },
+    "agencies": {
+      "type": "array",
+      "description": "All Agency records",
+      "items": { "$ref": "#/definitions/agency" }
+    }
+  },
+  "definitions": {
+    "agency": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "icon", "description"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique, URL-friendly Agency identifier (referenced by services[].providedByAgency)"
+        },
+        "name": { "type": "string" },
+        "icon": {
+          "type": "string",
+          "description": "Bootstrap icon class"
+        },
+        "description": { "type": "string" },
+        "location": { "type": "string" },
+        "phone": { "type": "string" },
+        "hours": { "type": "string" },
+        "dataStatus": {
+          "type": "string",
+          "enum": ["unverified", "verified"],
+          "description": "Sourcing confidence for this record's contact/location data. 'unverified' until confirmed against an official source; omit once confirmed (ties to the deferred generalized dataStatus flag, ADR-0003/0004)."
+        },
+        "sourceUrl": {
+          "type": "string",
+          "description": "Official source link for this Agency's data. Rendered as a Data source card, mirroring Office.sourceUrl."
+        },
+        "sourceName": {
+          "type": "string",
+          "description": "Human label for sourceUrl."
+        }
+      }
+    }
+  }
+}

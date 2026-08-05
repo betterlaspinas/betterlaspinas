@@ -25,6 +25,13 @@ const skPresident = computed(() => officials.legislative.find(
   official => official.position === 'sk_president',
 ))
 const ipmr = computed(() => officials.legislative.find(official => official.position === 'ipmr'))
+
+// Subdivisions teaser: full directory lives at /barangays (canonical, per
+// ADR-0004's Barangay responsible-body tier). This section stays a short
+// preview + link-out rather than duplicating the full list, following the
+// same preview-card + "view all" CTA pattern as PopularServices.vue.
+const SUBDIVISIONS_PREVIEW_COUNT = 7
+const subdivisionsPreview = computed(() => subdivisions.items.slice(0, SUBDIVISIONS_PREVIEW_COUNT))
 </script>
 
 <template>
@@ -278,7 +285,7 @@ const ipmr = computed(() => officials.legislative.find(official => official.posi
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           <UiCard
-            v-for="item in subdivisions.items"
+            v-for="item in subdivisionsPreview"
             :key="item.id"
             :href="item.phone ? `tel:${formatPhoneLink(item.phone)}` : '#'"
             padding="p-4"
@@ -296,6 +303,16 @@ const ipmr = computed(() => officials.legislative.find(official => official.posi
                 <i class="bi bi-telephone" /> {{ item.phone }}
               </span>
             </div>
+          </UiCard>
+
+          <UiCard
+            to="/barangays"
+            padding="p-4"
+            interactive
+            class="group flex flex-col items-center justify-center text-center !bg-primary-600 !border-transparent text-white"
+          >
+            <i class="bi bi-arrow-right-circle-fill text-2xl mb-2 transition-transform duration-200 group-hover:translate-x-1" />
+            <span class="font-semibold">See all {{ subdivisions.count }} {{ labels.subdivisionTypePlural }}</span>
           </UiCard>
         </div>
       </div>

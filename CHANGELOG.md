@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Added the Agency responsible-body tier (`agencies.json` + `Agency` type + `configHelper`/View-resolver accessors) for national government offices in the city, starting with `pnp-laspinas` (Las Piñas City Police Station); its location is unverified pending confirmation against an official source (#198, ADR-0004)
+- Added a `/barangays` page rendering the Barangay directory (the 20 `subdivisions.json` records), reading through the same accessor as `government/index.vue`'s Subdivisions section, and linked it from the main nav between Government and Statistics (#198)
+- Added the Barangay responsible-body tier (`Service.providedByBarangay`): Barangay-level Services now link to the `/barangays` directory instead of a stand-in Office record (#198, ADR-0004)
+
+### Changed
+- A Service's responsible body now resolves through three tiers — Office, Agency, Barangay — instead of Office alone; the "Responsible Offices" section on `/services/<category>` is renamed "Where to Get This" and renders all three (#198, ADR-0004)
+- Removed the `barangay-hall` and `police-station` stub `Office` records from `offices.json`; `barangay-clearance`, `barangay-id`, and `police-clearance` are repointed to their new Agency/Barangay tiers instead of a fake Office (#198, ADR-0004)
+
 ### Fixed
 - Corrected BPLO service fees and processing times that had drifted from the Citizen's Charter, after verifying `docs/citizens-charter/business-permits.md` line by line against the source PDF (#213): Occupational Mayor's Permit (Regular) is ₱250 (was "Varies by Assessment") and takes ~1 hour 35 minutes (was ~3 hours); the First Time Job Seeker permit takes 1 hour 30 minutes (was ~3 hours); Business Permit Renewal takes 3 hours 10 minutes (was ~3 hours); Certificates on Status of Business and Certified True Copy both take 1 hour (were "Approx. 1 hour")
 - Fixed the production build failing on `[postcss] ENOENT ... open '<root>/tailwindcss'` after Nuxt 4.5.1 (#266) pulled in Vite 8: `app/assets/css/main.css` now imports `tailwindcss/index.css` instead of the bare `tailwindcss` specifier, which Vite 8's bundled postcss-import cannot resolve

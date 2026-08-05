@@ -1,4 +1,5 @@
 import type {
+  Agency,
   Category,
   Office,
   OfficeGroup,
@@ -78,6 +79,18 @@ function makeOffice(over: Partial<Office> = {}): Office {
   }
 }
 
+function makeAgency(over: Partial<Agency> = {}): Agency {
+  return {
+    id: 'pnp-laspinas',
+    name: 'Las Piñas City Police Station',
+    icon: 'bi-shield-check',
+    description: 'PNP station',
+    location: 'City Hall Compound',
+    phone: '8551-6401',
+    ...over,
+  }
+}
+
 function makeGroup(over: Partial<OfficeGroup> = {}): OfficeGroup {
   return {
     id: 'frontline-services',
@@ -93,6 +106,8 @@ describe('toCategoryView', () => {
       category: makeCategory(),
       services: [makeService({ url: '/service-details/birth-certificate' })],
       offices: [],
+      agencies: [],
+      hasBarangayProvider: false,
     })
     expect(view.services[0]!.link).toBe('/service-details/birth-certificate')
   })
@@ -104,6 +119,8 @@ describe('toCategoryView', () => {
       category: makeCategory({ id: 'certificates' }),
       services: [makeService({ url: '/services/certificates' })],
       offices: [],
+      agencies: [],
+      hasBarangayProvider: false,
     })
     expect(view.services[0]!.link).toBeUndefined()
   })
@@ -114,6 +131,8 @@ describe('toCategoryView', () => {
       category,
       services: [makeService({ icon: 'bi-x', fee: '₱100', processingTime: '1 day' })],
       offices: [makeOffice()],
+      agencies: [],
+      hasBarangayProvider: false,
     })
     expect(view.category).toBe(category)
     expect(view.services[0]).toMatchObject({
@@ -129,6 +148,45 @@ describe('toCategoryView', () => {
       description: 'Vital records office',
       link: '/offices/civil-registry',
     })
+  })
+
+  it('maps Agency records to Agency cards', () => {
+    const view = toCategoryView({
+      category: makeCategory(),
+      services: [],
+      offices: [],
+      agencies: [makeAgency()],
+      hasBarangayProvider: false,
+    })
+    expect(view.agencies).toEqual([{
+      title: 'Las Piñas City Police Station',
+      icon: 'bi-shield-check',
+      description: 'PNP station',
+      location: 'City Hall Compound',
+      phone: '8551-6401',
+    }])
+  })
+
+  it('omits the Barangay card when no Service in the Category is Barangay-provided', () => {
+    const view = toCategoryView({
+      category: makeCategory(),
+      services: [],
+      offices: [],
+      agencies: [],
+      hasBarangayProvider: false,
+    })
+    expect(view.barangay).toBeUndefined()
+  })
+
+  it('adds a single Barangay directory card when a Service is Barangay-provided', () => {
+    const view = toCategoryView({
+      category: makeCategory(),
+      services: [],
+      offices: [],
+      agencies: [],
+      hasBarangayProvider: true,
+    })
+    expect(view.barangay).toMatchObject({ link: '/barangays' })
   })
 })
 
@@ -268,6 +326,13 @@ describe('facades (real config)', () => {
     expect(categoryView('certificates')).toBeDefined()
     expect(categoryView('government')).toBeUndefined()
     expect(categoryView('not-a-real-category')).toBeUndefined()
+  })
+
+  it('categoryView(certificates) resolves all three responsible-body tiers (#198, ADR-0004)', () => {
+    const view = categoryView('certificates')!
+    expect(view.offices.some(o => o.title === 'City Civil Registry')).toBe(true)
+    expect(view.agencies.some(a => a.title === 'Las Piñas City Police Station')).toBe(true)
+    expect(view.barangay).toMatchObject({ link: '/barangays' })
   })
 
   it('serviceDetailView resolves a detail-bearing Service and its providedBy Office card', () => {
