@@ -33,14 +33,20 @@ const ipmr = computed(() => officials.legislative.find(official => official.posi
 const SUBDIVISIONS_PREVIEW_COUNT = 7
 const subdivisionsPreview = computed(() => subdivisions.items.slice(0, SUBDIVISIONS_PREVIEW_COUNT))
 
-// Department Heads & Key Offices: one entity, two views (#199, ADR-0003). The
-// Office owns identity/description/contact; the head is the Official that
-// references it. Read through the accessor layer — never off officials.json,
-// which used to carry a drifting copy of the same office fields.
+// Key Offices: one entity, two views (#199, ADR-0003). The Office owns
+// identity/description/contact; the head is the Official that references it.
+// Read through the accessor layer — never off officials.json, which used to
+// carry a drifting copy of the same office fields.
 //
 // Grouped by OfficeGroup so the section mirrors /offices; a group with no
 // headed Office renders nothing. Only Offices WITH a head appear, which is what
 // marks a City Hall department.
+//
+// The head's NAME is deliberately not rendered: the incumbent names inherited
+// from the old officials.departments data are unverified, and publishing a
+// stale office-holder on a civic directory is worse than publishing none. The
+// join still drives which Offices appear here. Re-adding the names once each
+// is verified against an official source is tracked in #279.
 const officeGroupsWithHeads = computed(() =>
   getOfficeGroups()
     .map(group => ({ group, entries: getOfficesWithHeadsByGroup(group.id) }))
@@ -207,11 +213,11 @@ const officeGroupsWithHeads = computed(() =>
       </div>
     </section>
 
-    <!-- Department Heads -->
+    <!-- Key Offices -->
     <section class="py-12 bg-gray-50">
       <div class="container mx-auto px-4">
         <UiSectionHeader
-          title="Department Heads & Key Offices"
+          title="Key Offices"
           :description="`${labels.deptPrefix} offices providing services to citizens`"
           badge-icon="bi-building-fill"
           :badge-text="`${labels.deptPrefix} Offices`"
@@ -227,7 +233,7 @@ const officeGroupsWithHeads = computed(() =>
             <!-- Only Offices with a detail page are linkable; the rest render as
                  plain cards so the section never points at a 404. -->
             <UiCard
-              v-for="{ office, head } in entries"
+              v-for="{ office } in entries"
               :key="office.id"
               :to="office.detail ? office.link : undefined"
               interactive
@@ -242,9 +248,6 @@ const officeGroupsWithHeads = computed(() =>
                     {{ office.name }}
                     <span v-if="office.abbreviation" class="text-gray-400 font-normal">({{ office.abbreviation }})</span>
                   </h4>
-                  <p class="text-sm text-primary-700 font-medium mb-2">
-                    <i class="bi bi-person-badge" /> {{ head.name }}
-                  </p>
                   <p class="text-sm text-gray-500 mb-3">
                     {{ office.description }}
                   </p>

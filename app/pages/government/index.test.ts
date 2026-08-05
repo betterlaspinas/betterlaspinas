@@ -26,25 +26,36 @@ mockNuxtImport('useConfig', () => () => ({
 
 mockNuxtImport('usePageOgImage', () => () => undefined)
 
-// #199 / ADR-0003: the "Department Heads & Key Offices" section renders the
-// canonical Office joined to its head Official through the accessor layer.
-// These assertions are what stops officials.json from growing a second copy of
-// office identity/contact again.
-describe('government page — Department Heads & Key Offices', () => {
+// #199 / ADR-0003: the "Key Offices" section renders the canonical Office
+// joined to its head Official through the accessor layer. These assertions are
+// what stops officials.json from growing a second copy of office
+// identity/contact again.
+//
+// The head's name is deliberately withheld pending verification, so the join is
+// asserted structurally (which Offices appear) plus an explicit assertion that
+// no head name leaks into the markup.
+describe('government page — Key Offices', () => {
   async function render() {
     const wrapper = await mountSuspended(GovernmentPage)
     return wrapper.text()
   }
 
-  it('renders every visible headed Office with its head', async () => {
+  it('renders every visible headed Office', async () => {
     const text = await render()
     const pairs = getOfficesWithHeads()
 
     expect(pairs.length).toBeGreaterThan(0)
-    for (const { office, head } of pairs) {
+    for (const { office } of pairs)
       expect(text).toContain(office.name)
-      expect(text).toContain(head.name)
-    }
+  })
+
+  it('does not publish any head name while the incumbents are unverified', async () => {
+    const text = await render()
+    const pairs = getOfficesWithHeads()
+
+    expect(pairs.length).toBeGreaterThan(0)
+    for (const { head } of pairs)
+      expect(text).not.toContain(head.name)
   })
 
   it('renders Office contact and abbreviation, not a duplicated copy', async () => {
@@ -59,10 +70,12 @@ describe('government page — Department Heads & Key Offices', () => {
 
   it('omits hidden Offices even when a head is recorded for them', async () => {
     const text = await render()
-    const hiddenHead = getOfficeHead('human-resource-management')
 
-    expect(hiddenHead).toBeDefined()
-    expect(text).not.toContain(hiddenHead!.name)
+    // The head exists in officials.json but the Office is hidden, so neither
+    // the Office nor the pair may reach the page.
+    expect(getOfficeHead('human-resource-management')).toBeDefined()
+    expect(getOfficesWithHeads().some(({ office }) => office.id === 'human-resource-management')).toBe(false)
+    expect(text).not.toContain('Human Resource Management')
   })
 
   it('never links to the retired /service-details office namespace', async () => {
