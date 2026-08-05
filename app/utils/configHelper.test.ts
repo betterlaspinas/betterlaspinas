@@ -915,6 +915,25 @@ describe('configHelper', () => {
       expect(validateConsistency(services, categories, offices)).toBe(false)
     })
 
+    it('rejects two Offices sharing an abbreviation', () => {
+      const services = { services: [makeService()] }
+      const categories = { categories: [{ id: 'certificates' }] }
+      const base = {
+        groupId: 'frontline-services',
+        icon: 'bi-building',
+        description: 'd',
+        link: '/x',
+        abbreviation: 'CAO',
+      }
+      const offices = makeOffices({
+        offices: [
+          { ...base, id: 'city-assessor', name: 'City Assessor\'s Office' },
+          { ...base, id: 'city-agriculture', name: 'City Agriculture Office' },
+        ],
+      })
+      expect(validateConsistency(services, categories, offices)).toBe(false)
+    })
+
     it('rejects a Service whose providedBy references an unknown Office', () => {
       const services = { services: [makeService({ providedBy: 'ghost-office' })] }
       const categories = { categories: [{ id: 'certificates' }] }

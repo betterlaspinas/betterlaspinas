@@ -155,10 +155,22 @@ export function validateConsistency(services, categories, offices, agencies, off
 
   // Duplicate office ids
   const seenOffice = new Set()
+  // An abbreviation is an identifier residents read on the card, so two Offices
+  // sharing one is ambiguous (City Assessor's and City Agriculture Office both
+  // carried "CAO" before #199 surfaced it by rendering the field).
+  const seenAbbreviation = new Map()
   for (const o of officeList) {
     if (seenOffice.has(o.id))
       errors.push(`offices.json: duplicate office id "${o.id}"`)
     seenOffice.add(o.id)
+
+    if (o.abbreviation) {
+      const owner = seenAbbreviation.get(o.abbreviation)
+      if (owner)
+        errors.push(`offices.json: office "${o.id}" reuses abbreviation "${o.abbreviation}" already used by "${owner}"`)
+      else
+        seenAbbreviation.set(o.abbreviation, o.id)
+    }
 
     // Every Office belongs to exactly one (known) Office Group.
     if (!officeGroupIds.has(o.groupId))

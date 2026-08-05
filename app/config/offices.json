@@ -152,7 +152,6 @@
     {
       "id": "city-assessor",
       "name": "City Assessor's Office",
-      "abbreviation": "CAO",
       "groupId": "frontline-services",
       "icon": "bi-house-door",
       "description": "Property assessment, tax declarations, land records, and real property appraisal",
