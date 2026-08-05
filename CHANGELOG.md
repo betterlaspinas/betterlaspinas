@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added a `/barangays` page rendering the Barangay directory (the 20 `subdivisions.json` records), reading through the same accessor as `government/index.vue`'s Subdivisions section, and linked it from the main nav between Government and Statistics (#198)
 - Added the Barangay responsible-body tier (`Service.providedByBarangay`): Barangay-level Services now link to the `/barangays` directory instead of a stand-in Office record (#198, ADR-0004)
 
+- The Government page's Key Offices cards now show the Office's Facebook page as a clickable link alongside its phone and email. The card is no longer itself the anchor — an `<a>` inside an `<a>` is invalid HTML, so the "View office" CTA carries the link and stretches over the card, which keeps whole-card click-through while letting the Facebook link sit above it (#199)
 - Added official Facebook pages for five more Offices — `cswdo`, `city-agriculture`, `city-engineering`, `city-planning` and `cdrrmo` — which render as a Facebook Page link on each Office page. `civil-registry` and `city-health` already carried theirs; the `facebook` field and its rendering are pre-existing (#199)
 
 ### Changed

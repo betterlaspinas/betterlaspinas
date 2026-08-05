@@ -231,13 +231,18 @@ const officeGroupsWithHeads = computed(() =>
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Only Offices with a detail page are linkable; the rest render as
-                 plain cards so the section never points at a 404. -->
+                 plain cards so the section never points at a 404.
+                 The card is NOT the anchor: the contact rows carry their own
+                 Facebook link, and an <a> inside an <a> is invalid HTML that
+                 browsers silently un-nest. The "View office" CTA is the anchor
+                 instead, stretched over the card via after:inset-0 so the whole
+                 card still clicks through, with the Facebook link layered above
+                 it. -->
             <UiCard
               v-for="{ office } in entries"
               :key="office.id"
-              :to="office.detail ? office.link : undefined"
               interactive
-              class="group"
+              class="group relative"
             >
               <div class="flex items-start gap-4">
                 <div class="w-12 h-12 flex items-center justify-center bg-primary-50 rounded-xl text-primary-600 text-xl shrink-0 transition-all duration-200">
@@ -258,13 +263,24 @@ const officeGroupsWithHeads = computed(() =>
                     <span v-if="office.email" class="flex items-center gap-1">
                       <i class="bi bi-envelope" /> {{ office.email }}
                     </span>
+                    <a
+                      v-if="office.facebook"
+                      :href="office.facebook"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="relative z-10 inline-flex items-center gap-1 text-primary-600 hover:underline w-fit"
+                    >
+                      <i class="bi bi-facebook" />
+                      <span class="sr-only">{{ office.name }} on </span>Facebook Page
+                    </a>
                   </div>
-                  <span
+                  <NuxtLink
                     v-if="office.detail"
-                    class="inline-flex items-center gap-1 text-primary-600 font-medium text-sm mt-3 group-hover:gap-2 transition-all"
+                    :to="office.link"
+                    class="inline-flex items-center gap-1 text-primary-600 font-medium text-sm mt-3 group-hover:gap-2 transition-all no-underline after:absolute after:inset-0"
                   >
                     View office <i class="bi bi-arrow-right" />
-                  </span>
+                  </NuxtLink>
                 </div>
               </div>
             </UiCard>

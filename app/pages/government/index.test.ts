@@ -85,6 +85,30 @@ describe('government page — Key Offices', () => {
     expect(hrefs.some(href => href.startsWith('/service-details/'))).toBe(false)
   })
 
+  it('renders a clickable Facebook link for every Office that has one', async () => {
+    const wrapper = await mountSuspended(GovernmentPage)
+    const withFacebook = getOfficesWithHeads().filter(({ office }) => office.facebook)
+
+    expect(withFacebook.length).toBeGreaterThan(0)
+    for (const { office } of withFacebook) {
+      const link = wrapper.findAll('a').find(a => a.attributes('href') === office.facebook)
+
+      expect(link, `no Facebook link rendered for ${office.id}`).toBeDefined()
+      expect(link!.attributes('rel')).toContain('noopener')
+      expect(link!.attributes('target')).toBe('_blank')
+    }
+  })
+
+  // The card used to be the anchor. Nesting the Facebook link inside it would
+  // be invalid HTML that browsers silently un-nest, so the CTA is the anchor
+  // and stretches over the card instead.
+  it('never nests one anchor inside another', async () => {
+    const wrapper = await mountSuspended(GovernmentPage)
+
+    for (const anchor of wrapper.findAll('a'))
+      expect(anchor.element.querySelector('a')).toBeNull()
+  })
+
   it('links an Office only when it has a detail page', async () => {
     const wrapper = await mountSuspended(GovernmentPage)
     const hrefs = new Set(wrapper.findAll('a').map(a => a.attributes('href') ?? ''))
