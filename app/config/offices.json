@@ -144,6 +144,7 @@
       "icon": "bi-cash-coin",
       "description": "Tax collection, payment of local fees and charges, cedula, and revenue management",
       "link": "/offices/city-treasurer",
+      "phone": "(02) 8871-4339",
       "location": "City Hall, Ground Floor, Las Piñas City Hall Compound",
       "hours": "Mon-Thu: 8AM - 7PM",
       "sourceUrl": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
@@ -156,6 +157,7 @@
       "icon": "bi-house-door",
       "description": "Property assessment, tax declarations, land records, and real property appraisal",
       "link": "/offices/city-assessor",
+      "phone": "(02) 8874-6781",
       "location": "City Hall, Ground Floor, Las Piñas City Hall Compound",
       "email": "cityassessor.lc@gmail.com",
       "hours": "Mon-Thu: 8AM - 7PM",
@@ -185,6 +187,7 @@
       "icon": "bi-tree",
       "description": "Agricultural programs, farmer registration, subsidized inputs, and livelihood assistance",
       "link": "/offices/city-agriculture",
+      "phone": "(02) 8519-5687",
       "location": "City Hall, Las Piñas City Hall Compound",
       "hours": "Mon-Thu: 8AM - 7PM"
     },
@@ -252,6 +255,7 @@
       "icon": "bi-wallet2",
       "description": "Budget preparation, appropriation management, obligation requests, and barangay budget review",
       "link": "/offices/city-budget",
+      "phone": "(02) 8511-0779",
       "location": "City Hall, Las Piñas City Hall Compound",
       "hours": "Mon-Thu: 8AM - 7PM"
     },
@@ -274,6 +278,7 @@
       "icon": "bi-tools",
       "description": "Property management, vehicle maintenance, equipment rental, and general city services",
       "link": "/offices/city-general-services",
+      "phone": "(02) 8871-6195",
       "location": "City Hall, Las Piñas City Hall Compound",
       "hours": "Mon-Thu: 8AM - 7PM"
     },
