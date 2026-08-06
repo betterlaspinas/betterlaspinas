@@ -29,57 +29,49 @@
           "id": "tax-payments",
           "label": "Tax Payments",
           "href": "/services/tax-payments",
-          "i18nKey": "service-tax",
-          "hidden": true
+          "i18nKey": "service-tax"
         },
         {
           "id": "social-services",
           "label": "Social Services",
           "href": "/services/social-services",
-          "i18nKey": "service-social",
-          "hidden": true
+          "i18nKey": "service-social"
         },
         {
           "id": "health",
           "label": "Health",
           "href": "/services/health",
-          "i18nKey": "service-health",
-          "hidden": true
+          "i18nKey": "service-health"
         },
         {
           "id": "agriculture",
           "label": "Agriculture",
           "href": "/services/agriculture",
-          "i18nKey": "cat-agriculture",
-          "hidden": true
+          "i18nKey": "cat-agriculture"
         },
         {
           "id": "infrastructure",
           "label": "Infrastructure",
           "href": "/services/infrastructure",
-          "i18nKey": "cat-infrastructure",
-          "hidden": true
+          "i18nKey": "cat-infrastructure"
         },
         {
           "id": "education",
           "label": "Education",
           "href": "/services/education",
-          "i18nKey": "cat-education",
-          "hidden": true
+          "i18nKey": "cat-education"
         },
         {
           "id": "public-safety",
           "label": "Public Safety",
           "href": "/services/public-safety",
-          "i18nKey": "cat-safety",
-          "hidden": true
+          "i18nKey": "cat-safety"
         },
         {
           "id": "environment",
           "label": "Environment",
           "href": "/services/environment",
-          "i18nKey": "cat-environment",
-          "hidden": true
+          "i18nKey": "cat-environment"
         }
       ]
     },

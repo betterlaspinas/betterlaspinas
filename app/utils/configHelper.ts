@@ -249,15 +249,26 @@ export function getTranslationOverrides(): TranslationOverrides {
 }
 
 /**
- * Get the navigation config with proper typing
+ * Get the navigation config with proper typing.
+ *
+ * The "Services" submenu's children are Service Categories, so their
+ * visibility is derived from `getServiceCategories()` (`categories.json`'s
+ * `hidden`) rather than a per-item flag of their own — `navigation.json` no
+ * longer carries one for them (#287; ported into `categories.json` by #284
+ * so the switch is lossless). Every other mainNav item keeps deciding its
+ * own (and its children's) visibility via its own `hidden` flag.
  */
 export function getNavigationConfig(): NavigationConfig {
   const config = navigationConfig as NavigationConfig
+  const visibleCategoryIds = new Set(getServiceCategories().map(category => category.id))
 
   // Filter out hidden items from mainNav
   if (config.mainNav) {
     config.mainNav = config.mainNav.filter((item: NavigationItem) => !item.hidden).map((item: NavigationItem) => {
-      if (item.children) {
+      if (item.id === 'services' && item.children) {
+        item.children = item.children.filter((child: NavigationItem) => !!child.id && visibleCategoryIds.has(child.id))
+      }
+      else if (item.children) {
         item.children = item.children.filter((child: NavigationItem) => !child.hidden)
       }
       return item
@@ -276,34 +287,23 @@ export function getCategoriesConfig(): CategoriesConfig {
 
 /**
  * Get the services config with proper typing.
- * Filters out hidden Services; no category coupling.
+ * Filters out hidden Services, and Services whose Category is hidden — a
+ * hidden Category cascades to every Service under it (ADR-0006), so this is
+ * the one filter point every canonical accessor below shares instead of
+ * forking a hidden-inclusive/hidden-exclusive path per accessor.
  */
-// Soft-launch gate (introduced in 0a6176c "scope site content to certificates
-// category for soft launch"): only live categories are exposed through the
-// shared services config, which backs the global search index and the canonical
-// accessors. #186 ports the remaining Service Categories to the canonical
-// source, so they all go live here. The two non-resident categories
-// (`government`, `online`) stay gated until their own slices.
-const LIVE_CATEGORY_IDS = new Set([
-  'certificates',
-  'business',
-  'tax-payments',
-  'social-services',
-  'health',
-  'agriculture',
-  'infrastructure',
-  'education',
-  'public-safety',
-  'environment',
-])
-
+// Replaces the old hardcoded `LIVE_CATEGORY_IDS` soft-launch gate (#186,
+// #287): the join is now against `categories.json`'s `hidden` field via
+// `getServiceCategories()`, so a Category's visibility only needs editing in
+// one place to change its nav/search/page/detail visibility together.
 export function getServicesConfig(): ServicesConfig {
   const config = servicesConfig as ServicesConfig
+  const visibleCategoryIds = new Set(getServiceCategories().map(category => category.id))
   return {
     ...config,
     services: config.services
       ? config.services
-          .filter(service => LIVE_CATEGORY_IDS.has(service.categoryId))
+          .filter(service => visibleCategoryIds.has(service.categoryId))
           .filter((service: ServiceItem) => !service.hidden)
       : [],
   }

@@ -1,5 +1,7 @@
+import type { ServiceItem } from '@/types/config'
 import { describe, expect, it } from 'vitest'
 import { validateAgainstSchema, validateConsistency } from '../../scripts/validate-config.mjs'
+import rawServicesConfig from '../config/services.json'
 import {
   categoryHasBarangayProvider,
   getAgencies,
@@ -103,8 +105,17 @@ describe('derived SEO accessors', () => {
       expect(getCategorySeoDescription('does-not-exist')).toBeUndefined()
     })
 
-    it('is behavior-equivalent to the legacy seo-services-category.json for every migrated category', () => {
+    it('is behavior-equivalent to the legacy seo-services-category.json for every launched category', () => {
+      // Only `certificates`/`business` are launched (visible) Categories today.
+      // The other 8 carry the same ported `seoDescription` text (#284) but,
+      // being hidden/unlaunched, `getCategorySeoDescription` correctly returns
+      // undefined for them post-cascade (#287) so the SEO middleware falls
+      // back to the route-level `seo.json` instead of surfacing draft copy.
       for (const [slug, legacy] of Object.entries(LEGACY_SEO_SERVICES_CATEGORY)) {
+        if (!getCategoryBySlug(slug)) {
+          expect(getCategorySeoDescription(slug)).toBeUndefined()
+          continue
+        }
         expect(getCategorySeoDescription(slug)).toBe(legacy)
       }
     })
@@ -258,8 +269,14 @@ describe('configHelper', () => {
   // #186: every resident-facing Service Category is sourced canonically and
   // renders via the accessor — the canonical source is the only source (#189).
   describe('migrated Service Categories (#186)', () => {
-    const MIGRATED = [
-      'business',
+    // Only `business` is a launched (visible) Category among the #186 batch.
+    // The other 8 were ported into `categories.json` as `hidden: true` by
+    // #284 and now cascade through every canonical accessor as unlaunched
+    // (#287) — they stay canonical in structure (`isCanonicalCategory`) but
+    // are not resolvable via the visible-only accessors until launched.
+    const LIVE_MIGRATED = ['business'] as const
+
+    const HIDDEN_MIGRATED = [
       'tax-payments',
       'social-services',
       'health',
@@ -270,7 +287,7 @@ describe('configHelper', () => {
       'environment',
     ] as const
 
-    it.each(MIGRATED)('%s is a canonical Category resolved by slug', (slug) => {
+    it.each(LIVE_MIGRATED)('%s is a canonical, visible Category resolved by slug', (slug) => {
       expect(isCanonicalCategory(slug)).toBe(true)
       const category = getCategoryBySlug(slug)
       expect(category).toBeDefined()
@@ -278,11 +295,17 @@ describe('configHelper', () => {
       expect('offices' in category!).toBe(false)
     })
 
-    it.each(MIGRATED)('%s exposes only its own visible Services via the accessor', (slug) => {
+    it.each(LIVE_MIGRATED)('%s exposes only its own visible Services via the accessor', (slug) => {
       const services = getServicesByCategory(slug)
       expect(services.length).toBeGreaterThan(0)
       expect(services.every(s => s.categoryId === slug)).toBe(true)
       expect(services.every(s => !s.hidden)).toBe(true)
+    })
+
+    it.each(HIDDEN_MIGRATED)('%s is canonical but hidden (unlaunched) — cascades to no visible Services (#287)', (slug) => {
+      expect(isCanonicalCategory(slug)).toBe(true)
+      expect(getCategoryBySlug(slug)).toBeUndefined()
+      expect(getServicesByCategory(slug)).toEqual([])
     })
 
     it('a detail-bearing migrated Service resolves its detail from services.json', () => {
@@ -293,29 +316,20 @@ describe('configHelper', () => {
       expect(permit!.url).toBe('/service-details/business-permit-new')
     })
 
-    it('property-declaration and cswdo-services carry their canonical detail block', () => {
+    it('property-declaration and cswdo-services are not resolvable while their Category is hidden (#287)', () => {
+      // property-declaration -> tax-payments, cswdo-services -> social-services;
+      // both Categories are unlaunched, so the cascade hides their Services too.
       for (const id of ['property-declaration', 'cswdo-services']) {
-        const svc = getServiceBySlug(id)
-        expect(svc, id).toBeDefined()
-        expect(svc!.detail, id).toBeDefined()
-        expect(svc!.url, id).toBe(`/service-details/${id}`)
+        expect(getServiceBySlug(id), id).toBeUndefined()
       }
     })
 
-    it('vaccination is a detail-bearing Service linking to its own page (#202)', () => {
-      const vaccination = getServiceBySlug('vaccination')
-      expect(vaccination).toBeDefined()
-      expect(vaccination!.detail).toBeDefined()
-      expect(vaccination!.url).toBe('/service-details/vaccination')
-      expect(vaccination!.providedBy).toBe('city-health')
+    it('vaccination is not resolvable while its Category (health) is hidden (#287)', () => {
+      expect(getServiceBySlug('vaccination')).toBeUndefined()
     })
 
-    it('emergency-response is a detail-bearing Service linking to its own page (#202)', () => {
-      const er = getServiceBySlug('emergency-response')
-      expect(er).toBeDefined()
-      expect(er!.detail).toBeDefined()
-      expect(er!.url).toBe('/service-details/emergency-response')
-      expect(er!.providedBy).toBe('cdrrmo')
+    it('emergency-response is not resolvable while its Category (public-safety) is hidden (#287)', () => {
+      expect(getServiceBySlug('emergency-response')).toBeUndefined()
     })
 
     it('shadow office-as-Service rows deleted — do not resolve via getServiceBySlug (#202)', () => {
@@ -554,72 +568,84 @@ describe('configHelper', () => {
       }
     })
 
-    it('city-treasurer lists its providedBy services', () => {
-      const services = getAllServices().filter(s => s.providedBy === 'city-treasurer')
-      expect(services.length).toBeGreaterThan(0)
-      const ids = services.map(s => s.id)
+    // city-treasurer/city-assessor/cswdo/city-agriculture/city-engineering/
+    // city-health/cdrrmo all provide Services exclusively under Categories
+    // that are hidden (unlaunched) as of #284/#287's cascade
+    // (tax-payments/social-services/agriculture/infrastructure/health/
+    // public-safety). `getAllServices()` correctly excludes them until their
+    // Category launches — asserted below — while the underlying providedBy
+    // linkage authored in #202 is checked directly against the raw catalog
+    // so that structural regression (a broken/renamed providedBy ref) still
+    // fails loudly, independent of Category launch status.
+    const rawServices = (rawServicesConfig as { services: ServiceItem[] }).services
+
+    it('city-treasurer\'s providedBy services are unlisted while tax-payments is hidden, but the raw links are intact', () => {
+      expect(getAllServices().filter(s => s.providedBy === 'city-treasurer')).toEqual([])
+      const ids = rawServices.filter(s => s.providedBy === 'city-treasurer').map(s => s.id)
       expect(ids).toContain('real-property-tax')
       expect(ids).toContain('business-tax')
       expect(ids).toContain('tax-clearance')
     })
 
-    it('city-assessor lists property-declaration as a providedBy service', () => {
-      const services = getAllServices().filter(s => s.providedBy === 'city-assessor')
-      expect(services.map(s => s.id)).toContain('property-declaration')
+    it('city-assessor\'s property-declaration link is unlisted while tax-payments is hidden, but intact in the raw catalog', () => {
+      expect(getAllServices().filter(s => s.providedBy === 'city-assessor')).toEqual([])
+      const ids = rawServices.filter(s => s.providedBy === 'city-assessor').map(s => s.id)
+      expect(ids).toContain('property-declaration')
     })
 
-    it('cswdo lists its providedBy services', () => {
-      const services = getAllServices().filter(s => s.providedBy === 'cswdo')
-      expect(services.length).toBeGreaterThan(0)
-      const ids = services.map(s => s.id)
+    it('cswdo\'s providedBy services are unlisted while social-services is hidden, but the raw links are intact', () => {
+      expect(getAllServices().filter(s => s.providedBy === 'cswdo')).toEqual([])
+      const ids = rawServices.filter(s => s.providedBy === 'cswdo').map(s => s.id)
       expect(ids).toContain('senior-citizen-id')
       expect(ids).toContain('pwd-id')
       expect(ids).toContain('cswdo-services')
     })
 
-    it('city-agriculture lists its providedBy services', () => {
-      const services = getAllServices().filter(s => s.providedBy === 'city-agriculture')
-      const ids = services.map(s => s.id)
+    it('city-agriculture\'s providedBy services are unlisted while agriculture is hidden, but the raw links are intact', () => {
+      expect(getAllServices().filter(s => s.providedBy === 'city-agriculture')).toEqual([])
+      const ids = rawServices.filter(s => s.providedBy === 'city-agriculture').map(s => s.id)
       expect(ids).toContain('agricultural-loan')
       expect(ids).toContain('crop-insurance')
       expect(ids).toContain('fertilizer-assistance')
     })
 
-    it('city-engineering lists its providedBy services', () => {
-      const services = getAllServices().filter(s => s.providedBy === 'city-engineering')
-      const ids = services.map(s => s.id)
+    it('city-engineering\'s providedBy services are unlisted while infrastructure is hidden, but the raw links are intact', () => {
+      expect(getAllServices().filter(s => s.providedBy === 'city-engineering')).toEqual([])
+      const ids = rawServices.filter(s => s.providedBy === 'city-engineering').map(s => s.id)
       expect(ids).toContain('building-permit')
       expect(ids).toContain('occupancy-permit')
       expect(ids).toContain('road-maintenance')
     })
 
-    it('city-health lists its providedBy services including vaccination', () => {
-      const services = getAllServices().filter(s => s.providedBy === 'city-health')
-      const ids = services.map(s => s.id)
+    it('city-health\'s providedBy services (incl. vaccination) are unlisted while health is hidden, but the raw links are intact', () => {
+      expect(getAllServices().filter(s => s.providedBy === 'city-health')).toEqual([])
+      const ids = rawServices.filter(s => s.providedBy === 'city-health').map(s => s.id)
       expect(ids).toContain('vaccination')
       expect(ids).toContain('health-certificate')
       expect(ids).toContain('prenatal-checkup')
     })
 
-    it('cdrrmo lists emergency-response as a providedBy service', () => {
-      const services = getAllServices().filter(s => s.providedBy === 'cdrrmo')
-      const ids = services.map(s => s.id)
+    it('cdrrmo\'s emergency-response link is unlisted while public-safety is hidden, but the raw links are intact', () => {
+      expect(getAllServices().filter(s => s.providedBy === 'cdrrmo')).toEqual([])
+      const ids = rawServices.filter(s => s.providedBy === 'cdrrmo').map(s => s.id)
       expect(ids).toContain('emergency-response')
       expect(ids).toContain('disaster-preparedness')
     })
 
-    it('vaccination surfaces its Office via providedBy, not relatedServices', () => {
+    it('vaccination surfaces its Office via providedBy, not relatedServices (raw catalog, health is hidden)', () => {
       // An Office is not a Service: it is surfaced from `providedBy` (the
       // "Office Information" card), never recycled into `relatedServices` (which
       // renders under a "Related Services" heading and holds sibling Services).
-      const vaccination = getServiceBySlug('vaccination')
+      // Checked against the raw catalog since `vaccination` itself isn't
+      // resolvable via getServiceBySlug while `health` is hidden (#287).
+      const vaccination = rawServices.find(s => s.id === 'vaccination')
       expect(vaccination!.providedBy).toBe('city-health')
       const relatedLinks = vaccination!.detail!.relatedServices.map(r => r.link)
       expect(relatedLinks.some(l => l.startsWith('/offices/'))).toBe(false)
     })
 
-    it('emergency-response surfaces its Office via providedBy, not relatedServices', () => {
-      const er = getServiceBySlug('emergency-response')
+    it('emergency-response surfaces its Office via providedBy, not relatedServices (raw catalog, public-safety is hidden)', () => {
+      const er = rawServices.find(s => s.id === 'emergency-response')
       expect(er!.providedBy).toBe('cdrrmo')
       const relatedLinks = er!.detail!.relatedServices.map(r => r.link)
       expect(relatedLinks.some(l => l.startsWith('/offices/'))).toBe(false)
