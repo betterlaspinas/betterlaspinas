@@ -575,8 +575,14 @@
           }
         ],
         "onlineLink": "https://cityoflaspinas.ph/",
-        "sourceUrl": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
-        "sourceName": "Citizen's Charter 2022 (1st Edition)"
+        "sources": [
+          {
+            "name": "Citizen's Charter 2022 (1st Edition)",
+            "url": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
+            "covers": ["fee", "processingTime", "quickStats", "requirements", "processSteps", "faqs"],
+            "verifiedOn": "2026-08-05"
+          }
+        ]
       }
     },
     {
@@ -694,8 +700,14 @@
         },
         "relatedServices": [],
         "onlineLink": "https://cityoflaspinas.ph/",
-        "sourceUrl": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
-        "sourceName": "Citizen's Charter 2022 (1st Edition)"
+        "sources": [
+          {
+            "name": "Citizen's Charter 2022 (1st Edition)",
+            "url": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
+            "covers": ["fee", "processingTime", "quickStats", "requirements", "processSteps", "faqs"],
+            "verifiedOn": "2026-08-05"
+          }
+        ]
       }
     },
     {
@@ -808,8 +820,14 @@
             "link": "/service-details/business-permit-renewal"
           }
         ],
-        "sourceUrl": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
-        "sourceName": "Citizen's Charter 2022 (1st Edition)"
+        "sources": [
+          {
+            "name": "Citizen's Charter 2022 (1st Edition)",
+            "url": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
+            "covers": ["fee", "processingTime", "quickStats", "requirements", "processSteps", "faqs"],
+            "verifiedOn": "2026-08-05"
+          }
+        ]
       }
     },
     {
@@ -927,8 +945,14 @@
             "link": "/service-details/special-permit"
           }
         ],
-        "sourceUrl": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
-        "sourceName": "Citizen's Charter 2022 (1st Edition)"
+        "sources": [
+          {
+            "name": "Citizen's Charter 2022 (1st Edition)",
+            "url": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
+            "covers": ["fee", "processingTime", "quickStats", "requirements", "processSteps", "faqs"],
+            "verifiedOn": "2026-08-05"
+          }
+        ]
       }
     },
     {
@@ -1039,8 +1063,14 @@
             "link": "/service-details/business-status-certificate"
           }
         ],
-        "sourceUrl": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
-        "sourceName": "Citizen's Charter 2022 (1st Edition)"
+        "sources": [
+          {
+            "name": "Citizen's Charter 2022 (1st Edition)",
+            "url": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
+            "covers": ["fee", "processingTime", "quickStats", "requirements", "processSteps", "faqs"],
+            "verifiedOn": "2026-08-05"
+          }
+        ]
       }
     },
     {
@@ -1159,8 +1189,14 @@
             "link": "/service-details/special-permit"
           }
         ],
-        "sourceUrl": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
-        "sourceName": "Citizen's Charter 2022 (1st Edition)"
+        "sources": [
+          {
+            "name": "Citizen's Charter 2022 (1st Edition)",
+            "url": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
+            "covers": ["fee", "processingTime", "quickStats", "requirements", "processSteps", "faqs"],
+            "verifiedOn": "2026-08-05"
+          }
+        ]
       }
     },
     {
@@ -1285,8 +1321,14 @@
             "link": "/services/business"
           }
         ],
-        "sourceUrl": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
-        "sourceName": "Citizen's Charter 2022 (1st Edition)"
+        "sources": [
+          {
+            "name": "Citizen's Charter 2022 (1st Edition)",
+            "url": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
+            "covers": ["fee", "processingTime", "quickStats", "requirements", "processSteps", "faqs"],
+            "verifiedOn": "2026-08-05"
+          }
+        ]
       }
     },
     {
@@ -2353,8 +2395,14 @@
             "link": "/services/business"
           }
         ],
-        "sourceUrl": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
-        "sourceName": "Citizen's Charter 2022 (1st Edition)"
+        "sources": [
+          {
+            "name": "Citizen's Charter 2022 (1st Edition)",
+            "url": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
+            "covers": ["fee", "processingTime", "quickStats", "requirements", "processSteps", "faqs"],
+            "verifiedOn": "2026-08-05"
+          }
+        ]
       }
     },
     {

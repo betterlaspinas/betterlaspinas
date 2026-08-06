@@ -387,6 +387,57 @@ export interface RelatedService {
   link: string
 }
 
+/**
+ * One document a record was transcribed from (#243, per ADR-0005). Records carry
+ * an ordered `sources[]` — primary first — because provenance is per-record with
+ * attribution, not one document per record: several Offices take location and
+ * hours from the Citizen's Charter but their phone from the city's key-officials
+ * directory, and a single record-level date would overstate what was checked.
+ *
+ * Trust is derived from these fields; there is no `dataStatus` enum (#237).
+ */
+export interface SourceRef {
+  /**
+   * Cites the issuing authority and document — e.g. "Las Piñas City Civil
+   * Registry Citizen's Charter, 2024 edition". Always names the city, never this
+   * site. Required: a source that can't be named can't be checked against.
+   */
+  name: string
+  /**
+   * Link to the document, present only when the *authority* publishes it. Most
+   * Las Piñas charters are tarpaulins at the office window or PDFs handed over
+   * on request, so this is absent more often than not (#238). Its absence never
+   * makes a record unverified — a contributor's own photo or scan is PR review
+   * evidence and must never be committed or used here.
+   */
+  url?: string
+  /**
+   * Vintage of the source itself, e.g. '2022'. Kept separate from `verifiedOn`
+   * so a fresh check cannot present four-year-old data as current. Stored
+   * machine-readable, but deliberately nothing computes from it — there is no
+   * stale threshold and none is to be added (#237).
+   */
+  published?: string
+  /**
+   * ISO date we most recently confirmed this record against THIS source.
+   * Transcribing a value out of a source IS confirming it — this is set the
+   * moment that happens, not held back for a separate "audit" pass. Re-reading
+   * the SAME source later (a second contributor, or a proofread) bumps this
+   * date in place; it does not add a second field — there is deliberately no
+   * separate audit/proofread date (#237, ADR-0005). Checking a DIFFERENT
+   * source adds another entry to `sources[]` instead. Asserts transcription
+   * accuracy, NOT currency: re-reading the 2022 charter today proves our
+   * record matches the charter, not that the fee is still charged.
+   */
+  verifiedOn?: string
+  /**
+   * Field names this source backs, e.g. `['phone']`. Omitted for the source
+   * backing the record generally; set only for the minority of fields sourced
+   * elsewhere. Stored for auditability — not rendered (no per-field UI).
+   */
+  covers?: string[]
+}
+
 export interface ServiceDetail {
   fullTitle: string
   category: string
@@ -401,8 +452,8 @@ export interface ServiceDetail {
   office?: ServiceDetailOffice
   relatedServices: RelatedService[]
   onlineLink?: string
-  sourceUrl?: string
-  sourceName?: string
+  /** Documents this Service was transcribed from, primary first (#243). */
+  sources?: SourceRef[]
 }
 
 /**
@@ -556,13 +607,17 @@ export interface Office {
    */
   additionalServices?: string[]
   /**
-   * Official source for this Office's directory data — e.g. the Las Piñas
-   * Citizen's Charter PDF. Rendered as a "Data source" card on the Office page
-   * so the information is auditable. `sourceUrl` is the link, `sourceName` its
-   * human label. Mirrors `ServiceDetail.sourceUrl` / `sourceName`.
+   * Documents this Office's directory data was transcribed from, primary first.
+   * The array (and `covers`) exist so a record can attribute fields to more than
+   * one document — e.g. an Office's location and hours from the Citizen's
+   * Charter, its phone from the city's key-officials directory when the charter
+   * omits contact numbers — but no Office record cites a second source yet;
+   * backfilling that per office is follow-up work. Rendered as the "Data
+   * source" card on the Office page so the information is auditable; the card
+   * states a fact when any source carries `name && verifiedOn`, and hedges
+   * otherwise (#243).
    */
-  sourceUrl?: string
-  sourceName?: string
+  sources?: SourceRef[]
   /**
    * Optional rich detail-page content, mirroring the canonical
    * `ServiceItem.detail` block (#184). Present only for Offices with a dedicated
@@ -596,13 +651,12 @@ export interface Agency {
   phone?: string
   hours?: string
   /**
-   * Sourcing confidence for this record's contact/location data. 'unverified'
-   * until confirmed against an official source. A lightweight, Agency-scoped
-   * stand-in for the deferred generalized `dataStatus` flag (see ADR-0003).
+   * Documents this Agency's contact/location data was transcribed from, primary
+   * first (#243). Replaces the Agency-scoped `dataStatus` enum, which was a
+   * stand-in for the generalized flag that ADR-0005 rules out: confidence is
+   * derived from provenance, not asserted by a field.
    */
-  dataStatus?: 'unverified' | 'verified'
-  sourceUrl?: string
-  sourceName?: string
+  sources?: SourceRef[]
 }
 
 export interface AgenciesConfig {

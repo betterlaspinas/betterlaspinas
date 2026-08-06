@@ -35,18 +35,40 @@
         "location": { "type": "string" },
         "phone": { "type": "string" },
         "hours": { "type": "string" },
-        "dataStatus": {
+        "sources": {
+          "type": "array",
+          "description": "Documents this Agency's contact/location data was transcribed from, primary first (#243, ADR-0005). Replaces the sourceUrl/sourceName pair and the dataStatus enum: confidence is derived from provenance, not asserted by a field.",
+          "items": { "$ref": "#/definitions/sourceRef" }
+        }
+      }
+    },
+    "sourceRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "One document a record was transcribed from (#243, ADR-0005). Only `name` is required: the validator deliberately enforces nothing else about provenance (#237) — the Office page render, not validation, is what makes an unsourced verification claim unreachable.",
+      "required": ["name"],
+      "properties": {
+        "name": {
           "type": "string",
-          "enum": ["unverified", "verified"],
-          "description": "Sourcing confidence for this record's contact/location data. 'unverified' until confirmed against an official source; omit once confirmed (ties to the deferred generalized dataStatus flag, ADR-0003/0004)."
+          "description": "Issuing authority and document, e.g. \"Las Piñas City Civil Registry Citizen's Charter, 2024 edition\". Names the city, never this site."
         },
-        "sourceUrl": {
+        "url": {
           "type": "string",
-          "description": "Official source link for this Agency's data. Rendered as a Data source card, mirroring Office.sourceUrl."
+          "description": "Link to the document, present only when the authority publishes it. Absent for a tarpaulin or a PDF handed over on request; its absence never makes a record unverified (#238). Never a contributor's own photo or scan."
         },
-        "sourceName": {
+        "published": {
           "type": "string",
-          "description": "Human label for sourceUrl."
+          "description": "Vintage of the source itself, e.g. '2022'. Kept separate from verifiedOn so a fresh check cannot present old data as current. Nothing computes from it — there is no stale threshold (#237)."
+        },
+        "verifiedOn": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "description": "ISO date this record was most recently confirmed against THIS source. Transcribing a value out of a source IS confirming it, so this is set at transcription time, not held back for a separate audit pass; re-reading the SAME source later bumps it in place (no separate audit/proofread date, #237). Asserts transcription accuracy, not currency."
+        },
+        "covers": {
+          "type": "array",
+          "description": "Field names this source backs, e.g. [\"phone\"]. Omitted for the source backing the record generally. Stored for auditability, not rendered.",
+          "items": { "type": "string" }
         }
       }
     }
