@@ -20,6 +20,7 @@ import {
   getServiceBySlug,
   getServicesByCategory,
   isCanonicalCategory,
+  isLinkedPageVisible,
 } from '@/utils/configHelper'
 
 // ---------------------------------------------------------------------------
@@ -240,8 +241,18 @@ export function serviceDetailView(slug: string): ServiceDetailView | undefined {
   const category = getCategoryBySlug(canonical.categoryId)
   if (!category)
     return undefined
+  // Drop editorial relatedServices links whose target has gone invisible (its
+  // Service or Category is hidden) — the reference is stale data, not a route
+  // guard, so filter it out here at the IO-owning facade rather than the pure
+  // shaper (#287 AC#6).
+  const detail = {
+    ...canonical.detail,
+    relatedServices: canonical.detail.relatedServices.filter(related =>
+      isLinkedPageVisible(related.link),
+    ),
+  }
   return toServiceDetailView({
-    service: { ...canonical, detail: canonical.detail },
+    service: { ...canonical, detail },
     category,
     office: getOfficeForService(canonical),
   })
