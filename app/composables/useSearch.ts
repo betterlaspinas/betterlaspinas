@@ -133,13 +133,11 @@ export function useSearch(initialQuery = '') {
 
   // Category filter chips, always led by an "All" entry (clears the filter).
   // `getServiceCategories()` only excludes categories flagged `hidden` in
-  // categories.json — it doesn't know whether a category currently holds any
-  // live (non-hidden, non-gated) services. A category can therefore be
-  // "visible" at the config level while resolving to zero results in the
-  // search index. Skipping empty categories here keeps the chip list in sync
-  // with what search can actually return, without coupling to configHelper's
-  // internal `LIVE_CATEGORY_IDS` soft-launch set (which isn't exported and is
-  // meant to be a temporary gate).
+  // categories.json — it doesn't guarantee the category has any services
+  // pointing at it. A category can therefore be "visible" at the config
+  // level while resolving to zero results in the search index. Skipping
+  // empty categories here keeps the chip list in sync with what search can
+  // actually return.
   const categories = computed<CategoryChip[]>(() => [
     { id: '', label: 'All' },
     ...getServiceCategories()
