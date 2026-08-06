@@ -397,8 +397,8 @@ export function isCanonicalCategory(slug: string): boolean {
  * Replaces the legacy `seo-service-details-slug.json` lookup: the per-Service
  * SEO copy now lives on the Service itself (`ServiceItem.seoDescription`), so it
  * cannot drift from the catalog. Returns undefined when the Service is unknown,
- * hidden, gated out by the `LIVE_CATEGORY_IDS` soft-launch filter (its
- * `categoryId` is not yet live), or carries no `seoDescription` template,
+ * hidden, gated out because its Category (`categoryId`) is hidden in
+ * `categories.json`, or carries no `seoDescription` template,
  * letting the SEO middleware fall back to the route-level `seo.json`
  * description. The returned string is a raw template (e.g. contains
  * `{{lguName}}`); the middleware interpolates it.
