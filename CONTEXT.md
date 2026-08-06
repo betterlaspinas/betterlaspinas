@@ -33,8 +33,12 @@ A **national** government office physically present in the city that residents t
 _Avoid_: Office (it is not a city department), bureau, hotline (a phone number is one attribute, not the Agency)
 
 **Category**:
-A grouping used to organize **Services** for browsing by task — answers "what do I want to do" (e.g. "Certificates", "Business"). Applies to Services only, never Offices.
+A grouping used to organize **Services** for browsing by task — answers "what do I want to do" (e.g. "Certificates", "Business"). Applies to Services only, never Offices. A Service belongs to **exactly one** Category, chosen by **presenting need** (why the resident came), never by the outcome artifact — e.g. Sanitary Permit is Business, not Health, because nobody gets one except to run a business. No cross-listing field; cross-journey discovery is `keywords`' job (ADR-0006).
 _Avoid_: Section, type
+
+**`hidden`**:
+An editorial draft/launch flag, distinct from provenance (`sources[]`/`verifiedOn`) — `hidden` answers "is this finished", provenance answers "is this true". Means two different things at two grains, both kept independently (ADR-0006): on a **Service**, this Service's content is a draft, not ready to publish. On a **Category**, this Category hasn't launched, and it **cascades** — hides its page, every Service in it (search, detail pages), everywhere — not merely unlisted from browse.
+_Avoid_: status, published, draft (as a field name — the field is always `hidden`)
 
 **Office Group**:
 A grouping of **Offices** by government function — answers "who runs this" (e.g. "Finance", "Frontline Services"). Distinct from **Category**. An Office belongs to one Office Group even when its Services span multiple Categories (e.g. City Treasurer's Office sits in "Finance" but provides Services in both Tax and Business Categories).
