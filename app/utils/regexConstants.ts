@@ -16,6 +16,10 @@ export const WHITESPACE_REGEX = /\s+/g
 export const DIACRITICS_REGEX = /[\u0300-\u036F]/g
 export const PHONE_CLEANUP_REGEX = /[\s()-]/g
 
+// Editorial link visibility checks (relatedServices cascade, #287 AC#6)
+export const SERVICE_DETAIL_LINK_REGEX = /^\/service-details\/([a-z0-9-]+)$/
+export const CATEGORY_LINK_REGEX = /^\/services\/([a-z0-9-]+)$/
+
 // Search / Text Splitters
 export const SPLIT_WHITESPACE_REGEX = /\s+/
 export const TRAILING_SLASH_REGEX = /\/$/

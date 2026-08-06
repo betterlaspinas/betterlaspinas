@@ -36,8 +36,10 @@ import type {
 } from '@/types/config'
 
 import {
+  CATEGORY_LINK_REGEX,
   DIACRITICS_REGEX,
   PHONE_CLEANUP_REGEX,
+  SERVICE_DETAIL_LINK_REGEX,
   WHITESPACE_REGEX,
 } from '@/utils/regexConstants'
 
@@ -388,6 +390,32 @@ const CANONICAL_CATEGORY_SLUGS = new Set([
 
 export function isCanonicalCategory(slug: string): boolean {
   return CANONICAL_CATEGORY_SLUGS.has(slug)
+}
+
+/**
+ * Whether a raw editorial link (as used by `RelatedService.link` in
+ * `detail.relatedServices`) still resolves to a live page.
+ *
+ * Covers the two link shapes editorial content uses — `/service-details/<slug>`
+ * and `/services/<slug>` — and resolves them through the same canonical,
+ * hidden-aware accessors (`getServiceBySlug` / `getCategoryBySlug`) every other
+ * page uses, so a link auto-hides when its target's Category is hidden and
+ * auto-reappears if the flag is later flipped back, with no data edit needed
+ * (#287 AC#6: "no orphaned links to a hidden Category's page or one of its
+ * Services' detail pages"). Any other path shape (external links, `/offices/`,
+ * `/contact`, etc.) is assumed visible — this check only exists to catch the
+ * hidden-cascade case.
+ */
+export function isLinkedPageVisible(link: string): boolean {
+  const serviceSlug = link.match(SERVICE_DETAIL_LINK_REGEX)?.[1]
+  if (serviceSlug) {
+    return getServiceBySlug(serviceSlug) !== undefined
+  }
+  const categorySlug = link.match(CATEGORY_LINK_REGEX)?.[1]
+  if (categorySlug) {
+    return getCategoryBySlug(categorySlug) !== undefined
+  }
+  return true
 }
 
 /**
