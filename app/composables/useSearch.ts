@@ -37,8 +37,8 @@ const MAX_RECENT_SEARCHES = 10
 // editorial (not auto-derived from the catalog) so the list can highlight
 // what residents actually look for. To keep the list from drifting the way
 // it did before (terms silently pointing at unpublished categories), it is
-// filtered at runtime in `getCuratedPopular()` against live service titles
-// before it is ever shown or fed into the suggestion index.
+// filtered at runtime by the `curatedPopular` computed against live service
+// titles before it is ever shown or fed into the suggestion index.
 const CURATED_POPULAR_CANDIDATES = [
   'birth certificate',
   'business permit',
