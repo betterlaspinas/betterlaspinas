@@ -438,10 +438,15 @@ export interface SourceRef {
   covers?: string[]
 }
 
+/**
+ * `category` / `categoryLink` were removed here (#245): both were denormalised
+ * copies of the Category record (name/badgeText + `/services/<id>`) reached via
+ * `categoryId`, and had already drifted for 5 of 12 Categories. The View
+ * resolver seam (`toServiceDetailView`, pageViews.ts) now derives them from the
+ * Category record via `getCategoryBySlug`, so they can't disagree again.
+ */
 export interface ServiceDetail {
   fullTitle: string
-  category: string
-  categoryLink: string
   badgeText: string
   badgeIcon: string
   description: string
@@ -469,8 +474,15 @@ export interface ServiceItem {
   id: string
   title: string
   description: string
-  category: string
-  categoryId?: string
+  /**
+   * Slug of the parent Category (matches a categories.json id). The Category
+   * display name is derived from this via `getServiceCategoryName` /
+   * `getCategoryBySlug` rather than stored inline — #245 removed the
+   * denormalised `category` string, which had already drifted from the
+   * Category record for 5 of 12 Categories. Required: present on 100% of
+   * Service records.
+   */
+  categoryId: string
   keywords: string[]
   office?: string
   /**

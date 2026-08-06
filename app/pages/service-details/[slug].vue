@@ -16,7 +16,7 @@ if (!view) {
   })
 }
 
-const { service, officeInfo } = view
+const { service, officeInfo, categoryLabel, categoryHref } = view
 
 // Trust is derived from provenance, never asserted by a flag (#243, ADR-0005).
 const { sources, verifiedOn, checkedOn } = useDataSources(service)
@@ -35,7 +35,7 @@ function toggleFaq(index: number) {
     <UiBreadcrumbs
       :items="[
         { label: 'Services', href: '/services' },
-        { label: service.category, href: service.categoryLink },
+        { label: categoryLabel, href: categoryHref },
         { label: service.title },
       ]"
     />

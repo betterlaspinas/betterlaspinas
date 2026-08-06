@@ -4,7 +4,6 @@
     {
       "id": "birth-certificate",
       "title": "Birth Certificate",
-      "category": "Certificates & Vital Records",
       "categoryId": "certificates",
       "description": "Get a certified copy of birth certificate registered in your city",
       "seoDescription": "Get a certified copy of birth certificate registered in {{lguName}}.",
@@ -25,8 +24,6 @@
       "url": "/service-details/birth-certificate",
       "detail": {
         "fullTitle": "Birth Certificate (Local Copy)",
-        "category": "Certificates",
-        "categoryLink": "/services/certificates",
         "badgeText": "Certificates",
         "badgeIcon": "bi-file-earmark-text",
         "description": "Official certified copy of birth certificate registered in your city",
@@ -136,7 +133,6 @@
     {
       "id": "marriage-certificate",
       "title": "Marriage Certificate",
-      "category": "Certificates & Vital Records",
       "categoryId": "certificates",
       "description": "Register or request certified true copy of marriage certificate",
       "seoDescription": "Register or request certified true copy of marriage certificate in {{lguName}}.",
@@ -158,8 +154,6 @@
       "url": "/service-details/marriage-certificate",
       "detail": {
         "fullTitle": "Marriage Certificate Registration & Copy",
-        "category": "Certificates",
-        "categoryLink": "/services/certificates",
         "badgeText": "Certificates",
         "badgeIcon": "bi-heart",
         "description": "Register or request certified true copy of marriage certificate",
@@ -268,7 +262,6 @@
     {
       "id": "death-certificate",
       "title": "Death Certificate",
-      "category": "Certificates & Vital Records",
       "categoryId": "certificates",
       "description": "Register death certificate and obtain burial or transfer permit",
       "seoDescription": "Register death certificate and obtain burial or transfer permit in {{lguName}}.",
@@ -289,8 +282,6 @@
       "url": "/service-details/death-certificate",
       "detail": {
         "fullTitle": "Death Certificate Registration & Burial Permit",
-        "category": "Certificates",
-        "categoryLink": "/services/certificates",
         "badgeText": "Certificates",
         "badgeIcon": "bi-file-earmark-x",
         "description": "Register death certificate and obtain burial/transfer permit",
@@ -390,7 +381,6 @@
     {
       "id": "barangay-clearance",
       "title": "Barangay Clearance",
-      "category": "Certificates & Vital Records",
       "categoryId": "certificates",
       "description": "Certificate of residence from your barangay",
       "keywords": [
@@ -410,7 +400,6 @@
     {
       "id": "barangay-id",
       "title": "Barangay ID",
-      "category": "Certificates & Vital Records",
       "categoryId": "certificates",
       "description": "Official barangay identification card",
       "keywords": [
@@ -429,7 +418,6 @@
     {
       "id": "police-clearance",
       "title": "Police Clearance",
-      "category": "Certificates & Vital Records",
       "categoryId": "certificates",
       "description": "Police clearance coordination through city office",
       "keywords": [
@@ -449,7 +437,6 @@
     {
       "id": "business-permit-new",
       "title": "Business Permit (New)",
-      "category": "Business, Trade & Investment",
       "categoryId": "business",
       "description": "Apply for a new mayor's permit to operate a business",
       "seoDescription": "Apply for a new Business License and Mayor's Permit in {{lguName}}.",
@@ -470,8 +457,6 @@
       "url": "/service-details/business-permit-new",
       "detail": {
         "fullTitle": "Issuance of New Business License and Mayor's Permit",
-        "category": "Business",
-        "categoryLink": "/services/business",
         "badgeText": "Business",
         "badgeIcon": "bi-shop",
         "description": "Apply for a new mayor's permit to operate a business within the city as per City Ordinance No: 1373-16",
@@ -579,7 +564,14 @@
           {
             "name": "Citizen's Charter 2022 (1st Edition)",
             "url": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
-            "covers": ["fee", "processingTime", "quickStats", "requirements", "processSteps", "faqs"],
+            "covers": [
+              "fee",
+              "processingTime",
+              "quickStats",
+              "requirements",
+              "processSteps",
+              "faqs"
+            ],
             "verifiedOn": "2026-08-05"
           }
         ]
@@ -588,7 +580,6 @@
     {
       "id": "business-permit-renewal",
       "title": "Business Permit Renewal",
-      "category": "Business, Trade & Investment",
       "categoryId": "business",
       "description": "Renew your annual business permit",
       "seoDescription": "Renew your annual Business License and Mayor's Permit in {{lguName}}.",
@@ -606,8 +597,6 @@
       "url": "/service-details/business-permit-renewal",
       "detail": {
         "fullTitle": "Renewal of Business License and Mayor's Permit",
-        "category": "Business",
-        "categoryLink": "/services/business",
         "badgeText": "Business",
         "badgeIcon": "bi-shop",
         "description": "Renew your annual business permit, Mayor's clearance, and licensing services as per City Ordinance No: 1373-16",
@@ -704,7 +693,14 @@
           {
             "name": "Citizen's Charter 2022 (1st Edition)",
             "url": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
-            "covers": ["fee", "processingTime", "quickStats", "requirements", "processSteps", "faqs"],
+            "covers": [
+              "fee",
+              "processingTime",
+              "quickStats",
+              "requirements",
+              "processSteps",
+              "faqs"
+            ],
             "verifiedOn": "2026-08-05"
           }
         ]
@@ -713,7 +709,6 @@
     {
       "id": "special-permit",
       "title": "Special Permit",
-      "category": "Business, Trade & Investment",
       "categoryId": "business",
       "description": "Apply for a Special Permit to operate a business",
       "seoDescription": "Apply for a Special Permit to operate your business establishment in {{lguName}}.",
@@ -730,8 +725,6 @@
       "url": "/service-details/special-permit",
       "detail": {
         "fullTitle": "Issuance of Special Permit",
-        "category": "Business",
-        "categoryLink": "/services/business",
         "badgeText": "Business",
         "badgeIcon": "bi-shop",
         "description": "Special Permit issued by the City Government to all business establishment that operates within its territorial jurisdiction pursuant to City Ordinance No: 1373 - 16.",
@@ -824,7 +817,14 @@
           {
             "name": "Citizen's Charter 2022 (1st Edition)",
             "url": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
-            "covers": ["fee", "processingTime", "quickStats", "requirements", "processSteps", "faqs"],
+            "covers": [
+              "fee",
+              "processingTime",
+              "quickStats",
+              "requirements",
+              "processSteps",
+              "faqs"
+            ],
             "verifiedOn": "2026-08-05"
           }
         ]
@@ -833,7 +833,6 @@
     {
       "id": "business-status-certificate",
       "title": "Certificates on Status of Business",
-      "category": "Business, Trade & Investment",
       "categoryId": "business",
       "description": "Certification on the status of business entity registered in Las Piñas",
       "seoDescription": "Verify the status of a business entity registered with the BPLO in {{lguName}}.",
@@ -852,8 +851,6 @@
       "url": "/service-details/business-status-certificate",
       "detail": {
         "fullTitle": "Issuance of Certificates on Status of Business",
-        "category": "Business",
-        "categoryLink": "/services/business",
         "badgeText": "Business",
         "badgeIcon": "bi-file-earmark-check",
         "description": "Certification issued by the City Government to all who want to verify the status of a business entity registered with the Business Permit and Licensing Office (BPLO). Information access is limited pursuant to the Data Privacy Act of 2012 to maintain record integrity.",
@@ -949,7 +946,14 @@
           {
             "name": "Citizen's Charter 2022 (1st Edition)",
             "url": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
-            "covers": ["fee", "processingTime", "quickStats", "requirements", "processSteps", "faqs"],
+            "covers": [
+              "fee",
+              "processingTime",
+              "quickStats",
+              "requirements",
+              "processSteps",
+              "faqs"
+            ],
             "verifiedOn": "2026-08-05"
           }
         ]
@@ -958,7 +962,6 @@
     {
       "id": "ctc-business-license",
       "title": "Certified True Copy of Business License and Mayor's Permit",
-      "category": "Business, Trade & Investment",
       "categoryId": "business",
       "description": "Certified Copy of Business License and Mayor's Permit for legal purposes",
       "seoDescription": "Request a Certified True Copy of Business License and Mayor's Permit in {{lguName}}.",
@@ -978,8 +981,6 @@
       "url": "/service-details/ctc-business-license",
       "detail": {
         "fullTitle": "Issuance of Certified True Copy of Business License and Mayor's Permit",
-        "category": "Business",
-        "categoryLink": "/services/business",
         "badgeText": "Business",
         "badgeIcon": "bi-files",
         "description": "Certified Copy of Business License and Mayor's Permit issued by the City Government to Business Owners who request it in whatever legal purposes it may serve.",
@@ -1067,7 +1068,14 @@
           {
             "name": "Citizen's Charter 2022 (1st Edition)",
             "url": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
-            "covers": ["fee", "processingTime", "quickStats", "requirements", "processSteps", "faqs"],
+            "covers": [
+              "fee",
+              "processingTime",
+              "quickStats",
+              "requirements",
+              "processSteps",
+              "faqs"
+            ],
             "verifiedOn": "2026-08-05"
           }
         ]
@@ -1076,7 +1084,6 @@
     {
       "id": "occupational-permit",
       "title": "Occupational Mayor's Permit (Regular)",
-      "category": "Business, Trade & Investment",
       "categoryId": "business",
       "description": "Apply for an Occupational Mayor's Permit for workers or employees",
       "seoDescription": "Secure an Occupational Mayor's Permit for workers or employees in {{lguName}}.",
@@ -1095,8 +1102,6 @@
       "url": "/service-details/occupational-permit",
       "detail": {
         "fullTitle": "Occupational Mayor's Permit (Regular)",
-        "category": "Business",
-        "categoryLink": "/services/business",
         "badgeText": "Business",
         "badgeIcon": "bi-person-vcard",
         "description": "The Occupational Mayor's Permit is issued by the City Government to all workers or employees (temporary or permanent) employed within the territorial jurisdiction of Las Piñas, pursuant to the local Revenue Code.",
@@ -1193,7 +1198,14 @@
           {
             "name": "Citizen's Charter 2022 (1st Edition)",
             "url": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
-            "covers": ["fee", "processingTime", "quickStats", "requirements", "processSteps", "faqs"],
+            "covers": [
+              "fee",
+              "processingTime",
+              "quickStats",
+              "requirements",
+              "processSteps",
+              "faqs"
+            ],
             "verifiedOn": "2026-08-05"
           }
         ]
@@ -1202,7 +1214,6 @@
     {
       "id": "occupational-permit-jobseeker",
       "title": "Occupational Mayor's Permit (First Time Job Seeker)",
-      "category": "Business, Trade & Investment",
       "categoryId": "business",
       "description": "Free Occupational Mayor's Permit for first-time job seekers (R.A. 11261)",
       "seoDescription": "Avail the free Occupational Mayor's Permit for First Time Job Seekers in {{lguName}} under RA 11261.",
@@ -1225,8 +1236,6 @@
       "url": "/service-details/occupational-permit-jobseeker",
       "detail": {
         "fullTitle": "Occupational Mayor's Permit (First Time Job Seeker)",
-        "category": "Business",
-        "categoryLink": "/services/business",
         "badgeText": "Business",
         "badgeIcon": "bi-person-check",
         "description": "The City Government of Las Piñas provides assistance to \"First Time Job Seekers\" regarding the issuance of an Occupational Mayor's Permit, in compliance with Republic Act No. 11261, the \"First Time Jobseekers Assistance Act\" of 2019.",
@@ -1325,7 +1334,14 @@
           {
             "name": "Citizen's Charter 2022 (1st Edition)",
             "url": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
-            "covers": ["fee", "processingTime", "quickStats", "requirements", "processSteps", "faqs"],
+            "covers": [
+              "fee",
+              "processingTime",
+              "quickStats",
+              "requirements",
+              "processSteps",
+              "faqs"
+            ],
             "verifiedOn": "2026-08-05"
           }
         ]
@@ -1334,7 +1350,6 @@
     {
       "id": "business-closure",
       "title": "Business Closure",
-      "category": "Business, Trade & Investment",
       "categoryId": "business",
       "description": "File for business closure/termination",
       "keywords": [
@@ -1353,7 +1368,6 @@
     {
       "id": "sanitary-permit",
       "title": "Sanitary Permit",
-      "category": "Business, Trade & Investment",
       "categoryId": "business",
       "description": "Health and sanitation permit for businesses",
       "keywords": [
@@ -1373,7 +1387,6 @@
     {
       "id": "cedula",
       "title": "Community Tax Certificate (Cedula)",
-      "category": "Business, Trade & Investment",
       "categoryId": "business",
       "description": "Obtain cedula for individuals and businesses",
       "keywords": [
@@ -1392,7 +1405,6 @@
     {
       "id": "senior-citizen-id",
       "title": "Senior Citizen ID",
-      "category": "Social Services & Assistance",
       "categoryId": "social-services",
       "description": "ID card and benefits for citizens 60 years and above",
       "keywords": [
@@ -1413,7 +1425,6 @@
     {
       "id": "pwd-id",
       "title": "PWD ID & Services",
-      "category": "Social Services & Assistance",
       "categoryId": "social-services",
       "description": "ID and benefits for persons with disabilities",
       "keywords": [
@@ -1433,7 +1444,6 @@
     {
       "id": "financial-assistance",
       "title": "Financial Assistance",
-      "category": "Social Services & Assistance",
       "categoryId": "social-services",
       "description": "Emergency financial aid for qualified residents",
       "keywords": [
@@ -1454,7 +1464,6 @@
     {
       "id": "burial-assistance",
       "title": "Burial Assistance",
-      "category": "Social Services & Assistance",
       "categoryId": "social-services",
       "description": "Financial assistance for burial expenses",
       "keywords": [
@@ -1473,7 +1482,6 @@
     {
       "id": "solo-parent-id",
       "title": "Solo Parent ID",
-      "category": "Social Services & Assistance",
       "categoryId": "social-services",
       "description": "ID and benefits for solo parents",
       "keywords": [
@@ -1492,7 +1500,6 @@
     {
       "id": "vaccination",
       "title": "Vaccination Programs",
-      "category": "Health & Wellness",
       "categoryId": "health",
       "description": "Free immunization for children and adults",
       "keywords": [
@@ -1510,27 +1517,53 @@
       "url": "/service-details/vaccination",
       "detail": {
         "fullTitle": "Immunization & Vaccination Services",
-        "category": "Health",
-        "categoryLink": "/services/health",
         "badgeText": "Health",
         "badgeIcon": "bi-shield-plus",
         "description": "Free immunization for children, adults, and senior citizens",
         "quickStats": [
-          { "icon": "bi-clock", "label": "Schedule", "value": "Mon-Fri" },
-          { "icon": "bi-cash", "label": "Fee", "value": "Free" },
-          { "icon": "bi-geo-alt", "label": "Location", "value": "Health Centers" },
-          { "icon": "bi-calendar-check", "label": "Appointment", "value": "Walk-in" }
+          {
+            "icon": "bi-clock",
+            "label": "Schedule",
+            "value": "Mon-Fri"
+          },
+          {
+            "icon": "bi-cash",
+            "label": "Fee",
+            "value": "Free"
+          },
+          {
+            "icon": "bi-geo-alt",
+            "label": "Location",
+            "value": "Health Centers"
+          },
+          {
+            "icon": "bi-calendar-check",
+            "label": "Appointment",
+            "value": "Walk-in"
+          }
         ],
         "processSteps": [
-          { "title": "Registration", "description": "Register at the health center." },
-          { "title": "Screening", "description": "Health screening and vital signs check." },
-          { "title": "Vaccination", "description": "Administration of vaccine.", "isFinal": true }
+          {
+            "title": "Registration",
+            "description": "Register at the health center."
+          },
+          {
+            "title": "Screening",
+            "description": "Health screening and vital signs check."
+          },
+          {
+            "title": "Vaccination",
+            "description": "Administration of vaccine.",
+            "isFinal": true
+          }
         ],
         "requirements": [
           {
             "title": "For Children",
             "icon": "bi-person",
-            "items": ["Baby book / Immunization card"]
+            "items": [
+              "Baby book / Immunization card"
+            ]
           }
         ],
         "faqs": [
@@ -1545,7 +1578,6 @@
     {
       "id": "health-certificate",
       "title": "Health Certificate",
-      "category": "Health & Wellness",
       "categoryId": "health",
       "description": "Medical certificate for employment or business",
       "keywords": [
@@ -1564,7 +1596,6 @@
     {
       "id": "medical-assistance",
       "title": "Medical Assistance",
-      "category": "Health & Wellness",
       "categoryId": "health",
       "description": "Financial aid for medical expenses and hospitalization",
       "keywords": [
@@ -1584,7 +1615,6 @@
     {
       "id": "prenatal-checkup",
       "title": "Prenatal Checkup",
-      "category": "Health & Wellness",
       "categoryId": "health",
       "description": "Free prenatal care for pregnant women",
       "keywords": [
@@ -1604,7 +1634,6 @@
     {
       "id": "real-property-tax",
       "title": "Real Property Tax Payment",
-      "category": "Taxation & Payments",
       "categoryId": "tax-payments",
       "description": "Pay annual real property tax (amilyar)",
       "keywords": [
@@ -1625,7 +1654,6 @@
     {
       "id": "business-tax",
       "title": "Business Tax Payment",
-      "category": "Taxation & Payments",
       "categoryId": "tax-payments",
       "description": "Pay quarterly or annual business taxes",
       "keywords": [
@@ -1644,7 +1672,6 @@
     {
       "id": "tax-clearance",
       "title": "Tax Clearance",
-      "category": "Taxation & Payments",
       "categoryId": "tax-payments",
       "description": "Certificate of no tax liability",
       "keywords": [
@@ -1662,7 +1689,6 @@
     {
       "id": "agricultural-loan",
       "title": "Agricultural Loans",
-      "category": "Agriculture & Economic Development",
       "categoryId": "agriculture",
       "description": "Low-interest loans for farmers",
       "keywords": [
@@ -1682,7 +1708,6 @@
     {
       "id": "crop-insurance",
       "title": "Crop Insurance",
-      "category": "Agriculture & Economic Development",
       "categoryId": "agriculture",
       "description": "Insurance coverage for crop damage",
       "keywords": [
@@ -1701,7 +1726,6 @@
     {
       "id": "fertilizer-assistance",
       "title": "Fertilizer Assistance",
-      "category": "Agriculture & Economic Development",
       "categoryId": "agriculture",
       "description": "Free or subsidized fertilizer for registered farmers",
       "keywords": [
@@ -1720,7 +1744,6 @@
     {
       "id": "building-permit",
       "title": "Building Permit",
-      "category": "Infrastructure & Public Works",
       "categoryId": "infrastructure",
       "description": "Permit for new construction or renovation",
       "keywords": [
@@ -1740,7 +1763,6 @@
     {
       "id": "occupancy-permit",
       "title": "Occupancy Permit",
-      "category": "Infrastructure & Public Works",
       "categoryId": "infrastructure",
       "description": "Certificate of completion for new buildings",
       "keywords": [
@@ -1759,7 +1781,6 @@
     {
       "id": "road-maintenance",
       "title": "Road Maintenance Request",
-      "category": "Infrastructure & Public Works",
       "categoryId": "infrastructure",
       "description": "Report road damage or request repairs",
       "keywords": [
@@ -1779,7 +1800,6 @@
     {
       "id": "scholarship",
       "title": "Scholarship Programs",
-      "category": "Education & Scholarship",
       "categoryId": "education",
       "description": "Financial assistance for students",
       "keywords": [
@@ -1798,7 +1818,6 @@
     {
       "id": "student-assistance",
       "title": "Student Assistance",
-      "category": "Education & Scholarship",
       "categoryId": "education",
       "description": "Educational grants and allowances",
       "keywords": [
@@ -1817,7 +1836,6 @@
     {
       "id": "emergency-response",
       "title": "Emergency Response",
-      "category": "Public Safety & Security",
       "categoryId": "public-safety",
       "description": "24/7 emergency assistance and rescue",
       "keywords": [
@@ -1835,21 +1853,45 @@
       "url": "/service-details/emergency-response",
       "detail": {
         "fullTitle": "Emergency Rescue & Response",
-        "category": "Public Safety",
-        "categoryLink": "/services/public-safety",
         "badgeText": "Safety",
         "badgeIcon": "bi-ambulance",
         "description": "24/7 ambulance and rescue assistance",
         "quickStats": [
-          { "icon": "bi-clock", "label": "Response", "value": "Immediate" },
-          { "icon": "bi-telephone", "label": "Hotline", "value": "(02) 8290-6500" },
-          { "icon": "bi-geo-alt", "label": "Coverage", "value": "Citywide" },
-          { "icon": "bi-cash", "label": "Fee", "value": "Free" }
+          {
+            "icon": "bi-clock",
+            "label": "Response",
+            "value": "Immediate"
+          },
+          {
+            "icon": "bi-telephone",
+            "label": "Hotline",
+            "value": "(02) 8290-6500"
+          },
+          {
+            "icon": "bi-geo-alt",
+            "label": "Coverage",
+            "value": "Citywide"
+          },
+          {
+            "icon": "bi-cash",
+            "label": "Fee",
+            "value": "Free"
+          }
         ],
         "processSteps": [
-          { "title": "Call Hotline", "description": "Call (02) 8290-6500 immediately." },
-          { "title": "Provide Info", "description": "State nature of emergency and exact location." },
-          { "title": "Wait for Help", "description": "Stay on the line if instructed. Responders are on the way.", "isFinal": true }
+          {
+            "title": "Call Hotline",
+            "description": "Call (02) 8290-6500 immediately."
+          },
+          {
+            "title": "Provide Info",
+            "description": "State nature of emergency and exact location."
+          },
+          {
+            "title": "Wait for Help",
+            "description": "Stay on the line if instructed. Responders are on the way.",
+            "isFinal": true
+          }
         ],
         "requirements": [],
         "faqs": [
@@ -1864,7 +1906,6 @@
     {
       "id": "disaster-preparedness",
       "title": "Disaster Preparedness",
-      "category": "Public Safety & Security",
       "categoryId": "public-safety",
       "description": "Training and resources for disaster readiness",
       "keywords": [
@@ -1883,7 +1924,6 @@
     {
       "id": "environmental-clearance",
       "title": "Environmental Clearance",
-      "category": "Environment & Natural Resources",
       "categoryId": "environment",
       "description": "Environmental compliance certificate for projects",
       "keywords": [
@@ -1901,7 +1941,6 @@
     {
       "id": "tree-cutting-permit",
       "title": "Tree Cutting Permit",
-      "category": "Environment & Natural Resources",
       "categoryId": "environment",
       "description": "Permit to cut or trim trees",
       "keywords": [
@@ -1919,7 +1958,6 @@
     {
       "id": "cswdo-services",
       "title": "CSWDO Services",
-      "category": "Social Services & Assistance",
       "categoryId": "social-services",
       "description": "Social case studies, indigency certificates, AICS, PWD and senior citizen assistance",
       "keywords": [
@@ -1941,8 +1979,6 @@
       "url": "/service-details/cswdo-services",
       "detail": {
         "fullTitle": "City Social Welfare & Development Office",
-        "category": "Social Services",
-        "categoryLink": "/services/social-services",
         "badgeText": "Social Services",
         "badgeIcon": "bi-people",
         "description": "Social welfare programs, IDs, and financial assistance",
@@ -2045,7 +2081,6 @@
     {
       "id": "waste-management",
       "title": "Waste Management Services",
-      "category": "Environment & Natural Resources",
       "categoryId": "environment",
       "description": "Garbage collection and disposal services",
       "keywords": [
@@ -2064,7 +2099,6 @@
     {
       "id": "tricycle-franchising",
       "title": "Tricycle Franchising & Records",
-      "category": "Business, Trade & Investment",
       "categoryId": "business",
       "description": "Apply for tricycle franchise (CTOF) and request records",
       "keywords": [
@@ -2083,8 +2117,6 @@
       "hidden": true,
       "detail": {
         "fullTitle": "Tricycle Franchise Application",
-        "category": "Business",
-        "categoryLink": "/services/business",
         "badgeText": "Business",
         "badgeIcon": "bi-bicycle",
         "description": "Application for tricycle-for-hire franchise",
@@ -2170,7 +2202,6 @@
     {
       "id": "property-declaration",
       "title": "Property Declaration",
-      "category": "Taxation & Payments",
       "categoryId": "tax-payments",
       "description": "Declaration of land, building and machineries for tax assessment",
       "keywords": [
@@ -2189,8 +2220,6 @@
       "url": "/service-details/property-declaration",
       "detail": {
         "fullTitle": "Tax Declaration & Property Records",
-        "category": "Taxation",
-        "categoryLink": "/services/tax-payments",
         "badgeText": "Taxation",
         "badgeIcon": "bi-file-text",
         "description": "Transfer or update of property tax declaration",
@@ -2259,7 +2288,6 @@
     {
       "id": "safety-seal",
       "title": "Safety Seal Certificate",
-      "category": "Business, Trade & Investment",
       "categoryId": "business",
       "description": "Certification for business establishments following Minimum Public Health Standards (MPHS)",
       "seoDescription": "Apply for a Safety Seal Certificate to certify your business establishment's compliance with health standards in {{lguName}}.",
@@ -2279,8 +2307,6 @@
       "url": "/service-details/safety-seal",
       "detail": {
         "fullTitle": "Issuance of Safety Seal Certificate",
-        "category": "Business",
-        "categoryLink": "/services/business",
         "badgeText": "Business",
         "badgeIcon": "bi-shield-check",
         "description": "Certification issued by the City Government to ensure that all business establishments follow Minimum Public Health Standards (MPHS) and promote business without compromising public health.",
@@ -2399,7 +2425,14 @@
           {
             "name": "Citizen's Charter 2022 (1st Edition)",
             "url": "https://laspinascity.gov.ph/storage/uploads/gallery/625e67f3ae023.pdf",
-            "covers": ["fee", "processingTime", "quickStats", "requirements", "processSteps", "faqs"],
+            "covers": [
+              "fee",
+              "processingTime",
+              "quickStats",
+              "requirements",
+              "processSteps",
+              "faqs"
+            ],
             "verifiedOn": "2026-08-05"
           }
         ]
@@ -2408,7 +2441,6 @@
     {
       "id": "online-business-billing",
       "title": "Business Online Billing & Payment",
-      "category": "Online Services",
       "categoryId": "online",
       "description": "View and pay your business tax bills online via Filipizen",
       "keywords": [
@@ -2428,7 +2460,6 @@
     {
       "id": "online-new-business",
       "title": "New Business Application Online",
-      "category": "Online Services",
       "categoryId": "online",
       "description": "Apply for a new business permit online via Filipizen",
       "keywords": [
@@ -2447,7 +2478,6 @@
     {
       "id": "online-business-renewal",
       "title": "Business Permit Renewal Online",
-      "category": "Online Services",
       "categoryId": "online",
       "description": "Renew your existing business permit online via Filipizen",
       "keywords": [
@@ -2466,7 +2496,6 @@
     {
       "id": "online-rpt-billing",
       "title": "Real Property Tax Online Billing & Payment",
-      "category": "Online Services",
       "categoryId": "online",
       "description": "View and pay your real property tax (amilyar) online via Filipizen",
       "keywords": [
@@ -2486,7 +2515,6 @@
     {
       "id": "online-payment-order",
       "title": "Online Payment Order",
-      "category": "Online Services",
       "categoryId": "online",
       "description": "Process payment orders for various city fees online via Filipizen",
       "keywords": [

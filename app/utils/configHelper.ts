@@ -303,7 +303,7 @@ export function getServicesConfig(): ServicesConfig {
     ...config,
     services: config.services
       ? config.services
-          .filter(service => LIVE_CATEGORY_IDS.has(service.categoryId ?? ''))
+          .filter(service => LIVE_CATEGORY_IDS.has(service.categoryId))
           .filter((service: ServiceItem) => !service.hidden)
       : [],
   }
@@ -346,6 +346,18 @@ export function getServiceCategories(): Category[] {
  */
 export function getCategoryBySlug(slug: string): Category | undefined {
   return getServiceCategories().find(category => category.id === slug)
+}
+
+/**
+ * Resolve a Service's Category display name from its `categoryId` (#245).
+ * The Category record is the single source for this name — a Service no
+ * longer carries its own copy, so the two can no longer disagree. Returns an
+ * empty string for an unresolvable categoryId (validate-config asserts every
+ * Service's categoryId matches a known Category, so this should not happen
+ * for live data).
+ */
+export function getServiceCategoryName(service: ServiceItem): string {
+  return getCategoryBySlug(service.categoryId)?.name ?? ''
 }
 
 /**

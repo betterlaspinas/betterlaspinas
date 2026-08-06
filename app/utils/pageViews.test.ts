@@ -7,7 +7,7 @@ import type {
   ServiceItem,
 } from '@/types/config'
 import { describe, expect, it } from 'vitest'
-import { getOfficeBySlug, getServiceBySlug } from './configHelper'
+import { getCategoryBySlug, getOfficeBySlug, getServiceBySlug } from './configHelper'
 import {
   categoryView,
   officeContactCard,
@@ -39,7 +39,6 @@ function makeService(over: Partial<ServiceItem> = {}): ServiceItem {
     id: 'birth-certificate',
     title: 'Birth Certificate',
     description: 'Get a birth certificate',
-    category: 'Certificates',
     categoryId: 'certificates',
     keywords: [],
     url: '/service-details/birth-certificate',
@@ -50,8 +49,6 @@ function makeService(over: Partial<ServiceItem> = {}): ServiceItem {
 function makeDetail(over: Partial<ServiceDetail> = {}): ServiceDetail {
   return {
     fullTitle: 'Birth Certificate Request',
-    category: 'Certificates',
-    categoryLink: '/services/certificates',
     badgeText: 'Certificate',
     badgeIcon: 'bi-file',
     description: 'Request a birth certificate',
@@ -195,6 +192,7 @@ describe('toServiceDetailView', () => {
     const office = makeOffice()
     const view = toServiceDetailView({
       service: { ...makeService({ providedBy: 'civil-registry' }), detail: makeDetail() },
+      category: makeCategory(),
       office,
     })
     expect(view.officeInfo).toEqual(officeContactCard(office))
@@ -204,6 +202,7 @@ describe('toServiceDetailView', () => {
   it('merges the Service title into the detail for the template', () => {
     const view = toServiceDetailView({
       service: { ...makeService({ title: 'Birth Certificate' }), detail: makeDetail({ fullTitle: 'BC' }) },
+      category: makeCategory(),
     })
     expect(view.service.title).toBe('Birth Certificate')
     expect(view.service.fullTitle).toBe('BC')
@@ -217,6 +216,7 @@ describe('toServiceDetailView', () => {
     }
     const view = toServiceDetailView({
       service: { ...makeService({ providedBy: undefined }), detail: makeDetail({ office: inline }) },
+      category: makeCategory(),
     })
     expect(view.officeInfo).toEqual(inline)
   })
@@ -224,8 +224,21 @@ describe('toServiceDetailView', () => {
   it('leaves officeInfo undefined when neither an Office nor an inline card exists', () => {
     const view = toServiceDetailView({
       service: { ...makeService(), detail: makeDetail() },
+      category: makeCategory(),
     })
     expect(view.officeInfo).toBeUndefined()
+  })
+
+  it('derives categoryLabel/categoryHref from the Category record, not from `detail` (#245)', () => {
+    // The Category record is the single source for these — `detail` (and its
+    // fixture, makeDetail) deliberately carries no `category`/`categoryLink`
+    // of its own, so this proves the View resolves them independently.
+    const view = toServiceDetailView({
+      service: { ...makeService(), detail: makeDetail() },
+      category: makeCategory({ id: 'certificates', badgeText: 'Certs & Records' }),
+    })
+    expect(view.categoryLabel).toBe('Certs & Records')
+    expect(view.categoryHref).toBe('/services/certificates')
   })
 })
 
@@ -341,6 +354,13 @@ describe('facades (real config)', () => {
     const office = getOfficeBySlug('civil-registry')!
     expect(view!.officeInfo).toEqual(officeContactCard(office))
     expect(view!.service.title).toBe(getServiceBySlug('birth-certificate')!.title)
+  })
+
+  it('serviceDetailView resolves categoryLabel/categoryHref from the real Category record (#245)', () => {
+    const view = serviceDetailView('birth-certificate')!
+    const category = getCategoryBySlug('certificates')!
+    expect(view.categoryLabel).toBe(category.badgeText)
+    expect(view.categoryHref).toBe('/services/certificates')
   })
 
   it('serviceDetailView returns undefined for unknown slugs (Service-detail only, no office fallback)', () => {

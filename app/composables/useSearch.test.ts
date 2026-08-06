@@ -2,7 +2,15 @@ import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { nextTick } from 'vue'
 import { useSearch } from './useSearch'
 
-// Mock dependencies
+// Mock dependencies. `getServiceCategoryName` mirrors the real accessor's
+// contract (categoryId -> display name) without pulling in categories.json —
+// #245 removed the denormalised `category` field, so useSearch derives it via
+// this accessor at read time.
+const CATEGORY_NAMES: Record<string, string> = {
+  'civil-registry': 'Civil Registry',
+  'business': 'Business',
+}
+
 vi.mock('@/utils/configHelper', () => ({
   getServicesConfig: () => ({
     services: [
@@ -10,7 +18,6 @@ vi.mock('@/utils/configHelper', () => ({
         id: 'cert-birth',
         title: 'Birth Certificate',
         description: 'Get your birth certificate',
-        category: 'Civil Registry',
         categoryId: 'civil-registry',
         keywords: ['birth', 'certificate', 'civil'],
         url: '/services/birth-certificate',
@@ -19,13 +26,13 @@ vi.mock('@/utils/configHelper', () => ({
         id: 'permit-business',
         title: 'Business Permit',
         description: 'Apply for business permit',
-        category: 'Business',
         categoryId: 'business',
         keywords: ['business', 'permit', 'trade'],
         url: '/services/business-permit',
       },
     ],
   }),
+  getServiceCategoryName: (service: { categoryId: string }) => CATEGORY_NAMES[service.categoryId] ?? '',
 }))
 
 // Mock Vue

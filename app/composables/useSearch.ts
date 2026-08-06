@@ -2,10 +2,19 @@ import type { IFuseOptions } from 'fuse.js'
 import type { ServiceItem } from '@/types/config'
 import Fuse from 'fuse.js'
 
-import { getServicesConfig } from '@/utils/configHelper'
+import { getServiceCategoryName, getServicesConfig } from '@/utils/configHelper'
 import { ESCAPE_REGEX, SPLIT_WHITESPACE_REGEX } from '@/utils/regexConstants'
 
-interface SearchResult extends ServiceItem {
+/**
+ * A ServiceItem enriched with its Category display name for search matching
+ * and result rendering. Derived at read time via `getServiceCategoryName`
+ * rather than stored — #245 removed the denormalised `category` field.
+ */
+interface SearchableService extends ServiceItem {
+  categoryName: string
+}
+
+interface SearchResult extends SearchableService {
   score: number
   _query: string
 }
@@ -39,11 +48,11 @@ const CURATED_POPULAR = [
 ]
 
 // Fuse.js configuration for fuzzy search
-const FUSE_OPTIONS: IFuseOptions<ServiceItem> = {
+const FUSE_OPTIONS: IFuseOptions<SearchableService> = {
   keys: [
     { name: 'title', weight: 0.4 },
     { name: 'keywords', weight: 0.3 },
-    { name: 'category', weight: 0.1 },
+    { name: 'categoryName', weight: 0.1 },
     { name: 'description', weight: 0.1 },
     { name: 'office', weight: 0.1 },
   ],
@@ -105,7 +114,12 @@ export function useSearch(initialQuery = '') {
   const selectedIndex = ref(-1)
   const pendingNavigation = ref<string | null>(null)
 
-  const services = computed(() => getServicesConfig().services as ServiceItem[])
+  const services = computed<SearchableService[]>(() =>
+    (getServicesConfig().services as ServiceItem[]).map(service => ({
+      ...service,
+      categoryName: getServiceCategoryName(service),
+    })),
+  )
 
   // Create Fuse instance for fuzzy search
   const fuse = computed(() => new Fuse(services.value, FUSE_OPTIONS))
@@ -135,7 +149,7 @@ export function useSearch(initialQuery = '') {
         const service = result.item
         return (
           service.categoryId === categoryFilter
-          || service.category.toLowerCase().includes(categoryFilter.toLowerCase())
+          || service.categoryName.toLowerCase().includes(categoryFilter.toLowerCase())
         )
       })
     }
