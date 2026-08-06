@@ -27,6 +27,7 @@ import {
   getOgImageRouteConfig,
   getServiceBySlug,
   getServiceCategories,
+  getServiceCategoryName,
   getServicesByCategory,
   getServiceSeoDescription,
   getSiteConfig,
@@ -786,6 +787,82 @@ describe('configHelper', () => {
       }
       const categories = { categories: [{ id: 'certificates' }] }
       expect(validateConsistency(services, categories)).toBe(false)
+    })
+  })
+
+  describe('category display name — single-sourced from categoryId (#245)', () => {
+    it('getServiceCategoryName resolves every live Service to its Category record name', () => {
+      // Regression guard for the drift #245 fixed: 5 of 12 Categories used to
+      // disagree between services.json's denormalised `category` string and
+      // categories.json. Now there is only one field to read, so this can't
+      // drift again — but assert the resolved name actually matches the
+      // Category record for every live Service, not just that it's non-empty.
+      for (const service of getAllServices()) {
+        const category = getCategoryBySlug(service.categoryId)
+        expect(category, service.id).toBeDefined()
+        expect(getServiceCategoryName(service)).toBe(category!.name)
+      }
+    })
+
+    it('getServiceCategoryName returns empty string for an unresolvable categoryId', () => {
+      expect(getServiceCategoryName({
+        id: 'ghost',
+        title: 'Ghost',
+        description: 'd',
+        categoryId: 'does-not-exist',
+        keywords: [],
+        url: '/services/does-not-exist',
+      })).toBe('')
+    })
+
+    it('pnpm validate fails on a denormalised Service `category` field, even one that agrees with the Category record — the real services.schema.json no longer has a home for it', async () => {
+      // Imports the REAL schema (not a hand-rolled copy) so this proves the
+      // actual `pnpm validate` gate, not just the validator engine. Before
+      // #245, a `category` string here could silently disagree with the
+      // Category record (5 of 12 did); now the field has no schema slot at
+      // all, so `additionalProperties: false` rejects it outright — drift is
+      // structurally unreachable, not just unlikely.
+      const servicesSchema = (await import('../config/schema/services.schema.json')).default
+      const services = {
+        services: [{
+          id: 'birth-certificate',
+          title: 'Birth Certificate',
+          description: 'd',
+          category: 'Certificates & Vital Records', // deliberately reintroduced, would drift if allowed
+          categoryId: 'certificates',
+          keywords: [],
+          url: '/service-details/birth-certificate',
+        }],
+      }
+      expect(validateAgainstSchema(services, servicesSchema, 'services')).toBe(false)
+    })
+
+    it('pnpm validate fails on a denormalised ServiceDetail `category`/`categoryLink` pair too', async () => {
+      const servicesSchema = (await import('../config/schema/services.schema.json')).default
+      const services = {
+        services: [{
+          id: 'birth-certificate',
+          title: 'Birth Certificate',
+          description: 'd',
+          categoryId: 'certificates',
+          keywords: [],
+          url: '/service-details/birth-certificate',
+          detail: {
+            fullTitle: 'Birth Certificate (Local Copy)',
+            category: 'Certificates', // deliberately reintroduced
+            categoryLink: '/services/certificates', // deliberately reintroduced
+            badgeText: 'Certificates',
+            badgeIcon: 'bi-file-earmark-text',
+            description: 'd',
+            quickStats: [],
+            processSteps: [],
+            requirements: [],
+            faqs: [],
+            relatedServices: [],
+          },
+        }],
+      }
+      expect(validateAgainstSchema(services, servicesSchema, 'services')).toBe(false)
     })
   })
 

@@ -218,7 +218,7 @@ function onFocus() {
           <div class="flex flex-wrap gap-3 text-xs mb-1.5">
             <span class="inline-flex items-center gap-1 text-gray-500 bg-gray-100 px-2 py-0.5 rounded">
               <i class="bi bi-folder text-[12px] opacity-80" />
-              {{ result.category }}
+              {{ result.categoryName }}
             </span>
             <span v-if="result.fee" class="inline-flex items-center gap-1 text-emerald-600 font-semibold">
               <i class="bi bi-cash text-[12px] opacity-80" />

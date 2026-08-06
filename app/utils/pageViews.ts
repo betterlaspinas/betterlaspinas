@@ -172,10 +172,15 @@ export function categoryView(slug: string): CategoryView | undefined {
 export interface ServiceDetailView {
   service: ServiceDetail & { title: string }
   officeInfo?: ServiceDetailOffice
+  /** Category display name, derived from the Category record (#245). */
+  categoryLabel: string
+  /** Category page link, derived from the Category record (#245). */
+  categoryHref: string
 }
 
 export interface ServiceDetailRecords {
   service: ServiceItem & { detail: ServiceDetail }
+  category: Category
   office?: Office
 }
 
@@ -207,26 +212,37 @@ export function officeContactCard(office: Office): ServiceDetailOffice {
  * is supplied (via `providedBy`), so it can never drift from the canonical
  * Office. It falls back to the Service's inline free-text `detail.office` for
  * providers not yet first-class Offices (e.g. BPLO business services).
+ *
+ * `categoryLabel` / `categoryHref` are derived from the Category record here
+ * rather than read off `service.detail` — #245 dropped that inline copy, which
+ * had already drifted from the Category record for 5 of 12 Categories.
  */
 export function toServiceDetailView(records: ServiceDetailRecords): ServiceDetailView {
-  const { service, office } = records
+  const { service, category, office } = records
   return {
     service: { ...service.detail, title: service.title },
     officeInfo: office ? officeContactCard(office) : service.detail.office,
+    categoryLabel: category.badgeText,
+    categoryHref: `/services/${category.id}`,
   }
 }
 
 /**
  * Bound facade: resolve a Service slug into its ServiceDetailView. Resolves a
  * canonical Service detail only; a Service without a `detail` block (catalog-
- * only) or an unknown slug returns undefined so the page can throw a 404.
+ * only), an unknown slug, or an unresolvable Category returns undefined so the
+ * page can throw a 404.
  */
 export function serviceDetailView(slug: string): ServiceDetailView | undefined {
   const canonical = getServiceBySlug(slug)
   if (!canonical?.detail)
     return undefined
+  const category = getCategoryBySlug(canonical.categoryId)
+  if (!category)
+    return undefined
   return toServiceDetailView({
     service: { ...canonical, detail: canonical.detail },
+    category,
     office: getOfficeForService(canonical),
   })
 }
