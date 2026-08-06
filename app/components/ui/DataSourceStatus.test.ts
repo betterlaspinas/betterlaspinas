@@ -90,12 +90,41 @@ describe('dataSourceStatus', () => {
   // recent across sources (useDataSources), so the summary line alone can't
   // be trusted to represent every entry — each source's own status has to be
   // visible in the list itself (#243 follow-up).
-  it('multi-source, all verified: every entry shows its own checked date, no per-entry gap to hide', () => {
+  it('multi-source, all verified (2 sources): every entry shows its own checked date, and the summary asserts the check without naming a date', () => {
     const wrapper = mount(DataSourceStatus, {
       props: {
         sources: [
           { name: 'Key Officials Contact Information and Directory', verifiedOn: '2026-07-14', covers: ['phone'] },
-          { name: 'Official Facebook Page', verifiedOn: '2026-07-14', covers: ['location'] },
+          { name: 'Official Facebook Page', verifiedOn: '2026-06-01', covers: ['location'] },
+        ],
+        // Record-level verifiedOn/checkedOn are only the most recent across
+        // sources — the summary must not print this date, since it would
+        // misstate the other source's own (earlier) verifiedOn.
+        verifiedOn: '2026-07-14',
+        checkedOn: '14 Jul 2026',
+        subject: 'office',
+      },
+    })
+
+    const text = wrapper.text()
+    expect(text.match(/Checked 14 Jul 2026\./g)).toHaveLength(1)
+    expect(text.match(/Checked 1 Jun 2026\./g)).toHaveLength(1)
+    expect(text).toContain('Checked against all sources.')
+    expect(text).not.toContain('Sourced from these documents.')
+    expect(text).not.toContain('No check recorded yet')
+    // Singular phrasing must not leak into the multi-source summary.
+    expect(text).not.toContain('Checked against source 14 Jul 2026.')
+    // The summary must not assert a specific date — only the per-entry lines do.
+    expect(text).not.toContain('Checked against all sources 14 Jul 2026.')
+  })
+
+  it('multi-source, all verified (3 sources): the summary wording still reads naturally', () => {
+    const wrapper = mount(DataSourceStatus, {
+      props: {
+        sources: [
+          { name: 'Citizen\'s Charter 2022 (1st Edition)', verifiedOn: '2026-07-14' },
+          { name: 'Key Officials Contact Information and Directory', verifiedOn: '2026-07-14' },
+          { name: 'Official Facebook Page', verifiedOn: '2026-07-14' },
         ],
         verifiedOn: '2026-07-14',
         checkedOn: '14 Jul 2026',
@@ -104,11 +133,9 @@ describe('dataSourceStatus', () => {
     })
 
     const text = wrapper.text()
-    expect(text.match(/Checked 14 Jul 2026\./g)).toHaveLength(2)
-    expect(text).toContain('Sourced from these documents.')
+    expect(text).toContain('Checked against all sources.')
+    expect(text).not.toContain('Sourced from these documents.')
     expect(text).not.toContain('No check recorded yet')
-    // Singular phrasing must not leak into the multi-source summary.
-    expect(text).not.toContain('Checked against source 14 Jul 2026.')
   })
 
   it('multi-source, none verified: no per-entry line since there is nothing to distinguish', () => {

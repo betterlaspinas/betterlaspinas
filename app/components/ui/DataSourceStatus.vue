@@ -21,7 +21,12 @@ import { formatCheckedOn } from '~/composables/useDataSources'
  *     source, `verifiedOn` on the record is only the most recent across
  *     them (`useDataSources`), so a per-source status is rendered inline —
  *     otherwise one checked source next to one unchecked source would read
- *     as both having been checked.
+ *     as both having been checked. When every source is independently
+ *     verified, the summary asserts the check without naming a date —
+ *     sources can carry different `verifiedOn` dates, and the record-level
+ *     `checkedOn` is only the most recent of them, so a single date here
+ *     would misstate the others; the per-source lines above already carry
+ *     each one's own date.
  *
  * No checkmark or badge in any state — a tick would read as certification
  * this site cannot grant.
@@ -36,6 +41,8 @@ const props = defineProps<{
 
 /** True when no source in the list carries its own `verifiedOn` — the "nothing checked yet" case. */
 const allUnverified = computed(() => props.sources.every(source => !source.verifiedOn))
+/** True when every source in the list carries its own `verifiedOn` — the "fully checked" case. */
+const allVerified = computed(() => props.sources.every(source => source.verifiedOn))
 </script>
 
 <template>
@@ -71,6 +78,9 @@ const allUnverified = computed(() => props.sources.every(source => !source.verif
     </p>
     <p v-else-if="allUnverified" class="text-sm text-gray-600">
       Sourced from these documents. No check recorded yet.
+    </p>
+    <p v-else-if="allVerified" class="text-sm text-gray-600">
+      Checked against all sources.
     </p>
     <p v-else class="text-sm text-gray-600">
       Sourced from these documents.
