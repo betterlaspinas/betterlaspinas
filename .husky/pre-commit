@@ -7,9 +7,9 @@ fi
 
 echo "🔍 Running pre-commit checks using $PM..."
 
-# Run lint
-echo "📝 Linting..."
-$PM run lint
+# Run lint (staged files only — full repo lint is CI's job, see ci.yml)
+echo "📝 Linting staged files..."
+$PM exec lint-staged
 if [ $? -ne 0 ]; then
   echo "❌ Lint failed. Please fix errors before committing."
   exit 1

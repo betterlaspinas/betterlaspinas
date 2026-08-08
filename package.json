@@ -53,10 +53,14 @@
     "eslint-plugin-format": "^2.0.1",
     "happy-dom": "^20.11.1",
     "husky": "^9.1.7",
+    "lint-staged": "^17.3.0",
     "postcss": "^8.5.24",
     "tailwindcss": "^4.3.3",
     "typescript": "5.9.3",
     "vitest": "^4.1.10",
     "vue-tsc": "^3.3.8"
+  },
+  "lint-staged": {
+    "*": "eslint"
   }
 }
