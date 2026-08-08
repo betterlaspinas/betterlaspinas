@@ -1,7 +1,28 @@
 // @vitest-environment nuxt
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { nextTick, ref } from 'vue'
+import enTranslations from '../config/language/en.json'
+import filTranslations from '../config/language/fil.json'
+import iloTranslations from '../config/language/ilo.json'
 import { useLanguage } from './useLanguage'
+
+// Key-parity guard (#256 follow-up): en.json is the reference locale — fil/ilo
+// must define exactly the same key set, or a locale silently drifts (missing
+// keys fall back to the raw key, extra keys are dead weight). No runtime
+// dependency needed — Object.keys() comparison is enough to catch drift at
+// test time, the same guardrail spirit as scripts/validate-config.mjs for the
+// Service spine.
+describe('useLanguage translation key parity', () => {
+  const referenceKeys = Object.keys(enTranslations).sort()
+
+  it.each([
+    ['fil', filTranslations],
+    ['ilo', iloTranslations],
+  ])('%s.json has the same keys as en.json', (_locale, dict) => {
+    const keys = Object.keys(dict).sort()
+    expect(keys).toEqual(referenceKeys)
+  })
+})
 
 // Mock useConfig — the canonical config accessor (#184). useLanguage destructures
 // reactive refs from it, so every consumed field must be a ref. `translations`
