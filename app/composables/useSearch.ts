@@ -2,7 +2,7 @@ import type { IFuseOptions } from 'fuse.js'
 import type { ServiceItem } from '@/types/config'
 import Fuse from 'fuse.js'
 
-import { getServiceCategoryName, getServicesConfig } from '@/utils/configHelper'
+import { getServiceCategories, getServiceCategoryName, getServicesByCategory, getServicesConfig } from '@/utils/configHelper'
 import { ESCAPE_REGEX, SPLIT_WHITESPACE_REGEX } from '@/utils/regexConstants'
 
 /**
@@ -25,26 +25,36 @@ interface SearchSuggestions {
   suggestions: string[]
 }
 
+export interface CategoryChip {
+  id: string
+  label: string
+}
+
 const RECENT_SEARCHES_KEY = 'betterlgu_recent_searches'
 const MAX_RECENT_SEARCHES = 10
 
-// TODO: Uncomment the hidden categories to restore all service categories
-const CURATED_POPULAR = [
+// Curated, hand-picked popular search terms. These are intentionally
+// editorial (not auto-derived from the catalog) so the list can highlight
+// what residents actually look for. To keep the list from drifting the way
+// it did before (terms silently pointing at unpublished categories), it is
+// filtered at runtime by the `curatedPopular` computed against live service
+// titles before it is ever shown or fed into the suggestion index.
+const CURATED_POPULAR_CANDIDATES = [
   'birth certificate',
   'business permit',
-  // 'cedula',
-  // 'real property tax',
-  // 'senior citizen id',
-  // 'pwd id',
+  'cedula',
+  'real property tax',
+  'senior citizen id',
+  'pwd id',
   'barangay clearance',
-  // 'building permit',
+  'building permit',
   'marriage certificate',
   'death certificate',
-  // 'tricycle franchise',
-  // 'property declaration',
-  // 'online payment',
-  // 'mswdo',
-  // 'slaughterhouse',
+  'tricycle franchise',
+  'property declaration',
+  'online payment',
+  'mswdo',
+  'slaughterhouse',
 ]
 
 // Fuse.js configuration for fuzzy search
@@ -121,6 +131,34 @@ export function useSearch(initialQuery = '') {
     })),
   )
 
+  // Category filter chips, always led by an "All" entry (clears the filter).
+  // `getServiceCategories()` only excludes categories flagged `hidden` in
+  // categories.json — it doesn't guarantee the category has any services
+  // pointing at it. A category can therefore be "visible" at the config
+  // level while resolving to zero results in the search index. Skipping
+  // empty categories here keeps the chip list in sync with what search can
+  // actually return.
+  const categories = computed<CategoryChip[]>(() => [
+    { id: '', label: 'All' },
+    ...getServiceCategories()
+      .filter(cat => getServicesByCategory(cat.id).length > 0)
+      .map(cat => ({ id: cat.id, label: cat.badgeText || cat.name })),
+  ])
+
+  // Curated popular terms, re-validated against the live catalog on every
+  // access so a term that stops resolving to a service (category regated,
+  // service renamed/removed) drops out automatically instead of silently
+  // pointing at nothing.
+  const curatedPopular = computed(() =>
+    CURATED_POPULAR_CANDIDATES.filter(term =>
+      services.value.some(
+        service =>
+          service.title.toLowerCase().includes(term)
+          || service.keywords.some(keyword => keyword.toLowerCase().includes(term)),
+      ),
+    ),
+  )
+
   // Create Fuse instance for fuzzy search
   const fuse = computed(() => new Fuse(services.value, FUSE_OPTIONS))
 
@@ -128,7 +166,7 @@ export function useSearch(initialQuery = '') {
   const suggestionFuse = computed(
     () =>
       new Fuse(
-        [...services.value.map(service => service.title), ...CURATED_POPULAR].map(
+        [...services.value.map(service => service.title), ...curatedPopular.value].map(
           text => ({ text }),
         ),
         { keys: ['text'], threshold: 0.4, includeScore: true },
@@ -168,16 +206,9 @@ export function useSearch(initialQuery = '') {
 
   const getSuggestions = (searchQuery: string): SearchSuggestions => {
     if (!searchQuery || searchQuery.length < 1) {
-      // TODO: Remove this block and uncomment below to restore all recent searches
-      const validKeywords = new Set([...services.value.map(service => service.title.toLowerCase()), ...CURATED_POPULAR.map(popular => popular.toLowerCase())])
-      const validRecent = getRecentSearches().filter(recentSearch =>
-        [...validKeywords].some(keyword => keyword.includes(recentSearch.toLowerCase()) || recentSearch.toLowerCase().includes(keyword)),
-      ).slice(0, 3)
-
       return {
-        popular: CURATED_POPULAR.slice(0, 4),
-        // recent: getRecentSearches().slice(0, 3),
-        recent: validRecent,
+        popular: curatedPopular.value.slice(0, 4),
+        recent: getRecentSearches().slice(0, 3),
         suggestions: [],
       }
     }
@@ -306,6 +337,7 @@ export function useSearch(initialQuery = '') {
     setQuery: handleQueryChange,
     category,
     setCategory: handleCategoryChange,
+    categories,
     results,
     suggestions,
     isOpen,

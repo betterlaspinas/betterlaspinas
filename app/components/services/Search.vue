@@ -23,6 +23,7 @@ const {
   setQuery, // Use this for updates
   category,
   setCategory,
+  categories,
   results,
   suggestions,
   isOpen,
@@ -35,16 +36,6 @@ const {
   pendingNavigation,
   clearPendingNavigation,
 } = useSearch(props.initialQuery)
-
-const CATEGORIES = [
-  // TODO: Uncomment the hidden categories to restore all service categories
-  // { id: '', label: 'All' },
-  { id: 'certificates', label: 'Certificates' },
-  // { id: 'business', label: 'Business' },
-  // { id: 'social-services', label: 'Social' },
-  // { id: 'health', label: 'Health' },
-  // { id: 'tax-payments', label: 'Taxation' },
-] as const
 
 const showDropdown = computed(() =>
   isOpen.value
@@ -106,12 +97,23 @@ function onFocus() {
       class="absolute top-full left-0 right-0 bg-white border border-blue-100 rounded-2xl shadow-2xl max-h-[480px] overflow-y-auto z-50 mt-2 animate-in fade-in slide-in-from-top-2 duration-200"
       aria-label="Search suggestions"
     >
-      <!-- Category Filter Tabs -->
-      <div class="flex gap-1.5 px-3 py-3 pb-2.5 border-b border-blue-50 flex-nowrap justify-start bg-gradient-to-b from-gray-50 to-white rounded-t-2xl overflow-x-auto">
+      <!-- Category Filter Chips -->
+      <!--
+        These are toggle filters, not tabs over separate panels — there is no
+        associated panel for `aria-controls` to point at and no reason to
+        hijack arrow keys with tab-widget navigation. `aria-pressed` on plain
+        buttons (native tab order, native activation) matches that semantics
+        without promising a tab pattern this control doesn't implement.
+      -->
+      <div
+        class="flex gap-1.5 px-3 py-3 pb-2.5 border-b border-blue-50 flex-nowrap justify-start bg-gradient-to-b from-gray-50 to-white rounded-t-2xl overflow-x-auto"
+        aria-label="Filter by category"
+      >
         <button
-          v-for="cat in CATEGORIES"
+          v-for="cat in categories"
           :key="cat.id"
           type="button"
+          :aria-pressed="category === cat.id"
           class="px-3 py-1.5 border-2 rounded-full text-xs font-medium cursor-pointer whitespace-nowrap flex-shrink-0 transition-all"
           :class="category === cat.id
             ? 'border-blue-700 bg-blue-700 text-white shadow-md'
