@@ -104,9 +104,9 @@ const hasResponsibleBody = offices.length > 0 || agencies.length > 0 || !!barang
           <UiCard
             v-for="agency in agencies"
             :key="`agency-${agency.title}`"
-            :href="agency.phone ? `tel:${agency.phone.replace(/[^0-9+]/g, '')}` : undefined"
+            :to="agency.link"
             padding="p-4"
-            :interactive="!!agency.phone"
+            interactive
             class="flex items-center gap-4"
           >
             <div
@@ -121,10 +121,8 @@ const hasResponsibleBody = offices.length > 0 || agencies.length > 0 || !!barang
               <p class="text-sm text-gray-500">
                 {{ agency.description }}
               </p>
-              <p v-if="agency.phone" class="text-sm text-primary-600 mt-1">
-                <i class="bi bi-telephone" /> {{ agency.phone }}
-              </p>
             </div>
+            <i class="bi bi-arrow-right text-gray-400" />
           </UiCard>
 
           <UiCard
