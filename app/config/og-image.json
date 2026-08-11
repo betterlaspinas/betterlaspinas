@@ -91,6 +91,10 @@
     "title": "{{slug}} Office",
     "description": "Government office of {{lguName}}"
   },
+  "agencies-slug": {
+    "title": "{{slug}} Agency",
+    "description": "National government agency serving {{lguName}}"
+  },
   "changelog": {
     "title": "Changelog",
     "description": "Site updates and new features for {{siteBrandName}}"

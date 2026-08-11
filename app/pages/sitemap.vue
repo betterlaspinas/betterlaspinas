@@ -114,6 +114,16 @@ const sections = computed<SitemapSection[]>(() => [
     ],
   },
   {
+    // Agency (ADR-0004) is a separate, national tier from Office — kept in
+    // its own section rather than folded into "X Offices" above, which is
+    // deliberately scoped to city departments (RA 7160).
+    icon: 'bi-flag',
+    title: 'National Agencies',
+    links: [
+      { href: '/agencies/pnp-laspinas', label: 'Las Piñas City Police Station' },
+    ],
+  },
+  {
     icon: 'bi-bank',
     title: 'Government & Legislative',
     links: [
