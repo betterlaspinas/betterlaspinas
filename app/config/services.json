@@ -452,6 +452,11 @@
             "value": "Same day — if No-Hit"
           },
           {
+            "icon": "bi-person-check",
+            "label": "Who Can Apply",
+            "value": "Filipino citizens & eligible foreign residents"
+          },
+          {
             "icon": "bi-calendar-check",
             "label": "Appointment",
             "value": "Required — book online"
