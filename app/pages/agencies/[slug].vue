@@ -69,7 +69,7 @@ const { sources, verifiedOn, checkedOn } = useDataSources(agency)
             <i class="bi bi-person-rolodex text-primary-600" /> Contact details
           </h2>
           <dl class="divide-y divide-gray-200">
-            <div v-if="agency.phone" class="grid grid-cols-[110px_1fr] gap-3 py-3 text-sm first:pt-0 last:pb-0">
+            <div v-if="agency.phone" class="grid grid-cols-[110px_1fr] gap-3 py-3 text-sm first:pt-0">
               <dt class="text-gray-500 font-medium">
                 Phone
               </dt>
@@ -77,8 +77,14 @@ const { sources, verifiedOn, checkedOn } = useDataSources(agency)
                 {{ agency.phone }}
               </dd>
             </div>
-            <p v-else class="text-sm text-gray-500">
-              No phone number on record.
+            <div v-if="agency.facebook" class="grid grid-cols-[110px_1fr] gap-3 py-3 text-sm first:pt-0 last:pb-0">
+              <dt class="text-gray-500 font-medium">
+                Facebook
+              </dt>
+              <dd><a :href="agency.facebook" target="_blank" rel="noopener noreferrer" class="text-primary-600 hover:underline">Facebook Page</a></dd>
+            </div>
+            <p v-if="!agency.phone && !agency.facebook" class="text-sm text-gray-500">
+              No contact details on record.
             </p>
           </dl>
         </UiCard>

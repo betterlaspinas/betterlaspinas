@@ -463,4 +463,11 @@ describe('facades (real config)', () => {
     const agency = getAgencyById('pnp-laspinas')!
     expect(view.agency.sources).toEqual(agency.sources)
   })
+
+  it('agencyView(pnp-laspinas) carries the facebook field through unchanged (#295)', () => {
+    const view = agencyView('pnp-laspinas')!
+    const agency = getAgencyById('pnp-laspinas')!
+    expect(view.agency.facebook).toBe(agency.facebook)
+    expect(view.agency.facebook).toBe('https://www.facebook.com/pcrstation4')
+  })
 })
