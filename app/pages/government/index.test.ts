@@ -160,4 +160,30 @@ describe('government page — National Agencies', () => {
     expect(text).toContain('Key Offices')
     expect(text).toContain('National Agencies')
   })
+
+  // Jan (live review, #295): the tier separation from Key Offices must come
+  // from the section's own heading/copy, NOT a different visual treatment —
+  // an earlier pass gave the section a dark bg-gray-800 badge/card, which read
+  // as broken rather than intentional. It must use the same primary-blue
+  // badge convention as every other section on the page.
+  it('uses the page\'s standard primary badge styling, not a distinct dark treatment', async () => {
+    const wrapper = await mountSuspended(GovernmentPage)
+    const badge = wrapper.findAll('span').find(span => span.text() === 'National Agencies')
+
+    expect(badge).toBeDefined()
+    expect(badge!.classes()).toContain('bg-primary-600')
+    expect(badge!.classes()).not.toContain('bg-gray-800')
+  })
+
+  // National Agencies must render last on the page, below Barangays/Subdivisions
+  // (moved down from its earlier near-Key-Offices position per Jan's review).
+  it('renders after the Subdivisions section, last on the page', async () => {
+    const wrapper = await mountSuspended(GovernmentPage)
+    const text = wrapper.text()
+    const subdivisionsIndex = text.indexOf('of Las Piñas')
+    const agenciesIndex = text.indexOf('National Agencies')
+
+    expect(subdivisionsIndex).toBeGreaterThan(-1)
+    expect(agenciesIndex).toBeGreaterThan(subdivisionsIndex)
+  })
 })
