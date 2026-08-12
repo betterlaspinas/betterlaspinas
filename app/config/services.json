@@ -549,12 +549,14 @@
           {
             "name": "PNP National Police Clearance — Applicant's Guide (policeclearancepnp.org)",
             "url": "https://policeclearancepnp.org/police-clearance-guide/",
+            "published": "2026-07-29",
             "covers": ["quickStats", "faqs"],
             "verifiedOn": "2026-08-12"
           },
           {
             "name": "Respicio & Co. — How to Book a National Police Clearance Appointment Online",
             "url": "https://www.respicio.ph/commentaries/how-to-book-a-national-police-clearance-appointment-online",
+            "published": "2026-07-16",
             "covers": ["quickStats", "faqs"],
             "verifiedOn": "2026-08-12"
           }
