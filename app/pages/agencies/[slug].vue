@@ -28,7 +28,7 @@ const { sources, verifiedOn, checkedOn } = useDataSources(agency)
   <div>
     <UiBreadcrumbs
       :items="[
-        { label: 'Services', href: '/services' },
+        { label: 'Government', href: '/government' },
         { label: agency.name },
       ]"
     />
@@ -150,9 +150,10 @@ const { sources, verifiedOn, checkedOn } = useDataSources(agency)
         <UiDataSourceStatus :sources="sources" :verified-on="verifiedOn" :checked-on="checkedOn" subject="agency" />
       </UiCard>
 
-      <!-- back link -->
-      <NuxtLink to="/services" class="mt-8 inline-flex items-center gap-2 text-sm text-gray-500 hover:text-primary-600">
-        <i class="bi bi-arrow-left" /> All services
+      <!-- back link: matches the crumb above (Government, not Services) and
+           Office's own back link shape ("All government offices" -> /government). -->
+      <NuxtLink to="/government" class="mt-8 inline-flex items-center gap-2 text-sm text-gray-500 hover:text-primary-600">
+        <i class="bi bi-arrow-left" /> All national agencies
       </NuxtLink>
     </div>
   </div>

@@ -36,7 +36,7 @@
   },
   "government": {
     "titleFragment": "Government",
-    "description": "Meet the leadership and offices serving {{lguName}}. View the executive, legislative, and department heads of the {{lguTypeLabel}}.",
+    "description": "Meet the leadership and offices serving {{lguName}}. View the executive, legislative, and department heads of the {{lguTypeLabel}}, plus national agencies with a local presence.",
     "ogType": "website",
     "twitterCard": "summary",
     "hidden": false

@@ -52,6 +52,22 @@ const officeGroupsWithHeads = computed(() =>
     .map(group => ({ group, entries: getOfficesWithHeadsByGroup(group.id) }))
     .filter(({ entries }) => entries.length > 0),
 )
+
+// National Agencies: a distinct section, deliberately NOT folded into "Key
+// Offices" above (ADR-0004's Office/Agency tier separation — an Agency is a
+// national government office with a local presence, not part of the city's
+// own structure). Mirrors the same call already made in sitemap.vue's own
+// "National Agencies" section, in this same PR.
+//
+// Read through the Agency configHelper accessor, never agencies.json
+// directly. Every Agency in the accessor is 1:1 with its own /agencies/<id>
+// page (unlike Office, which can carry a contact-only stub with no `detail`
+// block), but the list is still filtered through `agencyView` — the same
+// resolver the page itself 404s against — so a future Agency record that
+// doesn't resolve can never render as a dead link here.
+const agencies = computed(() =>
+  getAgencies().filter(agency => agencyView(agency.id) !== undefined),
+)
 </script>
 
 <template>
@@ -62,7 +78,7 @@ const officeGroupsWithHeads = computed(() =>
       badge-icon="bi-building-fill"
       badge-text="Government"
       title="Government Structure & Officials"
-      :description="`Meet the leadership and offices serving ${lguName}`"
+      :description="`Meet the leadership, offices, and national agencies serving ${lguName}`"
     />
 
     <!-- Executive Branch -->
@@ -285,6 +301,69 @@ const officeGroupsWithHeads = computed(() =>
               </div>
             </UiCard>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- National Agencies (ADR-0004): a distinct tier from Key Offices above —
+         a national government office with a local presence, not a city
+         department, so it gets its own section and a visually distinct badge
+         rather than looking like one more entry in Key Offices. -->
+    <section v-if="agencies.length > 0" class="py-12">
+      <div class="container mx-auto px-4">
+        <UiSectionHeader
+          title="National Agencies"
+          description="National government offices with a presence in this city — not part of its own structure"
+          badge-icon="bi-flag"
+          badge-text="National, not city government"
+          badge-class="bg-gray-800 text-white"
+        />
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Card is NOT the anchor for the same reason as Key Offices: the
+               Facebook link needs its own click target, so "View agency" is
+               the stretched anchor instead. -->
+          <UiCard
+            v-for="agency in agencies"
+            :key="agency.id"
+            interactive
+            class="group relative"
+          >
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-xl text-gray-700 text-xl shrink-0">
+                <i class="bi" :class="[agency.icon || 'bi-flag']" />
+              </div>
+              <div class="flex-1 min-w-0">
+                <h4 class="text-base font-semibold text-gray-900 mb-1">
+                  {{ agency.name }}
+                </h4>
+                <p class="text-sm text-gray-500 mb-3">
+                  {{ agency.description }}
+                </p>
+                <div class="space-y-1 text-xs text-gray-500">
+                  <span v-if="agency.phone" class="flex items-center gap-1">
+                    <i class="bi bi-telephone" /> {{ agency.phone }}
+                  </span>
+                  <a
+                    v-if="agency.facebook"
+                    :href="agency.facebook"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="relative z-10 inline-flex items-center gap-1 text-primary-600 hover:underline w-fit"
+                  >
+                    <i class="bi bi-facebook" />
+                    <span class="sr-only">{{ agency.name }} on </span>Facebook Page
+                  </a>
+                </div>
+                <NuxtLink
+                  :to="`/agencies/${agency.id}`"
+                  class="inline-flex items-center gap-1 text-primary-600 font-medium text-sm mt-3 group-hover:gap-2 transition-all no-underline after:absolute after:inset-0"
+                >
+                  View agency <i class="bi bi-arrow-right" />
+                </NuxtLink>
+              </div>
+            </div>
+          </UiCard>
         </div>
       </div>
     </section>

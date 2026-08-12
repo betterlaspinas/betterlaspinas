@@ -108,4 +108,19 @@ describe('agency detail page', () => {
     // whole-card "no contact details" fallback, just the one missing row.
     expect(text).toContain(noFacebookAgency.phone)
   })
+
+  // #295: an Agency is not a Service, so the breadcrumb and back link must not
+  // route through /services — repointed to /government (which now carries the
+  // National Agencies section), matching the Office detail page's own crumb
+  // shape ("Government" -> /government).
+  it('breadcrumbs and links back to /government, not /services', async () => {
+    routeParams.slug = 'pnp-laspinas'
+    const wrapper = await mountSuspended(AgencyPage)
+    const text = wrapper.text()
+    const hrefs = wrapper.findAll('a').map(a => a.attributes('href') ?? '')
+
+    expect(text).toContain('Government')
+    expect(hrefs).toContain('/government')
+    expect(hrefs).not.toContain('/services')
+  })
 })
