@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { linkifyText } from '@/utils/stringHelpers'
+
 usePageOgImage()
 
 const route = useRoute()
@@ -163,9 +165,7 @@ function toggleFaq(index: number) {
             <h4 class="font-semibold text-gray-900 mb-2">
               {{ step.title }}
             </h4>
-            <p class="text-sm text-gray-800">
-              {{ step.description }}
-            </p>
+            <p class="text-sm text-gray-800" v-html="linkifyText(step.description)" />
           </UiCard>
         </div>
       </div>

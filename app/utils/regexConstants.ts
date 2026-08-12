@@ -38,3 +38,10 @@ export const CHANGELOG_ITEM_PREFIX_REGEX = /^\*\*(.*?)\*\*:\s*(.*)/
 // Git describe version (used in Footer.vue)
 // Matches tag, distance, and hash from git describe (e.g. v1.2.3-4-gabc123)
 export const GIT_DESCRIBE_REGEX = /^v?([0-9.]+)(?:-(\d+)-g([0-9a-f]+))?$/
+
+// Auto-linkify plain-text URLs/domains authored in services.json copy
+// (e.g. processSteps descriptions mentioning "pnpclearance.ph"), used by
+// linkifyText() in stringHelpers.ts (#300).
+export const URL_LINKIFY_REGEX = /(https?:\/\/[^\s<>"]+|(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,})/gi
+// Trailing sentence punctuation that shouldn't be swallowed into a matched URL
+export const URL_TRAILING_PUNCTUATION_REGEX = /[.,;:!?)\]]+$/
