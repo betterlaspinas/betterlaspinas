@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { NuxtLink } from '#components'
+
 usePageOgImage()
 
 const route = useRoute()
@@ -124,7 +126,7 @@ const { sources, verifiedOn, checkedOn } = useDataSources(agency)
         </div>
         <div class="grid sm:grid-cols-2 gap-3">
           <component
-            :is="s.link ? 'NuxtLink' : 'div'"
+            :is="s.link ? NuxtLink : 'div'"
             v-for="s in services" :key="s.name" :to="s.link"
             class="group flex items-center justify-between gap-2 bg-white border border-gray-200 rounded-xl px-4 py-3 transition"
             :class="s.link ? 'hover:border-primary-300 hover:bg-primary-50' : 'cursor-default'"
