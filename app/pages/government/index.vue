@@ -56,8 +56,9 @@ const officeGroupsWithHeads = computed(() =>
 // National Agencies: a distinct section, deliberately NOT folded into "Key
 // Offices" above (ADR-0004's Office/Agency tier separation — an Agency is a
 // national government office with a local presence, not part of the city's
-// own structure). Mirrors the same call already made in sitemap.vue's own
-// "National Agencies" section, in this same PR.
+// own structure). Same section-separation call sitemap.vue's own "National
+// Agencies" section already makes elsewhere in this PR (though that one is a
+// hardcoded link list, not accessor-driven like this).
 //
 // Read through the Agency configHelper accessor, never agencies.json
 // directly. Every Agency in the accessor is 1:1 with its own /agencies/<id>
