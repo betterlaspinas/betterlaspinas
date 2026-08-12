@@ -35,6 +35,7 @@
         "location": { "type": "string" },
         "phone": { "type": "string" },
         "hours": { "type": "string" },
+        "facebook": { "type": "string" },
         "sources": {
           "type": "array",
           "description": "Documents this Agency's contact/location data was transcribed from, primary first (#243, ADR-0005). Replaces the sourceUrl/sourceName pair and the dataStatus enum: confidence is derived from provenance, not asserted by a field.",

@@ -7,12 +7,14 @@ import type {
   ServiceItem,
 } from '@/types/config'
 import { describe, expect, it } from 'vitest'
-import { getCategoryBySlug, getOfficeBySlug, getServiceBySlug } from './configHelper'
+import { getAgencyById, getCategoryBySlug, getOfficeBySlug, getServiceBySlug } from './configHelper'
 import {
+  agencyView,
   categoryView,
   officeContactCard,
   officeView,
   serviceDetailView,
+  toAgencyView,
   toCategoryView,
   toOfficeView,
   toServiceDetailView,
@@ -159,8 +161,7 @@ describe('toCategoryView', () => {
       title: 'Las Piñas City Police Station',
       icon: 'bi-shield-check',
       description: 'PNP station',
-      location: 'City Hall Compound',
-      phone: '8551-6401',
+      link: '/agencies/pnp-laspinas',
     }])
   })
 
@@ -328,6 +329,84 @@ describe('toOfficeView', () => {
   })
 })
 
+describe('toAgencyView', () => {
+  it('dedupes two provided Services with the same title to one', () => {
+    const view = toAgencyView({
+      agency: makeAgency({ id: 'pnp-laspinas' }),
+      services: [
+        makeService({ id: 'a', title: 'Police Clearance', providedByAgency: 'pnp-laspinas', detail: makeDetail() }),
+        makeService({ id: 'b', title: 'Police Clearance', providedByAgency: 'pnp-laspinas', detail: makeDetail() }),
+      ],
+    })
+    const named = view.services.filter(s => s.name === 'Police Clearance')
+    expect(named).toHaveLength(1)
+  })
+
+  it('prefers the detail-bearing duplicate regardless of order', () => {
+    const detailFirst = toAgencyView({
+      agency: makeAgency({ id: 'pnp-laspinas' }),
+      services: [
+        makeService({ id: 'a', title: 'Police Clearance', providedByAgency: 'pnp-laspinas', detail: makeDetail() }),
+        makeService({ id: 'b', title: 'Police Clearance', providedByAgency: 'pnp-laspinas', detail: undefined }),
+      ],
+    })
+    const detailLast = toAgencyView({
+      agency: makeAgency({ id: 'pnp-laspinas' }),
+      services: [
+        makeService({ id: 'b', title: 'Police Clearance', providedByAgency: 'pnp-laspinas', detail: undefined }),
+        makeService({ id: 'a', title: 'Police Clearance', providedByAgency: 'pnp-laspinas', detail: makeDetail() }),
+      ],
+    })
+    expect(detailFirst.services[0]!.link).toBe('/service-details/a')
+    expect(detailLast.services[0]!.link).toBe('/service-details/a')
+  })
+
+  it('gives a catalog-only provided Service no link', () => {
+    const view = toAgencyView({
+      agency: makeAgency({ id: 'pnp-laspinas' }),
+      services: [makeService({ id: 'a', title: 'Blotter report', providedByAgency: 'pnp-laspinas', detail: undefined })],
+    })
+    expect(view.services[0]).toEqual({ name: 'Blotter report', link: undefined })
+  })
+
+  it('links a detail-bearing provided Service to its /service-details page', () => {
+    const view = toAgencyView({
+      agency: makeAgency({ id: 'pnp-laspinas' }),
+      services: [makeService({ id: 'police-clearance', providedByAgency: 'pnp-laspinas', detail: makeDetail() })],
+    })
+    expect(view.services[0]!.link).toBe('/service-details/police-clearance')
+  })
+
+  it('excludes Services provided by other Agencies and hidden Services', () => {
+    const view = toAgencyView({
+      agency: makeAgency({ id: 'pnp-laspinas' }),
+      services: [
+        makeService({ id: 'a', title: 'Mine', providedByAgency: 'pnp-laspinas', detail: makeDetail() }),
+        makeService({ id: 'b', title: 'Other agency', providedByAgency: 'some-other-agency', detail: makeDetail() }),
+        makeService({ id: 'c', title: 'Hidden', providedByAgency: 'pnp-laspinas', hidden: true, detail: makeDetail() }),
+      ],
+    })
+    const names = view.services.map(s => s.name)
+    expect(names).toEqual(['Mine'])
+  })
+
+  it('derives a maps URL from the Agency address', () => {
+    const view = toAgencyView({
+      agency: makeAgency({ location: 'City Hall Compound, Las Piñas' }),
+      services: [],
+    })
+    expect(view.mapsUrl).toContain(encodeURIComponent('City Hall Compound, Las Piñas'))
+  })
+
+  it('falls back to the Agency name for the maps URL when it has no location', () => {
+    const view = toAgencyView({
+      agency: makeAgency({ name: 'Some Agency', location: undefined }),
+      services: [],
+    })
+    expect(view.mapsUrl).toContain(encodeURIComponent('Some Agency'))
+  })
+})
+
 // ---------------------------------------------------------------------------
 // Facade smoke tests against the real config — the facade owns the IO; these
 // pin that a missed lookup returns undefined (so the page throws 404) and that
@@ -372,5 +451,23 @@ describe('facades (real config)', () => {
   it('officeView resolves a live Office and returns undefined for unknown/hidden', () => {
     expect(officeView('civil-registry')).toBeDefined()
     expect(officeView('not-a-real-office')).toBeUndefined()
+  })
+
+  it('agencyView resolves a live Agency and returns undefined for unknown', () => {
+    expect(agencyView('pnp-laspinas')).toBeDefined()
+    expect(agencyView('not-a-real-agency')).toBeUndefined()
+  })
+
+  it('agencyView(pnp-laspinas) carries the verified provenance through to the view (#272, ADR-0005)', () => {
+    const view = agencyView('pnp-laspinas')!
+    const agency = getAgencyById('pnp-laspinas')!
+    expect(view.agency.sources).toEqual(agency.sources)
+  })
+
+  it('agencyView(pnp-laspinas) carries the facebook field through unchanged (#295)', () => {
+    const view = agencyView('pnp-laspinas')!
+    const agency = getAgencyById('pnp-laspinas')!
+    expect(view.agency.facebook).toBe(agency.facebook)
+    expect(view.agency.facebook).toBe('https://www.facebook.com/pcrstation4')
   })
 })

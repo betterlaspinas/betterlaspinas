@@ -663,6 +663,7 @@ export interface Agency {
   location?: string
   phone?: string
   hours?: string
+  facebook?: string
   /**
    * Documents this Agency's contact/location data was transcribed from, primary
    * first (#243). Replaces the Agency-scoped `dataStatus` enum, which was a

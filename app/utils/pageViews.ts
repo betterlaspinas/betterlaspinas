@@ -11,6 +11,7 @@ import type {
 import {
   categoryHasBarangayProvider,
   getAgenciesForCategory,
+  getAgencyById,
   getAllServices,
   getCategoryBySlug,
   getOfficeBySlug,
@@ -60,16 +61,16 @@ export interface CategoryOfficeCard {
 }
 
 /**
- * Agency-tier responsible-body card (ADR-0004). No dedicated detail page
- * exists for an Agency yet, so the card surfaces contact fields directly
- * instead of a route `link`.
+ * Agency-tier responsible-body card (ADR-0004). Links to the Agency's own
+ * `/agencies/<id>` detail page (#272) — mirrors `CategoryOfficeCard.link`
+ * rather than surfacing contact fields inline, now that a dedicated page
+ * exists to hold them.
  */
 export interface CategoryAgencyCard {
   title: string
   icon: string
   description: string
-  location?: string
-  phone?: string
+  link: string
 }
 
 /**
@@ -138,8 +139,7 @@ export function toCategoryView(records: CategoryRecords): CategoryView {
       title: agency.name,
       icon: agency.icon,
       description: agency.description,
-      location: agency.location,
-      phone: agency.phone,
+      link: `/agencies/${agency.id}`,
     })),
     barangay: records.hasBarangayProvider ? BARANGAY_CARD : undefined,
   }
@@ -341,6 +341,80 @@ export function officeView(slug: string): OfficeView | undefined {
   return toOfficeView({
     office,
     group: getOfficeGroupBySlug(office.groupId),
+    services: getAllServices(),
+  })
+}
+
+// ---------------------------------------------------------------------------
+// Agency View — /agencies/<slug>
+// ---------------------------------------------------------------------------
+
+export interface AgencyServiceCard {
+  name: string
+  link?: string
+}
+
+export interface AgencyView {
+  agency: Agency
+  services: AgencyServiceCard[]
+  mapsUrl: string
+}
+
+export interface AgencyRecords {
+  agency: Agency
+  services: ServiceItem[]
+}
+
+/**
+ * Pure shaper for the /agencies/<slug> page (#272). Mirrors `toOfficeView`'s
+ * service-card resolution — Services this Agency provides (via
+ * `providedByAgency`) link to their own /service-details page ONLY when they
+ * carry a `detail` block; catalog-only Services render as a plain,
+ * non-clickable card. Deduped by title, order-independently preferring the
+ * detail-bearing duplicate, same as the Office shaper. Agency has no
+ * `additionalServices` field (unlike Office), so there is nothing to append.
+ */
+export function toAgencyView(records: AgencyRecords): AgencyView {
+  const { agency, services } = records
+  const seen = new Map<string, AgencyServiceCard>()
+  const cards: AgencyServiceCard[] = []
+
+  for (const service of services) {
+    if (service.providedByAgency !== agency.id || service.hidden)
+      continue
+    const link = service.detail ? `/service-details/${service.id}` : undefined
+    const existing = seen.get(service.title)
+    if (existing) {
+      if (!existing.link && link)
+        existing.link = link
+      continue
+    }
+    const card: AgencyServiceCard = { name: service.title, link }
+    seen.set(service.title, card)
+    cards.push(card)
+  }
+
+  return {
+    agency,
+    services: cards,
+    // No geo data on the Agency schema — link to Google Maps by address, same
+    // fallback as the Office shaper.
+    mapsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(agency.location ?? agency.name)}`,
+  }
+}
+
+/**
+ * Bound facade: resolve an Agency slug into its AgencyView. Matches on the
+ * Agency `id` directly (own /agencies/<id> namespace, mirroring #207's Office
+ * namespace). Returns undefined for an unknown Agency so the page can throw a
+ * 404.
+ */
+export function agencyView(slug: string): AgencyView | undefined {
+  const agency = getAgencyById(slug)
+  if (!agency)
+    return undefined
+  return toAgencyView({
+    agency,
     services: getAllServices(),
   })
 }

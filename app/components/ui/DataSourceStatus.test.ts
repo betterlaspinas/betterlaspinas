@@ -31,6 +31,19 @@ describe('dataSourceStatus', () => {
     expect(text).toContain('Confirm with the office before relying on them')
   })
 
+  // #272: the Agency detail page reuses this shared component rather than a
+  // second hand-rolled Data source card, so the "agency" subject must render
+  // the same three states as "office"/"service".
+  it('row 1 on the agency page swaps the subject but keeps "the office" as the confirm target', () => {
+    const wrapper = mount(DataSourceStatus, {
+      props: { sources: [], verifiedOn: null, checkedOn: '', subject: 'agency' },
+    })
+
+    const text = wrapper.text()
+    expect(text).toContain('We\'re still documenting where this agency\'s details came from')
+    expect(text).toContain('Confirm with the office before relying on them')
+  })
+
   it('row 2 — sources but no verifiedOn: renders the citation and says it has not been re-checked', () => {
     const wrapper = mount(DataSourceStatus, {
       props: {

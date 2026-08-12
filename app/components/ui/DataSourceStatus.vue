@@ -3,8 +3,8 @@ import type { SourceRef } from '~/types/config'
 import { formatCheckedOn } from '~/composables/useDataSources'
 
 /**
- * Body of the "Data source" card shared by the Office and Service detail
- * pages (#243, ADR-0005). `sources` (where the data came from) and
+ * Body of the "Data source" card shared by the Office, Service and Agency
+ * detail pages (#243, #272, ADR-0005). `sources` (where the data came from) and
  * `verifiedOn` (whether we re-checked it) are independent facts, so this
  * renders three distinct states rather than gating the citation behind
  * verification:
@@ -35,8 +35,8 @@ const props = defineProps<{
   sources: SourceRef[]
   verifiedOn: string | null
   checkedOn: string
-  /** Subject of row 1's copy — "this office's details" / "this service's details". */
-  subject: 'office' | 'service'
+  /** Subject of row 1's copy — "this office's details" / "this service's details" / "this agency's details". */
+  subject: 'office' | 'service' | 'agency'
 }>()
 
 /** True when no source in the list carries its own `verifiedOn` — the "nothing checked yet" case. */

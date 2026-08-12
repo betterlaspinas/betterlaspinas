@@ -4,6 +4,7 @@ import { describe, expect, it } from 'vitest'
 import { computed } from 'vue'
 import {
   configHelpers,
+  getAgencies,
   getLGUTypeLabels,
   getOfficeHead,
   getOfficesWithHeads,
@@ -119,5 +120,70 @@ describe('government page — Key Offices', () => {
       else
         expect(hrefs.has(office.link)).toBe(false)
     }
+  })
+})
+
+// #295: National Agencies is a distinct section from Key Offices — ADR-0004's
+// Office/Agency tier separation means an Agency (a national government office
+// with a local presence) must not be presented as a city department.
+describe('government page — National Agencies', () => {
+  it('renders every Agency, linking to its own /agencies/<id> page', async () => {
+    const wrapper = await mountSuspended(GovernmentPage)
+    const text = wrapper.text()
+    const hrefs = new Set(wrapper.findAll('a').map(a => a.attributes('href') ?? ''))
+    const agencies = getAgencies()
+
+    expect(agencies.length).toBeGreaterThan(0)
+    for (const agency of agencies) {
+      expect(text).toContain(agency.name)
+      expect(hrefs.has(`/agencies/${agency.id}`)).toBe(true)
+    }
+  })
+
+  it('renders a clickable Facebook link for every Agency that has one', async () => {
+    const wrapper = await mountSuspended(GovernmentPage)
+    const withFacebook = getAgencies().filter(agency => agency.facebook)
+
+    expect(withFacebook.length).toBeGreaterThan(0)
+    for (const agency of withFacebook) {
+      const link = wrapper.findAll('a').find(a => a.attributes('href') === agency.facebook)
+
+      expect(link, `no Facebook link rendered for ${agency.id}`).toBeDefined()
+      expect(link!.attributes('rel')).toContain('noopener')
+      expect(link!.attributes('target')).toBe('_blank')
+    }
+  })
+
+  it('is a distinct section from Key Offices — both section titles render', async () => {
+    const wrapper = await mountSuspended(GovernmentPage)
+    const text = wrapper.text()
+    expect(text).toContain('Key Offices')
+    expect(text).toContain('National Agencies')
+  })
+
+  // Jan (live review, #295): the tier separation from Key Offices must come
+  // from the section's own heading/copy, NOT a different visual treatment —
+  // an earlier pass gave the section a dark bg-gray-800 badge/card, which read
+  // as broken rather than intentional. It must use the same primary-blue
+  // badge convention as every other section on the page.
+  it('uses the page\'s standard primary badge styling, not a distinct dark treatment', async () => {
+    const wrapper = await mountSuspended(GovernmentPage)
+    const badge = wrapper.findAll('span').find(span => span.text() === 'National Agencies')
+
+    expect(badge).toBeDefined()
+    expect(badge!.classes()).toContain('bg-primary-600')
+    expect(badge!.classes()).not.toContain('bg-gray-800')
+  })
+
+  // National Agencies must render last on the page, below Barangays/Subdivisions
+  // (moved down from its earlier near-Key-Offices position per Jan's review).
+  it('renders after the Subdivisions section, last on the page', async () => {
+    const wrapper = await mountSuspended(GovernmentPage)
+    const text = wrapper.text()
+    const subdivisionsIndex = text.indexOf('of Las Piñas')
+    const agenciesIndex = text.indexOf('National Agencies')
+
+    expect(subdivisionsIndex).toBeGreaterThan(-1)
+    expect(agenciesIndex).toBeGreaterThan(subdivisionsIndex)
   })
 })
