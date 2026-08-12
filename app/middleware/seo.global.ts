@@ -1,5 +1,36 @@
+import type { RouteParams } from 'vue-router'
 import { TRAILING_SLASH_REGEX } from '@/utils/regexConstants'
 import { interpolateString, slugToTitleCase } from '@/utils/stringHelpers'
+
+/**
+ * Resolve the human-readable display name for a route's `slug` param, for
+ * routes whose slug names an Agency or Office record. Overrides the generic
+ * title-cased `{{slug}}` template var (below) so `/agencies/pnp-laspinas`
+ * renders the real Agency name ("Las Piñas City Police Station") instead of
+ * a mangled "Pnp Laspinas" (#295 — title-casing an id is not a name). Feeds
+ * both the title AND description templates since both interpolate `{{slug}}`
+ * from the same `templateVars`.
+ *
+ * Resolved through the canonical configHelper accessors — never a direct
+ * JSON import — so the title can't drift from the catalog. Returns undefined
+ * for routes with no such override, leaving the generic title-cased slug in
+ * place.
+ */
+export function resolveSlugDisplayName(routeName: string, params: RouteParams): string | undefined {
+  const slugParam = params.slug
+  if (!slugParam)
+    return undefined
+  const slug = Array.isArray(slugParam) ? slugParam[0] : slugParam
+  if (!slug)
+    return undefined
+
+  if (routeName === 'agencies-slug')
+    return getAgencyById(slug)?.name
+  if (routeName === 'offices-slug')
+    return getOfficeBySlug(slug)?.name
+
+  return undefined
+}
 
 export default defineNuxtRouteMiddleware((to) => {
   const config = useConfig()
@@ -25,6 +56,11 @@ export default defineNuxtRouteMiddleware((to) => {
       for (const [key, value] of Object.entries(to.params)) {
         const strValue = Array.isArray(value) ? value.join('-') : String(value)
         templateVars[key] = slugToTitleCase(strValue)
+      }
+
+      const slugDisplayName = resolveSlugDisplayName(routeName, to.params)
+      if (slugDisplayName) {
+        templateVars.slug = slugDisplayName
       }
     }
 
