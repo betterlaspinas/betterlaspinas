@@ -449,12 +449,7 @@
           {
             "icon": "bi-clock",
             "label": "Processing",
-            "value": "Same day, by appointment"
-          },
-          {
-            "icon": "bi-person-check",
-            "label": "Who Can Apply",
-            "value": "Any Filipino citizen"
+            "value": "Same day — if No-Hit"
           },
           {
             "icon": "bi-calendar-check",
@@ -509,10 +504,18 @@
           {
             "question": "Do first-time applicants need to appear in person?",
             "answer": "Yes. First-time applicants must appear in person to have their photo, electronic signature, and biometrics taken. Renewal applicants may qualify for non-appearance processing."
+          },
+          {
+            "question": "Who is eligible to apply for a National Police Clearance?",
+            "answer": "Any Filipino citizen may apply. Foreign nationals legally residing in the Philippines can also apply, presenting a valid passport, valid Philippine visa or proof of lawful stay, and ACR I-Card when applicable. Applicants are generally expected to be at least 18 years old; minors may apply for valid reasons with a parent or guardian accompanying them."
+          },
+          {
+            "question": "What does it mean if my application shows a \"HIT\"?",
+            "answer": "A \"HIT\" means your name matches or resembles another record in the PNP's nationwide database — it does not automatically mean you have a criminal record. A \"No-Hit\" result is usually released the same day, depending on the station's workload. A \"HIT\" requires additional verification, which generally takes 10 to 15 working days and may require a follow-up visit."
           }
         ],
         "office": {
-          "name": "PNP National Police Clearance — Lingkod Pinoy Center",
+          "name": "National Police Clearance Office",
           "location": "Lingkod Pinoy Center, Basement Level, Robinsons Place, Alabang-Zapote Road, Brgy. Talon 1, Las Piñas City",
           "hours": "Mon-Fri: 8AM - 5PM"
         },
@@ -529,6 +532,25 @@
             "url": "https://www.facebook.com/share/p/17ZLHoR6nk/",
             "published": "2024-04-28",
             "covers": ["location"],
+            "verifiedOn": "2026-08-12"
+          },
+          {
+            "name": "Robinsons Las Piñas — Official Facebook Page (National Police Clearance Office Announcement)",
+            "url": "https://www.facebook.com/RobLasPinasOfficial/posts/lingkodpinoyadvisorynational-police-clearance-office-is-set-to-open-soon-at-robi/433053169346995/",
+            "published": "2024-05-14",
+            "covers": ["office"],
+            "verifiedOn": "2026-08-12"
+          },
+          {
+            "name": "PNP National Police Clearance — Applicant's Guide (policeclearancepnp.org)",
+            "url": "https://policeclearancepnp.org/police-clearance-guide/",
+            "covers": ["quickStats", "faqs"],
+            "verifiedOn": "2026-08-12"
+          },
+          {
+            "name": "Respicio & Co. — How to Book a National Police Clearance Appointment Online",
+            "url": "https://www.respicio.ph/commentaries/how-to-book-a-national-police-clearance-appointment-online",
+            "covers": ["quickStats", "faqs"],
             "verifiedOn": "2026-08-12"
           }
         ]
