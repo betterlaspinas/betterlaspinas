@@ -1522,7 +1522,7 @@
     {
       "id": "cedula",
       "title": "Community Tax Certificate (Cedula)",
-      "categoryId": "business",
+      "categoryId": "tax-payments",
       "description": "Obtain cedula for individuals and businesses",
       "keywords": [
         "cedula",
@@ -1534,7 +1534,8 @@
       "fee": "₱5+",
       "processingTime": "Same day",
       "office": "City Treasurer's Office",
-      "url": "/services/business",
+      "providedBy": "city-treasurer",
+      "url": "/services/tax-payments",
       "hidden": true
     },
     {

@@ -375,6 +375,29 @@ describe('configHelper', () => {
     })
   })
 
+  describe('cedula recategorized from Business to Taxation (#285, ADR-0006)', () => {
+    it('cedula\'s canonical categoryId is tax-payments, not business', () => {
+      const rawServices = (rawServicesConfig as { services: ServiceItem[] }).services
+      const cedula = rawServices.find(s => s.id === 'cedula')
+      expect(cedula).toBeDefined()
+      expect(cedula!.categoryId).toBe('tax-payments')
+    })
+
+    it('cedula no longer appears under the (visible) Business category', () => {
+      const businessIds = getServicesByCategory('business').map(s => s.id)
+      expect(businessIds).not.toContain('cedula')
+    })
+
+    it('cedula\'s url matches its new category (no stale /services/business link)', () => {
+      // pageViews.ts only treats `url` as an explicit override link when it
+      // differs from the resolved category's own href — a stale url would
+      // silently render Cedula's card linking back to Business.
+      const rawServices = (rawServicesConfig as { services: ServiceItem[] }).services
+      const cedula = rawServices.find(s => s.id === 'cedula')
+      expect(cedula!.url).toBe('/services/tax-payments')
+    })
+  })
+
   describe('canonical Office accessor', () => {
     it('getOffices returns visible Offices only', () => {
       const offices = getOffices()
