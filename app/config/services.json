@@ -579,7 +579,6 @@
         "store",
         "shop",
         "online",
-        "filipizen",
         "e-services"
       ],
       "fee": "Varies",
@@ -723,7 +722,6 @@
         "annual",
         "negosyo",
         "online",
-        "filipizen",
         "e-services"
       ],
       "fee": "Varies",
@@ -1779,18 +1777,13 @@
         "amilyar",
         "land",
         "house",
-        "lot",
-        "online",
-        "billing",
-        "filipizen",
-        "e-payment"
+        "lot"
       ],
       "fee": "Varies",
       "processingTime": "Same day",
       "office": "City Treasurer's Office",
       "providedBy": "city-treasurer",
-      "url": "/services/tax-payments",
-      "onlineUrl": "#"
+      "url": "/services/tax-payments"
     },
     {
       "id": "business-tax",
@@ -1802,18 +1795,13 @@
         "tax",
         "payment",
         "quarterly",
-        "annual",
-        "online",
-        "billing",
-        "filipizen",
-        "e-payment"
+        "annual"
       ],
       "fee": "Varies",
       "processingTime": "Same day",
       "office": "City Treasurer's Office",
       "providedBy": "city-treasurer",
-      "url": "/services/tax-payments",
-      "onlineUrl": "#"
+      "url": "/services/tax-payments"
     },
     {
       "id": "tax-clearance",
@@ -2583,25 +2571,6 @@
           }
         ]
       }
-    },
-    {
-      "id": "online-payment-order",
-      "title": "Online Payment Order",
-      "categoryId": "tax-payments",
-      "description": "Process payment orders for various city fees online via Filipizen",
-      "keywords": [
-        "online",
-        "payment order",
-        "fees",
-        "filipizen",
-        "e-payment",
-        "city fees"
-      ],
-      "fee": "Varies",
-      "processingTime": "Instant",
-      "office": "City Treasurer's Office",
-      "providedBy": "city-treasurer",
-      "url": "/services/tax-payments"
     }
   ]
 }

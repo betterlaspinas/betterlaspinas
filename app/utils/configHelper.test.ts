@@ -238,8 +238,9 @@ describe('configHelper', () => {
     })
 
     // `online` retired outright (#288, per #255's ruling, ADR-0006) — it
-    // modeled a delivery channel (Filipizen), not a task-based Category; its
-    // Services were merged into their real Business/Taxation counterpart.
+    // modeled a delivery channel, not a task-based Category; its Services
+    // were merged into their real Business/Taxation counterpart (or deleted
+    // outright, for online-payment-order, which had no confident 1:1 match).
     // Pure deletion, same treatment as `government` (#286).
     it('getServiceCategories no longer includes online (#288)', () => {
       const categories = getServiceCategories()
@@ -250,12 +251,13 @@ describe('configHelper', () => {
       expect(getCategoryBySlug('online')).toBeUndefined()
     })
 
-    it('the 4 merged online-* Services no longer resolve via getServiceBySlug (#288)', () => {
+    it('all 5 online-* Services no longer resolve via getServiceBySlug (#288)', () => {
       for (const id of [
         'online-business-billing',
         'online-new-business',
         'online-business-renewal',
         'online-rpt-billing',
+        'online-payment-order',
       ]) {
         expect(getServiceBySlug(id), id).toBeUndefined()
       }

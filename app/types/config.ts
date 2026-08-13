@@ -511,18 +511,6 @@ export interface ServiceItem {
   icon?: string
   hidden?: boolean
   /**
-   * Delivery-channel fact: this Service can also be completed online via
-   * Filipizen, at this URL. Retired 5 standalone `online-*` catalog-only
-   * duplicates into this field on their real Business/Taxation counterpart
-   * instead (#288, ADR-0006) — the online channel modifies how an existing
-   * Service is delivered, it is not a separate Service or Category. Distinct
-   * from `ServiceDetail.onlineLink`: that field drives the rich
-   * "Choose Application Method" section on a `/service-details/<id>` page and
-   * only exists for Services with a `detail` block; `onlineUrl` is top-level
-   * so a catalog-only Service (no `detail` page) can still carry the fact.
-   */
-  onlineUrl?: string
-  /**
    * Optional SEO meta-description template for this Service's
    * `/service-details/<id>` page. Supports `{{lguName}}` (and other middleware
    * template vars) interpolation. Lives on the canonical Service record so the
