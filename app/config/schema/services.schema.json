@@ -69,6 +69,10 @@
           "type": "string",
           "description": "SEO meta-description template for the /service-details/<id> page. Supports {{lguName}} interpolation. Read by the SEO middleware via getServiceSeoDescription."
         },
+        "onlineUrl": {
+          "type": "string",
+          "description": "Delivery-channel fact: this Service can also be completed online via Filipizen, at this URL. Top-level (unlike serviceDetail.onlineLink) so a catalog-only Service without a detail page can still carry it (#288, ADR-0006)."
+        },
         "detail": { "$ref": "#/definitions/serviceDetail" }
       }
     },
