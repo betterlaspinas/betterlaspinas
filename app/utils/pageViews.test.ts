@@ -421,6 +421,9 @@ describe('facades (real config)', () => {
     // it and short-circuits before any lookup — true before and after this
     // PR; the categories.json deletion doesn't change this call path.
     expect(categoryView('government')).toBeUndefined()
+    // `online` retired outright (#288, ADR-0006) — same treatment: never in
+    // `CANONICAL_CATEGORY_SLUGS`, so this short-circuits before any lookup.
+    expect(categoryView('online')).toBeUndefined()
     expect(categoryView('not-a-real-category')).toBeUndefined()
   })
 

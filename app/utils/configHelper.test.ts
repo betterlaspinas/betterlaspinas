@@ -237,6 +237,30 @@ describe('configHelper', () => {
       expect(getCategoryBySlug('government')).toBeUndefined()
     })
 
+    // `online` retired outright (#288, per #255's ruling, ADR-0006) — it
+    // modeled a delivery channel (Filipizen), not a task-based Category; its
+    // Services were merged into their real Business/Taxation counterpart.
+    // Pure deletion, same treatment as `government` (#286).
+    it('getServiceCategories no longer includes online (#288)', () => {
+      const categories = getServiceCategories()
+      expect(categories.find(c => c.id === 'online')).toBeUndefined()
+    })
+
+    it('getCategoryBySlug returns undefined for the retired online category (#288)', () => {
+      expect(getCategoryBySlug('online')).toBeUndefined()
+    })
+
+    it('the 4 merged online-* Services no longer resolve via getServiceBySlug (#288)', () => {
+      for (const id of [
+        'online-business-billing',
+        'online-new-business',
+        'online-business-renewal',
+        'online-rpt-billing',
+      ]) {
+        expect(getServiceBySlug(id), id).toBeUndefined()
+      }
+    })
+
     it('getCategoryBySlug returns the certificates category (no inline offices)', () => {
       const cert = getCategoryBySlug('certificates')
       expect(cert).toBeDefined()
