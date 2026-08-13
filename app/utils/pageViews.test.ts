@@ -414,8 +414,10 @@ describe('toAgencyView', () => {
 // ---------------------------------------------------------------------------
 
 describe('facades (real config)', () => {
-  it('categoryView resolves a live Category and gates a non-resident one', () => {
+  it('categoryView resolves a live Category and 404s an unknown one', () => {
     expect(categoryView('certificates')).toBeDefined()
+    // `government` retired outright (#286) — undefined because the Category no
+    // longer exists at all, not because it's merely gated/hidden.
     expect(categoryView('government')).toBeUndefined()
     expect(categoryView('not-a-real-category')).toBeUndefined()
   })

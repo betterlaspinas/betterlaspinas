@@ -225,6 +225,18 @@ describe('configHelper', () => {
       expect(categories.every(c => !c.hidden)).toBe(true)
     })
 
+    // `government` retired outright (#286, per #255's ruling) — zero Services
+    // ever referenced it and its stated contents are Office-page material
+    // under ADR-0003, not Category material. Pure deletion, no replacement.
+    it('getServiceCategories no longer includes government (#286)', () => {
+      const categories = getServiceCategories()
+      expect(categories.find(c => c.id === 'government')).toBeUndefined()
+    })
+
+    it('getCategoryBySlug returns undefined for the retired government category (#286)', () => {
+      expect(getCategoryBySlug('government')).toBeUndefined()
+    })
+
     it('getCategoryBySlug returns the certificates category (no inline offices)', () => {
       const cert = getCategoryBySlug('certificates')
       expect(cert).toBeDefined()
