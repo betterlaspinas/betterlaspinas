@@ -416,8 +416,10 @@ describe('toAgencyView', () => {
 describe('facades (real config)', () => {
   it('categoryView resolves a live Category and 404s an unknown one', () => {
     expect(categoryView('certificates')).toBeDefined()
-    // `government` retired outright (#286) — undefined because the Category no
-    // longer exists at all, not because it's merely gated/hidden.
+    // `government` retired outright (#286). Undefined here because
+    // `isCanonicalCategory`'s `CANONICAL_CATEGORY_SLUGS` gate never included
+    // it and short-circuits before any lookup — true before and after this
+    // PR; the categories.json deletion doesn't change this call path.
     expect(categoryView('government')).toBeUndefined()
     expect(categoryView('not-a-real-category')).toBeUndefined()
   })
