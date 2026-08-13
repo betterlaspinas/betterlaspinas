@@ -123,4 +123,17 @@ describe('agency detail page', () => {
     expect(hrefs).toContain('/government')
     expect(hrefs).not.toContain('/services')
   })
+
+  // #300 follow-up: pnp-laspinas' "Services at this agency" card must link
+  // through to the new /service-details/police-clearance page now that the
+  // Service carries a `detail` block (toAgencyView links iff `service.detail`
+  // is set, per pageViews.ts).
+  it('links the "Services at this agency" card to its service-details page when the Service has a detail block', async () => {
+    routeParams.slug = 'pnp-laspinas'
+    const wrapper = await mountSuspended(AgencyPage)
+
+    const link = wrapper.find('a[href="/service-details/police-clearance"]')
+    expect(link.exists()).toBe(true)
+    expect(link.text()).toContain('National Police Clearance')
+  })
 })
