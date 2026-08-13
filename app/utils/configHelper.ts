@@ -371,9 +371,9 @@ export function getServicesByCategory(slug: string): ServiceItem[] {
 
 /**
  * Service Categories whose page is sourced canonically (categories.json +
- * services.json) through these accessors. The two remaining hidden Categories
- * (`government`, `online`) are not resident Service Categories and migrate in
- * their own slices.
+ * services.json) through these accessors. `government` (#286) and `online`
+ * (#288) were never resident Service Categories — both retired outright, no
+ * migration — so neither belongs in this set.
  */
 const CANONICAL_CATEGORY_SLUGS = new Set([
   'certificates',

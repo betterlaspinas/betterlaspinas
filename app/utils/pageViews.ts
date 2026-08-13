@@ -147,9 +147,11 @@ export function toCategoryView(records: CategoryRecords): CategoryView {
 
 /**
  * Bound facade: resolve a category slug into its CategoryView. The
- * `isCanonicalCategory` gate keeps non-resident Categories (`government`,
- * `online`) off this route. Returns undefined on a missed lookup so the page
- * can throw a 404.
+ * `isCanonicalCategory` gate keeps non-resident slugs off this route —
+ * `government` (#286) and `online` (#288, a delivery channel, not a
+ * Category) were both retired outright, so neither resolves here or
+ * anywhere else. Returns undefined on a missed lookup so the page can throw
+ * a 404.
  */
 export function categoryView(slug: string): CategoryView | undefined {
   const category = isCanonicalCategory(slug)

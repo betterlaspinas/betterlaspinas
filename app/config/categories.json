@@ -88,22 +88,6 @@
       "description": "Environmental permits, waste management, and conservation programs",
       "seoDescription": "Environmental permits, waste management, and conservation programs in {{lguName}}.",
       "hidden": true
-    },
-    {
-      "id": "government",
-      "name": "Government Services",
-      "icon": "bi-building",
-      "badgeText": "Government",
-      "description": "General city services, property management, and personnel records",
-      "hidden": true
-    },
-    {
-      "id": "online",
-      "name": "Online Services",
-      "icon": "bi-laptop",
-      "badgeText": "Online",
-      "description": "Digital billing and e-payment services via Filipizen",
-      "hidden": true
     }
   ]
 }

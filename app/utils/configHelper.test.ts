@@ -225,6 +225,42 @@ describe('configHelper', () => {
       expect(categories.every(c => !c.hidden)).toBe(true)
     })
 
+    // `government` retired outright (#286, per #255's ruling) — zero Services
+    // ever referenced it and its stated contents are Office-page material
+    // under ADR-0003, not Category material. Pure deletion, no replacement.
+    it('getServiceCategories no longer includes government (#286)', () => {
+      const categories = getServiceCategories()
+      expect(categories.find(c => c.id === 'government')).toBeUndefined()
+    })
+
+    it('getCategoryBySlug returns undefined for the retired government category (#286)', () => {
+      expect(getCategoryBySlug('government')).toBeUndefined()
+    })
+
+    // `online` retired outright (#288, per #255's ruling, ADR-0006) — it
+    // modeled a delivery channel (Filipizen), not a task-based Category; its
+    // Services were merged into their real Business/Taxation counterpart.
+    // Pure deletion, same treatment as `government` (#286).
+    it('getServiceCategories no longer includes online (#288)', () => {
+      const categories = getServiceCategories()
+      expect(categories.find(c => c.id === 'online')).toBeUndefined()
+    })
+
+    it('getCategoryBySlug returns undefined for the retired online category (#288)', () => {
+      expect(getCategoryBySlug('online')).toBeUndefined()
+    })
+
+    it('the 4 merged online-* Services no longer resolve via getServiceBySlug (#288)', () => {
+      for (const id of [
+        'online-business-billing',
+        'online-new-business',
+        'online-business-renewal',
+        'online-rpt-billing',
+      ]) {
+        expect(getServiceBySlug(id), id).toBeUndefined()
+      }
+    })
+
     it('getCategoryBySlug returns the certificates category (no inline offices)', () => {
       const cert = getCategoryBySlug('certificates')
       expect(cert).toBeDefined()
@@ -360,6 +396,29 @@ describe('configHelper', () => {
       expect(infraIds).not.toContain('city-planning')
       const agriIds = getServicesByCategory('agriculture').map(s => s.id)
       expect(agriIds).not.toContain('city-agriculture')
+    })
+  })
+
+  describe('cedula recategorized from Business to Taxation (#285, ADR-0006)', () => {
+    it('cedula\'s canonical categoryId is tax-payments, not business', () => {
+      const rawServices = (rawServicesConfig as { services: ServiceItem[] }).services
+      const cedula = rawServices.find(s => s.id === 'cedula')
+      expect(cedula).toBeDefined()
+      expect(cedula!.categoryId).toBe('tax-payments')
+    })
+
+    it('cedula no longer appears under the (visible) Business category', () => {
+      const businessIds = getServicesByCategory('business').map(s => s.id)
+      expect(businessIds).not.toContain('cedula')
+    })
+
+    it('cedula\'s url matches its new category (no stale /services/business link)', () => {
+      // pageViews.ts only treats `url` as an explicit override link when it
+      // differs from the resolved category's own href — a stale url would
+      // silently render Cedula's card linking back to Business.
+      const rawServices = (rawServicesConfig as { services: ServiceItem[] }).services
+      const cedula = rawServices.find(s => s.id === 'cedula')
+      expect(cedula!.url).toBe('/services/tax-payments')
     })
   })
 

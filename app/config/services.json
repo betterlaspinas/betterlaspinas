@@ -577,7 +577,10 @@
         "license",
         "negosyo",
         "store",
-        "shop"
+        "shop",
+        "online",
+        "filipizen",
+        "e-services"
       ],
       "fee": "Varies",
       "processingTime": "1 day",
@@ -718,7 +721,10 @@
         "renewal",
         "renew",
         "annual",
-        "negosyo"
+        "negosyo",
+        "online",
+        "filipizen",
+        "e-services"
       ],
       "fee": "Varies",
       "processingTime": "3 hours 10 minutes",
@@ -1516,7 +1522,7 @@
     {
       "id": "cedula",
       "title": "Community Tax Certificate (Cedula)",
-      "categoryId": "business",
+      "categoryId": "tax-payments",
       "description": "Obtain cedula for individuals and businesses",
       "keywords": [
         "cedula",
@@ -1528,7 +1534,8 @@
       "fee": "₱5+",
       "processingTime": "Same day",
       "office": "City Treasurer's Office",
-      "url": "/services/business",
+      "providedBy": "city-treasurer",
+      "url": "/services/tax-payments",
       "hidden": true
     },
     {
@@ -1772,13 +1779,18 @@
         "amilyar",
         "land",
         "house",
-        "lot"
+        "lot",
+        "online",
+        "billing",
+        "filipizen",
+        "e-payment"
       ],
       "fee": "Varies",
       "processingTime": "Same day",
       "office": "City Treasurer's Office",
       "providedBy": "city-treasurer",
-      "url": "/services/tax-payments"
+      "url": "/services/tax-payments",
+      "onlineUrl": "#"
     },
     {
       "id": "business-tax",
@@ -1790,13 +1802,18 @@
         "tax",
         "payment",
         "quarterly",
-        "annual"
+        "annual",
+        "online",
+        "billing",
+        "filipizen",
+        "e-payment"
       ],
       "fee": "Varies",
       "processingTime": "Same day",
       "office": "City Treasurer's Office",
       "providedBy": "city-treasurer",
-      "url": "/services/tax-payments"
+      "url": "/services/tax-payments",
+      "onlineUrl": "#"
     },
     {
       "id": "tax-clearance",
@@ -2568,83 +2585,9 @@
       }
     },
     {
-      "id": "online-business-billing",
-      "title": "Business Online Billing & Payment",
-      "categoryId": "online",
-      "description": "View and pay your business tax bills online via Filipizen",
-      "keywords": [
-        "online",
-        "billing",
-        "payment",
-        "business tax",
-        "filipizen",
-        "e-payment",
-        "digital"
-      ],
-      "fee": "Varies",
-      "processingTime": "Instant",
-      "office": "BPLS Office",
-      "url": "#"
-    },
-    {
-      "id": "online-new-business",
-      "title": "New Business Application Online",
-      "categoryId": "online",
-      "description": "Apply for a new business permit online via Filipizen",
-      "keywords": [
-        "online",
-        "new business",
-        "application",
-        "permit",
-        "filipizen",
-        "e-services"
-      ],
-      "fee": "Varies",
-      "processingTime": "3-5 days",
-      "office": "BPLS Office",
-      "url": "#"
-    },
-    {
-      "id": "online-business-renewal",
-      "title": "Business Permit Renewal Online",
-      "categoryId": "online",
-      "description": "Renew your existing business permit online via Filipizen",
-      "keywords": [
-        "online",
-        "renewal",
-        "business permit",
-        "filipizen",
-        "e-services",
-        "renew"
-      ],
-      "fee": "Varies",
-      "processingTime": "Same day",
-      "office": "BPLS Office",
-      "url": "#"
-    },
-    {
-      "id": "online-rpt-billing",
-      "title": "Real Property Tax Online Billing & Payment",
-      "categoryId": "online",
-      "description": "View and pay your real property tax (amilyar) online via Filipizen",
-      "keywords": [
-        "online",
-        "property tax",
-        "amilyar",
-        "billing",
-        "payment",
-        "filipizen",
-        "RPT"
-      ],
-      "fee": "Varies",
-      "processingTime": "Instant",
-      "office": "City Treasurer's Office",
-      "url": "#"
-    },
-    {
       "id": "online-payment-order",
       "title": "Online Payment Order",
-      "categoryId": "online",
+      "categoryId": "tax-payments",
       "description": "Process payment orders for various city fees online via Filipizen",
       "keywords": [
         "online",
@@ -2657,7 +2600,8 @@
       "fee": "Varies",
       "processingTime": "Instant",
       "office": "City Treasurer's Office",
-      "url": "#"
+      "providedBy": "city-treasurer",
+      "url": "/services/tax-payments"
     }
   ]
 }
