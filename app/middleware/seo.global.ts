@@ -4,12 +4,16 @@ import { interpolateString, slugToTitleCase } from '@/utils/stringHelpers'
 
 /**
  * Resolve the human-readable display name for a route's `slug` param, for
- * routes whose slug names an Agency or Office record. Overrides the generic
- * title-cased `{{slug}}` template var (below) so `/agencies/pnp-laspinas`
- * renders the real Agency name ("Las Piñas City Police Station") instead of
- * a mangled "Pnp Laspinas" (#295 — title-casing an id is not a name). Feeds
- * both the title AND description templates since both interpolate `{{slug}}`
- * from the same `templateVars`.
+ * routes whose slug names an Agency, Office, Service or News record.
+ * Overrides the generic title-cased `{{slug}}` template var (below) so
+ * `/agencies/pnp-laspinas` renders the real Agency name ("Las Piñas City
+ * Police Station") instead of a mangled "Pnp Laspinas" (#295 — title-casing
+ * an id is not a name). Feeds both the title AND description templates since
+ * both interpolate `{{slug}}` from the same `templateVars`.
+ *
+ * Service details and news articles have the same defect shape and are
+ * covered here too (#298): `/service-details/barangay-id` must render
+ * "Barangay ID", not "Barangay Id".
  *
  * Resolved through the canonical configHelper accessors — never a direct
  * JSON import — so the title can't drift from the catalog. Returns undefined
@@ -28,6 +32,10 @@ export function resolveSlugDisplayName(routeName: string, params: RouteParams): 
     return getAgencyById(slug)?.name
   if (routeName === 'offices-slug')
     return getOfficeBySlug(slug)?.name
+  if (routeName === 'service-details-slug')
+    return getServiceBySlug(slug)?.title
+  if (routeName === 'news-slug')
+    return getNewsBySlug(slug)?.title
 
   return undefined
 }
