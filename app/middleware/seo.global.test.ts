@@ -41,12 +41,45 @@ describe('resolveSlugDisplayName (#295)', () => {
     expect(resolveSlugDisplayName('offices-slug', { slug: 'not-a-real-office' })).toBeUndefined()
   })
 
-  it('returns undefined for routes with no Agency/Office slug override', () => {
-    expect(resolveSlugDisplayName('service-details-slug', { slug: 'birth-certificate' })).toBeUndefined()
+  it('returns undefined for routes with a slug but no display-name override', () => {
+    expect(resolveSlugDisplayName('services-category', { slug: 'health' })).toBeUndefined()
   })
 
   it('returns undefined when the route has no slug param', () => {
     expect(resolveSlugDisplayName('agencies-slug', {})).toBeUndefined()
+  })
+
+  it('resolves the real Service title for service-details-slug (#298)', () => {
+    expect(resolveSlugDisplayName('service-details-slug', { slug: 'ctc-business-license' })).toBe(
+      'Certified True Copy of Business License and Mayor\'s Permit',
+    )
+    // Acronym: the title-cased slug renders "Barangay Id", the record is "Barangay ID".
+    expect(resolveSlugDisplayName('service-details-slug', { slug: 'barangay-id' })).toBe(
+      'Barangay ID',
+    )
+    // Slug that is not name-derived at all.
+    expect(resolveSlugDisplayName('service-details-slug', { slug: 'police-clearance' })).toBe(
+      'National Police Clearance',
+    )
+  })
+
+  it('keeps Services under a hidden Category out of the SEO override (#298)', () => {
+    // `pwd-id` and `cswdo-services` belong to the hidden `social-services`
+    // Category, so `getServiceBySlug` (hidden-aware) returns undefined — these
+    // pages 404 and must not gain a title. Same rule as the Agency/Office path.
+    expect(resolveSlugDisplayName('service-details-slug', { slug: 'pwd-id' })).toBeUndefined()
+    expect(resolveSlugDisplayName('service-details-slug', { slug: 'cswdo-services' })).toBeUndefined()
+  })
+
+  it('resolves the real News headline for news-slug (#298 parity)', () => {
+    expect(resolveSlugDisplayName('news-slug', { slug: 'business-permit-renewal-2025' })).toBe(
+      'Business Permit Renewal 2025',
+    )
+  })
+
+  it('returns undefined for unknown service and news slugs', () => {
+    expect(resolveSlugDisplayName('service-details-slug', { slug: 'not-a-real-service' })).toBeUndefined()
+    expect(resolveSlugDisplayName('news-slug', { slug: 'not-a-real-news' })).toBeUndefined()
   })
 
   it('handles an array-form slug param (matches the array-join guard used elsewhere in the middleware)', () => {
