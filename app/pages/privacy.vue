@@ -346,3 +346,9 @@ const sections = [
     </section>
   </div>
 </template>
+
+<style scoped>
+article :deep([id]) {
+  scroll-margin-top: 9rem;
+}
+</style>
