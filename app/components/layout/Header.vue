@@ -55,23 +55,23 @@ const logoPath = computed(() => site.value.logo?.main || '/logos/svg/BetterGov_I
   <nav class="bg-white shadow-xs sticky top-0 z-50">
     <!-- Top bar with language switcher and additional links -->
     <div class="border-b border-gray-200">
-      <div class="container mx-auto px-4 flex justify-end items-center h-10">
+      <div class="container mx-auto px-4 flex justify-end items-center min-h-10 py-2">
         <div class="flex items-center space-x-4">
           <NuxtLink
             to="/join-us"
-            class="text-xs leading-12 text-primary-600 hover:text-primary-700 font-semibold transition-colors duration-200"
+            class="text-xs leading-normal text-primary-600 hover:text-primary-700 font-semibold transition-colors duration-200"
           >
             🚀 Join Us
           </NuxtLink>
           <NuxtLink
             to="/about"
-            class="text-xs leading-12 text-gray-800 hover:text-primary-600 transition-colors duration-200"
+            class="text-xs leading-normal text-gray-800 hover:text-primary-600 transition-colors duration-200"
           >
             About <span class="hidden md:inline">{{ siteBrandName }}</span>
           </NuxtLink>
           <a
             :href="officialWebsite"
-            class="text-xs leading-12 text-gray-800 hover:text-primary-600 transition-colors duration-200"
+            class="text-xs leading-normal text-gray-800 hover:text-primary-600 transition-colors duration-200"
             target="_blank"
             rel="noreferrer"
           >
@@ -80,7 +80,7 @@ const logoPath = computed(() => site.value.logo?.main || '/logos/svg/BetterGov_I
 
           <NuxtLink
             to="/contact"
-            class="text-xs leading-12 text-gray-800 hover:text-primary-600 transition-colors duration-200"
+            class="text-xs leading-normal text-gray-800 hover:text-primary-600 transition-colors duration-200"
           >
             Hotlines
           </NuxtLink>
