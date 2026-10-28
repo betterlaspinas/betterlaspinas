@@ -7,6 +7,15 @@ const { translate } = useLanguage()
 const route = useRoute()
 const initialQuery = computed(() => (route.query.q as string) || '')
 
+// Category visibility is derived from categories.json through the canonical
+// accessor (#290) — this file owns the presentation (icon/copy) only, and must
+// not keep a second copy of the `hidden` fact that can drift from the source.
+const visibleCategoryIds = new Set(getServiceCategories().map(category => category.id))
+
+function isCategoryVisible(href: string): boolean {
+  return visibleCategoryIds.has(href.replace('/services/', ''))
+}
+
 const categories = [
   {
     href: '/services/certificates',
@@ -25,56 +34,48 @@ const categories = [
     icon: 'bi-people-fill',
     titleKey: 'cat-social',
     descKey: 'cat-social-desc',
-    hidden: true,
   },
   {
     href: '/services/health',
     icon: 'bi-heart-pulse-fill',
     titleKey: 'cat-health',
     descKey: 'cat-health-desc',
-    hidden: true,
   },
   {
     href: '/services/tax-payments',
     icon: 'bi-cash-coin',
     titleKey: 'cat-tax',
     descKey: 'cat-tax-desc',
-    hidden: true,
   },
   {
     href: '/services/agriculture',
     icon: 'bi-tree-fill',
     titleKey: 'cat-agriculture',
     descKey: 'cat-agriculture-desc',
-    hidden: true,
   },
   {
     href: '/services/infrastructure',
     icon: 'bi-building-fill-gear',
     titleKey: 'cat-infrastructure',
     descKey: 'cat-infrastructure-desc',
-    hidden: true,
   },
   {
     href: '/services/education',
     icon: 'bi-mortarboard-fill',
     titleKey: 'cat-education',
     descKey: 'cat-education-desc',
-    hidden: true,
   },
   {
     href: '/services/public-safety',
     icon: 'bi-shield-fill-check',
     titleKey: 'cat-safety',
     descKey: 'cat-safety-desc',
-    hidden: true,
   },
   {
     href: '/services/environment',
     icon: 'bi-globe-americas',
     titleKey: 'cat-environment',
     descKey: 'cat-environment-desc',
-    hidden: true,
   },
 ]
 
@@ -98,31 +99,26 @@ const lifeEvents = [
     href: '/services/social-services',
     icon: 'bi-wallet2',
     labelKey: 'life-financial-help',
-    hidden: true,
   },
   {
     href: '/services/social-services',
     icon: 'bi-person-badge',
     labelKey: 'life-senior',
-    hidden: true,
   },
   {
     href: '/services/social-services',
     icon: 'bi-universal-access',
     labelKey: 'life-pwd',
-    hidden: true,
   },
   {
     href: '/services/infrastructure',
     icon: 'bi-hammer',
     labelKey: 'life-building',
-    hidden: true,
   },
   {
     href: '/services/public-safety',
     icon: 'bi-question-circle',
     labelKey: 'life-trouble',
-    hidden: true,
   },
 ]
 </script>
@@ -156,7 +152,7 @@ const lifeEvents = [
       <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <UiCard
-            v-for="category in categories.filter(category => !category.hidden)"
+            v-for="category in categories.filter(category => isCategoryVisible(category.href))"
             :key="category.href"
             :to="category.href"
             interactive
@@ -193,7 +189,7 @@ const lifeEvents = [
         />
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
           <UiCard
-            v-for="event in lifeEvents.filter(event => !event.hidden)"
+            v-for="event in lifeEvents.filter(event => isCategoryVisible(event.href))"
             :key="event.labelKey"
             :to="event.href"
             interactive
