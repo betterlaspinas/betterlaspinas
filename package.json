@@ -42,7 +42,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "^9.2.0",
     "@nuxt/test-utils": "^4.2.0",
-    "@nuxtjs/seo": "^5.3.14",
+    "@nuxtjs/seo": "^5.3.16",
     "@tailwindcss/postcss": "^4.3.3",
     "@takumi-rs/core": "^2.13.1",
     "@vitest/coverage-v8": "^4.1.11",
