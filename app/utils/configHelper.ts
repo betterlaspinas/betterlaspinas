@@ -17,6 +17,7 @@ import type {
   LGUTypeLabels,
   NavigationConfig,
   NavigationItem,
+  NewsArticle,
   NewsConfig,
   Office,
   OfficeGroup,
@@ -684,6 +685,15 @@ export function getStatisticsDetailedConfig(): StatisticsDetailedConfig {
  */
 export function getNewsConfig(): NewsConfig {
   return newsConfig as NewsConfig
+}
+
+/**
+ * Get a single News article by its URL slug.
+ * Returns undefined for unknown slugs. Mirrors `getServiceBySlug` so the SEO
+ * middleware can resolve a real headline instead of title-casing the slug.
+ */
+export function getNewsBySlug(slug: string): NewsArticle | undefined {
+  return getNewsConfig().articles.find(article => article.slug === slug)
 }
 
 /**
