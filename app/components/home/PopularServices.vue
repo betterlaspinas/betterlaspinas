@@ -7,10 +7,18 @@ interface ServiceCard {
   titleKey: string
   descKey: string
   isViewAll?: boolean
-  hidden?: boolean
 }
 
 const { translate } = useLanguage()
+
+// Visibility comes from categories.json via the canonical accessor (#290),
+// never from a local flag that can drift from the source. Cards that don't
+// point at a category (the "View all" card) are always shown.
+const visibleCategoryIds = new Set(getServiceCategories().map(category => category.id))
+
+function isVisible(service: ServiceCard): boolean {
+  return service.isViewAll === true || visibleCategoryIds.has(service.href.replace('/services/', ''))
+}
 
 const services: ServiceCard[] = [
   {
@@ -30,21 +38,18 @@ const services: ServiceCard[] = [
     icon: 'bi-cash-coin',
     titleKey: 'service-tax',
     descKey: 'service-tax-desc',
-    hidden: true,
   },
   {
     href: '/services/social-services',
     icon: 'bi-people-fill',
     titleKey: 'service-social',
     descKey: 'service-social-desc',
-    hidden: true,
   },
   {
     href: '/services/health',
     icon: 'bi-heart-pulse-fill',
     titleKey: 'service-health',
     descKey: 'service-health-desc',
-    hidden: true,
   },
   {
     href: '/services',
@@ -72,7 +77,7 @@ const services: ServiceCard[] = [
       <!-- Services Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <UiCard
-          v-for="service in services.filter(service => !service.hidden)"
+          v-for="service in services.filter(isVisible)"
           :key="service.href + service.titleKey"
           :to="service.href"
           interactive
