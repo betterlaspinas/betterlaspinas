@@ -17,6 +17,14 @@ const { getAgencyById: getRealAgencyById } = await vi.importActual<typeof import
 // `agencyView`) is covered separately in `utils/pageViews.test.ts`.
 mockNuxtImport('usePageOgImage', () => () => undefined)
 
+// 404 guard: since Vue 3.5.45 (vuejs/core#16110/#16111) a fatal
+// `createError` thrown in setup resolves `mountSuspended` with an empty render
+// instead of rejecting. Mock it to throw a plain Error so the test asserts on
+// the guard firing (same pattern as service-details/[slug].test.ts).
+mockNuxtImport('createError', () => (input: { statusCode: number, statusMessage: string }) => {
+  throw new Error(`createError: ${input.statusCode} ${input.statusMessage}`)
+})
+
 // Synthetic fixture with no `facebook` field, for the "row is absent" case
 // (#295) — `pnp-laspinas` is currently the only real Agency record and now
 // carries one, so there is no real fixture to exercise the missing-field
@@ -80,7 +88,7 @@ describe('agency detail page', () => {
 
   it('throws a 404 for an unknown Agency slug', async () => {
     routeParams.slug = 'not-a-real-agency'
-    await expect(mountSuspended(AgencyPage)).rejects.toThrow()
+    await expect(mountSuspended(AgencyPage)).rejects.toThrow('404')
   })
 
   // #295: the Contact details card's Facebook row, mirroring the Office page's

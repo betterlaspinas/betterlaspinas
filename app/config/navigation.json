@@ -122,11 +122,10 @@
       ]
     },
     {
-      "id": "transparency",
-      "label": "Transparency",
-      "href": "/budget",
-      "i18nKey": "nav-transparency",
-      "hidden": true
+      "id": "budget",
+      "label": "Budget",
+      "href": "https://budget.betterlaspinas.org",
+      "i18nKey": "nav-budget"
     },
     {
       "id": "contact",
