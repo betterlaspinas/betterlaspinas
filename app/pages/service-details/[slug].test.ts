@@ -18,13 +18,12 @@ mockNuxtImport('useRoute', () => () => ({
 mockNuxtImport('usePageOgImage', () => () => undefined)
 
 // `createError({ fatal: true })` on the 404 guard: under `mountSuspended`
-// this component's tree resolves through Suspense differently than the
-// simpler Agency/Office detail pages do (their `[slug].test.ts` files assert
-// `rejects.toThrow()` on the same `createError({ fatal: true })` guard
-// pattern successfully) — here the fatal error is swallowed internally and
-// the mount resolves with an empty render instead of rejecting. Asserting on
-// the guard's own call, rather than on Suspense's rejection behavior, keeps
-// this test meaningful without depending on that Suspense/fatal interaction.
+// the fatal Nuxt error is swallowed and the mount resolves with an empty
+// render instead of rejecting (since Vue 3.5.45, vuejs/core#16110/#16111, this
+// applies to every detail page — see agencies/[slug].test.ts). Mocking
+// `createError` to throw a plain Error asserts on the guard's own call,
+// rather than on Suspense's rejection behavior, keeping this test meaningful
+// without depending on that Suspense/fatal interaction.
 mockNuxtImport('createError', () => (input: { statusCode: number, statusMessage: string }) => {
   throw new Error(`createError: ${input.statusCode} ${input.statusMessage}`)
 })
