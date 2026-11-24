@@ -1,3 +1,4 @@
+import { existsSync, readFileSync } from 'node:fs'
 import { describe, expect, it, vi } from 'vitest'
 
 // nuxt.config.ts uses the `defineNuxtConfig` auto-import (a global, never
@@ -50,5 +51,17 @@ describe('nuxt.config routeRules — /service-details Office 301s', () => {
     for (const [from, rule] of officeRoutes) {
       expect(rule.redirect?.statusCode, from).toBe(301)
     }
+  })
+})
+
+describe('nuxt.config alias — #tailwindcss for nuxt-og-image', () => {
+  it('points at the CSS entry that carries the @theme tokens', () => {
+    // nuxt-og-image only auto-detects a bare `@import 'tailwindcss'`; main.css
+    // imports `tailwindcss/index.css`, so without this alias the OG renderer
+    // loads no theme and `primary-*` classes render as nothing (blank card).
+    const aliasPath = (nuxtConfig.alias as Record<string, string> | undefined)?.['#tailwindcss']
+    expect(aliasPath).toBeTruthy()
+    expect(existsSync(aliasPath!)).toBe(true)
+    expect(readFileSync(aliasPath!, 'utf-8')).toContain('--color-primary-500')
   })
 })
