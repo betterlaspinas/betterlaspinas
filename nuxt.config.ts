@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { execSync } from 'node:child_process'
+import { resolve } from 'node:path'
 import pkg from './package.json'
 
 function getVersion() {
@@ -128,6 +129,14 @@ export default defineNuxtConfig({
     },
   },
   ssr: true,
+  alias: {
+    // nuxt-og-image only auto-detects the Tailwind v4 entry when it contains a
+    // bare `@import 'tailwindcss'`. main.css imports `tailwindcss/index.css`
+    // (Vite 8 workaround), so without this the OG renderer loads no @theme:
+    // `primary-*` classes resolve to nothing and the card renders white text
+    // on a white canvas.
+    '#tailwindcss': resolve(import.meta.dirname, 'app/assets/css/main.css'),
+  },
   ogImage: {
     enabled: true,
   },
