@@ -51,7 +51,7 @@ const sections = [
         <div class="flex flex-col lg:flex-row gap-8">
           <!-- Table of Contents -->
           <aside class="lg:w-64 shrink-0">
-            <UiCard class="sticky top-24" padding="p-6">
+            <UiCard class="sticky top-(--site-header-height)" padding="p-6">
               <h4
                 class="font-semibold text-gray-900 mb-4 flex items-center gap-2"
               >
@@ -289,9 +289,3 @@ const sections = [
     </section>
   </div>
 </template>
-
-<style scoped>
-article :deep([id]) {
-  scroll-margin-top: 9rem;
-}
-</style>

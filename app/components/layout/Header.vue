@@ -6,7 +6,7 @@ import {
   Search,
   X,
 } from 'lucide-vue-next'
-import { ref } from 'vue'
+import { onMounted, onUnmounted, ref, useTemplateRef } from 'vue'
 import LanguageSelector from '@/components/ui/LanguageSelector.vue'
 import { useConfig } from '@/composables/useConfig'
 import { useLanguage } from '@/composables/useLanguage'
@@ -14,6 +14,29 @@ import { useLanguage } from '@/composables/useLanguage'
 const isOpen = ref(false)
 const activeMenu = ref<string | null>(null)
 const hoveredDropdown = ref<string | null>(null)
+const header = useTemplateRef<HTMLElement>('header')
+let resizeObserver: ResizeObserver | undefined
+
+onMounted(() => {
+  const element = header.value
+  if (!element)
+    return
+
+  const syncHeaderHeight = () => {
+    document.documentElement.style.setProperty('--site-header-height', `${element.getBoundingClientRect().height}px`)
+  }
+
+  syncHeaderHeight()
+  resizeObserver = new ResizeObserver(syncHeaderHeight)
+  resizeObserver.observe(element, { box: 'border-box' })
+})
+
+onUnmounted(() => {
+  if (resizeObserver) {
+    resizeObserver.disconnect()
+    document.documentElement.style.removeProperty('--site-header-height')
+  }
+})
 
 const route = useRoute()
 const { translate } = useLanguage()
@@ -52,7 +75,7 @@ const logoPath = computed(() => site.value.logo?.main || '/logos/svg/BetterGov_I
 </script>
 
 <template>
-  <nav class="bg-white shadow-xs sticky top-0 z-50">
+  <nav ref="header" class="bg-white shadow-xs sticky top-0 z-50">
     <!-- Top bar with language switcher and additional links -->
     <div class="border-b border-gray-200">
       <div class="container mx-auto px-4 flex justify-end items-center h-10">
