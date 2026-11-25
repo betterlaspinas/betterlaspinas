@@ -102,6 +102,11 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
+  html {
+    --site-header-height: 9rem;
+    scroll-padding-top: var(--site-header-height);
+  }
+
   body {
     background-color: var(--color-gray-50);
   }
