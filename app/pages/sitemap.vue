@@ -3,6 +3,15 @@ usePageOgImage()
 
 const { lguName, labels, site } = useConfig()
 
+// Service-category visibility is derived from categories.json through the
+// canonical accessor (#290) instead of a per-link `hidden` copy that can drift
+// from the source. Non-category links keep their own flags below.
+const visibleCategoryIds = new Set(getServiceCategories().map(category => category.id))
+
+function isCategoryVisible(href: string): boolean {
+  return visibleCategoryIds.has(href.replace('/services/', ''))
+}
+
 interface SitemapLink {
   href: string
   label: string
@@ -38,21 +47,21 @@ const sections = computed<SitemapSection[]>(() => [
   {
     icon: 'bi-grid-3x3-gap',
     title: 'Service Categories',
-    links: [
+    links: ([
       {
         href: '/services/certificates',
         label: 'Certificates & Vital Records',
       },
       { href: '/services/business', label: 'Business Services' },
-      { href: '/services/social-services', label: 'Social Services', hidden: true },
-      { href: '/services/health', label: 'Health & Wellness', hidden: true },
-      { href: '/services/tax-payments', label: 'Tax & Payments', hidden: true },
-      { href: '/services/agriculture', label: 'Agriculture', hidden: true },
-      { href: '/services/infrastructure', label: 'Infrastructure', hidden: true },
-      { href: '/services/education', label: 'Education', hidden: true },
-      { href: '/services/environment', label: 'Environment', hidden: true },
-      { href: '/services/public-safety', label: 'Public Safety', hidden: true },
-    ],
+      { href: '/services/social-services', label: 'Social Services' },
+      { href: '/services/health', label: 'Health & Wellness' },
+      { href: '/services/tax-payments', label: 'Tax & Payments' },
+      { href: '/services/agriculture', label: 'Agriculture' },
+      { href: '/services/infrastructure', label: 'Infrastructure' },
+      { href: '/services/education', label: 'Education' },
+      { href: '/services/environment', label: 'Environment' },
+      { href: '/services/public-safety', label: 'Public Safety' },
+    ] as SitemapLink[]).filter(link => isCategoryVisible(link.href)),
   },
   {
     icon: 'bi-building',
